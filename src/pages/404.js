@@ -21,7 +21,7 @@ const ErrorPage = () => {
             <h3 className={ErrorPageStyle.h2}>Look like you're lost</h3>
             <p>the page you are looking for not avaible!</p>
             <Link className={ErrorPageStyle.link_404} href="/home">
-              Go to Home
+              GO TO HOME
             </Link>
           </div>
         </div>

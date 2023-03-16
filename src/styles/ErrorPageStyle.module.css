@@ -26,6 +26,7 @@
 .four_zero_four_bg_h1 {
   font-size: 80px;
   text-align: center;
+  font-family: var(--font-dm-sans);
 }
 
 .four_zero_four_bg h3 {
@@ -33,12 +34,15 @@
 }
 .four_zero_four_bg_btn_container {
   text-align: center;
+  font-family: var(--font-dm-sans);
 }
 
 .link_404 {
   color: #fff !important;
   padding: 10px 20px;
-  background: #39ac31;
+  background-color: var(--btn-background);
   margin: 20px 0;
+  text-decoration: none;
   display: inline-block;
+  font-family: var(--font-dm-sans);
 }
