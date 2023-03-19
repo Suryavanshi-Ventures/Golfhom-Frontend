@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import "@/styles/main.css";
 import Header from "../../common components/header";
 import Footer from "../../common components/footer";
 
