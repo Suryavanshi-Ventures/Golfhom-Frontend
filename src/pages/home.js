@@ -1,5 +1,8 @@
 import React from "react";
 import Head from "next/head";
+import style from "../styles/Home.module.css"
+import { Slider } from "./slider";
+import slides from './countries.json'
 
 const Home = () => {
   return (
@@ -12,6 +15,77 @@ const Home = () => {
       </Head>
 
       <h1>Home Page</h1>
+
+      <nav className={style.nav_bar}>
+        <div>
+          <img src='/images/golf_boy.png' alt='Golf Boy'></img>
+        </div>
+
+        <div className={style.search_bar}>
+          <div>
+            <img className={style.location} src='/images/vector/location.png'></img>
+            <h4 className={style.destination}>Destination</h4>
+            <p className={style.ask}>Where you want to stay</p>
+          </div>
+
+          <div>
+            <img src='/images/vector/calender.png'></img>
+            <h4 className={style.night}>2 Night</h4>
+            <h4 className={style.date}>Sat, Mar 04 - Sun, March 05</h4>
+          </div>
+
+          <div>
+            <button className={style.search_btn}>Search</button>
+          </div>
+        </div>
+      </nav>
+
+      <section className={style.slider_section}>
+        <div className={style.golf_courses}>
+          <h2 className={style.title_find}>Find Great Vacation Rentals near Florida & Arizona </h2>
+          <h1 className={style.golf_heading}>Golf Courses!</h1>
+          <br />
+          <p className={style.para}>Arizona and Florida are renowned for their beautiful surroundings, outdoor lifestyles, & of course for having some of the world’s best golf courses! Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts of home, luxe amenities, and access to plenty of Arizona and Florida attractions!  Golfhōm is transforming how golfers locate and book their next luxury golf vacation rental. Book with us today!</p>
+        </div>
+
+        <Slider slides={slides} />
+      </section>
+
+      <section className={style.search_section}>
+        <img className={style.shot_man} src='/images/shot.png' alt='Shot Man'></img>
+
+        <div className={style.search_content}>
+          <h3 className={style.search_title}>Search the World Over by Course
+            <br />
+            (38,000+ in our database) or Tournament</h3>
+
+          <p className={style.search_para}>*We're downloading more great Golfhōms each day from our valued channel partners!</p>
+
+          <div className={style.search_part}>
+            <div>
+              <h5 className={style.search_golf}>Search by golf course</h5>
+              <p className={style.hint}>Choose from thousands world-wide</p>
+
+              <input className={style.text_area} type="text" placeholder="Enter Location"></input>
+              <input className={style.text_area} type="text" placeholder="Golf Course"></input>
+              <br />
+
+              <button>Search</button>
+            </div>
+
+            <div>
+              <h5 className={style.search_tournaments}>Search By Tournaments</h5>
+              <p className={style.hint}>Check out our growing list of tour-spot rentals</p>
+
+              <input className={style.text_area} type="text" placeholder="Search by Touraments"></input>
+              <br />
+
+              <button>Search</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </>
   );
 };
