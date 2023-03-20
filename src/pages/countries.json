@@ -1,0 +1,49 @@
+[
+    {
+        "image": "/images/golf_spot.png",
+        "name": "Florida",
+        "next": "/images/vector/forward_arrow.png" 
+    },
+
+    {
+        "image": "/images/hill.png",
+        "name": "Arizona",
+        "next": "/images/vector/forward_arrow.png" 
+    },
+
+    {
+        "image": "/images/river.png",
+        "name": "Sanfrancisco",
+        "next": "/images/vector/forward_arrow.png" 
+    },
+
+    {
+        "image": "/images/lake.png",
+        "name": "Newyork",
+        "next": "/images/vector/forward_arrow.png" 
+    },
+
+    {
+        "image": "/images/golf_spot.png",
+        "name": "Florida",
+        "next": "/images/vector/forward_arrow.png" 
+    },
+
+    {
+        "image": "/images/hill.png",
+        "name": "Arizona",
+        "next": "/images/vector/forward_arrow.png" 
+    },
+
+    {
+        "image": "/images/river.png",
+        "name": "Sanfrancisco",
+        "next": "/images/vector/forward_arrow.png" 
+    },
+
+    {
+        "image": "/images/lake.png",
+        "name": "Newyork",
+        "next": "/images/vector/forward_arrow.png" 
+    }
+]
