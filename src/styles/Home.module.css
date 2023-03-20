@@ -1,0 +1,178 @@
+ /*    ------------------------------------   CSS of navbar only --------------------------------   */
+.navBar {
+  /* z-index: -99px; */
+}
+
+.golfboy {
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+}
+
+.searchBar {
+    position: relative;
+    width: 78%;
+    top: 1.5pc;
+    left: 10pc;
+    bottom: 3pc;
+    border-radius: 15px;
+    height: 78px;
+    background: var(--white-font-color);
+}
+
+.location {
+    position: relative;
+    top: 1.7pc;
+    left: 2pc;
+}
+
+.destination {
+    position: relative;
+    left: 4pc;
+    line-height: 1.8pc;
+    color: #747474;
+    letter-spacing: 1px;
+}
+
+.ask {
+    position: relative;
+    left: 4pc;
+    bottom: 0.6pc;
+    color: #C2C2C2;
+    letter-spacing: 1px;
+}
+
+.calender {
+    position: relative;
+    top: 1.5pc;
+}
+
+.night  {
+    position: relative;
+    left: 2.5pc;
+    color: #747474;
+    letter-spacing: 1px;
+    line-height: 1.8pc;
+}
+
+.date {
+    position: relative;
+    left: 2.5pc;
+    bottom: 0.6pc;
+}
+
+.searchBtn {
+    position: relative;
+    left: 3pc;
+    width: 55%;
+    letter-spacing: 1px;
+    padding: 11px 15px;
+    border-radius: 30px;
+    border: none;
+    background: var(--btn-background);
+    color: var(--white-font-color);
+}
+
+/*     ----------------------------------  CSS of Swiper Container only -----------------------------  */
+
+.slider {
+    position: relative;
+    margin-top: 44.2pc;
+}
+
+.golfHeading {
+    color: var(--btn-background);
+    margin-top: 16px;
+    margin-bottom: 30px;
+}
+
+.para {
+    line-height: 2.5pc;
+    word-spacing: 1.5px;
+}
+
+.sliderImage {
+    border-radius: 16px;
+}
+
+.countryName {
+    position: relative;
+    left: 30px;
+    bottom: 56px;
+    color: var(--white-font-color);
+}
+
+.nextArrow {
+    position: relative;
+    left: 20.2pc;
+    bottom: 5.8pc;
+}
+
+/* --------------------------------------- CSS for Search Container ----------------------------------  */
+
+.searchSection {
+    margin-top: 40px;
+}
+
+.shotMan {
+    position: absolute;
+}
+
+.Title {
+    line-height: 3.3pc;
+}
+
+.searchPara {
+    line-height: 2.4pc;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+}
+
+.content {
+    position: relative;
+    align-content: center;
+    padding: 56px 58px;
+    color: var(--white-font-color);
+}
+
+.tournamentDiv {
+    position: relative;
+    left: 78px;
+}
+
+.searchPart {
+    display: flex;
+}
+
+.searchbox {
+    width: 100%;
+}
+
+.textArea {
+    border: none;
+    padding: 10px;
+    margin: 12px 36px 15px 0px;
+    border-radius: 3px;
+    width: 110%;
+}
+
+.boxes {
+    gap: 42px;
+}
+
+.box {
+    border: none;
+    padding: 10px;
+    margin: 12px 36px 15px 0px;
+    border-radius: 3px;
+    width: 65%;
+}
+
+.btn {
+    padding: 8px 38px;
+    border-radius: 5px;
+    margin: 10px 0px;
+    color: var(--white-font-color);
+    background-color: var(--btn-background);
+    border: none;
+}
