@@ -4,8 +4,10 @@
 :root {
   --font-dm-sans: "DM Sans", sans-serif;
   --light-font-color: #636363;
+  --footer-font-color: #1c1c1c;
   --btn-background: #ff7757;
-  --white-font-color: #FFFFFF;
+  --btn-background-secondary: #ff6764;
+  --white-font-color: #ffffff;
 }
 
 * {

@@ -18,10 +18,6 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <h1>Home Page</h1>
-      </div>
-
       {/* ------------ NAVBAR SECTION -----------    */}
 
       <Row>
