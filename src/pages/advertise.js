@@ -10,8 +10,8 @@ export const Advertise = ({ ads }) => {
             spaceBetween={50}
             slidesPerView={5}
             pagination={{ clickable: true }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => { }}
+            onSwiper={(swiper) => { }}
         >
             {ads.map((ads) => (
                 <SwiperSlide key={ads.id}>

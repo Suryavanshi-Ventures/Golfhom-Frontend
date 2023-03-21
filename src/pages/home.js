@@ -1,11 +1,10 @@
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
 import HomeCss from "../styles/Home.module.css";
 import { Slider } from "./slider";
 import slides from './countries.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Col, Row, Card, Button } from 'react-bootstrap';
+import { Container, Col, Row, Card } from 'react-bootstrap';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ads from './ads.json';
 import { Advertise } from "./advertise";
@@ -20,28 +19,22 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <h1>Home Page</h1>
-      </div>
-
-
       {/* ------------ NAVBAR SECTION -----------    */}
 
-      <Row fluid>
-
+      <Row>
         <div>
-          <img className={HomeCss.golfboy} src='/images/golfBoy.png' alt='Golf Boy'></img>
+          <img className={HomeCss.golfboy} src='/images/golfBoy.png' alt="Golf Boy"></img>
         </div>
 
-        <Row className={HomeCss.searchBar} justify-content-md-center>
+        <Row className={HomeCss.searchBar}>
           <Col md={4} sm={5}>
-            <img className={HomeCss.location} src='/images/vector/location.png'></img>
+            <img className={HomeCss.location} src='/images/vector/location.png' alt="Location Image"></img>
             <h6 className={HomeCss.destination}>DESTINATION</h6>
             <p className={HomeCss.ask}>Where you want to stay</p>
           </Col>
 
           <Col md={4} sm={5}>
-            <img className={HomeCss.calender} src='/images/vector/calender.png'></img>
+            <img className={HomeCss.calender} src='/images/vector/calender.png' alt="Calender Image"></img>
             <h6 className={HomeCss.night}>2 NIGHT</h6>
             <h5 className={HomeCss.date}>Sat, Mar 04 - Sun, March 05</h5>
           </Col>
@@ -66,7 +59,6 @@ const Home = () => {
         <Slider slides={slides} />
       </Container>
 
-
       {/* ------------------   SEARCH CONTAINER    ------------    */}
 
       <Container className={HomeCss.searchSection}>
@@ -74,7 +66,8 @@ const Home = () => {
         <Row className={HomeCss.content}>
           <h3 className={HomeCss.Title}>Search the World Over by Course
             <br />
-            (38,000+ in our database) or Tournament</h3>
+            (38,000+ in our database) or Tournament
+          </h3>
 
           <p className={HomeCss.searchPara}>*We're downloading more great Golfhōms each day from our valued channel partners!</p>
 
@@ -107,7 +100,6 @@ const Home = () => {
               <button className={HomeCss.btn}>Search</button>
             </Col>
           </Row>
-
         </Row>
       </Container>
 
@@ -116,39 +108,43 @@ const Home = () => {
       <Container>
         <Row>
 
-          <Card style={{ width: '24rem' }}>
-            <Card.Img variant="top" className={HomeCss.cardImg} src="/images/bedRoom.png" />
+          <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
+
+          <Card style={{ width: '24rem' }} className={HomeCss.MainCard}>
+            <Card.Img variant="top" className={HomeCss.cardImg} src="/images/bedRoom.png" alt="Bed Image" />
             <Card.Body>
               <Card.Title>Tampa Golf Villas 5 King or 12 Beds at Saddlebrook</Card.Title>
               <Card.Text className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more
                 <br />
 
-                <img className={HomeCss.icons} src="/images/vector/bed.png"></img><span className={HomeCss.saddle} >5 Bed Rooms</span>
-                <img className={HomeCss.icons} src="/images/vector/bath-tub.png"></img><span className={HomeCss.saddle} >4 Baths</span>
-                <img className={HomeCss.icons} src="/images/vector/guest.png"></img><span className={HomeCss.saddle} >5 Guests Villa</span>
-                <img className={HomeCss.icons} src="/images/vector/parking-area.png"></img><span className={HomeCss.saddle} >Parking Area</span>
+                <img className={HomeCss.icons} src="/images/vector/bed.png" alt="iconImage"></img><span className={HomeCss.saddle} >5 Bed Rooms</span>
+                <img className={HomeCss.icons} src="/images/vector/bath-tub.png" alt="iconImage"></img><span className={HomeCss.saddle} >4 Baths</span>
+                <img className={HomeCss.icons} src="/images/vector/guest.png" alt="iconImage"></img><span className={HomeCss.saddle} >5 Guests Villa</span>
+                <img className={HomeCss.icons} src="/images/vector/parking-area.png" alt="iconImage"></img><span className={HomeCss.saddle} >Parking Area</span>
 
               </Card.Text>
             </Card.Body>
           </Card>
 
         </Row>
-
-        <Button className={HomeCss.loadbtn}>Load more</Button>
       </Container>
+
+      <div className={HomeCss.loadbtn}>
+        <button className={HomeCss.loadIn}>Load more</button>
+      </div>
 
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
 
       <Row className={HomeCss.blurImg}>
         <Row>
-          <Col md={6}>
-            <div className={HomeCss.golfPit}>
-              <img src="/images/golfball.png"></img>
-              <img src="/images/pit.png"></img>
+          <Col md={6} className={HomeCss.golfPit}>
+            <div >
+              <img src="/images/golfball.png" alt="Golf Ball"></img>
+              <img src="/images/pit.png" alt="Pit"></img>
             </div>
           </Col>
 
-          <Col md={6}>
+          <Col md={6} className={HomeCss.golfText}>
             <div>
               <h2>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h2>
               <p>No more sorting through tangled rental-search results on common vacation rental sites. Golfhōm patrons can search a targeted list of course-vicinity homes, condos, and villas, all by course, tournament, or city. After checking out safely with Stripe, our golfers can ship their clubs via Ship Sticks, book their group’s tee time, buy partner golf swag, and take in great golf articles — all without leaving the platform.
@@ -161,8 +157,8 @@ const Home = () => {
 
       {/* ------------------------------        Golfing and Traveling     ------------------------  */}
 
-      <Container>
-        <h2>Golfing and Traveling, Both Better with Friends</h2>
+      <Container className={HomeCss.ads}>
+        <h2 className={HomeCss.adsTitle}>Golfing and Traveling, Both Better with Friends</h2>
 
         <Advertise ads={ads} />
       </Container>
@@ -170,9 +166,10 @@ const Home = () => {
       {/* ------------------------------         EXCLUSIVE PROPERTISE       --------------------------   */}
 
       <Container className={HomeCss.exclusive}>
-        <img src="/images/room.png" alt="Room Image"></img>
-        <h1>Choose from a wide range of exclusive Properties</h1>
-        <Button>Book Now</Button>
+        <div className={HomeCss.exHeading}>
+          <h1>Choose from a wide range of exclusive Properties</h1>
+          <button className={HomeCss.loadIn}>Book Now</button>
+        </div>
       </Container>
     </>
   );

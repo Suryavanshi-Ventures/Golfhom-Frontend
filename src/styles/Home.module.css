@@ -178,6 +178,10 @@
 }
 
 /* ------------------------------        CARD SECTION         ------------------------------       */
+
+.cardHeading {
+    padding: 30px 0px;
+}
 .cardImg {
   
 }
@@ -187,6 +191,9 @@
     
 }
 
+.MainCard {
+    margin: 20px;
+}
 .golfPit {
     display: flex;
     justify-content: center;
@@ -198,19 +205,54 @@
 }
 
 .loadbtn {
-   
+  text-align: center;
+}
+
+.loadIn {
+    background-color: #FF6764;
+    color: var(--white-font-color);
+    border: none;
+    padding: 10px 30px;
+    margin: 20px;
+    border-radius: 5px;
 }
 
 /* ------------------------------       VACATION-RENTAL       ----------------------------------        */
 
 .blurImg {
     background-image: url(/images/background.png);
-    height: 500px;
+    height: 632px;
 }
 
+.golfPit {
+    display: flex;
+    justify-content: center;
+}
+
+/* ------------------------------        Golfing and Traveling     ----------------------------------  */
+
+.ads {
+    padding: 60px 30px;
+}
+
+.adsTitle {
+    padding: 60px 0px;
+}
 
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
 
 .exclusive {
-    
+    background-image: url(/images/room.png);
+    text-align: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.exHeading {
+    color: var(--white-font-color);
+    flex: auto;
 }
