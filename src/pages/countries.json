@@ -1,49 +1,57 @@
 [
-    {
-        "image": "/images/golfSpot.png",
-        "name": "Florida",
-        "next": "/images/vector/forwardArrow.png" 
-    },
+  {
+    "id": 1,
+    "image": "/images/golfSpot.png",
+    "name": "Florida",
+    "next": "/images/vector/forwardArrow.png"
+  },
 
-    {
-        "image": "/images/hill.png",
-        "name": "Arizona",
-        "next": "/images/vector/forwardArrow.png" 
-    },
+  {
+    "id": 2,
+    "image": "/images/hill.png",
+    "name": "Arizona",
+    "next": "/images/vector/forwardArrow.png"
+  },
 
-    {
-        "image": "/images/river.png",
-        "name": "Sanfrancisco",
-        "next": "/images/vector/forwardArrow.png" 
-    },
+  {
+    "id": 3,
+    "image": "/images/river.png",
+    "name": "Sanfrancisco",
+    "next": "/images/vector/forwardArrow.png"
+  },
 
-    {
-        "image": "/images/lake.png",
-        "name": "Newyork",
-        "next": "/images/vector/forwardArrow.png" 
-    },
+  {
+    "id": 4,
+    "image": "/images/lake.png",
+    "name": "Newyork",
+    "next": "/images/vector/forwardArrow.png"
+  },
 
-    {
-        "image": "/images/golfSpot.png",
-        "name": "Florida",
-        "next": "/images/vector/forwardArrow.png" 
-    },
+  {
+    "id": 5,
+    "image": "/images/golfSpot.png",
+    "name": "Florida",
+    "next": "/images/vector/forwardArrow.png"
+  },
 
-    {
-        "image": "/images/hill.png",
-        "name": "Arizona",
-        "next": "/images/vector/forwardArrow.png" 
-    },
+  {
+    "id": 6,
+    "image": "/images/hill.png",
+    "name": "Arizona",
+    "next": "/images/vector/forwardArrow.png"
+  },
 
-    {
-        "image": "/images/river.png",
-        "name": "Sanfrancisco",
-        "next": "/images/vector/forwardArrow.png" 
-    },
+  {
+    "id": 7,
+    "image": "/images/river.png",
+    "name": "Sanfrancisco",
+    "next": "/images/vector/forwardArrow.png"
+  },
 
-    {
-        "image": "/images/lake.png",
-        "name": "Newyork",
-        "next": "/images/vector/forwardArrow.png" 
-    }
+  {
+    "id": 8,
+    "image": "/images/lake.png",
+    "name": "Newyork",
+    "next": "/images/vector/forwardArrow.png"
+  }
 ]
