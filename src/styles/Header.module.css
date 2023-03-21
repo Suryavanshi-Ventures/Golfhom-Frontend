@@ -1,0 +1,20 @@
+.top_nav_bar_container {
+  margin: 1rem 0;
+}
+
+.top_nav_bar_row {
+  justify-content: flex-end;
+}
+.headphones_icon {
+  margin: 0 0.5rem;
+}
+.top_header_a {
+  text-decoration: none;
+  color: var(--light-font-color);
+  font-family: var(--font-dm-sans);
+  transition-duration: 0.5s;
+}
+.top_header_a:hover {
+  transition-duration: 0.5s;
+  color: var(--btn-background);
+}
