@@ -19,7 +19,7 @@ const ErrorPage = () => {
           </div>
           <div className={ErrorPageStyle.four_zero_four_bg_btn_container}>
             <h3 className={ErrorPageStyle.h2}>Look like you're lost</h3>
-            <p>the page you are looking for not avaible!</p>
+            <p>the page you are looking for not available!</p>
             <Link className={ErrorPageStyle.link_404} href="/home">
               GO TO HOME
             </Link>
