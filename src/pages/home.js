@@ -5,7 +5,7 @@ import style from "../styles/Home.module.css"
 import { Slider } from "./slider";
 import slides from './countries.json'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Home = () => {
@@ -25,48 +25,49 @@ const Home = () => {
 
       {/* ------------ NAVBAR SECTION -----------    */}
 
-      <Container fluid>
+      <Row fluid>
 
         <div>
           <img className={style.golfboy} src='/images/golfBoy.png' alt='Golf Boy'></img>
         </div>
 
-        <Navbar className={style.searchBar} >
-          <Col md={4}>
+        <Row className={style.searchBar} justify-content-md-center>
+          <Col md={4} sm={5}>
             <img className={style.location} src='/images/vector/location.png'></img>
             <h6 className={style.destination}>DESTINATION</h6>
             <p className={style.ask}>Where you want to stay</p>
           </Col>
 
-          <Col md={4}>
+          <Col md={4} sm={5}>
             <img className={style.calender} src='/images/vector/calender.png'></img>
             <h6 className={style.night}>2 NIGHT</h6>
             <h5 className={style.date}>Sat, Mar 04 - Sun, March 05</h5>
           </Col>
 
-          <Col md={4}>
+          <Col md={4} xs={6}>
             <button className={style.searchBtn}>Search</button>
           </Col>
-        </Navbar>
-      </Container>
+        </Row>
+      </Row>
 
       {/*  ----------------- SWIPER CONTAINER  -----------------   */}
 
+
       <Container className={style.slider}>
-        <div className={style.golfCourses}>
+        <Row className={style.golfCourses}>
           <h2 className={style.titleFind}>Find Great Vacation Rentals near Florida & Arizona </h2>
           <h1 className={style.golfHeading}>Golf Courses!</h1>
           <br />
           <p className={style.para}>Arizona and Florida are renowned for their beautiful surroundings, outdoor lifestyles, & of course for having some of the world’s best golf courses! Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts of home, luxe amenities, and access to plenty of Arizona and Florida attractions!  Golfhōm is transforming how golfers locate and book their next luxury golf vacation rental. Book with us today!</p>
-        </div>
+        </Row>
 
         <Slider slides={slides} />
       </Container>
 
+
       {/* ------------------   SEARCH CONTAINER    ------------    */}
 
       <Container className={style.searchSection}>
-        <img className={style.shotMan} src='/images/shot.png' alt='Shot Man'></img>
 
         <Row className={style.content}>
           <h3 className={style.Title}>Search the World Over by Course
@@ -75,18 +76,18 @@ const Home = () => {
 
           <p className={style.searchPara}>*We're downloading more great Golfhōms each day from our valued channel partners!</p>
 
-          <Col className={style.searchPart}>
-            <Col>
+          <Row className={style.searchPart}>
+            <Col sm={7} >
               <h5 className={style.searchGolf}>Search by golf course</h5>
               <p className={style.hint}>Choose from thousands world-wide</p>
 
               <Row className={style.boxes}>
                 <Col className={style.searchbox}>
-                  <input className={style.textArea} type="text" placeholder="Enter Location"></input>
+                  <input className={style.textArea} xs={6} md={4} type="text" placeholder="Enter Location"></input>
                 </Col>
 
                 <Col className={style.searchbox}>
-                  <input className={style.textArea} type="text" placeholder="Golf Course"></input>
+                  <input className={style.textArea} xs={6} md={4} type="text" placeholder="Golf Course"></input>
                 </Col>
               </Row>
               <br />
@@ -94,18 +95,20 @@ const Home = () => {
               <button className={style.btn}>Search</button>
             </Col>
 
-            <Col className={style.tournamentDiv}>
+            <Col className={style.tournamentDiv} sm={5} >
               <h5 className={style.searchTournaments}>Search By Tournaments</h5>
               <p className={style.hint}>Check out our growing list of tour-spot rentals</p>
 
               <input className={style.box} type="text" placeholder="Search by Touraments"></input>
+              <br />
 
               <button className={style.btn}>Search</button>
             </Col>
-          </Col>
+          </Row>
 
         </Row>
       </Container>
+
     </>
   );
 };

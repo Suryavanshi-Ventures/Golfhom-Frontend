@@ -12,6 +12,7 @@ export const Slider = ({ slides }) => {
             pagination={{ clickable: true }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
+            lg={8} md={3} sm={2} xs={1}
         >
             {slides.map((slide) => (
                 <SwiperSlide key={slide.image}>
