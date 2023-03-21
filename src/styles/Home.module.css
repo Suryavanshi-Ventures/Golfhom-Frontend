@@ -176,3 +176,41 @@
     background-color: var(--btn-background);
     border: none;
 }
+
+/* ------------------------------        CARD SECTION         ------------------------------       */
+.cardImg {
+  
+}
+
+.saddle {
+    color: var(--light-font-color);
+    
+}
+
+.golfPit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons {
+  margin-right: 12px;
+}
+
+.loadbtn {
+   
+}
+
+/* ------------------------------       VACATION-RENTAL       ----------------------------------        */
+
+.blurImg {
+    background-image: url(/images/background.png);
+    height: 500px;
+}
+
+
+/*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
+
+.exclusive {
+    
+}

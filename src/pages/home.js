@@ -1,12 +1,14 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import style from "../styles/Home.module.css"
+import HomeCss from "../styles/Home.module.css";
 import { Slider } from "./slider";
-import slides from './countries.json'
+import slides from './countries.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import ads from './ads.json';
+import { Advertise } from "./advertise";
 
 const Home = () => {
   return (
@@ -28,24 +30,24 @@ const Home = () => {
       <Row fluid>
 
         <div>
-          <img className={style.golfboy} src='/images/golfBoy.png' alt='Golf Boy'></img>
+          <img className={HomeCss.golfboy} src='/images/golfBoy.png' alt='Golf Boy'></img>
         </div>
 
-        <Row className={style.searchBar} justify-content-md-center>
+        <Row className={HomeCss.searchBar} justify-content-md-center>
           <Col md={4} sm={5}>
-            <img className={style.location} src='/images/vector/location.png'></img>
-            <h6 className={style.destination}>DESTINATION</h6>
-            <p className={style.ask}>Where you want to stay</p>
+            <img className={HomeCss.location} src='/images/vector/location.png'></img>
+            <h6 className={HomeCss.destination}>DESTINATION</h6>
+            <p className={HomeCss.ask}>Where you want to stay</p>
           </Col>
 
           <Col md={4} sm={5}>
-            <img className={style.calender} src='/images/vector/calender.png'></img>
-            <h6 className={style.night}>2 NIGHT</h6>
-            <h5 className={style.date}>Sat, Mar 04 - Sun, March 05</h5>
+            <img className={HomeCss.calender} src='/images/vector/calender.png'></img>
+            <h6 className={HomeCss.night}>2 NIGHT</h6>
+            <h5 className={HomeCss.date}>Sat, Mar 04 - Sun, March 05</h5>
           </Col>
 
           <Col md={4} xs={6}>
-            <button className={style.searchBtn}>Search</button>
+            <button className={HomeCss.searchBtn}>Search</button>
           </Col>
         </Row>
       </Row>
@@ -53,12 +55,12 @@ const Home = () => {
       {/*  ----------------- SWIPER CONTAINER  -----------------   */}
 
 
-      <Container className={style.slider}>
-        <Row className={style.golfCourses}>
-          <h2 className={style.titleFind}>Find Great Vacation Rentals near Florida & Arizona </h2>
-          <h1 className={style.golfHeading}>Golf Courses!</h1>
+      <Container className={HomeCss.slider}>
+        <Row className={HomeCss.golfCourses}>
+          <h2 className={HomeCss.titleFind}>Find Great Vacation Rentals near Florida & Arizona </h2>
+          <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
-          <p className={style.para}>Arizona and Florida are renowned for their beautiful surroundings, outdoor lifestyles, & of course for having some of the world’s best golf courses! Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts of home, luxe amenities, and access to plenty of Arizona and Florida attractions!  Golfhōm is transforming how golfers locate and book their next luxury golf vacation rental. Book with us today!</p>
+          <p className={HomeCss.para}>Arizona and Florida are renowned for their beautiful surroundings, outdoor lifeHomeCsss, & of course for having some of the world’s best golf courses! Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts of home, luxe amenities, and access to plenty of Arizona and Florida attractions!  Golfhōm is transforming how golfers locate and book their next luxury golf vacation rental. Book with us today!</p>
         </Row>
 
         <Slider slides={slides} />
@@ -67,48 +69,111 @@ const Home = () => {
 
       {/* ------------------   SEARCH CONTAINER    ------------    */}
 
-      <Container className={style.searchSection}>
+      <Container className={HomeCss.searchSection}>
 
-        <Row className={style.content}>
-          <h3 className={style.Title}>Search the World Over by Course
+        <Row className={HomeCss.content}>
+          <h3 className={HomeCss.Title}>Search the World Over by Course
             <br />
             (38,000+ in our database) or Tournament</h3>
 
-          <p className={style.searchPara}>*We're downloading more great Golfhōms each day from our valued channel partners!</p>
+          <p className={HomeCss.searchPara}>*We're downloading more great Golfhōms each day from our valued channel partners!</p>
 
-          <Row className={style.searchPart}>
+          <Row className={HomeCss.searchPart}>
             <Col sm={7} >
-              <h5 className={style.searchGolf}>Search by golf course</h5>
-              <p className={style.hint}>Choose from thousands world-wide</p>
+              <h5 className={HomeCss.searchGolf}>Search by golf course</h5>
+              <p className={HomeCss.hint}>Choose from thousands world-wide</p>
 
-              <Row className={style.boxes}>
-                <Col className={style.searchbox}>
-                  <input className={style.textArea} xs={6} md={4} type="text" placeholder="Enter Location"></input>
+              <Row className={HomeCss.boxes}>
+                <Col className={HomeCss.searchbox}>
+                  <input className={HomeCss.textArea} xs={6} md={4} type="text" placeholder="Enter Location"></input>
                 </Col>
 
-                <Col className={style.searchbox}>
-                  <input className={style.textArea} xs={6} md={4} type="text" placeholder="Golf Course"></input>
+                <Col className={HomeCss.searchbox}>
+                  <input className={HomeCss.textArea} xs={6} md={4} type="text" placeholder="Golf Course"></input>
                 </Col>
               </Row>
               <br />
 
-              <button className={style.btn}>Search</button>
+              <button className={HomeCss.btn}>Search</button>
             </Col>
 
-            <Col className={style.tournamentDiv} sm={5} >
-              <h5 className={style.searchTournaments}>Search By Tournaments</h5>
-              <p className={style.hint}>Check out our growing list of tour-spot rentals</p>
+            <Col className={HomeCss.tournamentDiv} sm={5} >
+              <h5 className={HomeCss.searchTournaments}>Search By Tournaments</h5>
+              <p className={HomeCss.hint}>Check out our growing list of tour-spot rentals</p>
 
-              <input className={style.box} type="text" placeholder="Search by Touraments"></input>
+              <input className={HomeCss.box} type="text" placeholder="Search by Touraments"></input>
               <br />
 
-              <button className={style.btn}>Search</button>
+              <button className={HomeCss.btn}>Search</button>
             </Col>
           </Row>
 
         </Row>
       </Container>
 
+      {/* ----------------------------------------- RESERVE A FEATURED GOLFHOM -----------------------------   */}
+
+      <Container>
+        <Row>
+
+          <Card style={{ width: '24rem' }}>
+            <Card.Img variant="top" className={HomeCss.cardImg} src="/images/bedRoom.png" />
+            <Card.Body>
+              <Card.Title>Tampa Golf Villas 5 King or 12 Beds at Saddlebrook</Card.Title>
+              <Card.Text className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more
+                <br />
+
+                <img className={HomeCss.icons} src="/images/vector/bed.png"></img><span className={HomeCss.saddle} >5 Bed Rooms</span>
+                <img className={HomeCss.icons} src="/images/vector/bath-tub.png"></img><span className={HomeCss.saddle} >4 Baths</span>
+                <img className={HomeCss.icons} src="/images/vector/guest.png"></img><span className={HomeCss.saddle} >5 Guests Villa</span>
+                <img className={HomeCss.icons} src="/images/vector/parking-area.png"></img><span className={HomeCss.saddle} >Parking Area</span>
+
+              </Card.Text>
+            </Card.Body>
+          </Card>
+
+        </Row>
+
+        <Button className={HomeCss.loadbtn}>Load more</Button>
+      </Container>
+
+      {/* ------------------------------       VACATION-RENTAL   -------------------- */}
+
+      <Row className={HomeCss.blurImg}>
+        <Row>
+          <Col md={6}>
+            <div className={HomeCss.golfPit}>
+              <img src="/images/golfball.png"></img>
+              <img src="/images/pit.png"></img>
+            </div>
+          </Col>
+
+          <Col md={6}>
+            <div>
+              <h2>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h2>
+              <p>No more sorting through tangled rental-search results on common vacation rental sites. Golfhōm patrons can search a targeted list of course-vicinity homes, condos, and villas, all by course, tournament, or city. After checking out safely with Stripe, our golfers can ship their clubs via Ship Sticks, book their group’s tee time, buy partner golf swag, and take in great golf articles — all without leaving the platform.
+                We’re transforming how golf travelers locate and book their next luxury rental.
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Row>
+
+      {/* ------------------------------        Golfing and Traveling     ------------------------  */}
+
+      <Container>
+        <h2>Golfing and Traveling, Both Better with Friends</h2>
+
+        <Advertise ads={ads} />
+      </Container>
+
+      {/* ------------------------------         EXCLUSIVE PROPERTISE       --------------------------   */}
+
+      <Container className={HomeCss.exclusive}>
+        <img src="/images/room.png" alt="Room Image"></img>
+        <h1>Choose from a wide range of exclusive Properties</h1>
+        <Button>Book Now</Button>
+      </Container>
     </>
   );
 };
