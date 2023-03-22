@@ -1,4 +1,4 @@
-/*    ------------------------------------   CSS of navbar only --------------------------------   */
+/*    ------------------------------------   NAVBAR SECTION  --------------------------------   */
 
 .search_bar_img_div {
   background-image: url("/images/golfBoy.png");
@@ -28,7 +28,7 @@
 }
 
 .search_cols_4 {
-  border-right: 1px dashed var(--light-font-color);
+  border-right: 2px dashed var(--dash-border-color);
 }
 
 .search_btn_col {
@@ -71,52 +71,12 @@
   font-family: var(--font-dm-sans);
 }
 .destination {
-  color: #747474;
+  color: var(--dark-grey-color);
   letter-spacing: 1px;
   margin-left: 0.7rem;
 }
 
-.ask {
-  position: relative;
-  left: 4pc;
-  bottom: 0.6pc;
-  color: #c2c2c2;
-  letter-spacing: 1px;
-}
-
-.calender {
-  position: relative;
-  top: 1.5pc;
-}
-
-.night {
-  position: relative;
-  left: 2.5pc;
-  color: #747474;
-  letter-spacing: 1px;
-  line-height: 1.8pc;
-}
-
-.date {
-  position: relative;
-  left: 2.5pc;
-  bottom: 0.6pc;
-}
-
-.searchBtn {
-  position: relative;
-  left: 3pc;
-  width: 55%;
-  letter-spacing: 1px;
-  padding: 11px 15px;
-  border-radius: 30px;
-  border: none;
-  background: var(--btn-background);
-  color: var(--white-font-color);
-  margin-top: 28px;
-}
-
-/*     ----------------------------------  CSS of Swiper Container only -----------------------------  */
+/*     ----------------------------------  SWIPER CONTAINER  -----------------------------  */
 
 .golfCourses {
     margin: 3rem 0;
@@ -144,14 +104,7 @@
   color: var(--white-font-color);
 }
 
-.nextArrow {
-  position: relative;
-  left: 20.2pc;
-  bottom: 5.8pc;
-  background-color: red;
-}
-
-/* --------------------------------------- CSS for Search Container ----------------------------------  */
+/* --------------------------------------- SEARCH CONTAINER ----------------------------------  */
 
 .searchSection {
   margin-top: 40px;
@@ -271,7 +224,7 @@
   border-radius: 5px;
 }
 
-/* ------------------------------       VACATION-RENTAL       ----------------------------------        */
+/* ------------------------------------       VACATION-RENTAL       ----------------------------------        */
 
 
 .blurImg {
@@ -313,7 +266,7 @@
     margin: 25px 0px;
 }
 
-/* ------------------------------        Golfing and Traveling     ----------------------------------  */
+/* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
 
 .ads {
     padding: 60px 40px;
@@ -337,21 +290,26 @@
 
 .exclusive {
     background-image: url(/images/room.png);
-    text-align: center;
     height: 100vh;
     background-repeat: no-repeat;
     border-radius: 16px;
     width: 100vw;
-    display: flex;
-    /* align-content: center; */
-    align-items: center;
+   
 }
 
 .exHeading {
   color: var(--white-font-color);
-  flex: auto;
+
 }
 
+.extitle {
+
+}
+
+
+
+
+/*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .search_cols_4 {
     margin-bottom: 1.5rem;

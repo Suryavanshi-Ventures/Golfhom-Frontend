@@ -24,7 +24,8 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* ------------ NAVBAR SECTION -----------    */}
+
+      {/* ---------------------------------          NAVBAR SECTION               -------------------------------    */}
 
       <div className={HomeCss.search_bar_img_div}>
         <div className={HomeCss.search_bar_main_container}>
@@ -85,7 +86,8 @@ const Home = () => {
 
       </div>
 
-      {/*  ----------------- SWIPER CONTAINER  -----------------   */}
+      {/*  ----------------------------             SWIPER CONTAINER           -------------------------   */}
+
       <Container>
         <div className={HomeCss.golfCourses}>
           <h2>
@@ -108,7 +110,7 @@ const Home = () => {
       </Container>
 
 
-      {/* ------------------   SEARCH CONTAINER    ------------    */}
+      {/* ---------------------------              SEARCH CONTAINER              ----------------------    */}
 
 
       <Container className={HomeCss.searchSection}>
@@ -175,7 +177,9 @@ const Home = () => {
           </Row>
         </Row>
       </Container>
-      {/* --------------------------------------     CARD SECTION   -----------------------------   */}
+
+      {/* --------------------------------------    CARD SECTION   -----------------------------   */}
+
       <div className={HomeCss.cardBg}>
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
@@ -225,7 +229,11 @@ const Home = () => {
           <button className={HomeCss.loadIn}>Load more <Image width={20} height={20} src="/images/vector/load.svg" alt="Load Image"></Image> </button>
         </div>
       </div>
+
+
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
+
+
       <Row className={HomeCss.blurImg}>
         <Row>
           <Col md={6} sm={12} className={HomeCss.golfPit}>
@@ -245,7 +253,11 @@ const Home = () => {
           </Col>
         </Row>
       </Row>
-      {/* ------------------------------        Golfing and Traveling     ------------------------  */}
+
+
+      {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
+
+
       <Container className={HomeCss.ads}>
         <h2 className={HomeCss.adsTitle}>
           Golfing and Traveling, Both Better with Friends
@@ -258,10 +270,14 @@ const Home = () => {
 
       <Container>
         <div className={HomeCss.exclusive}>
+
           <div className={HomeCss.exHeading}>
             <h2 className={HomeCss.extitle}>Choose from a wide range of <br /> <span >exclusive Properties</span></h2>
+
             <button className={HomeCss.loadIn}>Book Now</button>
           </div>
+
+
         </div>
       </Container>
 

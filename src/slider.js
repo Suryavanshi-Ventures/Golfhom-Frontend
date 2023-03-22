@@ -29,13 +29,6 @@ const Slider = ({ slides }) => {
             height={280}
           ></Image>
           <h4 className={HomeCss.countryName}>{slide.name}</h4>
-          <Image
-            className={HomeCss.nextArrow}
-            src={slide.next}
-            alt={slide.arrow}
-            width={300}
-            height={300}
-          ></Image>
         </SwiperSlide>
       ))}
     </Swiper>
