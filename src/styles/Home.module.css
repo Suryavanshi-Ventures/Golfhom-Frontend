@@ -116,10 +116,10 @@
   margin-top: 28px;
 }
 
-/*     ----------------------------------  CSS of Swiper Container only -----------------------------  */
+/** ----------------------------------  CSS of Swiper Container only -----------------------------  */
 
 .golfCourses {
-    margin: 3rem 0;
+  margin: 3rem 0;
 }
 
 .golfHeading {
@@ -185,9 +185,6 @@
   left: 78px;
 }
 
-.searchPart {
-}
-
 .searchbox {
   width: 100%;
 }
@@ -229,8 +226,8 @@
 }
 
 .saddle {
-    color: var(--light-font-color);
-    margin-bottom: 0.6rem
+  color: var(--light-font-color);
+  margin-bottom: 0.6rem;
 }
 
 .MainCard {
@@ -238,31 +235,31 @@
 }
 
 .icon {
-    display: -webkit-inline-box;
-    color: var(--light-font-color);
-    margin-bottom: 0.6rem
+  display: -webkit-inline-box;
+  color: var(--light-font-color);
+  margin-bottom: 0.6rem;
 }
 
 .iconImg {
-    display: flex;
-    width: 38%;
+  display: flex;
+  width: 38%;
 }
 
 .parking {
-    color: var(--light-font-color);
+  color: var(--light-font-color);
 }
 
 .rightArrow {
-    display: flex;
-    float: right;
-    margin: 5px;
+  display: flex;
+  float: right;
+  margin: 5px;
 }
 
 .loadbtn {
   text-align: center;
 }
 
-.loadIn {
+.exclusive_btn {
   background-color: #ff6764;
   color: var(--white-font-color);
   border: none;
@@ -273,83 +270,86 @@
 
 /* ------------------------------       VACATION-RENTAL       ----------------------------------        */
 
-
 .blurImg {
-    background-image: url(/images/background.png);
-    height: 632px;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(/images/background.png);
+  height: 632px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .golfPit {
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pitImg {
-    display: flex;
-    align-items: flex-end;
-
+  display: flex;
+  align-items: flex-end;
 }
 
 .golfText {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .vacaDiv {
-    width: 84%;
+  width: 84%;
 }
 
 .vacationTitle {
-   color:  #2F2F2F;
-   width: 84%;
-   letter-spacing: 1px;
+  color: #2f2f2f;
+  width: 84%;
+  letter-spacing: 1px;
 }
 
 .vacationPara {
-    line-height: 2.6rem;
-    margin: 25px 0px;
+  line-height: 2.6rem;
+  margin: 25px 0px;
 }
 
 /* ------------------------------        Golfing and Traveling     ----------------------------------  */
 
 .ads {
-    padding: 60px 40px;
+  padding: 60px 40px;
 }
 
 .adsTitle {
-    padding: 40px 0px;
-}
-
-.adsImage {
-    
-    
+  padding: 40px 0px;
 }
 
 .bigDiv {
-    padding: inherit !important;
-    
+  padding: inherit !important;
 }
 
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
 
 .exclusive {
-    background-image: url(/images/room.png);
-    text-align: center;
-    height: 100vh;
-    background-repeat: no-repeat;
-    border-radius: 16px;
-    width: 100vw;
-    display: flex;
-    /* align-content: center; */
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  background-image: url(/images/room.png);
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  background-size: cover;
+  height: 500px;
 }
 
 .exHeading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   color: var(--white-font-color);
-  flex: auto;
+}
+
+.extitle {
+  font-family: var(--font-dm-sans);
+  align-self: center;
+}
+.ex_p {
+  font-family: var(--font-dm-sans);
+}
+.exclusive_btn_container {
+  align-self: center;
 }
 
 @media only screen and (max-width: 768px) {

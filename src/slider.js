@@ -4,7 +4,6 @@ import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
 
-
 const Slider = ({ slides }) => {
   return (
     <Swiper
@@ -12,8 +11,8 @@ const Slider = ({ slides }) => {
       spaceBetween={50}
       slidesPerView={3.5}
       pagination={{ clickable: true }}
-      onSlideChange={() => { }}
-      onSwiper={(swiper) => { }}
+      onSlideChange={() => {}}
+      onSwiper={(swiper) => {}}
       lg={8}
       md={3}
       sm={2}
@@ -29,13 +28,13 @@ const Slider = ({ slides }) => {
             height={280}
           ></Image>
           <h4 className={HomeCss.countryName}>{slide.name}</h4>
-          <Image
+          {/* <Image
             className={HomeCss.nextArrow}
             src={slide.next}
             alt={slide.arrow}
-            width={300}
+            width={50}
             height={300}
-          ></Image>
+          ></Image> */}
         </SwiperSlide>
       ))}
     </Swiper>

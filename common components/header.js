@@ -120,23 +120,23 @@ const Header = () => {
 
               <Row className={HeaderCss.top_nav_bar_row}>
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.top_header_a} href="/">
+                  <Link className={HeaderCss.below_header_a} href="/">
                     Find & Reserve
                   </Link>
                 </Col>
 
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.top_header_a} href="/">
+                  <Link className={HeaderCss.below_header_a} href="/">
                     Vacations
                   </Link>
                 </Col>
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.top_header_a} href="/">
+                  <Link className={HeaderCss.below_header_a} href="/">
                     Special Offer’s
                   </Link>
                 </Col>
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.top_header_a} href="/">
+                  <Link className={HeaderCss.below_header_a} href="/">
                     About Golfhom
                   </Link>
                 </Col>
