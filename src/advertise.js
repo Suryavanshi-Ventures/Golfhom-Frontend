@@ -1,11 +1,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
-import HomeCss from '../styles/Home.module.css';
 import Image from "next/image"
 
 
-export const Advertise = ({ ads }) => {
+const Advertise = ({ ads }) => {
     return (
         <Swiper
             modules={[Navigation, Pagination, A11y]}
@@ -25,3 +24,5 @@ export const Advertise = ({ ads }) => {
     )
 
 }
+
+export default Advertise;

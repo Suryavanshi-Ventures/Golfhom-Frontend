@@ -2,13 +2,13 @@
 import React from "react";
 import Head from "next/head";
 import HomeCss from "../styles/Home.module.css";
-import { Slider } from "./slider";
+import Slider from "../slider";
 import slides from './countries.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Col, Row, Card } from 'react-bootstrap';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ads from './ads.json';
-import { Advertise } from "./advertise";
+import Advertise from "../advertise";
 import Image from "next/image";
 
 const Home = () => {
@@ -115,7 +115,14 @@ const Home = () => {
             <Card.Img variant="top" className={HomeCss.cardImg} src="/images/bedRoom.png" alt="Bed Image" />
             <Card.Body>
               <Card.Title>Tampa Golf Villas 5 King or 12 Beds at Saddlebrook</Card.Title>
-              <Card.Text className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more
+
+              <div>
+                <Image width={18} height={18} src="/images/vector/bed.png" alt="iconImage"></Image><span className=" mx-2 " >5 Bed Rooms</span>
+                <Image width={18} height={18} className=" mx-1 " src="/images/vector/bath-tub.png" alt="iconImage"></Image><span className=" mx-2 " >4 Baths</span>
+                <Image width={18} height={18} className=" mx-1 " src="/images/vector/guest.png" alt="iconImage"></Image><span className=" mx-2 " >5 Guests Villa</span>
+                <Image width={20} height={20} src="/images/vector/parking-area.png" alt="iconImage"></Image><span className=" mx-3 " >Parking Area</span>
+              </div>
+              {/* <Card.Text className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more
                 <br />
 
                 <Image width={18} height={18} src="/images/vector/bed.png" alt="iconImage"></Image><span className=" mx-2 " >5 Bed Rooms</span>
@@ -126,7 +133,7 @@ const Home = () => {
                 <br />
                 <Image width={20} height={14} className=" " src="/images/vector/right_Arrow.png" alt="iconImage"></Image>
 
-              </Card.Text>
+              </Card.Text> */}
             </Card.Body>
           </Card>
         </Container>
