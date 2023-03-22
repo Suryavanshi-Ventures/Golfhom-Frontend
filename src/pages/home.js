@@ -105,11 +105,10 @@ const Home = () => {
         </Row>
       </Container>
 
-      {/* ----------------------------------------- RESERVE A FEATURED GOLFHOM -----------------------------   */}
+      {/* --------------------------------------     CARD SECTION   -----------------------------   */}
 
-      <Container>
-        <Row>
-
+      <div className={HomeCss.cardBg}>
+        <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
 
           <Card style={{ width: '24rem' }} className={HomeCss.MainCard}>
@@ -119,21 +118,27 @@ const Home = () => {
               <Card.Text className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more
                 <br />
 
-                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/bed.png" alt="iconImage"></Image><span className={HomeCss.saddle} >5 Bed Rooms</span>
-                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/bath-tub.png" alt="iconImage"></Image><span className={HomeCss.saddle} >4 Baths</span>
-                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/guest.png" alt="iconImage"></Image><span className={HomeCss.saddle} >5 Guests Villa</span>
-                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/parking-area.png" alt="iconImage"></Image><span className={HomeCss.saddle} >Parking Area</span>
+                <Image width={18} height={18} src="/images/vector/bed.png" alt="iconImage"></Image><span className=" mx-2 " >5 Bed Rooms</span>
+                <Image width={18} height={18} className=" mx-1 " src="/images/vector/bath-tub.png" alt="iconImage"></Image><span className=" mx-2 " >4 Baths</span>
+                <Image width={18} height={18} className=" mx-1 " src="/images/vector/guest.png" alt="iconImage"></Image><span className=" mx-2 " >5 Guests Villa</span>
+                <Image width={20} height={20} src="/images/vector/parking-area.png" alt="iconImage"></Image><span className=" mx-3 " >Parking Area</span>
+
+                <br />
+                <Image width={20} height={14} className=" " src="/images/vector/right_Arrow.png" alt="iconImage"></Image>
 
               </Card.Text>
             </Card.Body>
           </Card>
+        </Container>
 
-        </Row>
-      </Container>
+        <div className={HomeCss.loadbtn}>
+          <button className={HomeCss.loadIn}>Load more</button>
+        </div>
 
-      <div className={HomeCss.loadbtn}>
-        <button className={HomeCss.loadIn}>Load more</button>
       </div>
+
+
+
 
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
 

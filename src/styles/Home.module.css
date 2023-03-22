@@ -179,8 +179,13 @@
 
 /* ------------------------------        CARD SECTION         ------------------------------       */
 
+.cardBg {
+    background: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.01)) ;
+    padding: 40px 0px;
+}
+
 .cardHeading {
-    padding: 30px 0px;
+   
 }
 .cardImg {
   
@@ -188,11 +193,11 @@
 
 .saddle {
     color: var(--light-font-color);
-    
+   
 }
 
 .MainCard {
-    margin: 20px;
+    margin: 36px 0px;
 }
 .golfPit {
     display: flex;
@@ -201,7 +206,11 @@
 }
 
 .icons {
-  margin-right: 12px;
+ 
+}
+
+.rightArrow {
+
 }
 
 .loadbtn {

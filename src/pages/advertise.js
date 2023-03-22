@@ -17,8 +17,8 @@ export const Advertise = ({ ads }) => {
         >
             {ads.map((ads) => (
                 <SwiperSlide key={ads.id}>
-                    <Image   width={300}
-            height={300} src={ads.image} alt={ads.name}></Image>
+                    <Image width={150}
+                        height={150} src={ads.image} alt={ads.name}></Image>
                 </SwiperSlide>
             ))}
         </Swiper>
