@@ -4,7 +4,6 @@ import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
 
-
 const Slider = ({ slides }) => {
   return (
     <Swiper

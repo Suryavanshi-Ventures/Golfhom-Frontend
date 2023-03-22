@@ -46,6 +46,19 @@
   color: var(--btn-background);
 }
 
+.below_header_a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  font-family: var(--font-dm-sans);
+  transition-duration: 0.5s;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.below_header_a:hover {
+  transition-duration: 0.5s;
+  color: var(--btn-background);
+}
 .register_btn {
   background-color: var(--btn-background);
   font-family: var(--font-dm-sans);

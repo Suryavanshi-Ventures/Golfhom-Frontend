@@ -83,16 +83,13 @@ const Home = () => {
             </Row>
           </div>
         </div>
-
       </div>
 
       {/*  ----------------------------             SWIPER CONTAINER           -------------------------   */}
 
       <Container>
         <div className={HomeCss.golfCourses}>
-          <h2>
-            Find Great Vacation Rentals near Florida & Arizona{" "}
-          </h2>
+          <h2>Find Great Vacation Rentals near Florida & Arizona </h2>
           <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
           <p className={HomeCss.para}>
@@ -111,7 +108,6 @@ const Home = () => {
 
 
       {/* ---------------------------              SEARCH CONTAINER              ----------------------    */}
-
 
       <Container className={HomeCss.searchSection}>
         <Row className={HomeCss.content}>
@@ -197,36 +193,77 @@ const Home = () => {
               </Card.Title>
 
               <div>
-                <p className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more</p>
+                <p className={HomeCss.saddle}>
+                  {" "}
+                  Saddlebrook Resort - Saddlebrook & 1 more
+                </p>
 
                 <div className={HomeCss.icon}>
                   <div className="iconImg">
-                    <Image width={18} height={18} src="/images/vector/bed.svg" alt="iconImage"></Image><span className=" mx-2 " >5 Bed Rooms</span>
+                    <Image
+                      width={18}
+                      height={18}
+                      src="/images/vector/bed.svg"
+                      alt="iconImage"
+                    ></Image>
+                    <span className=" mx-2 ">5 Bed Rooms</span>
                   </div>
 
                   <div className="iconImg">
-                    <Image width={18} height={18} className=" mx-1 " src="/images/vector/bath-tub.svg" alt="iconImage"></Image><span className=" mx-2 " >4 Baths</span>
+                    <Image
+                      width={18}
+                      height={18}
+                      className=" mx-1 "
+                      src="/images/vector/bath-tub.svg"
+                      alt="iconImage"
+                    ></Image>
+                    <span className=" mx-2 ">4 Baths</span>
                   </div>
 
                   <div className="iconImg">
-                    <Image width={18} height={18} className=" mx-1 " src="/images/vector/guest.svg" alt="iconImage"></Image><span className=" mx-2 " >5 Guests Villa</span>
+                    <Image
+                      width={18}
+                      height={18}
+                      className=" mx-1 "
+                      src="/images/vector/guest.svg"
+                      alt="iconImage"
+                    ></Image>
+                    <span className=" mx-2 ">5 Guests Villa</span>
                   </div>
-
-
                 </div>
 
-                <div className={HomeCss.parking} >
-                  <Image width={20} height={20} src="/images/vector/parking-area.svg" alt="iconImage"></Image><span className=" mx-2 ">Parking Area</span>
+                <div className={HomeCss.parking}>
+                  <Image
+                    width={20}
+                    height={20}
+                    src="/images/vector/parking-area.svg"
+                    alt="iconImage"
+                  ></Image>
+                  <span className=" mx-2 ">Parking Area</span>
                 </div>
 
-                <Image width={20} height={14} className={HomeCss.rightArrow} src="/images/vector/right_Arrow.svg" alt="iconImage"></Image>
+                <Image
+                  width={20}
+                  height={14}
+                  className={HomeCss.rightArrow}
+                  src="/images/vector/right_Arrow.svg"
+                  alt="iconImage"
+                ></Image>
               </div>
             </Card.Body>
           </Card>
         </Container>
 
         <div className={HomeCss.loadbtn}>
-          <button className={HomeCss.loadIn}>Load more <Image width={20} height={20} src="/images/vector/load.svg" alt="Load Image"></Image> </button>
+          <button className={HomeCss.exclusive_btn}>
+            Load more
+            <Image
+              width={20}
+              height={20}
+              src="/images/vector/load.svg"
+              alt="Load Image"
+            ></Image>{" "}
+          </button>
         </div>
       </div>
 
@@ -238,16 +275,36 @@ const Home = () => {
         <Row>
           <Col md={6} sm={12} className={HomeCss.golfPit}>
             <div className={HomeCss.pitImg}>
-              <Image width={300} height={300} src="/images/golfball.png" alt="Golf Ball"></Image>
-              <Image width={300} height={300} src="/images/pit.png" alt="Pit"></Image>
+              <Image
+                width={300}
+                height={300}
+                src="/images/golfball.png"
+                alt="Golf Ball"
+              ></Image>
+              <Image
+                width={300}
+                height={300}
+                src="/images/pit.png"
+                alt="Pit"
+              ></Image>
             </div>
           </Col>
 
           <Col md={6} sm={12} className={HomeCss.golfText}>
             <div className={HomeCss.vacaDiv}>
-              <h2 className={HomeCss.vacationTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h2>
-              <p className={HomeCss.vacationPara}>No more sorting through tangled rental-search results on common vacation rental sites. Golfhōm patrons can search a targeted list of course-vicinity homes, condos, and villas, all by course, tournament, or city. After checking out safely with Stripe, our golfers can ship their clubs via Ship Sticks, book their group’s tee time, buy partner golf swag, and take in great golf articles — all without leaving the platform.
-                We’re transforming how golf travelers locate and book their next luxury rental.
+              <h2 className={HomeCss.vacationTitle}>
+                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
+              </h2>
+              <p className={HomeCss.vacationPara}>
+                No more sorting through tangled rental-search results on common
+                vacation rental sites. Golfhōm patrons can search a targeted
+                list of course-vicinity homes, condos, and villas, all by
+                course, tournament, or city. After checking out safely with
+                Stripe, our golfers can ship their clubs via Ship Sticks, book
+                their group’s tee time, buy partner golf swag, and take in great
+                golf articles — all without leaving the platform. We’re
+                transforming how golf travelers locate and book their next
+                luxury rental.
               </p>
             </div>
           </Col>
@@ -265,8 +322,8 @@ const Home = () => {
 
         <Advertise ads={ads} />
       </Container>
-      {/* ------------------------------         EXCLUSIVE PROPERTISE       --------------------------   */}
 
+      {/* ------------------------------         EXCLUSIVE PROPERTISE       --------------------------   */}
 
       <Container>
         <div className={HomeCss.exclusive}>
@@ -280,7 +337,6 @@ const Home = () => {
 
         </div>
       </Container>
-
     </>
   );
 };

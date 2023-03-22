@@ -79,7 +79,7 @@
 /*     ----------------------------------  SWIPER CONTAINER  -----------------------------  */
 
 .golfCourses {
-    margin: 3rem 0;
+  margin: 3rem 0;
 }
 
 .golfHeading {
@@ -138,9 +138,6 @@
   left: 78px;
 }
 
-.searchPart {
-}
-
 .searchbox {
   width: 100%;
 }
@@ -182,8 +179,8 @@
 }
 
 .saddle {
-    color: var(--light-font-color);
-    margin-bottom: 0.6rem
+  color: var(--light-font-color);
+  margin-bottom: 0.6rem;
 }
 
 .MainCard {
@@ -191,31 +188,31 @@
 }
 
 .icon {
-    display: -webkit-inline-box;
-    color: var(--light-font-color);
-    margin-bottom: 0.6rem
+  display: -webkit-inline-box;
+  color: var(--light-font-color);
+  margin-bottom: 0.6rem;
 }
 
 .iconImg {
-    display: flex;
-    width: 38%;
+  display: flex;
+  width: 38%;
 }
 
 .parking {
-    color: var(--light-font-color);
+  color: var(--light-font-color);
 }
 
 .rightArrow {
-    display: flex;
-    float: right;
-    margin: 5px;
+  display: flex;
+  float: right;
+  margin: 5px;
 }
 
 .loadbtn {
   text-align: center;
 }
 
-.loadIn {
+.exclusive_btn {
   background-color: #ff6764;
   color: var(--white-font-color);
   border: none;
@@ -226,64 +223,56 @@
 
 /* ------------------------------------       VACATION-RENTAL       ----------------------------------        */
 
-
 .blurImg {
-    background-image: url(/images/background.png);
-    height: 632px;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(/images/background.png);
+  height: 632px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .golfPit {
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pitImg {
-    display: flex;
-    align-items: flex-end;
-
+  display: flex;
+  align-items: flex-end;
 }
 
 .golfText {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .vacaDiv {
-    width: 84%;
+  width: 84%;
 }
 
 .vacationTitle {
-   color:  #2F2F2F;
-   width: 84%;
-   letter-spacing: 1px;
+  color: #2f2f2f;
+  width: 84%;
+  letter-spacing: 1px;
 }
 
 .vacationPara {
-    line-height: 2.6rem;
-    margin: 25px 0px;
+  line-height: 2.6rem;
+  margin: 25px 0px;
 }
 
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
 
 .ads {
-    padding: 60px 40px;
+  padding: 60px 40px;
 }
 
 .adsTitle {
-    padding: 40px 0px;
-}
-
-.adsImage {
-    
-    
+  padding: 40px 0px;
 }
 
 .bigDiv {
-    padding: inherit !important;
-    
+  padding: inherit !important;
 }
 
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
@@ -298,8 +287,10 @@
 }
 
 .exHeading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   color: var(--white-font-color);
-
 }
 
 .extitle {
