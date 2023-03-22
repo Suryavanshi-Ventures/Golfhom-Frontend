@@ -251,8 +251,8 @@ const Home = () => {
         </Container>
 
         <div className={HomeCss.loadbtn}>
-          <button className={HomeCss.loadIn}>
-            Load more{" "}
+          <button className={HomeCss.exclusive_btn}>
+            Load more
             <Image
               width={20}
               height={20}
