@@ -30,13 +30,13 @@ const Home = () => {
 
         <Row className={HomeCss.searchBar}>
           <Col md={4} sm={5}>
-            <Image className={HomeCss.location} width={25} height={25} src='/images/vector/location.png' alt="Location Image"></Image>
+            <Image className={HomeCss.location} width={25} height={25} src='/images/vector/location.svg' alt="Location Image"></Image>
             <h6 className={HomeCss.destination}>DESTINATION</h6>
             <p className={HomeCss.ask}>Where you want to stay</p>
           </Col>
 
           <Col md={4} sm={5}>
-            <Image className={HomeCss.calender} width={25} height={25} src='/images/vector/calender.png' alt="Calender Image"></Image>
+            <Image className={HomeCss.calender} width={25} height={25} src='/images/vector/calender.svg' alt="Calender Image"></Image>
             <h6 className={HomeCss.night}>2 NIGHT</h6>
             <h5 className={HomeCss.date}>Sat, Mar 04 - Sun, March 05</h5>
           </Col>
@@ -117,29 +117,36 @@ const Home = () => {
               <Card.Title>Tampa Golf Villas 5 King or 12 Beds at Saddlebrook</Card.Title>
 
               <div>
-                <Image width={18} height={18} src="/images/vector/bed.png" alt="iconImage"></Image><span className=" mx-2 " >5 Bed Rooms</span>
-                <Image width={18} height={18} className=" mx-1 " src="/images/vector/bath-tub.png" alt="iconImage"></Image><span className=" mx-2 " >4 Baths</span>
-                <Image width={18} height={18} className=" mx-1 " src="/images/vector/guest.png" alt="iconImage"></Image><span className=" mx-2 " >5 Guests Villa</span>
-                <Image width={20} height={20} src="/images/vector/parking-area.png" alt="iconImage"></Image><span className=" mx-3 " >Parking Area</span>
+                <p className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                <div className={HomeCss.icon}>
+                  <div className="iconImg">
+                    <Image width={18} height={18} src="/images/vector/bed.svg" alt="iconImage"></Image><span className=" mx-2 " >5 Bed Rooms</span>
+                  </div>
+
+                  <div className="iconImg">
+                    <Image width={18} height={18} className=" mx-1 " src="/images/vector/bath-tub.svg" alt="iconImage"></Image><span className=" mx-2 " >4 Baths</span>
+                  </div>
+
+                  <div className="iconImg">
+                    <Image width={18} height={18} className=" mx-1 " src="/images/vector/guest.svg" alt="iconImage"></Image><span className=" mx-2 " >5 Guests Villa</span>
+                  </div>
+
+
+                </div>
+
+                <div className={HomeCss.parking} >
+                  <Image width={20} height={20} src="/images/vector/parking-area.svg" alt="iconImage"></Image><span className=" mx-2 ">Parking Area</span>
+                </div>
+
+                <Image width={20} height={14} className={HomeCss.rightArrow} src="/images/vector/right_Arrow.svg" alt="iconImage"></Image>
               </div>
-              {/* <Card.Text className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more
-                <br />
-
-                <Image width={18} height={18} src="/images/vector/bed.png" alt="iconImage"></Image><span className=" mx-2 " >5 Bed Rooms</span>
-                <Image width={18} height={18} className=" mx-1 " src="/images/vector/bath-tub.png" alt="iconImage"></Image><span className=" mx-2 " >4 Baths</span>
-                <Image width={18} height={18} className=" mx-1 " src="/images/vector/guest.png" alt="iconImage"></Image><span className=" mx-2 " >5 Guests Villa</span>
-                <Image width={20} height={20} src="/images/vector/parking-area.png" alt="iconImage"></Image><span className=" mx-3 " >Parking Area</span>
-
-                <br />
-                <Image width={20} height={14} className=" " src="/images/vector/right_Arrow.png" alt="iconImage"></Image>
-
-              </Card.Text> */}
             </Card.Body>
           </Card>
         </Container>
 
         <div className={HomeCss.loadbtn}>
-          <button className={HomeCss.loadIn}>Load more</button>
+          <button className={HomeCss.loadIn}>Load more <Image width={20} height={20} src="/images/vector/load.svg" alt="Load Image"></Image> </button>
         </div>
 
       </div>
@@ -151,17 +158,17 @@ const Home = () => {
 
       <Row className={HomeCss.blurImg}>
         <Row>
-          <Col md={6} className={HomeCss.golfPit}>
-            <div >
+          <Col md={6} sm={12} className={HomeCss.golfPit}>
+            <div className={HomeCss.pitImg}>
               <Image width={300} height={300} src="/images/golfball.png" alt="Golf Ball"></Image>
               <Image width={300} height={300} src="/images/pit.png" alt="Pit"></Image>
             </div>
           </Col>
 
-          <Col md={6} className={HomeCss.golfText}>
-            <div>
-              <h2>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h2>
-              <p>No more sorting through tangled rental-search results on common vacation rental sites. Golfhōm patrons can search a targeted list of course-vicinity homes, condos, and villas, all by course, tournament, or city. After checking out safely with Stripe, our golfers can ship their clubs via Ship Sticks, book their group’s tee time, buy partner golf swag, and take in great golf articles — all without leaving the platform.
+          <Col md={6} sm={12} className={HomeCss.golfText}>
+            <div className={HomeCss.vacaDiv}>
+              <h2 className={HomeCss.vacationTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h2>
+              <p className={HomeCss.vacationPara}>No more sorting through tangled rental-search results on common vacation rental sites. Golfhōm patrons can search a targeted list of course-vicinity homes, condos, and villas, all by course, tournament, or city. After checking out safely with Stripe, our golfers can ship their clubs via Ship Sticks, book their group’s tee time, buy partner golf swag, and take in great golf articles — all without leaving the platform.
                 We’re transforming how golf travelers locate and book their next luxury rental.
               </p>
             </div>
@@ -179,12 +186,16 @@ const Home = () => {
 
       {/* ------------------------------         EXCLUSIVE PROPERTISE       --------------------------   */}
 
-      <Container className={HomeCss.exclusive}>
-        <div className={HomeCss.exHeading}>
-          <h1>Choose from a wide range of exclusive Properties</h1>
-          <button className={HomeCss.loadIn}>Book Now</button>
+
+      <Container>
+        <div className={HomeCss.exclusive}>
+          <div className={HomeCss.exHeading}>
+            <h2 className={HomeCss.extitle}>Choose from a wide range of <br /> <span >exclusive Properties</span></h2>
+            <button className={HomeCss.loadIn}>Book Now</button>
+          </div>
         </div>
       </Container>
+
     </>
   );
 };
