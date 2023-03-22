@@ -25,8 +25,8 @@ const Slider = ({ slides }) => {
             className={HomeCss.sliderImage}
             src={slide.image}
             alt={slide.name}
-            width={300}
-            height={300}
+            width={360}
+            height={280}
           ></Image>
           <h4 className={HomeCss.countryName}>{slide.name}</h4>
           <Image

@@ -3,13 +3,17 @@ import React from "react";
 import Head from "next/head";
 import HomeCss from "../styles/Home.module.css";
 import Slider from "../slider";
-import slides from './countries.json';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Col, Row, Card } from 'react-bootstrap';
+import slides from "./countries.json";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Col, Row, Card } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import ads from './ads.json';
+import ads from "./ads.json";
 import Advertise from "../advertise";
 import Image from "next/image";
+import { Input } from "antd";
+import { Button } from "antd";
+import { DatePicker } from "antd";
+const { RangePicker } = DatePicker;
 
 const Home = () => {
   return (
@@ -20,71 +24,130 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       {/* ------------ NAVBAR SECTION -----------    */}
 
-      <Row>
-        <div>
-          <Image className={HomeCss.golfboy} width={2000} height={2000} src='/images/golfBoy.png' alt="Golf Boy"></Image>
+      <div className={HomeCss.search_bar_img_div}>
+        <div className={HomeCss.search_bar_main_container}>
+          <div className={HomeCss.search_bar_container}>
+            <Row className={HomeCss.searchBar}>
+              <Col md={4} className={HomeCss.search_cols_4}>
+                <div className={HomeCss.inner_main_container}>
+                  <div className={HomeCss.inner_icon_container}>
+                    <Image
+                      className={HomeCss.location}
+                      width={25}
+                      height={25}
+                      src="/images/vector/location.svg"
+                      alt="Location Image"
+                    ></Image>
+                  </div>
+                  <div className={HomeCss.inner_input_container}>
+                    <h6 className={HomeCss.destination}>DESTINATION</h6>
+                    <div className={HomeCss.inner_input}>
+                      <Input
+                        className={HomeCss.inner_input_box}
+                        size="large"
+                        placeholder="Where you want to stay"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4} className={HomeCss.search_cols_4}>
+                <div className={HomeCss.inner_main_container}>
+                  <div className={HomeCss.inner_icon_container}>
+                    <Image
+                      className={HomeCss.location}
+                      width={25}
+                      height={25}
+                      src="/images/vector/calender.svg"
+                      alt="Calender Image"
+                    ></Image>
+                  </div>
+                  <div className={HomeCss.inner_input_container}>
+                    <h6 className={HomeCss.destination}>2 NIGHT</h6>
+                    <div className={HomeCss.inner_input}>
+                      <RangePicker />
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4} className={HomeCss.search_btn_col}>
+                <div className={HomeCss.search_btn_container}>
+                  <Button className={HomeCss.search_btn} type="primary">
+                    Search
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+          </div>
         </div>
 
-        <Row className={HomeCss.searchBar}>
-          <Col md={4} sm={5}>
-            <Image className={HomeCss.location} width={25} height={25} src='/images/vector/location.svg' alt="Location Image"></Image>
-            <h6 className={HomeCss.destination}>DESTINATION</h6>
-            <p className={HomeCss.ask}>Where you want to stay</p>
-          </Col>
-
-          <Col md={4} sm={5}>
-            <Image className={HomeCss.calender} width={25} height={25} src='/images/vector/calender.svg' alt="Calender Image"></Image>
-            <h6 className={HomeCss.night}>2 NIGHT</h6>
-            <h5 className={HomeCss.date}>Sat, Mar 04 - Sun, March 05</h5>
-          </Col>
-
-          <Col md={4} xs={6}>
-            <button className={HomeCss.searchBtn}>Search</button>
-          </Col>
-        </Row>
-      </Row>
+      </div>
 
       {/*  ----------------- SWIPER CONTAINER  -----------------   */}
-
-
-      <Container className={HomeCss.slider}>
-        <Row className={HomeCss.golfCourses}>
-          <h2 className={HomeCss.titleFind}>Find Great Vacation Rentals near Florida & Arizona </h2>
+      <Container>
+        <div className={HomeCss.golfCourses}>
+          <h2>
+            Find Great Vacation Rentals near Florida & Arizona{" "}
+          </h2>
           <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
-          <p className={HomeCss.para}>Arizona and Florida are renowned for their beautiful surroundings, outdoor lifeHomeCsss, & of course for having some of the world’s best golf courses! Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts of home, luxe amenities, and access to plenty of Arizona and Florida attractions!  Golfhōm is transforming how golfers locate and book their next luxury golf vacation rental. Book with us today!</p>
-        </Row>
+          <p className={HomeCss.para}>
+            Arizona and Florida are renowned for their beautiful surroundings,
+            outdoor lifeHomeCsss, & of course for having some of the world’s
+            best golf courses! Golfhōm has a growing selection of golf
+            course-vicinity vacation rentals that deliver the comforts of home,
+            luxe amenities, and access to plenty of Arizona and Florida
+            attractions! Golfhōm is transforming how golfers locate and book
+            their next luxury golf vacation rental. Book with us today!
+          </p>
+        </div>
 
         <Slider slides={slides} />
       </Container>
 
+
       {/* ------------------   SEARCH CONTAINER    ------------    */}
 
-      <Container className={HomeCss.searchSection}>
 
+      <Container className={HomeCss.searchSection}>
         <Row className={HomeCss.content}>
-          <h3 className={HomeCss.Title}>Search the World Over by Course
+          <h3 className={HomeCss.Title}>
+            Search the World Over by Course
             <br />
             (38,000+ in our database) or Tournament
           </h3>
 
-          <p className={HomeCss.searchPara}>*We're downloading more great Golfhōms each day from our valued channel partners!</p>
+          <p className={HomeCss.searchPara}>
+            *We're downloading more great Golfhōms each day from our valued
+            channel partners!
+          </p>
 
           <Row className={HomeCss.searchPart}>
-            <Col sm={7} >
+            <Col sm={7}>
               <h5 className={HomeCss.searchGolf}>Search by golf course</h5>
               <p className={HomeCss.hint}>Choose from thousands world-wide</p>
 
               <Row className={HomeCss.boxes}>
                 <Col className={HomeCss.searchbox}>
-                  <input className={HomeCss.textArea} xs={6} md={4} type="text" placeholder="Enter Location"></input>
+                  <input
+                    className={HomeCss.textArea}
+                    xs={6}
+                    md={4}
+                    type="text"
+                    placeholder="Enter Location"
+                  ></input>
                 </Col>
 
                 <Col className={HomeCss.searchbox}>
-                  <input className={HomeCss.textArea} xs={6} md={4} type="text" placeholder="Golf Course"></input>
+                  <input
+                    className={HomeCss.textArea}
+                    xs={6}
+                    md={4}
+                    type="text"
+                    placeholder="Golf Course"
+                  ></input>
                 </Col>
               </Row>
               <br />
@@ -92,11 +155,19 @@ const Home = () => {
               <button className={HomeCss.btn}>Search</button>
             </Col>
 
-            <Col className={HomeCss.tournamentDiv} sm={5} >
-              <h5 className={HomeCss.searchTournaments}>Search By Tournaments</h5>
-              <p className={HomeCss.hint}>Check out our growing list of tour-spot rentals</p>
+            <Col className={HomeCss.tournamentDiv} sm={5}>
+              <h5 className={HomeCss.searchTournaments}>
+                Search By Tournaments
+              </h5>
+              <p className={HomeCss.hint}>
+                Check out our growing list of tour-spot rentals
+              </p>
 
-              <input className={HomeCss.box} type="text" placeholder="Search by Touraments"></input>
+              <input
+                className={HomeCss.box}
+                type="text"
+                placeholder="Search by Touraments"
+              ></input>
               <br />
 
               <button className={HomeCss.btn}>Search</button>
@@ -104,17 +175,22 @@ const Home = () => {
           </Row>
         </Row>
       </Container>
-
       {/* --------------------------------------     CARD SECTION   -----------------------------   */}
-
       <div className={HomeCss.cardBg}>
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
 
-          <Card style={{ width: '24rem' }} className={HomeCss.MainCard}>
-            <Card.Img variant="top" className={HomeCss.cardImg} src="/images/bedRoom.png" alt="Bed Image" />
+          <Card style={{ width: "24rem" }} className={HomeCss.MainCard}>
+            <Card.Img
+              variant="top"
+              className={HomeCss.cardImg}
+              src="/images/bedRoom.png"
+              alt="Bed Image"
+            />
             <Card.Body>
-              <Card.Title>Tampa Golf Villas 5 King or 12 Beds at Saddlebrook</Card.Title>
+              <Card.Title>
+                Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
+              </Card.Title>
 
               <div>
                 <p className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more</p>
@@ -148,14 +224,8 @@ const Home = () => {
         <div className={HomeCss.loadbtn}>
           <button className={HomeCss.loadIn}>Load more <Image width={20} height={20} src="/images/vector/load.svg" alt="Load Image"></Image> </button>
         </div>
-
       </div>
-
-
-
-
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
-
       <Row className={HomeCss.blurImg}>
         <Row>
           <Col md={6} sm={12} className={HomeCss.golfPit}>
@@ -175,15 +245,14 @@ const Home = () => {
           </Col>
         </Row>
       </Row>
-
       {/* ------------------------------        Golfing and Traveling     ------------------------  */}
-
       <Container className={HomeCss.ads}>
-        <h2 className={HomeCss.adsTitle}>Golfing and Traveling, Both Better with Friends</h2>
+        <h2 className={HomeCss.adsTitle}>
+          Golfing and Traveling, Both Better with Friends
+        </h2>
 
         <Advertise ads={ads} />
       </Container>
-
       {/* ------------------------------         EXCLUSIVE PROPERTISE       --------------------------   */}
 
 
