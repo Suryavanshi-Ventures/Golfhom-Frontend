@@ -329,11 +329,11 @@ const Home = () => {
         <div className={HomeCss.exclusive}>
 
           <div className={HomeCss.exHeading}>
-            <h2 className={HomeCss.extitle}>Choose from a wide range of <br /> <span >exclusive Properties</span></h2>
+            <h1 className={HomeCss.extitle}>Choose from a wide range of</h1>
+            <h2 className={HomeCss.exProp}>exclusive Properties</h2>
 
-            <button className={HomeCss.loadIn}>Book Now</button>
+            <button className={HomeCss.exclusive_btn}>Book Now</button>
           </div>
-
 
         </div>
       </Container>
