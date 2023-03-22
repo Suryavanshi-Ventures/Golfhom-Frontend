@@ -2,6 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import style from "../styles/Home.module.css";
+import Image from "next/image";
+
 
 export const Slider = ({ slides }) => {
   return (
@@ -19,17 +21,21 @@ export const Slider = ({ slides }) => {
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.id}>
-          <img
+          <Image
             className={style.sliderImage}
             src={slide.image}
             alt={slide.name}
-          ></img>
+            width={300}
+            height={300}
+          ></Image>
           <h4 className={style.countryName}>{slide.name}</h4>
-          <img
+          <Image
             className={style.nextArrow}
             src={slide.next}
             alt={slide.arrow}
-          ></img>
+            width={300}
+            height={300}
+          ></Image>
         </SwiperSlide>
       ))}
     </Swiper>

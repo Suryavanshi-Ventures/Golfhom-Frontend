@@ -1,7 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
-import HomeCss from '../styles/Home.module.css'
+import HomeCss from '../styles/Home.module.css';
+import Image from "next/image"
+
 
 export const Advertise = ({ ads }) => {
     return (
@@ -15,7 +17,8 @@ export const Advertise = ({ ads }) => {
         >
             {ads.map((ads) => (
                 <SwiperSlide key={ads.id}>
-                    <img src={ads.image} alt={ads.name}></img>
+                    <Image   width={300}
+            height={300} src={ads.image} alt={ads.name}></Image>
                 </SwiperSlide>
             ))}
         </Swiper>

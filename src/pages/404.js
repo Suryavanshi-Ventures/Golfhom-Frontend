@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import ErrorPageStyle from "../styles/ErrorPageStyle.module.css";
 import Head from "next/head";

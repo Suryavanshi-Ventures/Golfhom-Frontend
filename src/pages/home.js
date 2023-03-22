@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Head from "next/head";
 import HomeCss from "../styles/Home.module.css";
@@ -8,6 +9,7 @@ import { Container, Col, Row, Card } from 'react-bootstrap';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ads from './ads.json';
 import { Advertise } from "./advertise";
+import Image from "next/image";
 
 const Home = () => {
   return (
@@ -23,18 +25,18 @@ const Home = () => {
 
       <Row>
         <div>
-          <img className={HomeCss.golfboy} src='/images/golfBoy.png' alt="Golf Boy"></img>
+          <Image className={HomeCss.golfboy} width={2000} height={2000} src='/images/golfBoy.png' alt="Golf Boy"></Image>
         </div>
 
         <Row className={HomeCss.searchBar}>
           <Col md={4} sm={5}>
-            <img className={HomeCss.location} src='/images/vector/location.png' alt="Location Image"></img>
+            <Image className={HomeCss.location} width={25} height={25} src='/images/vector/location.png' alt="Location Image"></Image>
             <h6 className={HomeCss.destination}>DESTINATION</h6>
             <p className={HomeCss.ask}>Where you want to stay</p>
           </Col>
 
           <Col md={4} sm={5}>
-            <img className={HomeCss.calender} src='/images/vector/calender.png' alt="Calender Image"></img>
+            <Image className={HomeCss.calender} width={25} height={25} src='/images/vector/calender.png' alt="Calender Image"></Image>
             <h6 className={HomeCss.night}>2 NIGHT</h6>
             <h5 className={HomeCss.date}>Sat, Mar 04 - Sun, March 05</h5>
           </Col>
@@ -117,10 +119,10 @@ const Home = () => {
               <Card.Text className={HomeCss.saddle}> Saddlebrook Resort - Saddlebrook & 1 more
                 <br />
 
-                <img className={HomeCss.icons} src="/images/vector/bed.png" alt="iconImage"></img><span className={HomeCss.saddle} >5 Bed Rooms</span>
-                <img className={HomeCss.icons} src="/images/vector/bath-tub.png" alt="iconImage"></img><span className={HomeCss.saddle} >4 Baths</span>
-                <img className={HomeCss.icons} src="/images/vector/guest.png" alt="iconImage"></img><span className={HomeCss.saddle} >5 Guests Villa</span>
-                <img className={HomeCss.icons} src="/images/vector/parking-area.png" alt="iconImage"></img><span className={HomeCss.saddle} >Parking Area</span>
+                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/bed.png" alt="iconImage"></Image><span className={HomeCss.saddle} >5 Bed Rooms</span>
+                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/bath-tub.png" alt="iconImage"></Image><span className={HomeCss.saddle} >4 Baths</span>
+                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/guest.png" alt="iconImage"></Image><span className={HomeCss.saddle} >5 Guests Villa</span>
+                <Image width={25} height={25} className={HomeCss.icons} src="/images/vector/parking-area.png" alt="iconImage"></Image><span className={HomeCss.saddle} >Parking Area</span>
 
               </Card.Text>
             </Card.Body>
@@ -139,8 +141,8 @@ const Home = () => {
         <Row>
           <Col md={6} className={HomeCss.golfPit}>
             <div >
-              <img src="/images/golfball.png" alt="Golf Ball"></img>
-              <img src="/images/pit.png" alt="Pit"></img>
+              <Image width={300} height={300} src="/images/golfball.png" alt="Golf Ball"></Image>
+              <Image width={300} height={300} src="/images/pit.png" alt="Pit"></Image>
             </div>
           </Col>
 
