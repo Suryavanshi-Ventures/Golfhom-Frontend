@@ -65,7 +65,9 @@ const Header = () => {
         <Container className={HeaderCss.container_header}>
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <Col xs={"auto"} className={HeaderCss.logo_container}>
-              <Image src={Logo} alt="golfhom logo" width="200" />
+              <Link href="/" className={HeaderCss.logo_container_a}>
+                <Image src={Logo} alt="golfhom logo" width="200" />
+              </Link>
             </Col>
 
             <Col xs={"auto"} className={HeaderCss.top_nav_bar_col}>

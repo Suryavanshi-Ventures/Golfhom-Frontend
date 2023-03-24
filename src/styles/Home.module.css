@@ -70,6 +70,21 @@
   font-size: 20px;
   font-family: var(--font-dm-sans);
 }
+
+.inner_input_box:focus {
+  border: 1px solid;
+  border-color: var(--btn-background);
+}
+
+.inner_input_date_picker:hover {
+  border-color: var(--btn-background);
+  border-inline-end-width: 1px;
+}
+.inner_input_date_picker:focus {
+  border-color: var(--btn-background);
+  border-inline-end-width: 1px;
+}
+
 .destination {
   color: var(--dark-grey-color);
   letter-spacing: 1px;
@@ -278,21 +293,18 @@
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
 
 .exclusive {
-    background-image: url(/images/room.png);
-    height: 68vh;
-    background-repeat: no-repeat;
-    border-radius: 16px;
-    width: 98%;
-    display: grid;
-    place-items: center;
+  background-image: url(/images/room.png);
+  height: 68vh;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  width: 98%;
+  display: grid;
+  place-items: center;
 }
 
 .exHeading {
- 
- 
   color: var(--white-font-color);
 }
-
 
 .extitle {
   font-size: 3rem;
@@ -304,7 +316,6 @@
   text-align: center;
   font-size: 2.8rem;
 }
-
 
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {

@@ -1,0 +1,35 @@
+.edit_details_container_cols {
+  margin-bottom: 1.5rem;
+}
+
+.edit_details_btn_parent_container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.edit_details_btn_child_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.edit_details_btn {
+  padding: 0.6rem 3rem !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  color: var(--btn-background);
+  border-color: var(--btn-background);
+}
+
+.edit_room_dropdown_btn {
+  width: 100%;
+}
+
+.edit_room_dropdown_btn_space {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.edit_room_dropdown_icon {
+  display: flex;
+}

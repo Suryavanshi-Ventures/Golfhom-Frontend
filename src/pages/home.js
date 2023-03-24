@@ -67,8 +67,11 @@ const Home = () => {
                   </div>
                   <div className={HomeCss.inner_input_container}>
                     <h6 className={HomeCss.destination}>2 NIGHT</h6>
-                    <div className={HomeCss.inner_input}>
-                      <RangePicker />
+                    <div className={HomeCss.inner_input_date_picker}>
+                      <RangePicker
+                        size="large"
+                        className={HomeCss.inner_input_date_picker}
+                      />
                     </div>
                   </div>
                 </div>
@@ -105,7 +108,6 @@ const Home = () => {
 
         <Slider slides={slides} />
       </Container>
-
 
       {/* ---------------------------              SEARCH CONTAINER              ----------------------    */}
 
@@ -267,9 +269,7 @@ const Home = () => {
         </div>
       </div>
 
-
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
-
 
       <Row className={HomeCss.blurImg}>
         <Row>
@@ -311,9 +311,7 @@ const Home = () => {
         </Row>
       </Row>
 
-
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
-
 
       <Container className={HomeCss.ads}>
         <h2 className={HomeCss.adsTitle}>
@@ -327,14 +325,12 @@ const Home = () => {
 
       <Container>
         <div className={HomeCss.exclusive}>
-
           <div className={HomeCss.exHeading}>
             <h1 className={HomeCss.extitle}>Choose from a wide range of</h1>
             <h2 className={HomeCss.exProp}>exclusive Properties</h2>
 
             <button className={HomeCss.exclusive_btn}>Book Now</button>
           </div>
-
         </div>
       </Container>
     </>
