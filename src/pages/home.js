@@ -14,6 +14,11 @@ import { Input } from "antd";
 import { Button } from "antd";
 import { DatePicker } from "antd";
 const { RangePicker } = DatePicker;
+import Video from "../video";
+import video from "./video.json";
+import Review from "../review";
+import review from "./review.json";
+
 
 const Home = () => {
   return (
@@ -174,6 +179,42 @@ const Home = () => {
         </Row>
       </Container>
 
+      {/* -------------------------------------     Golfhōm Hottest New Arrivals       ---------------------------- */}
+
+      <Container>
+        <h2> Golfhōm Hottest New Arrivals </h2>
+
+        <div className={HomeCss.arrivalContainer}>
+
+          <div>
+            <div className={HomeCss.paraHeading}>
+              <p> Lorem Ipsum is simply dummy text of the
+                <br /> printing and typesetting industry. Lorem
+                <br /> Ipsum has been the industry's standard
+                <br /> dummy text.</p>
+
+              <h4> Explore More New Rentals </h4>
+            </div>
+            <h6 className={HomeCss.newyork}> The Ritz-Carlton New York, NoMad </h6>
+          </div>
+
+
+          <div className={HomeCss.midImage}>
+            <h6 className={HomeCss.midImgTitle}>  Sao Paulo, New york </h6>
+          </div>
+
+          <div className={HomeCss.twoImgContainer}>
+            <div>
+              <h6 className={HomeCss.madridImg}> The Madrid EDITION</h6>
+            </div>
+            <div>
+              <h6 className={HomeCss.resortImg}> The Westin Anaheim Resort </h6>
+            </div>
+          </div>
+
+        </div>
+      </Container>
+
       {/* --------------------------------------    CARD SECTION   -----------------------------   */}
 
       <div className={HomeCss.cardBg}>
@@ -256,7 +297,7 @@ const Home = () => {
 
         <div className={HomeCss.loadbtn}>
           <button className={HomeCss.exclusive_btn}>
-            Load more
+            Load more {" "}
             <Image
               width={20}
               height={20}
@@ -272,7 +313,7 @@ const Home = () => {
 
 
       <Row className={HomeCss.blurImg}>
-        <Row>
+        <Row className={HomeCss.imgText}>
           <Col md={6} sm={12} className={HomeCss.golfPit}>
             <div className={HomeCss.pitImg}>
               <Image
@@ -280,18 +321,20 @@ const Home = () => {
                 height={300}
                 src="/images/golfball.png"
                 alt="Golf Ball"
+                className={HomeCss.golfball}
               ></Image>
               <Image
                 width={300}
                 height={300}
                 src="/images/pit.png"
                 alt="Pit"
+                className={HomeCss.pit}
               ></Image>
             </div>
           </Col>
 
           <Col md={6} sm={12} className={HomeCss.golfText}>
-            <div className={HomeCss.vacaDiv}>
+            <Row className={HomeCss.vacaDiv}>
               <h2 className={HomeCss.vacationTitle}>
                 THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
               </h2>
@@ -306,7 +349,7 @@ const Home = () => {
                 transforming how golf travelers locate and book their next
                 luxury rental.
               </p>
-            </div>
+            </Row>
           </Col>
         </Row>
       </Row>
@@ -331,13 +374,37 @@ const Home = () => {
           <div className={HomeCss.exHeading}>
             <h1 className={HomeCss.extitle}>Choose from a wide range of</h1>
             <h2 className={HomeCss.exProp}>exclusive Properties</h2>
-
-            <button className={HomeCss.exclusive_btn}>Book Now</button>
+            <button className={HomeCss.bookBtn}>Book Now</button>
           </div>
 
         </div>
       </Container>
+
+      {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
+
+      <Container className={HomeCss.videoContain}>
+        <h2>Golf Training Videos</h2>
+
+        <div className={HomeCss.paraBtn}>
+          <p className={HomeCss.paratext}>Lorem Ipsum is simply dummy text of the printing and typesetting
+            <br /> industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+
+          <button className={HomeCss.viewAll}>View All</button>
+        </div>
+
+        <Video videos={video} />
+      </Container>
+
+      {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
+
+      <Container className={HomeCss.staffCard}>
+        <h2> From the Golfhōm Staff and Guest Writers </h2>
+
+        <Review reviews={review} />
+      </Container>
+
     </>
+
   );
 };
 

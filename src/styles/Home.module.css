@@ -97,6 +97,11 @@
   border-radius: 16px;
 }
 
+.parentImage {
+  min-width: 332px;
+  padding-bottom: 34px;
+}
+
 .countryName {
   position: relative;
   left: 30px;
@@ -110,10 +115,12 @@
   margin-top: 40px;
   background-image: url(../../public/images/shot.png);
   background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
 }
 
-.shotMan {
-  position: absolute;
+.content {
+  color: var(--white-font-color);
 }
 
 .Title {
@@ -126,12 +133,7 @@
   letter-spacing: 0.4px;
 }
 
-.content {
-  position: relative;
-  align-content: center;
-  padding: 56px 58px;
-  color: var(--white-font-color);
-}
+
 
 .tournamentDiv {
   position: relative;
@@ -170,6 +172,106 @@
   background-color: var(--btn-background);
   border: none;
 }
+
+/* ------------------------------        Golfhōm Hottest New Arrivals         ------------------------------       */
+
+.paraHeading {
+  margin-bottom: 30px;
+}
+
+.arrivalContainer{
+  display: flex;
+  /* margin: 30px 0px 80px 0px; */
+  /* justify-content: space-around; */
+  width: auto;
+  white-space: break-spaces;
+  justify-content: space-between;
+  min-width: 200px;
+  /* max-width: 200px;     this won't let these images to sit in flex (horizontally) when screen is full, so don't use it */
+  flex-wrap: wrap;
+  margin: auto;
+  height: auto;
+  transition: all 0.2 linear;
+}
+
+.newyork {
+  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.5)), url(/images/settingArea.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  align-items: self-end;
+  border-radius: 12px;
+  min-width: 422px;
+  justify-content: flex-start;
+  padding-bottom: 30px;
+  padding-left: 24px;
+}
+
+.midImage {
+  display: flex;
+  place-self: self-end;
+}
+
+.midImgTitle {
+  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.6)), url(/images/pool.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  align-items: self-end;
+  border-radius: 12px;
+  min-width: 400px;
+  justify-content: flex-start;
+  padding-bottom: 30px;
+  padding-left: 24px;
+}
+
+.twoImgContainer {
+  display: grid;
+  place-self: end;
+}
+
+.madridImg {
+  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.6)), url(/images/madrid.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 34.5vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  align-items: self-end;
+  border-radius: 12px;
+  min-width: 422px;
+  justify-content: flex-start;
+  padding-bottom: 30px;
+  padding-left: 24px;
+}
+
+.resortImg {
+  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.6)), url(/images/gaintWheel.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 34.5vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  align-items: self-end;
+  border-radius: 12px;
+  min-width: 422px;
+  justify-content: flex-start;
+  padding-bottom: 30px;
+  padding-left: 24px;
+}
+
 
 /* ------------------------------        CARD SECTION         ------------------------------       */
 
@@ -230,6 +332,10 @@
   background-size: cover;
 }
 
+.imgText {
+ 
+}
+
 .golfPit {
   flex-wrap: wrap;
   display: flex;
@@ -242,12 +348,26 @@
   align-items: flex-end;
 }
 
+.pit {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+
+.golfball {
+  display: flex;
+  flex-direction: row;
+  place-self: flex-end;
+}
+
 .golfText {
   display: flex;
   align-items: center;
+  
 }
 .vacaDiv {
   width: 84%;
+ 
 }
 
 .vacationTitle {
@@ -268,11 +388,15 @@
 }
 
 .adsTitle {
-  padding: 40px 0px;
+  padding: 30px 0px;
 }
 
 .bigDiv {
   padding: inherit !important;
+}
+
+.parentAds {
+  min-width: 130px;
 }
 
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
@@ -285,12 +409,14 @@
     width: 98%;
     display: grid;
     place-items: center;
+    background-size: cover;
+    margin-bottom: 90px;
 }
 
 .exHeading {
- 
- 
-  color: var(--white-font-color);
+    display: grid;
+    text-align: center;
+    color: var(--white-font-color);
 }
 
 
@@ -298,12 +424,69 @@
   font-size: 3rem;
   font-weight: 350;
   text-align: center;
+  place-self: center;
 }
 
 .exProp {
-  text-align: center;
   font-size: 2.8rem;
+  place-self: center;
 }
+
+.bookBtn {
+  background-color: #ff6764;
+  color: var(--white-font-color);
+  border: none;
+  padding: 10px 30px;
+  margin: 20px;
+  border-radius: 5px;
+  place-self: center;
+}
+
+/* ------------------------------------        TRAINING VIDEOS       --------------------------------           */
+
+.videoContain {
+  margin-bottom: 50px;
+}
+
+.paraBtn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paratext {
+  line-height: 2rem;
+}
+
+.viewAll {
+  color: var(--btn-background-secondary);
+  background-color: white;
+  border: none;
+}
+
+.parentVideo {
+  padding: 40px 0px;
+  min-width: 300px;
+}
+
+.videoImg {
+  border-radius: 12px;
+}
+
+/* -----------------------------------        STAFF N WRITERS       -------------------------------              */
+
+.staffCard {
+  margin: 80px 0pc;
+}
+
+.parentReview {
+  padding: 40px 0px;
+  min-width: 320px;
+}
+
+.cardReview {
+  border-radius: 12px;
+}
+
 
 
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
