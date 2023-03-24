@@ -17,7 +17,7 @@ const Advertise = ({ ads }) => {
             className={HomeCss.bigDiv}
         >
             {ads.map((ads) => (
-                <SwiperSlide key={ads.id}>
+                <SwiperSlide key={ads.id} className={HomeCss.parentAds}>
                     <Image className={HomeCss.adsImage} width={146} height={146} src={ads.image} alt={ads.name}></Image>
                 </SwiperSlide>
             ))}

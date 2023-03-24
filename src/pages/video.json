@@ -1,0 +1,61 @@
+[
+    {
+        "id": 21,
+        "image": "/images/girl.svg",
+        "name": "Girl"
+    },
+
+    {
+        "id": 22,
+        "image": "/images/man.svg",
+        "name": "Man"
+    },
+
+    {
+        "id": 23,
+        "image": "/images/supportive.svg",
+        "name": "Support"
+    },
+
+    {
+        "id": 24,
+        "image": "/images/girl.svg",
+        "name": "Girl"
+    },
+
+    {
+        "id": 25,
+        "image": "/images/man.svg",
+        "name": "Man"
+    },
+
+    {
+        "id": 26,
+        "image": "/images/supportive.svg",
+        "name": "Support"
+    },
+
+    {
+        "id": 27,
+        "image": "/images/girl.svg",
+        "name": "Girl"
+    },
+
+    {
+        "id": 28,
+        "image": "/images/man.svg",
+        "name": "Man"
+    },
+
+    {
+        "id": 29,
+        "image": "/images/supportive.svg",
+        "name": "Support"
+    },
+
+    {
+        "id": 20,
+        "image": "/images/girl.svg",
+        "name": "Girl"
+    }
+]

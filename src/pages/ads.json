@@ -1,61 +1,61 @@
 [
     {
         "id": 11,
-        "image": "/images/circleIsGolf.png",
+        "image": "/images/circleIsGolf.svg",
         "name": "15"
     },
 
     {
         "id": 12,
-        "image": "/images/shipSticks.png",
+        "image": "/images/shipSticks.svg",
         "name": "15"
     },
 
     {
         "id": 13,
-        "image": "/images/cap.png",
+        "image": "/images/cap.svg",
         "name": "15"
     },
 
     {
         "id": 14,
-        "image": "/images/hudson.png",
+        "image": "/images/hudson.svg",
         "name": "15"
     },
 
     {
         "id": 15,
-        "image": "/images/shipSticks.png",
+        "image": "/images/shipSticks.svg",
         "name": "15"
     },
 
     {
         "id": 16,
-        "image": "/images/circleIsGolf.png",
+        "image": "/images/circleIsGolf.svg",
         "name": "15"
     },
 
     {
         "id": 17,
-        "image": "/images/shipSticks.png",
+        "image": "/images/shipSticks.svg",
         "name": "15"
     },
 
     {
         "id": 18,
-        "image": "/images/cap.png",
+        "image": "/images/cap.svg",
         "name": "15"
     },
 
     {
         "id": 19,
-        "image": "/images/hudson.png",
+        "image": "/images/hudson.svg",
         "name": "15"
     },
 
     {
         "id": 20,
-        "image": "/images/shipSticks.png",
+        "image": "/images/shipSticks.svg",
         "name": "15"
     }
 ]

@@ -19,7 +19,7 @@ const Slider = ({ slides }) => {
       xs={1}
     >
       {slides.map((slide) => (
-        <SwiperSlide key={slide.id}>
+        <SwiperSlide key={slide.id} className={HomeCss.parentImage}>
           <Image
             className={HomeCss.sliderImage}
             src={slide.image}
