@@ -148,8 +148,6 @@
   letter-spacing: 0.4px;
 }
 
-
-
 .tournamentDiv {
   position: relative;
   left: 78px;
@@ -194,7 +192,7 @@
   margin-bottom: 30px;
 }
 
-.arrivalContainer{
+.arrivalContainer {
   display: flex;
   /* margin: 30px 0px 80px 0px; */
   /* justify-content: space-around; */
@@ -210,7 +208,8 @@
 }
 
 .newyork {
-  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.5)), url(/images/settingArea.svg);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
+    url(/images/settingArea.svg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 50vh;
@@ -232,7 +231,8 @@
 }
 
 .midImgTitle {
-  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.6)), url(/images/pool.svg);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url(/images/pool.svg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
@@ -254,7 +254,8 @@
 }
 
 .madridImg {
-  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.6)), url(/images/madrid.svg);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url(/images/madrid.svg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -271,7 +272,8 @@
 }
 
 .resortImg {
-  background: linear-gradient( rgba(0,0,0,0),  rgba(0,0,0,0.6)), url(/images/gaintWheel.svg);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url(/images/gaintWheel.svg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -286,7 +288,6 @@
   padding-bottom: 30px;
   padding-left: 24px;
 }
-
 
 /* ------------------------------        CARD SECTION         ------------------------------       */
 
@@ -348,7 +349,6 @@
 }
 
 .imgText {
- 
 }
 
 .golfPit {
@@ -378,11 +378,9 @@
 .golfText {
   display: flex;
   align-items: center;
-  
 }
 .vacaDiv {
   width: 84%;
- 
 }
 
 .vacationTitle {
@@ -417,7 +415,6 @@
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
 
 .exclusive {
-<<<<<<< HEAD
   background-image: url(/images/room.png);
   height: 68vh;
   background-repeat: no-repeat;
@@ -425,27 +422,14 @@
   width: 98%;
   display: grid;
   place-items: center;
+  background-size: cover;
+  margin-bottom: 90px;
 }
 
 .exHeading {
+  display: grid;
+  text-align: center;
   color: var(--white-font-color);
-=======
-    background-image: url(/images/room.png);
-    height: 68vh;
-    background-repeat: no-repeat;
-    border-radius: 16px;
-    width: 98%;
-    display: grid;
-    place-items: center;
-    background-size: cover;
-    margin-bottom: 90px;
-}
-
-.exHeading {
-    display: grid;
-    text-align: center;
-    color: var(--white-font-color);
->>>>>>> fb46a1cf9a59fec2f9eed039507242db6cc78976
 }
 
 .extitle {
@@ -460,8 +444,6 @@
   place-self: center;
 }
 
-<<<<<<< HEAD
-=======
 .bookBtn {
   background-color: #ff6764;
   color: var(--white-font-color);
@@ -517,9 +499,6 @@
   border-radius: 12px;
 }
 
-
-
->>>>>>> fb46a1cf9a59fec2f9eed039507242db6cc78976
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .search_cols_4 {
