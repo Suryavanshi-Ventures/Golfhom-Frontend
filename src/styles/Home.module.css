@@ -136,6 +136,10 @@
 
 .content {
   color: var(--white-font-color);
+  
+  width: 96%;
+  height: 63.5%;
+
 }
 
 .Title {
@@ -148,15 +152,17 @@
   letter-spacing: 0.4px;
 }
 
-
+.searchPart {
+  display: flex;
+  justify-content: space-evenly;
+}
 
 .tournamentDiv {
-  position: relative;
-  left: 78px;
+ 
 }
 
 .searchbox {
-  width: 100%;
+ 
 }
 
 .textArea {
@@ -169,6 +175,7 @@
 
 .boxes {
   gap: 42px;
+  display: flex;
 }
 
 .box {
@@ -345,56 +352,70 @@
   height: 632px;
   background-repeat: no-repeat;
   background-size: cover;
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* justify-content: space-between;
+  align-items: center;
+  flex-direction: column; */
 }
 
-.imgText {
- 
-}
+/* .blurImg > * {
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1 100%;
+} */
 
 .golfPit {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* position: relative;
+  flex: 1;
+  width: auto;
+  height: auto; */
+}
+
+.golfpitChild {
+  /* display: grid;
+  grid-template-rows: 290px 226px 116px;
+  grid-template-columns: 376px 376px; */
 }
 
 .pitImg {
-  display: flex;
-  align-items: flex-end;
+ 
 }
 
 .pit {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
+  /* position: relative; */
 }
 
 .golfball {
-  display: flex;
-  flex-direction: row;
-  place-self: flex-end;
+/* position: relative; */
 }
 
 .golfText {
-  display: flex;
-  align-items: center;
-  
+  /* position: relative;
+  */
+  /* flex: 2; 
+  width: 100vw;
+  */
 }
+
 .vacaDiv {
-  width: 84%;
- 
+  /* display: grid;
+  grid-template-rows: 280px 272px;
+  width: 600px; */
 }
 
 .vacationTitle {
   color: #2f2f2f;
-  width: 84%;
-  letter-spacing: 1px;
+  /* place-self: end;
+  letter-spacing: 1px; */
 }
 
 .vacationPara {
-  line-height: 2.6rem;
-  margin: 25px 0px;
+  /* line-height: 2.6rem;
+  place-self: center; */
 }
+
+
 
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
 
@@ -417,7 +438,6 @@
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
 
 .exclusive {
-<<<<<<< HEAD
   background-image: url(/images/room.png);
   height: 68vh;
   background-repeat: no-repeat;
@@ -429,53 +449,43 @@
 
 .exHeading {
   color: var(--white-font-color);
-=======
-    background-image: url(/images/room.png);
-    height: 68vh;
-    background-repeat: no-repeat;
-    border-radius: 16px;
-    width: 98%;
-    display: grid;
-    place-items: center;
-    background-size: cover;
-    margin-bottom: 90px;
-}
-
-.exHeading {
-    display: grid;
-    text-align: center;
-    color: var(--white-font-color);
->>>>>>> fb46a1cf9a59fec2f9eed039507242db6cc78976
+  background-image: url(/images/room.png);
+  height: 68vh;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  width: 98%;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+  grid-template-rows: 180px 96px 56px;
 }
 
 .extitle {
   font-size: 3rem;
   font-weight: 350;
   text-align: center;
-  place-self: center;
+  align-self: flex-end;
 }
 
 .exProp {
   font-size: 2.8rem;
-  place-self: center;
+  align-self: center;
+  text-align: center;
 }
 
-<<<<<<< HEAD
-=======
 .bookBtn {
-  background-color: #ff6764;
+  background-color: var(--btn-background-secondary);
   color: var(--white-font-color);
   border: none;
   padding: 10px 30px;
-  margin: 20px;
   border-radius: 5px;
-  place-self: center;
+  align-self: center;
 }
 
 /* ------------------------------------        TRAINING VIDEOS       --------------------------------           */
 
 .videoContain {
-  margin-bottom: 50px;
+  margin: 50px 0px;
 }
 
 .paraBtn {
@@ -518,11 +528,16 @@
 }
 
 
-
->>>>>>> fb46a1cf9a59fec2f9eed039507242db6cc78976
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .search_cols_4 {
     margin-bottom: 1.5rem;
   }
+
+  
+  .blurImg {
+    height: auto;
+  }
+
+
 }

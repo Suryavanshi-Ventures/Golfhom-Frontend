@@ -129,13 +129,13 @@ const Home = () => {
             channel partners!
           </p>
 
-          <Row className={HomeCss.searchPart}>
-            <Col sm={7}>
+          <div className={HomeCss.searchPart}>
+            <div sm={7}>
               <h5 className={HomeCss.searchGolf}>Search by golf course</h5>
               <p className={HomeCss.hint}>Choose from thousands world-wide</p>
 
-              <Row className={HomeCss.boxes}>
-                <Col className={HomeCss.searchbox}>
+              <div className={HomeCss.boxes}>
+                <div className={HomeCss.searchbox}>
                   <input
                     className={HomeCss.textArea}
                     xs={6}
@@ -143,9 +143,9 @@ const Home = () => {
                     type="text"
                     placeholder="Enter Location"
                   ></input>
-                </Col>
+                </div>
 
-                <Col className={HomeCss.searchbox}>
+                <div className={HomeCss.searchbox}>
                   <input
                     className={HomeCss.textArea}
                     xs={6}
@@ -153,14 +153,14 @@ const Home = () => {
                     type="text"
                     placeholder="Golf Course"
                   ></input>
-                </Col>
-              </Row>
+                </div>
+              </div>
               <br />
 
               <button className={HomeCss.btn}>Search</button>
-            </Col>
+            </div>
 
-            <Col className={HomeCss.tournamentDiv} sm={5}>
+            <div className={HomeCss.tournamentDiv} sm={5}>
               <h5 className={HomeCss.searchTournaments}>
                 Search By Tournaments
               </h5>
@@ -176,8 +176,8 @@ const Home = () => {
               <br />
 
               <button className={HomeCss.btn}>Search</button>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </Row>
       </Container>
 
@@ -312,47 +312,47 @@ const Home = () => {
 
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
 
-      <Row className={HomeCss.blurImg}>
-        <Row className={HomeCss.imgText}>
-          <Col md={6} sm={12} className={HomeCss.golfPit}>
-            <div className={HomeCss.pitImg}>
-              <Image
-                width={300}
-                height={300}
-                src="/images/golfball.png"
-                alt="Golf Ball"
-                className={HomeCss.golfball}
-              ></Image>
-              <Image
-                width={300}
-                height={300}
-                src="/images/pit.png"
-                alt="Pit"
-                className={HomeCss.pit}
-              ></Image>
-            </div>
-          </Col>
 
-          <Col md={6} sm={12} className={HomeCss.golfText}>
-            <Row className={HomeCss.vacaDiv}>
-              <h2 className={HomeCss.vacationTitle}>
-                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-              </h2>
-              <p className={HomeCss.vacationPara}>
-                No more sorting through tangled rental-search results on common
-                vacation rental sites. Golfhōm patrons can search a targeted
-                list of course-vicinity homes, condos, and villas, all by
-                course, tournament, or city. After checking out safely with
-                Stripe, our golfers can ship their clubs via Ship Sticks, book
-                their group’s tee time, buy partner golf swag, and take in great
-                golf articles — all without leaving the platform. We’re
-                transforming how golf travelers locate and book their next
-                luxury rental.
-              </p>
-            </Row>
-          </Col>
-        </Row>
+      <Row className={HomeCss.blurImg}>
+        <Col md={6} className={HomeCss.golfPit}>
+          <div className={HomeCss.golfpitChild}>
+            <Image
+              width={300}
+              height={300}
+              src="/images/golfball.png"
+              alt="Golf Ball"
+              className={HomeCss.golfball}
+            ></Image>
+            <Image
+              width={300}
+              height={300}
+              src="/images/pit.png"
+              alt="Pit"
+              className={HomeCss.pit}
+            ></Image>
+          </div>
+        </Col>
+
+        <Col md={6} className={HomeCss.golfText}>
+          <div className={HomeCss.vacaDiv}>
+            <h2 className={HomeCss.vacationTitle}>
+              THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
+            </h2>
+            <p className={HomeCss.vacationPara}>
+              No more sorting through tangled rental-search results on common
+              vacation rental sites. Golfhōm patrons can search a targeted
+              list of course-vicinity homes, condos, and villas, all by
+              course, tournament, or city. After checking out safely with
+              Stripe, our golfers can ship their clubs via Ship Sticks, book
+              their group’s tee time, buy partner golf swag, and take in great
+              golf articles — all without leaving the platform. We’re
+              transforming how golf travelers locate and book their next
+              luxury rental.
+            </p>
+          </div>
+        </Col>
       </Row>
+
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
