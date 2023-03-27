@@ -11,6 +11,8 @@
   --white-background: #ffffff;
   --dark-grey-color: #747474;
   --dash-border-color: #B6B6B6;
+  --card-text-color: #A7A7A7;
+  --card-text-secondary: #A4A4A4;
 }
 
 * {

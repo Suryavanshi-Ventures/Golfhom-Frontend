@@ -3,6 +3,7 @@ import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
+import Green from "./utilities/green";
 
 const Review = ({ reviews }) => {
     return (
@@ -20,14 +21,7 @@ const Review = ({ reviews }) => {
         >
             {reviews.map((review) => (
                 <SwiperSlide key={review.id} className={HomeCss.parentReview}>
-                    <Image
-                        className={HomeCss.cardReview}
-                        src={review.image}
-                        alt={review.name}
-                        width={380}
-                        height={260}
-                    ></Image>
-                    <h6>{review.name}</h6>
+                    <Green review={review} />
                 </SwiperSlide>
             ))}
         </Swiper>

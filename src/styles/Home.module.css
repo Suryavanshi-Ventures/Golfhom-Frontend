@@ -352,66 +352,71 @@
   height: 632px;
   background-repeat: no-repeat;
   background-size: cover;
-  /* display: flex;
-  flex-wrap: wrap; */
-  /* justify-content: space-between;
-  align-items: center;
-  flex-direction: column; */
+  position: relative;
 }
 
-/* .blurImg > * {
-  flex-wrap: wrap;
-  align-items: center;
-  flex: 1 100%;
-} */
-
 .golfPit {
-  /* position: relative;
-  flex: 1;
-  width: auto;
-  height: auto; */
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: flex-end;
+  flex-wrap: wrap;
+  flex: 1 1 25%;
+  position: absolute;
+  left: 124px;
+  bottom: 77px;
+}
+
+.golfText {
+  display: grid;
+  grid-template-rows: 315px 315px;
+  position: absolute;
+  right: 0px;
 }
 
 .golfpitChild {
-  /* display: grid;
-  grid-template-rows: 290px 226px 116px;
-  grid-template-columns: 376px 376px; */
+
 }
 
 .pitImg {
 }
 
 .pit {
-  /* position: relative; */
+ 
 }
 
 .golfball {
-  /* position: relative; */
-}
-
-.golfText {
-  /* position: relative;
-  */
-  /* flex: 2; 
-  width: 100vw;
-  */
+  position: absolute;
+  left: 68px;
 }
 
 .vacaDiv {
-  /* display: grid;
-  grid-template-rows: 280px 272px;
-  width: 600px; */
+  
 }
 
 .vacationTitle {
   color: #2f2f2f;
-  /* place-self: end;
-  letter-spacing: 1px; */
+  width: 70%;
+  line-height: 46px;
+  font-size: 36px;
+  text-align: left;
+  vertical-align: middle;
+  align-self: end;
+  display: grid;
+  position: absolute;
+  top: 175px;
 }
 
 .vacationPara {
-  /* line-height: 2.6rem;
-  place-self: center; */
+  line-height: 44.7px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 400;
+  width: 80%;
+  align-self:self-start;
+  position: absolute;
+  bottom: 55px;
 }
 
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
@@ -430,6 +435,10 @@
 
 .parentAds {
   min-width: 130px;
+}
+
+.logo {
+  background-color: #ff6764;
 }
 
 /*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
@@ -515,17 +524,75 @@
 
 /* -----------------------------------        STAFF N WRITERS       -------------------------------              */
 
+.parentOf_img_textCard {
+  position: relative;
+}
 .staffCard {
   margin: 80px 0pc;
 }
 
 .parentReview {
-  padding: 40px 0px;
+  padding: 40px 0px 200px 0px;
   min-width: 320px;
 }
 
 .cardReview {
   border-radius: 12px;
+}
+
+.cardTextParent {
+  overflow: hidden;
+  background: var(--white-background);
+  width: 85%;
+  padding: 16px;
+  position: absolute;
+  top: 206px;
+  margin-left: 16px;
+}
+
+.contact_div {
+  margin-bottom: 3px;
+  position: relative;
+  right: 4px
+}
+
+.bookmarkDiv {
+  position: relative;
+  right: 1px
+}
+
+.card_title {
+  font-weight: 700;
+}
+
+.byAdmin {
+  color: var(--card-text-color);
+  font-size: 0.9rem;
+}
+
+.bookmark_text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--btn-background-secondary);
+}
+
+.learnbtn {
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+
+}
+
+.learnbtn_text {
+  color: var(--card-text-secondary);
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.learnIcon {
+  position: relative;
+  top: 5px;
 }
 
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */

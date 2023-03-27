@@ -18,7 +18,7 @@ import Video from "../video";
 import video from "./video.json";
 import Review from "../review";
 import review from "./review.json";
-
+import Green from "@/utilities/green";
 
 const Home = () => {
   return (
@@ -187,22 +187,26 @@ const Home = () => {
         <h2> Golfhōm Hottest New Arrivals </h2>
 
         <div className={HomeCss.arrivalContainer}>
-
           <div>
             <div className={HomeCss.paraHeading}>
-              <p> Lorem Ipsum is simply dummy text of the
+              <p>
+                {" "}
+                Lorem Ipsum is simply dummy text of the
                 <br /> printing and typesetting industry. Lorem
                 <br /> Ipsum has been the industry's standard
-                <br /> dummy text.</p>
+                <br /> dummy text.
+              </p>
 
               <h4> Explore More New Rentals </h4>
             </div>
-            <h6 className={HomeCss.newyork}> The Ritz-Carlton New York, NoMad </h6>
+            <h6 className={HomeCss.newyork}>
+              {" "}
+              The Ritz-Carlton New York, NoMad{" "}
+            </h6>
           </div>
 
-
           <div className={HomeCss.midImage}>
-            <h6 className={HomeCss.midImgTitle}>  Sao Paulo, New york </h6>
+            <h6 className={HomeCss.midImgTitle}> Sao Paulo, New york </h6>
           </div>
 
           <div className={HomeCss.twoImgContainer}>
@@ -213,7 +217,6 @@ const Home = () => {
               <h6 className={HomeCss.resortImg}> The Westin Anaheim Resort </h6>
             </div>
           </div>
-
         </div>
       </Container>
 
@@ -299,7 +302,7 @@ const Home = () => {
 
         <div className={HomeCss.loadbtn}>
           <button className={HomeCss.exclusive_btn}>
-            Load more {" "}
+            Load more{" "}
             <Image
               width={20}
               height={20}
@@ -312,47 +315,40 @@ const Home = () => {
 
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
 
-
       <Row className={HomeCss.blurImg}>
         <Col md={6} className={HomeCss.golfPit}>
-          <div className={HomeCss.golfpitChild}>
-            <Image
-              width={300}
-              height={300}
-              src="/images/golfball.png"
-              alt="Golf Ball"
-              className={HomeCss.golfball}
-            ></Image>
-            <Image
-              width={300}
-              height={300}
-              src="/images/pit.png"
-              alt="Pit"
-              className={HomeCss.pit}
-            ></Image>
-          </div>
+          <Image
+            width={300}
+            height={300}
+            src="/images/golfball.png"
+            alt="Golf Ball"
+            className={HomeCss.golfball}
+          ></Image>
+          <Image
+            width={300}
+            height={300}
+            src="/images/pit.png"
+            alt="Pit"
+            className={HomeCss.pit}
+          ></Image>
         </Col>
 
         <Col md={6} className={HomeCss.golfText}>
-          <div className={HomeCss.vacaDiv}>
-            <h2 className={HomeCss.vacationTitle}>
-              THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-            </h2>
-            <p className={HomeCss.vacationPara}>
-              No more sorting through tangled rental-search results on common
-              vacation rental sites. Golfhōm patrons can search a targeted
-              list of course-vicinity homes, condos, and villas, all by
-              course, tournament, or city. After checking out safely with
-              Stripe, our golfers can ship their clubs via Ship Sticks, book
-              their group’s tee time, buy partner golf swag, and take in great
-              golf articles — all without leaving the platform. We’re
-              transforming how golf travelers locate and book their next
-              luxury rental.
-            </p>
-          </div>
+          <h2 className={HomeCss.vacationTitle}>
+            THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
+          </h2>
+          <p className={HomeCss.vacationPara}>
+            No more sorting through tangled rental-search results on common
+            vacation rental sites. Golfhōm patrons can search a targeted list
+            of course-vicinity homes, condos, and villas, all by course,
+            tournament, or city. After checking out safely with Stripe, our
+            golfers can ship their clubs via Ship Sticks, book their group’s
+            tee time, buy partner golf swag, and take in great golf articles —
+            all without leaving the platform. We’re transforming how golf
+            travelers locate and book their next luxury rental.
+          </p>
         </Col>
       </Row>
-
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
@@ -382,8 +378,11 @@ const Home = () => {
         <h2>Golf Training Videos</h2>
 
         <div className={HomeCss.paraBtn}>
-          <p className={HomeCss.paratext}>Lorem Ipsum is simply dummy text of the printing and typesetting
-            <br /> industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+          <p className={HomeCss.paratext}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            <br /> industry. Lorem Ipsum has been the industry's standard dummy
+            text.
+          </p>
 
           <button className={HomeCss.viewAll}>View All</button>
         </div>
@@ -398,9 +397,7 @@ const Home = () => {
 
         <Review reviews={review} />
       </Container>
-
     </>
-
   );
 };
 
