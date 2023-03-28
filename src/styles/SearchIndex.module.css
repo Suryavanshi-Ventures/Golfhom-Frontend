@@ -33,3 +33,99 @@
 .edit_room_dropdown_icon {
   display: flex;
 }
+
+
+/* -------------------           ORLANDO  SECTION          --------------------------    */
+
+.containerBack {
+  background-color: rgb(249, 249, 249);
+}
+
+.orlandoHead {
+  padding: 32px 0px;
+}
+
+.mainOrland {
+ display: flex;
+ flex-direction: row;
+}
+
+.orlandParent {
+  width: 60%;
+  border-top: 1px solid rgb(225, 220, 220);
+}
+
+.sortSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 22px 0px;
+}
+
+.combo {
+ display: flex;
+}
+
+.text {
+  padding: 18px;
+}
+
+.saddle {
+  color: var(--light-font-color);
+  font-weight: 400;
+  line-height: 21.55px;
+
+}
+.rental {
+
+}
+
+.sort {
+  align-self: center;
+  margin-right: 10px;
+}
+
+.sortdiv {
+  display: flex;
+  margin-right: 20px;
+}
+
+.default {
+
+}
+
+.mapParent {
+
+}
+
+.map {
+  
+}
+
+.iconSmall {
+  display: flex;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.night {
+  color: #B3B3B3;
+}
+
+.amount {
+  color: var(--btn-background);
+}
+
+.btnD {
+  background-color: var(--btn-background);
+  color: var(--white-font-color);
+  margin: 0px 20px;
+  padding: 4px 30px;
+}
+
+.heart {
+  border: 1px solid rgb(225, 220, 220);
+}

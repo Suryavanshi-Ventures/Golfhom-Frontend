@@ -6,6 +6,8 @@ import { Input } from "antd";
 import { DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Space } from "antd";
+import Image from "next/image";
+
 
 const { RangePicker } = DatePicker;
 
@@ -101,6 +103,117 @@ const index = () => {
                 </div>
               </Col>
             </Row>
+          </div>
+        </Container>
+
+        {/* -----------------------            ORLANDO SECTION             ---------------------  */}
+
+        <Container className={Index.containerBack}>
+          <h4 className={Index.orlandoHead}>Orlando</h4>
+
+
+          <div className={Index.mainOrland}>
+            <div className={Index.orlandParent}>
+              <Col className={Index.sortSection}>
+                <h5 className={Index.rental}>150 Rentals</h5>
+
+                <div className={Index.sortdiv}>
+                  <h6 className={Index.sort}>Sort By:</h6>
+
+                  <Dropdown menu={menuProps} className={Index.default}>
+                    <Button
+                      size="large"
+                    >
+                      <Space>
+                        Default order
+                        <DownOutlined />
+                      </Space>
+                    </Button>
+                  </Dropdown>
+                </div>
+              </Col>
+
+              <div className={Index.combo}>
+                <Image
+                  width={200}
+                  height={200}
+                  src="/images/orlandoPool.svg"
+                  alt="orlandoPool"
+                  className={Index.orlandoPool}
+                />
+
+                <div className={Index.text}>
+                  <h5>Hotel Empire Moscow Sokoliki</h5>
+
+                  <p className={Index.saddle}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                  <div className={Index.iconSmall}>
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/images/vector/bed.svg"
+                      alt="Bed"
+                      className={Index.bed}
+                    />
+                    <p>5 Bed Rooms</p>
+
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/images/vector/bath-tub.svg"
+                      alt="bath-tub"
+                      className={Index.bathTub}
+                    />
+                    <p>4 Baths</p>
+
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/images/vector/guest.svg"
+                      alt="guest"
+                      className={Index.guest}
+                    />
+                    <p>5 Guests Villa</p>
+
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/images/vector/parking-area.svg"
+                      alt="Car"
+                      className={Index.car}
+                    />
+                    <p>Parking Area</p>
+                  </div>
+
+
+                  <div className={Index.price}>
+                    <h5 className={Index.amount}>$420/ <span className={Index.night}>Night</span></h5>
+
+                    <div>
+                      <Image
+                        width={20}
+                        height={20}
+                        src="/images/heart.svg"
+                        alt="heart"
+                        className={Index.heart}
+                      />
+
+                      <Button className={Index.btnD}>Details</Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={Index.mapParent}>
+              <Image
+                width={593}
+                height={695}
+                src="/images/mapGroup.svg"
+                alt="Map"
+                className={Index.map}
+              />
+            </div>
           </div>
         </Container>
 
