@@ -19,7 +19,6 @@ import video from "./video.json";
 import Review from "../review";
 import review from "./review.json";
 import Green from "@/utilities/green";
-import ReactPlayer from "react-player";
 
 const Home = () => {
   return (
