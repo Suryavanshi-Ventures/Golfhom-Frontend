@@ -3,6 +3,7 @@ import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
+import ReactPlayer from "react-player";
 
 
 const Video = ({ videos }) => {
