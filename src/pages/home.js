@@ -232,8 +232,7 @@ const Home = () => {
         </main>
       </Container>
 
-      {/* -------------------------------------     Golfhōm Hottest New Arrivals       ---------------------------- */}
-
+      {/* -------------------------------------    Golfhōm Hottest New Arrivals ---------------------------- */}
       <main className={HomeCss.hottest_new_arrival_section}>
         <Container>
           <h2 className={HomeCss.hottest_new_arrival__heading}>
