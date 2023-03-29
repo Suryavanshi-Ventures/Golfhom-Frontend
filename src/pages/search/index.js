@@ -134,81 +134,84 @@ const index = () => {
               </Col>
 
               <div className={Index.combo}>
-                <Image
-                  width={200}
-                  height={200}
-                  src="/images/orlandoPool.svg"
-                  alt="orlandoPool"
-                  className={Index.orlandoPool}
-                />
+                <div>
+                  <Image
+                    fill
+                    src="/images/orlandoPool.svg"
+                    alt="orlandoPool"
+                    className={Index.orlandoImg}
+                  /></div>
 
                 <div className={Index.text}>
-                  <h5>Hotel Empire Moscow Sokoliki</h5>
+                  <div>
+                    <h5>Hotel Empire Moscow Sokoliki</h5>
 
-                  <p className={Index.saddle}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <p className={Index.saddle}>Saddlebrook Resort - Saddlebrook & 1 more</p>
 
-                  <div className={Index.iconSmall}>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/images/vector/bed.svg"
-                      alt="Bed"
-                      className={Index.bed}
-                    />
-                    <p>5 Bed Rooms</p>
+                    <div className={Index.iconSmall}>
+                      <Image
+                        width={18}
+                        height={18}
+                        src="/images/vector/bed.svg"
+                        alt="Bed"
+                        className={Index.bed}
+                      />
+                      <p className={Index.iconName}>5 Bed Rooms</p>
 
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/images/vector/bath-tub.svg"
-                      alt="bath-tub"
-                      className={Index.bathTub}
-                    />
-                    <p>4 Baths</p>
+                      <Image
+                        width={18}
+                        height={18}
+                        src="/images/vector/bath-tub.svg"
+                        alt="bath-tub"
+                        className={Index.bathTub}
+                      />
+                      <p className={Index.iconName}>4 Baths</p>
 
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/images/vector/guest.svg"
-                      alt="guest"
-                      className={Index.guest}
-                    />
-                    <p>5 Guests Villa</p>
+                      <Image
+                        width={18}
+                        height={18}
+                        src="/images/vector/guest.svg"
+                        alt="guest"
+                        className={Index.guest}
+                      />
+                      <p className={Index.iconName}>5 Guests Villa</p>
 
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/images/vector/parking-area.svg"
-                      alt="Car"
-                      className={Index.car}
-                    />
-                    <p>Parking Area</p>
-                  </div>
-
-
-                  <div className={Index.price}>
-                    <h5 className={Index.amount}>$420/ <span className={Index.night}>Night</span></h5>
-
-                    <div>
                       <Image
                         width={20}
                         height={20}
-                        src="/images/heart.svg"
-                        alt="heart"
-                        className={Index.heart}
+                        src="/images/vector/parking-area.svg"
+                        alt="Car"
+                        className={Index.car}
                       />
+                      <p className={Index.iconName}>Parking Area</p>
+                    </div>
+                  </div>
 
+                  <div className={Index.price}>
+                    <div>
+                      <h5 className={Index.amount}>$420/ <span className={Index.night}>Night</span></h5>
+                    </div>
+
+                    <div className={Index.heartBtn}>
+                      <div className={Index.heart}>
+                        <Image
+                          width={20}
+                          height={20}
+                          src="/images/heart.svg"
+                          alt="heart"
+                        />
+                      </div>
                       <Button className={Index.btnD}>Details</Button>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
 
             <div className={Index.mapParent}>
               <Image
-                width={593}
-                height={695}
+                fill
                 src="/images/mapGroup.svg"
                 alt="Map"
                 className={Index.map}

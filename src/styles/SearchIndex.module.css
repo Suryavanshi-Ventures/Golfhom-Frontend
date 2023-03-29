@@ -39,19 +39,26 @@
 
 .containerBack {
   background-color: rgb(249, 249, 249);
+  flex-wrap: wrap;
+  display: flex;
 }
 
 .orlandoHead {
   padding: 32px 0px;
 }
 
+.orlandoImg {
+ position: relative !important;
+ 
+}
+
 .mainOrland {
  display: flex;
  flex-direction: row;
+ flex-wrap: wrap;
 }
 
 .orlandParent {
-  width: 60%;
   border-top: 1px solid rgb(225, 220, 220);
 }
 
@@ -60,14 +67,25 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 22px 0px;
+  flex-wrap: wrap;
 }
 
 .combo {
  display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
+ margin: 10px;
+ background-color: var( --white-background);
 }
 
 .text {
-  padding: 18px;
+  padding: 18px 9px;
+  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .saddle {
@@ -78,6 +96,17 @@
 }
 .rental {
 
+}
+
+.iconImg {
+  display: flex;
+  width: 38%;
+}
+
+.iconName {
+  margin: 0px 10px;
+  font-size: 13.25px;
+  line-height: 21.55px;
 }
 
 .sort {
@@ -95,11 +124,11 @@
 }
 
 .mapParent {
-
+  max-width: 570px;
 }
 
 .map {
-  
+  position: relative !important;
 }
 
 .iconSmall {
@@ -109,10 +138,12 @@
 .price {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .night {
   color: #B3B3B3;
+  font-size: 1rem;
 }
 
 .amount {
@@ -122,10 +153,16 @@
 .btnD {
   background-color: var(--btn-background);
   color: var(--white-font-color);
-  margin: 0px 20px;
+  margin-left: 20px;
   padding: 4px 30px;
 }
 
+.heartBtn {
+  display: flex;
+}
+
 .heart {
-  border: 1px solid rgb(225, 220, 220);
+  border: 2px solid #B3B3B3;
+  border-radius: 5px;
+  padding: 0px 5px;
 }
