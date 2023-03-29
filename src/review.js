@@ -6,26 +6,47 @@ import Image from "next/image";
 import Green from "./utilities/green";
 
 const Review = ({ reviews }) => {
-    return (
-        <Swiper
-            modules={[Navigation, Pagination, A11y]}
-            spaceBetween={50}
-            slidesPerView={3.5}
-            pagination={{ clickable: true }}
-            onSlideChange={() => { }}
-            onSwiper={(swiper) => { }}
-            lg={8}
-            md={3}
-            sm={2}
-            xs={1}
-        >
-            {reviews.map((review) => (
-                <SwiperSlide key={review.id} className={HomeCss.parentReview}>
-                    <Green review={review} />
-                </SwiperSlide>
-            ))}
-        </Swiper>
-    );
+  return (
+    <Swiper
+      modules={[Navigation, Pagination, A11y]}
+      spaceBetween={50}
+      slidesPerView={3}
+      pagination={{ clickable: true }}
+      onSlideChange={() => {}}
+      breakpoints={{
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+        },
+        280: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+        },
+        480: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+        1280: {
+          slidesPerView: 3,
+          spaceBetween: 40,
+        },
+      }}
+    >
+      {reviews.map((review) => (
+        <SwiperSlide key={review.id} className={HomeCss.parentReview}>
+          <Green review={review} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
 };
 
 export default Review;
