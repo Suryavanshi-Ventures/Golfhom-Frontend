@@ -54,6 +54,7 @@
 
 .mainOrland {
  display: flex;
+ justify-content: space-between;
  flex-direction: row;
  flex-wrap: wrap;
 }
@@ -77,6 +78,7 @@
  box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
  margin: 10px;
  background-color: var( --white-background);
+ justify-content: center;
 }
 
 .text {
@@ -133,12 +135,15 @@
 
 .iconSmall {
   display: flex;
+  flex-wrap: wrap;
+  margin: 8px 0px;
 }
 
 .price {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 8px;
 }
 
 .night {
