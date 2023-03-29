@@ -47,7 +47,7 @@ const Video = ({ videos }) => {
             {videos.map((video) => (
                 <SwiperSlide key={video.id} className={HomeCss.parentVideo}>
                     <Card className={HomeCss.videoData}>
-                        <iframe className={HomeCss.videoPlay} layout="fill" src="https://www.youtube.com/embed/vEw3dhAfCBA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe className={HomeCss.videoPlay} layout="fill" src="https://www.youtube.com/embed/vEw3dhAfCBA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </Card>
                     <h6 className={HomeCss.titleShadow}>Video Title</h6>
                 </SwiperSlide>
