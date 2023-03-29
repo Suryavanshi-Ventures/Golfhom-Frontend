@@ -19,8 +19,11 @@ import video from "./video.json";
 import Review from "../review";
 import review from "./review.json";
 import Green from "@/utilities/green";
+import { SearchOutlined } from "@ant-design/icons";
 
 const Home = () => {
+  const onSearch = (value) => console.log(value);
+
   return (
     <>
       <Head>
@@ -116,69 +119,117 @@ const Home = () => {
 
       {/* ---------------------------              SEARCH CONTAINER              ----------------------    */}
 
-      <Container className={HomeCss.searchSection}>
-        <Row className={HomeCss.content}>
-          <h3 className={HomeCss.Title}>
-            Search the World Over by Course
-            <br />
-            (38,000+ in our database) or Tournament
-          </h3>
-
-          <p className={HomeCss.searchPara}>
-            *We're downloading more great Golfhōms each day from our valued
-            channel partners!
-          </p>
-
-          <div className={HomeCss.searchPart}>
-            <div sm={7}>
-              <h5 className={HomeCss.searchGolf}>Search by golf course</h5>
-              <p className={HomeCss.hint}>Choose from thousands world-wide</p>
-
-              <div className={HomeCss.boxes}>
-                <div className={HomeCss.searchbox}>
-                  <input
-                    className={HomeCss.textArea}
-                    xs={6}
-                    md={4}
-                    type="text"
-                    placeholder="Enter Location"
-                  ></input>
-                </div>
-
-                <div className={HomeCss.searchbox}>
-                  <input
-                    className={HomeCss.textArea}
-                    xs={6}
-                    md={4}
-                    type="text"
-                    placeholder="Golf Course"
-                  ></input>
-                </div>
-              </div>
+      <Container>
+        <main className={HomeCss.searchSection}>
+          <div className={HomeCss.content}>
+            <h3 className={HomeCss.Title}>
+              Search the World Over by Course
               <br />
+              (38,000+ in our database) or Tournament
+            </h3>
 
-              <button className={HomeCss.btn}>Search</button>
-            </div>
+            <p className={HomeCss.searchPara}>
+              *We're downloading more great Golfhōms each day from our valued
+              channel partners!
+            </p>
 
-            <div className={HomeCss.tournamentDiv} sm={5}>
-              <h5 className={HomeCss.searchTournaments}>
-                Search By Tournaments
-              </h5>
-              <p className={HomeCss.hint}>
-                Check out our growing list of tour-spot rentals
-              </p>
+            <div className={HomeCss.search_by_golf_containers}>
+              <Row className={HomeCss.search_by_golf_row}>
+                <Col md={6} className={HomeCss.search_by_golf_cols}>
+                  <div className={HomeCss.search_by_golf_input_main_container}>
+                    <h3
+                      className={
+                        HomeCss.search_by_golf_input_container_headings
+                      }
+                    >
+                      Search by golf course
+                    </h3>
+                    <p
+                      className={
+                        HomeCss.search_by_golf_input_container_subheadings
+                      }
+                    >
+                      Choose from thousands world-wide
+                    </p>
 
-              <input
-                className={HomeCss.box}
-                type="text"
-                placeholder="Search by Touraments"
-              ></input>
-              <br />
+                    <div
+                      className={HomeCss.search_by_golf_input_parent_container}
+                    >
+                      <div className={HomeCss.search_by_golf_input_container}>
+                        <Input
+                          placeholder="Enter Location"
+                          prefix={<SearchOutlined />}
+                          className={HomeCss.search_by_golf_inputs}
+                        />
+                      </div>
+                      <div className={HomeCss.search_by_golf_input_container}>
+                        <Input
+                          placeholder="Golf Course"
+                          prefix={<SearchOutlined />}
+                          className={HomeCss.search_by_golf_inputs}
+                        />
+                      </div>
+                    </div>
 
-              <button className={HomeCss.btn}>Search</button>
+                    <div className={HomeCss.search_by_golf_btn_container}>
+                      <Button
+                        className={HomeCss.search_by_golf_btn}
+                        type="primary"
+                      >
+                        SEARCH
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
+
+                <Col md={6} className={HomeCss.search_by_golf_cols}>
+                  <div className={HomeCss.search_by_golf_input_main_container}>
+                    <h3
+                      className={
+                        HomeCss.search_by_golf_input_container_headings
+                      }
+                    >
+                      Search by golf course
+                    </h3>
+                    <p
+                      className={
+                        HomeCss.search_by_golf_input_container_subheadings
+                      }
+                    >
+                      Choose from thousands world-wide
+                    </p>
+
+                    <div
+                      className={HomeCss.search_by_golf_input_parent_container}
+                    >
+                      <div
+                        className={
+                          HomeCss.search_by_golf_input_container_tourni
+                        }
+                      >
+                        <Input
+                          placeholder="Search by Touraments"
+                          prefix={<SearchOutlined />}
+                          className={
+                            HomeCss.search_by_golf_input_search_by_tourni
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className={HomeCss.search_by_golf_btn_container}>
+                    <Button
+                      className={HomeCss.search_by_golf_btn}
+                      type="primary"
+                    >
+                      SEARCH
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
             </div>
           </div>
-        </Row>
+        </main>
       </Container>
 
       {/* -------------------------------------     Golfhōm Hottest New Arrivals       ---------------------------- */}
@@ -226,7 +277,7 @@ const Home = () => {
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
 
-          <Card style={{ width: "24rem" }} className={HomeCss.MainCard}>
+          <Card className={HomeCss.MainCard}>
             <Card.Img
               variant="top"
               className={HomeCss.cardImg}
@@ -245,17 +296,17 @@ const Home = () => {
                 </p>
 
                 <div className={HomeCss.icon}>
-                  <div className="iconImg">
+                  <div className={HomeCss.iconImg}>
                     <Image
                       width={18}
                       height={18}
                       src="/images/vector/bed.svg"
                       alt="iconImage"
                     ></Image>
-                    <span className=" mx-2 ">5 Bed Rooms</span>
+                    <span className={HomeCss.iconImg_spans}>5 Bed Rooms</span>
                   </div>
 
-                  <div className="iconImg">
+                  <div className={HomeCss.iconImg}>
                     <Image
                       width={18}
                       height={18}
@@ -263,10 +314,10 @@ const Home = () => {
                       src="/images/vector/bath-tub.svg"
                       alt="iconImage"
                     ></Image>
-                    <span className=" mx-2 ">4 Baths</span>
+                    <span className={HomeCss.iconImg_spans}>4 Baths</span>
                   </div>
 
-                  <div className="iconImg">
+                  <div className={HomeCss.iconImg}>
                     <Image
                       width={18}
                       height={18}
@@ -274,27 +325,30 @@ const Home = () => {
                       src="/images/vector/guest.svg"
                       alt="iconImage"
                     ></Image>
-                    <span className=" mx-2 ">5 Guests Villa</span>
+                    <span className={HomeCss.iconImg_spans}>
+                      5 Guests Villa
+                    </span>
+                  </div>
+                  <div className={HomeCss.iconImg}>
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/images/vector/parking-area.svg"
+                      alt="iconImage"
+                    ></Image>
+                    <span className={HomeCss.iconImg_spans}>Parking Area</span>
                   </div>
                 </div>
 
                 <div className={HomeCss.parking}>
                   <Image
                     width={20}
-                    height={20}
-                    src="/images/vector/parking-area.svg"
+                    height={14}
+                    className={HomeCss.rightArrow}
+                    src="/images/vector/right_Arrow.svg"
                     alt="iconImage"
                   ></Image>
-                  <span className=" mx-2 ">Parking Area</span>
                 </div>
-
-                <Image
-                  width={20}
-                  height={14}
-                  className={HomeCss.rightArrow}
-                  src="/images/vector/right_Arrow.svg"
-                  alt="iconImage"
-                ></Image>
               </div>
             </Card.Body>
           </Card>
@@ -315,40 +369,49 @@ const Home = () => {
 
       {/* ------------------------------       VACATION-RENTAL   -------------------- */}
 
-      <Row className={HomeCss.blurImg}>
-        <Col md={6} className={HomeCss.golfPit}>
-          <Image
-            width={300}
-            height={300}
-            src="/images/golfball.png"
-            alt="Golf Ball"
-            className={HomeCss.golfball}
-          ></Image>
-          <Image
-            width={300}
-            height={300}
-            src="/images/pit.png"
-            alt="Pit"
-            className={HomeCss.pit}
-          ></Image>
-        </Col>
+      <div className={HomeCss.blurImg}>
+        <Container>
+          <Row>
+            <Col md={6} className={HomeCss.golf_section_cols}>
+              <div className={HomeCss.golfPit_container}>
+                <Image
+                  width={300}
+                  height={300}
+                  src="/images/golfball.png"
+                  alt="Golf Ball"
+                  className={HomeCss.golfball}
+                ></Image>
+                <Image
+                  width={300}
+                  height={300}
+                  src="/images/pit.png"
+                  alt="Pit"
+                  className={HomeCss.pit}
+                ></Image>
+              </div>
+            </Col>
 
-        <Col md={6} className={HomeCss.golfText}>
-          <h2 className={HomeCss.vacationTitle}>
-            THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-          </h2>
-          <p className={HomeCss.vacationPara}>
-            No more sorting through tangled rental-search results on common
-            vacation rental sites. Golfhōm patrons can search a targeted list
-            of course-vicinity homes, condos, and villas, all by course,
-            tournament, or city. After checking out safely with Stripe, our
-            golfers can ship their clubs via Ship Sticks, book their group’s
-            tee time, buy partner golf swag, and take in great golf articles —
-            all without leaving the platform. We’re transforming how golf
-            travelers locate and book their next luxury rental.
-          </p>
-        </Col>
-      </Row>
+            <Col md={6} className={HomeCss.golf_section_cols}>
+              <div className={HomeCss.golfText_container}>
+                <h2 className={HomeCss.vacationTitle}>
+                  THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
+                </h2>
+                <p className={HomeCss.vacationPara}>
+                  No more sorting through tangled rental-search results on
+                  common vacation rental sites. Golfhōm patrons can search a
+                  targeted list of course-vicinity homes, condos, and villas,
+                  all by course, tournament, or city. After checking out safely
+                  with Stripe, our golfers can ship their clubs via Ship Sticks,
+                  book their group’s tee time, buy partner golf swag, and take
+                  in great golf articles — all without leaving the platform.
+                  We’re transforming how golf travelers locate and book their
+                  next luxury rental.
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 

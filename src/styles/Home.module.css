@@ -126,31 +126,84 @@
 
 /* --------------------------------------- SEARCH CONTAINER ----------------------------------  */
 
+.search_by_golf_containers {
+}
+.search_by_golf_input_parent_container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.search_by_golf_cols {
+  margin-bottom: 2rem;
+}
+
+.search_by_golf_input_container {
+  width: 100%;
+  max-width: 250px;
+}
+
+.search_by_golf_input_container_tourni {
+  width: 100%;
+}
+
+.search_by_golf_input_search_by_tourni {
+  flex-direction: row-reverse;
+  height: 45px;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  font-family: var(--font-dm-sans);
+}
+
+.search_by_golf_btn {
+  height: auto;
+  background-color: var(--btn-background-secondary);
+  padding: 0.6rem 2rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-family: var(--font-dm-sans);
+  letter-spacing: 1px;
+  font-size: 17px;
+}
+
 .searchSection {
-  margin-top: 40px;
   background-image: url(../../public/images/shot.png);
   background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
+  background-size: cover;
+  min-height: 500px;
+  padding: 5rem;
+}
+.search_by_golf_inputs {
+  flex-direction: row-reverse;
+  height: 45px;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  font-family: var(--font-dm-sans);
 }
 
 .content {
   color: var(--white-font-color);
-
-  width: 96%;
-  height: 63.5%;
 }
 
 .Title {
   line-height: 3.3pc;
+  font-family: var(--font-dm-sans);
 }
 
 .searchPara {
   line-height: 2.4pc;
   font-weight: 300;
   letter-spacing: 0.4px;
+  font-family: var(--font-dm-sans);
 }
 
+.search_by_golf_input_container_headings {
+  font-family: var(--font-dm-sans);
+}
+.search_by_golf_input_container_subheadings {
+  font-family: var(--font-dm-sans);
+}
 .searchPart {
   display: flex;
   justify-content: space-evenly;
@@ -309,17 +362,26 @@
 
 .MainCard {
   margin: 36px 0px;
+  max-width: 400px;
 }
 
 .icon {
-  display: -webkit-inline-box;
+  display: flex;
+  flex-wrap: wrap;
   color: var(--light-font-color);
   margin-bottom: 0.6rem;
 }
 
 .iconImg {
   display: flex;
-  width: 38%;
+  margin-right: 15px;
+  align-items: center;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+.iconImg_spans {
+  font-size: 13px;
+  margin: 0 7px;
 }
 
 .parking {
@@ -349,74 +411,52 @@
 
 .blurImg {
   background-image: url(/images/background.png);
-  height: 632px;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  padding: 5rem 0;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
 }
 
-.golfPit {
-  height: auto;
+.golf_section_cols {
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: center;
-  align-self: flex-end;
-  flex-wrap: wrap;
-  flex: 1 1 25%;
-  position: absolute;
-  left: 124px;
-  bottom: 77px;
+  margin-bottom: 1rem;
+}
+.golfText_container {
+}
+.golfPit_container {
+  text-align: center;
 }
 
 .golfText {
-  display: grid;
-  grid-template-rows: 315px 315px;
-  position: absolute;
-  right: 0px;
 }
 
 .golfpitChild {
-
 }
 
 .pitImg {
 }
 
 .pit {
- 
 }
 
 .golfball {
-  position: absolute;
-  left: 68px;
 }
 
 .vacaDiv {
-  
 }
 
 .vacationTitle {
-  color: #2f2f2f;
-  width: 70%;
-  line-height: 46px;
-  font-size: 36px;
-  text-align: left;
-  vertical-align: middle;
-  align-self: end;
-  display: grid;
-  position: absolute;
-  top: 175px;
+  font-family: var(--font-dm-sans);
+  margin-bottom: 2rem;
 }
 
 .vacationPara {
-  line-height: 44.7px;
-  text-align: left;
-  vertical-align: middle;
-  font-weight: 400;
-  width: 80%;
-  align-self:self-start;
-  position: absolute;
-  bottom: 55px;
+  font-family: var(--font-dm-sans);
+  line-height: 2;
 }
 
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
@@ -553,12 +593,12 @@
 .contact_div {
   margin-bottom: 3px;
   position: relative;
-  right: 4px
+  right: 4px;
 }
 
 .bookmarkDiv {
   position: relative;
-  right: 1px
+  right: 1px;
 }
 
 .card_title {
@@ -578,9 +618,8 @@
 
 .learnbtn {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 10px;
-
 }
 
 .learnbtn_text {
@@ -595,14 +634,15 @@
   top: 5px;
 }
 
-
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .search_cols_4 {
     margin-bottom: 1.5rem;
   }
+}
 
-  .blurImg {
-    height: auto;
+@media only screen and (max-width: 768px) {
+  .search_bar_container {
+    max-width: 360px;
   }
 }
