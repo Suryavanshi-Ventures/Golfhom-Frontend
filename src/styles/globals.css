@@ -10,13 +10,30 @@
   --white-font-color: #ffffff;
   --white-background: #ffffff;
   --dark-grey-color: #747474;
-  --dash-border-color: #B6B6B6;
-  --card-text-color: #A7A7A7;
-  --card-text-secondary: #A4A4A4;
+  --dash-border-color: #b6b6b6;
+  --card-text-color: #a7a7a7;
+  --card-text-secondary: #a4a4a4;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: var(--btn-background);
+  transition-duration: 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  transition-duration: 0.3s;
+  background: var(--btn-background-secondary);
 }

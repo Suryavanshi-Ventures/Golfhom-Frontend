@@ -167,6 +167,10 @@
   font-size: 17px;
 }
 
+.search_by_golf_course_Section {
+  margin: 5rem 0;
+}
+
 .searchSection {
   background-image: url(../../public/images/shot.png);
   background-repeat: no-repeat;
@@ -450,13 +454,14 @@
 .golf_section_cols {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
+  /* justify-content: center; */
+  margin-bottom: 3rem;
 }
 .golfText_container {
 }
 .golfPit_container {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .golfText {
@@ -502,7 +507,8 @@
 }
 
 .parentAds {
-  min-width: 130px;
+  /* min-width: 130px; */
+  text-align: center;
 }
 
 .logo {
@@ -516,7 +522,6 @@
   height: 68vh;
   background-repeat: no-repeat;
   border-radius: 16px;
-  width: 98%;
   display: grid;
   place-items: center;
   background-size: cover;
@@ -558,6 +563,7 @@
   padding: 10px 30px;
   border-radius: 5px;
   align-self: center;
+  margin-top: 3rem;
 }
 
 /* ------------------------------------        TRAINING VIDEOS       --------------------------------           */
@@ -583,7 +589,7 @@
 
 .parentVideo {
   padding: 40px 0px;
-  min-width: 300px;
+  /* min-width: 300px; */
 }
 
 .videoImg {
@@ -611,7 +617,7 @@
 .cardTextParent {
   overflow: hidden;
   background: var(--white-background);
-  width: 85%;
+  width: 70%;
   padding: 16px;
   position: absolute;
   top: 206px;
