@@ -247,8 +247,30 @@
 
 /* ------------------------------        Golfhōm Hottest New Arrivals         ------------------------------       */
 
+.hottest_new_arrival_section {
+  margin: 5rem 0;
+}
+
+.hottest_new_arrival__heading {
+  font-family: var(--font-dm-sans);
+  margin-bottom: 2rem;
+}
+
 .paraHeading {
-  margin-bottom: 30px;
+  margin-bottom: 45px;
+}
+.subHeading {
+  font-family: var(--font-dm-sans);
+  /* margin-bottom: 2rem; */
+}
+
+.explore_more_container {
+  display: flex;
+}
+.explore_more_arrow_icon {
+  color: black;
+  margin-left: 10px;
+  font-size: 25px;
 }
 
 .arrivalContainer {
@@ -266,6 +288,11 @@
   transition: all 0.2 linear;
 }
 
+.arrivalContainer_child {
+  width: 100%;
+  max-width: 400px;
+}
+
 .newyork {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
     url(/images/settingArea.svg);
@@ -278,7 +305,6 @@
   font-size: 20px;
   align-items: self-end;
   border-radius: 12px;
-  min-width: 422px;
   justify-content: flex-start;
   padding-bottom: 30px;
   padding-left: 24px;
@@ -287,6 +313,8 @@
 .midImage {
   display: flex;
   place-self: self-end;
+  width: 100%;
+  max-width: 400px;
 }
 
 .midImgTitle {
@@ -301,15 +329,17 @@
   font-size: 20px;
   align-items: self-end;
   border-radius: 12px;
-  min-width: 400px;
   justify-content: flex-start;
   padding-bottom: 30px;
+  width: 100%;
   padding-left: 24px;
 }
 
 .twoImgContainer {
   display: grid;
   place-self: end;
+  width: 100%;
+  max-width: 400px;
 }
 
 .madridImg {
@@ -324,7 +354,6 @@
   font-size: 20px;
   align-items: self-end;
   border-radius: 12px;
-  min-width: 422px;
   justify-content: flex-start;
   padding-bottom: 30px;
   padding-left: 24px;
@@ -342,7 +371,6 @@
   font-size: 20px;
   align-items: self-end;
   border-radius: 12px;
-  min-width: 422px;
   justify-content: flex-start;
   padding-bottom: 30px;
   padding-left: 24px;

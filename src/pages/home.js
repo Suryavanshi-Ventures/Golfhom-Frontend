@@ -18,8 +18,8 @@ import Video from "../video";
 import video from "./video.json";
 import Review from "../review";
 import review from "./review.json";
-import Green from "@/utilities/green";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 const Home = () => {
   const onSearch = (value) => console.log(value);
@@ -234,42 +234,56 @@ const Home = () => {
 
       {/* -------------------------------------     Golfhōm Hottest New Arrivals       ---------------------------- */}
 
-      <Container>
-        <h2> Golfhōm Hottest New Arrivals </h2>
+      <main className={HomeCss.hottest_new_arrival_section}>
+        <Container>
+          <h2 className={HomeCss.hottest_new_arrival__heading}>
+            Golfhōm Hottest New Arrivals
+          </h2>
+          <div className={HomeCss.arrivalContainer}>
+            <div className={HomeCss.arrivalContainer_child}>
+              <div className={HomeCss.paraHeading}>
+                <p className={HomeCss.subHeading}>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text.
+                </p>
 
-        <div className={HomeCss.arrivalContainer}>
-          <div>
-            <div className={HomeCss.paraHeading}>
-              <p>
-                {" "}
-                Lorem Ipsum is simply dummy text of the
-                <br /> printing and typesetting industry. Lorem
-                <br /> Ipsum has been the industry's standard
-                <br /> dummy text.
-              </p>
-
-              <h4> Explore More New Rentals </h4>
+                <div className={HomeCss.explore_more_container}>
+                  <h4 className={HomeCss.subHeading}>
+                    Explore More New Rentals{" "}
+                  </h4>
+                  <div className={HomeCss.explore_more_arrow_container}>
+                    <Link href="/">
+                      <ArrowRightOutlined
+                        className={HomeCss.explore_more_arrow_icon}
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <h6 className={HomeCss.newyork}>
+                The Ritz-Carlton New York, NoMad
+              </h6>
             </div>
-            <h6 className={HomeCss.newyork}>
-              {" "}
-              The Ritz-Carlton New York, NoMad{" "}
-            </h6>
-          </div>
 
-          <div className={HomeCss.midImage}>
-            <h6 className={HomeCss.midImgTitle}> Sao Paulo, New york </h6>
-          </div>
+            <div className={HomeCss.midImage}>
+              <h6 className={HomeCss.midImgTitle}> Sao Paulo, New york </h6>
+            </div>
 
-          <div className={HomeCss.twoImgContainer}>
-            <div>
-              <h6 className={HomeCss.madridImg}> The Madrid EDITION</h6>
-            </div>
-            <div>
-              <h6 className={HomeCss.resortImg}> The Westin Anaheim Resort </h6>
+            <div className={HomeCss.twoImgContainer}>
+              <div>
+                <h6 className={HomeCss.madridImg}> The Madrid EDITION</h6>
+              </div>
+              <div>
+                <h6 className={HomeCss.resortImg}>
+                  {" "}
+                  The Westin Anaheim Resort{" "}
+                </h6>
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </main>
 
       {/* --------------------------------------    CARD SECTION   -----------------------------   */}
 
