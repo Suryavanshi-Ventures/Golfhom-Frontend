@@ -7,11 +7,16 @@ import { DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Space } from "antd";
 import Image from "next/image";
-
+import { Pagination } from "antd";
+import Link from "next/link";
 
 const { RangePicker } = DatePicker;
 
 const index = () => {
+  const onChange = (pageNumber) => {
+    console.log("Page: ", pageNumber);
+  };
+
   const handleMenuClick = (e) => {
     console.log("click", e);
   };
@@ -43,183 +48,200 @@ const index = () => {
 
       {/********** EDIT DETAILS SECTION  ***********/}
       <section>
-        <Container>
-          <div className={Index.edit_details_main_container}>
-            <Row className={Index.edit_details_container_row}>
-              <Col md={3} className={Index.edit_details_container_cols}>
-                <div className={Index.edit_details_divs}>
-                  <p className={Index.edit_details_titles}>Destination</p>
+        <main className={Index.edit_details_main_section}>
+          <Container>
+            <div className={Index.edit_details_main_container}>
+              <Row className={Index.edit_details_container_row}>
+                <Col md={3} className={Index.edit_details_container_cols}>
+                  <div className={Index.edit_details_divs}>
+                    <p className={Index.edit_details_titles}>Destination</p>
 
-                  <div className={Index.edit_details_inputs_container}>
-                    <Input
-                      size="large"
-                      className={Index.edit_details_inputs}
-                      placeholder="Basic usage"
-                    />
-                  </div>
-                </div>
-              </Col>
-              <Col md={3} className={Index.edit_details_container_cols}>
-                <div className={Index.edit_details_divs}>
-                  <p className={Index.edit_details_titles}>
-                    Stay Dates (1 Night)
-                  </p>
-
-                  <div className={Index.edit_details_inputs_container}>
-                    <RangePicker
-                      size="large"
-                      className={Index.edit_details_date_picker}
-                    />
-                  </div>
-                </div>
-              </Col>
-              <Col md={3} className={Index.edit_details_container_cols}>
-                <div className={Index.edit_details_divs}>
-                  <p className={Index.edit_details_titles}>Room & Guests</p>
-                  <div className={Index.edit_details_inputs_container}>
-                    <Dropdown menu={menuProps}>
-                      <Button
+                    <div className={Index.edit_details_inputs_container}>
+                      <Input
                         size="large"
-                        className={Index.edit_room_dropdown_btn}
-                      >
-                        <Space className={Index.edit_room_dropdown_btn_space}>
-                          Button Drop Down
-                          <DownOutlined
-                            className={Index.edit_room_dropdown_icon}
-                          />
+                        className={Index.edit_details_inputs}
+                        placeholder="Basic usage"
+                      />
+                    </div>
+                  </div>
+                </Col>
+                <Col md={3} className={Index.edit_details_container_cols}>
+                  <div className={Index.edit_details_divs}>
+                    <p className={Index.edit_details_titles}>
+                      Stay Dates (1 Night)
+                    </p>
+
+                    <div className={Index.edit_details_inputs_container}>
+                      <RangePicker
+                        size="large"
+                        className={Index.edit_details_date_picker}
+                      />
+                    </div>
+                  </div>
+                </Col>
+                <Col md={3} className={Index.edit_details_container_cols}>
+                  <div className={Index.edit_details_divs}>
+                    <p className={Index.edit_details_titles}>Room & Guests</p>
+                    <div className={Index.edit_details_inputs_container}>
+                      <Dropdown menu={menuProps}>
+                        <Button
+                          size="large"
+                          className={Index.edit_room_dropdown_btn}
+                        >
+                          <Space className={Index.edit_room_dropdown_btn_space}>
+                            Button Drop Down
+                            <DownOutlined
+                              className={Index.edit_room_dropdown_icon}
+                            />
+                          </Space>
+                        </Button>
+                      </Dropdown>
+                    </div>
+                  </div>
+                </Col>
+                <Col md={3} className={Index.edit_details_container_cols}>
+                  <div className={Index.edit_details_btn_parent_container}>
+                    <div className={Index.edit_details_btn_child_container}>
+                      <Button size="large" className={Index.edit_details_btn}>
+                        Edit
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        </main>
+
+        {/* -----------------------            ORLANDO SECTION             ---------------------  */}
+
+        <main className={Index.search_main_section}>
+          <Container>
+            <h4 className={Index.orlandoHead}>Orlando</h4>
+          </Container>
+          <Container className={Index.containerBack}>
+            <div className={Index.mainOrland}>
+              <div className={Index.orlandParent}>
+                <Col className={Index.sortSection}>
+                  <h5 className={Index.rental}>150 Rentals</h5>
+
+                  <div className={Index.sortdiv}>
+                    <h6 className={Index.sort}>Sort By:</h6>
+
+                    <Dropdown menu={menuProps} className={Index.default}>
+                      <Button size="large">
+                        <Space>
+                          Default order
+                          <DownOutlined />
                         </Space>
                       </Button>
                     </Dropdown>
                   </div>
-                </div>
-              </Col>
-              <Col md={3} className={Index.edit_details_container_cols}>
-                <div className={Index.edit_details_btn_parent_container}>
-                  <div className={Index.edit_details_btn_child_container}>
-                    <Button size="large" className={Index.edit_details_btn}>
-                      Edit
-                    </Button>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </Container>
+                </Col>
 
-        {/* -----------------------            ORLANDO SECTION             ---------------------  */}
-
-        <Container className={Index.containerBack}>
-          <h4 className={Index.orlandoHead}>Orlando</h4>
-
-
-          <div className={Index.mainOrland}>
-            <div className={Index.orlandParent}>
-              <Col className={Index.sortSection}>
-                <h5 className={Index.rental}>150 Rentals</h5>
-
-                <div className={Index.sortdiv}>
-                  <h6 className={Index.sort}>Sort By:</h6>
-
-                  <Dropdown menu={menuProps} className={Index.default}>
-                    <Button
-                      size="large"
-                    >
-                      <Space>
-                        Default order
-                        <DownOutlined />
-                      </Space>
-                    </Button>
-                  </Dropdown>
-                </div>
-              </Col>
-
-              <div className={Index.combo}>
-                <div>
-                  <Image
-                    fill
-                    src="/images/orlandoPool.svg"
-                    alt="orlandoPool"
-                    className={Index.orlandoImg}
-                  /></div>
-
-                <div className={Index.text}>
+                <div className={Index.combo}>
                   <div>
-                    <h5>Hotel Empire Moscow Sokoliki</h5>
-
-                    <p className={Index.saddle}>Saddlebrook Resort - Saddlebrook & 1 more</p>
-
-                    <div className={Index.iconSmall}>
-                      <Image
-                        width={18}
-                        height={18}
-                        src="/images/vector/bed.svg"
-                        alt="Bed"
-                        className={Index.bed}
-                      />
-                      <p className={Index.iconName}>5 Bed Rooms</p>
-
-                      <Image
-                        width={18}
-                        height={18}
-                        src="/images/vector/bath-tub.svg"
-                        alt="bath-tub"
-                        className={Index.bathTub}
-                      />
-                      <p className={Index.iconName}>4 Baths</p>
-
-                      <Image
-                        width={18}
-                        height={18}
-                        src="/images/vector/guest.svg"
-                        alt="guest"
-                        className={Index.guest}
-                      />
-                      <p className={Index.iconName}>5 Guests Villa</p>
-
-                      <Image
-                        width={20}
-                        height={20}
-                        src="/images/vector/parking-area.svg"
-                        alt="Car"
-                        className={Index.car}
-                      />
-                      <p className={Index.iconName}>Parking Area</p>
-                    </div>
+                    <Image
+                      fill
+                      src="/images/orlandoPool.svg"
+                      alt="orlandoPool"
+                      className={Index.orlandoImg}
+                    />
                   </div>
 
-                  <div className={Index.price}>
+                  <div className={Index.text}>
                     <div>
-                      <h5 className={Index.amount}>$420/ <span className={Index.night}>Night</span></h5>
-                    </div>
+                      <h5>Hotel Empire Moscow Sokoliki</h5>
 
-                    <div className={Index.heartBtn}>
-                      <div className={Index.heart}>
+                      <p className={Index.saddle}>
+                        Saddlebrook Resort - Saddlebrook & 1 more
+                      </p>
+
+                      <div className={Index.iconSmall}>
+                        <Image
+                          width={18}
+                          height={18}
+                          src="/images/vector/bed.svg"
+                          alt="Bed"
+                          className={Index.bed}
+                        />
+                        <p className={Index.iconName}>5 Bed Rooms</p>
+
+                        <Image
+                          width={18}
+                          height={18}
+                          src="/images/vector/bath-tub.svg"
+                          alt="bath-tub"
+                          className={Index.bathTub}
+                        />
+                        <p className={Index.iconName}>4 Baths</p>
+
+                        <Image
+                          width={18}
+                          height={18}
+                          src="/images/vector/guest.svg"
+                          alt="guest"
+                          className={Index.guest}
+                        />
+                        <p className={Index.iconName}>5 Guests Villa</p>
+
                         <Image
                           width={20}
                           height={20}
-                          src="/images/heart.svg"
-                          alt="heart"
+                          src="/images/vector/parking-area.svg"
+                          alt="Car"
+                          className={Index.car}
                         />
+                        <p className={Index.iconName}>Parking Area</p>
                       </div>
-                      <Button className={Index.btnD}>Details</Button>
+                    </div>
+
+                    <div className={Index.price}>
+                      <div>
+                        <h5 className={Index.amount}>
+                          $420/ <span className={Index.night}>Night</span>
+                        </h5>
+                      </div>
+
+                      <div className={Index.heartBtn}>
+                        <div className={Index.heart}>
+                          <Link href="/">
+                            <Image
+                              width={20}
+                              height={20}
+                              src="/images/heart.svg"
+                              alt="heart"
+                            />
+                          </Link>
+                        </div>
+                        <Button className={Index.btnD}>Details</Button>
+                      </div>
                     </div>
                   </div>
-
                 </div>
               </div>
-            </div>
 
-            <div className={Index.mapParent}>
-              <Image
-                fill
-                src="/images/mapGroup.svg"
-                alt="Map"
-                className={Index.map}
+              <div className={Index.mapParent}>
+                <Image
+                  fill
+                  src="/images/mapGroup.svg"
+                  alt="Map"
+                  className={Index.map}
+                />
+              </div>
+            </div>
+            <div className={Index.pagination_container}>
+              <Pagination
+                colorText="#FF0000"
+                showQuickJumper
+                defaultCurrent={2}
+                total={500}
+                onChange={onChange}
+                className={Index.pagination}
               />
             </div>
-          </div>
-        </Container>
-
+          </Container>
+        </main>
       </section>
     </>
   );

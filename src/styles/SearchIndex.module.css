@@ -1,3 +1,7 @@
+.edit_details_main_section {
+  margin: 3rem 0;
+}
+
 .edit_details_container_cols {
   margin-bottom: 1.5rem;
 }
@@ -34,11 +38,11 @@
   display: flex;
 }
 
-
 /* -------------------           ORLANDO  SECTION          --------------------------    */
-
-.containerBack {
+.search_main_section {
   background-color: rgb(249, 249, 249);
+}
+.containerBack {
   flex-wrap: wrap;
   display: flex;
 }
@@ -48,15 +52,15 @@
 }
 
 .orlandoImg {
- position: relative !important;
- 
+  position: relative !important;
+  object-fit: cover;
 }
 
 .mainOrland {
- display: flex;
- justify-content: space-between;
- flex-direction: row;
- flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .orlandParent {
@@ -72,13 +76,20 @@
 }
 
 .combo {
- display: flex;
- flex-wrap: wrap;
- justify-content: space-between;
- box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
- margin: 10px;
- background-color: var( --white-background);
- justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
+  margin: 10px;
+  background-color: var(--white-background);
+  justify-content: center;
+  min-height: 280px;
+  transition-duration: 0.3s;
+}
+
+.combo:hover {
+  transition-duration: 0.3s;
+  transform: scale(1.02);
 }
 
 .text {
@@ -94,10 +105,8 @@
   color: var(--light-font-color);
   font-weight: 400;
   line-height: 21.55px;
-
 }
 .rental {
-
 }
 
 .iconImg {
@@ -122,7 +131,6 @@
 }
 
 .default {
-
 }
 
 .mapParent {
@@ -147,7 +155,7 @@
 }
 
 .night {
-  color: #B3B3B3;
+  color: #b3b3b3;
   font-size: 1rem;
 }
 
@@ -167,7 +175,14 @@
 }
 
 .heart {
-  border: 2px solid #B3B3B3;
+  border: 2px solid #b3b3b3;
   border-radius: 5px;
   padding: 0px 5px;
+}
+
+.pagination_container {
+  margin: 5rem 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

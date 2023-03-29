@@ -23,11 +23,11 @@ const Review = ({ reviews }) => {
           spaceBetween: 40,
         },
         480: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 40,
         },
         768: {
-          slidesPerView: 3,
+          slidesPerView: 2,
           spaceBetween: 40,
         },
         1024: {
