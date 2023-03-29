@@ -9,7 +9,7 @@ const Video = ({ videos }) => {
         <Swiper
             modules={[Navigation, Pagination, A11y]}
             spaceBetween={50}
-            slidesPerView={3.5}
+            slidesPerView={2}
             pagination={{ clickable: true }}
             onSlideChange={() => { }}
             onSwiper={(swiper) => { }}
@@ -20,14 +20,8 @@ const Video = ({ videos }) => {
         >
             {videos.map((video) => (
                 <SwiperSlide key={video.id} className={HomeCss.parentVideo}>
-                    <Image
-                        className={HomeCss.videoImg}
-                        src={video.image}
-                        alt={video.name}
-                        width={400}
-                        height={280} >
-                    </Image>
-                    <h6>{video.name}</h6>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/UDVtMYqUAyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <h6>Title</h6>
                 </SwiperSlide>
             ))}
         </Swiper>

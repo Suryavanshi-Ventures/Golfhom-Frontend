@@ -473,7 +473,10 @@ const Home = () => {
 
         <Review reviews={review} />
       </Container>
+
     </>
+
+
   );
 };
 
