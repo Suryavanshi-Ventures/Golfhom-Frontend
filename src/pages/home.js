@@ -459,8 +459,7 @@ const Home = () => {
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
       <Container className={HomeCss.videoContain}>
-        <h2>Golf Training Videos</h2>
-
+        <h2 className={HomeCss.golf_training_heading}>Golf Training Videos</h2>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -481,10 +480,7 @@ const Home = () => {
 
         <Review reviews={review} />
       </Container>
-
     </>
-
-
   );
 };
 

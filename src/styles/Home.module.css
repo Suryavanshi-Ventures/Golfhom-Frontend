@@ -536,11 +536,11 @@
   height: 68vh;
   background-repeat: no-repeat;
   border-radius: 16px;
-  width: 98%;
+  width: 100%;
   display: grid;
   place-items: center;
   background-size: cover;
-  grid-template-rows: 180px 96px 56px;
+  grid-template-rows: 230px 125px 30px;
 }
 
 .extitle {
@@ -568,8 +568,8 @@
 
 /* ------------------------------------        TRAINING VIDEOS       --------------------------------           */
 
-.videoContain {
-  margin: 50px 0px;
+.golf_training_heading {
+  font-family: var(--font-dm-sans);
 }
 
 .paraBtn {
