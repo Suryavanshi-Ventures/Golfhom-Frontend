@@ -596,6 +596,26 @@
   border-radius: 12px;
 }
 
+.videoData {
+  height: 600px;
+  border: none;
+}
+
+.videoPlay {
+  border-radius: 12px;
+  height: 300px;
+}
+
+.titleShadow {
+  position: relative;
+  bottom: 38px;
+  left: 36px;
+  color: var(--white-font-color);
+  width: fit-content;
+  font-size: 21px;
+  font-weight: 500;
+}
+
 /* -----------------------------------        STAFF N WRITERS       -------------------------------              */
 
 .parentOf_img_textCard {

@@ -3,6 +3,7 @@ import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
+import { Card } from "react-bootstrap";
 
 const Video = ({ videos }) => {
     return (
@@ -45,8 +46,10 @@ const Video = ({ videos }) => {
         >
             {videos.map((video) => (
                 <SwiperSlide key={video.id} className={HomeCss.parentVideo}>
-                    <iframe src="https://www.youtube.com/embed/UDVtMYqUAyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <h6>{video.name}</h6>
+                    <Card className={HomeCss.videoData}>
+                        <iframe className={HomeCss.videoPlay} layout="fill" src="https://www.youtube.com/embed/vEw3dhAfCBA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </Card>
+                    <h6 className={HomeCss.titleShadow}>Video Title</h6>
                 </SwiperSlide>
             ))}
         </Swiper>
