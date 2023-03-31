@@ -118,11 +118,11 @@ const index = () => {
         <main className={Index.search_main_section}>
           <Container>
             <h4 className={Index.orlandoHead}>Orlando</h4>
-          </Container>
-          <Container className={Index.containerBack}>
-            <div className={Index.mainOrland}>
+
+            <hr style={{ width: "50%" }} />
+            <Container className={Index.mainOrland}>
               <div className={Index.orlandParent}>
-                <Col className={Index.sortSection}>
+                <div className={Index.sortSection} style={{ width: "50%" }}>
                   <h5 className={Index.rental}>150 Rentals</h5>
 
                   <div className={Index.sortdiv}>
@@ -137,99 +137,302 @@ const index = () => {
                       </Button>
                     </Dropdown>
                   </div>
-                </Col>
+                </div>
 
-                <div className={Index.combo}>
-                  <div>
+
+                {/*    ----------------      CARD MAP SECTION      -------------------   */}
+
+                <Row className={Index.cardMapParent}>
+                  <Col md={7} className={Index.cardCol}>
+
+                    <Row className={Index.cardMap}>
+                      <Col className={Index.cardImage}>
+                        <Image
+                          fill
+                          src="/images/orlandoPool.svg"
+                          alt="orlandoPool"
+                          className={Index.orlandoImg}
+                        />
+                      </Col>
+
+                      <Col className={Index.textParent}>
+                        <div>
+                          <h5>Hotel Empire Moscow Sokoliki</h5>
+
+                          <p className={Index.saddle}>
+                            Saddlebrook Resort - Saddlebrook & 1 more
+                          </p>
+
+                          <div className={Index.iconSmall}>
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/bed.svg"
+                                alt="Bed"
+                                className={Index.bed}
+                              />
+                              <p className={Index.iconName}>5 Bed Rooms</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/bath-tub.svg"
+                                alt="bath-tub"
+                                className={Index.bathTub}
+                              />
+                              <p className={Index.iconName}>4 Baths</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/guest.svg"
+                                alt="guest"
+                                className={Index.guest}
+                              />
+                              <p className={Index.iconName}>5 Guests Villa</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={20}
+                                height={20}
+                                src="/images/vector/parking-area.svg"
+                                alt="Car"
+                                className={Index.car}
+                              />
+                              <p className={Index.iconName}>Parking Area</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className={Index.price}>
+                          <div>
+                            <h5 className={Index.amount}>
+                              $420/ <span className={Index.night}>Night</span>
+                            </h5>
+                          </div>
+
+                          <div className={Index.heartBtn}>
+                            <div className={Index.heart}>
+                              <Link href="/">
+                                <Image
+                                  width={20}
+                                  height={20}
+                                  src="/images/heart.svg"
+                                  alt="heart"
+                                />
+                              </Link>
+                            </div>
+                            <Button className={Index.btnD}>Details</Button>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+
+                    <Row className={Index.cardMap}>
+                      <Col className={Index.cardImage}>
+                        <Image
+                          fill
+                          src="/images/orlandoPool.svg"
+                          alt="orlandoPool"
+                          className={Index.orlandoImg}
+                        />
+                      </Col>
+
+                      <Col className={Index.textParent}>
+                        <div>
+                          <h5>Hotel Empire Moscow Sokoliki</h5>
+
+                          <p className={Index.saddle}>
+                            Saddlebrook Resort - Saddlebrook & 1 more
+                          </p>
+
+                          <div className={Index.iconSmall}>
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/bed.svg"
+                                alt="Bed"
+                                className={Index.bed}
+                              />
+                              <p className={Index.iconName}>5 Bed Rooms</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/bath-tub.svg"
+                                alt="bath-tub"
+                                className={Index.bathTub}
+                              />
+                              <p className={Index.iconName}>4 Baths</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/guest.svg"
+                                alt="guest"
+                                className={Index.guest}
+                              />
+                              <p className={Index.iconName}>5 Guests Villa</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={20}
+                                height={20}
+                                src="/images/vector/parking-area.svg"
+                                alt="Car"
+                                className={Index.car}
+                              />
+                              <p className={Index.iconName}>Parking Area</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className={Index.price}>
+                          <div>
+                            <h5 className={Index.amount}>
+                              $420/ <span className={Index.night}>Night</span>
+                            </h5>
+                          </div>
+
+                          <div className={Index.heartBtn}>
+                            <div className={Index.heart}>
+                              <Link href="/">
+                                <Image
+                                  width={20}
+                                  height={20}
+                                  src="/images/heart.svg"
+                                  alt="heart"
+                                />
+                              </Link>
+                            </div>
+                            <Button className={Index.btnD}>Details</Button>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+
+                    <Row className={Index.cardMap}>
+                      <div className={Index.cardImage}>
+                        <Image
+                          fill
+                          src="/images/orlandoPool.svg"
+                          alt="orlandoPool"
+                          className={Index.orlandoImg}
+                        />
+                      </div>
+
+                      <Col className={Index.textParent}>
+                        <div>
+                          <h5>Hotel Empire Moscow Sokoliki</h5>
+
+                          <p className={Index.saddle}>
+                            Saddlebrook Resort - Saddlebrook & 1 more
+                          </p>
+
+                          <div className={Index.iconSmall}>
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/bed.svg"
+                                alt="Bed"
+                                className={Index.bed}
+                              />
+                              <p className={Index.iconName}>5 Bed Rooms</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/bath-tub.svg"
+                                alt="bath-tub"
+                                className={Index.bathTub}
+                              />
+                              <p className={Index.iconName}>4 Baths</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={18}
+                                height={18}
+                                src="/images/vector/guest.svg"
+                                alt="guest"
+                                className={Index.guest}
+                              />
+                              <p className={Index.iconName}>5 Guests Villa</p>
+                            </div>
+
+                            <div className={Index.iconParent}>
+                              <Image
+                                width={20}
+                                height={20}
+                                src="/images/vector/parking-area.svg"
+                                alt="Car"
+                                className={Index.car}
+                              />
+                              <p className={Index.iconName}>Parking Area</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className={Index.price}>
+                          <div>
+                            <h5 className={Index.amount}>
+                              $420/ <span className={Index.night}>Night</span>
+                            </h5>
+                          </div>
+
+                          <div className={Index.heartBtn}>
+                            <div className={Index.heart}>
+                              <Link href="/">
+                                <Image
+                                  width={20}
+                                  height={20}
+                                  src="/images/heart.svg"
+                                  alt="heart"
+                                />
+                              </Link>
+                            </div>
+                            <Button className={Index.btnD}>Details</Button>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                  </Col>
+
+
+                  {/*   --------------   MAP SECTION     -------------------    */}
+
+                  <Col md={5} className={Index.mapParent}>
                     <Image
                       fill
-                      src="/images/orlandoPool.svg"
-                      alt="orlandoPool"
-                      className={Index.orlandoImg}
+                      src="/images/mapGroup.svg"
+                      alt="Map"
+                      className={Index.map}
                     />
-                  </div>
-
-                  <div className={Index.text}>
-                    <div>
-                      <h5>Hotel Empire Moscow Sokoliki</h5>
-
-                      <p className={Index.saddle}>
-                        Saddlebrook Resort - Saddlebrook & 1 more
-                      </p>
-
-                      <div className={Index.iconSmall}>
-                        <Image
-                          width={18}
-                          height={18}
-                          src="/images/vector/bed.svg"
-                          alt="Bed"
-                          className={Index.bed}
-                        />
-                        <p className={Index.iconName}>5 Bed Rooms</p>
-
-                        <Image
-                          width={18}
-                          height={18}
-                          src="/images/vector/bath-tub.svg"
-                          alt="bath-tub"
-                          className={Index.bathTub}
-                        />
-                        <p className={Index.iconName}>4 Baths</p>
-
-                        <Image
-                          width={18}
-                          height={18}
-                          src="/images/vector/guest.svg"
-                          alt="guest"
-                          className={Index.guest}
-                        />
-                        <p className={Index.iconName}>5 Guests Villa</p>
-
-                        <Image
-                          width={20}
-                          height={20}
-                          src="/images/vector/parking-area.svg"
-                          alt="Car"
-                          className={Index.car}
-                        />
-                        <p className={Index.iconName}>Parking Area</p>
-                      </div>
-                    </div>
-
-                    <div className={Index.price}>
-                      <div>
-                        <h5 className={Index.amount}>
-                          $420/ <span className={Index.night}>Night</span>
-                        </h5>
-                      </div>
-
-                      <div className={Index.heartBtn}>
-                        <div className={Index.heart}>
-                          <Link href="/">
-                            <Image
-                              width={20}
-                              height={20}
-                              src="/images/heart.svg"
-                              alt="heart"
-                            />
-                          </Link>
-                        </div>
-                        <Button className={Index.btnD}>Details</Button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  </Col>
+                </Row>
               </div>
+            </Container>
 
-              <div className={Index.mapParent}>
-                <Image
-                  fill
-                  src="/images/mapGroup.svg"
-                  alt="Map"
-                  className={Index.map}
-                />
-              </div>
-            </div>
+
+
+            {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
+
+
             <div className={Index.pagination_container}>
               <Pagination
                 colorText="#FF0000"

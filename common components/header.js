@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Navbar, Nav, Container, Col, Row } from "react-bootstrap";
-import { Button } from "antd";
+import { Button, Checkbox } from "antd";
 import Image from "next/image";
 import HeadPhoneIcon from "../public/headphones.svg";
 import UserIcon from "../public/user icon.svg";
@@ -9,10 +9,13 @@ import Logo from "../public/logo.svg";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Link from "next/link";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
-import { Dropdown, Space } from "antd";
+import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
 
 const Header = () => {
+
+  // This part is comment out for confirmation 
+
   const items = [
     {
       key: "1",
@@ -59,10 +62,44 @@ const Header = () => {
       label: "a danger item",
     },
   ];
+
+
+  {/* -----------       SIGN UP SECTION        -----------------*/ }
+
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleSignup = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <header className={HeaderCss.header}>
         <Container className={HeaderCss.container_header}>
+
+          {/* -----------       SIGN UP SECTION        -----------------*/}
+
+
+          <Modal title="Sign In to your account" open={isModalOpen} onSignup={handleSignup} onCancel={handleCancel}>
+
+            <p className={HeaderCss.emailNumber}>Email or Member Number</p>
+            <input className={HeaderCss.password} type="text"></input>
+            <p className={HeaderCss.emailNumber}>Password</p>
+            <input className={HeaderCss.password} type="password"></input>
+
+            <div className={HeaderCss.remember}>
+              <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
+            </div>
+
+            <div className={HeaderCss.forgotActive}><span>Forgot Password</span> | <span>Active Online account</span></div>
+          </Modal>
+
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <Col xs={"auto"} className={HeaderCss.logo_container}>
               <Link href="/" className={HeaderCss.logo_container_a}>
@@ -112,7 +149,10 @@ const Header = () => {
                       onClick={(e) => e.preventDefault()}
                     >
                       <Space>
-                        Log in & Sign up
+                        <button className={HeaderCss.signUpBtn} onClick={showModal}>
+                          Log in & Sign up
+                        </button>
+
                         <DownOutlined />
                       </Space>
                     </a>

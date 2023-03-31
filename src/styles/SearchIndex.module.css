@@ -17,6 +17,10 @@
   justify-content: flex-end;
 }
 
+.edit_details_date_picker {
+  width: 100%;
+}
+
 .edit_details_btn {
   padding: 0.6rem 3rem !important;
   height: auto !important;
@@ -38,7 +42,9 @@
   display: flex;
 }
 
-/* -------------------           ORLANDO  SECTION          --------------------------    */
+/*    ----------------      CARD MAP SECTION      -------------------   */
+
+
 .search_main_section {
   background-color: rgb(249, 249, 249);
 }
@@ -58,41 +64,50 @@
 
 .mainOrland {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.orlandParent {
-  border-top: 1px solid rgb(225, 220, 220);
+.horizontaLine {
+  border-top: 2px solid rgb(225, 220, 220);
 }
 
 .sortSection {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin: 22px 0px;
   flex-wrap: wrap;
 }
 
-.combo {
+.cardMap {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
   margin: 10px;
   background-color: var(--white-background);
-  justify-content: center;
-  min-height: 280px;
   transition-duration: 0.3s;
+  flex-direction: revert;
 }
 
-.combo:hover {
+.cardCol {
+  height: auto;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardImage {
+  max-width: 200px;
+  padding-left: 0%;
+}
+
+.cardMap:hover {
   transition-duration: 0.3s;
   transform: scale(1.02);
 }
 
-.text {
+.textParent {
   padding: 18px 9px;
   display: grid;
   display: flex;
@@ -118,6 +133,7 @@
   margin: 0px 10px;
   font-size: 13.25px;
   line-height: 21.55px;
+  color: #636363;
 }
 
 .sort {
@@ -133,18 +149,22 @@
 .default {
 }
 
-.mapParent {
-  max-width: 570px;
-}
-
-.map {
-  position: relative !important;
+.cardMapParent {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .iconSmall {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   margin: 8px 0px;
+}
+
+.iconParent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .price {
@@ -180,9 +200,31 @@
   padding: 0px 5px;
 }
 
+.mapParent {
+  flex: 1;
+  height: 695px; 
+
+}
+
+.map {
+  position: relative !important;
+}
+
+/*  -----------------     PAGINATION CONTAINER     -----------------   */
+
 .pagination_container {
   margin: 5rem 0;
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .cardMapParent {
+    flex-direction: column;
+  }
+  
+  .mapParent {
+    order: -1;
+  }
 }

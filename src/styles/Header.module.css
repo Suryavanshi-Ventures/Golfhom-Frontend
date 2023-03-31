@@ -102,3 +102,45 @@
     justify-content: center;
   }
 }
+
+
+/* -----------       SIGN UP SECTION        -----------------*/
+
+
+.emailNumber {
+  color: var( --light-font-color);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.forgotActive {
+  color: var( --light-font-color);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 20px;
+}
+
+.remember {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 18px;
+  margin-top: 20px;
+}
+
+.password {
+  margin: 10px 0px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2% 0;
+}
+
+.meBox {
+  
+}
+
+.signUpBtn {
+  border: none;
+  background: none;
+}
