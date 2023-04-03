@@ -16,53 +16,6 @@ const Header = () => {
 
   // This part is comment out for confirmation 
 
-  const items = [
-    {
-      key: "1",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          Sign in to your account
-        </a>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item (disabled)
-        </a>
-      ),
-      icon: <SmileOutlined />,
-      disabled: true,
-    },
-    {
-      key: "3",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item (disabled)
-        </a>
-      ),
-      disabled: true,
-    },
-    {
-      key: "4",
-      danger: true,
-      label: "a danger item",
-    },
-  ];
-
 
   {/* -----------       SIGN UP SECTION        -----------------*/ }
 
@@ -86,7 +39,7 @@ const Header = () => {
           {/* -----------       SIGN UP SECTION        -----------------*/}
 
 
-          <Modal title="Sign In to your account" open={isModalOpen} onSignup={handleSignup} onCancel={handleCancel}>
+          <Modal title="Sign In to your account" footer={null} open={isModalOpen} onSignup={handleSignup} onCancel={handleCancel} width={312} >
 
             <p className={HeaderCss.emailNumber}>Email or Member Number</p>
             <input className={HeaderCss.password} type="text"></input>
@@ -95,9 +48,10 @@ const Header = () => {
 
             <div className={HeaderCss.remember}>
               <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
+              <button className={HeaderCss.signIn}>Sign In</button>
             </div>
 
-            <div className={HeaderCss.forgotActive}><span>Forgot Password</span> | <span>Active Online account</span></div>
+            <div className={HeaderCss.forgotActive}><span>Forgot Password</span><span className={HeaderCss.verticalBar}> | </span><span>Active Online account</span></div>
           </Modal>
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
@@ -112,9 +66,7 @@ const Header = () => {
                 {/*//*  Off Canvas Btn  */}
                 <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
                   <OffCanvasExample
-                    key={1}
-                    placement={["end"]}
-                    name={["end"]}
+
                   />
                 </Col>
 
@@ -138,25 +90,18 @@ const Header = () => {
                     <Image src={UserIcon} alt="user icon" />
                   </span>
 
-                  <Dropdown
-                    menu={{
-                      items,
-                    }}
+                  <a
+                    href="/"
+                    className={HeaderCss.top_header_a}
+                    onClick={(e) => e.preventDefault()}
                   >
-                    <a
-                      href="/"
-                      className={HeaderCss.top_header_a}
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <Space>
-                        <button className={HeaderCss.signUpBtn} onClick={showModal}>
-                          Log in & Sign up
-                        </button>
+                    <Space>
+                      <button className={HeaderCss.signUpBtn} onClick={showModal}>
+                        Log in & Sign up
+                      </button>
+                    </Space>
+                  </a>
 
-                        <DownOutlined />
-                      </Space>
-                    </a>
-                  </Dropdown>
                 </Col>
               </Row>
 

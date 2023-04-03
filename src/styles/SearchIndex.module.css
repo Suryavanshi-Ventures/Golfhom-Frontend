@@ -82,12 +82,10 @@
 .cardMap {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
   margin: 10px;
   background-color: var(--white-background);
   transition-duration: 0.3s;
-  flex-direction: revert;
 }
 
 .cardCol {
@@ -100,6 +98,7 @@
 .cardImage {
   max-width: 200px;
   padding-left: 0%;
+  min-width: 30%;
 }
 
 .cardMap:hover {
@@ -195,7 +194,7 @@
 }
 
 .heart {
-  border: 2px solid #b3b3b3;
+  border: 2px solid #F3F3F3;
   border-radius: 5px;
   padding: 0px 5px;
 }
@@ -203,7 +202,6 @@
 .mapParent {
   flex: 1;
   height: 695px; 
-
 }
 
 .map {
@@ -213,10 +211,14 @@
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
 
 .pagination_container {
-  margin: 5rem 0;
+ padding: 5rem 0;
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.pagination {
+ 
 }
 
 @media (max-width: 768px) {

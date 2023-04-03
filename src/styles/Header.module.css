@@ -112,6 +112,7 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 20px;
+  margin-top: 20px;
 }
 
 .forgotActive {
@@ -130,10 +131,11 @@
 }
 
 .password {
-  margin: 10px 0px;
+ 
   border: 1px solid black;
   border-radius: 5px;
   padding: 2% 0;
+  width: 100%;
 }
 
 .meBox {
@@ -143,4 +145,19 @@
 .signUpBtn {
   border: none;
   background: none;
+}
+
+.signIn {
+  color: var(--white-font-color);
+  background-color: #111111;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  width: 28%;
+  padding: 1.2% 0;
+  float: right;
+  border: none;
+}
+
+.verticalBar {
+  margin: 0px 4px;
 }
