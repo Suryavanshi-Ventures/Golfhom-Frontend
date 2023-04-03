@@ -6,3 +6,37 @@
 .view_prop_bannerimg {
   position: relative !important;
 }
+
+/* OVERVIEW TAB SECTION */
+
+.tab_overview_prop_heading {
+  font-family: var(--font-dm-san);
+  font-size: 30px;
+}
+.amenities_details_row {
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.amenities_details_container {
+  text-align: center;
+}
+.amenities_details_img_container {
+}
+.amenities_imgs {
+}
+
+.amenities_details_main_heading {
+  font-family: var(--font-dm-san);
+  font-size: 20px;
+}
+
+.amenities_details_main_subheading {
+  font-family: var(--font-dm-san);
+  font-weight: 500;
+}
+
+/* CARASOUL IMAGE SECTION STARTED HERE */
+.carasoul_images {
+  position: relative !important;
+}
