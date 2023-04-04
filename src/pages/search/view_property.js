@@ -13,6 +13,7 @@ import { DatePicker } from "antd";
 import FeatureTickIcon from "../../../public/images/vector/feature_tick.svg";
 import PriceSquareIcon from "../../../public/images/vector/price_square_icon.svg";
 import RulesCrossIcon from "../../../public/images/vector/rules_cross_icon.svg";
+import Calendar from "../../../public/images/vector/calendar.svg";
 
 import ViewPropMap from "../../../public/images/view_prop_Map.png";
 
@@ -969,6 +970,7 @@ const ViewProperty = () => {
               </Col>
               <Col md={4}></Col>
             </Row>
+
             {/* TERMS SECTION */}
             <Row className={ViewPropertyCss.things_to_know_section_rows}>
               <Col md={8}>
@@ -1116,6 +1118,7 @@ const ViewProperty = () => {
               </Col>
               <Col md={4}></Col>
             </Row>
+
             {/* Cancellation  SECTION */}
             <Row className={ViewPropertyCss.things_to_know_section_rows}>
               <Col md={8}>
@@ -1164,6 +1167,87 @@ const ViewProperty = () => {
             </Row>
 
             {/* Availability SECTION */}
+            <Row className={ViewPropertyCss.things_to_know_section_rows}>
+              <Col md={8}>
+                <div
+                  className={
+                    ViewPropertyCss.things_to_know_main_content_container
+                  }
+                >
+                  <Row>
+                    <h5
+                      className={ViewPropertyCss.things_to_know_section_heading}
+                    >
+                      Terms & rules
+                    </h5>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={Calendar}
+                            width={30}
+                            height={30}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          The minimum stay is 3 nights from
+                        </p>
+                      </div>
+                    </Col>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={Calendar}
+                            width={30}
+                            height={30}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          The minimum stay is 3 nights from
+                        </p>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
           </Container>
         </section>
       </main>

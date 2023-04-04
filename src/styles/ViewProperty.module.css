@@ -285,6 +285,7 @@
 
 .things_to_know_price_container {
   display: flex;
+  align-items: center;
 }
 
 .things_to_know_section_rows {
@@ -321,8 +322,9 @@
 }
 
 /* Cancellation Policy */
-
 .things_to_know_privacy_text {
   padding: 0;
   margin: 1rem 0;
 }
+
+/* Availability SECTION */
