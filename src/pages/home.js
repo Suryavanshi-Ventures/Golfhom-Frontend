@@ -100,7 +100,9 @@ const Home = () => {
 
       <Container>
         <div className={HomeCss.golfCourses}>
-          <h2>Find Great Vacation Rentals near Florida & Arizona </h2>
+          <h2 className={HomeCss.main_golfHeading}>
+            Find Great Vacation Rentals near Florida & Arizona{" "}
+          </h2>
           <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
           <p className={HomeCss.para}>
@@ -299,7 +301,6 @@ const Home = () => {
       <div className={HomeCss.cardBg}>
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
-
           <Card className={HomeCss.MainCard}>
             <Card.Img
               variant="top"
@@ -308,7 +309,7 @@ const Home = () => {
               alt="Bed Image"
             />
             <Card.Body>
-              <Card.Title>
+              <Card.Title className={HomeCss.cardImgTitle}>
                 Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
               </Card.Title>
 
@@ -476,8 +477,9 @@ const Home = () => {
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
       <Container className={HomeCss.staffCard}>
-        <h2> From the Golfhōm Staff and Guest Writers </h2>
-
+        <h2 className={HomeCss.staffCard_title}>
+          From the Golfhōm Staff and Guest Writers
+        </h2>
         <Review reviews={review} />
       </Container>
     </>

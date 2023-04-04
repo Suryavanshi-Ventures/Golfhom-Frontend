@@ -17,7 +17,7 @@
 }
 
 .copyright_section_p {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
 }
 
 .icons_spans {
@@ -29,16 +29,15 @@
 }
 .footer_desc_p {
   color: var(--footer-font-color);
-
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
 }
 
 .footer_headings {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
 }
 
 .footer_headings {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   font-size: 18px;
   margin: 2rem 0;
 }
@@ -51,7 +50,7 @@
   margin: 1rem 0;
 }
 .nav_link_a {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   font-size: 14px;
   text-decoration: none;
   color: var(--footer-font-color);
@@ -63,7 +62,7 @@
   color: var(--btn-background);
 }
 .input_title {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   color: var(--footer-font-color);
 }
 .inputs {
@@ -71,7 +70,7 @@
 }
 
 .sub_btn {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   height: auto;
   background-color: var(--btn-background-secondary);
   padding: 0.6rem 1.5rem;

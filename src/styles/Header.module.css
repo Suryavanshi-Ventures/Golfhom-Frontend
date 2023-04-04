@@ -32,14 +32,19 @@
 .top_nav_bar_row {
   justify-content: flex-end;
 }
+.register_host_btn_row {
+  justify-content: space-between;
+}
+
 .headphones_icon {
   margin: 0 0.5rem;
 }
 .top_header_a {
   text-decoration: none;
   color: var(--light-font-color);
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   transition-duration: 0.5s;
+  font-size: 14px;
 }
 .top_header_a:hover {
   transition-duration: 0.5s;
@@ -50,10 +55,11 @@
   text-decoration: none;
   color: black;
   font-weight: 500;
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   transition-duration: 0.5s;
   display: inline-block;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 .below_header_a:hover {
   transition-duration: 0.5s;
@@ -61,10 +67,11 @@
 }
 .register_btn {
   background-color: var(--btn-background);
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   font-weight: 500;
+  font-size: 14px;
   height: auto;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.9rem;
   border-radius: 0;
 }
 
@@ -103,12 +110,10 @@
   }
 }
 
-
 /* -----------       SIGN UP SECTION        -----------------*/
 
-
 .emailNumber {
-  color: var( --light-font-color);
+  color: var(--light-font-color);
   font-size: 1rem;
   font-weight: 400;
   line-height: 20px;
@@ -116,7 +121,7 @@
 }
 
 .forgotActive {
-  color: var( --light-font-color);
+  color: var(--light-font-color);
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 20px;
@@ -131,7 +136,6 @@
 }
 
 .password {
- 
   border: 1px solid black;
   border-radius: 5px;
   padding: 2% 0;
@@ -139,7 +143,6 @@
 }
 
 .meBox {
-  
 }
 
 .signUpBtn {

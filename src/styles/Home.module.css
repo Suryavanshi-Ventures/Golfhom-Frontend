@@ -48,8 +48,8 @@
   border-radius: 100px;
   background-color: var(--btn-background);
   color: var(--white-font-color);
-  font-size: 1.2rem;
-  font-family: var(--font-dm-sans);
+  font-size: 20px;
+  font-family: var(--font-poppins);
   font-weight: 500;
 }
 
@@ -68,7 +68,7 @@
 .inner_input_box {
   border: none;
   font-size: 20px;
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
 }
 
 .inner_input_box:focus {
@@ -89,6 +89,7 @@
   color: var(--dark-grey-color);
   letter-spacing: 1px;
   margin-left: 0.7rem;
+  font-family: var(--font-poppins);
 }
 
 /*     ----------------------------------  SWIPER CONTAINER  -----------------------------  */
@@ -97,15 +98,21 @@
   margin: 3rem 0;
 }
 
+.main_golfHeading {
+  font-family: var(--font-amiri);
+}
+
 .golfHeading {
   color: var(--btn-background-secondary);
   margin-top: 16px;
   margin-bottom: 30px;
+  font-family: var(--font-amiri);
 }
 
 .para {
   line-height: 2.5pc;
   word-spacing: 1.5px;
+  font-family: var(--font-poppins);
 }
 
 .sliderImage {
@@ -118,6 +125,7 @@
 }
 
 .countryName {
+  font-family: var(--font-amiri);
   position: relative;
   left: 30px;
   bottom: 56px;
@@ -141,10 +149,12 @@
 .search_by_golf_input_container {
   width: 100%;
   max-width: 250px;
+  font-family: var(--font-poppins);
 }
 
 .search_by_golf_input_container_tourni {
   width: 100%;
+  font-family: var(--font-poppins);
 }
 
 .search_by_golf_input_search_by_tourni {
@@ -153,7 +163,7 @@
   width: 100%;
   border-radius: 2px;
   margin-bottom: 2rem;
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
 }
 
 .search_by_golf_btn {
@@ -162,9 +172,9 @@
   padding: 0.6rem 2rem;
   border-radius: 4px;
   font-weight: 500;
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   letter-spacing: 1px;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .search_by_golf_course_Section {
@@ -192,21 +202,24 @@
 
 .Title {
   line-height: 3.3pc;
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-amiri);
 }
 
 .searchPara {
   line-height: 2.4pc;
   font-weight: 300;
   letter-spacing: 0.4px;
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-amiri);
 }
 
 .search_by_golf_input_container_headings {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-amiri);
+  font-size: 20px;
 }
+
 .search_by_golf_input_container_subheadings {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-amiri);
+  font-size: 14px;
 }
 .searchPart {
   display: flex;
@@ -256,16 +269,17 @@
 }
 
 .hottest_new_arrival__heading {
-  font-family: var(--font-dm-sans);
   margin-bottom: 2rem;
+  font-family: var(--font-amiri);
+  font-weight: 700;
 }
 
 .paraHeading {
   margin-bottom: 45px;
 }
 .subHeading {
-  font-family: var(--font-dm-sans);
-  /* margin-bottom: 2rem; */
+  font-family: var(--font-poppins);
+  font-size: 15px;
 }
 
 .explore_more_container {
@@ -311,6 +325,7 @@
   border-radius: 12px;
   justify-content: flex-start;
   padding-bottom: 30px;
+  font-family: var(--font-poppins);
   padding-left: 24px;
 }
 
@@ -334,6 +349,8 @@
   align-items: self-end;
   border-radius: 12px;
   justify-content: flex-start;
+  font-family: var(--font-poppins);
+
   padding-bottom: 30px;
   width: 100%;
   padding-left: 24px;
@@ -361,6 +378,7 @@
   justify-content: flex-start;
   padding-bottom: 30px;
   padding-left: 24px;
+  font-family: var(--font-poppins);
 }
 
 .resortImg {
@@ -378,9 +396,22 @@
   justify-content: flex-start;
   padding-bottom: 30px;
   padding-left: 24px;
+  font-family: var(--font-poppins);
 }
 
 /* ------------------------------        CARD SECTION         ------------------------------       */
+
+.cardHeading {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+}
+
+.cardImgTitle {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 1.3rem;
+}
 
 .cardBg {
   background: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.01));
@@ -388,8 +419,10 @@
 }
 
 .saddle {
+  font-family: var(--font-poppins);
   color: var(--light-font-color);
   margin-bottom: 0.6rem;
+  font-size: 14px;
 }
 
 .MainCard {
@@ -412,8 +445,9 @@
   margin-bottom: 0.3rem;
 }
 .iconImg_spans {
-  font-size: 13px;
+  font-size: 12px;
   margin: 0 7px;
+  font-family: var(--font-poppins);
 }
 
 .parking {
@@ -437,6 +471,7 @@
   padding: 10px 30px;
   margin: 20px;
   border-radius: 5px;
+  font-family: var(--font-poppins);
 }
 
 /* ------------------------------------       VACATION-RENTAL       ----------------------------------        */
@@ -483,13 +518,15 @@
 }
 
 .vacationTitle {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-amiri);
   margin-bottom: 2rem;
+  font-weight: 700;
 }
 
 .vacationPara {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
   line-height: 2;
+  font-size: 15px;
 }
 
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
@@ -499,6 +536,8 @@
 }
 
 .adsTitle {
+  font-family: var(--font-amiri);
+  font-weight: 700;
   padding: 30px 0px;
 }
 
@@ -544,32 +583,36 @@
 }
 
 .extitle {
+  font-family: var(--font-amiri);
   font-size: 3rem;
-  font-weight: 350;
   text-align: center;
   align-self: flex-end;
 }
 
 .exProp {
   font-size: 2.8rem;
+  font-family: var(--font-amiri);
   align-self: center;
   text-align: center;
 }
 
 .bookBtn {
+  font-family: var(--font-poppins);
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color);
   border: none;
   padding: 10px 30px;
   border-radius: 5px;
   align-self: center;
+  font-size: 15px;
   margin-top: 3rem;
 }
 
 /* ------------------------------------        TRAINING VIDEOS       --------------------------------           */
 
 .golf_training_heading {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-amiri);
+  font-weight: 700;
 }
 
 .paraBtn {
@@ -579,12 +622,14 @@
 
 .paratext {
   line-height: 2rem;
+  font-family: var(--font-poppins);
 }
 
 .viewAll {
   color: var(--btn-background-secondary);
   background-color: white;
   border: none;
+  font-family: var(--font-poppins);
 }
 
 .parentVideo {
@@ -617,6 +662,11 @@
 }
 
 /* -----------------------------------        STAFF N WRITERS       -------------------------------              */
+
+.staffCard_title {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+}
 
 .parentOf_img_textCard {
   position: relative;
@@ -654,15 +704,20 @@
 
 .card_title {
   font-weight: 700;
+  font-family: var(--font-poppins);
+  font-size: 15px;
 }
 
 .byAdmin {
   color: var(--card-text-color);
   font-size: 0.9rem;
+  font-family: var(--font-poppins);
+  font-size: 12px;
 }
 
 .bookmark_text {
-  font-size: 0.9rem;
+  font-family: var(--font-poppins);
+  font-size: 14px;
   font-weight: 500;
   color: var(--btn-background-secondary);
 }
