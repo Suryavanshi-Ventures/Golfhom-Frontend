@@ -8,14 +8,26 @@
 }
 
 /* OVERVIEW TAB SECTION */
-
 .tab_overview_prop_heading {
-  font-family: var(--font-dm-san);
+  font-family: var(--font-amiri);
+  font-weight: 700;
   font-size: 30px;
+  margin: 2rem 0;
+}
+
+.tab_overview_prop_small_subheading {
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+}
+
+.tab_overview_prop_subheading {
+  font-family: var(--font-poppins);
+  font-weight: 500;
 }
 .amenities_details_row {
   justify-content: space-between;
-  margin: 2rem 0;
+  margin: 3rem 0;
+  border-bottom: 1px solid var(--light-font-color);
 }
 
 .amenities_details_container {
@@ -27,16 +39,97 @@
 }
 
 .amenities_details_main_heading {
-  font-family: var(--font-dm-san);
+  font-family: var(--font-poppins);
   font-size: 20px;
 }
 
 .amenities_details_main_subheading {
-  font-family: var(--font-dm-san);
+  font-family: var(--font-poppins);
   font-weight: 500;
 }
 
+/* ABOUT SECTION STARTED HERE */
+.about_section_main_heading {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+  font-size: 30px;
+}
+.about_section_para {
+  font-family: var(--font-poppins);
+  font-size: 13px;
+  margin: 2rem 0;
+}
+
+/* FEATURE SECTION STARTED HERE */
+.feature_section {
+  background-color: var(--light-grey);
+  padding: 3rem 0;
+}
+.feature_section_heading {
+  margin-bottom: 2rem;
+  font-family: var(--font-amiri);
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.feature_section_div_container {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.feature_section_tick_icon_container {
+  display: flex;
+}
+
+.feature_section_text {
+  margin: 0 1rem;
+  font-family: var(--font-poppins);
+}
+
 /* CARASOUL IMAGE SECTION STARTED HERE */
+.carasoul_section {
+}
 .carasoul_images {
   position: relative !important;
+}
+
+/* MAP SECTION STARTS HERE */
+
+.map_section {
+  padding: 5rem 0;
+}
+
+.map_section_image {
+  position: relative !important;
+}
+
+/* VIDEO SECTION */
+
+.video_section {
+  margin: 3rem 0;
+}
+
+.video_section_container {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+}
+
+/* THINGS TO KNOW SECTION */
+
+.things_to_know_price_container {
+  display: flex;
+}
+.things_to_know_price_icon_container {
+  display: flex;
+  align-items: center;
+}
+
+.things_to_know_price_icon {
+}
+
+.things_to_know_price_text {
+  margin: 0 1.2rem;
+  font-family: var(--font-poppins);
 }

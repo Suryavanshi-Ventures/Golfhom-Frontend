@@ -186,6 +186,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 500px;
+}
+
+.searchSection_overlay {
+  backdrop-filter: brightness(0.5);
   padding: 5rem;
 }
 .search_by_golf_inputs {
@@ -338,7 +342,7 @@
 
 .midImgTitle {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/pool.svg);
+    url(/images/pool.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
@@ -365,7 +369,7 @@
 
 .madridImg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/madrid.svg);
+    url(/images/madrid.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -383,7 +387,7 @@
 
 .resortImg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/gaintWheel.svg);
+    url(/images/gaintWheel.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
