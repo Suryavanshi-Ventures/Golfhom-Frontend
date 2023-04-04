@@ -55,6 +55,9 @@
 
 .orlandoHead {
   padding: 32px 0px;
+  font-family: ' Amiri';
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .orlandoImg {
@@ -96,9 +99,8 @@
 }
 
 .cardImage {
-  max-width: 200px;
-  padding-left: 0%;
-  min-width: 30%;
+  width: 100%;
+  min-width: 50%;
 }
 
 .cardMap:hover {
@@ -121,6 +123,8 @@
   line-height: 21.55px;
 }
 .rental {
+  font-family: 'Poppins';
+  font-weight: 400;
 }
 
 .iconImg {
@@ -138,6 +142,7 @@
 .sort {
   align-self: center;
   margin-right: 10px;
+  font-family: var(--font-poppins);
 }
 
 .sortdiv {

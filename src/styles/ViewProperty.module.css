@@ -40,3 +40,170 @@
 .carasoul_images {
   position: relative !important;
 }
+
+/*  ------------    Total price box    ----------   */
+
+.parentRow {
+  position: relative;
+}
+
+.backgroundWhite {
+  background: var(--white-font-color);
+  position: relative;
+  bottom: 96px;
+  padding: 0%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+ 
+}
+.inner_input_date_picker {
+  border: none;
+  padding: 6px 10px;
+}
+
+.inner_input_date_picker:hover {
+  border: none;
+  border-inline-end-width: 1px;
+}
+.inner_input_date_picker:focus {
+  border: none;
+  border-inline-end-width: 1px;
+}
+
+.totalParent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 14px 14px 0px 14px;
+}
+
+.totalPrice {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-between;
+}
+
+.totalTitle {
+  display: flex;
+  justify-content: center;
+}
+
+.amount {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin: 0px 16px;
+}
+
+
+.bookParent {
+  align-self: center;
+  width: fit-content;
+}
+
+.bookNow {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
+
+.bookNow:hover {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
+
+.horizonaline {
+  border: 1px solid black;
+}
+
+.guest {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: none;
+  color: #111111;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.guest::after {
+  align-self: center;
+}
+
+.guest:hover {
+  background: none;
+  border: none;
+  color: #111111;
+}
+
+.increase {
+ flex-wrap: wrap;
+ width: 100%;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ margin-top: 14px;
+}
+
+.check {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+  padding: 12px 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.check:hover {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
+
+.checkParent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.adultChild {
+  width: 100%;
+  padding: 18px;
+}
+
+.increaseAdult, .increaseChild {
+  padding: 8px 56px;
+  background: var(--white-font-color);
+  color: var(--btn-background-secondary);
+  border: 1px solid var(--btn-background-secondary);
+}
+
+.applyParent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.apply {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+  padding: 8px 42px;
+}
+
+.apply:hover {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
+
+.apply:active {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
