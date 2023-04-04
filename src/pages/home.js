@@ -100,7 +100,9 @@ const Home = () => {
 
       <Container>
         <div className={HomeCss.golfCourses}>
-          <h2>Find Great Vacation Rentals near Florida & Arizona </h2>
+          <h2 className={HomeCss.main_golfHeading}>
+            Find Great Vacation Rentals near Florida & Arizona{" "}
+          </h2>
           <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
           <p className={HomeCss.para}>
@@ -122,60 +124,115 @@ const Home = () => {
       <main className={HomeCss.search_by_golf_course_Section}>
         <Container>
           <main className={HomeCss.searchSection}>
-            <div className={HomeCss.content}>
-              <h3 className={HomeCss.Title}>
-                Search the World Over by Course
-                <br />
-                (38,000+ in our database) or Tournament
-              </h3>
+            <div className={HomeCss.searchSection_overlay}>
+              <div className={HomeCss.content}>
+                <h3 className={HomeCss.Title}>
+                  Search the World Over by Course
+                  <br />
+                  (38,000+ in our database) or Tournament
+                </h3>
 
-              <p className={HomeCss.searchPara}>
-                *We're downloading more great Golfhōms each day from our valued
-                channel partners!
-              </p>
+                <p className={HomeCss.searchPara}>
+                  *We're downloading more great Golfhōms each day from our
+                  valued channel partners!
+                </p>
 
-              <div className={HomeCss.search_by_golf_containers}>
-                <Row className={HomeCss.search_by_golf_row}>
-                  <Col md={6} className={HomeCss.search_by_golf_cols}>
-                    <div
-                      className={HomeCss.search_by_golf_input_main_container}
-                    >
-                      <h3
-                        className={
-                          HomeCss.search_by_golf_input_container_headings
-                        }
-                      >
-                        Search by golf course
-                      </h3>
-                      <p
-                        className={
-                          HomeCss.search_by_golf_input_container_subheadings
-                        }
-                      >
-                        Choose from thousands world-wide
-                      </p>
-
+                <div className={HomeCss.search_by_golf_containers}>
+                  <Row className={HomeCss.search_by_golf_row}>
+                    <Col md={6} className={HomeCss.search_by_golf_cols}>
                       <div
-                        className={
-                          HomeCss.search_by_golf_input_parent_container
-                        }
+                        className={HomeCss.search_by_golf_input_main_container}
                       >
-                        <div className={HomeCss.search_by_golf_input_container}>
-                          <Input
-                            placeholder="Enter Location"
-                            prefix={<SearchOutlined />}
-                            className={HomeCss.search_by_golf_inputs}
-                          />
+                        <h3
+                          className={
+                            HomeCss.search_by_golf_input_container_headings
+                          }
+                        >
+                          Search by golf course
+                        </h3>
+                        <p
+                          className={
+                            HomeCss.search_by_golf_input_container_subheadings
+                          }
+                        >
+                          Choose from thousands world-wide
+                        </p>
+
+                        <div
+                          className={
+                            HomeCss.search_by_golf_input_parent_container
+                          }
+                        >
+                          <div
+                            className={HomeCss.search_by_golf_input_container}
+                          >
+                            <Input
+                              placeholder="Enter Location"
+                              prefix={<SearchOutlined />}
+                              className={HomeCss.search_by_golf_inputs}
+                            />
+                          </div>
+                          <div
+                            className={HomeCss.search_by_golf_input_container}
+                          >
+                            <Input
+                              placeholder="Golf Course"
+                              prefix={<SearchOutlined />}
+                              className={HomeCss.search_by_golf_inputs}
+                            />
+                          </div>
                         </div>
-                        <div className={HomeCss.search_by_golf_input_container}>
-                          <Input
-                            placeholder="Golf Course"
-                            prefix={<SearchOutlined />}
-                            className={HomeCss.search_by_golf_inputs}
-                          />
+
+                        <div className={HomeCss.search_by_golf_btn_container}>
+                          <Button
+                            className={HomeCss.search_by_golf_btn}
+                            type="primary"
+                          >
+                            SEARCH
+                          </Button>
                         </div>
                       </div>
+                    </Col>
 
+                    <Col md={6} className={HomeCss.search_by_golf_cols}>
+                      <div
+                        className={HomeCss.search_by_golf_input_main_container}
+                      >
+                        <h3
+                          className={
+                            HomeCss.search_by_golf_input_container_headings
+                          }
+                        >
+                          Search by golf course
+                        </h3>
+                        <p
+                          className={
+                            HomeCss.search_by_golf_input_container_subheadings
+                          }
+                        >
+                          Choose from thousands world-wide
+                        </p>
+
+                        <div
+                          className={
+                            HomeCss.search_by_golf_input_parent_container
+                          }
+                        >
+                          <div
+                            className={
+                              HomeCss.search_by_golf_input_container_tourni
+                            }
+                          >
+                            <Input
+                              placeholder="Search by Touraments"
+                              prefix={<SearchOutlined />}
+                              className={
+                                HomeCss.search_by_golf_input_search_by_tourni
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
                       <div className={HomeCss.search_by_golf_btn_container}>
                         <Button
                           className={HomeCss.search_by_golf_btn}
@@ -184,58 +241,9 @@ const Home = () => {
                           SEARCH
                         </Button>
                       </div>
-                    </div>
-                  </Col>
-
-                  <Col md={6} className={HomeCss.search_by_golf_cols}>
-                    <div
-                      className={HomeCss.search_by_golf_input_main_container}
-                    >
-                      <h3
-                        className={
-                          HomeCss.search_by_golf_input_container_headings
-                        }
-                      >
-                        Search by golf course
-                      </h3>
-                      <p
-                        className={
-                          HomeCss.search_by_golf_input_container_subheadings
-                        }
-                      >
-                        Choose from thousands world-wide
-                      </p>
-
-                      <div
-                        className={
-                          HomeCss.search_by_golf_input_parent_container
-                        }
-                      >
-                        <div
-                          className={
-                            HomeCss.search_by_golf_input_container_tourni
-                          }
-                        >
-                          <Input
-                            placeholder="Search by Touraments"
-                            prefix={<SearchOutlined />}
-                            className={
-                              HomeCss.search_by_golf_input_search_by_tourni
-                            }
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className={HomeCss.search_by_golf_btn_container}>
-                      <Button
-                        className={HomeCss.search_by_golf_btn}
-                        type="primary"
-                      >
-                        SEARCH
-                      </Button>
-                    </div>
-                  </Col>
-                </Row>
+                    </Col>
+                  </Row>
+                </div>
               </div>
             </div>
           </main>
@@ -299,7 +307,6 @@ const Home = () => {
       <div className={HomeCss.cardBg}>
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
-
           <Card className={HomeCss.MainCard}>
             <Card.Img
               variant="top"
@@ -308,7 +315,7 @@ const Home = () => {
               alt="Bed Image"
             />
             <Card.Body>
-              <Card.Title>
+              <Card.Title className={HomeCss.cardImgTitle}>
                 Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
               </Card.Title>
 
@@ -476,8 +483,9 @@ const Home = () => {
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
       <Container className={HomeCss.staffCard}>
-        <h2> From the Golfhōm Staff and Guest Writers </h2>
-
+        <h2 className={HomeCss.staffCard_title}>
+          From the Golfhōm Staff and Guest Writers
+        </h2>
         <Review reviews={review} />
       </Container>
     </>

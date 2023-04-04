@@ -77,6 +77,54 @@ const tab_content_overview = () => {
             </div>
           </Col>
         </Row>
+
+        {/* ABOUT SECTION START HERE */}
+        <Row className={ViewPropertyCss.about_section_row}>
+          <Col md={"auto"} className={ViewPropertyCss.about_section_cols}>
+            <div className={ViewPropertyCss.about_section_container}>
+              <h1 className={ViewPropertyCss.about_section_main_heading}>
+                About this listing
+              </h1>
+              <p className={ViewPropertyCss.about_section_para}>
+                Welcome to Red Rock, a Rove Travel Home! Rove is a brand of
+                curated luxury property rentals equipped with remote-work setups
+                designed for the modern traveler. Our dedicated concierge team
+                ensures exceptional customer service for any requests or
+                concerns.
+              </p>
+              <p className={ViewPropertyCss.about_section_para}>
+                The Space: Experience the height of luxury and sophistication at
+                Red Rock, a newly renovated home located in the heart of
+                Scottsdale! Just a short drive away from the city’s best
+                attractions, bask in the sun by the pool (unheated), challenge
+                your friends to a game of cornhole, read a book on the hammock,
+                or toast with your group by the grill in the patio area. Inside,
+                the interior is a delightful blend of modern furnishings with
+                vaulted ceilings, a perfect retreat featuring a billiards table
+                and a chef-worthy kitchen. There’s even a wet bar and an indoor
+                fireplace that awaits you after a day of exploring. Enjoy
+                endless sunny days at Red Rock, a home with every amenity you
+                need for an extraordinary experience that will leave you feeling
+                relaxed and renewed.
+              </p>
+              <p className={ViewPropertyCss.about_section_para}>
+                Amenities: Every Rove property is equipped with a fully-stocked
+                kitchen, Nespresso machines, high thread count linens, and Malin
+                & Goetz soaps. Our TVs are powered on Roku, and we provide
+                complimentary access to streaming accounts for Netflix, Hulu,
+                and Disney+.
+              </p>
+
+              <p className={ViewPropertyCss.about_section_para}>
+                Workspace: Every Rove property is fitted for remote-friendly
+                stays. Rove workstations are equipped with:-400 mbps WiFi
+                throughout the property / High Speed Wifi-Ergonomic
+                chairs-Electric standing desks-HP high-definition monitor with
+                integrated docking station-Logitech wireless keyboard and mouse
+              </p>
+            </div>
+          </Col>
+        </Row>
       </main>
     </>
   );

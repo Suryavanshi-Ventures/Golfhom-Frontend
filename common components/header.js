@@ -13,12 +13,11 @@ import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
 
 const Header = () => {
+  // This part is comment out for confirmation
 
-  // This part is comment out for confirmation 
-
-
-  {/* -----------       SIGN UP SECTION        -----------------*/ }
-
+  {
+    /* -----------       SIGN UP SECTION        -----------------*/
+  }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -35,12 +34,16 @@ const Header = () => {
     <>
       <header className={HeaderCss.header}>
         <Container className={HeaderCss.container_header}>
-
           {/* -----------       SIGN UP SECTION        -----------------*/}
 
-
-          <Modal title="Sign In to your account" footer={null} open={isModalOpen} onSignup={handleSignup} onCancel={handleCancel} width={312} >
-
+          <Modal
+            title="Sign In to your account"
+            footer={null}
+            open={isModalOpen}
+            onSignup={handleSignup}
+            onCancel={handleCancel}
+            width={312}
+          >
             <p className={HeaderCss.emailNumber}>Email or Member Number</p>
             <input className={HeaderCss.password} type="text"></input>
             <p className={HeaderCss.emailNumber}>Password</p>
@@ -51,7 +54,11 @@ const Header = () => {
               <button className={HeaderCss.signIn}>Sign In</button>
             </div>
 
-            <div className={HeaderCss.forgotActive}><span>Forgot Password</span><span className={HeaderCss.verticalBar}> | </span><span>Active Online account</span></div>
+            <div className={HeaderCss.forgotActive}>
+              <span>Forgot Password</span>
+              <span className={HeaderCss.verticalBar}> | </span>
+              <span>Active Online account</span>
+            </div>
           </Modal>
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
@@ -61,13 +68,11 @@ const Header = () => {
               </Link>
             </Col>
 
-            <Col xs={"auto"} className={HeaderCss.top_nav_bar_col}>
+            <Col md={8} className={HeaderCss.top_nav_bar_col}>
               <Row className={HeaderCss.top_nav_bar_row}>
                 {/*//*  Off Canvas Btn  */}
                 <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
-                  <OffCanvasExample
-
-                  />
+                  <OffCanvasExample />
                 </Col>
 
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
@@ -90,22 +95,26 @@ const Header = () => {
                     <Image src={UserIcon} alt="user icon" />
                   </span>
 
-                  <a
+                  <Link
                     href="/"
                     className={HeaderCss.top_header_a}
                     onClick={(e) => e.preventDefault()}
                   >
                     <Space>
-                      <button className={HeaderCss.signUpBtn} onClick={showModal}>
+                      <button
+                        className={HeaderCss.signUpBtn}
+                        onClick={showModal}
+                      >
                         Log in & Sign up
                       </button>
                     </Space>
-                  </a>
-
+                  </Link>
                 </Col>
               </Row>
 
-              <Row className={HeaderCss.top_nav_bar_row}>
+              <Row
+                className={`${HeaderCss.top_nav_bar_row} ${HeaderCss.register_host_btn_row}`}
+              >
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
                   <Link className={HeaderCss.below_header_a} href="/">
                     Find & Reserve

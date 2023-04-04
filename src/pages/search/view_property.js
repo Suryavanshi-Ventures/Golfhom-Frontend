@@ -10,6 +10,9 @@ import TabContentOverview from "./tab_content_overview";
 import Carousel from "react-bootstrap/Carousel";
 import CarouselGalleryImg from "../../../public/images/view_prop_gallery_img_1.svg";
 import { DatePicker } from "antd";
+import FeatureTickIcon from "../../../public/images/vector/feature_tick.svg";
+import PriceSquareIcon from "../../../public/images/vector/price_square_icon.svg";
+import ViewPropMap from "../../../public/images/view_prop_Map.png";
 
 const ViewProperty = () => {
   const onTabChange = (key) => {
@@ -139,10 +142,9 @@ const ViewProperty = () => {
             </Col>
           </Row>
         </Container>
-        {/* PROP AMENITITES SECTION END HERE */}
 
         {/* CARASOUL SECTION STARTS HERE */}
-        <section>
+        <section className={ViewPropertyCss.carasoul_section}>
           <Carousel>
             <Carousel.Item>
               <Image
@@ -169,6 +171,678 @@ const ViewProperty = () => {
               />
             </Carousel.Item>
           </Carousel>
+        </section>
+
+        {/* FEATURE SECTION STARTS HERE */}
+        <section className={ViewPropertyCss.feature_section}>
+          <Container>
+            <h5 className={ViewPropertyCss.feature_section_heading}>
+              Features
+            </h5>
+            <Row>
+              <Col md={4}>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+              </Col>
+              <Col md={4}>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+                <div className={ViewPropertyCss.feature_section_div_container}>
+                  <div
+                    className={
+                      ViewPropertyCss.feature_section_tick_icon_container
+                    }
+                  >
+                    <Image
+                      width={24}
+                      height={24}
+                      src={FeatureTickIcon}
+                      alt="features of golfhom"
+                    ></Image>
+                  </div>
+
+                  <p className={ViewPropertyCss.feature_section_text}>
+                    Air conditioning
+                  </p>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        {/* MAP SECTION STARTS HERE */}
+        <section className={ViewPropertyCss.map_section}>
+          <Container>
+            <div className={ViewPropertyCss.map_section_main_container}>
+              <Image
+                fill
+                src={ViewPropMap}
+                alt="golfhom map"
+                className={ViewPropertyCss.map_section_image}
+              ></Image>
+            </div>
+          </Container>
+        </section>
+
+        {/* VIDEO SECTION STARTS HERE */}
+        <section className={ViewPropertyCss.video_section}>
+          <Container>
+            <h5 className={ViewPropertyCss.feature_section_heading}>Video</h5>
+            <div className={ViewPropertyCss.video_section_container}>
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/aWKFpMRiMX4"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </Container>
+        </section>
+
+        {/* THINGS TO KNOW SECTION  */}
+        <section className={ViewPropertyCss.things_to_know_section}>
+          <Container>
+            <h5 className={ViewPropertyCss.feature_section_heading}>
+              Things to know
+            </h5>
+            <Row>
+              <Col md={8}>
+                <div
+                  className={
+                    ViewPropertyCss.things_to_know_main_content_container
+                  }
+                >
+                  <Row>
+                    <h5 className={ViewPropertyCss.feature_section_heading}>
+                      Prices
+                    </h5>
+                    <Col xs={"auto"}>
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={PriceSquareIcon}
+                            width={15}
+                            height={15}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Night: From $605.00
+                        </p>
+                      </div>
+                    </Col>
+                    <Col xs={"auto"}>
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={PriceSquareIcon}
+                            width={15}
+                            height={15}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Night: From $605.00
+                        </p>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+              <Col md={4}></Col>
+            </Row>
+          </Container>
         </section>
       </main>
     </>
