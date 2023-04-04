@@ -12,6 +12,8 @@ import CarouselGalleryImg from "../../../public/images/view_prop_gallery_img_1.s
 import { DatePicker } from "antd";
 import FeatureTickIcon from "../../../public/images/vector/feature_tick.svg";
 import PriceSquareIcon from "../../../public/images/vector/price_square_icon.svg";
+import RulesCrossIcon from "../../../public/images/vector/rules_cross_icon.svg";
+
 import ViewPropMap from "../../../public/images/view_prop_Map.png";
 
 const ViewProperty = () => {
@@ -79,11 +81,19 @@ const ViewProperty = () => {
             <Col md={4} className={ViewPropertyCss.backgroundWhite}>
               <div className={ViewPropertyCss.totalParent}>
                 <div col-md-5 className={ViewPropertyCss.totalPrice}>
-                  <div className={ViewPropertyCss.totalTitle}><h4>Total <br />  Price</h4></div>
-                  <div className={ViewPropertyCss.amount}><h5>$0.00</h5></div>
+                  <div className={ViewPropertyCss.totalTitle}>
+                    <h4>
+                      Total <br /> Price
+                    </h4>
+                  </div>
+                  <div className={ViewPropertyCss.amount}>
+                    <h5>$0.00</h5>
+                  </div>
                 </div>
 
-                <div col-md-7 className={ViewPropertyCss.bookParent}><Button className={ViewPropertyCss.bookNow}>Book now</Button></div>
+                <div col-md-7 className={ViewPropertyCss.bookParent}>
+                  <Button className={ViewPropertyCss.bookNow}>Book now</Button>
+                </div>
               </div>
               <hr className={ViewPropertyCss.horizonaline} />
               <div className={ViewPropertyCss.inner_input_date_picker}>
@@ -95,50 +105,74 @@ const ViewProperty = () => {
               <hr />
 
               <Dropdown>
-                <Dropdown.Toggle className={ViewPropertyCss.guest} id="dropdown-basic">
+                <Dropdown.Toggle
+                  className={ViewPropertyCss.guest}
+                  id="dropdown-basic"
+                >
                   Guest
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className={ViewPropertyCss.adultChild}>
                   <div className={ViewPropertyCss.increase}>
-                    <div><Dropdown.Item href="#/action-1">  <span>{adult}</span> Adults</Dropdown.Item></div>
                     <div>
-                      <Button className={ViewPropertyCss.increaseAdult} onClick={() => {
-                        if (adult === 0) {
-                          setIncrement(1);
-                        } else if (adult === 10) {
-                          setDecrement(-1);
-                        }
-                        setAdult(adult + increment);
-                      }}>
-                        {increment > 0 ? '+' : '-'}
+                      <Dropdown.Item href="#/action-1">
+                        {" "}
+                        <span>{adult}</span> Adults
+                      </Dropdown.Item>
+                    </div>
+                    <div>
+                      <Button
+                        className={ViewPropertyCss.increaseAdult}
+                        onClick={() => {
+                          if (adult === 0) {
+                            setIncrement(1);
+                          } else if (adult === 10) {
+                            setDecrement(-1);
+                          }
+                          setAdult(adult + increment);
+                        }}
+                      >
+                        {increment > 0 ? "+" : "-"}
                       </Button>
                     </div>
                   </div>
 
                   <div className={ViewPropertyCss.increase}>
-                    <div><Dropdown.Item href="#/action-2">  <span>{child}</span> Children</Dropdown.Item></div>
-                    <div><Button className={ViewPropertyCss.increaseChild} onClick={() => {
-                      if (child === 0) {
-                        setIncrement(1);
-                      } else if (child === 10) {
-                        setIncrement(-1);
-                      }
-                      setChild(child + increment);
-                    }}>
-                      {increment > 0 ? '+' : '-'}
-                    </Button>
+                    <div>
+                      <Dropdown.Item href="#/action-2">
+                        {" "}
+                        <span>{child}</span> Children
+                      </Dropdown.Item>
+                    </div>
+                    <div>
+                      <Button
+                        className={ViewPropertyCss.increaseChild}
+                        onClick={() => {
+                          if (child === 0) {
+                            setIncrement(1);
+                          } else if (child === 10) {
+                            setIncrement(-1);
+                          }
+                          setChild(child + increment);
+                        }}
+                      >
+                        {increment > 0 ? "+" : "-"}
+                      </Button>
                     </div>
                   </div>
 
-                  <div className={ViewPropertyCss.applyParent}><Button className={ViewPropertyCss.apply}>Apply</Button></div>
-
+                  <div className={ViewPropertyCss.applyParent}>
+                    <Button className={ViewPropertyCss.apply}>Apply</Button>
+                  </div>
                 </Dropdown.Menu>
               </Dropdown>
               <hr />
 
-              <div className={ViewPropertyCss.checkParent}><Button className={ViewPropertyCss.check}>Check availability</Button></div>
-
+              <div className={ViewPropertyCss.checkParent}>
+                <Button className={ViewPropertyCss.check}>
+                  Check availability
+                </Button>
+              </div>
             </Col>
           </Row>
         </Container>
@@ -768,7 +802,8 @@ const ViewProperty = () => {
             <h5 className={ViewPropertyCss.feature_section_heading}>
               Things to know
             </h5>
-            <Row>
+            {/* PRICE SECTION */}
+            <Row className={ViewPropertyCss.things_to_know_section_rows}>
               <Col md={8}>
                 <div
                   className={
@@ -776,10 +811,15 @@ const ViewProperty = () => {
                   }
                 >
                   <Row>
-                    <h5 className={ViewPropertyCss.feature_section_heading}>
+                    <h5
+                      className={ViewPropertyCss.things_to_know_section_heading}
+                    >
                       Prices
                     </h5>
-                    <Col xs={"auto"}>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
                       <div
                         className={
                           ViewPropertyCss.things_to_know_price_container
@@ -804,11 +844,19 @@ const ViewProperty = () => {
                         <p
                           className={ViewPropertyCss.things_to_know_price_text}
                         >
-                          Night: From $605.00
+                          Night: From{" "}
+                          <span
+                            className={ViewPropertyCss.things_to_know_info_span}
+                          >
+                            $640
+                          </span>
                         </p>
                       </div>
                     </Col>
-                    <Col xs={"auto"}>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
                       <div
                         className={
                           ViewPropertyCss.things_to_know_price_container
@@ -833,7 +881,86 @@ const ViewProperty = () => {
                         <p
                           className={ViewPropertyCss.things_to_know_price_text}
                         >
-                          Night: From $605.00
+                          Allow Additional Guests:{" "}
+                          <span
+                            className={ViewPropertyCss.things_to_know_info_span}
+                          >
+                            Yes
+                          </span>
+                        </p>
+                      </div>
+                    </Col>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={PriceSquareIcon}
+                            width={15}
+                            height={15}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Minimum Nights Of A Booking:{" "}
+                          <span
+                            className={ViewPropertyCss.things_to_know_info_span}
+                          >
+                            1
+                          </span>
+                        </p>
+                      </div>
+                    </Col>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={PriceSquareIcon}
+                            width={15}
+                            height={15}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Maximum Nights Of A Booking:
+                          <span
+                            className={ViewPropertyCss.things_to_know_info_span}
+                          >
+                            40
+                          </span>
                         </p>
                       </div>
                     </Col>
@@ -842,6 +969,201 @@ const ViewProperty = () => {
               </Col>
               <Col md={4}></Col>
             </Row>
+            {/* TERMS SECTION */}
+            <Row className={ViewPropertyCss.things_to_know_section_rows}>
+              <Col md={8}>
+                <div
+                  className={
+                    ViewPropertyCss.things_to_know_main_content_container
+                  }
+                >
+                  <Row>
+                    <h5
+                      className={ViewPropertyCss.things_to_know_section_heading}
+                    >
+                      Terms & rules
+                    </h5>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={RulesCrossIcon}
+                            width={15}
+                            height={15}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Smoking allowed
+                        </p>
+                      </div>
+                    </Col>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={RulesCrossIcon}
+                            width={15}
+                            height={15}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Pets allowed
+                        </p>
+                      </div>
+                    </Col>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={RulesCrossIcon}
+                            width={15}
+                            height={15}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Children allowed
+                        </p>
+                      </div>
+                    </Col>
+                    <Col
+                      className={ViewPropertyCss.things_to_know_section_cols}
+                      md={6}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_price_container
+                        }
+                      >
+                        <div
+                          className={
+                            ViewPropertyCss.things_to_know_price_icon_container
+                          }
+                        >
+                          <Image
+                            className={
+                              ViewPropertyCss.things_to_know_price_icon
+                            }
+                            src={FeatureTickIcon}
+                            width={24}
+                            height={24}
+                            alt="Prices"
+                          ></Image>
+                        </div>
+
+                        <p
+                          className={ViewPropertyCss.things_to_know_price_text}
+                        >
+                          Event allowed
+                        </p>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+              <Col md={4}></Col>
+            </Row>
+            {/* Cancellation  SECTION */}
+            <Row className={ViewPropertyCss.things_to_know_section_rows}>
+              <Col md={8}>
+                <div
+                  className={
+                    ViewPropertyCss.things_to_know_main_content_container
+                  }
+                >
+                  <Row>
+                    <h5
+                      className={ViewPropertyCss.things_to_know_section_heading}
+                    >
+                      Cancellation Policy
+                    </h5>
+                    <p className={ViewPropertyCss.things_to_know_privacy_text}>
+                      90-61 days prior to arrival 50% of purchase price will be
+                      charged. 60 days prior to arrival !00% of the purchase
+                      price will be charged.
+                    </p>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
+
+            {/* Additional rules information  SECTION */}
+            <Row className={ViewPropertyCss.things_to_know_section_rows}>
+              <Col md={8}>
+                <div
+                  className={
+                    ViewPropertyCss.things_to_know_main_content_container
+                  }
+                >
+                  <Row>
+                    <h5
+                      className={ViewPropertyCss.things_to_know_section_heading}
+                    >
+                      Additional rules information
+                    </h5>
+                    <p className={ViewPropertyCss.things_to_know_privacy_text}>
+                      For events of over 50 persons, parking must be
+                      pre-arranged
+                    </p>
+                  </Row>
+                </div>
+              </Col>
+            </Row>
+
+            {/* Availability SECTION */}
           </Container>
         </section>
       </main>

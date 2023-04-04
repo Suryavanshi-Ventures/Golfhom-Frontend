@@ -106,7 +106,6 @@
   bottom: 96px;
   padding: 0%;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
- 
 }
 .inner_input_date_picker {
   border: none;
@@ -148,7 +147,6 @@
   justify-content: center;
   margin: 0px 16px;
 }
-
 
 .bookParent {
   align-self: center;
@@ -194,12 +192,12 @@
 }
 
 .increase {
- flex-wrap: wrap;
- width: 100%;
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- margin-top: 14px;
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 14px;
 }
 
 .check {
@@ -228,7 +226,8 @@
   padding: 18px;
 }
 
-.increaseAdult, .increaseChild {
+.increaseAdult,
+.increaseChild {
   padding: 8px 56px;
   background: var(--white-font-color);
   color: var(--btn-background-secondary);
@@ -287,6 +286,22 @@
 .things_to_know_price_container {
   display: flex;
 }
+
+.things_to_know_section_rows {
+  margin: 2rem 0;
+}
+
+.things_to_know_section_cols {
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.things_to_know_section_heading {
+  padding: 0;
+  font-family: var(--font-amiri);
+  font-size: 24px;
+  font-weight: 600;
+}
 .things_to_know_price_icon_container {
   display: flex;
   align-items: center;
@@ -298,4 +313,16 @@
 .things_to_know_price_text {
   margin: 0 1.2rem;
   font-family: var(--font-poppins);
+}
+
+.things_to_know_info_span {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+}
+
+/* Cancellation Policy */
+
+.things_to_know_privacy_text {
+  padding: 0;
+  margin: 1rem 0;
 }
