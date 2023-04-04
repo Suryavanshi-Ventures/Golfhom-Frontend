@@ -324,7 +324,7 @@
 /* Cancellation Policy */
 .things_to_know_privacy_text {
   padding: 0;
+  font-family: var(--font-poppins);
+
   margin: 1rem 0;
 }
-
-/* Availability SECTION */
