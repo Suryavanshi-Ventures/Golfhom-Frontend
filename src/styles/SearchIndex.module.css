@@ -115,6 +115,7 @@
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
+  font-family: var(--font-poppins);
 }
 
 .saddle {
@@ -151,6 +152,8 @@
 }
 
 .default {
+  font-family: var(--font-poppins);
+  font-weight: 500;
 }
 
 .cardMapParent {

@@ -48,6 +48,7 @@ const ViewProperty = () => {
   const [increment, setIncrement] = useState(1);
   const [decrement, setDecrement] = useState(1);
 
+
   return (
     <>
       <Head>
@@ -129,6 +130,7 @@ const ViewProperty = () => {
                       {increment > 0 ? '+' : '-'}
                     </Button>
                     </div>
+
                   </div>
 
                   <div className={ViewPropertyCss.applyParent}><Button className={ViewPropertyCss.apply}>Apply</Button></div>
