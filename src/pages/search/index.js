@@ -9,6 +9,8 @@ import { Button, Dropdown, Space } from "antd";
 import Image from "next/image";
 import { Pagination } from "antd";
 import Link from "next/link";
+import Buildings from "../../../public/images/buildings.png"
+import Grouptalk from "../../../public/images/grouptalk.png";
 
 const { RangePicker } = DatePicker;
 
@@ -114,6 +116,14 @@ const index = () => {
         </main>
       </section>
 
+      {/* -----------------------           HEAD IMAGE SECTION             ---------------------  */}
+
+      <section>
+        <div className={Index.buildings}>
+          <Image className={Index.buildingImg} src={Buildings} alt="buildings" fill></Image>
+        </div>
+      </section>
+
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
 
@@ -215,9 +225,8 @@ const index = () => {
 
                   <div className={Index.price}>
                     <div>
-                      <h5 className={Index.amount}>
-                        $420/ <span className={Index.night}>Night</span>
-                      </h5>
+                      <h5 className={Index.amount}> $420/</h5>
+                      <p className={Index.night}>Night</p>
                     </div>
 
                     <div className={Index.heartBtn}>
@@ -305,9 +314,8 @@ const index = () => {
 
                   <div className={Index.price}>
                     <div>
-                      <h5 className={Index.amount}>
-                        $420/ <span className={Index.night}>Night</span>
-                      </h5>
+                      <h5 className={Index.amount}>$420/</h5>
+                      <p className={Index.night}>Night</p>
                     </div>
 
                     <div className={Index.heartBtn}>
@@ -395,9 +403,8 @@ const index = () => {
 
                   <div className={Index.price}>
                     <div>
-                      <h5 className={Index.amount}>
-                        $420/ <span className={Index.night}>Night</span>
-                      </h5>
+                      <h5 className={Index.amount}>$420/</h5>
+                      <p className={Index.night}>Night</p>
                     </div>
 
                     <div className={Index.heartBtn}>
@@ -440,6 +447,24 @@ const index = () => {
             />
           </div>
         </Container>
+      </section>
+
+
+      {/* BOTTOM IMAGE SECTION */}
+      <section className={Index.grouptalk}>
+        <div>
+          <Image
+            alt="group talk"
+            className={Index.grouptalk}
+            src={Grouptalk}
+            fill
+          ></Image>
+
+          <Col md={4} className={Index.newBtn}>
+            <h4 className={Index.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
+            <Button className={Index.search}>Search</Button>
+          </Col>
+        </div>
       </section>
 
     </>

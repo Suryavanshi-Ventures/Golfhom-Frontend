@@ -14,8 +14,10 @@ import FeatureTickIcon from "../../../public/images/vector/feature_tick.svg";
 import PriceSquareIcon from "../../../public/images/vector/price_square_icon.svg";
 import RulesCrossIcon from "../../../public/images/vector/rules_cross_icon.svg";
 import Calendar from "../../../public/images/vector/calendar.svg";
-
+import Grouptalk from "../../../public/images/grouptalk.png";
+import Blacktick from "../../../public/images/vector/blackTick.svg";
 import ViewPropMap from "../../../public/images/view_prop_Map.png";
+
 
 const ViewProperty = () => {
   const onTabChange = (key) => {
@@ -970,7 +972,174 @@ const ViewProperty = () => {
                   </Row>
                 </div>
               </Col>
-              <Col md={4}></Col>
+              <Col md={4} className={ViewPropertyCss.detailParent}>
+                <div>
+                  <div className={ViewPropertyCss.details}>Details</div>
+                  <div className={ViewPropertyCss.tickParent}>
+                    <div
+                      className={
+                        ViewPropertyCss.tick_with_blackbg_container
+                      }
+                    >
+                      <Image
+                        className={
+                          ViewPropertyCss.tick_with_blackbg
+                        }
+                        src={Blacktick}
+                        width={24}
+                        height={24}
+                        alt="Prices"
+                      ></Image>
+                    </div>
+                    <p className={ViewPropertyCss.words}>ID:  58228</p></div>
+                </div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Rooms:  6</p></div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Guests:  8</p></div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Check-in After: 4:00 PM</p></div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Bedrooms: 4</p></div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Check-out Before: 11:00 AM</p></div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Beds: 8</p></div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Payment Methods: Credit Card</p></div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div
+                    className={
+                      ViewPropertyCss.tick_with_blackbg_container
+                    }
+                  >
+                    <Image
+                      className={
+                        ViewPropertyCss.tick_with_blackbg
+                      }
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>Bathrooms: 2</p></div>
+
+
+              </Col>
             </Row>
 
             {/* TERMS SECTION */}
@@ -1180,7 +1349,7 @@ const ViewProperty = () => {
                     <h5
                       className={ViewPropertyCss.things_to_know_section_heading}
                     >
-                      Terms & rules
+                      Availability
                     </h5>
                     <Col
                       className={ViewPropertyCss.things_to_know_section_cols}
@@ -1251,6 +1420,23 @@ const ViewProperty = () => {
               </Col>
             </Row>
           </Container>
+        </section>
+
+        {/* BOTTOM IMAGE SECTION */}
+        <section className={ViewPropertyCss.grouptalk}>
+          <div>
+            <Image
+              alt="group talk"
+              className={ViewPropertyCss.grouptalk}
+              src={Grouptalk}
+              fill
+            ></Image>
+
+            <Col md={4} className={ViewPropertyCss.newBtn}>
+              <h4 className={ViewPropertyCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
+              <Button className={ViewPropertyCss.search}>Search</Button>
+            </Col>
+          </div>
         </section>
       </main>
     </>

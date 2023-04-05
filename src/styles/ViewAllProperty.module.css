@@ -1,0 +1,118 @@
+.heading {
+    font-family: var(--font-amiri);
+    color: #2F2F2F;
+    font-weight: 600;
+   
+}
+
+.golfCourse {
+    color: var(--btn-background-secondary);
+}
+
+.textContainer {
+    margin: 30px 0px;
+}
+
+.para {
+    font-family: var(--font-poppins);
+}
+
+/* COLUMNS SECTION */
+
+.columnParent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+   
+}
+
+.columnsA, .columnsB, .columnsC, .columnsD  {
+    width: 300px;
+    height: 264px;
+    position: relative !important;
+    margin: 30px 0px;
+}
+
+.countryName {
+    position: relative;
+    top: 208px;
+    left: 10px;
+    color: var(--white-font-color);
+    font-family: var(--font-amiri);
+}
+
+/*  -----------------     PAGINATION CONTAINER     -----------------   */
+
+.pagination_container {
+    padding: 5rem 0;
+     display: flex;
+     justify-content: center;
+     width: 100%;
+   }
+   
+   .pagination {
+    
+   }
+   
+
+/* Bottom section */
+
+.grouptalk {
+    margin-bottom: 50px;
+    position: relative !important;
+  }
+  
+  .newBtn {
+    background: var(--white-font-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    bottom: 44px;
+    padding: 30px 40px 60px;
+    right: 0px;
+  }
+  
+  .search {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--btn-background-secondary);
+    color: var(--white-font-color);
+    border: none;
+  }
+  
+  .detailParent {
+    border: 1px solid #636363;
+    border-radius: 16px;
+    padding: 30px;
+  }
+  
+  .details {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: var(--font-amiri);
+  }
+  
+  .tickParent {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+  }
+  
+  .tick_with_blackbg {
+    color: #111111;
+  }
+  
+  .words {
+    margin-left: 24px;
+  }
+  
+  .grouptalkTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: var(--font-amiri);
+  }
