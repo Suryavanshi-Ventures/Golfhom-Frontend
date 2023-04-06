@@ -30,6 +30,19 @@ const Header = () => {
     setIsModalOpen(false);
   };
 
+  { /* -----------      REGISTER SECTION        -----------------*/ }
+
+  const [isModalOpens, setIsModalOpens] = useState(false);
+  const showRegister = () => {
+    setIsModalOpens(true);
+  };
+  const handleRegister = () => {
+    setIsModalOpens(false);
+  };
+  const handleCancelRegister = () => {
+    setIsModalOpens(false);
+  };
+
   return (
     <>
       <header className={HeaderCss.header}>
@@ -37,7 +50,7 @@ const Header = () => {
           {/* -----------       SIGN UP SECTION        -----------------*/}
 
           <Modal
-            title="Sign In to your account"
+            title="Log In to your account"
             footer={null}
             open={isModalOpen}
             onSignup={handleSignup}
@@ -51,15 +64,61 @@ const Header = () => {
 
             <div className={HeaderCss.remember}>
               <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
-              <button className={HeaderCss.signIn}>Sign In</button>
+              <button className={HeaderCss.signIn}>Log In</button>
             </div>
 
             <div className={HeaderCss.forgotActive}>
-              <span>Forgot Password</span>
-              <span className={HeaderCss.verticalBar}> | </span>
-              <span>Active Online account</span>
+              <h6 className={HeaderCss.forgot}>Forgot Password ?</h6>
+
+              <div className={HeaderCss.dont_link_parent}>
+                <h6 className={HeaderCss.donthaveAcc}>Don't you have an account?</h6>
+                <Link
+                  href="/"
+                  className={HeaderCss.registerLink}
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Space>
+                    <a
+                      className={HeaderCss.register}
+                      onClick={showRegister}
+                    >
+                      Register
+                    </a>
+                  </Space>
+                </Link>
+              </div>
             </div>
           </Modal>
+
+          <Modal
+            title="Register"
+            footer={null}
+            open={isModalOpens}
+            onSignup={handleRegister}
+            onCancel={handleCancelRegister}
+            width={440}
+            className={HeaderCss.headerReg}
+
+          >
+            <Col className={HeaderCss.inputParent}>
+              <Row><input className={HeaderCss.inputA} type="text" placeholder="Enter User name"></input></Row>
+              <hr />
+              <Row><input className={HeaderCss.inputB} type="email" placeholder="Email"></input></Row>
+              <hr />
+              <Row><input className={HeaderCss.inputC} type="password" placeholder="Password"></input></Row>
+              <hr />
+              <Row><input className={HeaderCss.inputD} type="password" placeholder="Repeat Password"></input></Row>
+            </Col>
+
+            <Row>
+              <div><Checkbox className={HeaderCss.agreeOptionA}>I agree with your Terms & Conditions</Checkbox></div>
+              <div><Checkbox className={HeaderCss.agreeOptionB}>I agree with your Privacy Policy</Checkbox></div>
+            </Row>
+
+            <Button className={HeaderCss.registerBtn}>Register</Button>
+          </Modal>
+
+
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <Col xs={"auto"} className={HeaderCss.logo_container}>

@@ -39,14 +39,15 @@
 .headphones_icon {
   margin: 0 0.5rem;
 }
-.top_header_a {
+.top_header_a, .registerLink {
   text-decoration: none;
   color: var(--light-font-color);
   font-family: var(--font-poppins);
   transition-duration: 0.5s;
   font-size: 14px;
 }
-.top_header_a:hover {
+
+.top_header_a:hover, .registerLink:hover {
   transition-duration: 0.5s;
   color: var(--btn-background);
 }
@@ -156,11 +157,105 @@
   border-radius: 50px;
   font-size: 0.8rem;
   width: 28%;
-  padding: 1.2% 0;
+  padding: 1.6% 0;
   float: right;
   border: none;
 }
 
-.verticalBar {
-  margin: 0px 4px;
+.forgot {
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+}
+
+.donthaveAcc {
+  font-family: var(--font-amiri);
+  color: #111111;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+/* --------------          REGISTER BLOCK        ---------------   */
+
+.headerReg .ant-modal-title {
+  background: var(--btn-background-secondary) !important;
+  padding: 0% !important;
+  margin: 0% !important;
+}
+
+.register {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+  color: var(--btn-background-secondary);
+  text-decoration: underline;
+}
+
+.dont_link_parent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+ 
+}
+
+.inputParent {
+  flex-wrap: wrap;
+  border: 1px solid var(--light-font-color);
+  border-radius: 8px;
+  width: 100%;
+  padding: 12px 0px;
+}
+
+.inputA {
+  width: 90%;
+  border: none;
+
+  margin-left: 14px;
+}
+
+.inputB {
+  width: 90%;
+  border: none;
+  margin-left: 14px;
+}
+
+.inputC {
+  width: 90%;
+  border: none;
+  margin-left: 14px;
+}
+
+.inputD {
+  width: 90%;
+  border: none;
+  margin-left: 14px;
+}
+
+.agreeOptionA {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 16px 0px;
+  font-weight: var(--font-poppins);
+}
+
+.agreeOptionB {
+  font-size: 1rem;
+  font-weight: 700;
+  font-weight: var(--font-poppins);
+  margin-bottom: 14px;
+}
+
+.registerBtn {
+ width: 100%;
+ background: #111111;
+ color: var(--white-font-color);
+ font-size: 0.8rem;
+ font-weight: 500;
+ font-family: var(--font-poppins);
+ text-align: center;
+ border-radius: 0% !important;
+ margin: 20px 0px;
+ padding: 6% 0%;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
 }

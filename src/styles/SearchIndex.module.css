@@ -232,8 +232,8 @@
 }
 
 .buildings {
- width: 1526px;
- height: 600px;
+  max-width: 1560px;
+  height: auto;
 }
 
 .buildingImg {
@@ -257,6 +257,11 @@
   bottom: 44px;
   padding: 30px 40px 60px;
   right: 0px;
+}
+
+.groupParent {
+  max-width: 1560px;
+  height: auto;
 }
 
 .search {

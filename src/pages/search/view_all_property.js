@@ -21,10 +21,12 @@ const view_all_property = () => {
 
     return (
         <>
-            <section>
+            <section className={ViewAllPropertyCss.headImage}>
                 <Image
                     src={ViewAllProps}
                     alt="View All Property Image"
+                    fill
+                    className={ViewAllPropertyCss.imageChild}
                 ></Image>
             </section>
 
@@ -97,12 +99,14 @@ const view_all_property = () => {
             {/* BOTTOM IMAGE SECTION */}
             <section className={ViewAllPropertyCss.grouptalk}>
                 <div>
-                    <Image
-                        alt="group talk"
-                        className={ViewAllPropertyCss.grouptalk}
-                        src={Grouptalk}
-                        fill
-                    ></Image>
+                    <div className={ViewAllPropertyCss.groupParent}>
+                        <Image
+                            alt="group talk"
+                            className={ViewAllPropertyCss.grouptalk}
+                            src={Grouptalk}
+                            fill
+                        ></Image>
+                    </div>
 
                     <Col md={4} className={ViewAllPropertyCss.newBtn}>
                         <h4 className={ViewAllPropertyCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>

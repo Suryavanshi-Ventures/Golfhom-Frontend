@@ -1,3 +1,13 @@
+.headImage {
+  max-width: 1560px;
+  height: auto;
+  
+}
+
+.imageChild {
+  position: relative !important;
+}
+
 .heading {
     font-family: var(--font-amiri);
     color: #2F2F2F;
@@ -74,6 +84,11 @@
     right: 0px;
   }
   
+  .groupParent {
+    max-width: 1560px;
+    height: auto;
+  }
+
   .search {
     width: 25%;
     display: flex;

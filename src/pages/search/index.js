@@ -240,7 +240,7 @@ const index = () => {
                           />
                         </Link>
                       </div>
-                      <Button className={Index.btnD}>Details</Button>
+                      <Link href="/search/view_property"><Button className={Index.btnD}>Details</Button></Link>
                     </div>
                   </div>
                 </Col>
@@ -451,14 +451,17 @@ const index = () => {
 
 
       {/* BOTTOM IMAGE SECTION */}
+
       <section className={Index.grouptalk}>
         <div>
-          <Image
-            alt="group talk"
-            className={Index.grouptalk}
-            src={Grouptalk}
-            fill
-          ></Image>
+          <div className={Index.groupParent}>
+            <Image
+              alt="group talk"
+              className={Index.grouptalk}
+              src={Grouptalk}
+              fill
+            ></Image>
+          </div>
 
           <Col md={4} className={Index.newBtn}>
             <h4 className={Index.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>

@@ -86,9 +86,10 @@ const Home = () => {
               </Col>
               <Col md={4} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
-                  <Button className={HomeCss.search_btn} type="primary">
+                  <Link href="/search"><Button className={HomeCss.search_btn} type="primary">
                     Search
-                  </Button>
+                  </Button></Link>
+
                 </div>
               </Col>
             </Row>
@@ -114,6 +115,8 @@ const Home = () => {
             attractions! Golfhōm is transforming how golfers locate and book
             their next luxury golf vacation rental. Book with us today!
           </p>
+
+          <Link href="/search/view_all_property"><div className={HomeCss.viewallBtnParent}><Button className={HomeCss.viewallBtn}>View All</Button></div></Link>
         </div>
 
         <Slider slides={slides} />

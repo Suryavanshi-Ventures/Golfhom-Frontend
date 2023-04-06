@@ -185,10 +185,14 @@
   align-self: center;
 }
 
-.guest:hover {
-  background: none;
-  border: none;
-  color: #111111;
+.guest:hover, .guest:focus {
+  background: none !important;
+  border: none !important;
+  color: #111111 !important;
+}
+
+.guest:active {
+background: transparent !important;
 }
 
 .increase {
@@ -226,12 +230,42 @@
   padding: 18px;
 }
 
-.increaseAdult,
-.increaseChild {
-  padding: 8px 56px;
+.ageName {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+}
+
+.increaseAdult {
   background: var(--white-font-color);
   color: var(--btn-background-secondary);
   border: 1px solid var(--btn-background-secondary);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2px 9px;
+}
+
+.increaseAdult:hover, .increaseAdult:focus {
+  background: var(--white-font-color) !important;
+  color: var(--btn-background-secondary) !important;
+  border: 1px solid var(--btn-background-secondary) !important;
+}
+
+.increaseAdult:active {
+  background: inherit;
+}
+
+.decreasebtn {
+   padding: 0px 10px;
+   font-size: 1.4rem;
+   margin-right: 20px;
+}
+
+.increasebtn {
+  padding: 0px 10px;
+  font-size: 1.4rem;
+  margin-left: 20px;
 }
 
 .applyParent {
@@ -334,6 +368,11 @@
 .grouptalk {
   margin-bottom: 50px;
   position: relative !important;
+}
+
+.groupParent {
+  max-width: 1560px;
+  height: auto;
 }
 
 .newBtn {

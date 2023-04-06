@@ -48,10 +48,42 @@ const ViewProperty = () => {
 
   const { RangePicker } = DatePicker;
 
+  // FOR ADULT BUTTON INCREMENT AND DECREMENT
+
   const [adult, setAdult] = useState(0);
+
+  const incAdult = () => {
+    setAdult(adult + 1);
+  };
+
+  const decAdult = () => {
+    if (adult > 0) {
+      setAdult(adult - 1);
+    } else {
+      alert('Sorry Could not take negative value ')
+      setAdult(0);
+    }
+
+  };
+
+  // FOR CHILD BUTTON INCREMENT AND DECREMENT
+
   const [child, setChild] = useState(0);
-  const [increment, setIncrement] = useState(1);
-  const [decrement, setDecrement] = useState(1);
+
+  const incChild = () => {
+    setChild(child + 1);
+  };
+
+  const decChild = () => {
+    if (child > 0) {
+      setChild(child - 1);
+    } else {
+      alert('Sorry Could not take negative value ')
+      setChild(0);
+    }
+
+  };
+
 
 
   return (
@@ -121,22 +153,13 @@ const ViewProperty = () => {
                     <div>
                       <Dropdown.Item href="#/action-1">
                         {" "}
-                        <span>{adult}</span> Adults
+                        <h5 className={ViewPropertyCss.ageName}>{adult} Adults</h5>
                       </Dropdown.Item>
                     </div>
                     <div>
-                      <Button
-                        className={ViewPropertyCss.increaseAdult}
-                        onClick={() => {
-                          if (adult === 0) {
-                            setIncrement(1);
-                          } else if (adult === 10) {
-                            setDecrement(-1);
-                          }
-                          setAdult(adult + increment);
-                        }}
-                      >
-                        {increment > 0 ? "+" : "-"}
+                      <Button className={ViewPropertyCss.increaseAdult}>
+                        <div className={ViewPropertyCss.decreasebtn} onClick={decAdult}>-</div>
+                        <div className={ViewPropertyCss.increasebtn} onClick={incAdult}>+</div>
                       </Button>
                     </div>
                   </div>
@@ -145,25 +168,15 @@ const ViewProperty = () => {
                     <div>
                       <Dropdown.Item href="#/action-2">
                         {" "}
-                        <span>{child}</span> Children
+                        <h5 className={ViewPropertyCss.ageName}>{child} Children</h5>
                       </Dropdown.Item>
                     </div>
                     <div>
-                      <Button
-                        className={ViewPropertyCss.increaseChild}
-                        onClick={() => {
-                          if (child === 0) {
-                            setIncrement(1);
-                          } else if (child === 10) {
-                            setIncrement(-1);
-                          }
-                          setChild(child + increment);
-                        }}
-                      >
-                        {increment > 0 ? "+" : "-"}
+                      <Button className={ViewPropertyCss.increaseAdult}>
+                        <div className={ViewPropertyCss.decreasebtn} onClick={decChild}>-</div>
+                        <div className={ViewPropertyCss.increasebtn} onClick={incChild}>+</div>
                       </Button>
                     </div>
-
                   </div>
 
                   <div className={ViewPropertyCss.applyParent}>
@@ -1425,12 +1438,14 @@ const ViewProperty = () => {
         {/* BOTTOM IMAGE SECTION */}
         <section className={ViewPropertyCss.grouptalk}>
           <div>
-            <Image
-              alt="group talk"
-              className={ViewPropertyCss.grouptalk}
-              src={Grouptalk}
-              fill
-            ></Image>
+            <div className={ViewPropertyCss.groupParent}>
+              <Image
+                alt="group talk"
+                className={ViewPropertyCss.grouptalk}
+                src={Grouptalk}
+                fill
+              ></Image>
+            </div>
 
             <Col md={4} className={ViewPropertyCss.newBtn}>
               <h4 className={ViewPropertyCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
