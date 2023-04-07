@@ -8,6 +8,7 @@ import { Card } from "react-bootstrap";
 const Video = ({ videos }) => {
     return (
         <Swiper
+            className={HomeCss.videoParentdiv}
             modules={[Navigation, Pagination, A11y]}
             spaceBetween={30}
             slidesPerView={3}

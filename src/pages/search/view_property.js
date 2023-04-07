@@ -984,7 +984,289 @@ const ViewProperty = () => {
                     </Col>
                   </Row>
                 </div>
+
+                <div>
+                  {/* TERMS SECTION */}
+                  <div className={ViewPropertyCss.things_to_know_section_rows}>
+                    <Col md={8}>
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_main_content_container
+                        }
+                      >
+                        <Row>
+                          <h5
+                            className={ViewPropertyCss.things_to_know_section_heading}
+                          >
+                            Terms & rules
+                          </h5>
+                          <Col
+                            className={ViewPropertyCss.things_to_know_section_cols}
+                            md={6}
+                          >
+                            <div
+                              className={
+                                ViewPropertyCss.things_to_know_price_container
+                              }
+                            >
+                              <div
+                                className={
+                                  ViewPropertyCss.things_to_know_price_icon_container
+                                }
+                              >
+                                <Image
+                                  className={
+                                    ViewPropertyCss.things_to_know_price_icon
+                                  }
+                                  src={RulesCrossIcon}
+                                  width={15}
+                                  height={15}
+                                  alt="Prices"
+                                ></Image>
+                              </div>
+
+                              <p
+                                className={ViewPropertyCss.things_to_know_price_text}
+                              >
+                                Smoking allowed
+                              </p>
+                            </div>
+                          </Col>
+                          <Col
+                            className={ViewPropertyCss.things_to_know_section_cols}
+                            md={6}
+                          >
+                            <div
+                              className={
+                                ViewPropertyCss.things_to_know_price_container
+                              }
+                            >
+                              <div
+                                className={
+                                  ViewPropertyCss.things_to_know_price_icon_container
+                                }
+                              >
+                                <Image
+                                  className={
+                                    ViewPropertyCss.things_to_know_price_icon
+                                  }
+                                  src={RulesCrossIcon}
+                                  width={15}
+                                  height={15}
+                                  alt="Prices"
+                                ></Image>
+                              </div>
+
+                              <p
+                                className={ViewPropertyCss.things_to_know_price_text}
+                              >
+                                Pets allowed
+                              </p>
+                            </div>
+                          </Col>
+                          <Col
+                            className={ViewPropertyCss.things_to_know_section_cols}
+                            md={6}
+                          >
+                            <div
+                              className={
+                                ViewPropertyCss.things_to_know_price_container
+                              }
+                            >
+                              <div
+                                className={
+                                  ViewPropertyCss.things_to_know_price_icon_container
+                                }
+                              >
+                                <Image
+                                  className={
+                                    ViewPropertyCss.things_to_know_price_icon
+                                  }
+                                  src={RulesCrossIcon}
+                                  width={15}
+                                  height={15}
+                                  alt="Prices"
+                                ></Image>
+                              </div>
+
+                              <p
+                                className={ViewPropertyCss.things_to_know_price_text}
+                              >
+                                Children allowed
+                              </p>
+                            </div>
+                          </Col>
+                          <Col
+                            className={ViewPropertyCss.things_to_know_section_cols}
+                            md={6}
+                          >
+                            <div
+                              className={
+                                ViewPropertyCss.things_to_know_price_container
+                              }
+                            >
+                              <div
+                                className={
+                                  ViewPropertyCss.things_to_know_price_icon_container
+                                }
+                              >
+                                <Image
+                                  className={
+                                    ViewPropertyCss.things_to_know_price_icon
+                                  }
+                                  src={FeatureTickIcon}
+                                  width={24}
+                                  height={24}
+                                  alt="Prices"
+                                ></Image>
+                              </div>
+
+                              <p
+                                className={ViewPropertyCss.things_to_know_price_text}
+                              >
+                                Event allowed
+                              </p>
+                            </div>
+                          </Col>
+                        </Row>
+                      </div>
+                    </Col>
+                    <Col md={4}></Col>
+                  </div>
+
+
+                  {/* Cancellation  SECTION */}
+                  <div className={ViewPropertyCss.things_to_know_section_rows}>
+                    <Col md={8}>
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_main_content_container
+                        }
+                      >
+                        <Row>
+                          <h5
+                            className={ViewPropertyCss.things_to_know_section_heading}
+                          >
+                            Cancellation Policy
+                          </h5>
+                          <p className={ViewPropertyCss.things_to_know_privacy_text}>
+                            90-61 days prior to arrival 50% of purchase price will be
+                            charged. 60 days prior to arrival !00% of the purchase
+                            price will be charged.
+                          </p>
+                        </Row>
+                      </div>
+                    </Col>
+                  </div>
+
+                  {/* Additional rules information  SECTION */}
+                  <div className={ViewPropertyCss.things_to_know_section_rows}>
+                    <Col md={8}>
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_main_content_container
+                        }
+                      >
+                        <Row>
+                          <h5
+                            className={ViewPropertyCss.things_to_know_section_heading}
+                          >
+                            Additional rules information
+                          </h5>
+                          <p className={ViewPropertyCss.things_to_know_privacy_text}>
+                            For events of over 50 persons, parking must be
+                            pre-arranged
+                          </p>
+                        </Row>
+                      </div>
+                    </Col>
+                  </div>
+
+                  {/* Availability SECTION */}
+                  <div className={ViewPropertyCss.things_to_know_section_rows}>
+                    <Col md={8}>
+                      <div
+                        className={
+                          ViewPropertyCss.things_to_know_main_content_container
+                        }
+                      >
+                        <Row>
+                          <h5
+                            className={ViewPropertyCss.things_to_know_section_heading}
+                          >
+                            Availability
+                          </h5>
+                          <Col
+                            className={ViewPropertyCss.things_to_know_section_cols}
+                            md={6}
+                          >
+                            <div
+                              className={
+                                ViewPropertyCss.things_to_know_price_container
+                              }
+                            >
+                              <div
+                                className={
+                                  ViewPropertyCss.things_to_know_price_icon_container
+                                }
+                              >
+                                <Image
+                                  className={
+                                    ViewPropertyCss.things_to_know_price_icon
+                                  }
+                                  src={Calendar}
+                                  width={30}
+                                  height={30}
+                                  alt="Prices"
+                                ></Image>
+                              </div>
+
+                              <p
+                                className={ViewPropertyCss.things_to_know_price_text}
+                              >
+                                The minimum stay is 3 nights from
+                              </p>
+                            </div>
+                          </Col>
+                          <Col
+                            className={ViewPropertyCss.things_to_know_section_cols}
+                            md={6}
+                          >
+                            <div
+                              className={
+                                ViewPropertyCss.things_to_know_price_container
+                              }
+                            >
+                              <div
+                                className={
+                                  ViewPropertyCss.things_to_know_price_icon_container
+                                }
+                              >
+                                <Image
+                                  className={
+                                    ViewPropertyCss.things_to_know_price_icon
+                                  }
+                                  src={Calendar}
+                                  width={30}
+                                  height={30}
+                                  alt="Prices"
+                                ></Image>
+                              </div>
+
+                              <p
+                                className={ViewPropertyCss.things_to_know_price_text}
+                              >
+                                The minimum stay is 3 nights from
+                              </p>
+                            </div>
+                          </Col>
+                        </Row>
+                      </div>
+                    </Col>
+                  </div>
+                </div>
               </Col>
+
               <Col md={4} className={ViewPropertyCss.detailParent}>
                 <div>
                   <div className={ViewPropertyCss.details}>Details</div>
@@ -1155,283 +1437,6 @@ const ViewProperty = () => {
               </Col>
             </Row>
 
-            {/* TERMS SECTION */}
-            <Row className={ViewPropertyCss.things_to_know_section_rows}>
-              <Col md={8}>
-                <div
-                  className={
-                    ViewPropertyCss.things_to_know_main_content_container
-                  }
-                >
-                  <Row>
-                    <h5
-                      className={ViewPropertyCss.things_to_know_section_heading}
-                    >
-                      Terms & rules
-                    </h5>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <Image
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={RulesCrossIcon}
-                            width={15}
-                            height={15}
-                            alt="Prices"
-                          ></Image>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Smoking allowed
-                        </p>
-                      </div>
-                    </Col>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <Image
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={RulesCrossIcon}
-                            width={15}
-                            height={15}
-                            alt="Prices"
-                          ></Image>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Pets allowed
-                        </p>
-                      </div>
-                    </Col>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <Image
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={RulesCrossIcon}
-                            width={15}
-                            height={15}
-                            alt="Prices"
-                          ></Image>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Children allowed
-                        </p>
-                      </div>
-                    </Col>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <Image
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={FeatureTickIcon}
-                            width={24}
-                            height={24}
-                            alt="Prices"
-                          ></Image>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Event allowed
-                        </p>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Col md={4}></Col>
-            </Row>
-
-            {/* Cancellation  SECTION */}
-            <Row className={ViewPropertyCss.things_to_know_section_rows}>
-              <Col md={8}>
-                <div
-                  className={
-                    ViewPropertyCss.things_to_know_main_content_container
-                  }
-                >
-                  <Row>
-                    <h5
-                      className={ViewPropertyCss.things_to_know_section_heading}
-                    >
-                      Cancellation Policy
-                    </h5>
-                    <p className={ViewPropertyCss.things_to_know_privacy_text}>
-                      90-61 days prior to arrival 50% of purchase price will be
-                      charged. 60 days prior to arrival !00% of the purchase
-                      price will be charged.
-                    </p>
-                  </Row>
-                </div>
-              </Col>
-            </Row>
-
-            {/* Additional rules information  SECTION */}
-            <Row className={ViewPropertyCss.things_to_know_section_rows}>
-              <Col md={8}>
-                <div
-                  className={
-                    ViewPropertyCss.things_to_know_main_content_container
-                  }
-                >
-                  <Row>
-                    <h5
-                      className={ViewPropertyCss.things_to_know_section_heading}
-                    >
-                      Additional rules information
-                    </h5>
-                    <p className={ViewPropertyCss.things_to_know_privacy_text}>
-                      For events of over 50 persons, parking must be
-                      pre-arranged
-                    </p>
-                  </Row>
-                </div>
-              </Col>
-            </Row>
-
-            {/* Availability SECTION */}
-            <Row className={ViewPropertyCss.things_to_know_section_rows}>
-              <Col md={8}>
-                <div
-                  className={
-                    ViewPropertyCss.things_to_know_main_content_container
-                  }
-                >
-                  <Row>
-                    <h5
-                      className={ViewPropertyCss.things_to_know_section_heading}
-                    >
-                      Availability
-                    </h5>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <Image
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={Calendar}
-                            width={30}
-                            height={30}
-                            alt="Prices"
-                          ></Image>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          The minimum stay is 3 nights from
-                        </p>
-                      </div>
-                    </Col>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <Image
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={Calendar}
-                            width={30}
-                            height={30}
-                            alt="Prices"
-                          ></Image>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          The minimum stay is 3 nights from
-                        </p>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-            </Row>
           </Container>
         </section>
 

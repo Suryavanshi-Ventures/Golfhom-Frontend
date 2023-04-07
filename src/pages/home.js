@@ -20,6 +20,7 @@ import Review from "../review";
 import review from "./review.json";
 import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import Grouptalk from "../../public/images/grouptalk.png";
 
 const Home = () => {
   const onSearch = (value) => console.log(value);
@@ -384,65 +385,8 @@ const Home = () => {
             </Card.Body>
           </Card>
         </Container>
-
-        <div className={HomeCss.loadbtn}>
-          <button className={HomeCss.exclusive_btn}>
-            Load more{" "}
-            <Image
-              width={20}
-              height={20}
-              src="/images/vector/load.svg"
-              alt="Load Image"
-            ></Image>{" "}
-          </button>
-        </div>
       </div>
 
-      {/* ------------------------------       VACATION-RENTAL   -------------------- */}
-
-      <div className={HomeCss.blurImg}>
-        <Container>
-          <Row>
-            <Col md={6} className={HomeCss.golf_section_cols}>
-              <div className={HomeCss.golfPit_container}>
-                <Image
-                  width={300}
-                  height={300}
-                  src="/images/golfball.png"
-                  alt="Golf Ball"
-                  className={HomeCss.golfball}
-                ></Image>
-                <Image
-                  width={300}
-                  height={300}
-                  src="/images/pit.png"
-                  alt="Pit"
-                  className={HomeCss.pit}
-                ></Image>
-              </div>
-            </Col>
-
-            <Col md={6} className={HomeCss.golf_section_cols}>
-              <div className={HomeCss.golfText_container}>
-                <h2 className={HomeCss.vacationTitle}>
-                  THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-                </h2>
-                <p className={HomeCss.vacationPara}>
-                  No more sorting through tangled rental-search results on
-                  common vacation rental sites. Golfhōm patrons can search a
-                  targeted list of course-vicinity homes, condos, and villas,
-                  all by course, tournament, or city. After checking out safely
-                  with Stripe, our golfers can ship their clubs via Ship Sticks,
-                  book their group’s tee time, buy partner golf swag, and take
-                  in great golf articles — all without leaving the platform.
-                  We’re transforming how golf travelers locate and book their
-                  next luxury rental.
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
@@ -452,18 +396,6 @@ const Home = () => {
         </h2>
 
         <Advertise ads={ads} />
-      </Container>
-
-      {/* ------------------------------         EXCLUSIVE PROPERTISE       --------------------------   */}
-
-      <Container>
-        <div className={HomeCss.exclusive}>
-          <div className={HomeCss.exHeading}>
-            <h1 className={HomeCss.extitle}>Choose from a wide range of</h1>
-            <h2 className={HomeCss.exProp}>exclusive Properties</h2>
-            <button className={HomeCss.bookBtn}>Book Now</button>
-          </div>
-        </div>
       </Container>
 
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
@@ -491,6 +423,27 @@ const Home = () => {
         </h2>
         <Review reviews={review} />
       </Container>
+
+
+      {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
+
+      <section className={HomeCss.grouptalk}>
+        <div>
+          <div className={HomeCss.groupParent}>
+            <Image
+              alt="group talk"
+              className={HomeCss.grouptalk}
+              src={Grouptalk}
+              fill
+            ></Image>
+          </div>
+
+          <Col md={4} className={HomeCss.newBtn}>
+            <h4 className={HomeCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
+            <Button className={HomeCss.search}>Search</Button>
+          </Col>
+        </div>
+      </section>
     </>
   );
 };

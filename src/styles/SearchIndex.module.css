@@ -54,7 +54,7 @@
 }
 
 .orlandoHead {
-  padding: 32px 0px;
+  padding: 32px 14px;
   font-family: var(--font-amiri);
   font-size: 2rem;
   font-weight: 600;
@@ -86,7 +86,7 @@
   display: flex;
   flex-wrap: wrap;
   box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
-  margin: 10px;
+  margin: 10px 10px 30px;
   background-color: var(--white-background);
   transition-duration: 0.3s;
 }
@@ -100,7 +100,8 @@
 
 .cardImage {
   width: 100%;
-  min-width: 50%;
+  min-width: 40%;
+  padding: 0%;
 }
 
 .cardMap:hover {
@@ -196,6 +197,14 @@
   color: var(--white-font-color);
   margin-left: 20px;
   padding: 4px 30px;
+  border: none;
+}
+
+.btnD {
+  color: var(--white-font-color) !important;
+  border: none;
+  transition-duration: 0.3s !important;
+  transform: scale(1.02) !important;
 }
 
 .heartBtn {
@@ -232,8 +241,8 @@
 }
 
 .buildings {
-  max-width: 1560px;
-  height: auto;
+  /* max-width: 1560px;
+  height: auto; */
 }
 
 .buildingImg {
@@ -273,6 +282,16 @@
   border: none;
 }
 
+
+.grouptalkTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: var(--font-amiri);
+}
+
+/* --------------------        DETAIL COLUMN CSS           --------------    */
+
 .detailParent {
   border: 1px solid #636363;
   border-radius: 16px;
@@ -300,12 +319,6 @@
   margin-left: 24px;
 }
 
-.grouptalkTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  font-family: var(--font-amiri);
-}
 
 @media (max-width: 768px) {
   .cardMapParent {

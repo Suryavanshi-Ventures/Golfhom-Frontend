@@ -66,14 +66,19 @@
   transition-duration: 0.5s;
   color: var(--btn-background);
 }
+
 .register_btn {
-  background-color: var(--btn-background);
+  background-color: var(--black-color);
   font-family: var(--font-poppins);
   font-weight: 500;
   font-size: 14px;
   height: auto;
   padding: 1rem 1.9rem;
   border-radius: 0;
+}
+
+.register_btn:hover {
+  background-color: var(--btn-background) !important;
 }
 
 /** Mobile Menu */

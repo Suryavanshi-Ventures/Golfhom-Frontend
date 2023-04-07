@@ -53,6 +53,10 @@
   font-weight: 500;
 }
 
+.search_btn:hover {
+  background-color: var(--btn-background) !important;
+}
+
 .inner_main_container {
   display: flex;
   height: 70px;
@@ -137,7 +141,7 @@
   flex-direction: row;
   justify-content: flex-end;
   flex-wrap: wrap;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .viewallBtn {
@@ -150,14 +154,13 @@
  font-size: 1rem;
  font-weight: 500;
  border: none;
- text-decoration: none;
+ text-decoration: none !important;
 }
 
 .viewallBtn:hover {
   background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
-  border: none;
-  text-decoration: none;
+  color: var(--white-font-color) !important;
+  text-decoration: none !important;
 }
 
 /* --------------------------------------- SEARCH CONTAINER ----------------------------------  */
@@ -492,10 +495,6 @@
   margin: 5px;
 }
 
-.loadbtn {
-  text-align: center;
-}
-
 .exclusive_btn {
   background-color: #ff6764;
   color: var(--white-font-color);
@@ -506,60 +505,6 @@
   font-family: var(--font-poppins);
 }
 
-/* ------------------------------------       VACATION-RENTAL       ----------------------------------        */
-
-.blurImg {
-  background-image: url(/images/background.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 5rem 0;
-  min-height: 700px;
-  display: flex;
-  align-items: center;
-}
-
-.golf_section_cols {
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
-  margin-bottom: 3rem;
-}
-.golfText_container {
-}
-.golfPit_container {
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.golfText {
-}
-
-.golfpitChild {
-}
-
-.pitImg {
-}
-
-.pit {
-}
-
-.golfball {
-}
-
-.vacaDiv {
-}
-
-.vacationTitle {
-  font-family: var(--font-amiri);
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
-
-.vacationPara {
-  font-family: var(--font-poppins);
-  line-height: 2;
-  font-size: 15px;
-}
 
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
 
@@ -584,60 +529,6 @@
 
 .logo {
   background-color: #ff6764;
-}
-
-/*  -----------------------------       EXCLUSIVE PROPERTISE    --------------------------------           */
-
-.exclusive {
-  background-image: url(/images/room.png);
-  height: 68vh;
-  background-repeat: no-repeat;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background-size: cover;
-  margin-bottom: 90px;
-}
-
-.exHeading {
-  display: grid;
-  text-align: center;
-  color: var(--white-font-color);
-  background-image: url(/images/room.png);
-  height: 68vh;
-  background-repeat: no-repeat;
-  border-radius: 16px;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  background-size: cover;
-  grid-template-rows: 230px 125px 30px;
-}
-
-.extitle {
-  font-family: var(--font-amiri);
-  font-size: 3rem;
-  text-align: center;
-  align-self: flex-end;
-}
-
-.exProp {
-  font-size: 2.8rem;
-  font-family: var(--font-amiri);
-  align-self: center;
-  text-align: center;
-}
-
-.bookBtn {
-  font-family: var(--font-poppins);
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
-  border: none;
-  padding: 10px 30px;
-  border-radius: 5px;
-  align-self: center;
-  font-size: 15px;
-  margin-top: 3rem;
 }
 
 /* ------------------------------------        TRAINING VIDEOS       --------------------------------           */
@@ -667,6 +558,10 @@
 .parentVideo {
   padding: 40px 0px;
   /* min-width: 300px; */
+}
+
+.videoParentdiv {
+  margin-bottom: 26px;
 }
 
 .videoImg {
@@ -770,6 +665,46 @@
 .learnIcon {
   position: relative;
   top: 5px;
+}
+
+
+/* Bottom section */
+
+.grouptalk {
+  margin: 40px 0px;
+  position: relative !important;
+}
+
+.newBtn {
+  background: var(--white-font-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  bottom: 40px;
+  padding: 30px 40px 60px;
+  right: 0px;
+}
+
+.groupParent {
+  max-width: 1560px;
+  height: auto;
+}
+
+.search {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
+
+.grouptalkTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: var(--font-amiri);
 }
 
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
