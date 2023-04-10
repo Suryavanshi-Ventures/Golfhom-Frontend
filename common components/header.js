@@ -197,9 +197,11 @@ const Header = () => {
                 </Col>
 
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Button type="primary" className={HeaderCss.register_btn}>
-                    Register To Host
-                  </Button>
+                  <Link href="/search/register_to_host">
+                    <Button type="primary" className={HeaderCss.register_btn}>
+                      Register To Host
+                    </Button>
+                  </Link>
                 </Col>
               </Row>
             </Col>
