@@ -1,8 +1,10 @@
+/* TOP IMAGE SECTION */
 .targetBall {
     width: 100%;
     height:auto
 }
 
+/* REGISTER COLUMN CONTAINER */
 .imgTargetBall {
     position: relative !important;
 }
@@ -34,6 +36,7 @@
 .columnB {
     position: relative;
     bottom: 84px;
+    box-shadow: 2px 2px 6px rgba(1, 0.6, 0.4, 0.2);
 }
 
 .registerTitle {
@@ -118,6 +121,72 @@
     border: none !important;
   }
 
+  /* THREE COLUMN CONTAINER */
+
+/* TEXT SIDE IMAGE CONTAINER */
+
+.textImageParent {
+    padding: 40px 0px;
+}
+
+.hostTitle {
+    margin-bottom: 30px;
+}
+
+.rowContentA {
+   display: flex;
+   justify-content: space-between;
+   margin: 30px 0px;
+}
+
+.condoImageParent {
+   width: 100%;
+   height: auto;
+}
+
+.condoImage{
+position: relative !important;
+}
+
+
+/* Bottom section */
+
+.grouptalk {
+    margin-bottom: 50px;
+    position: relative !important;
+  }
+  
+  .groupParent {
+    max-width: 1560px;
+    height: auto;
+  }
+  
+  .newBtn {
+    background: var(--white-font-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    bottom: 44px;
+    padding: 30px 40px 60px;
+    right: 0px;
+  }
+  
+  .search {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--btn-background-secondary);
+    color: var(--white-font-color);
+    border: none;
+  }
+  
+  .grouptalkTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: var(--font-amiri);
+  }
   
 @media only screen and (max-width: 768px) {
     .columnA,
