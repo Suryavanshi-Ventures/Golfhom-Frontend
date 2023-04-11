@@ -2,6 +2,10 @@ import React from "react";
 import Head from "next/head";
 import { Button, Space } from "antd";
 import Link from "next/link";
+import AboutUsCss from "../styles/AboutUs.module.css";
+import Image from "next/image";
+import BannerImg from "../../public/images/about_banner_img.png";
+import { Container, Col, Row, Card } from "react-bootstrap";
 
 const About = () => {
   return (
@@ -12,17 +16,42 @@ const About = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>About Page</h1>
+      {/* ABOUT US SECTION STARTED */}
+      <main className={AboutUsCss.about_us_section}>
+        {/* BANNER IMAGE SECTION */}
+        <div className={AboutUsCss.about_us_section_banner_container}>
+          <Image
+            src={BannerImg}
+            fill
+            className={AboutUsCss.about_us_section_banner_img}
+            alt="About Banner Image"
+          ></Image>
+        </div>
 
-      <div>
-        <Space wrap>
-          <Link href="/home">
-            <Button type="primary" Link>
-              Home Page
-            </Button>
-          </Link>
-        </Space>
-      </div>
+        <h4 className={AboutUsCss.about_us_vacation_center_heading}>
+          Nirvana for the Golf Vacation Renter!
+        </h4>
+        <Container>
+          <Row>
+            <Col md={"auto"}>
+              <div className={AboutUsCss.about_us_vacation_center_cols_div}>
+                <h5
+                  className={AboutUsCss.about_us_vacation_center_cols_headings}
+                >
+                  Searchability
+                </h5>
+                <p
+                  className={AboutUsCss.about_us_vacation_center_cols_headings}
+                >
+                  We make finding your next golf vacation rental easy! Search by
+                  any of the world’s 38,000+ courses, or major tournament! Rent,
+                  Golf, Enjoy!
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </main>
     </>
   );
 };

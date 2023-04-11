@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Navbar, Nav, Container, Col, Row } from "react-bootstrap";
@@ -30,7 +31,9 @@ const Header = () => {
     setIsModalOpen(false);
   };
 
-  { /* -----------      REGISTER SECTION        -----------------*/ }
+  {
+    /* -----------      REGISTER SECTION        -----------------*/
+  }
 
   const [isModalOpens, setIsModalOpens] = useState(false);
   const showRegister = () => {
@@ -71,17 +74,16 @@ const Header = () => {
               <h6 className={HeaderCss.forgot}>Forgot Password ?</h6>
 
               <div className={HeaderCss.dont_link_parent}>
-                <h6 className={HeaderCss.donthaveAcc}>Don't you have an account?</h6>
+                <h6 className={HeaderCss.donthaveAcc}>
+                  Don't you have an account?
+                </h6>
                 <Link
                   href="/"
                   className={HeaderCss.registerLink}
                   onClick={(e) => e.preventDefault()}
                 >
                   <Space>
-                    <a
-                      className={HeaderCss.register}
-                      onClick={showRegister}
-                    >
+                    <a className={HeaderCss.register} onClick={showRegister}>
                       Register
                     </a>
                   </Space>
@@ -98,27 +100,56 @@ const Header = () => {
             onCancel={handleCancelRegister}
             width={440}
             className={HeaderCss.headerReg}
-
           >
             <Col className={HeaderCss.inputParent}>
-              <Row><input className={HeaderCss.inputA} type="text" placeholder="Enter User name"></input></Row>
+              <Row>
+                <input
+                  className={HeaderCss.inputA}
+                  type="text"
+                  placeholder="Enter User name"
+                ></input>
+              </Row>
               <hr />
-              <Row><input className={HeaderCss.inputB} type="email" placeholder="Email"></input></Row>
+              <Row>
+                <input
+                  className={HeaderCss.inputB}
+                  type="email"
+                  placeholder="Email"
+                ></input>
+              </Row>
               <hr />
-              <Row><input className={HeaderCss.inputC} type="password" placeholder="Password"></input></Row>
+              <Row>
+                <input
+                  className={HeaderCss.inputC}
+                  type="password"
+                  placeholder="Password"
+                ></input>
+              </Row>
               <hr />
-              <Row><input className={HeaderCss.inputD} type="password" placeholder="Repeat Password"></input></Row>
+              <Row>
+                <input
+                  className={HeaderCss.inputD}
+                  type="password"
+                  placeholder="Repeat Password"
+                ></input>
+              </Row>
             </Col>
 
             <Row>
-              <div><Checkbox className={HeaderCss.agreeOptionA}>I agree with your Terms & Conditions</Checkbox></div>
-              <div><Checkbox className={HeaderCss.agreeOptionB}>I agree with your Privacy Policy</Checkbox></div>
+              <div>
+                <Checkbox className={HeaderCss.agreeOptionA}>
+                  I agree with your Terms & Conditions
+                </Checkbox>
+              </div>
+              <div>
+                <Checkbox className={HeaderCss.agreeOptionB}>
+                  I agree with your Privacy Policy
+                </Checkbox>
+              </div>
             </Row>
 
             <Button className={HeaderCss.registerBtn}>Register</Button>
           </Modal>
-
-
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <Col xs={"auto"} className={HeaderCss.logo_container}>
@@ -191,7 +222,7 @@ const Header = () => {
                   </Link>
                 </Col>
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.below_header_a} href="/">
+                  <Link className={HeaderCss.below_header_a} href="/about">
                     About Golfhom
                   </Link>
                 </Col>

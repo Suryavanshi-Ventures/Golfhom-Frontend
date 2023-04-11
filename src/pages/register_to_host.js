@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import RegisterToHost from "../styles/RegisterToHost.module.css";
 import targetBall from "../../public/images/targetBall.png";
