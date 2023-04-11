@@ -228,7 +228,7 @@ const Header = () => {
                 </Col>
 
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link href="/search/register_to_host">
+                  <Link href="/register_to_host">
                     <Button type="primary" className={HeaderCss.register_btn}>
                       Register To Host
                     </Button>
