@@ -46,6 +46,22 @@ const Header = () => {
     setIsModalOpens(false);
   };
 
+  {
+    /* -----------      FORGET PASSWORD SECTION        -----------------*/
+  }
+
+  const [isModalForgot, setIsModalForgot] = useState(false);
+  const showForgot = () => {
+    setIsModalForgot(true);
+  };
+  const handleForgot = () => {
+    setIsModalForgot(false);
+  };
+  const handleCancelForgot = () => {
+    setIsModalForgot(false);
+  };
+
+
   return (
     <>
       <header className={HeaderCss.header}>
@@ -71,7 +87,20 @@ const Header = () => {
             </div>
 
             <div className={HeaderCss.forgotActive}>
-              <h6 className={HeaderCss.forgot}>Forgot Password ?</h6>
+              <Link
+                href="/"
+                className={HeaderCss.forgot}
+                onClick={(e) => e.preventDefault()}
+              >
+                <Space>
+                  <button
+                    className={HeaderCss.signUpBtn}
+                    onClick={showForgot}
+                  >
+                    Forgot Password ?
+                  </button>
+                </Space>
+              </Link>
 
               <div className={HeaderCss.dont_link_parent}>
                 <h6 className={HeaderCss.donthaveAcc}>
@@ -91,6 +120,8 @@ const Header = () => {
               </div>
             </div>
           </Modal>
+
+          { /* -----------      REGISTER SECTION        -----------------*/}
 
           <Modal
             title="Register"
@@ -149,6 +180,22 @@ const Header = () => {
             </Row>
 
             <Button className={HeaderCss.registerBtn}>Register</Button>
+          </Modal>
+
+          { /* -----------       FORGET PASSWORD SECTION        -----------------*/}
+
+          <Modal
+            title="Forgot Password"
+            footer={null}
+            open={isModalForgot}
+            onSignup={handleForgot}
+            onCancel={handleCancelForgot}
+            width={800}
+            className={HeaderCss.headerForgot}
+          >
+            <h6 className={HeaderCss.forgotHeading}>Please enter your username or email address. You will receive a link to create a new password via email.</h6>
+            <input type="email" placeholder="Enter your user name or email" className={HeaderCss.forgotInput}></input>
+            <div className={HeaderCss.forgotBtn}><Button className={HeaderCss.registBtn}>Register</Button></div>
           </Modal>
 
           <Row className={HeaderCss.top_nav_bar_main_row}>

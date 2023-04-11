@@ -121,12 +121,16 @@
     border: none !important;
   }
 
-  /* THREE COLUMN CONTAINER */
+/* THREE COLUMN CONTAINER */
 
-/* TEXT SIDE IMAGE CONTAINER */
+.textColumn {
+  padding: 20px;
+}
+
+/* TEXT IN  SIDE OF IMAGE CONTAINER */
 
 .textImageParent {
-    padding: 40px 0px;
+    padding: 44px 0px;
 }
 
 .hostTitle {
@@ -136,18 +140,138 @@
 .rowContentA {
    display: flex;
    justify-content: space-between;
-   margin: 30px 0px;
+   flex-wrap: wrap;
+   margin: 50px 0px;
 }
 
-.condoImageParent {
-   width: 100%;
-   height: auto;
+.textParentA {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 30px;
 }
 
-.condoImage{
-position: relative !important;
+.textParentB {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+  margin-top: 30px;
 }
 
+.textParentC {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 30px;
+}
+
+.textParentD {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 30px;
+}
+
+.textParentE {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 30px;
+  margin-bottom: 30px;
+}
+
+.earnMoney {
+  font-weight: 600;
+  font-family: var(--font-amiri);
+}
+
+.paragraph {
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  padding: 12px 0px;
+}
+
+.imageParent {
+  position: relative !important;
+  /* margin: 0px 6px; */
+  padding: 0% !important;
+}
+
+.condoImage, .lunchImage, .earnMoney, .beach{
+  position: relative !important;
+}
+  
+
+/* Frequently Asked Questions */ 
+
+.faqRow {
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.headingSign {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sign {
+  background-color: black;
+  display: flex;
+  color: white;
+  padding: 0% 1.2% !important;
+  border-radius: 16px;
+  place-self: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border: none;
+}
+
+.sign:hover {
+  border: none;
+  background-color: black;
+}
+
+.faqTitle {
+  font-family: var(--font-poppins);
+  font-weight: 600;
+}
+
+/* .horizontaLine {                       that's not working invalid property
+ color: 2px solid #111111;
+} */
+
+/* Go Live on Golfhom now CONTAINER */
+
+.goliveRow {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+}
+
+.listHomeTitle {
+font-family: var(--font-amiri);
+font-weight: 600;
+margin-bottom: 20px;
+}
+
+.goliveBtn {
+  font-weight: 500;
+  width: 42%;
+  border-radius: 4px !important;
+  font-size: 0.9rem;
+  font-family: var(--font-poppins);
+  background: var(--btn-background-secondary);
+  border: none;
+}
+
+.goliveBtn:hover {
+  background: var(--btn-background-secondary);
+  border: none;
+}
 
 /* Bottom section */
 
@@ -189,11 +313,19 @@ position: relative !important;
   }
   
 @media only screen and (max-width: 768px) {
-    .columnA,
-    .columnB {
+    .columnA, .columnB {
      order: 0; 
     }
     .columnB {
       margin-top: 100px; 
     }
+
+    .imageParent {
+    padding: 20px;
+    }
+
+    .hostTitle {
+      padding: 0px 20px !important;
+  }
+  
   }

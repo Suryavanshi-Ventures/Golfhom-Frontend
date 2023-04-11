@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React, { useState } from "react";
 import RegisterToHost from "../styles/RegisterToHost.module.css";
 import targetBall from "../../public/images/targetBall.png";
 import Image from "next/image";
@@ -13,6 +13,37 @@ import Grouptalk from "../../public/images/grouptalk.png";
 import Head from "next/head";
 
 const Register_to_host = () => {
+  const [showA, setShowA] = useState(false)
+  const [showB, setShowB] = useState(false)
+  const [showC, setShowC] = useState(false)
+  const [showD, setShowD] = useState(false)
+  const [showE, setShowE] = useState(false)
+  const [showF, setShowF] = useState(false)
+
+  const toggleButtonA = () => {
+    setShowA(!showA);
+  };
+
+  const toggleButtonB = () => {
+    setShowB(!showB);
+  };
+
+  const toggleButtonC = () => {
+    setShowC(!showC);
+  };
+
+  const toggleButtonD = () => {
+    setShowD(!showD);
+  };
+
+  const toggleButtonE = () => {
+    setShowE(!showE);
+  };
+
+  const toggleButtonF = () => {
+    setShowF(!showF);
+  };
+
   return (
     <>
       <Head>
@@ -26,7 +57,9 @@ const Register_to_host = () => {
         />
       </Head>
       <section>
-        {/* TOP IMAGE SECTION */}
+
+        {/*----------------              TOP IMAGE SECTION         --------------------*/}
+
         <div className={RegisterToHost.targetBall}>
           <Image
             src={targetBall}
@@ -36,7 +69,8 @@ const Register_to_host = () => {
           ></Image>
         </div>
 
-        {/* REGISTER COLUMN CONTAINER */}
+        {/*--------------------------        REGISTER COLUMN CONTAINER       ----------------------- */}
+
         <div className={RegisterToHost.registerParent}>
           <Col md={6} className={RegisterToHost.columnA}>
             <h2 className={RegisterToHost.golfheading}>
@@ -105,7 +139,8 @@ const Register_to_host = () => {
         </div>
       </section>
 
-      {/* THREE COLUMN CONTAINER */}
+      {/* ---------------------------        THREE COLUMN CONTAINER            -------------------------- */}
+
       <Container>
         <Row>
           <Col md={4} className={RegisterToHost.textColumn}>
@@ -141,41 +176,44 @@ const Register_to_host = () => {
         </Row>
       </Container>
 
-      {/* TEXT SIDE IMAGE CONTAINER */}
+      {/* ---------------------------        TEXT IN SIDE OF IMAGE CONTAINER         ----------------------------- */}
+
       <Container className={RegisterToHost.textImageParent}>
         <h2 className={RegisterToHost.hostTitle}>How To Host</h2>
 
         <Row className={RegisterToHost.rowContentA}>
-          <Col>
-            <h3>1. List Your Home or Condo</h3>
-            <p>
+          <Col md={6} className={RegisterToHost.textParentA}>
+            <h3 className={RegisterToHost.textTitle}>1. List Your Home or Condo</h3>
+            <p className={RegisterToHost.paragraph}>
               Complete our simple listing loop, tell us which course(s) the home
               is within 2 miles of, and we’ll promote your property to
               golf-travelers the world over.
             </p>
           </Col>
 
-          <Col className={RegisterToHost.condoImageParent}>
+          <Col md={6} className={RegisterToHost.imageParent}>
             <Image
               src={condoView}
               alt="condoView"
+              fill
               className={RegisterToHost.condoImage}
             ></Image>
           </Col>
         </Row>
 
         <Row className={RegisterToHost.rowContentA}>
-          <Col className={RegisterToHost.lunchParent}>
+          <Col md={6} className={RegisterToHost.imageParent}>
             <Image
               src={Lunch}
               alt="condoView"
+              fill
               className={RegisterToHost.lunchImage}
             ></Image>
           </Col>
 
-          <Col>
-            <h3>2. Welcome Your Guests</h3>
-            <p>
+          <Col md={6} className={RegisterToHost.textParentB}>
+            <h3 className={RegisterToHost.textTitle}> 2. Welcome Your Guests</h3>
+            <p className={RegisterToHost.paragraph}>
               Once our golf travelers have located and booked your home, be sure
               to deliver a clean and reliable accommodation. For safety and
               reliability, make sure all communications and payments are made on
@@ -185,31 +223,33 @@ const Register_to_host = () => {
         </Row>
 
         <Row className={RegisterToHost.rowContentA}>
-          <Col>
-            <h3>3. Earn Money</h3>
-            <p>
+          <Col md={6} className={RegisterToHost.textParentC}>
+            <h3 className={RegisterToHost.textTitle}>3. Earn Money</h3>
+            <p className={RegisterToHost.paragraph}>
               Golfhōm pays out to hosts approximately 48 hours after the
               check-in date if no complaints have been registered. You set the
               price, we pay out promptly!
             </p>
           </Col>
 
-          <Col className={RegisterToHost.earnMoneyParent}>
+          <Col md={6} className={RegisterToHost.imageParent}>
             <Image
               src={earnMoney}
               alt="condoView"
+              fill
               className={RegisterToHost.earnMoney}
             ></Image>
           </Col>
         </Row>
       </Container>
 
-      {/* Frequently Asked Questions */}
+      {/* ---------------------------      FREQUENTLY ASKED QUESTIONS      ------------------------------*/}
+
       <Container>
-        <Row>
-          <Col>
-            <h2>Frequently Asked Questions</h2>
-            <p>
+        <Row className={RegisterToHost.faqRow}>
+          <Col md={6} className={RegisterToHost.textParentD}>
+            <h2 className={RegisterToHost.textTitle}>Frequently Asked Questions</h2>
+            <p className={RegisterToHost.paragraph}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -217,24 +257,78 @@ const Register_to_host = () => {
             </p>
           </Col>
 
-          <Col></Col>
+          <Col md={6}>
+            <div>
+              <div className={RegisterToHost.headingSign}>
+                <h6 className={RegisterToHost.faqTitle}>How can I list my property Golfhom ?</h6>
+                <Button className={RegisterToHost.sign} onClick={toggleButtonA}>{showA ? "-" : "+"}</Button>
+              </div>
+              {
+                showA && (
+                  <div>
+                    <p>Create a Host account, and take just 5 minutes to complete our simple listing loop. Make sure to post great images of your home!</p>
+                  </div>
+                )
+              }
+            </div>
+
+            <hr className={RegisterToHost.horizontaLine} />
+
+            <div>
+              <div className={RegisterToHost.headingSign}>
+                <h6 className={RegisterToHost.faqTitle}>How do I communicate with my guests?</h6>
+                <Button className={RegisterToHost.sign} onClick={toggleButtonB}>{showB ? "-" : "+"}</Button>
+              </div>
+              {
+                showB && (
+                  <div>
+                    <p>Create a Host account, and take just 5 minutes to complete our simple listing loop. Make sure to post great images of your home!</p>
+                  </div>
+                )
+              }
+            </div>
+
+            <hr className={RegisterToHost.horizontaLine} />
+
+            <div className={RegisterToHost.headingSign}><h6 className={RegisterToHost.faqTitle}>How do I price my property?</h6>
+              <Button className={RegisterToHost.sign} onClick={toggleButtonC}>{showC ? "-" : "+"}</Button>
+            </div>
+
+            <hr className={RegisterToHost.horizontaLine} />
+
+            <div className={RegisterToHost.headingSign}><h6 className={RegisterToHost.faqTitle}>How does Golfhom.com pay me?</h6>
+              <Button className={RegisterToHost.sign} onClick={toggleButtonD}>{showD ? "-" : "+"}</Button>
+            </div>
+
+            <hr className={RegisterToHost.horizontaLine} />
+
+            <div className={RegisterToHost.headingSign}><h6 className={RegisterToHost.faqTitle}>How can I upgrade my listing to featured ?</h6>
+              <Button className={RegisterToHost.sign} onClick={toggleButtonE}>{showE ? "-" : "+"}</Button>
+            </div>
+
+            <hr className={RegisterToHost.horizontaLine} />
+
+            <div className={RegisterToHost.headingSign}><h6 className={RegisterToHost.faqTitle}>What happens if a renter cancels a revervation?</h6>
+              <Button className={RegisterToHost.sign} onClick={toggleButtonF}>{showF ? "-" : "+"}</Button>
+            </div>
+          </Col>
         </Row>
       </Container>
 
-      {/* Go Live on Golfhom now CONTAINER */}
+      {/*---------------------------      GO LIVE ON GOLFHOM NOW CONTAINER       ------------------------------ */}
       <Container>
-        <Row>
-          <Col>
-            <h2>List Your Home or Condo Today! Go Live on Golfhōm Now</h2>
-            <Button>Go Live on Golfhom now</Button>
+        <Row className={RegisterToHost.goliveRow}>
+          <Col md={6} className={RegisterToHost.textParentE}>
+            <h2 className={RegisterToHost.listHomeTitle}>List Your Home or Condo Today! Go Live on Golfhōm Now</h2>
+            <Button className={RegisterToHost.goliveBtn}>Go Live on Golfhom now</Button>
           </Col>
-          <Col>
-            <Image src={Beach} alt="Beach"></Image>
+          <Col md={6} className={RegisterToHost.imageParent}>
+            <Image src={Beach} alt="Beach" fill className={RegisterToHost.beach}></Image>
           </Col>
         </Row>
       </Container>
 
-      {/* BOTTOM IMAGE SECTION */}
+      {/* --------------------------            BOTTOM IMAGE SECTION           ------------------------------------*/}
 
       <section className={RegisterToHost.grouptalk}>
         <div>
