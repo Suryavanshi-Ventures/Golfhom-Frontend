@@ -1,5 +1,6 @@
 .header {
-  margin-top: 1rem;
+  padding-top: 1rem;
+  background-color: var(--header-background-color);
 }
 .container_header {
   height: inherit;
@@ -39,7 +40,8 @@
 .headphones_icon {
   margin: 0 0.5rem;
 }
-.top_header_a, .registerLink {
+.top_header_a,
+.registerLink {
   text-decoration: none;
   color: var(--light-font-color);
   font-family: var(--font-poppins);
@@ -47,7 +49,8 @@
   font-size: 14px;
 }
 
-.top_header_a:hover, .registerLink:hover {
+.top_header_a:hover,
+.registerLink:hover {
   transition-duration: 0.5s;
   color: var(--btn-background);
 }
@@ -198,7 +201,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
- 
 }
 
 .inputParent {

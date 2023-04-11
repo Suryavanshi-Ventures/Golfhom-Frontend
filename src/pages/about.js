@@ -6,6 +6,9 @@ import AboutUsCss from "../styles/AboutUs.module.css";
 import Image from "next/image";
 import BannerImg from "../../public/images/about_banner_img.png";
 import { Container, Col, Row, Card } from "react-bootstrap";
+import Review from "../review";
+import review from "./review.json";
+import Grouptalk from "../../public/images/grouptalk.png";
 
 const About = () => {
   return (
@@ -28,29 +31,111 @@ const About = () => {
           ></Image>
         </div>
 
-        <h4 className={AboutUsCss.about_us_vacation_center_heading}>
-          Nirvana for the Golf Vacation Renter!
-        </h4>
         <Container>
+          <h4 className={AboutUsCss.about_us_vacation_center_main_heading}>
+            Nirvana for the Golf Vacation Renter!
+          </h4>
+          {/* VACATION CENTER SECTION */}
           <Row>
-            <Col md={"auto"}>
+            <Col md={4}>
               <div className={AboutUsCss.about_us_vacation_center_cols_div}>
                 <h5
                   className={AboutUsCss.about_us_vacation_center_cols_headings}
                 >
                   Searchability
                 </h5>
-                <p
-                  className={AboutUsCss.about_us_vacation_center_cols_headings}
-                >
+                <p className={AboutUsCss.about_us_vacation_center_cols_para}>
                   We make finding your next golf vacation rental easy! Search by
                   any of the world’s 38,000+ courses, or major tournament! Rent,
                   Golf, Enjoy!
                 </p>
               </div>
             </Col>
+            <Col md={4}>
+              <div className={AboutUsCss.about_us_vacation_center_cols_div}>
+                <h5
+                  className={AboutUsCss.about_us_vacation_center_cols_headings}
+                >
+                  Partner Resources + Discounts
+                </h5>
+                <p className={AboutUsCss.about_us_vacation_center_cols_para}>
+                  We want our platform to be a golf community, not just a better
+                  database! Read golf articles, ship your clubs via Ship Sticks,
+                  and buy great golf gear all at a member discount!
+                </p>
+              </div>
+            </Col>
+            <Col md={4}>
+              <div className={AboutUsCss.about_us_vacation_center_cols_div}>
+                <h5
+                  className={AboutUsCss.about_us_vacation_center_cols_headings}
+                >
+                  Easy to Host!
+                </h5>
+                <p className={AboutUsCss.about_us_vacation_center_cols_para}>
+                  If your vacation rental property is within 2 miles of the
+                  border of any of the world’s golf courses, list on
+                  Golfhom.com! Golf travelers are searching our site right now,
+                  make sure they can see your amazing home!
+                </p>
+              </div>
+            </Col>
           </Row>
         </Container>
+        {/* ABOUT GOLFHOM SECTION */}
+        <section className={AboutUsCss.about_golfhom_section}>
+          <Container>
+            <div className={AboutUsCss.about_golfhom_main_container}>
+              <h4 className={AboutUsCss.about_golfhom_heading}>
+                About Golfhom.com
+              </h4>
+              <p className={AboutUsCss.about_golfhom_para}>
+                No more sorting through tangled rental-search results on common
+                vacation rental sites. Golfhōm patrons can search a targeted
+                list of course-vicinity homes, condos, and villas, all by
+                course, tournament, or city. After checking out safely with
+                partners Stripe or Paypal, our golfers can ship their clubs via
+                Ship Sticks, book their group’s tee time, buy partner golf swag,
+                train online, and take in great golf articles — all without
+                leaving the platform!
+              </p>
+              <p className={AboutUsCss.about_golfhom_para}>
+                We’re transforming how golf travelers locate and book their next
+                luxury rental!
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        {/* GOLFHOM STAFF CARD SECTION */}
+        <Container>
+          <section>
+            <h2 className={AboutUsCss.staffCard_title}>
+              From the Golfhōm Staff and Guest Writers
+            </h2>
+            <Review reviews={review} />
+          </section>
+        </Container>
+        {/* BOTTOM IMAGE SECTION */}
+        <section className={AboutUsCss.grouptalk}>
+          <div>
+            <div className={AboutUsCss.groupParent}>
+              <Image
+                alt="group talk"
+                className={AboutUsCss.grouptalk}
+                src={Grouptalk}
+                fill
+              ></Image>
+            </div>
+
+            <Col md={4} className={AboutUsCss.newBtn}>
+              <h4 className={AboutUsCss.grouptalkTitle}>
+                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
+              </h4>
+              <Button className={AboutUsCss.search}>Search</Button>
+            </Col>
+          </div>
+        </section>
       </main>
     </>
   );

@@ -136,7 +136,7 @@
   color: var(--white-font-color);
 }
 
-.viewallBtnParent{
+.viewallBtnParent {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -145,16 +145,16 @@
 }
 
 .viewallBtn {
- background-color: var(--btn-background-secondary);
- color: var(--white-font-color);
- padding: 1.6% 3.6%;
- display: flex;
- flex-direction: row;
- align-items: center;
- font-size: 1rem;
- font-weight: 500;
- border: none;
- text-decoration: none !important;
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  padding: 1.6% 3.6%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  text-decoration: none !important;
 }
 
 .viewallBtn:hover {
@@ -505,7 +505,6 @@
   font-family: var(--font-poppins);
 }
 
-
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
 
 .ads {
@@ -667,11 +666,10 @@
   top: 5px;
 }
 
-
 /* Bottom section */
 
 .grouptalk {
-  margin: 40px 0px;
+  margin-top: 40px;
   position: relative !important;
 }
 

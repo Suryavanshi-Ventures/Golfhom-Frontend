@@ -7,3 +7,168 @@
 .about_us_section_banner_img {
   position: relative !important;
 }
+
+/* VACATION SECTION */
+.about_us_vacation_center_main_heading {
+  font-size: 37px;
+  font-family: var(--font-amiri);
+  margin: 4rem 0;
+  font-weight: 700;
+}
+
+.about_us_vacation_center_cols_div {
+  margin-bottom: 2rem;
+}
+.about_us_vacation_center_cols_headings {
+  font-size: 25px;
+  font-family: var(--font-amiri);
+  font-weight: 700;
+  margin-bottom: 4rem;
+}
+
+.about_us_vacation_center_cols_para {
+  font-family: var(--font-poppins);
+  font-size: 15px;
+  color: var(--light-font-color);
+  margin: 0;
+}
+
+/* ABOUT GOLFHOM SECTION */
+.about_golfhom_section {
+  margin: 7rem 0;
+  background-color: var(--light-grey);
+}
+
+.about_golfhom_main_container {
+  padding: 4rem 0;
+}
+
+.about_golfhom_heading {
+  font-family: var(--font-amiri);
+  font-size: 37px;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.about_golfhom_para {
+  font-family: var(--font-poppins);
+  font-size: 15px;
+  color: var(--light-font-color);
+}
+
+/* STAFF REVIEW SECTION */
+.staffCard_title {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+}
+
+.parentOf_img_textCard {
+  position: relative !important;
+}
+
+.parentReview {
+  padding: 40px 0px 200px 0px;
+  min-width: 320px;
+}
+
+.cardReview {
+  border-radius: 12px;
+}
+
+.cardTextParent {
+  overflow: hidden;
+  background: var(--white-background);
+  width: 70%;
+  padding: 16px;
+  position: absolute;
+  top: 206px;
+  margin-left: 16px;
+}
+
+.contact_div {
+  margin-bottom: 3px;
+  position: relative;
+  right: 4px;
+}
+
+.bookmarkDiv {
+  position: relative;
+  right: 1px;
+}
+
+.card_title {
+  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-size: 15px;
+}
+
+.byAdmin {
+  color: var(--card-text-color);
+  font-size: 0.9rem;
+  font-family: var(--font-poppins);
+  font-size: 12px;
+}
+
+.bookmark_text {
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--btn-background-secondary);
+}
+
+.learnbtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.learnbtn_text {
+  color: var(--card-text-secondary);
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.learnIcon {
+  position: relative;
+  top: 5px;
+}
+
+/* Bottom IMG section */
+
+.grouptalk {
+  margin-top: 40px;
+
+  position: relative !important;
+}
+
+.newBtn {
+  background: var(--white-font-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  bottom: 40px;
+  padding: 30px 40px 60px;
+  right: 0px;
+}
+
+.groupParent {
+  max-width: 1560px;
+  height: auto;
+}
+
+.search {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
+
+.grouptalkTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: var(--font-amiri);
+}
