@@ -1,7 +1,7 @@
+/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */
 .headImage {
   max-width: 1560px;
-  height: auto;
-  
+  height: auto; 
 }
 
 .imageChild {
@@ -11,8 +11,7 @@
 .heading {
     font-family: var(--font-amiri);
     color: #2F2F2F;
-    font-weight: 600;
-   
+    font-weight: 600; 
 }
 
 .golfCourse {

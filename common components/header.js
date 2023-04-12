@@ -53,6 +53,7 @@ const Header = () => {
   const [isModalForgot, setIsModalForgot] = useState(false);
   const showForgot = () => {
     setIsModalForgot(true);
+    handleCancel();
   };
   const handleForgot = () => {
     setIsModalForgot(false);
@@ -96,6 +97,7 @@ const Header = () => {
                   <button
                     className={HeaderCss.signUpBtn}
                     onClick={showForgot}
+                    onCancel={handleCancel}
                   >
                     Forgot Password ?
                   </button>

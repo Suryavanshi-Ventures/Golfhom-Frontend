@@ -1,3 +1,13 @@
+/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */
+.headImage {
+  max-width: 1560px;
+  height: auto; 
+}
+
+.imageChild {
+  position: relative !important;
+}
+
 /* VIEW BLOG STYLE */
 .view_blog_date {
   font-family: var(--font-poppins);
@@ -14,6 +24,108 @@
   position: relative !important;
 }
 
+/*  -----------------     NINE CARDS CONTAINER     ----------------- */
+
+.cardsParent {
+  margin-top: 20px;
+}
+
+.cardsTitle {
+  margin: 50px 0px;
+}
+
+.cardChild {
+
+}
+
+.columnParent {
+  margin-bottom: 56px;
+  padding-bottom: 42px;
+}
+
+.parentOf_img_textCard {
+  position: relative !important;
+}
+
+.blog_img {
+  border-radius: 10px;
+  width: 100%;
+  position: relative !important;
+}
+
+.cardTextParent {
+  overflow: hidden;
+  background: var(--white-background);
+  width: 70%;
+  padding: 16px;
+  position: absolute;
+  top: 240px;
+}
+
+.card_title {
+  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-size: 15px;
+}
+
+.contact_div {
+  margin-bottom: 3px;
+  position: relative;
+  right: 4px;
+}
+
+.byAdmin {
+  color: var(--card-text-color);
+  font-size: 0.9rem;
+  font-family: var(--font-poppins);
+  font-size: 12px;
+}
+
+.bookmarkDiv {
+  position: relative;
+  right: 1px;
+}
+
+.bookmark_text {
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--btn-background-secondary);
+}
+
+.learnbtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.learnbtn_text {
+  color: var(--card-text-secondary);
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.learnIcon {
+  position: relative;
+  top: 5px;
+}
+
+
+/*  -----------------     PAGINATION CONTAINER     -----------------   */
+
+.pagination_container {
+  padding: 5rem 0;
+   display: flex;
+   justify-content: center;
+   width: 100%;
+ }
+ 
+ .pagination {
+  
+ }
+ 
+
 /* BOTTOM IMG SECTION */
 
 .grouptalk {
@@ -28,7 +140,7 @@
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  bottom: 40px;
+  bottom: -1px;
   padding: 30px 40px 60px;
   right: 0px;
 }
@@ -52,4 +164,27 @@
   font-weight: 600;
   margin-bottom: 20px;
   font-family: var(--font-amiri);
+}
+
+/*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
+@media only screen and (max-width: 768px) {
+  .cardTextParent  {
+   flex-shrink: 2;
+   font-size: 16px;
+   top: 240px !important;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .cardTextParent  {
+    top: 155px;
+    width: 96%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .cardTextParent  {
+    top: 114px;
+    width: 96%;
+  }
 }

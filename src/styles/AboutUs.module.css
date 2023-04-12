@@ -55,6 +55,14 @@
   color: var(--light-font-color);
 }
 
+/* GOLFHOM STAFF CARD SECTION */
+
+.viewText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 /* STAFF REVIEW SECTION */
 .staffCard_title {
   font-family: var(--font-amiri);

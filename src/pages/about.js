@@ -110,9 +110,13 @@ const About = () => {
         {/* GOLFHOM STAFF CARD SECTION */}
         <Container>
           <section>
-            <h2 className={AboutUsCss.staffCard_title}>
-              From the Golfhōm Staff and Guest Writers
-            </h2>
+            <div className={AboutUsCss.viewText}>
+              <h2 className={AboutUsCss.staffCard_title}>
+                From the Golfhōm Staff and Guest Writers
+              </h2>
+
+              <Link href="/blog"><Button>View All</Button></Link>
+            </div>
             <Review reviews={review} />
           </section>
         </Container>

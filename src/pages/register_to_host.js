@@ -144,8 +144,8 @@ const Register_to_host = () => {
       <Container>
         <Row>
           <Col md={4} className={RegisterToHost.textColumn}>
-            <h3>Why Choose Golfhōm?</h3>
-            <p>
+            <h3 className={RegisterToHost.threeColumnTitle}>Why Choose Golfhōm?</h3>
+            <p className={RegisterToHost.threeColumnPara}>
               Golfers love their sport, and many love to travel as well. Those
               that love both are tired of stumbling around on other vacation
               rental platforms trying to place a rental near their favorite
@@ -155,8 +155,8 @@ const Register_to_host = () => {
           </Col>
 
           <Col md={4} className={RegisterToHost.textColumn}>
-            <h3>Booking Made Easy.</h3>
-            <p>
+            <h3 className={RegisterToHost.threeColumnTitle}>Booking Made Easy.</h3>
+            <p className={RegisterToHost.threeColumnPara}>
               Travelers can search for their next Golfhōm by any of the world's
               38,000+ golf courses, as well as by major tournament. Easy to
               locate, easy to book, golf-industry partner resources and
@@ -165,8 +165,8 @@ const Register_to_host = () => {
           </Col>
 
           <Col md={4} className={RegisterToHost.textColumn}>
-            <h3>Market to Your Key Clientele.</h3>
-            <p>
+            <h3 className={RegisterToHost.threeColumnTitle}>Market to Your Key Clientele.</h3>
+            <p className={RegisterToHost.threeColumnPara}>
               If you own a vacation rental property in the vicinity of a golf
               course, golf-travelers are a key market for you. Golfers are
               increasingly moving their search efforts over to Golfhōm, easier
@@ -266,7 +266,7 @@ const Register_to_host = () => {
               {
                 showA && (
                   <div>
-                    <p>Create a Host account, and take just 5 minutes to complete our simple listing loop. Make sure to post great images of your home!</p>
+                    <p className={RegisterToHost.faqPara}>Create a Host account, and take just 5 minutes to complete our simple listing loop. Make sure to post great images of your home!</p>
                   </div>
                 )
               }

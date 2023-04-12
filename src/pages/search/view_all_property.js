@@ -21,6 +21,7 @@ const view_all_property = () => {
 
     return (
         <>
+            {/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */}
             <section className={ViewAllPropertyCss.headImage}>
                 <Image
                     src={ViewAllProps}
