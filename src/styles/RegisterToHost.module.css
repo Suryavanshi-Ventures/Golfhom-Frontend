@@ -1,130 +1,129 @@
 /* TOP IMAGE SECTION */
 .targetBall {
-    width: 100%;
-    height:auto
+  width: 100%;
+  height: auto;
 }
 
 /* REGISTER COLUMN CONTAINER */
 .imgTargetBall {
-    position: relative !important;
+  position: relative !important;
 }
 
 .columnA {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .golfheading {
-    font-family: var(--font-amiri);
-    font-weight: 700;
+  font-family: var(--font-amiri);
+  font-weight: 700;
 }
 
 .para {
-   font-family: var(--font-poppins);
-   color: var( --light-font-color);
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
 }
 
 .registerParent {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .columnB {
-    position: relative;
-    bottom: 84px;
-    box-shadow: 2px 2px 6px rgba(1, 0.6, 0.4, 0.2);
+  position: relative;
+  bottom: 84px;
+  box-shadow: 2px 2px 6px rgba(1, 0.6, 0.4, 0.2);
 }
 
 .registerTitle {
-    background: var(--btn-background-secondary);
-    color: var(--white-font-color);
-    font-family: var(--font-amiri);
-    padding: 30px 16px;
-    font-weight: 590;
+  background: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  font-family: var(--font-amiri);
+  padding: 30px 16px;
+  font-weight: 590;
 }
 
 .registerContent {
-    padding: 20px;
+  padding: 20px;
 }
 
 .inputParent {
-    flex-wrap: wrap;
-    border: 1px solid var(--light-font-color);
-    border-radius: 8px;
-    width: 100%;
-    padding: 12px 0px;
-    font-family: var(--font-poppins);
-  }
-  
-  .inputA {
-    width: 90%;
-    border: none;
-  
-    margin-left: 14px;
-  }
-  
-  .inputB {
-    width: 90%;
-    border: none;
-    margin-left: 14px;
-  }
-  
-  .inputC {
-    width: 90%;
-    border: none;
-    margin-left: 14px;
-  }
-  
-  .inputD {
-    width: 90%;
-    border: none;
-    margin-left: 14px;
-  }
-  
-  .agreeOptionA {
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 16px 0px;
-    font-weight: var(--font-poppins);
-  }
-  
-  .agreeOptionB {
-    font-size: 1rem;
-    font-weight: 700;
-    font-weight: var(--font-poppins);
-    margin-bottom: 14px;
-  }
-  
-  .registerBtn {
-   width: 100%;
-   background: #111111;
-   color: var(--white-font-color);
-   font-size: 0.8rem;
-   font-weight: 500;
-   font-family: var(--font-poppins);
-   text-align: center;
-   border-radius: 0% !important;
-   margin: 20px 0px;
-   padding: 6% 0%;
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
-  }
+  flex-wrap: wrap;
+  border: 1px solid var(--light-font-color);
+  border-radius: 8px;
+  width: 100%;
+  padding: 12px 0px;
+  font-family: var(--font-poppins);
+}
 
-  .registerBtn:hover {
-    background: var(--btn-background-secondary);
-    border: none !important;
-  }
+.inputA {
+  width: 90%;
+  border: none;
+
+  margin-left: 14px;
+}
+
+.inputB {
+  width: 90%;
+  border: none;
+  margin-left: 14px;
+}
+
+.inputC {
+  width: 90%;
+  border: none;
+  margin-left: 14px;
+}
+
+.inputD {
+  width: 90%;
+  border: none;
+  margin-left: 14px;
+}
+
+.agreeOptionA {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 16px 0px;
+  font-weight: var(--font-poppins);
+}
+
+.agreeOptionB {
+  font-size: 1rem;
+  font-weight: 700;
+  font-weight: var(--font-poppins);
+  margin-bottom: 14px;
+}
+
+.registerBtn {
+  width: 100%;
+  background: #111111;
+  color: var(--white-font-color);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  text-align: center;
+  border-radius: 0% !important;
+  margin: 20px 0px;
+  padding: 6% 0%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerBtn:hover {
+  background: var(--btn-background-secondary);
+  border: none !important;
+}
 
 /* THREE COLUMN CONTAINER */
 
 .textColumn {
- 
 }
 
 .threeColumnTitle {
@@ -141,20 +140,20 @@
 /* TEXT IN  SIDE OF IMAGE CONTAINER */
 
 .textImageParent {
-    padding: 44px 0px;
+  padding: 44px 0px;
 }
 
 .hostTitle {
-    margin-bottom: 30px;
-    font-family: var(--font-amiri);
-    font-weight: 600;
+  margin-bottom: 30px;
+  font-family: var(--font-amiri);
+  font-weight: 600;
 }
 
 .rowContentA {
-   display: flex;
-   justify-content: space-between;
-   flex-wrap: wrap;
-   margin: 50px 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px 0px;
 }
 
 .textTitle {
@@ -217,12 +216,14 @@
   padding: 0% !important;
 }
 
-.condoImage, .lunchImage, .earnMoney, .beach{
+.condoImage,
+.lunchImage,
+.earnMoney,
+.beach {
   position: relative !important;
 }
-  
 
-/* Frequently Asked Questions */ 
+/* Frequently Asked Questions */
 
 .faqRow {
   margin-bottom: 50px;
@@ -264,10 +265,6 @@
   font-weight: 400;
 }
 
-/* .horizontaLine {                       that's not working invalid property
- color: 2px solid #111111;
-} */
-
 /* Go Live on Golfhom now CONTAINER */
 
 .goliveRow {
@@ -276,9 +273,9 @@
 }
 
 .listHomeTitle {
-font-family: var(--font-amiri);
-font-weight: 600;
-margin-bottom: 30px;
+  font-family: var(--font-amiri);
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
 .goliveBtn {
@@ -299,56 +296,56 @@ margin-bottom: 30px;
 /* Bottom section */
 
 .grouptalk {
-    margin-bottom: 50px;
-    position: relative !important;
-  }
-  
-  .groupParent {
-    max-width: 1560px;
-    height: auto;
-  }
-  
-  .newBtn {
-    background: var(--white-font-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    bottom: 44px;
-    padding: 30px 40px 60px;
-    right: 0px;
-  }
-  
-  .search {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    background-color: var(--btn-background-secondary);
-    color: var(--white-font-color);
-    border: none;
-  }
-  
-  .grouptalkTitle {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    font-family: var(--font-amiri);
-  }
-  
+  margin-bottom: 50px;
+  position: relative !important;
+}
+
+.groupParent {
+  max-width: 1560px;
+  height: auto;
+}
+
+.newBtn {
+  background: var(--white-font-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  bottom: 44px;
+  padding: 30px 40px 60px;
+  right: 0px;
+}
+
+.search {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  border: none;
+}
+
+.grouptalkTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: var(--font-amiri);
+}
+
 @media only screen and (max-width: 768px) {
-    .columnA, .columnB {
-     order: 0; 
-    }
-    .columnB {
-      margin-top: 100px; 
-    }
+  .columnA,
+  .columnB {
+    order: 0;
+  }
+  .columnB {
+    margin-top: 100px;
+  }
 
-    .imageParent {
+  .imageParent {
     padding: 20px;
-    }
+  }
 
-    .hostTitle {
-      padding: 0px 20px !important;
+  .hostTitle {
+    padding: 0px 20px !important;
   }
-  
-  }
+}

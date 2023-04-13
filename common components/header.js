@@ -62,7 +62,6 @@ const Header = () => {
     setIsModalForgot(false);
   };
 
-
   return (
     <>
       <header className={HeaderCss.header}>
@@ -123,7 +122,7 @@ const Header = () => {
             </div>
           </Modal>
 
-          { /* -----------      REGISTER SECTION        -----------------*/}
+          {/* -----------      REGISTER SECTION        -----------------*/}
 
           <Modal
             title="Register"
@@ -184,7 +183,7 @@ const Header = () => {
             <Button className={HeaderCss.registerBtn}>Register</Button>
           </Modal>
 
-          { /* -----------       FORGET PASSWORD SECTION        -----------------*/}
+          {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
 
           <Modal
             title="Forgot Password"
@@ -195,9 +194,18 @@ const Header = () => {
             width={800}
             className={HeaderCss.headerForgot}
           >
-            <h6 className={HeaderCss.forgotHeading}>Please enter your username or email address. You will receive a link to create a new password via email.</h6>
-            <input type="email" placeholder="Enter your user name or email" className={HeaderCss.forgotInput}></input>
-            <div className={HeaderCss.forgotBtn}><Button className={HeaderCss.registBtn}>Register</Button></div>
+            <h6 className={HeaderCss.forgotHeading}>
+              Please enter your username or email address. You will receive a
+              link to create a new password via email.
+            </h6>
+            <input
+              type="email"
+              placeholder="Enter your user name or email"
+              className={HeaderCss.forgotInput}
+            ></input>
+            <div className={HeaderCss.forgotBtn}>
+              <Button className={HeaderCss.registBtn}>Register</Button>
+            </div>
           </Modal>
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
@@ -256,23 +264,23 @@ const Header = () => {
               >
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
                   <Link className={HeaderCss.below_header_a} href="/">
-                    Find & Reserve
+                    Home
                   </Link>
                 </Col>
 
                 <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.below_header_a} href="/">
-                    Vacations
-                  </Link>
-                </Col>
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.below_header_a} href="/">
-                    Special Offer’s
-                  </Link>
-                </Col>
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
                   <Link className={HeaderCss.below_header_a} href="/about">
-                    About Golfhom
+                    About
+                  </Link>
+                </Col>
+                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
+                  <Link className={HeaderCss.below_header_a} href="/blog">
+                    Blog
+                  </Link>
+                </Col>
+                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
+                  <Link className={HeaderCss.below_header_a} href="/contact_us">
+                    Contact Us
                   </Link>
                 </Col>
 
