@@ -4,7 +4,10 @@ import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";
 import ContactUsBannerImage from "../../public/images/contact_us_banner_img.png";
 import Image from "next/image";
-import Input from "antd/es/input/Input";
+import { Button, Input } from "antd";
+const { TextArea } = Input;
+import ManThumbsUpImg from "../../public/images/contact_us_thumbs_up_man.png";
+import Grouptalk from "../../public/images/grouptalk.png";
 
 function ContactUs() {
   return (
@@ -37,6 +40,11 @@ function ContactUs() {
               Questions or Comments?
             </p>
 
+            <p className={ContactUsCss.contact_our_staff_text}>
+              Please contact our staff via the form below. We will respond as
+              soon as we’re able.
+            </p>
+
             {/* INPUTS */}
             <div className={ContactUsCss.contact_us_input_container}>
               <label className={ContactUsCss.input_label}>Name</label>
@@ -46,8 +54,98 @@ function ContactUs() {
                 placeholder="Enter Your name"
               />
             </div>
+
+            {/* INPUTS */}
+            <div className={ContactUsCss.contact_us_input_container}>
+              <label className={ContactUsCss.input_label}>Email</label>
+              <Input
+                type="email"
+                className={ContactUsCss.contact_us_input}
+                size="large"
+                placeholder="Enter Your email"
+              />
+            </div>
+
+            {/* INPUTS */}
+            <div className={ContactUsCss.contact_us_input_container}>
+              <label className={ContactUsCss.input_label}>Subject</label>
+              <Input
+                className={ContactUsCss.contact_us_input}
+                size="large"
+                placeholder="Enter Your subject"
+              />
+            </div>
+
+            {/* INPUTS */}
+            <div className={ContactUsCss.contact_us_input_container}>
+              <label className={ContactUsCss.input_label}>Message</label>
+              <TextArea className={ContactUsCss.input_textarea} rows={4} />
+            </div>
+
+            <div className={ContactUsCss.contact_us_input_container}>
+              <Button className={ContactUsCss.contact_us_send_btn}>Send</Button>
+            </div>
           </div>
         </Container>
+
+        {/* THANKS FOR REACHING SECTION */}
+        <main className={ContactUsCss.contact_us_thanks_main_section}>
+          <Container>
+            <Row className={ContactUsCss.contact_us_thanks_row}>
+              <Col md={6} className={ContactUsCss.contact_us_thanks_cols}>
+                <div className={ContactUsCss.contact_us_thanks_inner_div}>
+                  <h2 className={ContactUsCss.contact_us_thanks_heading}>
+                    Thanks for reaching out!
+                  </h2>
+                  <p className={ContactUsCss.contact_us_thanks_para}>
+                    The Golfhōm staff is excited to help you with your travel,
+                    golf and vacation rental questions and concerns! We’ll get
+                    back to you as soon as we can. In the meantime, please also
+                    feel free to search for clarification on your issue on our
+                    FAQ page.
+                  </p>
+
+                  <p className={ContactUsCss.contact_us_thanks_freq_ask_para}>
+                    Frequently Asked Questions{" "}
+                  </p>
+                </div>
+              </Col>
+
+              <Col md={6} className={ContactUsCss.contact_us_thanks_cols}>
+                <div className={ContactUsCss.contact_us_thanks_img_container}>
+                  <Image
+                    className={ContactUsCss.contact_us_thanks_img}
+                    fill
+                    src={ManThumbsUpImg}
+                    alt="thanks for reaching thumbs up"
+                  ></Image>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </main>
+
+        {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
+
+        <section className={ContactUsCss.grouptalk}>
+          <div>
+            <div className={ContactUsCss.groupParent}>
+              <Image
+                alt="group talk"
+                className={ContactUsCss.grouptalk}
+                src={Grouptalk}
+                fill
+              ></Image>
+            </div>
+
+            <Col md={4} className={ContactUsCss.newBtn}>
+              <h4 className={ContactUsCss.grouptalkTitle}>
+                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
+              </h4>
+              <Button className={ContactUsCss.search}>Search</Button>
+            </Col>
+          </div>
+        </section>
       </main>
     </>
   );
