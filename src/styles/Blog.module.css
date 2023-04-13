@@ -32,6 +32,8 @@
 
 .cardsTitle {
   margin: 50px 0px;
+  font-family: var(--font-amiri);
+  font-weight: 600;
 }
 
 .cardChild {
@@ -39,17 +41,26 @@
 }
 
 .columnParent {
-  margin-bottom: 56px;
+  margin-bottom: 60px;
   padding-bottom: 42px;
+  position: relative !important;
 }
 
 .parentOf_img_textCard {
-  position: relative !important;
+  /* position: relative !important; */
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+}
+
+.imageChild {
+
 }
 
 .blog_img {
   border-radius: 10px;
   width: 100%;
+  height: auto;
   position: relative !important;
 }
 
@@ -57,9 +68,11 @@
   overflow: hidden;
   background: var(--white-background);
   width: 70%;
+  height: 70%;
   padding: 16px;
   position: absolute;
-  top: 240px;
+  top: 200px;
+  flex-shrink: 3;
 }
 
 .card_title {
@@ -70,19 +83,18 @@
 
 .contact_div {
   margin-bottom: 3px;
-  position: relative;
+  /* position: relative; */
   right: 4px;
 }
 
 .byAdmin {
   color: var(--card-text-color);
-  font-size: 0.9rem;
   font-family: var(--font-poppins);
   font-size: 12px;
 }
 
 .bookmarkDiv {
-  position: relative;
+  /* position: relative; */
   right: 1px;
 }
 
@@ -140,7 +152,7 @@
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  bottom: -1px;
+  bottom: 0px;
   padding: 30px 40px 60px;
   right: 0px;
 }
@@ -169,22 +181,55 @@
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .cardTextParent  {
-   flex-shrink: 2;
-   font-size: 16px;
-   top: 240px !important;
+    flex-shrink: 2;
+    top: 240px !important;
+    width: 60% !important;
+  }
+
+  .bookmark_text {
+    font-size: 0.8rem;
   }
 }
 
 @media only screen and (max-width: 1400px) {
   .cardTextParent  {
     top: 155px;
-    width: 96%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .cardTextParent  {
+    top: 114px;
+    font-size: 10px;
+    width: 84%;
   }
 }
 
 @media only screen and (max-width: 1000px) {
   .cardTextParent  {
     top: 114px;
-    width: 96%;
+    font-size: 10px;
+    width: 86%;
+  }
+
+  .card_title {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  .bookmark_text {
+    font-size: 0.64rem;
+  }
+
+  .learnbtn_text {
+    font-size: 0.9rem;
+  }
+
+  .contact {
+    height: 13px;
+  }
+
+  .learnbtn {
+    margin-top: 2px;
   }
 }

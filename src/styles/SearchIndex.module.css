@@ -60,11 +60,6 @@
   font-weight: 600;
 }
 
-.orlandoImg {
-  position: relative !important;
-  object-fit: cover;
-}
-
 .mainOrland {
   display: flex;
   flex-direction: row;
@@ -82,15 +77,6 @@
   flex-wrap: wrap;
 }
 
-.cardMap {
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 0 3px 6px rgba(2, 0.2, 0.2, 0.2);
-  margin: 10px 10px 30px;
-  background-color: var(--white-background);
-  transition-duration: 0.3s;
-}
-
 .cardCol {
   height: auto;
   flex: 1;
@@ -98,32 +84,6 @@
   flex-wrap: wrap;
 }
 
-.cardImage {
-  width: 100%;
-  min-width: 40%;
-  padding: 0%;
-}
-
-.cardMap:hover {
-  transition-duration: 0.3s;
-  transform: scale(1.02);
-}
-
-.textParent {
-  padding: 18px 9px;
-  display: grid;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-family: var(--font-poppins);
-}
-
-.saddle {
-  color: var(--light-font-color);
-  font-weight: 400;
-  line-height: 21.55px;
-}
 .rental {
   font-family: var(--font-poppins);
   font-weight: 400;
@@ -132,13 +92,6 @@
 .iconImg {
   display: flex;
   width: 38%;
-}
-
-.iconName {
-  margin: 0px 10px;
-  font-size: 13.25px;
-  line-height: 21.55px;
-  color: #636363;
 }
 
 .sort {
@@ -162,60 +115,35 @@
   flex-wrap: wrap;
 }
 
-.iconSmall {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 8px 0px;
+/* ---------------------------  SLIDER CSS  -------------------------  */
+
+.carouselParent {
+ border-radius: 12px;
+  height: auto;
+  
 }
 
-.iconParent {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.carouselImage {
+  position: relative !important;
 }
 
-.price {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 8px;
+.imageGap {
+  /* padding: 0px 20px; */
 }
 
-.night {
-  color: #b3b3b3;
-  font-size: 1rem;
-}
-
-.amount {
-  color: #111111;
+.carouselHeading {
+  font-family: var(--font-amiri);
   font-weight: 600;
+  font-size: 1.6rem;
+  margin-top: 24px;
 }
 
-.btnD {
-  background-color: var(--btn-background);
-  color: var(--white-font-color);
-  margin-left: 20px;
-  padding: 4px 30px;
-  border: none;
-}
-
-.btnD {
-  color: var(--white-font-color) !important;
-  border: none;
-  transition-duration: 0.3s !important;
-  transform: scale(1.02) !important;
-}
-
-.heartBtn {
-  display: flex;
-}
-
-.heart {
-  border: 2px solid #F3F3F3;
-  border-radius: 5px;
-  height: fit-content;
-  padding: 4px 6px;
+.discribeOfCard {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  color: var(--light-font-color);
+  font-size: 0.9rem;
+  margin-bottom: 2px;
 }
 
 .mapParent {

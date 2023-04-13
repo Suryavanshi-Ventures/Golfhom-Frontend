@@ -38,6 +38,7 @@ const Header = () => {
   const [isModalOpens, setIsModalOpens] = useState(false);
   const showRegister = () => {
     setIsModalOpens(true);
+    handleCancel();
   };
   const handleRegister = () => {
     setIsModalOpens(false);

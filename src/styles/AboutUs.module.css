@@ -155,7 +155,7 @@
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  bottom: 40px;
+  bottom: 0px;
   padding: 30px 40px 60px;
   right: 0px;
 }

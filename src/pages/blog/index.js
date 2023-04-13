@@ -48,12 +48,14 @@ const index = ({ cards }) => {
           {blogs.blogs?.map((item, index) => {
             return <Col md={4} xs={12} key={index} className={BlogCss.columnParent}>
               <div className={BlogCss.parentOf_img_textCard}>
-                <Image
-                  src={item.img}
-                  fill
-                  className={BlogCss.blog_img}
-                  alt={item.naming}>
-                </Image>
+                <div className={BlogCss.imageChild}>
+                  <Image
+                    src={item.img}
+                    fill
+                    className={BlogCss.blog_img}
+                    alt={item.naming}>
+                  </Image>
+                </div>
 
                 <div className={BlogCss.cardTextParent}>
                   <h6 className={BlogCss.card_title}>
@@ -65,6 +67,7 @@ const index = ({ cards }) => {
                       alt="Contact Image"
                       width={20}
                       height={15}
+                      className={BlogCss.contact}
                     ></Image>{" "}
                     <span className={BlogCss.byAdmin}>{item.name}</span>
                   </div>
