@@ -55,7 +55,7 @@ function ContactUs() {
               />
             </div>
 
-            {/* INPUTS */}
+            {/* INPUTSS */}
             <div className={ContactUsCss.contact_us_input_container}>
               <label className={ContactUsCss.input_label}>Email</label>
               <Input
