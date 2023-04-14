@@ -195,6 +195,10 @@
   border-radius: 2px;
   margin-bottom: 2rem;
   font-family: var(--font-poppins);
+  justify-content: space-between;
+  background-color: var(--white-btn-font-color);
+  color: var(--black-btn-color);
+  padding: 0px 14px;
 }
 
 .search_by_golf_btn {
@@ -228,7 +232,8 @@
   height: 45px;
   border-radius: 2px;
   margin-bottom: 2rem;
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-poppins);
+  color: var(--black-btn-color);
 }
 
 .content {
@@ -295,6 +300,10 @@
   color: var(--white-font-color);
   background-color: var(--btn-background);
   border: none;
+}
+
+.ant-dropdown-menu-item, .ant-dropdown-menu-item-only-child {
+  background-color: var(--light-grey-background) !important;
 }
 
 /* ------------------------------        Golfhōm Hottest New Arrivals         ------------------------------       */

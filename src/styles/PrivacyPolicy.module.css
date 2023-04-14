@@ -1,0 +1,74 @@
+/*------------------------ PRIVACY POLICY TOP IMAGE------------------------ */
+.topImage {
+    width: 100%;
+    height: auto;
+}
+
+.topImgChild {
+    position: relative !important;
+    margin-bottom: 20px;
+}
+
+/*------------------------ PRIVACY POLICY TEXT CONATINER------------------------ */
+
+.privacyTitle {
+    margin: 20px 0px;
+    font-weight: 600;
+    font-family: var(--font-amiri);
+}
+
+.paraA, .paraB, .paraC {
+    color: var(--light-font-color);
+    font-family: var(--font-poppins);
+    font-weight: 400;
+    margin: 30px 0px;
+    font-size: 1rem;
+}
+
+.personal {
+    font-family: var(--font-poppins);
+    font-weight: 500;
+    margin: 18px 0px;
+}
+
+
+
+/* ------------------------- Bottom section -------------------------------*/
+
+.grouptalk {
+    margin-bottom: 50px;
+    position: relative !important;
+  }
+  
+  .newBtn {
+    background: var(--white-font-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    bottom: 44px;
+    padding: 30px 40px 60px;
+    right: 0px;
+  }
+  
+  .groupParent {
+    max-width: 1560px;
+    height: auto;
+  }
+  
+  .search {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--btn-background-secondary);
+    color: var(--white-font-color);
+    border: none;
+  }
+  
+  .grouptalkTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: var(--font-amiri);
+  }
+  

@@ -11,13 +11,22 @@ import { Pagination } from "antd";
 import Link from "next/link";
 import Buildings from "../../../public/images/buildings.png"
 import Grouptalk from "../../../public/images/grouptalk.png";
-import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css';
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import SwiperCore, { Autoplay } from "swiper/core";
 import HotelA from "../../../public/images/hotelA.svg";
 import HotelB from "../../../public/images/hotelB.svg";
 import HotelC from "../../../public/images/hotelC.svg";
 import HotelD from "../../../public/images/hotelD.svg";
-import { Navigation } from 'swiper';
+import beachView from "../../../public/images/beachView.svg";
+import Heart from "../../../public/images/vector/heart.svg";
+import Dot from "../../../public/images/vector/dot.svg";
+// // Import Swiper styles
+// import "swiper/css/swiper.css";
+// import "swiper/css/autoplay.css";
+
+// Initialize SwiperCore with required modules
+// SwiperCore.use([Autoplay]);
+
 
 const { RangePicker } = DatePicker;
 
@@ -162,34 +171,65 @@ const index = () => {
                 </div>
 
                 <Row>
-                  <Col md={6}>
+                  <Col md={6} className={Index.carouselBlock}>
                     <Carousel className={Index.carouselParent}>
                       <Carousel.Item className={Index.imageGap}>
                         <Image
-                          src={HotelB}
+                          src={HotelA}
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
                         >
                         </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelA}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
                         <Image
-                          src={HotelC}
+                          src={HotelA}
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
                         >
                         </Image>
-                      </Carousel.Item>
-                      <Carousel.Item className={Index.imageGap}>
-                        <Image
-                          src={HotelD}
-                          alt="Hotel View"
-                          fill
-                          className={Index.carouselImage}
-                        >
-                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
                       </Carousel.Item>
                     </Carousel>
 
@@ -197,11 +237,11 @@ const index = () => {
                     <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
 
                     <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
-
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
                       <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
                   </Col>
 
-                  <Col md={6}>
+                  <Col md={6} className={Index.carouselBlock}>
                     <Carousel className={Index.carouselParent}>
                       <Carousel.Item className={Index.imageGap}>
                         <Image
@@ -211,6 +251,107 @@ const index = () => {
                           className={Index.carouselImage}
                         >
                         </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelB}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelB}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                    </Carousel>
+
+                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
+                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
+                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className={Index.carouselBlock}>
+                    <Carousel className={Index.carouselParent}>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelC}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelC}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
                         <Image
@@ -220,6 +361,47 @@ const index = () => {
                           className={Index.carouselImage}
                         >
                         </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                    </Carousel>
+
+                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
+                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
+                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                  </Col>
+
+                  <Col md={6} className={Index.carouselBlock}>
+                    <Carousel className={Index.carouselParent}>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
                         <Image
@@ -229,10 +411,329 @@ const index = () => {
                           className={Index.carouselImage}
                         >
                         </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
                       </Carousel.Item>
                     </Carousel>
+
+                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
+                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
+                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
                   </Col>
                 </Row>
+
+                <Row>
+                  <Col md={6} className={Index.carouselBlock}>
+                    <Carousel className={Index.carouselParent}>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelC}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelC}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelC}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                    </Carousel>
+
+                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
+                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
+                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                  </Col>
+
+                  <Col md={6} className={Index.carouselBlock}>
+                    <Carousel className={Index.carouselParent}>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                    </Carousel>
+
+                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
+                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
+                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className={Index.carouselBlock}>
+                    <Carousel className={Index.carouselParent}>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={beachView}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={beachView}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={beachView}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                    </Carousel>
+
+                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
+                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
+                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                  </Col>
+
+                  <Col md={6} className={Index.carouselBlock}>
+                    <Carousel className={Index.carouselParent}>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                      <Carousel.Item className={Index.imageGap}>
+                        <Image
+                          src={HotelD}
+                          alt="Hotel View"
+                          fill
+                          className={Index.carouselImage}
+                        >
+                        </Image>
+
+                        <div className={Index.heartParent}>
+                          <Image
+                            src={Heart}
+                            alt="Heart"
+                            fill
+                            className={Index.heart}
+                          >
+                          </Image>
+                        </div>
+                      </Carousel.Item>
+                    </Carousel>
+
+                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
+                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+
+                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                      <Image src={Dot} alt="Dot" className={Index.dot}></Image>
+                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                  </Col>
+                </Row>
+
               </div>
 
 

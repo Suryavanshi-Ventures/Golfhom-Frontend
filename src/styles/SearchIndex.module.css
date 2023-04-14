@@ -117,6 +117,10 @@
 
 /* ---------------------------  SLIDER CSS  -------------------------  */
 
+.carouselBlock {
+   margin: 40px 0px;
+}
+
 .carouselParent {
  border-radius: 12px;
   height: auto;
@@ -125,6 +129,27 @@
 
 .carouselImage {
   position: relative !important;
+}
+
+.heartParent {
+  width: 10px;
+  height: auto;
+}
+
+.heart {
+  position: absolute;
+  height: 28% !important;
+  width: 8% !important;
+  left: 356px !important;
+  top: 0;
+  right: 0px;
+  bottom: 0px;
+  color: transparent;
+}
+
+.dot {
+  margin-left: 20px;
+  margin-right: 10px;
 }
 
 .imageGap {
@@ -255,5 +280,16 @@
   
   .mapParent {
     order: -1;
+  }
+
+  .heart {
+    position: absolute;
+    height: 22% !important;
+    width: 8% !important;
+    left: 450px !important;
+    top: 0;
+    right: 0px;
+    bottom: 0px;
+    color: transparent;
   }
 }

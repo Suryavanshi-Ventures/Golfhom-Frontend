@@ -72,7 +72,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/privacy" className={FooterCss.nav_link_a}>
                       Privacy Policy
                     </Link>
                   </li>

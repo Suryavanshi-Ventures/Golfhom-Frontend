@@ -10,7 +10,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import ads from "./ads.json";
 import Advertise from "../advertise";
 import Image from "next/image";
-import { Input } from "antd";
+import { Dropdown, Input, Space, Typography } from "antd";
 import { Button } from "antd";
 import { DatePicker } from "antd";
 const { RangePicker } = DatePicker;
@@ -21,9 +21,43 @@ import review from "./review.json";
 import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import Grouptalk from "../../public/images/grouptalk.png";
+import { DownOutlined } from '@ant-design/icons';
+
 
 const Home = () => {
   const onSearch = (value) => console.log(value);
+
+  // DROPDOWN FOR SEARCH
+
+  const items = [
+    // {
+    //   label: 'Choose from tournaments',
+    //   key: '0',
+    // },
+    {
+      // label: <a href="https://www.antgroup.com">PGA Championship</a>,
+      label: 'PGA Championship',
+      key: '1',
+    },
+    {
+      // label: <a href="https://www.aliyun.com">The Master</a>,
+      label: 'The Master',
+      key: '2',
+    },
+    {
+      label: 'The open champioship',
+      key: '3',
+    },
+    {
+      label: 'The Tradition at Quinta',
+      key: '4',
+    },
+    {
+      label: 'US Open',
+      key: '5',
+    }
+
+  ];
 
   return (
     <>
@@ -207,14 +241,14 @@ const Home = () => {
                             HomeCss.search_by_golf_input_container_headings
                           }
                         >
-                          Search by golf course
+                          Search by Tournaments
                         </h3>
                         <p
                           className={
                             HomeCss.search_by_golf_input_container_subheadings
                           }
                         >
-                          Choose from thousands world-wide
+                          Check out our growing list of tour-spot rentals
                         </p>
 
                         <div
@@ -227,13 +261,29 @@ const Home = () => {
                               HomeCss.search_by_golf_input_container_tourni
                             }
                           >
-                            <Input
-                              placeholder="Search by Touraments"
-                              prefix={<SearchOutlined />}
+                            <Dropdown
+                              menu={{
+                                items,
+                                selectable: true,
+                                defaultSelectedKeys: ['3'],
+                              }}
+                              trigger={['click']}
                               className={
-                                HomeCss.search_by_golf_input_search_by_tourni
+                                HomeCss.search_by_golf_input_container_tourni
                               }
-                            />
+                              prefix={<DownOutlined />}
+                            >
+                              <a onClick={(e) => e.preventDefault()}>
+                                <Typography.Link>
+                                  <Space className={
+                                    HomeCss.search_by_golf_input_search_by_tourni
+                                  }>
+                                    <DownOutlined />
+                                    Please select tournament
+                                  </Space>
+                                </Typography.Link>
+                              </a>
+                            </Dropdown>
                           </div>
                         </div>
                       </div>
