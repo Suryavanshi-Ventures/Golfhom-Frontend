@@ -60,21 +60,23 @@ const privacy = () => {
 
 
                 <p className={PrivacyPolicyCss.paraO}> FACEBOOK – https://www.facebook.com/settings/?tab=ads
+                    <br />
                     GOOGLE – https://www.google.com/settings/ads/anonymous
+                    <br />
                     BING – https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads</p>
 
 
-                <h4>SHARING YOUR PERSONAL INFORMATION</h4>
+                <h4 className={PrivacyPolicyCss.personal}>SHARING YOUR PERSONAL INFORMATION</h4>
 
                 <p className={PrivacyPolicyCss.paraP}>  Additionally, you can opt out of some of these services by visiting the Digital Advertising Alliance’s opt-out portal at: http://optout.aboutads.info/.</p>
 
 
-                <h5>    DO NOT TRACK</h5>
+                <h5 className={PrivacyPolicyCss.smallHeading}>DO NOT TRACK</h5>
 
                 <p className={PrivacyPolicyCss.paraQ}>Please note that we do not alter our Site’s data collection and use practices when we see a Do Not Track signal from your browser.</p>
 
 
-                <h5>YOUR RIGHTS </h5>
+                <h5 className={PrivacyPolicyCss.smallHeading}>YOUR RIGHTS </h5>
 
                 <p className={PrivacyPolicyCss.paraR}>You have the right to ask us at any time:</p>
 
@@ -101,20 +103,24 @@ const privacy = () => {
                 <p className={PrivacyPolicyCss.paraU}>Additionally, if you are a European resident we note that we are processing your information in order to fulfill contracts we might have with you (for example if you make an order through the Site), or otherwise to pursue our legitimate business interests listed above. Additionally, please note that your information will be transferred outside of Europe, including to Canada and the United States.</p>
 
 
-                <h5>OTHER SITES</h5>
+                <h5 className={PrivacyPolicyCss.smallHeading}>OTHER SITES</h5>
 
                 <p className={PrivacyPolicyCss.paraV}> If any part of the Golfhom.com web site links you to other web sites, please know that those sites do not operate under this Privacy Policy. We recommend you examine the privacy statements posted on those other online entities to understand their procedures for collecting, using, and disclosing your personal information.</p>
 
-                <h5>DATA RETENTION</h5>
+                <h5 className={PrivacyPolicyCss.smallHeading}>DATA RETENTION</h5>
 
-                <p className={PrivacyPolicyCss.paraW}> When you place an order through the Site, we will maintain your Order Information for our records unless and until you ask us to delete this information. </p>
-                <p className={PrivacyPolicyCss.paraW}> MINORS </p>
-                <p className={PrivacyPolicyCss.paraW}> The Site is not intended for individuals under the age of 16.</p>
-                <p className={PrivacyPolicyCss.paraW}>CHANGES </p>
-                <p className={PrivacyPolicyCss.paraW}> We may update this privacy policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal or regulatory reasons. We will notify you about material changes to this policy by sending you notice to the e-mail address you provided in your user profile, or by placing a prominent notice on our web site.</p>
+                <p className={PrivacyPolicyCss.paraW}> When you place an order through the Site, we will maintain your Order Information for our records unless and until you ask us to delete this information.
+                    <br />
+                    MINORS
+                    <br />
+                    The Site is not intended for individuals under the age of 16.
+                    <br />
+                    CHANGES
+                    <br />
+                    We may update this privacy policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal or regulatory reasons. We will notify you about material changes to this policy by sending you notice to the e-mail address you provided in your user profile, or by placing a prominent notice on our web site.</p>
 
 
-                <h5> CONTACT US</h5>
+                <h5 className={PrivacyPolicyCss.smallHeading}> CONTACT US</h5>
 
                 <p className={PrivacyPolicyCss.paraW}>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us via our <span>Contact Us page</span></p>
 

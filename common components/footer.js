@@ -41,7 +41,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/about" className={FooterCss.nav_link_a}>
                       About
                     </Link>
                   </li>
@@ -62,12 +62,12 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/contact_us" className={FooterCss.nav_link_a}>
                       Contact Us
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/termAndConditions" className={FooterCss.nav_link_a}>
                       Terms and Conditions
                     </Link>
                   </li>
@@ -77,7 +77,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/search" className={FooterCss.nav_link_a}>
                       Listings
                     </Link>
                   </li>
