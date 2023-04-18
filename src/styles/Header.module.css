@@ -147,7 +147,7 @@
 .password {
   border: 1px solid black;
   border-radius: 5px;
-  padding: 2% 0;
+  padding: 10px;
   width: 100%;
 }
 
@@ -184,10 +184,10 @@
 
 /* --------------          REGISTER BLOCK        ---------------   */
 
-.headerReg .ant-modal-title {
-  background: var(--btn-background-secondary) !important;
-  padding: 0% !important;
-  margin: 0% !important;
+.headerReg {
+  font-family: var(--font-amiri);
+  font-weight: 600;
+  font-size: 1.4rem;
 }
 
 .register {
@@ -205,35 +205,38 @@
 
 .inputParent {
   flex-wrap: wrap;
-  border: 1px solid var(--light-font-color);
-  border-radius: 8px;
   width: 100%;
-  padding: 12px 0px;
+  font-family: var(--font-poppins);
 }
 
 .inputA {
-  width: 90%;
-  border: none;
-
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px 8px 0px 0px;
+  border: 1px solid var(--light-font-color) !important;
 }
 
 .inputB {
-  width: 90%;
-  border: none;
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-font-color) !important;
+  border-top: none !important;
+  border-bottom: none !important;
 }
 
 .inputC {
-  width: 90%;
-  border: none;
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-font-color) !important;
+  border-bottom: none !important;
 }
 
 .inputD {
-  width: 90%;
-  border: none;
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-font-color) !important;
+  height: auto;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .agreeOptionA {
@@ -265,6 +268,28 @@
  flex-direction: row;
  justify-content: center;
  align-items: center;
+}
+
+/* ---------------         DROPDOWN CONTENT          ---------------*/
+
+.edit_room_dropdown_btn {
+  width: 100%;
+  margin-top: 20px;
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+  font-weight: 400;
+}
+
+.edit_room_dropdown_btn_space {
+  width: 100%;
+  justify-content: space-between;
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+  font-weight: 400;
+}
+
+.edit_room_dropdown_icon {
+  display: flex;
 }
 
 /* ----------------        FORGOT SECTION BLOCK          ---------------- */

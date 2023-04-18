@@ -24,12 +24,16 @@
     font-size: 0.8rem;
 }
 
-.para {
+.para, .paraL {
     font-family: var(--font-poppins);
     color: var(--light-font-color);
     font-weight: 500;
     font-size: 0.9rem;
     margin-bottom: 40px;
+}
+
+.paraL {
+  margin-bottom: 100px;
 }
 
 .bold {

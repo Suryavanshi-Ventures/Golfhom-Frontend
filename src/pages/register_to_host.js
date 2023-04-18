@@ -86,37 +86,37 @@ const Register_to_host = () => {
               <h5 className={RegisterToHost.registerTitle}>Register</h5>
               <div className={RegisterToHost.registerContent}>
                 <Col className={RegisterToHost.inputParent}>
-                  <Row>
+                  <div>
                     <input
                       className={RegisterToHost.inputA}
                       type="text"
                       placeholder="Enter User name"
                     ></input>
-                  </Row>
-                  <hr />
-                  <Row>
+                  </div>
+
+                  <div>
                     <input
                       className={RegisterToHost.inputB}
                       type="email"
                       placeholder="Email"
                     ></input>
-                  </Row>
-                  <hr />
-                  <Row>
+                  </div>
+
+                  <div>
                     <input
                       className={RegisterToHost.inputC}
                       type="password"
                       placeholder="Password"
                     ></input>
-                  </Row>
-                  <hr />
-                  <Row>
+                  </div>
+
+                  <div>
                     <input
                       className={RegisterToHost.inputD}
                       type="password"
                       placeholder="Repeat Password"
                     ></input>
-                  </Row>
+                  </div>
                 </Col>
 
                 <Row>

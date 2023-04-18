@@ -55,7 +55,7 @@ const termAndConditions = () => {
 
                 <h4 className={TermConditionsCss.subHeading}>4) Copyright Infringement Prohibited Hereon; DMCA Policy</h4>
 
-                <p className={TermConditionsCss.para}>Website does not permit, and will not be a party to, users violating or infringing upon any 3rd party’s copyrights. We greatly respect the intellectual property rights of other individuals and entities. We will freeze or terminate, when appropriate, any property listing or user account if copyright infringement is suspected. Please feel free to <span className={TermConditionsCss.redWords}> CONTACT US HERE</span> immediately if you believe a copyright violation exists on the Website.</p>
+                <p className={TermConditionsCss.paraL}>Website does not permit, and will not be a party to, users violating or infringing upon any 3rd party’s copyrights. We greatly respect the intellectual property rights of other individuals and entities. We will freeze or terminate, when appropriate, any property listing or user account if copyright infringement is suspected. Please feel free to <span className={TermConditionsCss.redWords}> CONTACT US HERE</span> immediately if you believe a copyright violation exists on the Website.</p>
             </Container>
             {/*  -------------------------   BOTTOM IMAGE SECTION   -------------------------- */}
 

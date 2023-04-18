@@ -288,12 +288,14 @@ const Home = () => {
                         </div>
                       </div>
                       <div className={HomeCss.search_by_golf_btn_container}>
-                        <Button
-                          className={HomeCss.search_by_golf_btn}
-                          type="primary"
-                        >
-                          SEARCH
-                        </Button>
+                        <Link href="searchByTournaments">
+                          <Button
+                            className={HomeCss.search_by_golf_btn}
+                            type="primary"
+                          >
+                            SEARCH
+                          </Button>
+                        </Link>
                       </div>
                     </Col>
                   </Row>

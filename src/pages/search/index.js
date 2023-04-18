@@ -5,7 +5,7 @@ import Index from "../../styles/SearchIndex.module.css";
 import { Input } from "antd";
 import { DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Space } from "antd";
+import { Button, Dropdown, Space, Typography } from "antd";
 import Image from "next/image";
 import { Pagination } from "antd";
 import Link from "next/link";
@@ -123,6 +123,8 @@ const index = () => {
                       <Button size="large" className={Index.edit_details_btn}>
                         Edit
                       </Button>
+
+
                     </div>
                   </div>
                 </Col>
@@ -174,13 +176,15 @@ const index = () => {
                   <Col md={6} className={Index.carouselBlock}>
                     <Carousel className={Index.carouselParent}>
                       <Carousel.Item className={Index.imageGap}>
-                        <Image
-                          src={HotelA}
-                          alt="Hotel View"
-                          fill
-                          className={Index.carouselImage}
-                        >
-                        </Image>
+                        <Link href="/search/view_property">
+                          <Image
+                            src={HotelA}
+                            alt="Hotel View"
+                            fill
+                            className={Index.carouselImage}
+                          >
+                          </Image>
+                        </Link>
 
                         <div className={Index.heartParent}>
                           <Image

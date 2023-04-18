@@ -17,12 +17,16 @@
     font-family: var(--font-amiri);
 }
 
-.paraA, .paraB, .paraC, .paraD, .paraE, .paraF, .paraG, .paraH, .paraI, .paraJ, .paraK, .paraL, .paraM, .paraN, .paraO, .paraP, .paraQ, .paraR, .paraS, .paraT, .paraU, .paraV, .paraW {
+.paraA, .paraB, .paraC, .paraD, .paraE, .paraF, .paraG, .paraH, .paraI, .paraJ, .paraK, .paraL, .paraM, .paraN, .paraO, .paraP, .paraQ, .paraR, .paraS, .paraT, .paraU, .paraV, .paraW, .paraX {
     color: var(--light-font-color);
     font-family: var(--font-poppins);
     font-weight: 400;
     margin: 30px 0px;
     font-size: 0.8rem;
+}
+
+.paraX {
+  margin-bottom: 100px;
 }
 
 .personal {

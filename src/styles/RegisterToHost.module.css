@@ -53,42 +53,44 @@
 
 .inputParent {
   flex-wrap: wrap;
-  border: 1px solid var(--light-font-color);
-  border-radius: 8px;
   width: 100%;
-  padding: 12px 0px;
   font-family: var(--font-poppins);
 }
 
 .inputA {
-  width: 90%;
-  border: none;
-
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px 8px 0px 0px;
+  border: 1px solid var(--light-font-color) !important;
 }
 
 .inputB {
-  width: 90%;
-  border: none;
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-font-color) !important;
+  border-top: none !important;
+  border-bottom: none !important;
 }
 
 .inputC {
-  width: 90%;
-  border: none;
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-font-color) !important;
+  border-bottom: none !important;
 }
 
 .inputD {
-  width: 90%;
-  border: none;
-  margin-left: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--light-font-color) !important;
+  height: auto;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .agreeOptionA {
   font-size: 1rem;
   font-weight: 700;
-  margin: 16px 0px;
+  margin: 16px 0px 30px;
   font-weight: var(--font-poppins);
 }
 
@@ -96,7 +98,7 @@
   font-size: 1rem;
   font-weight: 700;
   font-weight: var(--font-poppins);
-  margin-bottom: 14px;
+  margin: 16px 0px 0px;
 }
 
 .registerBtn {

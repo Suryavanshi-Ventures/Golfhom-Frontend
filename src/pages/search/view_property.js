@@ -5,7 +5,7 @@ import { Container, Col, Row, Button, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../styles/ViewProperty.module.css";
 import Image from "next/image";
 import GirlGroupBannerImage from "../../../public/images/group_girls_banner.svg";
-import { Tabs } from "antd";
+import { Checkbox, Modal, Space, Tabs } from "antd";
 import TabContentOverview from "./tab_content_overview";
 import Carousel from "react-bootstrap/Carousel";
 import CarouselGalleryImg from "../../../public/images/view_prop_gallery_img_1.svg";
@@ -82,6 +82,22 @@ const ViewProperty = () => {
       setChild(0);
     }
 
+  };
+
+  {
+    /* -----------      CONTACT THE HOST SECTION        -----------------*/
+  }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showContact = () => {
+    setIsModalOpen(true);
+    // handleCancel();
+  };
+  const handleContact = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancelContact = () => {
+    setIsModalOpen(false);
   };
 
 
@@ -190,6 +206,72 @@ const ViewProperty = () => {
                 <Button className={ViewPropertyCss.check}>
                   Check availability
                 </Button>
+              </div>
+
+              <div className={ViewPropertyCss.contactParent}>
+                {/* -----------      REGISTER SECTION        -----------------*/}
+                <Modal
+                  title="Contact to host"
+                  footer={null}
+                  open={isModalOpen}
+                  onSignup={handleContact}
+                  onCancel={handleCancelContact}
+                  width={440}
+                  className={ViewPropertyCss.headerReg}
+                >
+                  <Col className={ViewPropertyCss.inputParent}>
+                    <div>
+                      <input
+                        className={ViewPropertyCss.inputA}
+                        type="text"
+                        placeholder="Name"
+                      ></input>
+                    </div>
+
+                    <div>
+                      <input
+                        className={ViewPropertyCss.inputB}
+                        type="email"
+                        placeholder="Email"
+                      ></input>
+                    </div>
+
+                    <div>
+                      <input
+                        className={ViewPropertyCss.inputC}
+                        type="tel"
+                        placeholder="Phone Number"
+                      ></input>
+                    </div>
+
+                    <div className={ViewPropertyCss.inputDParent}>
+                      <input
+                        className={ViewPropertyCss.inputD}
+                        type="text"
+                        placeholder="Message"
+                      ></input>
+                    </div>
+                  </Col>
+
+                  <Row>
+                    <div className={ViewPropertyCss.agreeBox}>
+                      <Checkbox className={ViewPropertyCss.agreeOptionB}>
+                        I agree with your Privacy Policy
+                      </Checkbox>
+                    </div>
+                  </Row>
+
+                  <Link
+                    href="/"
+                    className={ViewPropertyCss.registerLink}
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <Button className={ViewPropertyCss.registerBtn}>Register</Button>
+                  </Link>
+                </Modal>
+                <Space>
+                  <Button className={ViewPropertyCss.contact} onClick={showContact}>Contact to host</Button>
+                </Space>
               </div>
             </Col>
           </Row>

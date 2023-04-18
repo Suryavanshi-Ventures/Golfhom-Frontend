@@ -122,7 +122,7 @@ const privacy = () => {
 
                 <h5 className={PrivacyPolicyCss.smallHeading}> CONTACT US</h5>
 
-                <p className={PrivacyPolicyCss.paraW}>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us via our <span>Contact Us page</span></p>
+                <p className={PrivacyPolicyCss.paraX}>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us via our <span>Contact Us page</span></p>
 
             </Container>
 
