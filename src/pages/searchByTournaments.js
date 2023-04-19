@@ -3,11 +3,19 @@ import SearchByTourCss from "../styles/SearchByTournament.module.css";
 import Search from "../../public/images/search.svg";
 import Image from 'next/image';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import { Dropdown, Space } from 'antd';
+import { Dropdown, Pagination, Space } from 'antd';
 import { DownOutlined } from "@ant-design/icons";
 import BottomSection from "../../common components/bottomGroup";
+import CarouselImages from "../../common components/carouselMap";
 
 const searchByTournaments = () => {
+    const onChange = (pageNumber) => {
+        console.log("Page: ", pageNumber);
+    };
+
+    // const handleMenuClick = (e) => {
+    //     console.log("click", e);
+    // };
 
     // DROPDOWN CONTENT
 
@@ -49,7 +57,7 @@ const searchByTournaments = () => {
 
             <Container>
                 <Row>
-                    <Col md={4}>
+                    <Col md={4} className={SearchByTourCss.textArea}>
                         <h2 className={SearchByTourCss.searchTitle}>Search by Tournaments</h2>
                         <h6 className={SearchByTourCss.checkOut}>Check out our growing list of tour-spot rentals</h6>
 
@@ -71,6 +79,63 @@ const searchByTournaments = () => {
                     </Col>
                 </Row>
             </Container>
+
+            {/* -----------------------            ORLANDO SECTION             ---------------------  */}
+
+            <section className={SearchByTourCss.search_main_section}>
+                <Container>
+                    <Row>
+                        <h4 className={SearchByTourCss.orlandoHead}>Orlando</h4>
+
+                        {/*    ----------------      CARD MAP SECTION      -------------------   */}
+                        <Col md={8}>
+                            <hr />
+
+                            <div className={SearchByTourCss.orlandParent}>
+                                <div className={SearchByTourCss.sortSection}>
+                                    <h5 className={SearchByTourCss.rental}>150 Rentals</h5>
+
+                                    <div className={SearchByTourCss.sortdiv}>
+                                        <h6 className={SearchByTourCss.sort}>Sort By:</h6>
+
+                                        <Dropdown menu={menuProps} className={SearchByTourCss.default}>
+                                            <Button size="large">
+                                                <Space>
+                                                    Default order
+                                                    <DownOutlined />
+                                                </Space>
+                                            </Button>
+                                        </Dropdown>
+                                    </div>
+                                </div>
+                                {/* ------------------- CAROUSEL IMAGES STARTS  -----------------------  */}
+                                <CarouselImages />
+                            </div>
+                        </Col>
+
+                        {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
+                        <Col md={4} className={SearchByTourCss.mapParent}>
+                            <Image
+                                fill
+                                src="/images/mapGroup.svg"
+                                alt="Map"
+                                className={SearchByTourCss.map}
+                            />
+                        </Col>
+                    </Row>
+
+                    <div className={SearchByTourCss.pagination_container}>
+                        <Pagination
+                            colorText="#FF0000"
+                            showQuickJumper
+                            defaultCurrent={2}
+                            total={500}
+                            onChange={onChange}
+                            className={SearchByTourCss.pagination}
+                        />
+                    </div>
+                </Container>
+            </section>
 
             {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
             <BottomSection />

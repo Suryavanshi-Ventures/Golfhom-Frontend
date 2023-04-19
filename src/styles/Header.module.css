@@ -132,7 +132,7 @@
 /* -----------       LOGIN SECTION        -----------------*/
 
 .textParent {
-  padding: 0px 20px;
+  padding: 0px 20px !important;
 }
 
 .emailNumber {
@@ -141,6 +141,7 @@
   font-weight: 400;
   line-height: 20px;
   margin-top: 20px;
+  padding-left: 20px;
 }
 
 .forgotActive {
@@ -164,7 +165,8 @@
   border: 1px solid var(--light-font-color) !important;
   border-radius: 5px;
   padding: 6px;
-  width: 100%;
+  margin-left: 20px;
+  width: 90%;
 }
 
 .meBox {
@@ -178,6 +180,10 @@
   box-shadow: none !important;
   background: none;
   padding: 0;
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .signIn {
