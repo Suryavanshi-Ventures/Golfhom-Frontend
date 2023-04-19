@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Dropdown, Space } from 'antd';
 import { DownOutlined } from "@ant-design/icons";
+import BottomSection from "../../common components/bottomGroup";
 
 const searchByTournaments = () => {
 
@@ -70,6 +71,9 @@ const searchByTournaments = () => {
                     </Col>
                 </Row>
             </Container>
+
+            {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
+            <BottomSection />
         </>
     )
 }

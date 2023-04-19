@@ -1,0 +1,37 @@
+/* ------------------------- Bottom section -------------------------------*/
+
+.grouptalk {
+    /* margin-bottom: 50px; */
+    position: relative !important;
+  }
+  
+  .newBtn {
+    background: var(--white-font-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    padding: 30px 40px 60px;
+    right: 0px;
+  }
+  
+  .groupParent {
+ 
+  }
+  
+  .searchBottom, .searchBottom:hover {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--btn-background-secondary);
+    color: var(--white-font-color);
+    border: none;
+  }
+  
+  .grouptalkTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-family: var(--font-amiri);
+  }

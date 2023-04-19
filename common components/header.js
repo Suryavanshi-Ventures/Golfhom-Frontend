@@ -117,12 +117,14 @@ const Header = () => {
             open={isModalOpen}
             onSignup={handleSignup}
             onCancel={handleCancel}
-            width={312}
+            width={372}
           >
-            <p className={HeaderCss.emailNumber}>Email or Member Number</p>
-            <input className={HeaderCss.password} type="text"></input>
-            <p className={HeaderCss.emailNumber}>Password</p>
-            <input className={HeaderCss.password} type="password"></input>
+            <div className={HeaderCss.textParent}>
+              <p className={HeaderCss.emailNumber}>Email or Member Number</p>
+              <input className={HeaderCss.password} type="text"></input>
+              <p className={HeaderCss.emailNumber}>Password</p>
+              <input className={HeaderCss.password} type="password"></input>
+            </div>
 
             <div className={HeaderCss.remember}>
               <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
@@ -210,7 +212,7 @@ const Header = () => {
               </div>
             </Col>
 
-            <Row>
+            <Row className={HeaderCss.twoAgree}>
               <div>
                 <Checkbox className={HeaderCss.agreeOptionA}>
                   I agree with your Terms & Conditions
@@ -222,8 +224,8 @@ const Header = () => {
                 </Checkbox>
               </div>
             </Row>
+            <div className={HeaderCss.registBtnParent}><Button className={HeaderCss.registerBtn}>Register</Button></div>
 
-            <Button className={HeaderCss.registerBtn}>Register</Button>
           </Modal>
 
           {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
@@ -247,7 +249,7 @@ const Header = () => {
               className={HeaderCss.forgotInput}
             ></input>
             <div className={HeaderCss.forgotBtn}>
-              <Button className={HeaderCss.registBtn}>Register</Button>
+              <Button className={HeaderCss.registBtn}>Send</Button>
             </div>
           </Modal>
 
@@ -348,7 +350,7 @@ const Header = () => {
                       </Button>
                     </Dropdown>
 
-                    <Row>
+                    <Row className={HeaderCss.twoAgree}>
                       <div>
                         <Checkbox className={HeaderCss.agreeOptionA}>
                           I agree with your Terms & Conditions
@@ -361,7 +363,7 @@ const Header = () => {
                       </div>
                     </Row>
 
-                    <Button className={HeaderCss.registerBtn}>Register</Button>
+                    <div className={HeaderCss.registBtnParent}><Button className={HeaderCss.registerBtn}>Register</Button></div>
                   </Modal>
                 </Col>
 

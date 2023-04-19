@@ -5,7 +5,7 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 import ViewAllPropertyCss from "../../styles/ViewAllProperty.module.css";
 import Image from "next/image";
 import ViewAllProps from "../../../public/images/viewAllProps.png";
-import Grouptalk from "../../../public/images/grouptalk.png";
+import BottomSection from "../../../common components/bottomGroup";
 import { Pagination } from "antd";
 import Florida from "../../../public/images/florida.png"
 import Arizona from "../../../public/images/arizona.png"
@@ -97,24 +97,9 @@ const view_all_property = () => {
             </div>
 
 
-            {/* BOTTOM IMAGE SECTION */}
-            <section className={ViewAllPropertyCss.grouptalk}>
-                <div>
-                    <div className={ViewAllPropertyCss.groupParent}>
-                        <Image
-                            alt="group talk"
-                            className={ViewAllPropertyCss.grouptalk}
-                            src={Grouptalk}
-                            fill
-                        ></Image>
-                    </div>
+            {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-                    <Col md={4} className={ViewAllPropertyCss.newBtn}>
-                        <h4 className={ViewAllPropertyCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
-                        <Button className={ViewAllPropertyCss.search}>Search</Button>
-                    </Col>
-                </div>
-            </section>
+            <BottomSection />
         </>
     )
 }

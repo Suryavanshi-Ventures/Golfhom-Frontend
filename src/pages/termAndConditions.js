@@ -3,7 +3,7 @@ import React from 'react'
 import TermConditions from "../../public/images/termConditions.svg";
 import TermConditionsCss from "../styles/TermConditions.module.css";
 import { Button, Col, Container } from 'react-bootstrap';
-import Grouptalk from "../../public/images/grouptalk.png";
+import BottomSection from "../../common components/bottomGroup";
 
 
 const termAndConditions = () => {
@@ -57,25 +57,10 @@ const termAndConditions = () => {
 
                 <p className={TermConditionsCss.paraL}>Website does not permit, and will not be a party to, users violating or infringing upon any 3rd party’s copyrights. We greatly respect the intellectual property rights of other individuals and entities. We will freeze or terminate, when appropriate, any property listing or user account if copyright infringement is suspected. Please feel free to <span className={TermConditionsCss.redWords}> CONTACT US HERE</span> immediately if you believe a copyright violation exists on the Website.</p>
             </Container>
-            {/*  -------------------------   BOTTOM IMAGE SECTION   -------------------------- */}
 
-            <section className={TermConditionsCss.grouptalk}>
-                <div>
-                    <div className={TermConditionsCss.groupParent}>
-                        <Image
-                            alt="group talk"
-                            className={TermConditionsCss.grouptalk}
-                            src={Grouptalk}
-                            fill
-                        ></Image>
-                    </div>
+            {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-                    <Col md={4} className={TermConditionsCss.newBtn}>
-                        <h4 className={TermConditionsCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
-                        <Button className={TermConditionsCss.search}>Search</Button>
-                    </Col>
-                </div>
-            </section>
+            <BottomSection />
         </>
     )
 }

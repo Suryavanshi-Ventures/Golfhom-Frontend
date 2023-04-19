@@ -3,7 +3,7 @@ import Head from "next/head";
 import BlogCss from "../../styles/Blog.module.css";
 import ViewAllProps from "../../../public/images/viewAllProps.png";
 import Image from "next/image";
-import Grouptalk from "../../../public/images/grouptalk.png";
+import BottomSection from "../../../common components/bottomGroup";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Pagination } from "antd";
 import blogs from "../blogs.json";
@@ -12,8 +12,6 @@ const index = ({ cards }) => {
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
   };
-
-  console.log(blogs)
 
   return (
     <>
@@ -107,24 +105,9 @@ const index = ({ cards }) => {
       </div>
 
 
-      {/* BOTTOM IMAGE SECTION */}
-      <section className={BlogCss.grouptalk} >
-        <div>
-          <div className={BlogCss.groupParent}>
-            <Image
-              alt="group talk"
-              className={BlogCss.grouptalk}
-              src={Grouptalk}
-              fill
-            ></Image>
-          </div>
+      {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-          <Col md={4} className={BlogCss.newBtn}>
-            <h4 className={BlogCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
-            <Button className={BlogCss.search}>Search</Button>
-          </Col>
-        </div>
-      </section>
+      <BottomSection />
     </>
   );
 };

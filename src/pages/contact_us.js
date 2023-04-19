@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Button, Input } from "antd";
 const { TextArea } = Input;
 import ManThumbsUpImg from "../../public/images/contact_us_thumbs_up_man.png";
-import Grouptalk from "../../public/images/grouptalk.png";
+import BottomSection from "../../common components/bottomGroup";
 
 function ContactUs() {
   return (
@@ -125,27 +125,10 @@ function ContactUs() {
           </Container>
         </main>
 
+
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-        <section className={ContactUsCss.grouptalk}>
-          <div>
-            <div className={ContactUsCss.groupParent}>
-              <Image
-                alt="group talk"
-                className={ContactUsCss.grouptalk}
-                src={Grouptalk}
-                fill
-              ></Image>
-            </div>
-
-            <Col md={4} className={ContactUsCss.newBtn}>
-              <h4 className={ContactUsCss.grouptalkTitle}>
-                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-              </h4>
-              <Button className={ContactUsCss.search}>Search</Button>
-            </Col>
-          </div>
-        </section>
+        <BottomSection />
       </main>
     </>
   );
