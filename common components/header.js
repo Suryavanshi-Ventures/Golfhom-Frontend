@@ -627,7 +627,6 @@ function OffCanvasExample({ name, ...props }) {
           <input className={HeaderCss.password} type="password"></input>
         </div>
 
-
         <div className={HeaderCss.remember}>
           <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
           <Button className={HeaderCss.signIn}>Log In</Button>
@@ -667,11 +666,12 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           </div>
         </div>
-      </Modal >
+      </Modal>
 
       {/* -----------      REGISTER SECTION        -----------------*/}
 
-      <Modal Modal
+      <Modal
+        Modal
         title="Register"
         footer={null}
         open={isModalOpens}
@@ -728,11 +728,12 @@ function OffCanvasExample({ name, ...props }) {
         </Row>
 
         <Button className={HeaderCss.registerBtn}>Register</Button>
-      </Modal >
+      </Modal>
 
       {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
 
-      <Modal Modal
+      <Modal
+        Modal
         title="Forgot Password"
         footer={null}
         open={isModalForgot}
@@ -753,11 +754,12 @@ function OffCanvasExample({ name, ...props }) {
         <div className={HeaderCss.forgotBtn}>
           <Button className={HeaderCss.registBtn}>Register</Button>
         </div>
-      </Modal >
+      </Modal>
 
       {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
 
-      <Modal Modal
+      <Modal
+        Modal
         title="Register"
         footer={null}
         open={isModalOpened}
@@ -823,7 +825,7 @@ function OffCanvasExample({ name, ...props }) {
         </Row>
 
         <Button className={HeaderCss.registerBtn}>Register</Button>
-      </Modal >
+      </Modal>
 
       <Offcanvas
         key={1}
