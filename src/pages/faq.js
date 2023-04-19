@@ -260,26 +260,7 @@ function FAQ() {
             </Row>
           </Container>
         </section>
-        {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
-        <section className={FAQCss.grouptalk}>
-          <div>
-            <div className={FAQCss.groupParent}>
-              <Image
-                alt="group talk"
-                className={FAQCss.grouptalk}
-                src={Grouptalk}
-                fill
-              ></Image>
-            </div>
 
-            <Col md={4} className={FAQCss.newBtn}>
-              <h4 className={FAQCss.grouptalkTitle}>
-                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-              </h4>
-              <Button className={FAQCss.search}>Search</Button>
-            </Col>
-          </div>
-        </section>{" "}
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
         <section className={FAQCss.grouptalk}>
           <div>

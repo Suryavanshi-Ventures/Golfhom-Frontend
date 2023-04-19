@@ -20,9 +20,18 @@
 
 .top_nav_bar_container {
 }
+.top_header_register_host_col_container {
+  display: flex;
+}
+
+.top_header_row_container {
+  justify-content: space-between;
+  /* align-self: flex-end; */
+  width: -webkit-fill-available;
+}
 
 .top_header_Col_container {
-  align-self: end;
+  align-self: center;
 }
 
 .top_nav_bar_main_row {
@@ -35,6 +44,7 @@
 }
 .register_host_btn_row {
   justify-content: space-between;
+  margin-top: 0.6rem !important;
 }
 
 .headphones_icon {
@@ -155,8 +165,10 @@
 }
 
 .signUpBtn {
-  border: none;
+  border: 0px;
+  box-shadow: none !important;
   background: none;
+  padding: 0;
 }
 
 .signIn {
@@ -219,6 +231,8 @@
 .inputB {
   width: 100%;
   padding: 10px;
+  border-radius: 0px;
+
   border: 1px solid var(--light-font-color) !important;
   border-top: none !important;
   border-bottom: none !important;
@@ -227,6 +241,8 @@
 .inputC {
   width: 100%;
   padding: 10px;
+  border-radius: 0px;
+
   border: 1px solid var(--light-font-color) !important;
   border-bottom: none !important;
 }
@@ -254,20 +270,20 @@
 }
 
 .registerBtn {
- width: 100%;
- background: #111111;
- color: var(--white-font-color);
- font-size: 0.8rem;
- font-weight: 500;
- font-family: var(--font-poppins);
- text-align: center;
- border-radius: 0% !important;
- margin: 20px 0px;
- padding: 6% 0%;
- display: flex;
- flex-direction: row;
- justify-content: center;
- align-items: center;
+  width: 100%;
+  background: #111111;
+  color: var(--white-font-color);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  text-align: center;
+  border-radius: 0% !important;
+  margin: 20px 0px;
+  padding: 6% 0%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ---------------         DROPDOWN CONTENT          ---------------*/
@@ -319,7 +335,7 @@
 
 .forgotBtn {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .registBtn {

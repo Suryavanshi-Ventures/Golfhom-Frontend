@@ -3,6 +3,10 @@
   padding-top: 60px;
 }
 
+.footer_row {
+  justify-content: space-between;
+}
+
 .footer_container {
 }
 

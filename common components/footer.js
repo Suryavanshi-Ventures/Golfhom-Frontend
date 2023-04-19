@@ -31,7 +31,7 @@ const Footer = () => {
               </div>
             </Col>
 
-            <Col md={4} className={FooterCss.footer_cols}>
+            <Col md={"auto"} className={FooterCss.footer_cols}>
               <div className={FooterCss.footer_divs}>
                 <h5 className={FooterCss.footer_headings}>About Us</h5>
                 <ul className={FooterCss.nav_link_ul}>
@@ -57,7 +57,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/faq" className={FooterCss.nav_link_a}>
                       FAQ’s
                     </Link>
                   </li>
@@ -67,7 +67,10 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/termAndConditions" className={FooterCss.nav_link_a}>
+                    <Link
+                      href="/termAndConditions"
+                      className={FooterCss.nav_link_a}
+                    >
                       Terms and Conditions
                     </Link>
                   </li>
@@ -134,38 +137,58 @@ const Footer = () => {
               <Col md={6} className={FooterCss.copyright_section_col_icon}>
                 <div className={FooterCss.icons_container}>
                   <span className={FooterCss.icons_spans}>
-                    <a href="/" target="_blank" className={FooterCss.icons_a}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
                       <Image
                         src={LinkedinIcon}
                         className={FooterCss.social_icons}
+                        alt="Linkedin"
                       />
-                    </a>
+                    </Link>
                   </span>
 
                   <span className={FooterCss.icons_spans}>
-                    <a href="/" target="_blank" className={FooterCss.icons_a}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
                       <Image
                         src={FacebookIcon}
                         className={FooterCss.social_icons}
+                        alt="Facebook"
                       />
-                    </a>
+                    </Link>
                   </span>
 
                   <span className={FooterCss.icons_spans}>
-                    <a href="/" target="_blank" className={FooterCss.icons_a}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
                       <Image
                         src={InstaIcon}
                         className={FooterCss.social_icons}
+                        alt="Instagram"
                       />
-                    </a>
+                    </Link>
                   </span>
                   <span className={FooterCss.icons_spans}>
-                    <a href="/" target="_blank" className={FooterCss.icons_a}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
                       <Image
                         src={YoutubeIcon}
                         className={FooterCss.social_icons}
+                        alt="Youtube"
                       />
-                    </a>
+                    </Link>
                   </span>
                 </div>
               </Col>

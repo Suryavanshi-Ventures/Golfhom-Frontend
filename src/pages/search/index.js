@@ -5,11 +5,11 @@ import Index from "../../styles/SearchIndex.module.css";
 import { Input } from "antd";
 import { DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Space, Typography } from "antd";
+import { Button, Dropdown, Space } from "antd";
 import Image from "next/image";
 import { Pagination } from "antd";
 import Link from "next/link";
-import Buildings from "../../../public/images/buildings.png"
+import Buildings from "../../../public/images/buildings.png";
 import Grouptalk from "../../../public/images/grouptalk.png";
 // import { Swiper, SwiperSlide } from "swiper/react";
 // import SwiperCore, { Autoplay } from "swiper/core";
@@ -26,7 +26,6 @@ import Dot from "../../../public/images/vector/dot.svg";
 
 // Initialize SwiperCore with required modules
 // SwiperCore.use([Autoplay]);
-
 
 const { RangePicker } = DatePicker;
 
@@ -123,8 +122,6 @@ const index = () => {
                       <Button size="large" className={Index.edit_details_btn}>
                         Edit
                       </Button>
-
-
                     </div>
                   </div>
                 </Col>
@@ -138,12 +135,16 @@ const index = () => {
 
       <section>
         <div className={Index.buildings}>
-          <Image className={Index.buildingImg} src={Buildings} alt="buildings" fill></Image>
+          <Image
+            className={Index.buildingImg}
+            src={Buildings}
+            alt="buildings"
+            fill
+          ></Image>
         </div>
       </section>
 
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
-
 
       <section className={Index.search_main_section}>
         <Container>
@@ -155,7 +156,7 @@ const index = () => {
               <hr />
 
               <div className={Index.orlandParent}>
-                <div className={Index.sortSection} >
+                <div className={Index.sortSection}>
                   <h5 className={Index.rental}>150 Rentals</h5>
 
                   <div className={Index.sortdiv}>
@@ -182,8 +183,7 @@ const index = () => {
                             alt="Hotel View"
                             fill
                             className={Index.carouselImage}
-                          >
-                          </Image>
+                          ></Image>
                         </Link>
 
                         <div className={Index.heartParent}>
@@ -192,8 +192,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
 
@@ -203,8 +202,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -212,8 +210,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -222,8 +219,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -231,18 +227,25 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
 
                   <Col md={6} className={Index.carouselBlock}>
@@ -253,8 +256,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -262,8 +264,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -272,8 +273,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -281,8 +281,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -291,8 +290,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -300,18 +298,25 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
                 </Row>
 
@@ -324,8 +329,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -333,8 +337,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
 
@@ -344,8 +347,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -353,8 +355,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -363,8 +364,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -372,18 +372,25 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
 
                   <Col md={6} className={Index.carouselBlock}>
@@ -394,8 +401,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -403,8 +409,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -413,8 +418,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -422,8 +426,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -432,8 +435,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -441,18 +443,25 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
                 </Row>
 
@@ -465,8 +474,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -474,8 +482,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
 
@@ -485,8 +492,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -494,8 +500,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -504,8 +509,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -513,18 +517,25 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
 
                   <Col md={6} className={Index.carouselBlock}>
@@ -535,8 +546,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -544,8 +554,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -554,8 +563,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -563,8 +571,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -573,8 +580,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -582,18 +588,25 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
                 </Row>
 
@@ -606,8 +619,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -615,8 +627,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
 
@@ -626,8 +637,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -635,8 +645,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -645,8 +654,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -654,18 +662,25 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
 
                   <Col md={6} className={Index.carouselBlock}>
@@ -676,8 +691,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -685,8 +699,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -695,8 +708,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -704,8 +716,7 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                       <Carousel.Item className={Index.imageGap}>
@@ -714,8 +725,7 @@ const index = () => {
                           alt="Hotel View"
                           fill
                           className={Index.carouselImage}
-                        >
-                        </Image>
+                        ></Image>
 
                         <div className={Index.heartParent}>
                           <Image
@@ -723,25 +733,28 @@ const index = () => {
                             alt="Heart"
                             fill
                             className={Index.heart}
-                          >
-                          </Image>
+                          ></Image>
                         </div>
                       </Carousel.Item>
                     </Carousel>
 
-                    <h4 className={Index.carouselHeading}>Hotel Empire Moscow Sokoliki</h4>
-                    <p className={Index.discribeOfCard}>Saddlebrook Resort - Saddlebrook & 1 more</p>
+                    <h4 className={Index.carouselHeading}>
+                      Hotel Empire Moscow Sokoliki
+                    </h4>
+                    <p className={Index.discribeOfCard}>
+                      Saddlebrook Resort - Saddlebrook & 1 more
+                    </p>
 
-                    <div><span className={Index.discribeOfCard}>5 Bed Rooms</span>
+                    <div>
+                      <span className={Index.discribeOfCard}>5 Bed Rooms</span>
                       <Image src={Dot} alt="Dot" className={Index.dot}></Image>
-                      <span className={Index.discribeOfCard}>8 Guests Villa</span></div>
+                      <span className={Index.discribeOfCard}>
+                        8 Guests Villa
+                      </span>
+                    </div>
                   </Col>
                 </Row>
-
               </div>
-
-
-
             </Col>
 
             {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
@@ -768,7 +781,6 @@ const index = () => {
         </Container>
       </section>
 
-
       {/* BOTTOM IMAGE SECTION */}
 
       <section className={Index.grouptalk}>
@@ -783,12 +795,13 @@ const index = () => {
           </div>
 
           <Col md={4} className={Index.newBtn}>
-            <h4 className={Index.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
+            <h4 className={Index.grouptalkTitle}>
+              THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
+            </h4>
             <Button className={Index.search}>Search</Button>
           </Col>
         </div>
       </section>
-
     </>
   );
 };

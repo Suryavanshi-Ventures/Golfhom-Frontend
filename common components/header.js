@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Navbar, Nav, Container, Col, Row } from "react-bootstrap";
-import { Button, Checkbox } from "antd";
+import { Button, Checkbox, Input } from "antd";
 import Image from "next/image";
 import HeadPhoneIcon from "../public/headphones.svg";
 import UserIcon from "../public/user icon.svg";
@@ -97,7 +97,7 @@ const Header = () => {
     {
       label: "Register to Host",
       key: "3",
-    }
+    },
   ];
 
   const menuProps = {
@@ -120,13 +120,13 @@ const Header = () => {
             width={312}
           >
             <p className={HeaderCss.emailNumber}>Email or Member Number</p>
-            <input className={HeaderCss.password} type="text"></input>
+            <Input className={HeaderCss.password} type="text"></Input>
             <p className={HeaderCss.emailNumber}>Password</p>
-            <input className={HeaderCss.password} type="password"></input>
+            <Input className={HeaderCss.password} type="password"></Input>
 
             <div className={HeaderCss.remember}>
               <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
-              <button className={HeaderCss.signIn}>Log In</button>
+              <Button className={HeaderCss.signIn}>Log In</Button>
             </div>
 
             <div className={HeaderCss.forgotActive}>
@@ -136,29 +136,29 @@ const Header = () => {
                 onClick={(e) => e.preventDefault()}
               >
                 <Space>
-                  <button
+                  <Button
                     className={HeaderCss.signUpBtn}
                     onClick={showForgot}
                     onCancel={handleCancel}
                   >
                     Forgot Password ?
-                  </button>
+                  </Button>
                 </Space>
               </Link>
 
               <div className={HeaderCss.dont_link_parent}>
-                <h6 className={HeaderCss.donthaveAcc}>
+                <h5 className={HeaderCss.donthaveAcc}>
                   Don't you have an account?
-                </h6>
+                </h5>
                 <Link
                   href="/"
                   className={HeaderCss.registerLink}
                   onClick={(e) => e.preventDefault()}
                 >
                   <Space>
-                    <a className={HeaderCss.register} onClick={showRegister}>
+                    <span className={HeaderCss.register} onClick={showRegister}>
                       Register
-                    </a>
+                    </span>
                   </Space>
                 </Link>
               </div>
@@ -178,35 +178,35 @@ const Header = () => {
           >
             <Col className={HeaderCss.inputParent}>
               <div>
-                <input
+                <Input
                   className={HeaderCss.inputA}
                   type="text"
                   placeholder="Enter User name"
-                ></input>
+                ></Input>
               </div>
 
               <div>
-                <input
+                <Input
                   className={HeaderCss.inputB}
                   type="email"
                   placeholder="Email"
-                ></input>
+                ></Input>
               </div>
 
               <div>
-                <input
+                <Input
                   className={HeaderCss.inputC}
                   type="password"
                   placeholder="Password"
-                ></input>
+                ></Input>
               </div>
 
               <div>
-                <input
+                <Input
                   className={HeaderCss.inputD}
                   type="password"
                   placeholder="Repeat Password"
-                ></input>
+                ></Input>
               </div>
             </Col>
 
@@ -237,29 +237,23 @@ const Header = () => {
             width={800}
             className={HeaderCss.headerForgot}
           >
-            <h6 className={HeaderCss.forgotHeading}>
+            <h5 className={HeaderCss.forgotHeading}>
               Please enter your username or email address. You will receive a
               link to create a new password via email.
-            </h6>
-            <input
+            </h5>
+            <Input
               type="email"
               placeholder="Enter your user name or email"
               className={HeaderCss.forgotInput}
-            ></input>
+            ></Input>
             <div className={HeaderCss.forgotBtn}>
               <Button className={HeaderCss.registBtn}>Register</Button>
             </div>
           </Modal>
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
-            <Col xs={"auto"} className={HeaderCss.logo_container}>
-              <Link href="/" className={HeaderCss.logo_container_a}>
-                <Image src={Logo} alt="golfhom logo" width="200" />
-              </Link>
-            </Col>
-
-            <Col md={8} className={HeaderCss.top_nav_bar_col}>
-              <Row className={HeaderCss.top_nav_bar_row}>
+            <div>
+              <Row md={12} className={HeaderCss.top_nav_bar_row}>
                 {/*//*  Off Canvas Btn  */}
                 <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
                   <OffCanvasExample />
@@ -281,16 +275,16 @@ const Header = () => {
                     onClick={(e) => e.preventDefault()}
                   >
                     <Space>
-                      <button
+                      <Button
                         className={HeaderCss.signUpBtn}
                         onClick={showRegisterRent}
                       >
                         Register to Rent
-                      </button>
+                      </Button>
                     </Space>
                   </Link>
-                  {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
 
+                  {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
                   <Modal
                     title="Register"
                     footer={null}
@@ -302,35 +296,35 @@ const Header = () => {
                   >
                     <Col className={HeaderCss.inputParent}>
                       <div>
-                        <input
+                        <Input
                           className={HeaderCss.inputA}
                           type="text"
                           placeholder="Enter User name"
-                        ></input>
+                        ></Input>
                       </div>
 
                       <div>
-                        <input
+                        <Input
                           className={HeaderCss.inputB}
                           type="email"
                           placeholder="Email"
-                        ></input>
+                        ></Input>
                       </div>
 
                       <div>
-                        <input
+                        <Input
                           className={HeaderCss.inputC}
                           type="password"
                           placeholder="Password"
-                        ></input>
+                        ></Input>
                       </div>
 
                       <div>
-                        <input
+                        <Input
                           className={HeaderCss.inputD}
                           type="password"
                           placeholder="Repeat Password"
-                        ></input>
+                        ></Input>
                       </div>
                     </Col>
 
@@ -339,7 +333,9 @@ const Header = () => {
                         size="large"
                         className={HeaderCss.edit_room_dropdown_btn}
                       >
-                        <Space className={HeaderCss.edit_room_dropdown_btn_space}>
+                        <Space
+                          className={HeaderCss.edit_room_dropdown_btn_space}
+                        >
                           I want to Rent
                           <DownOutlined
                             className={HeaderCss.edit_room_dropdown_icon}
@@ -376,12 +372,12 @@ const Header = () => {
                     onClick={(e) => e.preventDefault()}
                   >
                     <Space>
-                      <button
+                      <Button
                         className={HeaderCss.signUpBtn}
                         onClick={showModal}
                       >
                         Log in & Sign up
-                      </button>
+                      </Button>
                     </Space>
                   </Link>
                 </Col>
@@ -390,37 +386,71 @@ const Header = () => {
               <Row
                 className={`${HeaderCss.top_nav_bar_row} ${HeaderCss.register_host_btn_row}`}
               >
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.below_header_a} href="/">
-                    Home
+                <Col xs={"auto"} className={HeaderCss.logo_container}>
+                  <Link href="/" className={HeaderCss.logo_container_a}>
+                    <Image src={Logo} alt="golfhom logo" width="200" />
                   </Link>
                 </Col>
 
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.below_header_a} href="/about">
-                    About
-                  </Link>
-                </Col>
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.below_header_a} href="/blog">
-                    Blog
-                  </Link>
-                </Col>
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link className={HeaderCss.below_header_a} href="/contact_us">
-                    Contact Us
-                  </Link>
-                </Col>
+                <Col
+                  md={7}
+                  className={HeaderCss.top_header_register_host_col_container}
+                >
+                  <Row className={HeaderCss.top_header_row_container}>
+                    <Col
+                      xs={"auto"}
+                      className={HeaderCss.top_header_Col_container}
+                    >
+                      <Link className={HeaderCss.below_header_a} href="/">
+                        Home
+                      </Link>
+                    </Col>
 
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link href="/register_to_host">
-                    <Button type="primary" className={HeaderCss.register_btn}>
-                      Register To Host
-                    </Button>
-                  </Link>
+                    <Col
+                      xs={"auto"}
+                      className={HeaderCss.top_header_Col_container}
+                    >
+                      <Link className={HeaderCss.below_header_a} href="/about">
+                        About
+                      </Link>
+                    </Col>
+                    <Col
+                      xs={"auto"}
+                      className={HeaderCss.top_header_Col_container}
+                    >
+                      <Link className={HeaderCss.below_header_a} href="/blog">
+                        Blog
+                      </Link>
+                    </Col>
+                    <Col
+                      xs={"auto"}
+                      className={HeaderCss.top_header_Col_container}
+                    >
+                      <Link
+                        className={HeaderCss.below_header_a}
+                        href="/contact_us"
+                      >
+                        Contact Us
+                      </Link>
+                    </Col>
+
+                    <Col
+                      xs={"auto"}
+                      className={HeaderCss.top_header_Col_container}
+                    >
+                      <Link href="/register_to_host">
+                        <Button
+                          type="primary"
+                          className={HeaderCss.register_btn}
+                        >
+                          Register To Host
+                        </Button>
+                      </Link>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
-            </Col>
+            </div>
           </Row>
         </Container>
       </header>
@@ -527,7 +557,6 @@ function OffCanvasExample({ name, ...props }) {
     setIsModalOpened(false);
   };
 
-
   {
     /* -----------      FORGET PASSWORD SECTION        -----------------*/
   }
@@ -562,7 +591,7 @@ function OffCanvasExample({ name, ...props }) {
     {
       label: "Register to Host",
       key: "3",
-    }
+    },
   ];
 
   const menuProps = {
@@ -593,7 +622,7 @@ function OffCanvasExample({ name, ...props }) {
 
         <div className={HeaderCss.remember}>
           <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
-          <button className={HeaderCss.signIn}>Log In</button>
+          <Button className={HeaderCss.signIn}>Log In</Button>
         </div>
 
         <div className={HeaderCss.forgotActive}>
@@ -603,20 +632,20 @@ function OffCanvasExample({ name, ...props }) {
             onClick={(e) => e.preventDefault()}
           >
             <Space>
-              <button
+              <Button
                 className={HeaderCss.signUpBtn}
                 onClick={showForgot}
                 onCancel={handleCancel}
               >
                 Forgot Password ?
-              </button>
+              </Button>
             </Space>
           </Link>
 
           <div className={HeaderCss.dont_link_parent}>
-            <h6 className={HeaderCss.donthaveAcc}>
+            <h5 className={HeaderCss.donthaveAcc}>
               Don't you have an account?
-            </h6>
+            </h5>
             <Link
               href="/"
               className={HeaderCss.registerLink}
@@ -645,35 +674,35 @@ function OffCanvasExample({ name, ...props }) {
       >
         <Col className={HeaderCss.inputParent}>
           <div>
-            <input
+            <Input
               className={HeaderCss.inputA}
               type="text"
               placeholder="Enter User name"
-            ></input>
+            ></Input>
           </div>
 
           <div>
-            <input
+            <Input
               className={HeaderCss.inputB}
               type="email"
               placeholder="Email"
-            ></input>
+            ></Input>
           </div>
 
           <div>
-            <input
+            <Input
               className={HeaderCss.inputC}
               type="password"
               placeholder="Password"
-            ></input>
+            ></Input>
           </div>
 
           <div>
-            <input
+            <Input
               className={HeaderCss.inputD}
               type="password"
               placeholder="Repeat Password"
-            ></input>
+            ></Input>
           </div>
         </Col>
 
@@ -693,7 +722,6 @@ function OffCanvasExample({ name, ...props }) {
         <Button className={HeaderCss.registerBtn}>Register</Button>
       </Modal>
 
-
       {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
 
       <Modal
@@ -705,10 +733,10 @@ function OffCanvasExample({ name, ...props }) {
         width={800}
         className={HeaderCss.headerForgot}
       >
-        <h6 className={HeaderCss.forgotHeading}>
-          Please enter your username or email address. You will receive a
-          link to create a new password via email.
-        </h6>
+        <h5 className={HeaderCss.forgotHeading}>
+          Please enter your username or email address. You will receive a link
+          to create a new password via email.
+        </h5>
         <input
           type="email"
           placeholder="Enter your user name or email"
@@ -732,48 +760,43 @@ function OffCanvasExample({ name, ...props }) {
       >
         <Col className={HeaderCss.inputParent}>
           <div>
-            <input
+            <Input
               className={HeaderCss.inputA}
               type="text"
               placeholder="Enter User name"
-            ></input>
+            ></Input>
           </div>
 
           <div>
-            <input
+            <Input
               className={HeaderCss.inputB}
               type="email"
               placeholder="Email"
-            ></input>
+            ></Input>
           </div>
 
           <div>
-            <input
+            <Input
               className={HeaderCss.inputC}
               type="password"
               placeholder="Password"
-            ></input>
+            ></Input>
           </div>
 
           <div>
-            <input
+            <Input
               className={HeaderCss.inputD}
               type="password"
               placeholder="Repeat Password"
-            ></input>
+            ></Input>
           </div>
         </Col>
 
         <Dropdown menu={menuProps}>
-          <Button
-            size="large"
-            className={HeaderCss.edit_room_dropdown_btn}
-          >
+          <Button size="large" className={HeaderCss.edit_room_dropdown_btn}>
             <Space className={HeaderCss.edit_room_dropdown_btn_space}>
               I want to Rent
-              <DownOutlined
-                className={HeaderCss.edit_room_dropdown_icon}
-              />
+              <DownOutlined className={HeaderCss.edit_room_dropdown_icon} />
             </Space>
           </Button>
         </Dropdown>
@@ -795,6 +818,9 @@ function OffCanvasExample({ name, ...props }) {
       </Modal>
 
       <Offcanvas
+        key={1}
+        placement={["end"]}
+        name={["end"]}
         className={HeaderCss.off_canvas}
         show={show}
         onHide={handleClose}
@@ -810,51 +836,52 @@ function OffCanvasExample({ name, ...props }) {
             <div className={HeaderCss.mobile_menu_main_container}>
               <div className={HeaderCss.mobile_menu_div_container}>
                 <Link className={HeaderCss.top_header_a} href="/">
-                  Help
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/" onClick={(e) => e.preventDefault()}>
-                  <Space>
-                    <button
-                      className={HeaderCss.signUpBtn}
-                      onClick={showRegisterRent}
-                    >
-                      Register to Rent
-                    </button>
-                  </Space>
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/" onClick={(e) => e.preventDefault()}>
-                  <Space>
-                    <button
-                      className={HeaderCss.signUpBtn}
-                      onClick={showModal}
-                    >
-                      Log in & Sign up
-                    </button>
-                  </Space>
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/">
-                  Find & Reserve
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/">
-                  Vacations
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/">
-                  Special Offer’s
+                  Home
                 </Link>
               </div>
               <div className={HeaderCss.mobile_menu_div_container}>
                 <Link className={HeaderCss.top_header_a} href="/about">
-                  About Golfhom
+                  About
+                </Link>
+              </div>
+              <div className={HeaderCss.mobile_menu_div_container}>
+                <Link className={HeaderCss.top_header_a} href="/blog">
+                  Blog
+                </Link>
+              </div>
+              <div className={HeaderCss.mobile_menu_div_container}>
+                <Link className={HeaderCss.top_header_a} href="/contact_us">
+                  Contact Us
+                </Link>
+              </div>
+
+              <div className={HeaderCss.mobile_menu_div_container}>
+                <Link
+                  className={HeaderCss.top_header_a}
+                  href="/"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Space>
+                    <Button className={HeaderCss.signUpBtn} onClick={showModal}>
+                      Log in & Sign up
+                    </Button>
+                  </Space>
+                </Link>
+              </div>
+              <div className={HeaderCss.mobile_menu_div_container}>
+                <Link
+                  className={HeaderCss.top_header_a}
+                  href="/"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Space>
+                    <Button
+                      className={HeaderCss.signUpBtn}
+                      onClick={showRegisterRent}
+                    >
+                      Register to Rent
+                    </Button>
+                  </Space>
                 </Link>
               </div>
               <div className={HeaderCss.mobile_menu_div_container}>

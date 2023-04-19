@@ -18,7 +18,7 @@
   background-color: var(--white-background);
   border-radius: 15px;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1220px;
 }
 
 .searchBar {
@@ -302,7 +302,8 @@
   border: none;
 }
 
-.ant-dropdown-menu-item, .ant-dropdown-menu-item-only-child {
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-item-only-child {
   background-color: var(--light-grey-background) !important;
 }
 
