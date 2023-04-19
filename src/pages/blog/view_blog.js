@@ -6,7 +6,7 @@ import Image from "next/image";
 import GolfHomLogoSmall from "../../../public/images/golfhom_small_logo.png";
 import CategoryIcon from "../../../public/images/vector/category_icon.svg";
 import { Button } from "antd";
-import Grouptalk from "../../../public/images/grouptalk.png";
+import BottomSection from "../../../common components/bottomGroup";
 import BannerImageGolfMan from "../../../public/images/golfman_banner_img.png";
 
 function ViewBlog() {
@@ -42,27 +42,9 @@ function ViewBlog() {
         </div>
       </Container>
 
-      {/* BOTTOM IMAGE SECTION */}
+      {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-      <section className={BlogCss.grouptalk}>
-        <div>
-          <div className={BlogCss.groupParent}>
-            <Image
-              alt="group talk"
-              className={BlogCss.grouptalk}
-              src={Grouptalk}
-              fill
-            ></Image>
-          </div>
-
-          <Col md={4} className={BlogCss.newBtn}>
-            <h4 className={BlogCss.grouptalkTitle}>
-              THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-            </h4>
-            <Button className={BlogCss.search}>Search</Button>
-          </Col>
-        </div>
-      </section>
+      <BottomSection />
     </>
   );
 }

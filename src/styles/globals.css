@@ -55,3 +55,31 @@
 .ant-modal {
   margin-top: 150px !important;
 }
+
+/* ANT DESIGN TITLE */
+.ant-modal-content {
+  padding: 0px !important;
+}
+
+.ant-modal-header,
+.ant-modal-title {
+  background-color: var(--btn-background-secondary) !important;
+  padding: 10px;
+  color: var(--white-font-color) !important;
+  font-family: var(--font-amiri) !important;
+  font-weight: 600 !important;
+  font-size: 1.2rem !important;
+}
+
+.ant-modal-header {
+  box-shadow: 0 4px 4px rgba(0, 2, 2, 0.1);
+}
+
+.ant-modal-close {
+  color: var(--white-font-color) !important;
+  font-weight: 600 !important;
+}
+
+.ant-checkbox {
+  color: var(--light-font-color) !important;
+}

@@ -5,7 +5,7 @@ import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import Image from "next/image";
 import FAQCss from "../styles/FAQ.module.css";
 import FAQBannerImg from "../../public/images/faq_banner_img.svg";
-import Grouptalk from "../../public/images/grouptalk.png";
+import BottomSection from "../../common components/bottomGroup";
 
 function FAQ() {
   const [showA, setShowA] = useState(false);
@@ -262,25 +262,8 @@ function FAQ() {
         </section>
 
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
-        <section className={FAQCss.grouptalk}>
-          <div>
-            <div className={FAQCss.groupParent}>
-              <Image
-                alt="group talk"
-                className={FAQCss.grouptalk}
-                src={Grouptalk}
-                fill
-              ></Image>
-            </div>
 
-            <Col md={4} className={FAQCss.newBtn}>
-              <h4 className={FAQCss.grouptalkTitle}>
-                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-              </h4>
-              <Button className={FAQCss.search}>Search</Button>
-            </Col>
-          </div>
-        </section>
+        <BottomSection />
       </main>
     </>
   );

@@ -1,0 +1,66 @@
+/* ---------------------------  SLIDER CSS  -------------------------  */
+
+.carouselBlock {
+    margin: 40px 0px;
+ }
+ 
+ .carouselParent {
+  border-radius: 12px;
+   height: auto;
+   
+ }
+ 
+ .carouselImage {
+   position: relative !important;
+ }
+ 
+ .heartParent {
+   width: 10px;
+   height: auto;
+ }
+ 
+ .heart {
+   position: absolute;
+   height: 28% !important;
+   width: 8% !important;
+   left: 356px !important;
+   top: 0;
+   right: 0px;
+   bottom: 0px;
+   color: transparent;
+ }
+ 
+ .dot {
+   margin-left: 20px;
+   margin-right: 10px;
+ }
+ 
+ .imageGap {
+   /* padding: 0px 20px; */
+ }
+ 
+ .carouselHeading {
+   font-family: var(--font-amiri);
+   font-weight: 600;
+   font-size: 1.6rem;
+   margin-top: 24px;
+   color: var(--black-color);
+   text-decoration: none !important;
+ }
+ 
+ .discribeOfCard {
+   font-family: var(--font-poppins);
+   font-weight: 400;
+   color: var(--light-font-color);
+   font-size: 0.9rem;
+   margin-bottom: 2px;
+ }
+ 
+ .mapParent {
+   flex: 1;
+   height: 695px; 
+ }
+ 
+ .map {
+   position: relative !important;
+ }

@@ -117,7 +117,7 @@ const Header = () => {
             open={isModalOpen}
             onSignup={handleSignup}
             onCancel={handleCancel}
-            width={312}
+            width={372}
           >
             <p className={HeaderCss.emailNumber}>Email or Member Number</p>
             <Input className={HeaderCss.password} type="text"></Input>
@@ -210,7 +210,7 @@ const Header = () => {
               </div>
             </Col>
 
-            <Row>
+            <Row className={HeaderCss.twoAgree}>
               <div>
                 <Checkbox className={HeaderCss.agreeOptionA}>
                   I agree with your Terms & Conditions
@@ -222,8 +222,9 @@ const Header = () => {
                 </Checkbox>
               </div>
             </Row>
-
-            <Button className={HeaderCss.registerBtn}>Register</Button>
+            <div className={HeaderCss.registBtnParent}>
+              <Button className={HeaderCss.registerBtn}>Register</Button>
+            </div>
           </Modal>
 
           {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
@@ -247,7 +248,7 @@ const Header = () => {
               className={HeaderCss.forgotInput}
             ></Input>
             <div className={HeaderCss.forgotBtn}>
-              <Button className={HeaderCss.registBtn}>Register</Button>
+              <Button className={HeaderCss.registBtn}>Send</Button>
             </div>
           </Modal>
 
@@ -344,7 +345,7 @@ const Header = () => {
                       </Button>
                     </Dropdown>
 
-                    <Row>
+                    <Row className={HeaderCss.twoAgree}>
                       <div>
                         <Checkbox className={HeaderCss.agreeOptionA}>
                           I agree with your Terms & Conditions
@@ -357,7 +358,11 @@ const Header = () => {
                       </div>
                     </Row>
 
-                    <Button className={HeaderCss.registerBtn}>Register</Button>
+                    <div className={HeaderCss.registBtnParent}>
+                      <Button className={HeaderCss.registerBtn}>
+                        Register
+                      </Button>
+                    </div>
                   </Modal>
                 </Col>
 
@@ -737,11 +742,11 @@ function OffCanvasExample({ name, ...props }) {
           Please enter your username or email address. You will receive a link
           to create a new password via email.
         </h5>
-        <input
+        <Input
           type="email"
           placeholder="Enter your user name or email"
           className={HeaderCss.forgotInput}
-        ></input>
+        ></Input>
         <div className={HeaderCss.forgotBtn}>
           <Button className={HeaderCss.registBtn}>Register</Button>
         </div>

@@ -1,7 +1,7 @@
 /* TOP IMAGE OF VIEW ALL PROPERTY PAGE */
 .headImage {
   max-width: 1560px;
-  height: auto; 
+  height: auto;
 }
 
 .imageChild {
@@ -37,7 +37,6 @@
 }
 
 .cardChild {
-
 }
 
 .columnParent {
@@ -49,12 +48,11 @@
 .parentOf_img_textCard {
   /* position: relative !important; */
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
 .imageChild {
-
 }
 
 .blog_img {
@@ -73,6 +71,11 @@
   position: absolute;
   top: 200px;
   flex-shrink: 3;
+}
+
+.a_tag {
+  color: var(--black-color);
+  text-decoration: none;
 }
 
 .card_title {
@@ -123,64 +126,21 @@
   top: 5px;
 }
 
-
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
 
 .pagination_container {
   padding: 5rem 0;
-   display: flex;
-   justify-content: center;
-   width: 100%;
- }
- 
- .pagination {
-  
- }
- 
-
-/* BOTTOM IMG SECTION */
-
-.grouptalk {
-  margin-top: 40px;
-
-  position: relative !important;
-}
-
-.newBtn {
-  background: var(--white-font-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  bottom: 0px;
-  padding: 30px 40px 60px;
-  right: 0px;
-}
-
-.groupParent {
-  max-width: 1560px;
-  height: auto;
-}
-
-.search {
-  width: 25%;
   display: flex;
   justify-content: center;
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
-  border: none;
+  width: 100%;
 }
 
-.grouptalkTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  font-family: var(--font-amiri);
+.pagination {
 }
 
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
-  .cardTextParent  {
+  .cardTextParent {
     flex-shrink: 2;
     top: 240px !important;
     width: 60% !important;
@@ -192,13 +152,13 @@
 }
 
 @media only screen and (max-width: 1400px) {
-  .cardTextParent  {
+  .cardTextParent {
     top: 155px;
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  .cardTextParent  {
+  .cardTextParent {
     top: 114px;
     font-size: 10px;
     width: 84%;
@@ -206,7 +166,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .cardTextParent  {
+  .cardTextParent {
     top: 114px;
     font-size: 10px;
     width: 86%;

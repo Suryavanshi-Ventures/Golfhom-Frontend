@@ -3,7 +3,7 @@ import React from 'react'
 import Privacy from "../../public/images/privacy.svg";
 import PrivacyPolicyCss from "../styles/PrivacyPolicy.module.css";
 import { Button, Col, Container } from 'react-bootstrap';
-import Grouptalk from "../../public/images/grouptalk.png";
+import BottomSection from "../../common components/bottomGroup";
 
 const privacy = () => {
     return (
@@ -126,25 +126,10 @@ const privacy = () => {
 
             </Container>
 
-            {/* BOTTOM IMAGE SECTION */}
 
-            <section className={PrivacyPolicyCss.grouptalk}>
-                <div>
-                    <div className={PrivacyPolicyCss.groupParent}>
-                        <Image
-                            alt="group talk"
-                            className={PrivacyPolicyCss.grouptalk}
-                            src={Grouptalk}
-                            fill
-                        ></Image>
-                    </div>
+            {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-                    <Col md={4} className={PrivacyPolicyCss.newBtn}>
-                        <h4 className={PrivacyPolicyCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
-                        <Button className={PrivacyPolicyCss.search}>Search</Button>
-                    </Col>
-                </div>
-            </section>
+            <BottomSection />
         </>
     )
 }

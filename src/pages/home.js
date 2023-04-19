@@ -20,9 +20,8 @@ import Review from "../review";
 import review from "./review.json";
 import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import Grouptalk from "../../public/images/grouptalk.png";
 import { DownOutlined } from '@ant-design/icons';
-
+import BottomSection from "../../common components/bottomGroup";
 
 const Home = () => {
   const onSearch = (value) => console.log(value);
@@ -151,7 +150,7 @@ const Home = () => {
             their next luxury golf vacation rental. Book with us today!
           </p>
 
-          <Link href="/search/view_all_property"><div className={HomeCss.viewallBtnParent}><Button className={HomeCss.viewallBtn}>View All</Button></div></Link>
+          <Link href="/search/view_all_property" style={{ textDecoration: "none" }}><div className={HomeCss.viewallBtnParent}><Button className={HomeCss.viewallBtn}>View All</Button></div></Link>
         </div>
 
         <Slider slides={slides} />
@@ -479,23 +478,7 @@ const Home = () => {
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-      <section className={HomeCss.grouptalk}>
-        <div>
-          <div className={HomeCss.groupParent}>
-            <Image
-              alt="group talk"
-              className={HomeCss.grouptalk}
-              src={Grouptalk}
-              fill
-            ></Image>
-          </div>
-
-          <Col md={4} className={HomeCss.newBtn}>
-            <h4 className={HomeCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
-            <Button className={HomeCss.search}>Search</Button>
-          </Col>
-        </div>
-      </section>
+      <BottomSection />
     </>
   );
 };

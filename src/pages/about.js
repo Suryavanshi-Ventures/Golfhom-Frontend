@@ -8,7 +8,7 @@ import BannerImg from "../../public/images/about_banner_img.png";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import Review from "../review";
 import review from "./review.json";
-import Grouptalk from "../../public/images/grouptalk.png";
+import BottomSection from "../../common components/bottomGroup";
 
 const About = () => {
   return (
@@ -120,26 +120,10 @@ const About = () => {
             <Review reviews={review} />
           </section>
         </Container>
-        {/* BOTTOM IMAGE SECTION */}
-        <section className={AboutUsCss.grouptalk}>
-          <div>
-            <div className={AboutUsCss.groupParent}>
-              <Image
-                alt="group talk"
-                className={AboutUsCss.grouptalk}
-                src={Grouptalk}
-                fill
-              ></Image>
-            </div>
 
-            <Col md={4} className={AboutUsCss.newBtn}>
-              <h4 className={AboutUsCss.grouptalkTitle}>
-                THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-              </h4>
-              <Button className={AboutUsCss.search}>Search</Button>
-            </Col>
-          </div>
-        </section>
+        {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
+
+        <BottomSection />
       </main>
     </>
   );

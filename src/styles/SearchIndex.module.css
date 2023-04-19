@@ -115,62 +115,6 @@
   flex-wrap: wrap;
 }
 
-/* ---------------------------  SLIDER CSS  -------------------------  */
-
-.carouselBlock {
-   margin: 40px 0px;
-}
-
-.carouselParent {
- border-radius: 12px;
-  height: auto;
-  
-}
-
-.carouselImage {
-  position: relative !important;
-}
-
-.heartParent {
-  width: 10px;
-  height: auto;
-}
-
-.heart {
-  position: absolute;
-  height: 28% !important;
-  width: 8% !important;
-  left: 356px !important;
-  top: 0;
-  right: 0px;
-  bottom: 0px;
-  color: transparent;
-}
-
-.dot {
-  margin-left: 20px;
-  margin-right: 10px;
-}
-
-.imageGap {
-  /* padding: 0px 20px; */
-}
-
-.carouselHeading {
-  font-family: var(--font-amiri);
-  font-weight: 600;
-  font-size: 1.6rem;
-  margin-top: 24px;
-}
-
-.discribeOfCard {
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  color: var(--light-font-color);
-  font-size: 0.9rem;
-  margin-bottom: 2px;
-}
-
 .mapParent {
   flex: 1;
   height: 695px; 
@@ -200,47 +144,6 @@
 
 .buildingImg {
   position: relative !important;
-}
-
-
-/* Bottom section */
-
-.grouptalk {
-  margin-bottom: 50px;
-  position: relative !important;
-}
-
-.newBtn {
-  background: var(--white-font-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  bottom: 44px;
-  padding: 30px 40px 60px;
-  right: 0px;
-}
-
-.groupParent {
-  max-width: 1560px;
-  height: auto;
-}
-
-.search {
-  width: 25%;
-  display: flex;
-  justify-content: center;
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
-  border: none;
-}
-
-
-.grouptalkTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  font-family: var(--font-amiri);
 }
 
 /* --------------------        DETAIL COLUMN CSS           --------------    */

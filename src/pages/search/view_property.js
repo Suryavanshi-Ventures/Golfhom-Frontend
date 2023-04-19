@@ -14,7 +14,7 @@ import FeatureTickIcon from "../../../public/images/vector/feature_tick.svg";
 import PriceSquareIcon from "../../../public/images/vector/price_square_icon.svg";
 import RulesCrossIcon from "../../../public/images/vector/rules_cross_icon.svg";
 import Calendar from "../../../public/images/vector/calendar.svg";
-import Grouptalk from "../../../public/images/grouptalk.png";
+import BottomSection from "../../../common components/bottomGroup";
 import Blacktick from "../../../public/images/vector/blackTick.svg";
 import ViewPropMap from "../../../public/images/view_prop_Map.png";
 
@@ -209,7 +209,7 @@ const ViewProperty = () => {
               </div>
 
               <div className={ViewPropertyCss.contactParent}>
-                {/* -----------      REGISTER SECTION        -----------------*/}
+                {/* -----------      CONTACT TO HOST SECTION        -----------------*/}
                 <Modal
                   title="Contact to host"
                   footer={null}
@@ -266,7 +266,7 @@ const ViewProperty = () => {
                     className={ViewPropertyCss.registerLink}
                     onClick={(e) => e.preventDefault()}
                   >
-                    <Button className={ViewPropertyCss.registerBtn}>Register</Button>
+                    <div className={ViewPropertyCss.registBtnParent}><Button className={ViewPropertyCss.registerBtn}>Submit</Button></div>
                   </Link>
                 </Modal>
                 <Space>
@@ -1522,24 +1522,9 @@ const ViewProperty = () => {
           </Container>
         </section>
 
-        {/* BOTTOM IMAGE SECTION */}
-        <section className={ViewPropertyCss.grouptalk}>
-          <div>
-            <div className={ViewPropertyCss.groupParent}>
-              <Image
-                alt="group talk"
-                className={ViewPropertyCss.grouptalk}
-                src={Grouptalk}
-                fill
-              ></Image>
-            </div>
+        {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-            <Col md={4} className={ViewPropertyCss.newBtn}>
-              <h4 className={ViewPropertyCss.grouptalkTitle}>THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS</h4>
-              <Button className={ViewPropertyCss.search}>Search</Button>
-            </Col>
-          </div>
-        </section>
+        <BottomSection />
       </main>
     </>
   );

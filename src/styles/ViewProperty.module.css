@@ -265,6 +265,7 @@ background: transparent !important;
 .inputParent {
   flex-wrap: wrap;
   width: 100%;
+  padding: 20px;
 }
 
 .inputA {
@@ -278,12 +279,15 @@ background: transparent !important;
   width: 100%;
   padding: 10px;
   border: 1px solid var(--light-font-color) !important;
+  border-top: none !important;
+  border-bottom: none !important;
 }
 
 .inputC {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--light-font-color) !important;
+  border-bottom: none !important;
 }
 
 .inputDParent {
@@ -298,26 +302,28 @@ background: transparent !important;
 
 .inputD {
   width: 100%;
-  padding: 10px; 
+  padding: 10px;
+  border: 1px solid var(--light-font-color) !important;
   height: auto;
   border-radius: 0px 0px 8px 8px;
-  border: 1px solid var(--light-font-color) !important;
 }
 
 .agreeBox {
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .agreeOptionB {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
+  color: var(--black-color);
   font-weight: var(--font-poppins);
   margin-bottom: 14px;
+  padding: 0px 20px;
 }
 
 .registerBtn {
  width: 100%;
- background: #111111;
+ background: var(--black-color);
  color: var(--white-font-color);
  font-size: 0.8rem;
  font-weight: 500;
@@ -331,11 +337,19 @@ background: transparent !important;
  flex-direction: row;
  justify-content: center;
  align-items: center;
+ border: none !important;
 }
 
+.registBtnParent {
+  margin: 20px 20px 100px !important;
+}
+
+.registerLink {
+  text-decoration: none;
+}
 .registerBtn:hover {
 background-color: var(--btn-background-secondary);
-border: none;
+border: none !important;
 }
 
 .adultChild {
@@ -476,37 +490,7 @@ border: none;
   margin: 1rem 0;
 }
 
-/* Bottom section */
-
-.grouptalk {
-  margin-bottom: 50px;
-  position: relative !important;
-}
-
-.groupParent {
-  max-width: 1560px;
-  height: auto;
-}
-
-.newBtn {
-  background: var(--white-font-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  bottom: 44px;
-  padding: 30px 40px 60px;
-  right: 0px;
-}
-
-.search {
-  width: 25%;
-  display: flex;
-  justify-content: center;
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
-  border: none;
-}
+/* ----------   DETAILS OPTON       ---------------   */
 
 .detailParent {
   border: 1px solid #636363;
@@ -534,11 +518,4 @@ border: none;
 
 .words {
   margin-left: 24px;
-}
-
-.grouptalkTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  font-family: var(--font-amiri);
 }

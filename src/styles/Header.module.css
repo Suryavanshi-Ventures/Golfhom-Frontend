@@ -129,7 +129,11 @@
   }
 }
 
-/* -----------       SIGN UP SECTION        -----------------*/
+/* -----------       LOGIN SECTION        -----------------*/
+
+.textParent {
+  padding: 0px 20px;
+}
 
 .emailNumber {
   color: var(--light-font-color);
@@ -145,6 +149,7 @@
   font-weight: 400;
   line-height: 20px;
   margin-top: 20px;
+  padding: 0px 20px;
 }
 
 .remember {
@@ -152,16 +157,20 @@
   font-weight: 400;
   line-height: 18px;
   margin-top: 20px;
+  padding: 0px 20px;
 }
 
 .password {
-  border: 1px solid black;
+  border: 1px solid var(--light-font-color) !important;
   border-radius: 5px;
-  padding: 10px;
+  padding: 6px;
   width: 100%;
 }
 
 .meBox {
+  color: var(--black-color);
+  font-weight: 400;
+  font-family: var(--font-poppins);
 }
 
 .signUpBtn {
@@ -173,13 +182,15 @@
 
 .signIn {
   color: var(--white-font-color);
-  background-color: #111111;
+  background-color: var(--black-color);
   border-radius: 50px;
   font-size: 0.8rem;
-  width: 28%;
-  padding: 1.6% 0;
+  font-weight: 400;
+  width: 22%;
+  padding: 6px 0px;
   float: right;
   border: none;
+  font-family: var(--font-poppins);
 }
 
 .forgot {
@@ -187,11 +198,21 @@
   font-family: var(--font-poppins);
 }
 
+.register,
+.register:hover {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+  color: var(--btn-background-secondary);
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
 .donthaveAcc {
   font-family: var(--font-amiri);
-  color: #111111;
+  color: var(--black-color);
   font-weight: 700;
-  margin-right: 10px;
+  font-size: 1.2rem;
+  margin: 0px 8px 26px 0px;
 }
 
 /* --------------          REGISTER BLOCK        ---------------   */
@@ -200,13 +221,6 @@
   font-family: var(--font-amiri);
   font-weight: 600;
   font-size: 1.4rem;
-}
-
-.register {
-  font-family: var(--font-amiri);
-  font-weight: 700;
-  color: var(--btn-background-secondary);
-  text-decoration: underline;
 }
 
 .dont_link_parent {
@@ -219,6 +233,11 @@
   flex-wrap: wrap;
   width: 100%;
   font-family: var(--font-poppins);
+  padding: 20px 20px 10px;
+}
+
+.twoAgree {
+  padding: 0px 20px;
 }
 
 .inputA {
@@ -257,40 +276,44 @@
 
 .agreeOptionA {
   font-size: 1rem;
-  font-weight: 700;
-  margin: 16px 0px;
+  font-weight: 400;
+  margin: 10px 0px 20px;
   font-weight: var(--font-poppins);
 }
 
 .agreeOptionB {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   font-weight: var(--font-poppins);
   margin-bottom: 14px;
 }
 
 .registerBtn {
   width: 100%;
-  background: #111111;
-  color: var(--white-font-color);
+  background: var(--black-color);
+  color: var(--white-font-color) !important;
   font-size: 0.8rem;
   font-weight: 500;
   font-family: var(--font-poppins);
   text-align: center;
   border-radius: 0% !important;
-  margin: 20px 0px;
   padding: 6% 0%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border: none;
+}
+
+.registBtnParent {
+  margin: 20px 20px 100px !important;
 }
 
 /* ---------------         DROPDOWN CONTENT          ---------------*/
 
 .edit_room_dropdown_btn {
-  width: 100%;
-  margin-top: 20px;
+  width: 91%;
+  margin: 10px 20px;
   font-family: var(--font-poppins);
   color: var(--light-font-color);
   font-weight: 400;
@@ -322,14 +345,16 @@
   font-family: var(--font-poppins);
   font-weight: 400;
   margin: 34px 0px 16px;
+  padding: 0px 20px;
+  font-size: 0.9rem;
 }
 
 .forgotInput {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid black;
-  margin: 10px 0px;
+  border: 1px solid var(--light-font-color) !important;
+  margin: 10px 20px;
   font-family: var(--font-poppins);
 }
 
@@ -338,10 +363,11 @@
   justify-content: center;
 }
 
-.registBtn {
+.registBtn,
+.registBtn:hover {
   width: 70%;
-  background: #111111;
-  color: var(--white-font-color);
+  background: var(--black-color);
+  color: var(--white-font-color) !important;
   font-size: 0.8rem;
   font-weight: 500;
   font-family: var(--font-poppins);
@@ -353,4 +379,5 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border: none;
 }

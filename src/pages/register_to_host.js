@@ -9,7 +9,7 @@ import condoView from "../../public/images/condoView.svg";
 import Lunch from "../../public/images/lunch.svg";
 import earnMoney from "../../public/images/earnMoney.svg";
 import Beach from "../../public/images/beach.svg";
-import Grouptalk from "../../public/images/grouptalk.png";
+import BottomSection from "../../common components/bottomGroup";
 import Head from "next/head";
 
 const Register_to_host = () => {
@@ -328,27 +328,9 @@ const Register_to_host = () => {
         </Row>
       </Container>
 
-      {/* --------------------------            BOTTOM IMAGE SECTION           ------------------------------------*/}
+      {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
-      <section className={RegisterToHost.grouptalk}>
-        <div>
-          <div className={RegisterToHost.groupParent}>
-            <Image
-              alt="group talk"
-              className={RegisterToHost.grouptalk}
-              src={Grouptalk}
-              fill
-            ></Image>
-          </div>
-
-          <Col md={4} className={RegisterToHost.newBtn}>
-            <h4 className={RegisterToHost.grouptalkTitle}>
-              THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-            </h4>
-            <Button className={RegisterToHost.search}>Search</Button>
-          </Col>
-        </div>
-      </section>
+      <BottomSection />
     </>
   );
 };
