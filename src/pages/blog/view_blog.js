@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Head from "next/head";
 import { Container, Col, Row, Card } from "react-bootstrap";
@@ -5,6 +6,12 @@ import BlogCss from "../../styles/Blog.module.css";
 import Image from "next/image";
 import GolfHomLogoSmall from "../../../public/images/golfhom_small_logo.png";
 import CategoryIcon from "../../../public/images/vector/category_icon.svg";
+import QuoteOpenIcon from "../../../public/images/vector/quote_open.svg";
+import QuoteCloseIcon from "../../../public/images/vector/quote_close.svg";
+
+import ViewBlogImg1 from "../../../public/images/view_blog_img1.svg";
+import ViewBlogImg2 from "../../../public/images/view_blog_img2.svg";
+
 import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.svg";
 import { Button } from "antd";
 import BottomSection from "../../../common components/bottomGroup";
@@ -40,6 +47,197 @@ function ViewBlog() {
               className={BlogCss.view_blog_banner_img}
             ></Image>
           </div>
+        </section>
+
+        {/* MIDDLE TEXT CONTAINER SECTION */}
+        <section className={BlogCss.view_blog_middle_text_section}>
+          <main className={BlogCss.view_blog_middle_main_div}>
+            <p className={BlogCss.view_blog_middle_text_para}>
+              it is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English. Many desktop
+              publishing packages and web page editors now use Lorem Ipsum as
+              their default model text, and a search for 'lorem ipsum' will
+              uncover many web sites still in their infancy. Various versions
+              have evolved over the years, sometimes by accident, sometimes on
+              purpose (injected humour and the like).
+            </p>
+
+            <p className={BlogCss.view_blog_middle_text_para}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
+
+            {/* IMAGE AND TEXT DIVISION */}
+            <div className={BlogCss.view_blog_middle_img_division_container}>
+              <Row>
+                <Col md={6} className={BlogCss.view_blog_middle_img_cols}>
+                  <div className={BlogCss.view_blog_middle_img_container}>
+                    <Image
+                      src={ViewBlogImg1}
+                      fill
+                      className={BlogCss.view_blog_small_imgs}
+                      alt="View blog image 1"
+                    ></Image>
+                  </div>
+                </Col>
+
+                <Col md={6} className={BlogCss.view_blog_middle_img_cols}>
+                  <h4 className={BlogCss.view_blog_img_division_heading}>
+                    What is Lorem Ipsum?
+                  </h4>
+                  <p className={BlogCss.view_blog_middle_text_para}>
+                    contrary to popular belief, Lorem Ipsum is not simply random
+                    text. It has roots in a piece of classical Latin literature
+                    from 45 BC, making it over 2000 years old. Richard
+                    McClintock, a Latin professor at Hampden-Sydney College in
+                    Virginia, looked up one of the more obscure Latin words,
+                    consectetur, from a Lorem Ipsum passage, and going through
+                    the cites of the word in classical literature, discovered
+                    the undoubtable source.
+                  </p>
+                </Col>
+              </Row>
+            </div>
+
+            <p className={BlogCss.view_blog_middle_text_para}>
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui
+              blanditiis praesentium voluptatum deleniti atque corrupti quos
+              dolores et quas molestias excepturi sint occaecati cupiditate non
+              provident, similique sunt in culpa qui officia deserunt mollitia
+              animi, id est laborum et dolorum fuga. Et harum quidem rerum
+              facilis est et expedita distinctio. Nam libero tempore, cum soluta
+              nobis est eligendi optio.
+            </p>
+
+            <h5 className={BlogCss.view_blog_middle_text_sub_heading}>
+              The standard Lorem Ipsum passage, used since the 1500s
+            </h5>
+
+            <p className={BlogCss.view_blog_middle_text_para}>
+              it is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English. Many desktop
+              publishing packages and web page editors now use Lorem Ipsum as
+              their default model text, and a search for 'lorem ipsum' will
+              uncover many web sites still in their infancy. Various versions
+              have evolved over the years, sometimes by accident, sometimes on
+              purpose (injected humour and the like).
+            </p>
+
+            <p className={BlogCss.view_blog_middle_text_para}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
+
+            {/* IMAGE AND TEXT DIVISION */}
+            <div className={BlogCss.view_blog_middle_img_division_container}>
+              <Row>
+                <Col md={6} className={BlogCss.view_blog_middle_img_cols}>
+                  <h4 className={BlogCss.view_blog_img_division_heading}>
+                    Where does it come from?
+                  </h4>
+                  <p className={BlogCss.view_blog_middle_text_para}>
+                    contrary to popular belief, Lorem Ipsum is not simply random
+                    text. It has roots in a piece of classical Latin literature
+                    from 45 BC, making it over 2000 years old. Richard
+                    McClintock, a Latin professor at Hampden-Sydney College in
+                    Virginia, looked up one of the more obscure Latin words,
+                    consectetur, from a Lorem Ipsum passage, and going through
+                    the cites of the word in classical literature, discovered
+                    the undoubtable source.
+                  </p>
+                </Col>
+                <Col md={6} className={BlogCss.view_blog_middle_img_cols}>
+                  <div className={BlogCss.view_blog_middle_img_container}>
+                    <Image
+                      src={ViewBlogImg2}
+                      fill
+                      className={BlogCss.view_blog_small_imgs}
+                      alt="View blog image 1"
+                    ></Image>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            {/* QUOTE SECTION */}
+
+            <div className={BlogCss.view_blog_middle_quote_main_container}>
+              <div className={BlogCss.view_blog_middle_quote_open_container}>
+                <Image
+                  src={QuoteOpenIcon}
+                  width={30}
+                  height={30}
+                  alt="quote icon"
+                ></Image>
+              </div>
+
+              <p className={BlogCss.view_blog_middle_quote_text}>
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC, making it over 2000 years old. Richard McClintock, a
+                Latin professor at Hampden-Sydney College in Virginia, looked up
+                one of the more obscure Latin words, consectetur, from a Lorem
+                Ipsum passage, and going through the cites of the word in
+                classical literature, discovered the undoubtable source. Lorem
+                Ipsum comes from sections 1.10.32 and 1.10.33 .
+              </p>
+
+              <div className={BlogCss.view_blog_middle_quote_close_container}>
+                <Image
+                  src={QuoteCloseIcon}
+                  width={30}
+                  height={30}
+                  alt="quote icon"
+                ></Image>
+              </div>
+            </div>
+
+            <h5 className={BlogCss.view_blog_middle_text_sub_heading}>
+              The standard Lorem Ipsum passage, used since the 1500s
+            </h5>
+
+            <p className={BlogCss.view_blog_middle_text_para}>
+              it is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English. Many desktop
+              publishing packages and web page editors now use Lorem Ipsum as
+              their default model text, and a search for 'lorem ipsum' will
+              uncover many web sites still in their infancy. Various versions
+              have evolved over the years, sometimes by accident, sometimes on
+              purpose (injected humour and the like).
+            </p>
+
+            <p className={BlogCss.view_blog_middle_text_para}>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
+            <p className={BlogCss.view_blog_posted_date}>
+              Posted on jan 22,2023
+            </p>
+          </main>
         </section>
       </Container>
 
