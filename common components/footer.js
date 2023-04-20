@@ -52,7 +52,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/blogsAndPodcasts" className={FooterCss.nav_link_a}>
                       Partner Blogs and Podcasts!
                     </Link>
                   </li>

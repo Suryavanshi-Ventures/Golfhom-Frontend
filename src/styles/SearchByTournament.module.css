@@ -98,7 +98,7 @@
  
 .mapParent {
   flex: 1;
-  height: 695px; 
+  padding: 140px 0px 147px 22px;
 }
 
 .map {
@@ -168,8 +168,10 @@
   margin-right: 20px;
 }
 
-.default {
+.default, .default:hover {
   font-family: var(--font-poppins);
+  font-weight: 500;
+  color: #2F2F2F;
   font-weight: 500;
 }
 

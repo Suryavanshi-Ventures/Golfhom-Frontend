@@ -119,10 +119,12 @@ const Header = () => {
             onCancel={handleCancel}
             width={372}
           >
-            <p className={HeaderCss.emailNumber}>Email or Member Number</p>
-            <Input className={HeaderCss.password} type="text"></Input>
-            <p className={HeaderCss.emailNumber}>Password</p>
-            <Input className={HeaderCss.password} type="password"></Input>
+            <div className={HeaderCss.textParent}>
+              <p className={HeaderCss.emailNumber}>Email or Member Number</p>
+              <Input className={HeaderCss.password} type="text"></Input>
+              <p className={HeaderCss.emailNumber}>Password</p>
+              <Input className={HeaderCss.password} type="password"></Input>
+            </div>
 
             <div className={HeaderCss.remember}>
               <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
@@ -618,7 +620,7 @@ function OffCanvasExample({ name, ...props }) {
         open={isModalOpen}
         onSignup={handleSignup}
         onCancel={handleCancel}
-        width={312}
+        width={344}
       >
         <div className={HeaderCss.textParent}>
           <p className={HeaderCss.emailNumber}>Email or Member Number</p>
@@ -667,7 +669,7 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           </div>
         </div>
-      </Modal >
+      </Modal>
 
       {/* -----------      REGISTER SECTION        -----------------*/}
 
@@ -714,7 +716,7 @@ function OffCanvasExample({ name, ...props }) {
           </div>
         </Col>
 
-        <Row>
+        <Row className={HeaderCss.twoAgree}>
           <div>
             <Checkbox className={HeaderCss.agreeOptionA}>
               I agree with your Terms & Conditions
@@ -727,8 +729,10 @@ function OffCanvasExample({ name, ...props }) {
           </div>
         </Row>
 
-        <Button className={HeaderCss.registerBtn}>Register</Button>
-      </Modal >
+        <div className={HeaderCss.registBtnParent}>
+          <Button className={HeaderCss.registerBtn}>Register</Button>
+        </div>
+      </Modal>
 
       {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
 
@@ -753,7 +757,7 @@ function OffCanvasExample({ name, ...props }) {
         <div className={HeaderCss.forgotBtn}>
           <Button className={HeaderCss.registBtn}>Register</Button>
         </div>
-      </Modal >
+      </Modal>
 
       {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
 
@@ -823,7 +827,7 @@ function OffCanvasExample({ name, ...props }) {
         </Row>
 
         <Button className={HeaderCss.registerBtn}>Register</Button>
-      </Modal >
+      </Modal>
 
       <Offcanvas
         key={1}

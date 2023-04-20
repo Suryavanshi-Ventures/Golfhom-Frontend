@@ -266,7 +266,8 @@ const ViewProperty = () => {
                     className={ViewPropertyCss.registerLink}
                     onClick={(e) => e.preventDefault()}
                   >
-                    <div className={ViewPropertyCss.registBtnParent}><Button className={ViewPropertyCss.registerBtn}>Submit</Button></div>
+                    <div className={ViewPropertyCss.registBtnParent}>
+                      <Button className={ViewPropertyCss.registerBtn}>Submit</Button></div>
                   </Link>
                 </Modal>
                 <Space>

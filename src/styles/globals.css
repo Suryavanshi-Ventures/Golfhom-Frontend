@@ -83,3 +83,7 @@
 .ant-checkbox {
   color: var(--light-font-color) !important;
 }
+
+.swiper-pagination-bullets {
+  padding-bottom: 20px;
+}

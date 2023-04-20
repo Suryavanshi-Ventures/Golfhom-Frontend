@@ -2,8 +2,8 @@ import React from 'react'
 import SearchByTourCss from "../styles/SearchByTournament.module.css";
 import Search from "../../public/images/search.svg";
 import Image from 'next/image';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import { Dropdown, Pagination, Space } from 'antd';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Dropdown, Pagination, Button, Space } from 'antd';
 import { DownOutlined } from "@ant-design/icons";
 import BottomSection from "../../common components/bottomGroup";
 import CarouselImages from "../../common components/carouselMap";
@@ -13,10 +13,6 @@ const searchByTournaments = () => {
         console.log("Page: ", pageNumber);
     };
 
-    // const handleMenuClick = (e) => {
-    //     console.log("click", e);
-    // };
-
     // DROPDOWN CONTENT
 
     const handleMenuClick = (e) => {
@@ -25,17 +21,13 @@ const searchByTournaments = () => {
 
     const items = [
         {
-            label: "Select",
+            label: "1st menu item",
             key: "1",
         },
         {
-            label: "Register to Rent",
+            label: "2nd menu item",
             key: "2",
         },
-        {
-            label: "Register to Host",
-            key: "3",
-        }
     ];
 
     const menuProps = {
@@ -85,7 +77,7 @@ const searchByTournaments = () => {
             <section className={SearchByTourCss.search_main_section}>
                 <Container>
                     <Row>
-                        <h4 className={SearchByTourCss.orlandoHead}>Orlando</h4>
+                        <h4 className={SearchByTourCss.orlandoHead}>The Tradition at Quinta</h4>
 
                         {/*    ----------------      CARD MAP SECTION      -------------------   */}
                         <Col md={8}>
@@ -117,7 +109,7 @@ const searchByTournaments = () => {
                         <Col md={4} className={SearchByTourCss.mapParent}>
                             <Image
                                 fill
-                                src="/images/mapGroup.svg"
+                                src="/images/mapGroup.png"
                                 alt="Map"
                                 className={SearchByTourCss.map}
                             />
