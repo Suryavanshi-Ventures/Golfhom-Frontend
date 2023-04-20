@@ -181,7 +181,6 @@
   font-family: var(--font-poppins);
   color: var(--light-font-color);
   font-weight: 500;
-  margin-bottom: 10px;
 }
 
 .signUpBtn:hover {
