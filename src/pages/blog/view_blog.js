@@ -5,9 +5,9 @@ import BlogCss from "../../styles/Blog.module.css";
 import Image from "next/image";
 import GolfHomLogoSmall from "../../../public/images/golfhom_small_logo.png";
 import CategoryIcon from "../../../public/images/vector/category_icon.svg";
+import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.svg";
 import { Button } from "antd";
 import BottomSection from "../../../common components/bottomGroup";
-import BannerImageGolfMan from "../../../public/images/golfman_banner_img.png";
 
 function ViewBlog() {
   return (
@@ -25,21 +25,22 @@ function ViewBlog() {
       {/* VIEW BLOG STARTED */}
 
       <Container>
-        <p className={BlogCss.view_blog_date}>jan 23, 2023</p>
-        <h3 className={BlogCss.view_blog_title}>
-          The Circle 15 Genesis Golf Glove View All
-        </h3>
+        <section className={BlogCss.view_blog_banner_img_section}>
+          <p className={BlogCss.view_blog_date}>jan 23, 2023</p>
+          <h3 className={BlogCss.view_blog_title}>
+            The Circle 15 Genesis Golf Glove View All
+          </h3>
 
-        {/* GOLFMAN BANNER IMG */}
-
-        <div className={BlogCss.view_blog_banner_img_container}>
-          <Image
-            src={BannerImageGolfMan}
-            fill
-            alt="banner image golfhom blog"
-            className={BlogCss.view_blog_banner_img}
-          ></Image>
-        </div>
+          {/* VIEW BLOG JS BANNER IMG */}
+          <div className={BlogCss.view_blog_banner_img_container}>
+            <Image
+              src={ViwBlogBannerImg}
+              fill
+              alt="banner image golfhom blog"
+              className={BlogCss.view_blog_banner_img}
+            ></Image>
+          </div>
+        </section>
       </Container>
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
