@@ -281,6 +281,10 @@
   border-radius: 0px 0px 8px 8px;
 }
 
+.form_items {
+  margin-bottom: 0px;
+}
+
 .agreeOptionA {
   font-size: 1rem;
   font-weight: 400;

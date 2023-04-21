@@ -2,7 +2,17 @@
 import React, { useState } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Navbar, Nav, Container, Col, Row } from "react-bootstrap";
-import { Button, Checkbox, Input } from "antd";
+import {
+  Button,
+  Checkbox,
+  Input,
+  AutoComplete,
+  Cascader,
+  Form,
+  InputNumber,
+  Select,
+} from "antd";
+
 import Image from "next/image";
 import HeadPhoneIcon from "../public/headphones.svg";
 import UserIcon from "../public/user icon.svg";
@@ -46,6 +56,9 @@ const Header = () => {
   const handleCancelRegister = () => {
     setIsModalOpens(false);
   };
+
+  // SIGNUP VALIDATION SECTION
+  const [form] = Form.useForm();
 
   {
     /* -----------      REGISTER TO RENT SECTION        -----------------*/
@@ -179,37 +192,102 @@ const Header = () => {
             className={HeaderCss.headerReg}
           >
             <Col className={HeaderCss.inputParent}>
-              <div>
-                <Input
-                  className={HeaderCss.inputA}
-                  type="text"
-                  placeholder="Enter User name"
-                ></Input>
-              </div>
+              {/*  FORM VALIDATION */}
+              <Form
+                form={form}
+                name="register"
+                initialValues={{
+                  residence: ["zhejiang", "hangzhou", "xihu"],
+                  prefix: "86",
+                }}
+                scrollToFirstError
+              >
+                <Form.Item
+                  className={HeaderCss.form_items}
+                  name="user_name"
+                  tooltip="What do you want others to call you?"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your User Name!",
+                      whitespace: true,
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="Enter User name"
+                    className={HeaderCss.inputA}
+                  />
+                </Form.Item>
 
-              <div>
-                <Input
-                  className={HeaderCss.inputB}
-                  type="email"
-                  placeholder="Email"
-                ></Input>
-              </div>
+                {/* EMAIL */}
+                <Form.Item
+                  className={HeaderCss.form_items}
+                  name="email"
+                  rules={[
+                    {
+                      type: "email",
+                      message: "The input is not valid E-mail!",
+                    },
+                    {
+                      required: true,
+                      message: "Please input your E-mail!",
+                    },
+                  ]}
+                >
+                  <Input placeholder="Email" className={HeaderCss.inputB} />
+                </Form.Item>
 
-              <div>
-                <Input
-                  className={HeaderCss.inputC}
-                  type="password"
-                  placeholder="Password"
-                ></Input>
-              </div>
+                {/* PASSWORD */}
+                <Form.Item
+                  className={HeaderCss.form_items}
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your password!",
+                    },
+                  ]}
+                  hasFeedback
+                >
+                  <Input.Password
+                    placeholder="Password"
+                    className={HeaderCss.inputC}
+                  />
+                </Form.Item>
 
-              <div>
-                <Input
-                  className={HeaderCss.inputD}
-                  type="password"
-                  placeholder="Repeat Password"
-                ></Input>
-              </div>
+                {/* CONFIRM PASSWORD */}
+
+                <Form.Item
+                  className={HeaderCss.form_items}
+                  name="confirm"
+                  dependencies={["password"]}
+                  hasFeedback
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please confirm your password!",
+                    },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (!value || getFieldValue("password") === value) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject(
+                          new Error(
+                            "The two passwords that you entered do not match!"
+                          )
+                        );
+                      },
+                    }),
+                  ]}
+                >
+                  <Input.Password
+                    placeholder="Repeat Password"
+                    className={HeaderCss.inputD}
+                  />
+                </Form.Item>
+              </Form>
             </Col>
 
             <Row className={HeaderCss.twoAgree}>
@@ -288,8 +366,9 @@ const Header = () => {
                   </Link>
 
                   {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
+
                   <Modal
-                    title="Register"
+                    title="Register To Rent"
                     footer={null}
                     open={isModalOpened}
                     onSignup={handleRegisterRent}
