@@ -11,7 +11,6 @@ import QuoteCloseIcon from "../../../public/images/vector/quote_close.svg";
 
 import ViewBlogImg1 from "../../../public/images/view_blog_img1.svg";
 import ViewBlogImg2 from "../../../public/images/view_blog_img2.svg";
-
 import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.svg";
 import { Button } from "antd";
 import BottomSection from "../../../common components/bottomGroup";
@@ -37,6 +36,34 @@ function ViewBlog() {
           <h3 className={BlogCss.view_blog_title}>
             The Circle 15 Genesis Golf Glove View All
           </h3>
+
+          <div className={BlogCss.view_blog_category}>
+            <Row className={BlogCss.view_blog_category_rows}>
+              <Col md={"auto"} className={BlogCss.view_blog_category_cols}>
+                <Image
+                  width={100}
+                  height={50}
+                  src={GolfHomLogoSmall}
+                  alt="golfom category"
+                ></Image>
+              </Col>
+
+              <Col md={"auto"} className={BlogCss.view_blog_category_cols}>
+                <p className={BlogCss.view_blog_category_text}>by T Admin</p>
+              </Col>
+
+              <Col md={"auto"} className={BlogCss.view_blog_category_cols}>
+                <div>
+                  <div>
+                    <Image src={CategoryIcon} alt="bookmark"></Image>
+                  </div>
+                  <p className={BlogCss.view_blog_category_text}>
+                    Golf, Golf Travel, Vacation Rentals
+                  </p>
+                </div>
+              </Col>
+            </Row>
+          </div>
 
           {/* VIEW BLOG JS BANNER IMG */}
           <div className={BlogCss.view_blog_banner_img_container}>
@@ -148,7 +175,7 @@ function ViewBlog() {
             <div className={BlogCss.view_blog_middle_img_division_container}>
               <Row>
                 <Col md={6} className={BlogCss.view_blog_middle_img_cols}>
-                  <h4 className={BlogCss.view_blog_img_division_heading}>
+                  <h4 className={BlogCss.view_blog_middle_text_sub_heading}>
                     Where does it come from?
                   </h4>
                   <p className={BlogCss.view_blog_middle_text_para}>

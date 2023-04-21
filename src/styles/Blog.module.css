@@ -32,9 +32,27 @@
   max-width: 700px;
 }
 
+.view_blog_img_division_heading {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 32px;
+}
+
+.view_blog_middle_text_para {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  margin-bottom: 1.5rem;
+}
+
 .view_blog_middle_img_container {
   position: relative !important;
-  height: 260px;
+  height: 100%;
+  min-height: 260px;
+}
+
+.view_blog_middle_img_cols {
+  margin: 1rem 0;
 }
 
 .view_blog_middle_quote_main_container {
@@ -43,14 +61,23 @@
   padding: 1rem;
   background-color: var(--header-background-color);
   border: 2px solid #404040;
-  border-radius: 5px;
+  border-radius: 10px;
 }
+
+.view_blog_middle_quote_main_container {
+  margin: 1rem 0;
+}
+
 .view_blog_middle_quote_open_container {
   margin-bottom: 1rem;
 }
 .view_blog_middle_quote_close_container {
   margin-top: 1rem;
   align-self: flex-end;
+}
+
+.view_blog_middle_text_sub_heading {
+  margin: 2rem 0;
 }
 
 /*  -----------------     NINE CARDS CONTAINER     ----------------- */
