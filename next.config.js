@@ -6,4 +6,4 @@ const nextConfig = {
   NEXT_PRIVATE_STANDALONE: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;
