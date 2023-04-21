@@ -53,9 +53,14 @@ function ViewBlog() {
               </Col>
 
               <Col md={"auto"} className={BlogCss.view_blog_category_cols}>
-                <div>
-                  <div>
-                    <Image src={CategoryIcon} alt="bookmark"></Image>
+                <div className={BlogCss.view_blog_category_container}>
+                  <div className={BlogCss.view_blog_category_img_container}>
+                    <Image
+                      width={24}
+                      height={24}
+                      src={CategoryIcon}
+                      alt="bookmark category"
+                    ></Image>
                   </div>
                   <p className={BlogCss.view_blog_category_text}>
                     Golf, Golf Travel, Vacation Rentals
