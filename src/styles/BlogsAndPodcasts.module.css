@@ -1,7 +1,50 @@
+/*   --------------------------   TOP IMAGE SECTION       ------------------------    */
+
 .topImageParent {
 
 }
 
 .topImage {
   position: relative !important;
+}
+
+/*   ---------------------------         PODCAST MID CONTAINER           -----------------------    */
+
+.imageGrand {
+  /* display: grid;
+  grid-template-rows: 382px 382px 382px;
+  grid-template-columns: 410px 410px 410px;
+  padding: 40px 0px;
+  justify-content: space-between;
+  align-content: space-between; */
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 30px 0px;
+}
+
+.mainRow {
+
+}
+
+.imageParent {
+  max-width: 440px;
+  max-height: 400px;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.imageChild {
+  position: relative !important;
+}
+
+/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */
+
+@media only screen and (max-width: 1000px) {
+  .mainRow {
+    display: flex;
+    justify-content: center;
+  }
 }

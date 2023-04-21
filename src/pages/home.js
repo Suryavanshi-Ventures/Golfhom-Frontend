@@ -150,7 +150,8 @@ const Home = () => {
             their next luxury golf vacation rental. Book with us today!
           </p>
 
-          <Link href="/search/view_all_property" style={{ textDecoration: "none" }}><div className={HomeCss.viewallBtnParent}><Button className={HomeCss.viewallBtn}>View All</Button></div></Link>
+          <Link href="/search/view_all_property" style={{ textDecoration: "none" }}>
+          <div className={HomeCss.viewallBtnParent}><Button className={HomeCss.viewallBtn}>View All</Button></div></Link>
         </div>
 
         <Slider slides={slides} />
@@ -366,7 +367,7 @@ const Home = () => {
             <Card.Img
               variant="top"
               className={HomeCss.cardImg}
-              src="/images/bedRoom.png"
+              src="/images/bedRoom.svg"
               alt="Bed Image"
             />
             <Card.Body>

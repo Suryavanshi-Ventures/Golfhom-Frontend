@@ -109,7 +109,7 @@ const searchByTournaments = () => {
                         <Col md={4} className={SearchByTourCss.mapParent}>
                             <Image
                                 fill
-                                src="/images/mapGroup.png"
+                                src="/images/mapGroup.svg"
                                 alt="Map"
                                 className={SearchByTourCss.map}
                             />

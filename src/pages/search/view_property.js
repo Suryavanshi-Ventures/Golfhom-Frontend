@@ -16,7 +16,7 @@ import RulesCrossIcon from "../../../public/images/vector/rules_cross_icon.svg";
 import Calendar from "../../../public/images/vector/calendar.svg";
 import BottomSection from "../../../common components/bottomGroup";
 import Blacktick from "../../../public/images/vector/blackTick.svg";
-import ViewPropMap from "../../../public/images/view_prop_Map.png";
+import ViewPropMap from "../../../public/images/view_prop_Map.svg";
 
 
 const ViewProperty = () => {
@@ -247,7 +247,7 @@ const ViewProperty = () => {
                     <div className={ViewPropertyCss.inputDParent}>
                       <input
                         className={ViewPropertyCss.inputD}
-                        type="text"
+                        type="address"
                         placeholder="Message"
                       ></input>
                     </div>

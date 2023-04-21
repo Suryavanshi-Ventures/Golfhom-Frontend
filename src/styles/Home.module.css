@@ -1,7 +1,7 @@
 /*    ------------------------------------   NAVBAR SECTION  --------------------------------   */
 
 .search_bar_img_div {
-  background-image: url("/images/golfBoy.png");
+  background-image: url("/images/golfBoy.svg");
   height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
@@ -217,7 +217,7 @@
 }
 
 .searchSection {
-  background-image: url(../../public/images/shot.png);
+  background-image: url(../../public/images/shot.svg);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 500px;
@@ -383,7 +383,7 @@
 
 .midImgTitle {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/pool.png);
+    url(/images/pool.svg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
@@ -410,7 +410,7 @@
 
 .madridImg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/madrid.png);
+    url(/images/madrid.svg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -428,7 +428,7 @@
 
 .resortImg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/gaintWheel.png);
+    url(/images/gaintWheel.svg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -676,44 +676,6 @@
   top: 5px;
 }
 
-/* Bottom IMAGE section */
-
-.grouptalk {
-  margin-top: 40px;
-  position: relative !important;
-}
-
-.newBtn {
-  background: var(--white-font-color);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  bottom: 0px;
-  padding: 30px 40px 60px;
-  right: 0px;
-}
-
-.groupParent {
-  max-width: 1560px;
-  height: auto;
-}
-
-.search {
-  width: 25%;
-  display: flex;
-  justify-content: center;
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
-  border: none;
-}
-
-.grouptalkTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  font-family: var(--font-amiri);
-}
 
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {

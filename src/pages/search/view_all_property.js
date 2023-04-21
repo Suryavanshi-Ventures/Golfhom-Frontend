@@ -4,13 +4,13 @@ import Link from "next/link";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import ViewAllPropertyCss from "../../styles/ViewAllProperty.module.css";
 import Image from "next/image";
-import ViewAllProps from "../../../public/images/viewAllProps.png";
+import ViewAllProps from "../../../public/images/viewAllProps.svg";
 import BottomSection from "../../../common components/bottomGroup";
 import { Pagination } from "antd";
-import Florida from "../../../public/images/florida.png"
-import Arizona from "../../../public/images/arizona.png"
-import Sanfrancisco from "../../../public/images/sanfrancisco.png"
-import Newyork from "../../../public/images/newyork.png"
+import Florida from "../../../public/images/florida.svg"
+import Arizona from "../../../public/images/arizona.svg"
+import Sanfrancisco from "../../../public/images/sanfrancisco.svg"
+import Newyork from "../../../public/images/newyork.svg"
 
 
 const view_all_property = () => {

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import BlogCss from "../../styles/Blog.module.css";
 import Image from "next/image";
-import GolfHomLogoSmall from "../../../public/images/golfhom_small_logo.png";
+import GolfHomLogoSmall from "../../../public/images/golfhom_small_logo.svg";
 import CategoryIcon from "../../../public/images/vector/category_icon.svg";
 import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.svg";
 import { Button } from "antd";

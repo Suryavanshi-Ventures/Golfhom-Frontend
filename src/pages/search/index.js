@@ -168,7 +168,7 @@ const index = () => {
             <Col md={4} className={Index.mapParent}>
               <Image
                 fill
-                src="/images/mapGroup.png"
+                src="/images/mapGroup.svg"
                 alt="Map"
                 className={Index.map}
               />

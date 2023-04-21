@@ -2,11 +2,11 @@ import React from "react";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";
-import ContactUsBannerImage from "../../public/images/contact_us_banner_img.png";
+import ContactUsBannerImage from "../../public/images/contact_us_banner_img.svg";
 import Image from "next/image";
 import { Button, Input } from "antd";
 const { TextArea } = Input;
-import ManThumbsUpImg from "../../public/images/contact_us_thumbs_up_man.png";
+import ManThumbsUpImg from "../../public/images/contact_us_thumbs_up_man.svg";
 import BottomSection from "../../common components/bottomGroup";
 
 function ContactUs() {

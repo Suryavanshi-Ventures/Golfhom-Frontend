@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import RegisterToHost from "../styles/RegisterToHost.module.css";
-import targetBall from "../../public/images/targetBall.png";
+import targetBall from "../../public/images/targetBall.svg";
 import Image from "next/image";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { Checkbox } from "antd";

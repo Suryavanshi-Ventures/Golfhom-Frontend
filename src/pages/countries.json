@@ -1,57 +1,57 @@
 [
   {
     "id": 1,
-    "image": "/images/golfSpot.png",
+    "image": "/images/florida.svg",
     "name": "Florida",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 2,
-    "image": "/images/hill.png",
+    "image": "/images/arizona.svg",
     "name": "Arizona",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 3,
-    "image": "/images/river.png",
+    "image": "/images/sanfrancisco.svg",
     "name": "Sanfrancisco",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 4,
-    "image": "/images/lake.png",
+    "image": "/images/newyork.svg",
     "name": "Newyork",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 5,
-    "image": "/images/golfSpot.png",
+    "image": "/images/florida.svg",
     "name": "Florida",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 6,
-    "image": "/images/hill.png",
+    "image": "/images/arizona.svg",
     "name": "Arizona",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 7,
-    "image": "/images/river.png",
+    "image": "/images/sanfrancisco.svg",
     "name": "Sanfrancisco",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 8,
-    "image": "/images/lake.png",
+    "image": "/images/newyork.svg",
     "name": "Newyork",
-    "next": "/images/vector/forwardArrow.png"
+    "next": "/images/vector/forwardArrow.svg"
   }
 ]

@@ -1,6 +1,6 @@
 import React from 'react'
 import BottomGroupCss from "../src/styles/BottomGroup.module.css"
-import Grouptalk from "../public/images/grouptalk.png";
+import Grouptalk from "../public/images/grouptalk.svg";
 import Image from 'next/image';
 import { Button, Col } from 'react-bootstrap';
 
