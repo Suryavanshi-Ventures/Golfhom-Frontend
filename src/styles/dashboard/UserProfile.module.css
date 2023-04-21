@@ -1,0 +1,61 @@
+.user_profile_page_heading {
+  margin: 2rem 0;
+  font-size: 35px;
+  font-family: var(--font-amiri);
+  font-weight: 700;
+}
+
+.user_profile_page_info_section {
+  margin-bottom: 4rem;
+}
+
+.user_profile_page_section_heading {
+  font-size: 30px;
+  font-family: var(--font-amiri);
+  font-weight: 700;
+}
+
+.user_profile_page_pic_container {
+  margin-top: 1.5rem;
+}
+
+.user_profile_page_info_input_div {
+  margin-bottom: 2rem;
+}
+
+.user_profile_page_info_input_label {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.user_profile_page_info_input {
+  height: 45px;
+  border-color: var(--light-font-color);
+}
+
+.user_profile_page_info_input:focus {
+  border-color: var(--btn-background-secondary) !important;
+}
+.user_profile_page_info_input:hover {
+  border-color: var(--btn-background-secondary) !important;
+}
+
+.user_profile_page_save_btn {
+  background-color: var(--btn-background-secondary);
+  width: 100px;
+  height: 40px;
+  font-weight: 700;
+}
+
+.user_profile_page_pic {
+  border-radius: 100%;
+}
+
+.user_profile_page_rows {
+  justify-content: space-between;
+}
+
+.user_profile_page_info_input {
+  max-width: 650px;
+}
