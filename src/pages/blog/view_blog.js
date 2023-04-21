@@ -37,7 +37,7 @@ function ViewBlog() {
             The Circle 15 Genesis Golf Glove View All
           </h3>
 
-          <div className={BlogCss.view_blog_category}>
+          <div className={BlogCss.view_blog_category_container_main}>
             <Row className={BlogCss.view_blog_category_rows}>
               <Col md={"auto"} className={BlogCss.view_blog_category_cols}>
                 <Image
@@ -58,6 +58,7 @@ function ViewBlog() {
                     <Image
                       width={24}
                       height={24}
+                      className={BlogCss.view_blog_category_img}
                       src={CategoryIcon}
                       alt="bookmark category"
                     ></Image>
