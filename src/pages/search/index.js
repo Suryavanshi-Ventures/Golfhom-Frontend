@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { Container, Col, Row, Card, Carousel } from "react-bootstrap";
 import Index from "../../styles/SearchIndex.module.css";
-import { Input } from "antd";
+import { Checkbox, Input } from "antd";
 import { DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Space } from "antd";
@@ -16,6 +16,8 @@ import CarouselImages from "../../../common components/carouselMap";
 const { RangePicker } = DatePicker;
 
 const index = () => {
+  const [showHidden, setShowHidden] = useState(false);
+
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
   };
@@ -39,6 +41,66 @@ const index = () => {
     items,
     onClick: handleMenuClick,
   };
+
+  const HiddenModal = () => {
+    return (
+      <>
+        {/* EDIT DROP DETAIL SECTION */}
+
+        <Row>
+          <Col md={6} className={Index.twoDropdown}>
+            <Col md={4}>
+              <div className={Index.edit_details_divs}>
+                <p className={Index.edit_details_titles}>Golf Course Choice</p>
+                <div className={Index.edit_details_inputs_container}>
+                  <Dropdown menu={menuProps}>
+                    <Button
+                      size="large"
+                      className={Index.edit_room_dropdown_btn}
+                    >
+                      <Space className={Index.edit_room_dropdown_btn_space}>
+                        Location
+                        <DownOutlined
+                          className={Index.edit_room_dropdown_icon}
+                        />
+                      </Space>
+                    </Button>
+                  </Dropdown>
+                </div>
+              </div>
+            </Col>
+
+            <Col md={8}>
+              <div className={Index.edit_details_divs}>
+                <p className={Index.edit_details_titles}>Golf Course</p>
+                <div className={Index.edit_details_inputs_container}>
+                  <Dropdown menu={menuProps}>
+                    <Button
+                      size="large"
+                      className={Index.edit_room_dropdown_btn}
+                    >
+                      <Space className={Index.edit_room_dropdown_btn_space}>
+                        Location
+                        <DownOutlined
+                          className={Index.edit_room_dropdown_icon}
+                        />
+                      </Space>
+                    </Button>
+                  </Dropdown>
+                </div>
+              </div>
+            </Col>
+          </Col>
+
+          <Col mmd={6} className={Index.twoCheckbox}>
+            <div md={4}><Checkbox>Golf Course Front</Checkbox></div>
+            <div md={4}><Checkbox>Golf Course Community</Checkbox></div>
+            <div md={4}><Button onClick={() => setShowHidden(false)} className={Index.searching}>Search</Button></div>
+          </Col>
+        </Row>
+      </>
+    )
+  }
 
   return (
     <>
@@ -105,12 +167,13 @@ const index = () => {
                 <Col md={3} className={Index.edit_details_container_cols}>
                   <div className={Index.edit_details_btn_parent_container}>
                     <div className={Index.edit_details_btn_child_container}>
-                      <Button size="large" className={Index.edit_details_btn}>
+                      <Button size="large" className={Index.edit_details_btn} onClick={() => setShowHidden(true)}>
                         Edit
                       </Button>
                     </div>
                   </div>
                 </Col>
+                {showHidden && <HiddenModal />}
               </Row>
             </div>
           </Container>

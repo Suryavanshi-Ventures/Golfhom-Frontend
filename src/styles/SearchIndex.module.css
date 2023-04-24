@@ -42,6 +42,34 @@
   display: flex;
 }
 
+/* EDIT DROP DETAIL SECTION */
+
+.twoDropdown {
+  display: flex;
+  gap: 26px;
+  font-family: var(--font-poppins);
+  font-weight: 400;
+}
+
+.twoCheckbox {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: end;
+  font-family: var(--font-poppins);
+  font-weight: 400;
+}
+
+.searching, .searching:hover {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--btn-background);
+  color: var(--white-font-color) !important;
+  border: none;
+}
+
+
 /*    ----------------      CARD MAP SECTION      -------------------   */
 
 

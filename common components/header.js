@@ -22,6 +22,7 @@ import Link from "next/link";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
+import { useEffect } from "react";
 
 const Header = () => {
   // This part is comment out for confirmation
