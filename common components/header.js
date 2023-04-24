@@ -1,18 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
-import { Navbar, Nav, Container, Col, Row } from "react-bootstrap";
-import {
-  Button,
-  Checkbox,
-  Input,
-  AutoComplete,
-  Cascader,
-  Form,
-  InputNumber,
-  Select,
-} from "antd";
-
+import { Container, Col, Row } from "react-bootstrap";
+import { Button, Checkbox, Input, Form } from "antd";
 import Image from "next/image";
 import HeadPhoneIcon from "../public/headphones.svg";
 import UserIcon from "../public/user icon.svg";
@@ -22,7 +12,7 @@ import Link from "next/link";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
-import { useEffect } from "react";
+import axios from "axios";
 
 const Header = () => {
   // This part is comment out for confirmation
@@ -30,6 +20,9 @@ const Header = () => {
   {
     /* -----------       SIGN UP SECTION        -----------------*/
   }
+  // CHECKBOX TERMS CONDITION USESTATE
+  const [IsBtnDisable, SetIsBtnDisable] = useState(true);
+  // CHECKBOX TERMS CONDITION USESTATE END
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -58,8 +51,31 @@ const Header = () => {
     setIsModalOpens(false);
   };
 
-  // SIGNUP VALIDATION SECTION
+  //! SIGNUP API FUNCTIONS
   const [form] = Form.useForm();
+
+  const onSubmitSignup = async (values) => {
+    //! SIGNUP API
+    // try {
+    //   const response = await axios.post(
+    //     `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/user/signup`,
+    //     {
+    //       username: values.user_name,
+    //       email: values.email,
+    //       password: values.password,
+    //     }
+    //   );
+
+    //   console.log("Response: " + response.status);
+    // } catch (error) {
+    //   console.log("Sigup error: " + error);
+    // }
+    console.log("OnSubmit: " + values);
+  };
+
+  const onCheckBoxTick = (values) => {
+    console.log("OnFinish: " + values);
+  };
 
   {
     /* -----------      REGISTER TO RENT SECTION        -----------------*/
@@ -192,17 +208,19 @@ const Header = () => {
             width={440}
             className={HeaderCss.headerReg}
           >
-            <Col className={HeaderCss.inputParent}>
-              {/*  FORM VALIDATION */}
-              <Form
-                form={form}
-                name="register"
-                initialValues={{
-                  residence: ["zhejiang", "hangzhou", "xihu"],
-                  prefix: "86",
-                }}
-                scrollToFirstError
-              >
+            <Form
+              onFinish={onSubmitSignup}
+              form={form}
+              name="register"
+              initialValues={{
+                residence: ["zhejiang", "hangzhou", "xihu"],
+                prefix: "86",
+              }}
+              scrollToFirstError
+            >
+              <Col className={HeaderCss.inputParent}>
+                {/*  FORM VALIDATION */}
+
                 <Form.Item
                   className={HeaderCss.form_items}
                   name="user_name"
@@ -216,6 +234,7 @@ const Header = () => {
                   ]}
                 >
                   <Input
+                    name="user_name"
                     placeholder="Enter User name"
                     className={HeaderCss.inputA}
                   />
@@ -236,10 +255,15 @@ const Header = () => {
                     },
                   ]}
                 >
-                  <Input placeholder="Email" className={HeaderCss.inputB} />
+                  <Input
+                    name="email"
+                    placeholder="Email"
+                    className={HeaderCss.inputB}
+                  />
                 </Form.Item>
 
                 {/* PASSWORD */}
+
                 <Form.Item
                   className={HeaderCss.form_items}
                   name="password"
@@ -252,6 +276,7 @@ const Header = () => {
                   hasFeedback
                 >
                   <Input.Password
+                    name="password"
                     placeholder="Password"
                     className={HeaderCss.inputC}
                   />
@@ -288,24 +313,66 @@ const Header = () => {
                     className={HeaderCss.inputD}
                   />
                 </Form.Item>
-              </Form>
-            </Col>
+              </Col>
 
-            <Row className={HeaderCss.twoAgree}>
-              <div>
-                <Checkbox className={HeaderCss.agreeOptionA}>
-                  I agree with your Terms & Conditions
-                </Checkbox>
-              </div>
-              <div>
-                <Checkbox className={HeaderCss.agreeOptionB}>
-                  I agree with your Privacy Policy
-                </Checkbox>
-              </div>
-            </Row>
-            <div className={HeaderCss.registBtnParent}>
-              <Button className={HeaderCss.registerBtn}>Register</Button>
-            </div>
+              <Row className={HeaderCss.twoAgree}>
+                <Form.Item
+                  className={HeaderCss.form_items_checkbox}
+                  name="conditions"
+                  valuePropName="checked"
+                  rules={[
+                    {
+                      validator: (_, value) =>
+                        value
+                          ? Promise.resolve(SetIsBtnDisable(false))
+                          : Promise.reject(
+                            new Error(
+                              "Should accept Terms & Conditions",
+                              SetIsBtnDisable(true)
+                            )
+                          ),
+                    },
+                  ]}
+                >
+                  <Checkbox
+                    name="conditions"
+                    className={HeaderCss.agreeOptionA}
+                  >
+                    I agree with your Terms & Conditions
+                  </Checkbox>
+                </Form.Item>
+                <Form.Item
+                  className={HeaderCss.form_items_checkbox}
+                  name="privacy"
+                  valuePropName="checked"
+                  rules={[
+                    {
+                      validator: (_, value) =>
+                        value
+                          ? Promise.resolve()
+                          : Promise.reject(
+                            new Error("Should accept Privacy & Policy")
+                          ),
+                    },
+                  ]}
+                >
+                  <Checkbox name="privacy" className={HeaderCss.agreeOptionB}>
+                    I agree with your Privacy Policy
+                  </Checkbox>
+                </Form.Item>
+              </Row>
+              <Form.Item>
+                <div className={HeaderCss.registBtnParent}>
+                  <Button
+                    disabled={IsBtnDisable}
+                    htmlType="submit"
+                    className={HeaderCss.registerBtn}
+                  >
+                    Register
+                  </Button>
+                </div>
+              </Form.Item>
+            </Form>
           </Modal>
 
           {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
