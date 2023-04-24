@@ -13,6 +13,7 @@
   --light-font-color: #636363;
   --light-grey: #f1f1f1;
   --black-btn-color: black;
+  --button-disable: #111111ad;
   --white-btn-font-color: white;
   --footer-font-color: #1c1c1c;
   --btn-background: #ff7757;
@@ -52,6 +53,7 @@
   background: var(--btn-background-secondary);
 }
 
+/* ANT POPUP MODAL LIKE LOGIN */
 .ant-modal {
   margin-top: 150px !important;
 }
@@ -86,4 +88,9 @@
 
 .swiper-pagination-bullets {
   padding-bottom: 20px;
+}
+
+/* ANT SHOW PASSEORD ICON ALIGNMENT */
+.ant-form-item-feedback-icon {
+  display: flex !important;
 }
