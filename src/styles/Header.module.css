@@ -202,6 +202,12 @@
   font-family: var(--font-poppins);
 }
 
+.signIn:hover {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color) !important;
+  transition-duration: 0.5s;
+}
+
 .forgot {
   color: var(--light-font-color);
   font-family: var(--font-poppins);
@@ -319,6 +325,12 @@
   justify-content: center;
   align-items: center;
   border: none;
+}
+
+.registerBtn:hover {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  transition-duration: 0.5s;
 }
 
 .registBtnParent {

@@ -308,7 +308,7 @@ const Register_to_host = () => {
 
             <hr className={RegisterToHost.horizontaLine} />
 
-            <div className={RegisterToHost.headingSign}><h6 className={RegisterToHost.faqTitle}>What happens if a renter cancels a revervation?</h6>
+            <div className={RegisterToHost.headingSign}><h6 className={RegisterToHost.faqTitle}>What happens if a renter cancels a reservation?</h6>
               <Button className={RegisterToHost.sign} onClick={toggleButtonF}>{showF ? "-" : "+"}</Button>
             </div>
           </Col>

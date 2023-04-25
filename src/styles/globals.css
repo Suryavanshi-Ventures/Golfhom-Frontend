@@ -61,10 +61,10 @@
 /* ANT DESIGN TITLE */
 .ant-modal-content {
   padding: 0px !important;
-  position: fixed !important;
+  /* position: fixed !important;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 .ant-modal-header,

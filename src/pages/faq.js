@@ -157,7 +157,7 @@ function FAQ() {
 
                   <div className={FAQCss.headingSign}>
                     <h6 className={FAQCss.faqTitle}>
-                      What happens if a renter cancels a revervation?
+                      What happens if a renter cancels a reservation?
                     </h6>
                     <Button className={FAQCss.sign} onClick={toggleButtonF}>
                       {showF ? "-" : "+"}
@@ -249,7 +249,7 @@ function FAQ() {
 
                   <div className={FAQCss.headingSign}>
                     <h6 className={FAQCss.faqTitle}>
-                      What happens if a renter cancels a revervation?
+                      What happens if a renter cancels a reservation?
                     </h6>
                     <Button className={FAQCss.sign} onClick={toggleButtonF}>
                       {showF ? "-" : "+"}

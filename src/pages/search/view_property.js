@@ -5,7 +5,7 @@ import { Container, Col, Row, Button, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../styles/ViewProperty.module.css";
 import Image from "next/image";
 import GirlGroupBannerImage from "../../../public/images/group_girls_banner.svg";
-import { Checkbox, Modal, Space, Tabs } from "antd";
+import { Checkbox, Input, Modal, Space, Tabs } from "antd";
 import TabContentOverview from "./tab_content_overview";
 import Carousel from "react-bootstrap/Carousel";
 import CarouselGalleryImg from "../../../public/images/view_prop_gallery_img_1.svg";
@@ -17,6 +17,7 @@ import Calendar from "../../../public/images/vector/calendar.svg";
 import BottomSection from "../../../common components/bottomGroup";
 import Blacktick from "../../../public/images/vector/blackTick.svg";
 import ViewPropMap from "../../../public/images/view_prop_Map.svg";
+import TextArea from "antd/es/input/TextArea";
 
 
 const ViewProperty = () => {
@@ -221,35 +222,35 @@ const ViewProperty = () => {
                 >
                   <Col className={ViewPropertyCss.inputParent}>
                     <div>
-                      <input
+                      <Input
                         className={ViewPropertyCss.inputA}
                         type="text"
                         placeholder="Name"
-                      ></input>
+                      />
                     </div>
 
                     <div>
-                      <input
+                      <Input
                         className={ViewPropertyCss.inputB}
                         type="email"
                         placeholder="Email"
-                      ></input>
+                      />
                     </div>
 
                     <div>
-                      <input
+                      <Input
                         className={ViewPropertyCss.inputC}
                         type="tel"
                         placeholder="Phone Number"
-                      ></input>
+                      />
                     </div>
 
                     <div className={ViewPropertyCss.inputDParent}>
-                      <input
+                      <TextArea
                         className={ViewPropertyCss.inputD}
                         type="address"
                         placeholder="Message"
-                      ></input>
+                      />
                     </div>
                   </Col>
 
