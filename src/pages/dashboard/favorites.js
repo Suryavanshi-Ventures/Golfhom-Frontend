@@ -57,19 +57,19 @@ const Favorites = () => {
                             <td>4</td>
                             <td>3</td>
                             <td>10</td>
-                            <td>
+                            <td className={FavoritesCss.twoImage}>
                                 <Image
                                     src={Delete}
                                     alt='Delete'
                                     fill
-                                    className={FavoritesCss.imgChild}
+                                    className={FavoritesCss.imgChildA}
                                 />
 
                                 <Image
                                     src={Nextimg}
                                     alt='Next Image'
                                     fill
-                                    className={FavoritesCss.imgChild}
+                                    className={FavoritesCss.imgChildB}
                                 />
                             </td>
                         </tr>

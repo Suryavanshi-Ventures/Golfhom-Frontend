@@ -38,11 +38,11 @@
     }
 
     .thum {
-      width: 14%;
+      width: 12%;
     }
   
     .add {
-      width: 20%;
+      width: 18%;
     }
   
     .type {
@@ -74,12 +74,11 @@
       font-family: var(--font-poppins);
       font-weight: 400;
       font-size: 0.9rem;
-      border-bottom: 1px solid var(--dark-grey-color);
+      border-bottom: 1px solid white;
       height: 110px;
       vertical-align: middle;
     }
 
-    
   .oldTown {
     color: var(--btn-background-secondary);
     text-decoration: underline;
@@ -99,6 +98,22 @@
     font-weight: 600;
   }
 
-    .imgChild {
-      position: relative !important;
+  .imgChildA {
+    position: relative !important;  
+  }
+
+    .imgChildB {
+      position: relative !important;  
+      padding-top: 10px;
+    }
+
+    .twoImage {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border-bottom: none;
+      width: 54px;
+      height: auto;
+      gap: 88px;
+      padding-top: 40px !important;
     }

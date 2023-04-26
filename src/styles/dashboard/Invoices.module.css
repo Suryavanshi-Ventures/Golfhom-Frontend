@@ -4,3 +4,115 @@
     position: relative !important;
   }
   
+      /*     -------------------------     TEXT AREA      ----------------------------    */
+
+  
+      .invoices {
+        font-family: var(--font-amiri);
+        font-weight: 700;
+        margin-top: 42px;
+        margin-bottom: 20px;
+      }
+    
+      .manage {
+        font-family: var(--font-amiri);
+        font-weight: 600;
+        margin: 30px 0px;
+      }
+
+      .backgroundLight {
+        background-color: var(--header-background-color);
+        margin: 50px 0px;
+      }
+
+      
+    .heading {
+      height: 50px;
+      border-bottom: 1px solid var(--header-background-color);
+    }
+
+    .tableRow {
+      color: var(--light-font-color);
+      font-family: var(--font-poppins);
+      font-weight: 400;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--header-background-color);
+      height: 80px;
+      vertical-align: middle;
+    
+    }
+
+    .start, .type, .end, .price {
+      width: 25%;
+      font-family: var(--font-poppins);
+      font-weight: 400;
+      color: var(--black-color);
+    }
+
+    .colA, .colB, .colC, .colD {
+      width: 100%;
+      padding: 8px 14px;
+      border: 1px solid var(--dark-grey-font);
+      border-radius: 4px;
+      font-family: var(--font-poppins);
+      font-weight: 400;
+      color: var(--dark-grey-font);
+    }
+
+    .imageParent {
+      width: 22px;
+      height: auto;
+      margin-left: 20px;
+    }
+
+    .imgChild {
+      position: relative !important;
+    }
+
+    .headingB {
+      background-color: var(--header-background-color);
+      height: 100px;
+    }
+
+    .tableB {
+      margin-bottom: 80px;
+    }
+
+    .tableHead {
+      vertical-align: middle;
+      font-family: var(--font-poppins);
+      font-weight: 400;
+    }
+
+  .order {
+    width: 12%;
+    padding-left: 20px !important;
+  }
+
+  .date {
+    width: 12%;
+  }
+
+  .bilfor {
+    width: 12%;
+  }
+
+  .biltyp {
+    width: 14%;
+  }
+
+  .status {
+    width: 12%;
+  } 
+
+.pay {
+  width: 12%;
+}
+
+.total {
+  width: 8%;
+}
+
+.action {
+  width: 8%;
+}

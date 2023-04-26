@@ -10,7 +10,7 @@ import Allbf from "../../public/images/allBf.svg";
 import golfWire from "../../public/images/golfWire.svg";
 import Bears from "../../public/images/bears.svg";
 import GolfBeginners from "../../public/images/golfBeginners.svg";
-
+import Bleav from "../../public/images/bleav.svg";
 
 const blogsAndPodcasts = () => {
     return (
@@ -32,6 +32,14 @@ const blogsAndPodcasts = () => {
             <Container className={PodcastCss.imageGrand}>
 
                 <Row className={PodcastCss.mainRow}>
+                    <div className={PodcastCss.imageParent}>
+                        <Image
+                            src={Bleav}
+                            alt=' Bleav'
+                            fill className={PodcastCss.imageChild}>
+                        </Image>
+                    </div>
+
                     <div className={PodcastCss.imageParent}>
                         <Image
                             src={OfficialBlog}
