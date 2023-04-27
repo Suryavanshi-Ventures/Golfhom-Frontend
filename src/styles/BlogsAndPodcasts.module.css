@@ -34,10 +34,73 @@
   padding: 30px;
   display: flex;
   flex-wrap: wrap;
+  position: relative !important;
 }
 
 .imageChild {
   position: relative !important;
+}
+
+.textImg {
+  width: 86%;
+  height: 84%;
+  /* top: 0px; */
+  left: 31px;
+  position: absolute !important;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: end;
+  align-items: flex-start;
+  flex-direction: column;
+  opacity: 0;
+  /* transform: translateY(25px); */
+  transition: 0.6s;
+}
+
+.textImg:hover {
+  opacity: 1;
+  transform: translateY(0px);
+  border-radius: 10px;
+}
+
+.title {
+  font-family: var(--font-poppins);
+  color: var(--white-font-color);
+  font-weight: 400;
+  font-size: 1rem;
+  padding-left: 20px;
+}
+
+.read {
+  font-family: var(--font-poppins);
+  color: var(--white-font-color);
+  font-weight: 300;
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.readNext {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  width: 120px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nextparent {
+  max-width: 24px;
+  display: flex;
+  height: auto;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+.whitenext {
+  position: relative !important;
+ 
 }
 
 /*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */

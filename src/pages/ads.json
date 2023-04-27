@@ -7,7 +7,7 @@
 
     {
         "id": 12,
-        "image": "/images/shipSticks.svg",
+        "image": "/images/hudson.svg",
         "name": "15"
     },
 
@@ -19,7 +19,7 @@
 
     {
         "id": 14,
-        "image": "/images/hudson.svg",
+        "image": "/images/auto.svg",
         "name": "15"
     },
 
@@ -37,7 +37,7 @@
 
     {
         "id": 17,
-        "image": "/images/shipSticks.svg",
+        "image": "/images/hudson.svg",
         "name": "15"
     },
 
@@ -49,7 +49,7 @@
 
     {
         "id": 19,
-        "image": "/images/hudson.svg",
+        "image": "/images/auto.svg",
         "name": "15"
     },
 
