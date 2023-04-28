@@ -272,13 +272,14 @@ const Register_to_host = () => {
           <Col md={6}>
             <div>
               <div className={RegisterToHost.headingSign}>
-                <h6 className={RegisterToHost.faqTitle}>
+                <p className={RegisterToHost.faqTitle}>
                   How can I list my property Golfhom ?
-                </h6>
+                </p>
                 <Button className={RegisterToHost.sign} onClick={toggleButtonA}>
                   {showA ? "-" : "+"}
                 </Button>
               </div>
+
               {showA && (
                 <div>
                   <p className={RegisterToHost.faqPara}>
@@ -294,9 +295,9 @@ const Register_to_host = () => {
 
             <div>
               <div className={RegisterToHost.headingSign}>
-                <h6 className={RegisterToHost.faqTitle}>
+                <p className={RegisterToHost.faqTitle}>
                   How do I communicate with my guests?
-                </h6>
+                </p>
                 <Button className={RegisterToHost.sign} onClick={toggleButtonB}>
                   {showB ? "-" : "+"}
                 </Button>
@@ -315,9 +316,9 @@ const Register_to_host = () => {
             <hr className={RegisterToHost.horizontaLine} />
 
             <div className={RegisterToHost.headingSign}>
-              <h6 className={RegisterToHost.faqTitle}>
+              <p className={RegisterToHost.faqTitle}>
                 How do I price my property?
-              </h6>
+              </p>
               <Button className={RegisterToHost.sign} onClick={toggleButtonC}>
                 {showC ? "-" : "+"}
               </Button>
@@ -326,9 +327,9 @@ const Register_to_host = () => {
             <hr className={RegisterToHost.horizontaLine} />
 
             <div className={RegisterToHost.headingSign}>
-              <h6 className={RegisterToHost.faqTitle}>
+              <p className={RegisterToHost.faqTitle}>
                 How does Golfhom.com pay me?
-              </h6>
+              </p>
               <Button className={RegisterToHost.sign} onClick={toggleButtonD}>
                 {showD ? "-" : "+"}
               </Button>
@@ -337,9 +338,9 @@ const Register_to_host = () => {
             <hr className={RegisterToHost.horizontaLine} />
 
             <div className={RegisterToHost.headingSign}>
-              <h6 className={RegisterToHost.faqTitle}>
+              <p className={RegisterToHost.faqTitle}>
                 How can I upgrade my listing to featured ?
-              </h6>
+              </p>
               <Button className={RegisterToHost.sign} onClick={toggleButtonE}>
                 {showE ? "-" : "+"}
               </Button>
@@ -348,9 +349,9 @@ const Register_to_host = () => {
             <hr className={RegisterToHost.horizontaLine} />
 
             <div className={RegisterToHost.headingSign}>
-              <h6 className={RegisterToHost.faqTitle}>
+              <p className={RegisterToHost.faqTitle}>
                 What happens if a renter cancels a reservation?
-              </h6>
+              </p>
               <Button className={RegisterToHost.sign} onClick={toggleButtonF}>
                 {showF ? "-" : "+"}
               </Button>

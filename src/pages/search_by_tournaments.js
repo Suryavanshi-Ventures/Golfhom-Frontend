@@ -62,9 +62,9 @@ const searchByTournaments = () => {
             <h2 className={SearchByTourCss.searchTitle}>
               Search by Tournaments
             </h2>
-            <h6 className={SearchByTourCss.checkOut}>
+            <p className={SearchByTourCss.checkOut}>
               Check out our growing list of tour-spot rentals
-            </h6>
+            </p>
 
             <Dropdown menu={menuProps}>
               <Button
@@ -103,7 +103,7 @@ const searchByTournaments = () => {
                   <h5 className={SearchByTourCss.rental}>150 Rentals</h5>
 
                   <div className={SearchByTourCss.sortdiv}>
-                    <h6 className={SearchByTourCss.sort}>Sort By:</h6>
+                    <p className={SearchByTourCss.sort}>Sort By:</p>
 
                     <Dropdown
                       menu={menuProps}

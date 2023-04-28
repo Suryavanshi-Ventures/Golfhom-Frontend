@@ -80,7 +80,7 @@ const index = ({ cards }) => {
                     </div>
 
                     <div className={BlogCss.learnbtn}>
-                      <h6 className={BlogCss.learnbtn_text}>Learn More</h6>
+                      <p className={BlogCss.learnbtn_text}>Learn More</p>
                       <Image
                         className={BlogCss.learnIcon}
                         src="/images/vector/learnMore.svg"

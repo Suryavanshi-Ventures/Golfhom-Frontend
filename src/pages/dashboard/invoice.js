@@ -8,6 +8,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Nextimg from "../../../public/images/vector/next.svg";
 import Head from "next/head";
+import { Dropdown, Space, Typography } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 
 const Invoice = () => {
   const [startDate, setStartDate] = useState(null);
@@ -19,6 +21,37 @@ const Invoice = () => {
     setSelectedOption(event.target.value);
   };
 
+
+  const items = [
+    {
+      label: "Any",
+      key: "1",
+    },
+    {
+      label: "Reservation Fee",
+      key: "2",
+    },
+    {
+      label: "Upgrade to Featured",
+      key: "3",
+    }
+  ];
+
+  const item = [
+    {
+      label: "Any",
+      key: "4",
+    },
+    {
+      label: "Paid",
+      key: "5",
+    },
+    {
+      label: "Not Paid",
+      key: "6",
+    }
+  ];
+
   return (
     <>
       <Head>
@@ -27,6 +60,7 @@ const Invoice = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {/*  -------------------------         BANNER IMAGE FAQ         ------------------------------*/}
       <div className={InvoiceCss.banner_img_container}>
         <Image
@@ -68,6 +102,7 @@ const Invoice = () => {
                     showMonthYearPicker
                     className={InvoiceCss.colA}
                   />
+
                 </td>
 
                 <td>
@@ -82,29 +117,55 @@ const Invoice = () => {
                 </td>
 
                 <td>
-                  <select
+                  <Dropdown
+                    menu={{
+                      items,
+                      selectable: true,
+                      defaultSelectedKeys: ["2"],
+                    }}
+                    trigger={["click"]}
                     id="my-dropdown"
                     value={selectedOption}
                     onChange={handleOptionChange}
                     className={InvoiceCss.colC}
+                    prefix={<DownOutlined />}
                   >
-                    <option value="number">Reservation Fee</option>
-                    <option value="number">500</option>
-                    <option value="number">800</option>
-                  </select>
+                    <span onClick={(e) => e.preventDefault()}>
+                      <Typography.Link>
+                        <Space className={
+                          InvoiceCss.search_by_golf_input_search_by_tourni}>
+                          Reservation Fee
+                          <DownOutlined />
+                        </Space>
+                      </Typography.Link>
+                    </span>
+                  </Dropdown>
                 </td>
 
                 <td>
-                  <select
+                  <Dropdown
+                    menu={{
+                      item,
+                      selectable: true,
+                      defaultSelectedKeys: ["5"],
+                    }}
+                    trigger={["click"]}
                     id="my-dropdown"
                     value={selectedOption}
                     onChange={handleOptionChange}
                     className={InvoiceCss.colD}
+                    prefix={<DownOutlined />}
                   >
-                    <option value="number">Paid</option>
-                    <option value="number">900</option>
-                    <option value="number">1000</option>
-                  </select>
+                    <span onClick={(e) => e.preventDefault()}>
+                      <Typography.Link>
+                        <Space className={
+                          InvoiceCss.search_by_golf_input_search_by_tourni}>
+                          Paid
+                          <DownOutlined />
+                        </Space>
+                      </Typography.Link>
+                    </span>
+                  </Dropdown>
                 </td>
               </tr>
             </tbody>

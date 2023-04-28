@@ -80,9 +80,9 @@ function FAQ() {
                       Booking Questions
                     </h3>
                     <div className={FAQCss.headingSign}>
-                      <h6 className={FAQCss.faqTitle}>
+                      <p className={FAQCss.faqTitle}>
                         How can I list my property Golfhom ?
-                      </h6>
+                      </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonA}>
                         {showA ? "-" : "+"}
                       </Button>
@@ -102,9 +102,9 @@ function FAQ() {
 
                   <div>
                     <div className={FAQCss.headingSign}>
-                      <h6 className={FAQCss.faqTitle}>
+                      <p className={FAQCss.faqTitle}>
                         How do I communicate with my guests?
-                      </h6>
+                      </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonB}>
                         {showB ? "-" : "+"}
                       </Button>
@@ -123,9 +123,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       How do I price my property?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonC}>
                       {showC ? "-" : "+"}
                     </Button>
@@ -134,9 +134,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       How does Golfhom.com pay me?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonD}>
                       {showD ? "-" : "+"}
                     </Button>
@@ -145,9 +145,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       How can I upgrade my listing to featured ?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonE}>
                       {showE ? "-" : "+"}
                     </Button>
@@ -156,9 +156,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       What happens if a renter cancels a reservation?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonF}>
                       {showF ? "-" : "+"}
                     </Button>
@@ -172,9 +172,9 @@ function FAQ() {
                       Cancellation Questions
                     </h3>
                     <div className={FAQCss.headingSign}>
-                      <h6 className={FAQCss.faqTitle}>
+                      <p className={FAQCss.faqTitle}>
                         How can I list my property Golfhom ?
-                      </h6>
+                      </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonA}>
                         {showA ? "-" : "+"}
                       </Button>
@@ -194,9 +194,9 @@ function FAQ() {
 
                   <div>
                     <div className={FAQCss.headingSign}>
-                      <h6 className={FAQCss.faqTitle}>
+                      <p className={FAQCss.faqTitle}>
                         How do I communicate with my guests?
-                      </h6>
+                      </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonB}>
                         {showB ? "-" : "+"}
                       </Button>
@@ -215,9 +215,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       How do I price my property?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonC}>
                       {showC ? "-" : "+"}
                     </Button>
@@ -226,9 +226,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       How does Golfhom.com pay me?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonD}>
                       {showD ? "-" : "+"}
                     </Button>
@@ -237,9 +237,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       How can I upgrade my listing to featured ?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonE}>
                       {showE ? "-" : "+"}
                     </Button>
@@ -248,9 +248,9 @@ function FAQ() {
                   <hr className={FAQCss.horizontaLine} />
 
                   <div className={FAQCss.headingSign}>
-                    <h6 className={FAQCss.faqTitle}>
+                    <p className={FAQCss.faqTitle}>
                       What happens if a renter cancels a reservation?
-                    </h6>
+                    </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonF}>
                       {showF ? "-" : "+"}
                     </Button>
