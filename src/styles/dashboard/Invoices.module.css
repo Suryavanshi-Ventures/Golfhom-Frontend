@@ -51,12 +51,23 @@
 
     .colA, .colB, .colC, .colD {
       width: 100%;
+      height: auto;
       padding: 8px 14px;
       border: 1px solid var(--dark-grey-font);
       border-radius: 4px;
       font-family: var(--font-poppins);
       font-weight: 400;
       color: var(--dark-grey-font);
+      background-color: var(--white-btn-font-color);
+    }
+
+    .search_by_golf_input_search_by_tourni {
+      height: auto;
+      border-radius: 4px;
+      width: 90%;
+      justify-content: space-between;
+      color: var(--dark-grey-font);
+      padding: 10px;
     }
 
     .imageParent {

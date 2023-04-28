@@ -53,8 +53,8 @@
   align-items: flex-start;
   flex-direction: column;
   opacity: 0;
-  /* transform: translateY(25px); */
-  transition: 0.6s;
+  transition: 0.6s ease-in-out;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 
 .textImg:hover {

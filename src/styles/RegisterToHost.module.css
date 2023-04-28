@@ -243,13 +243,16 @@
 .sign {
   background-color: black;
   display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  padding: 0% 1.2% !important;
-  border-radius: 16px;
-  place-self: center;
+  border-radius: 100%;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 18px;
   border: none;
+  width: 24px;
+  height: 25px;
+  padding-bottom: 7px;
 }
 
 .sign:hover {

@@ -50,7 +50,7 @@ const Video = ({ videos }) => {
                     <Card className={HomeCss.videoData}>
                         <iframe className={HomeCss.videoPlay} layout="fill" src="https://www.youtube.com/embed/vEw3dhAfCBA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </Card>
-                    <h6 className={HomeCss.titleShadow}>Video Title</h6>
+                    <p className={HomeCss.titleShadow}>Video Title</p>
                 </SwiperSlide>
             ))}
         </Swiper>

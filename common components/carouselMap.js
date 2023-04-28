@@ -24,6 +24,7 @@ const carouselMap = () => {
                                     alt="Hotel View"
                                     fill
                                     className={CarouselMapCss.carouselImage}
+                                    priority
                                 >
                                 </Image>
                             </Link>
