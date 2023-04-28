@@ -326,11 +326,11 @@ const Header = () => {
                         value
                           ? Promise.resolve(SetIsBtnDisable(false))
                           : Promise.reject(
-                            new Error(
-                              "Should accept Terms & Conditions",
-                              SetIsBtnDisable(true)
-                            )
-                          ),
+                              new Error(
+                                "Should accept Terms & Conditions",
+                                SetIsBtnDisable(true)
+                              )
+                            ),
                     },
                   ]}
                 >
@@ -351,8 +351,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -618,25 +618,25 @@ function OffCanvasExample({ name, ...props }) {
     {
       key: "1",
       label: (
-        <a
+        <Link
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.antgroup.com"
         >
           1st menu item
-        </a>
+        </Link>
       ),
     },
     {
       key: "2",
       label: (
-        <a
+        <Link
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.aliyun.com"
         >
           2nd menu item (disabled)
-        </a>
+        </Link>
       ),
       icon: <SmileOutlined />,
       disabled: true,
@@ -644,13 +644,13 @@ function OffCanvasExample({ name, ...props }) {
     {
       key: "3",
       label: (
-        <a
+        <Link
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.luohanacademy.com"
         >
           3rd menu item (disabled)
-        </a>
+        </Link>
       ),
       disabled: true,
     },
@@ -771,9 +771,9 @@ function OffCanvasExample({ name, ...props }) {
       >
         <div className={HeaderCss.textParent}>
           <p className={HeaderCss.emailNumber}>Email or Member Number</p>
-          <input className={HeaderCss.password} type="text"></input>
+          <Input className={HeaderCss.password} type="text"></Input>
           <p className={HeaderCss.emailNumber}>Password</p>
-          <input className={HeaderCss.password} type="password"></input>
+          <Input className={HeaderCss.password} type="password"></Input>
         </div>
 
         <div className={HeaderCss.remember}>
@@ -808,9 +808,9 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
-                <a className={HeaderCss.register} onClick={showRegister}>
+                <Link className={HeaderCss.register} onClick={showRegister}>
                   Register
-                </a>
+                </Link>
               </Space>
             </Link>
           </div>

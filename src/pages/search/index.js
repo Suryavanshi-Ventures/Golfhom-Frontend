@@ -16,7 +16,7 @@ import CarouselImages from "../../../common components/carouselMap";
 const { RangePicker } = DatePicker;
 
 const index = () => {
-  const [showHidden, setShowHidden] = useState(false);
+  // const [showHidden, setShowHidden] = useState(false);
 
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
@@ -93,14 +93,25 @@ const index = () => {
           </Col>
 
           <Col mmd={6} className={Index.twoCheckbox}>
-            <div md={4}><Checkbox>Golf Course Front</Checkbox></div>
-            <div md={4}><Checkbox>Golf Course Community</Checkbox></div>
-            <div md={4}><Button onClick={() => setShowHidden(false)} className={Index.searching}>Search</Button></div>
+            <div>
+              <Checkbox>Golf Course Front</Checkbox>
+            </div>
+            <div>
+              <Checkbox>Golf Course Community</Checkbox>
+            </div>
+            <div>
+              <Button
+                onClick={() => setShowHidden(false)}
+                className={Index.searching}
+              >
+                Search
+              </Button>
+            </div>
           </Col>
         </Row>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -167,7 +178,11 @@ const index = () => {
                 <Col md={3} className={Index.edit_details_container_cols}>
                   <div className={Index.edit_details_btn_parent_container}>
                     <div className={Index.edit_details_btn_child_container}>
-                      <Button size="large" className={Index.edit_details_btn} onClick={() => setShowHidden(true)}>
+                      <Button
+                        size="large"
+                        className={Index.edit_details_btn}
+                        onClick={() => setShowHidden(true)}
+                      >
                         Edit
                       </Button>
                     </div>

@@ -20,7 +20,7 @@ import Review from "../review";
 import review from "./review.json";
 import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined } from "@ant-design/icons";
 import BottomSection from "../../common components/bottomGroup";
 
 const Home = () => {
@@ -29,33 +29,26 @@ const Home = () => {
   // DROPDOWN FOR SEARCH
 
   const items = [
-    // {
-    //   label: 'Choose from tournaments',
-    //   key: '0',
-    // },
     {
-      // label: <a href="https://www.antgroup.com">PGA Championship</a>,
-      label: 'PGA Championship',
-      key: '1',
+      label: "PGA Championship",
+      key: "1",
     },
     {
-      // label: <a href="https://www.aliyun.com">The Master</a>,
-      label: 'The Master',
-      key: '2',
+      label: "The Master",
+      key: "2",
     },
     {
-      label: 'The open champioship',
-      key: '3',
+      label: "The open champioship",
+      key: "3",
     },
     {
-      label: 'The Tradition at Quinta',
-      key: '4',
+      label: "The Tradition at Quinta",
+      key: "4",
     },
     {
-      label: 'US Open',
-      key: '5',
-    }
-
+      label: "US Open",
+      key: "5",
+    },
   ];
 
   return (
@@ -120,10 +113,11 @@ const Home = () => {
               </Col>
               <Col md={4} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
-                  <Link href="/search"><Button className={HomeCss.search_btn} type="primary">
-                    Search
-                  </Button></Link>
-
+                  <Link href="/search">
+                    <Button className={HomeCss.search_btn} type="primary">
+                      Search
+                    </Button>
+                  </Link>
                 </div>
               </Col>
             </Row>
@@ -150,8 +144,14 @@ const Home = () => {
             their next luxury golf vacation rental. Book with us today!
           </p>
 
-          <Link href="/search/view_all_property" style={{ textDecoration: "none" }}>
-          <div className={HomeCss.viewallBtnParent}><Button className={HomeCss.viewallBtn}>View All</Button></div></Link>
+          <Link
+            href="/search/view_all_property"
+            style={{ textDecoration: "none" }}
+          >
+            <div className={HomeCss.viewallBtnParent}>
+              <Button className={HomeCss.viewallBtn}>View All</Button>
+            </div>
+          </Link>
         </div>
 
         <Slider slides={slides} />
@@ -265,24 +265,26 @@ const Home = () => {
                               menu={{
                                 items,
                                 selectable: true,
-                                defaultSelectedKeys: ['3'],
+                                defaultSelectedKeys: ["3"],
                               }}
-                              trigger={['click']}
+                              trigger={["click"]}
                               className={
                                 HomeCss.search_by_golf_input_container_tourni
                               }
                               prefix={<DownOutlined />}
                             >
-                              <a onClick={(e) => e.preventDefault()}>
+                              <span onClick={(e) => e.preventDefault()}>
                                 <Typography.Link>
-                                  <Space className={
-                                    HomeCss.search_by_golf_input_search_by_tourni
-                                  }>
+                                  <Space
+                                    className={
+                                      HomeCss.search_by_golf_input_search_by_tourni
+                                    }
+                                  >
                                     <DownOutlined />
                                     Please select tournament
                                   </Space>
                                 </Typography.Link>
-                              </a>
+                              </span>
                             </Dropdown>
                           </div>
                         </div>
@@ -439,7 +441,6 @@ const Home = () => {
         </Container>
       </div>
 
-
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
       <Container className={HomeCss.ads}>
@@ -475,7 +476,6 @@ const Home = () => {
         </h2>
         <Review reviews={review} />
       </Container>
-
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
