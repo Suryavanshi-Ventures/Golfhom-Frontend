@@ -15,13 +15,14 @@ import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
 
 const Header = () => {
-  // This part is comment out for confirmation
-
   {
     /* -----------       SIGN UP SECTION        -----------------*/
   }
+
   // CHECKBOX TERMS CONDITION USESTATE
-  const [IsBtnDisable, SetIsBtnDisable] = useState(true);
+
+  const [IsBtnDisable, SetIsBtnDisable] = useState(false);
+
   // CHECKBOX TERMS CONDITION USESTATE END
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,7 +55,7 @@ const Header = () => {
   //! SIGNUP API FUNCTIONS
   const [form] = Form.useForm();
 
-  const onSubmitSignup = async (values) => {
+  const onSubmitSignup = (values) => {
     //! SIGNUP API
     // try {
     //   const response = await axios.post(
@@ -70,7 +71,7 @@ const Header = () => {
     // } catch (error) {
     //   console.log("Sigup error: " + error);
     // }
-    console.log("OnSubmit: " + values);
+    console.log(values);
   };
 
   const onCheckBoxTick = (values) => {
@@ -272,6 +273,9 @@ const Header = () => {
                       required: true,
                       message: "Please input your password!",
                     },
+                    {
+                      min: 5,
+                    },
                   ]}
                   hasFeedback
                 >
@@ -324,12 +328,9 @@ const Header = () => {
                     {
                       validator: (_, value) =>
                         value
-                          ? Promise.resolve(SetIsBtnDisable(false))
+                          ? Promise.resolve()
                           : Promise.reject(
-                              new Error(
-                                "Should accept Terms & Conditions",
-                                SetIsBtnDisable(true)
-                              )
+                              new Error("Should accept Terms & Conditions")
                             ),
                     },
                   ]}
