@@ -159,7 +159,7 @@ function Income() {
           </section>
         </Container>
       </main>
-      {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
+      {/*  ---------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
       <BottomSection />
     </>
   );
