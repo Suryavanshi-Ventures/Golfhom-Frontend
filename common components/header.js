@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Container, Col, Row } from "react-bootstrap";
-import { Button, Checkbox, Input, Form } from "antd";
+import { Button, Checkbox, Input, Form, message } from "antd";
 import Image from "next/image";
 import HeadPhoneIcon from "../public/headphones.svg";
 import UserIcon from "../public/user icon.svg";
@@ -19,9 +19,11 @@ const Header = () => {
     /* -----------       SIGN UP SECTION        -----------------*/
   }
 
-  // CHECKBOX TERMS CONDITION USESTATE
+  //! SIGNUP LOGIN FORM INSTANCE
+  const [form] = Form.useForm();
 
-  const [IsBtnDisable, SetIsBtnDisable] = useState(false);
+  //* REGISTER BTN DISABLED
+  const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(false);
 
   // CHECKBOX TERMS CONDITION USESTATE END
 
@@ -52,30 +54,61 @@ const Header = () => {
     setIsModalOpens(false);
   };
 
-  //! SIGNUP API FUNCTIONS
-  const [form] = Form.useForm();
+  //! SIGNUP API FUNCTION
+  const onSubmitSignup = async (values) => {
+    try {
+      //! SIGNUP API
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/user/signup`,
+        {
+          username: values.user_name,
+          email: values.email,
+          password: values.password,
+        }
+      );
 
-  const onSubmitSignup = (values) => {
-    //! SIGNUP API
-    // try {
-    //   const response = await axios.post(
-    //     `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/user/signup`,
-    //     {
-    //       username: values.user_name,
-    //       email: values.email,
-    //       password: values.password,
-    //     }
-    //   );
-
-    //   console.log("Response: " + response.status);
-    // } catch (error) {
-    //   console.log("Sigup error: " + error);
-    // }
-    console.log(values);
+      //* Close Register Modal on Success Signup
+      if (response.status === 201) {
+        handleCancelRegister();
+        message.success(response.data.message);
+      }
+    } catch (error) {
+      console.log("Sigup error: ", error);
+    }
+    // console.log(values);
   };
 
-  const onCheckBoxTick = (values) => {
-    console.log("OnFinish: " + values);
+  //! LOGIN API FUNCTION
+  const onSubmitLogin = async () => {
+    try {
+      // LOGIN FIELDS VALUES
+      const LoginEmail = form.getFieldValue("email_login");
+      const LoginPassword = form.getFieldValue("password_login");
+      const RememberMe = form.getFieldValue("remember_me");
+
+      if (LoginEmail || LoginPassword == null || "") {
+      }
+
+      //! LOGIN API CALL
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/user/login`,
+        {
+          email: LoginEmail,
+          password: LoginPassword,
+        }
+      );
+
+      //* IF LOGIN SUCCESSFUL
+      if (response.status === 200) {
+        setIsModalOpen(false);
+        message.success(response.data.message);
+      } else {
+        message.error("Invalid login credentials!");
+      }
+    } catch (err) {
+      //* IF LOGIN FAILED
+      message.error("Invalid login credentials!");
+    }
   };
 
   {
@@ -141,7 +174,6 @@ const Header = () => {
       <header className={HeaderCss.header}>
         <Container className={HeaderCss.container_header}>
           {/* -----------       SIGN UP SECTION        -----------------*/}
-
           <Modal
             title="Log In to your account"
             footer={null}
@@ -151,15 +183,76 @@ const Header = () => {
             width={372}
           >
             <div className={HeaderCss.textParent}>
-              <p className={HeaderCss.emailNumber}>Email or Member Number</p>
-              <Input className={HeaderCss.password} type="text"></Input>
-              <p className={HeaderCss.emailNumber}>Password</p>
-              <Input className={HeaderCss.password} type="password"></Input>
-            </div>
+              <Form
+                form={form}
+                layout="vertical"
+                name="login_form"
+                scrollToFirstError
+              >
+                {/* EMAIL */}
+                <Form.Item
+                  name="email_login"
+                  label="Email or Member Number"
+                  className={HeaderCss.form_items_login}
+                  rules={[
+                    {
+                      type: "email",
+                      message: "The input is not valid E-mail!",
+                    },
+                    {
+                      required: true,
+                      message: "Please input your E-mail!",
+                    },
+                  ]}
+                >
+                  <Input
+                    name="email_login"
+                    placeholder="Enter Email"
+                    className={HeaderCss.password}
+                  />
+                </Form.Item>
 
-            <div className={HeaderCss.remember}>
-              <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
-              <Button className={HeaderCss.signIn}>Log In</Button>
+                {/* PASSWORD */}
+                <Form.Item
+                  name="password_login"
+                  label="Password"
+                  className={HeaderCss.form_items_login}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your password!",
+                    },
+                    { min: 5 },
+                  ]}
+                  hasFeedback
+                >
+                  <Input.Password
+                    name="password_login"
+                    placeholder="Enter Password"
+                    className={HeaderCss.password}
+                  />
+                </Form.Item>
+
+                <div className={HeaderCss.remember}>
+                  <Form.Item
+                    className={HeaderCss.form_items_checkbox}
+                    name="remember_me"
+                    valuePropName="checked"
+                  >
+                    <Checkbox className={HeaderCss.meBox} name="remember_me">
+                      Remember Me
+                    </Checkbox>
+                  </Form.Item>
+
+                  <Button
+                    onClick={onSubmitLogin}
+                    htmlType="submit_login"
+                    className={HeaderCss.signIn}
+                  >
+                    Log In
+                  </Button>
+                </div>
+              </Form>
             </div>
 
             <div className={HeaderCss.forgotActive}>
@@ -199,7 +292,6 @@ const Header = () => {
           </Modal>
 
           {/* -----------      REGISTER SECTION        -----------------*/}
-
           <Modal
             title="Register"
             footer={null}
@@ -212,16 +304,11 @@ const Header = () => {
             <Form
               onFinish={onSubmitSignup}
               form={form}
-              name="register"
-              initialValues={{
-                residence: ["zhejiang", "hangzhou", "xihu"],
-                prefix: "86",
-              }}
+              name="register_form"
               scrollToFirstError
             >
               <Col className={HeaderCss.inputParent}>
-                {/*  FORM VALIDATION */}
-
+                {/*  FORM VALIDATION SIGNUP */}
                 <Form.Item
                   className={HeaderCss.form_items}
                   name="user_name"
@@ -365,8 +452,8 @@ const Header = () => {
               <Form.Item>
                 <div className={HeaderCss.registBtnParent}>
                   <Button
-                    disabled={IsBtnDisable}
-                    htmlType="submit"
+                    disabled={IsRegisterBtnDisable}
+                    htmlType="submit_signup"
                     className={HeaderCss.registerBtn}
                   >
                     Register
@@ -414,7 +501,9 @@ const Header = () => {
                     <Image src={HeadPhoneIcon} alt="headphones" />
                   </span>
                   <Link className={HeaderCss.top_header_a} href="/">
-                    Help
+                    <Space>
+                      <Button className={HeaderCss.signUpBtn}>Help</Button>
+                    </Space>
                   </Link>
                 </Col>
 
