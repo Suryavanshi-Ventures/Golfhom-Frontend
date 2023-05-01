@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CarouselMapCss from "../src/styles/CarouselMap.module.css";
 import { Carousel, Col, Row } from 'react-bootstrap';
 import Link from 'next/link';
@@ -12,11 +12,59 @@ import Heart from "../public/images/vector/heart.svg";
 import Dot from "../public/images/vector/dot.svg";
 
 const carouselMap = () => {
+    const [indexA, setIndexA] = useState(0);
+
+    const handleSelectA = (selectedIndex) => {
+        setIndexA(selectedIndex);
+    };
+
+    const [indexB, setIndexB] = useState(0);
+
+    const handleSelectB = (selectedIndex) => {
+        setIndexB(selectedIndex);
+    };
+
+    const [indexC, setIndexC] = useState(0);
+
+    const handleSelectC = (selectedIndex) => {
+        setIndexC(selectedIndex);
+    };
+
+    const [indexD, setIndexD] = useState(0);
+
+    const handleSelectD = (selectedIndex) => {
+        setIndexD(selectedIndex);
+    };
+
+    const [indexE, setIndexE] = useState(0);
+
+    const handleSelectE = (selectedIndex) => {
+        setIndexE(selectedIndex);
+    };
+
+    const [indexF, setIndexF] = useState(0);
+
+    const handleSelectF = (selectedIndex) => {
+        setIndexF(selectedIndex);
+    };
+
+    const [indexG, setIndexG] = useState(0);
+
+    const handleSelectG = (selectedIndex) => {
+        setIndexG(selectedIndex);
+    };
+
+    const [indexH, setIndexH] = useState(0);
+
+    const handleSelectH = (selectedIndex) => {
+        setIndexH(selectedIndex);
+    };
+
     return (
         <>
             <Row>
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel wrap={true} activeIndex={indexA} onSelect={handleSelectA} indicators={false} interval={5000} className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -65,6 +113,7 @@ const carouselMap = () => {
                                 </Link>
                             </div>
                         </Carousel.Item>
+
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -88,6 +137,20 @@ const carouselMap = () => {
                                 </Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexA === 0 ? 'active' : ''}
+                                onClick={() => setIndexA(0)}
+                            ></li>
+                            <li
+                                className={indexA === 1 ? 'active' : ''}
+                                onClick={() => setIndexA(1)}
+                            ></li>
+                            <li
+                                className={indexA === 2 ? 'active' : ''}
+                                onClick={() => setIndexA(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>
@@ -100,7 +163,8 @@ const carouselMap = () => {
                 </Col>
 
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel wrap={true} activeIndex={indexB} onSelect={handleSelectB} indicators={false} interval={5000}
+                        className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -147,6 +211,7 @@ const carouselMap = () => {
                                 </Link>
                             </div>
                         </Carousel.Item>
+
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -170,6 +235,20 @@ const carouselMap = () => {
                                 </Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexB === 0 ? 'active' : ''}
+                                onClick={() => setIndexB(0)}
+                            ></li>
+                            <li
+                                className={indexB === 1 ? 'active' : ''}
+                                onClick={() => setIndexB(1)}
+                            ></li>
+                            <li
+                                className={indexB === 2 ? 'active' : ''}
+                                onClick={() => setIndexB(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>
@@ -184,7 +263,7 @@ const carouselMap = () => {
 
             <Row>
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel wrap={true} activeIndexCC={indexC} onSelect={handleSelectC} indicators={false} interval={5000} className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -250,6 +329,20 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexC === 0 ? 'active' : ''}
+                                onClick={() => setIndexC(0)}
+                            ></li>
+                            <li
+                                className={indexC === 1 ? 'active' : ''}
+                                onClick={() => setIndexC(1)}
+                            ></li>
+                            <li
+                                className={indexC === 2 ? 'active' : ''}
+                                onClick={() => setIndexC(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>
@@ -262,7 +355,9 @@ const carouselMap = () => {
                 </Col>
 
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel
+                        wrap={true} activeIndexD={indexD} onSelect={handleSelectD} indicators={false} interval={5000}
+                        className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -326,6 +421,20 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexD === 0 ? 'active' : ''}
+                                onClick={() => setIndexD(0)}
+                            ></li>
+                            <li
+                                className={indexD === 1 ? 'active' : ''}
+                                onClick={() => setIndexD(1)}
+                            ></li>
+                            <li
+                                className={indexD === 2 ? 'active' : ''}
+                                onClick={() => setIndexD(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>
@@ -340,7 +449,8 @@ const carouselMap = () => {
 
             <Row>
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel wrap={true} activeIndexE={indexE} onSelect={handleSelectE} indicators={false} interval={5000}
+                        className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -405,6 +515,20 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexE === 0 ? 'active' : ''}
+                                onClick={() => setIndexE(0)}
+                            ></li>
+                            <li
+                                className={indexE === 1 ? 'active' : ''}
+                                onClick={() => setIndexE(1)}
+                            ></li>
+                            <li
+                                className={indexE === 2 ? 'active' : ''}
+                                onClick={() => setIndexE(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>
@@ -417,7 +541,8 @@ const carouselMap = () => {
                 </Col>
 
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel wrap={true} activeIndexF={indexF} onSelect={handleSelectF} indicators={false} interval={5000}
+                        className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -481,6 +606,20 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexF === 0 ? 'active' : ''}
+                                onClick={() => setIndexF(0)}
+                            ></li>
+                            <li
+                                className={indexF === 1 ? 'active' : ''}
+                                onClick={() => setIndexF(1)}
+                            ></li>
+                            <li
+                                className={indexF === 2 ? 'active' : ''}
+                                onClick={() => setIndexF(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>
@@ -495,7 +634,8 @@ const carouselMap = () => {
 
             <Row>
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel wrap={true} activeIndexG={indexG} onSelect={handleSelectG} indicators={false} interval={5000}
+                        className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -539,6 +679,7 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -560,6 +701,20 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexG === 0 ? 'active' : ''}
+                                onClick={() => setIndexG(0)}
+                            ></li>
+                            <li
+                                className={indexG === 1 ? 'active' : ''}
+                                onClick={() => setIndexG(1)}
+                            ></li>
+                            <li
+                                className={indexG === 2 ? 'active' : ''}
+                                onClick={() => setIndexG(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>
@@ -572,7 +727,8 @@ const carouselMap = () => {
                 </Col>
 
                 <Col md={6} className={CarouselMapCss.carouselBlock}>
-                    <Carousel className={CarouselMapCss.carouselParent}>
+                    <Carousel wrap={true} activeIndexH={indexH} onSelect={handleSelectH} indicators={false} interval={5000}
+                        className={CarouselMapCss.carouselParent}>
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -594,6 +750,7 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -615,6 +772,7 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+
                         <Carousel.Item className={CarouselMapCss.imageGap}>
                             <Link href="/search/view_property">
                                 <Image
@@ -636,6 +794,20 @@ const carouselMap = () => {
                                     </Image></Link>
                             </div>
                         </Carousel.Item>
+                        <ol className="carousel-indicators">
+                            <li
+                                className={indexH === 0 ? 'active' : ''}
+                                onClick={() => setIndexH(0)}
+                            ></li>
+                            <li
+                                className={indexH === 1 ? 'active' : ''}
+                                onClick={() => setIndexH(1)}
+                            ></li>
+                            <li
+                                className={indexH === 2 ? 'active' : ''}
+                                onClick={() => setIndexH(2)}
+                            ></li>
+                        </ol>
                     </Carousel>
 
                     <Link href="/search/view_property" style={{ textDecoration: "none" }}>

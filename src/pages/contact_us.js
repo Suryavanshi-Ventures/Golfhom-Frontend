@@ -27,6 +27,7 @@ function ContactUs() {
             className={ContactUsCss.contact_us_bannerimg}
             src={ContactUsBannerImage}
             alt="Banner image contact us"
+            priority
           ></Image>
         </div>
 

@@ -12,6 +12,7 @@
  
  .carouselImage {
    position: relative !important;
+   object-fit: cover;
  }
  
  .heartParent {

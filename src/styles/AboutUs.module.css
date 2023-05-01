@@ -2,6 +2,7 @@
 }
 
 .about_us_section_banner_container {
+  position: relative;
 }
 
 .about_us_section_banner_img {

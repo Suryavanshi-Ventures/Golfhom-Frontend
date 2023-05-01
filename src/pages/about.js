@@ -28,6 +28,7 @@ const About = () => {
             fill
             className={AboutUsCss.about_us_section_banner_img}
             alt="About Banner Image"
+            priority
           ></Image>
         </div>
 

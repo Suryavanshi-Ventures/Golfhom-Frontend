@@ -13,6 +13,7 @@ const privacy = () => {
                 <Image src={Privacy}
                     alt="Privacy"
                     fill
+                    priority
                     className={PrivacyPolicyCss.topImgChild}>
                 </Image>
             </div>

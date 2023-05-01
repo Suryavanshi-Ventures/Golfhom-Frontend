@@ -42,6 +42,7 @@
 }
 
 .contact_us_bannerimg_container {
+  position: relative;
 }
 
 .contact_us_bannerimg {

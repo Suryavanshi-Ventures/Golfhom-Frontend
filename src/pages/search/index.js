@@ -16,7 +16,7 @@ import CarouselImages from "../../../common components/carouselMap";
 const { RangePicker } = DatePicker;
 
 const index = () => {
-  // const [showHidden, setShowHidden] = useState(false);
+  const [showHidden, setShowHidden] = useState(false);
 
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
@@ -141,6 +141,7 @@ const index = () => {
                     </div>
                   </div>
                 </Col>
+
                 <Col md={3} className={Index.edit_details_container_cols}>
                   <div className={Index.edit_details_divs}>
                     <p className={Index.edit_details_titles}>
@@ -204,6 +205,7 @@ const index = () => {
             src={Buildings}
             alt="buildings"
             fill
+            priority
           ></Image>
         </div>
       </section>

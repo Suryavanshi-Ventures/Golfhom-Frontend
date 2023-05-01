@@ -166,8 +166,7 @@
 }
 
 .buildings {
-  /* max-width: 1560px;
-  height: auto; */
+  position: relative;
 }
 
 .buildingImg {

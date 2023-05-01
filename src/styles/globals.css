@@ -98,3 +98,74 @@
 .ant-form-item-feedback-icon {
   display: flex !important;
 }
+
+/* BOOTSTRAP CAROUSEL */
+
+
+.carousel-indicators li {
+  background-color: #DFDFDF;
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin-right: 5px;
+  width: 10px;
+}
+.carousel-indicators .active {
+  background-color: #ffffff;
+}
+
+/* FOR NEXT OR PREVIOUS BUTTON */
+
+.carousel-control-next,
+.carousel-control-prev {
+  background-color: #FFFFFF;
+  border: none;
+  width: 36px;
+  height: 36px;
+  top: 50%;
+  border-radius: 8px;
+  transform: translateY(-50%);
+  opacity: 0.58;
+}
+
+.carousel-control-next:focus,
+.carousel-control-prev:focus {
+  outline: none;
+}
+
+.carousel-control-next:hover,
+.carousel-control-prev:hover {
+  background-color: #d0d0d0;
+  opacity: 1;
+}
+
+.carousel-control-next::after,
+.carousel-control-prev::before {
+  content: '';
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-top: 3px solid black;
+  border-right: 3px solid black;
+  transform: translateX(-50%) translateY(-50%) rotate(-135deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.carousel-control-next::after {
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  display: none;
+}
+
+.carousel-control-next {
+  right: 20px;
+}
+
+.carousel-control-prev {
+  left: 20px;
+}
