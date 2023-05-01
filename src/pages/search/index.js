@@ -16,7 +16,7 @@ import CarouselImages from "../../../common components/carouselMap";
 const { RangePicker } = DatePicker;
 
 const index = () => {
-  // const [showHidden, setShowHidden] = useState(false);
+  const [showHidden, setShowHidden] = useState(false);
 
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
