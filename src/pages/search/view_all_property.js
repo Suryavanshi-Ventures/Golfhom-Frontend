@@ -142,7 +142,8 @@ const ViewAllProperty = () => {
       <div className={ViewAllPropertyCss.pagination_container}>
         <Pagination
           colorText="#FF0000"
-          showQuickJumper
+          showQuickJumper={false}
+          showSizeChanger={false}
           defaultCurrent={2}
           total={500}
           onChange={onChange}

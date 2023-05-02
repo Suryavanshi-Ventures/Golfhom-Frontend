@@ -99,6 +99,16 @@
   display: flex !important;
 }
 
+.ant-pagination-item-active {
+  background-color: #FF6764 !important;
+  color: #FFFFFF;
+  border: none !important;
+}
+
+.ant-pagination-item:not(.ant-pagination-item-active) a {
+  color: #B7B7B7;
+}
+
 /* BOOTSTRAP CAROUSEL */
 
 
@@ -120,8 +130,8 @@
 .carousel-control-prev {
   background-color: #FFFFFF;
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   top: 50%;
   border-radius: 8px;
   transform: translateY(-50%);
@@ -169,3 +179,24 @@
 .carousel-control-prev {
   left: 20px;
 }
+
+/* Define styles for pagination bullets */
+.swiper-pagination-bullet {
+  background-color: black !important;
+}
+
+/* Define styles for previous and next arrows */
+.swiper-button-prev,
+.swiper-button-next {
+  color: black !important;
+}
+
+.swiper-button-prev {
+  color: black !important;
+}
+
+.swiper-button-next {
+  color: black !important;
+}
+
+

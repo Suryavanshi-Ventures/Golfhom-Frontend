@@ -11,7 +11,7 @@ const Advertise = ({ ads }) => {
       spaceBetween={50}
       slidesPerView={5}
       pagination={{ clickable: true }}
-      onSlideChange={() => {}}
+      onSlideChange={() => { }}
       breakpoints={{
         0: {
           slidesPerView: 1,
