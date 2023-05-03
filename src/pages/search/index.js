@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 import Head from "next/head";
 import { Container, Col, Row, Card, Carousel } from "react-bootstrap";
-import Index from "../../styles/SearchIndex.module.css";
+import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import { Checkbox, Input } from "antd";
 import { DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
@@ -15,7 +16,7 @@ import CarouselImages from "../../../common components/carouselMap";
 
 const { RangePicker } = DatePicker;
 
-const index = () => {
+const Index = () => {
   const [showHidden, setShowHidden] = useState(false);
 
   const onChange = (pageNumber) => {
@@ -48,20 +49,24 @@ const index = () => {
         {/* EDIT DROP DETAIL SECTION */}
 
         <Row>
-          <Col md={6} className={Index.twoDropdown}>
+          <Col md={6} className={SearchIndexCss.twoDropdown}>
             <Col md={4}>
-              <div className={Index.edit_details_divs}>
-                <p className={Index.edit_details_titles}>Golf Course Choice</p>
-                <div className={Index.edit_details_inputs_container}>
+              <div className={SearchIndexCss.edit_details_divs}>
+                <p className={SearchIndexCss.edit_details_titles}>
+                  Golf Course Choice
+                </p>
+                <div className={SearchIndexCss.edit_details_inputs_container}>
                   <Dropdown menu={menuProps}>
                     <Button
                       size="large"
-                      className={Index.edit_room_dropdown_btn}
+                      className={SearchIndexCss.edit_room_dropdown_btn}
                     >
-                      <Space className={Index.edit_room_dropdown_btn_space}>
+                      <Space
+                        className={SearchIndexCss.edit_room_dropdown_btn_space}
+                      >
                         Location
                         <DownOutlined
-                          className={Index.edit_room_dropdown_icon}
+                          className={SearchIndexCss.edit_room_dropdown_icon}
                         />
                       </Space>
                     </Button>
@@ -71,18 +76,22 @@ const index = () => {
             </Col>
 
             <Col md={8}>
-              <div className={Index.edit_details_divs}>
-                <p className={Index.edit_details_titles}>Golf Course</p>
-                <div className={Index.edit_details_inputs_container}>
+              <div className={SearchIndexCss.edit_details_divs}>
+                <p className={SearchIndexCss.edit_details_titles}>
+                  Golf Course
+                </p>
+                <div className={SearchIndexCss.edit_details_inputs_container}>
                   <Dropdown menu={menuProps}>
                     <Button
                       size="large"
-                      className={Index.edit_room_dropdown_btn}
+                      className={SearchIndexCss.edit_room_dropdown_btn}
                     >
-                      <Space className={Index.edit_room_dropdown_btn_space}>
+                      <Space
+                        className={SearchIndexCss.edit_room_dropdown_btn_space}
+                      >
                         Location
                         <DownOutlined
-                          className={Index.edit_room_dropdown_icon}
+                          className={SearchIndexCss.edit_room_dropdown_icon}
                         />
                       </Space>
                     </Button>
@@ -92,7 +101,7 @@ const index = () => {
             </Col>
           </Col>
 
-          <Col mmd={6} className={Index.twoCheckbox}>
+          <Col mmd={6} className={SearchIndexCss.twoCheckbox}>
             <div>
               <Checkbox>Golf Course Front</Checkbox>
             </div>
@@ -102,7 +111,7 @@ const index = () => {
             <div>
               <Button
                 onClick={() => setShowHidden(false)}
-                className={Index.searching}
+                className={SearchIndexCss.searching}
               >
                 Search
               </Button>
@@ -124,51 +133,74 @@ const index = () => {
 
       {/********** EDIT DETAILS SECTION  ***********/}
       <section>
-        <main className={Index.edit_details_main_section}>
+        <main className={SearchIndexCss.edit_details_main_section}>
           <Container>
-            <div className={Index.edit_details_main_container}>
-              <Row className={Index.edit_details_container_row}>
-                <Col md={3} className={Index.edit_details_container_cols}>
-                  <div className={Index.edit_details_divs}>
-                    <p className={Index.edit_details_titles}>Destination</p>
+            <div className={SearchIndexCss.edit_details_main_container}>
+              <Row className={SearchIndexCss.edit_details_container_row}>
+                <Col
+                  md={3}
+                  className={SearchIndexCss.edit_details_container_cols}
+                >
+                  <div className={SearchIndexCss.edit_details_divs}>
+                    <p className={SearchIndexCss.edit_details_titles}>
+                      Destination
+                    </p>
 
-                    <div className={Index.edit_details_inputs_container}>
+                    <div
+                      className={SearchIndexCss.edit_details_inputs_container}
+                    >
                       <Input
                         size="large"
-                        className={Index.edit_details_inputs}
+                        className={SearchIndexCss.edit_details_inputs}
                         placeholder="Basic usage"
                       />
                     </div>
                   </div>
                 </Col>
 
-                <Col md={3} className={Index.edit_details_container_cols}>
-                  <div className={Index.edit_details_divs}>
-                    <p className={Index.edit_details_titles}>
+                <Col
+                  md={3}
+                  className={SearchIndexCss.edit_details_container_cols}
+                >
+                  <div className={SearchIndexCss.edit_details_divs}>
+                    <p className={SearchIndexCss.edit_details_titles}>
                       Stay Dates (1 Night)
                     </p>
 
-                    <div className={Index.edit_details_inputs_container}>
+                    <div
+                      className={SearchIndexCss.edit_details_inputs_container}
+                    >
                       <RangePicker
                         size="large"
-                        className={Index.edit_details_date_picker}
+                        className={SearchIndexCss.edit_details_date_picker}
                       />
                     </div>
                   </div>
                 </Col>
-                <Col md={3} className={Index.edit_details_container_cols}>
-                  <div className={Index.edit_details_divs}>
-                    <p className={Index.edit_details_titles}>Room & Guests</p>
-                    <div className={Index.edit_details_inputs_container}>
+                <Col
+                  md={3}
+                  className={SearchIndexCss.edit_details_container_cols}
+                >
+                  <div className={SearchIndexCss.edit_details_divs}>
+                    <p className={SearchIndexCss.edit_details_titles}>
+                      Room & Guests
+                    </p>
+                    <div
+                      className={SearchIndexCss.edit_details_inputs_container}
+                    >
                       <Dropdown menu={menuProps}>
                         <Button
                           size="large"
-                          className={Index.edit_room_dropdown_btn}
+                          className={SearchIndexCss.edit_room_dropdown_btn}
                         >
-                          <Space className={Index.edit_room_dropdown_btn_space}>
+                          <Space
+                            className={
+                              SearchIndexCss.edit_room_dropdown_btn_space
+                            }
+                          >
                             Button Drop Down
                             <DownOutlined
-                              className={Index.edit_room_dropdown_icon}
+                              className={SearchIndexCss.edit_room_dropdown_icon}
                             />
                           </Space>
                         </Button>
@@ -176,12 +208,21 @@ const index = () => {
                     </div>
                   </div>
                 </Col>
-                <Col md={3} className={Index.edit_details_container_cols}>
-                  <div className={Index.edit_details_btn_parent_container}>
-                    <div className={Index.edit_details_btn_child_container}>
+                <Col
+                  md={3}
+                  className={SearchIndexCss.edit_details_container_cols}
+                >
+                  <div
+                    className={SearchIndexCss.edit_details_btn_parent_container}
+                  >
+                    <div
+                      className={
+                        SearchIndexCss.edit_details_btn_child_container
+                      }
+                    >
                       <Button
                         size="large"
-                        className={Index.edit_details_btn}
+                        className={SearchIndexCss.edit_details_btn}
                         onClick={() => setShowHidden(true)}
                       >
                         Edit
@@ -199,9 +240,9 @@ const index = () => {
       {/* -----------------------           HEAD IMAGE SECTION             ---------------------  */}
 
       <section>
-        <div className={Index.buildings}>
+        <div className={SearchIndexCss.buildings}>
           <Image
-            className={Index.buildingImg}
+            className={SearchIndexCss.buildingImg}
             src={Buildings}
             alt="buildings"
             fill
@@ -212,23 +253,26 @@ const index = () => {
 
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
-      <section className={Index.search_main_section}>
+      <section className={SearchIndexCss.search_main_section}>
         <Container>
           <Row>
-            <h4 className={Index.orlandoHead}>Orlando</h4>
+            <h4 className={SearchIndexCss.orlandoHead}>Orlando</h4>
 
             {/*    ----------------      CARD MAP SECTION      -------------------   */}
             <Col md={8}>
               <hr />
 
-              <div className={Index.orlandParent}>
-                <div className={Index.sortSection}>
-                  <h5 className={Index.rental}>150 Rentals</h5>
+              <div className={SearchIndexCss.orlandParent}>
+                <div className={SearchIndexCss.sortSection}>
+                  <h5 className={SearchIndexCss.rental}>150 Rentals</h5>
 
-                  <div className={Index.sortdiv}>
-                    <h6 className={Index.sort}>Sort By:</h6>
+                  <div className={SearchIndexCss.sortdiv}>
+                    <h6 className={SearchIndexCss.sort}>Sort By:</h6>
 
-                    <Dropdown menu={menuProps} className={Index.default}>
+                    <Dropdown
+                      menu={menuProps}
+                      className={SearchIndexCss.default}
+                    >
                       <Button size="large">
                         <Space>
                           Default order
@@ -245,17 +289,17 @@ const index = () => {
             </Col>
 
             {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
-            <Col md={4} className={Index.mapParent}>
+            <Col md={4} className={SearchIndexCss.mapParent}>
               <Image
                 fill
                 src="/images/mapGroup.svg"
                 alt="Map"
-                className={Index.map}
+                className={SearchIndexCss.map}
               />
             </Col>
           </Row>
 
-          <div className={Index.pagination_container}>
+          <div className={SearchIndexCss.pagination_container}>
             <Pagination
               colorText="#FF0000"
               showQuickJumper={false}
@@ -263,7 +307,7 @@ const index = () => {
               defaultCurrent={2}
               total={500}
               onChange={onChange}
-              className={Index.pagination}
+              className={SearchIndexCss.pagination}
             />
           </div>
         </Container>
@@ -276,4 +320,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

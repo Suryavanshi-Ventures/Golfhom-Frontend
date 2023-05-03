@@ -9,7 +9,7 @@ import Advertise from "../../advertise";
 import ads from "../ads.json";
 import Head from "next/head";
 
-function index() {
+const Index = () => {
   return (
     <>
       <Head>
@@ -194,6 +194,6 @@ function index() {
       <BottomSection />
     </>
   );
-}
+};
 
-export default index;
+export default Index;

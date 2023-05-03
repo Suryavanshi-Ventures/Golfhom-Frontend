@@ -5,7 +5,7 @@ import IncomeCss from "../../styles/dashboard/Income.module.css";
 import Link from "next/link";
 import BottomSection from "../../../common components/bottomGroup";
 
-function Income() {
+const Income = () => {
   return (
     <>
       <Head>
@@ -163,6 +163,6 @@ function Income() {
       <BottomSection />
     </>
   );
-}
+};
 
 export default Income;

@@ -116,7 +116,9 @@ const About = () => {
                 From the Golfhōm Staff and Guest Writers
               </h2>
 
-              <Link href="/blog"><Button>View All</Button></Link>
+              <Link href="/blog">
+                <Button>View All</Button>
+              </Link>
             </div>
             <Review reviews={review} />
           </section>

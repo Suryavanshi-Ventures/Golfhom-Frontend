@@ -14,7 +14,7 @@ import Bleav from "../../public/images/bleav.svg";
 import WhiteNext from "../../public/images/vector/whiteNext.svg";
 import Head from "next/head";
 
-const blogsAndPodcasts = () => {
+const BlogsAndPodcasts = () => {
   return (
     <>
       <Head>
@@ -215,4 +215,4 @@ const blogsAndPodcasts = () => {
   );
 };
 
-export default blogsAndPodcasts;
+export default BlogsAndPodcasts;

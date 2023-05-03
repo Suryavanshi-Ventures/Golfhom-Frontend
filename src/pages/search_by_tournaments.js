@@ -9,7 +9,7 @@ import BottomSection from "../../common components/bottomGroup";
 import CarouselImages from "../../common components/carouselMap";
 import Head from "next/head";
 
-const searchByTournaments = () => {
+const SearchByTournaments = () => {
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
   };
@@ -154,4 +154,4 @@ const searchByTournaments = () => {
   );
 };
 
-export default searchByTournaments;
+export default SearchByTournaments;

@@ -1,7 +1,6 @@
 /*   --------------------------   TOP IMAGE SECTION       ------------------------    */
 
 .topImageParent {
-
 }
 
 .topImage {
@@ -25,7 +24,6 @@
 }
 
 .mainRow {
-
 }
 
 .imageParent {
@@ -49,7 +47,7 @@
   position: absolute !important;
   background: rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: flex-start;
   flex-direction: column;
   opacity: 0;
@@ -100,7 +98,6 @@
 
 .whitenext {
   position: relative !important;
- 
 }
 
 /*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */

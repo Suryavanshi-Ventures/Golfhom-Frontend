@@ -9,7 +9,7 @@ const { TextArea } = Input;
 import ManThumbsUpImg from "../../public/images/contact_us_thumbs_up_man.svg";
 import BottomSection from "../../common components/bottomGroup";
 
-function ContactUs() {
+const ContactUs = () => {
   return (
     <>
       <Head>
@@ -126,13 +126,12 @@ function ContactUs() {
           </Container>
         </main>
 
-
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
         <BottomSection />
       </main>
     </>
   );
-}
+};
 
 export default ContactUs;

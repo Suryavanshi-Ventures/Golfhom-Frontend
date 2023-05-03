@@ -3,7 +3,7 @@ import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
-import Green from "./utilities/golfhom_staff_silder";
+import GolfhomStaffSlider from "./utilities/golfhom_staff_silder";
 
 const Review = ({ reviews }) => {
   return (
@@ -42,7 +42,7 @@ const Review = ({ reviews }) => {
     >
       {reviews.map((review) => (
         <SwiperSlide key={review.id} className={HomeCss.parentReview}>
-          <Green review={review} />
+          <GolfhomStaffSlider review={review} />
         </SwiperSlide>
       ))}
     </Swiper>

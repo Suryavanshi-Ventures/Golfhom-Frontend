@@ -7,7 +7,7 @@ import FAQCss from "../styles/FAQ.module.css";
 import FAQBannerImg from "../../public/images/faq_banner_img.svg";
 import BottomSection from "../../common components/bottomGroup";
 
-function FAQ() {
+const FAQ = () => {
   const [showA, setShowA] = useState(false);
   const [showB, setShowB] = useState(false);
   const [showC, setShowC] = useState(false);
@@ -267,6 +267,6 @@ function FAQ() {
       </main>
     </>
   );
-}
+};
 
 export default FAQ;

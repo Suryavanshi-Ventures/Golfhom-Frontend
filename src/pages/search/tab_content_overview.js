@@ -4,7 +4,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import ViewPropBedIcon from "../../../public/images/vector/bed.svg";
 import Image from "next/image";
 
-const tab_content_overview = () => {
+const TabContentOverview = () => {
   return (
     <>
       <main className={ViewPropertyCss.tab_overview_section}>
@@ -130,4 +130,4 @@ const tab_content_overview = () => {
   );
 };
 
-export default tab_content_overview;
+export default TabContentOverview;

@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import HomeCss from "../styles/Home.module.css";
 
-const Green = ({ review }) => {
+const GolfhomStaffSlider = ({ review }) => {
   return (
     <div className={HomeCss.parentOf_img_textCard}>
       <Image
@@ -54,4 +54,4 @@ const Green = ({ review }) => {
   );
 };
 
-export default Green;
+export default GolfhomStaffSlider;

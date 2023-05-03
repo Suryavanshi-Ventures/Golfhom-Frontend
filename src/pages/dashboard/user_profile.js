@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Input, Button } from "antd";
 const { TextArea } = Input;
 
-function UserProfile() {
+const UserProfile = () => {
   return (
     <>
       <Head>
@@ -529,6 +529,6 @@ function UserProfile() {
       </main>
     </>
   );
-}
+};
 
 export default UserProfile;
