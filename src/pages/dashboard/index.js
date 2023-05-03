@@ -6,7 +6,7 @@ import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import DashboardCss from "../../styles/dashboard/DashboardIndex.module.css";
 import Profile from "../../../public/images/vector/profile.svg";
 import Advertise from "../../advertise";
-import ads from "../ads.json";
+import ads from "../json/ads.json";
 import Head from "next/head";
 
 const Index = () => {

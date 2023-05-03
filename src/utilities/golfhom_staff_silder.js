@@ -28,12 +28,6 @@ const GolfhomStaffSlider = ({ review }) => {
         </div>
 
         <div className={HomeCss.bookmarkDiv}>
-          <Image
-            src="/images/vector/bookmark.svg"
-            alt="Bookmark Image"
-            width={15}
-            height={15}
-          ></Image>{" "}
           <span className={HomeCss.bookmark_text}>
             Golf, Golf Travel, Vacation Rentals
           </span>

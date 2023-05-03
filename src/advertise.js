@@ -5,12 +5,15 @@ import "swiper/swiper-bundle.min.css";
 import Image from "next/image";
 
 const Advertise = ({ ads }) => {
+
   return (
     <Swiper
       modules={[Navigation, Pagination, A11y]}
       spaceBetween={50}
       slidesPerView={5}
-      pagination={{ clickable: true }}
+      pagination={{
+        clickable: true
+      }}
       onSlideChange={() => { }}
       breakpoints={{
         0: {

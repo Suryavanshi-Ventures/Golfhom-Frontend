@@ -7,7 +7,7 @@ import Image from "next/image";
 import BannerImg from "../../public/images/about_banner_img.svg";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import Review from "../review";
-import review from "./review.json";
+import review from "../pages/json/review.json";
 import BottomSection from "../../common components/bottomGroup";
 
 const About = () => {

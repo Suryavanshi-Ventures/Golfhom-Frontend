@@ -139,7 +139,7 @@ const ViewAllProperty = () => {
         </Container>
       </section>
 
-      <div className={ViewAllPropertyCss.pagination_container}>
+      <Container className={ViewAllPropertyCss.pagination_container}>
         <Pagination
           colorText="#FF0000"
           showQuickJumper={false}
@@ -149,7 +149,7 @@ const ViewAllProperty = () => {
           onChange={onChange}
           className={ViewAllPropertyCss.pagination}
         />
-      </div>
+      </Container>
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 

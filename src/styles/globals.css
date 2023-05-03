@@ -109,6 +109,12 @@
   color: #B7B7B7;
 }
 
+/* PAGINATION NEXT AND PRIVIOUS ARROWS */
+
+.anticon, .anticon-left, .anticon-right {
+  color: #FF7757;
+}
+
 /* BOOTSTRAP CAROUSEL */
 
 
