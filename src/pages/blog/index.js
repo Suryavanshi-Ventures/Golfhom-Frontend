@@ -6,7 +6,7 @@ import Image from "next/image";
 import BottomSection from "../../../common components/bottomGroup";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Pagination } from "antd";
-import blogs from "../blogs.json";
+import blogs from "../json/blogs.json";
 import Link from "next/link";
 
 const Index = ({ cards }) => {
@@ -94,7 +94,7 @@ const Index = ({ cards }) => {
       </Container>
 
       {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
-      <div className={BlogCss.pagination_container}>
+      <Container className={BlogCss.pagination_container}>
         <Pagination
           colorText="#FF0000"
           showQuickJumper={false}
@@ -104,7 +104,7 @@ const Index = ({ cards }) => {
           onChange={onChange}
           className={BlogCss.pagination}
         />
-      </div>
+      </Container>
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 

@@ -22,7 +22,7 @@
 
   {
     "id": 4,
-    "image": "/images/newyork.svg",
+    "image": "/images/Newyork.svg",
     "name": "Newyork",
     "next": "/images/vector/forwardArrow.svg"
   },
@@ -50,7 +50,7 @@
 
   {
     "id": 8,
-    "image": "/images/newyork.svg",
+    "image": "/images/Newyork.svg",
     "name": "Newyork",
     "next": "/images/vector/forwardArrow.svg"
   }
