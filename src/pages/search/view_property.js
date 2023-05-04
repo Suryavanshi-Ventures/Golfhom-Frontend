@@ -17,8 +17,7 @@ import Calendar from "../../../public/images/vector/calendar.svg";
 import BottomSection from "../../../common components/bottomGroup";
 import Blacktick from "../../../public/images/vector/blackTick.svg";
 import ViewPropMap from "../../../public/images/view_prop_Map.svg";
-import TextArea from "antd/es/input/TextArea";
-
+const { TextArea } = Input;
 
 const ViewProperty = () => {
   const onTabChange = (key) => {
@@ -61,10 +60,9 @@ const ViewProperty = () => {
     if (adult > 0) {
       setAdult(adult - 1);
     } else {
-      alert('Sorry Could not take negative value ')
+      alert("Sorry Could not take negative value ");
       setAdult(0);
     }
-
   };
 
   // FOR CHILD BUTTON INCREMENT AND DECREMENT
@@ -79,10 +77,9 @@ const ViewProperty = () => {
     if (child > 0) {
       setChild(child - 1);
     } else {
-      alert('Sorry Could not take negative value ')
+      alert("Sorry Could not take negative value ");
       setChild(0);
     }
-
   };
 
   {
@@ -100,8 +97,6 @@ const ViewProperty = () => {
   const handleCancelContact = () => {
     setIsModalOpen(false);
   };
-
-
 
   return (
     <>
@@ -170,13 +165,25 @@ const ViewProperty = () => {
                     <div>
                       <Dropdown.Item href="#/action-1">
                         {" "}
-                        <h5 className={ViewPropertyCss.ageName}>{adult} Adults</h5>
+                        <h5 className={ViewPropertyCss.ageName}>
+                          {adult} Adults
+                        </h5>
                       </Dropdown.Item>
                     </div>
                     <div>
                       <Button className={ViewPropertyCss.increaseAdult}>
-                        <div className={ViewPropertyCss.decreasebtn} onClick={decAdult}>-</div>
-                        <div className={ViewPropertyCss.increasebtn} onClick={incAdult}>+</div>
+                        <div
+                          className={ViewPropertyCss.decreasebtn}
+                          onClick={decAdult}
+                        >
+                          -
+                        </div>
+                        <div
+                          className={ViewPropertyCss.increasebtn}
+                          onClick={incAdult}
+                        >
+                          +
+                        </div>
                       </Button>
                     </div>
                   </div>
@@ -185,13 +192,25 @@ const ViewProperty = () => {
                     <div>
                       <Dropdown.Item href="#/action-2">
                         {" "}
-                        <h5 className={ViewPropertyCss.ageName}>{child} Children</h5>
+                        <h5 className={ViewPropertyCss.ageName}>
+                          {child} Children
+                        </h5>
                       </Dropdown.Item>
                     </div>
                     <div>
                       <Button className={ViewPropertyCss.increaseAdult}>
-                        <div className={ViewPropertyCss.decreasebtn} onClick={decChild}>-</div>
-                        <div className={ViewPropertyCss.increasebtn} onClick={incChild}>+</div>
+                        <div
+                          className={ViewPropertyCss.decreasebtn}
+                          onClick={decChild}
+                        >
+                          -
+                        </div>
+                        <div
+                          className={ViewPropertyCss.increasebtn}
+                          onClick={incChild}
+                        >
+                          +
+                        </div>
                       </Button>
                     </div>
                   </div>
@@ -268,11 +287,19 @@ const ViewProperty = () => {
                     onClick={(e) => e.preventDefault()}
                   >
                     <div className={ViewPropertyCss.registBtnParent}>
-                      <Button className={ViewPropertyCss.registerBtn}>Submit</Button></div>
+                      <Button className={ViewPropertyCss.registerBtn}>
+                        Submit
+                      </Button>
+                    </div>
                   </Link>
                 </Modal>
                 <Space>
-                  <Button className={ViewPropertyCss.contact} onClick={showContact}>Contact to host</Button>
+                  <Button
+                    className={ViewPropertyCss.contact}
+                    onClick={showContact}
+                  >
+                    Contact to host
+                  </Button>
                 </Space>
               </div>
             </Col>
@@ -1080,12 +1107,16 @@ const ViewProperty = () => {
                       >
                         <Row>
                           <h5
-                            className={ViewPropertyCss.things_to_know_section_heading}
+                            className={
+                              ViewPropertyCss.things_to_know_section_heading
+                            }
                           >
                             Terms & rules
                           </h5>
                           <Col
-                            className={ViewPropertyCss.things_to_know_section_cols}
+                            className={
+                              ViewPropertyCss.things_to_know_section_cols
+                            }
                             md={6}
                           >
                             <div
@@ -1110,14 +1141,18 @@ const ViewProperty = () => {
                               </div>
 
                               <p
-                                className={ViewPropertyCss.things_to_know_price_text}
+                                className={
+                                  ViewPropertyCss.things_to_know_price_text
+                                }
                               >
                                 Smoking allowed
                               </p>
                             </div>
                           </Col>
                           <Col
-                            className={ViewPropertyCss.things_to_know_section_cols}
+                            className={
+                              ViewPropertyCss.things_to_know_section_cols
+                            }
                             md={6}
                           >
                             <div
@@ -1142,14 +1177,18 @@ const ViewProperty = () => {
                               </div>
 
                               <p
-                                className={ViewPropertyCss.things_to_know_price_text}
+                                className={
+                                  ViewPropertyCss.things_to_know_price_text
+                                }
                               >
                                 Pets allowed
                               </p>
                             </div>
                           </Col>
                           <Col
-                            className={ViewPropertyCss.things_to_know_section_cols}
+                            className={
+                              ViewPropertyCss.things_to_know_section_cols
+                            }
                             md={6}
                           >
                             <div
@@ -1174,14 +1213,18 @@ const ViewProperty = () => {
                               </div>
 
                               <p
-                                className={ViewPropertyCss.things_to_know_price_text}
+                                className={
+                                  ViewPropertyCss.things_to_know_price_text
+                                }
                               >
                                 Children allowed
                               </p>
                             </div>
                           </Col>
                           <Col
-                            className={ViewPropertyCss.things_to_know_section_cols}
+                            className={
+                              ViewPropertyCss.things_to_know_section_cols
+                            }
                             md={6}
                           >
                             <div
@@ -1206,7 +1249,9 @@ const ViewProperty = () => {
                               </div>
 
                               <p
-                                className={ViewPropertyCss.things_to_know_price_text}
+                                className={
+                                  ViewPropertyCss.things_to_know_price_text
+                                }
                               >
                                 Event allowed
                               </p>
@@ -1218,7 +1263,6 @@ const ViewProperty = () => {
                     <Col md={4}></Col>
                   </div>
 
-
                   {/* Cancellation  SECTION */}
                   <div className={ViewPropertyCss.things_to_know_section_rows}>
                     <Col md={8}>
@@ -1229,14 +1273,20 @@ const ViewProperty = () => {
                       >
                         <Row>
                           <h5
-                            className={ViewPropertyCss.things_to_know_section_heading}
+                            className={
+                              ViewPropertyCss.things_to_know_section_heading
+                            }
                           >
                             Cancellation Policy
                           </h5>
-                          <p className={ViewPropertyCss.things_to_know_privacy_text}>
-                            90-61 days prior to arrival 50% of purchase price will be
-                            charged. 60 days prior to arrival !00% of the purchase
-                            price will be charged.
+                          <p
+                            className={
+                              ViewPropertyCss.things_to_know_privacy_text
+                            }
+                          >
+                            90-61 days prior to arrival 50% of purchase price
+                            will be charged. 60 days prior to arrival !00% of
+                            the purchase price will be charged.
                           </p>
                         </Row>
                       </div>
@@ -1253,11 +1303,17 @@ const ViewProperty = () => {
                       >
                         <Row>
                           <h5
-                            className={ViewPropertyCss.things_to_know_section_heading}
+                            className={
+                              ViewPropertyCss.things_to_know_section_heading
+                            }
                           >
                             Additional rules information
                           </h5>
-                          <p className={ViewPropertyCss.things_to_know_privacy_text}>
+                          <p
+                            className={
+                              ViewPropertyCss.things_to_know_privacy_text
+                            }
+                          >
                             For events of over 50 persons, parking must be
                             pre-arranged
                           </p>
@@ -1276,12 +1332,16 @@ const ViewProperty = () => {
                       >
                         <Row>
                           <h5
-                            className={ViewPropertyCss.things_to_know_section_heading}
+                            className={
+                              ViewPropertyCss.things_to_know_section_heading
+                            }
                           >
                             Availability
                           </h5>
                           <Col
-                            className={ViewPropertyCss.things_to_know_section_cols}
+                            className={
+                              ViewPropertyCss.things_to_know_section_cols
+                            }
                             md={6}
                           >
                             <div
@@ -1306,14 +1366,18 @@ const ViewProperty = () => {
                               </div>
 
                               <p
-                                className={ViewPropertyCss.things_to_know_price_text}
+                                className={
+                                  ViewPropertyCss.things_to_know_price_text
+                                }
                               >
                                 The minimum stay is 3 nights from
                               </p>
                             </div>
                           </Col>
                           <Col
-                            className={ViewPropertyCss.things_to_know_section_cols}
+                            className={
+                              ViewPropertyCss.things_to_know_section_cols
+                            }
                             md={6}
                           >
                             <div
@@ -1338,7 +1402,9 @@ const ViewProperty = () => {
                               </div>
 
                               <p
-                                className={ViewPropertyCss.things_to_know_price_text}
+                                className={
+                                  ViewPropertyCss.things_to_know_price_text
+                                }
                               >
                                 The minimum stay is 3 nights from
                               </p>
@@ -1356,171 +1422,131 @@ const ViewProperty = () => {
                   <div className={ViewPropertyCss.details}>Details</div>
                   <div className={ViewPropertyCss.tickParent}>
                     <div
-                      className={
-                        ViewPropertyCss.tick_with_blackbg_container
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg_container}
                     >
                       <Image
-                        className={
-                          ViewPropertyCss.tick_with_blackbg
-                        }
+                        className={ViewPropertyCss.tick_with_blackbg}
                         src={Blacktick}
                         width={24}
                         height={24}
                         alt="Prices"
                       ></Image>
                     </div>
-                    <p className={ViewPropertyCss.words}>ID:  58228</p></div>
+                    <p className={ViewPropertyCss.words}>ID: 58228</p>
+                  </div>
                 </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Rooms:  6</p></div>
+                  <p className={ViewPropertyCss.words}>Rooms: 6</p>
+                </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Guests:  8</p></div>
+                  <p className={ViewPropertyCss.words}>Guests: 8</p>
+                </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Check-in After: 4:00 PM</p></div>
+                  <p className={ViewPropertyCss.words}>
+                    Check-in After: 4:00 PM
+                  </p>
+                </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Bedrooms: 4</p></div>
+                  <p className={ViewPropertyCss.words}>Bedrooms: 4</p>
+                </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Check-out Before: 11:00 AM</p></div>
+                  <p className={ViewPropertyCss.words}>
+                    Check-out Before: 11:00 AM
+                  </p>
+                </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Beds: 8</p></div>
+                  <p className={ViewPropertyCss.words}>Beds: 8</p>
+                </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Payment Methods: Credit Card</p></div>
+                  <p className={ViewPropertyCss.words}>
+                    Payment Methods: Credit Card
+                  </p>
+                </div>
 
                 <div className={ViewPropertyCss.tickParent}>
-                  <div
-                    className={
-                      ViewPropertyCss.tick_with_blackbg_container
-                    }
-                  >
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
                     <Image
-                      className={
-                        ViewPropertyCss.tick_with_blackbg
-                      }
+                      className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Bathrooms: 2</p></div>
-
-
+                  <p className={ViewPropertyCss.words}>Bathrooms: 2</p>
+                </div>
               </Col>
             </Row>
-
           </Container>
         </section>
 

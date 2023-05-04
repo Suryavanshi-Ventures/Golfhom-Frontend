@@ -13,12 +13,8 @@ import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
-import { signIn } from "next-auth/react";
-import { useSession } from "next-auth/react";
 
 const Header = () => {
-  const LoginSession = useSession();
-  console.log(LoginSession, " LOGIN SESSIon");
   {
     /* -----------       SIGN UP SECTION        -----------------*/
   }
@@ -90,30 +86,23 @@ const Header = () => {
       const LoginPassword = form.getFieldValue("password_login");
       const RememberMe = form.getFieldValue("remember_me");
 
-      const data = await signIn("credentials", {
-        redirect: false,
-        email: LoginEmail,
-        password: LoginPassword,
-      });
+      //! LOGIN API CALL
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/user/login`,
+        {
+          email: LoginEmail,
+          password: LoginPassword,
+        }
+      );
 
-      console.log(data, "FROM HEADERS");
-
-      // //! LOGIN API CALL
-      // const response = await axios.post(
-      //   `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/user/login`,
-      //   {
-      //     email: LoginEmail,
-      //     password: LoginPassword,
-      //   }
-      // );
-
-      // //* IF LOGIN SUCCESSFUL
-      // if (response.status === 200) {
-      //   setIsModalOpen(false);
-      //   message.success(response.data.message);
-      // } else {
-      //   message.error("Invalid login credentials!");
-      // }
+      //* IF LOGIN SUCCESSFUL
+      if (response.status === 200) {
+        setIsModalOpen(false);
+        sessionStorage.setItem("token", response.data.token);
+        message.success(response.data.message);
+      } else {
+        message.error("Invalid login credentials!");
+      }
     } catch (err) {
       //* IF LOGIN FAILED
       message.error("Invalid login credentials!");
