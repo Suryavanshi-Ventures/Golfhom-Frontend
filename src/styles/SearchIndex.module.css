@@ -100,6 +100,7 @@
 .sortSection {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 22px 0px;
   flex-wrap: wrap;
 }
@@ -114,6 +115,7 @@
 .rental {
   font-family: var(--font-poppins);
   font-weight: 400;
+  margin-bottom: 0;
 }
 
 .iconImg {
@@ -125,6 +127,7 @@
   align-self: center;
   margin-right: 10px;
   font-family: var(--font-poppins);
+  margin-bottom: 0;
 }
 
 .sortdiv {
@@ -156,7 +159,7 @@
 .pagination_container {
   padding: 5rem 0;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   width: 100%;
 }
 
