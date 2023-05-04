@@ -111,9 +111,14 @@
 
 /* PAGINATION NEXT AND PRIVIOUS ARROWS */
 
-.anticon, .anticon-left, .anticon-right {
+.anticon-left, .anticon-right {
   color: #FF7757;
 }
+/* 
+.anticon {
+  color: #FF7757;   "Use this color only when the calendar and dropdown arrow need to be in it."
+} */
+
 
 /* BOOTSTRAP CAROUSEL */
 

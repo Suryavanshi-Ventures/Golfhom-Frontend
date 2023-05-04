@@ -23,7 +23,7 @@ const Header = () => {
   const [form] = Form.useForm();
 
   //* REGISTER BTN DISABLED
-  const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(false);
+  const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(true);
 
   // CHECKBOX TERMS CONDITION USESTATE END
 
@@ -415,8 +415,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -437,8 +437,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >
