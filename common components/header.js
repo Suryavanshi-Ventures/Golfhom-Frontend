@@ -13,6 +13,8 @@ import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
+import GolfHomMobileMenuLogo from "../public/images/GOLFHOM-Logo-mobile-menu.png";
+import MobileMenuHomeLogo from "../public/images/vector/home.svg";
 
 const Header = () => {
   {
@@ -166,6 +168,53 @@ const Header = () => {
     items,
     onClick: handleMenuClick,
   };
+
+  const ItemsOfUSDCurreny = [
+    {
+      key: "1",
+      label: (
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </Link>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          2nd menu item (disabled)
+        </Link>
+      ),
+      icon: <SmileOutlined />,
+      disabled: true,
+    },
+    {
+      key: "3",
+      label: (
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          3rd menu item (disabled)
+        </Link>
+      ),
+      disabled: true,
+    },
+    {
+      key: "4",
+      danger: true,
+      label: "a danger item",
+    },
+  ];
 
   return (
     <>
@@ -488,6 +537,20 @@ const Header = () => {
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <div>
+              <Dropdown
+                menu={{
+                  ItemsOfUSDCurreny,
+                }}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space>
+                    USD
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+
+              {/* ON LOGIN HIDE TOP MENU BAR */}
               <Row md={12} className={HeaderCss.top_nav_bar_row}>
                 {/*//*  Off Canvas Btn  */}
                 <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
@@ -1078,11 +1141,15 @@ function OffCanvasExample({ name, ...props }) {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
+        <div className={HeaderCss.mobile_menu_logo_container}>
+          <Image src={GolfHomMobileMenuLogo} alt="Golfhom logo"></Image>
+        </div>
         <Offcanvas.Body>
           {/* Mobile Menu Main Container */}
           <nav className={HeaderCss.mobile_menu}>
             <div className={HeaderCss.mobile_menu_main_container}>
               <div className={HeaderCss.mobile_menu_div_container}>
+                <Image src={MobileMenuHomeLogo} alt="home icon"></Image>
                 <Link className={HeaderCss.top_header_a} href="/">
                   Home
                 </Link>

@@ -10,7 +10,7 @@ import { Pagination } from "antd";
 import Florida from "../../../public/images/florida.svg";
 import Arizona from "../../../public/images/arizona.svg";
 import Sanfrancisco from "../../../public/images/sanfrancisco.svg";
-import Newyork from "../../../public/images/newyork.svg";
+import Newyork from "../../../public/images/Newyork.svg";
 
 const ViewAllProperty = () => {
   const onChange = (pageNumber) => {
