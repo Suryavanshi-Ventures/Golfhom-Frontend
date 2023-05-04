@@ -58,6 +58,7 @@
   font-family: var(--font-poppins);
   transition-duration: 0.5s;
   font-size: 14px;
+  margin-left: 10px;
 }
 
 .top_header_a:hover,
@@ -100,6 +101,11 @@
 .mobile_menu {
 }
 
+.mobile_menu_logo_container {
+  display: flex;
+  justify-content: center;
+}
+
 .mobile_menu_main_container {
   display: flex;
   flex-direction: column;
@@ -108,7 +114,7 @@
 }
 
 .mobile_menu_div_container {
-  align-self: center;
+  align-self: flex-start;
 }
 
 .off_canvas {
@@ -170,7 +176,7 @@
   width: 100%;
 }
 
-.form_items_login label{
+.form_items_login label {
   font-family: var(--font-poppins);
 }
 
