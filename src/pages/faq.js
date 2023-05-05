@@ -38,6 +38,7 @@ const FAQ = () => {
   const toggleButtonF = () => {
     setShowF(!showF);
   };
+
   return (
     <>
       <Head>

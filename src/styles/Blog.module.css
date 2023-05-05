@@ -160,6 +160,11 @@
   font-size: 15px;
 }
 
+.card_title:hover {
+  transition-duration: 0.5s;
+  color: var(--btn-background-secondary);
+}
+
 .contact_div {
   margin-bottom: 3px;
   /* position: relative; */

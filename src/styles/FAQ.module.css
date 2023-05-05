@@ -63,7 +63,7 @@
 
 .sign:hover {
   border: none;
-  background-color: black;
+  background-color: var(--btn-background-secondary);
 }
 
 .faqTitle {

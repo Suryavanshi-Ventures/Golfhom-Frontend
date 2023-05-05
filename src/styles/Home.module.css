@@ -644,6 +644,11 @@
   font-size: 15px;
 }
 
+.card_title:hover {
+  transition-duration: 0.5s;
+  color: var(--btn-background-secondary);
+}
+
 .byAdmin {
   color: var(--card-text-color);
   font-size: 0.9rem;
