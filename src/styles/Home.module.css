@@ -599,6 +599,11 @@
 
 /* -----------------------------------        STAFF N WRITERS       -------------------------------              */
 
+.staffCard_title_main_container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .staffCard_title {
   font-family: var(--font-amiri);
   font-weight: 700;
@@ -681,11 +686,13 @@
   top: 5px;
 }
 
-
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .search_cols_4 {
     margin-bottom: 1.5rem;
+  }
+  .search_bar_img_div {
+    height: 50vh;
   }
 }
 

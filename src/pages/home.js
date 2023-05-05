@@ -459,8 +459,6 @@ const Home = () => {
             <br /> industry. Lorem Ipsum has been the industry's standard dummy
             text.
           </p>
-
-          <button className={HomeCss.viewAll}>View All</button>
         </div>
 
         <Video videos={video} />
@@ -469,9 +467,15 @@ const Home = () => {
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
       <Container className={HomeCss.staffCard}>
-        <h2 className={HomeCss.staffCard_title}>
-          From the Golfhōm Staff and Guest Writers
-        </h2>
+        <div className={HomeCss.staffCard_title_main_container}>
+          <h2 className={HomeCss.staffCard_title}>
+            From the Golfhōm Staff and Guest Writers
+          </h2>
+          <div className={HomeCss.viewallBtnParent}>
+            <Button className={HomeCss.viewallBtn}>View All</Button>
+          </div>
+        </div>
+
         <Review reviews={review} />
       </Container>
 
