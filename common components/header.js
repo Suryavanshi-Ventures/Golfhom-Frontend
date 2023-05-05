@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import { Button, Checkbox, Input, Form, message } from "antd";
@@ -15,8 +15,16 @@ import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
 import GolfHomMobileMenuLogo from "../public/images/GOLFHOM-Logo-mobile-menu.png";
 import MobileMenuHomeLogo from "../public/images/vector/home.svg";
+import { useContext } from "react";
+import { AuthContext } from "@/context/auth_context";
 
 const Header = () => {
+  const [IsLoggedIn, SetIsLoggedIn] = useState(false);
+
+  const ContextUserDetails = useContext(AuthContext);
+
+  console.log(ContextUserDetails, "CONTAXT USER DETAILS");
+
   {
     /* -----------       SIGN UP SECTION        -----------------*/
   }
@@ -99,8 +107,11 @@ const Header = () => {
 
       //* IF LOGIN SUCCESSFUL
       if (response.status === 200) {
+        ContextUserDetails.setUserState(response.data.token);
         setIsModalOpen(false);
         sessionStorage.setItem("token", response.data.token);
+        // sessionStorage.setItem("status", true);
+        SetIsLoggedIn(true);
         message.success(response.data.message);
       } else {
         message.error("Invalid login credentials!");
@@ -464,8 +475,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -486,8 +497,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -550,143 +561,150 @@ const Header = () => {
                 </a>
               </Dropdown>
 
-              {/* ON LOGIN HIDE TOP MENU BAR */}
-              <Row md={12} className={HeaderCss.top_nav_bar_row}>
-                {/*//*  Off Canvas Btn  */}
-                <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
-                  <OffCanvasExample />
-                </Col>
-
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <span className={HeaderCss.headphones_icon}>
-                    <Image src={HeadPhoneIcon} alt="headphones" />
-                  </span>
-                  <Link className={HeaderCss.top_header_a} href="/">
-                    <Space>
-                      <Button className={HeaderCss.signUpBtn}>Help</Button>
-                    </Space>
-                  </Link>
-                </Col>
-
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link
-                    href="/"
-                    className={HeaderCss.top_header_a}
-                    onClick={(e) => e.preventDefault()}
+              {IsLoggedIn ? (
+                ""
+              ) : (
+                <Row md={12} className={HeaderCss.top_nav_bar_row}>
+                  <Col
+                    xs={"auto"}
+                    className={HeaderCss.top_header_Col_container}
                   >
-                    <Space>
-                      <Button
-                        className={HeaderCss.signUpBtn}
-                        onClick={showRegisterRent}
-                      >
-                        Register to Rent
-                      </Button>
-                    </Space>
-                  </Link>
+                    <span className={HeaderCss.headphones_icon}>
+                      <Image src={HeadPhoneIcon} alt="headphones" />
+                    </span>
+                    <Link className={HeaderCss.top_header_a} href="/">
+                      <Space>
+                        <Button className={HeaderCss.signUpBtn}>Help</Button>
+                      </Space>
+                    </Link>
+                  </Col>
 
-                  {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
-
-                  <Modal
-                    title="Register To Rent"
-                    footer={null}
-                    open={isModalOpened}
-                    onSignup={handleRegisterRent}
-                    onCancel={handleCancelRegisterRent}
-                    width={440}
-                    className={HeaderCss.headerReg}
+                  <Col
+                    xs={"auto"}
+                    className={HeaderCss.top_header_Col_container}
                   >
-                    <Col className={HeaderCss.inputParent}>
-                      <div>
-                        <Input
-                          className={HeaderCss.inputA}
-                          type="text"
-                          placeholder="Enter User name"
-                        ></Input>
-                      </div>
-
-                      <div>
-                        <Input
-                          className={HeaderCss.inputB}
-                          type="email"
-                          placeholder="Email"
-                        ></Input>
-                      </div>
-
-                      <div>
-                        <Input
-                          className={HeaderCss.inputC}
-                          type="password"
-                          placeholder="Password"
-                        ></Input>
-                      </div>
-
-                      <div>
-                        <Input
-                          className={HeaderCss.inputD}
-                          type="password"
-                          placeholder="Repeat Password"
-                        ></Input>
-                      </div>
-                    </Col>
-
-                    <Dropdown menu={menuProps}>
-                      <Button
-                        size="large"
-                        className={HeaderCss.edit_room_dropdown_btn}
-                      >
-                        <Space
-                          className={HeaderCss.edit_room_dropdown_btn_space}
+                    <Link
+                      href="/"
+                      className={HeaderCss.top_header_a}
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <Space>
+                        <Button
+                          className={HeaderCss.signUpBtn}
+                          onClick={showRegisterRent}
                         >
-                          I want to Rent
-                          <DownOutlined
-                            className={HeaderCss.edit_room_dropdown_icon}
-                          />
-                        </Space>
-                      </Button>
-                    </Dropdown>
+                          Register to Rent
+                        </Button>
+                      </Space>
+                    </Link>
 
-                    <Row className={HeaderCss.twoAgree}>
-                      <div>
-                        <Checkbox className={HeaderCss.agreeOptionA}>
-                          I agree with your Terms & Conditions
-                        </Checkbox>
+                    {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
+
+                    <Modal
+                      title="Register To Rent"
+                      footer={null}
+                      open={isModalOpened}
+                      onSignup={handleRegisterRent}
+                      onCancel={handleCancelRegisterRent}
+                      width={440}
+                      className={HeaderCss.headerReg}
+                    >
+                      <Col className={HeaderCss.inputParent}>
+                        <div>
+                          <Input
+                            className={HeaderCss.inputA}
+                            type="text"
+                            placeholder="Enter User name"
+                          ></Input>
+                        </div>
+
+                        <div>
+                          <Input
+                            className={HeaderCss.inputB}
+                            type="email"
+                            placeholder="Email"
+                          ></Input>
+                        </div>
+
+                        <div>
+                          <Input
+                            className={HeaderCss.inputC}
+                            type="password"
+                            placeholder="Password"
+                          ></Input>
+                        </div>
+
+                        <div>
+                          <Input
+                            className={HeaderCss.inputD}
+                            type="password"
+                            placeholder="Repeat Password"
+                          ></Input>
+                        </div>
+                      </Col>
+
+                      <Dropdown menu={menuProps}>
+                        <Button
+                          size="large"
+                          className={HeaderCss.edit_room_dropdown_btn}
+                        >
+                          <Space
+                            className={HeaderCss.edit_room_dropdown_btn_space}
+                          >
+                            I want to Rent
+                            <DownOutlined
+                              className={HeaderCss.edit_room_dropdown_icon}
+                            />
+                          </Space>
+                        </Button>
+                      </Dropdown>
+
+                      <Row className={HeaderCss.twoAgree}>
+                        <div>
+                          <Checkbox className={HeaderCss.agreeOptionA}>
+                            I agree with your Terms & Conditions
+                          </Checkbox>
+                        </div>
+                        <div>
+                          <Checkbox className={HeaderCss.agreeOptionB}>
+                            I agree with your Privacy Policy
+                          </Checkbox>
+                        </div>
+                      </Row>
+
+                      <div className={HeaderCss.registBtnParent}>
+                        <Button className={HeaderCss.registerBtn}>
+                          Register
+                        </Button>
                       </div>
-                      <div>
-                        <Checkbox className={HeaderCss.agreeOptionB}>
-                          I agree with your Privacy Policy
-                        </Checkbox>
-                      </div>
-                    </Row>
+                    </Modal>
+                  </Col>
 
-                    <div className={HeaderCss.registBtnParent}>
-                      <Button className={HeaderCss.registerBtn}>
-                        Register
-                      </Button>
-                    </div>
-                  </Modal>
-                </Col>
-
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <span className={HeaderCss.headphones_icon}>
-                    <Image src={UserIcon} alt="user icon" />
-                  </span>
-
-                  <Link
-                    href="/"
-                    className={HeaderCss.top_header_a}
-                    onClick={(e) => e.preventDefault()}
+                  <Col
+                    xs={"auto"}
+                    className={HeaderCss.top_header_Col_container}
                   >
-                    <Space>
-                      <Button
-                        className={HeaderCss.signUpBtn}
-                        onClick={showModal}
-                      >
-                        Log in & Sign up
-                      </Button>
-                    </Space>
-                  </Link>
-                </Col>
-              </Row>
+                    <span className={HeaderCss.headphones_icon}>
+                      <Image src={UserIcon} alt="user icon" />
+                    </span>
+
+                    <Link
+                      href="/"
+                      className={HeaderCss.top_header_a}
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <Space>
+                        <Button
+                          className={HeaderCss.signUpBtn}
+                          onClick={showModal}
+                        >
+                          Log in & Sign up
+                        </Button>
+                      </Space>
+                    </Link>
+                  </Col>
+                </Row>
+              )}
 
               <Row
                 className={`${HeaderCss.top_nav_bar_row} ${HeaderCss.register_host_btn_row}`}
@@ -699,9 +717,15 @@ const Header = () => {
 
                 <Col
                   md={7}
+                  xs={"auto"}
                   className={HeaderCss.top_header_register_host_col_container}
                 >
                   <Row className={HeaderCss.top_header_row_container}>
+                    {/*//*  Off Canvas Btn  */}
+                    <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
+                      <OffCanvasExample />
+                    </Col>
+
                     <Col
                       xs={"auto"}
                       className={HeaderCss.top_header_Col_container}
@@ -1212,6 +1236,18 @@ function OffCanvasExample({ name, ...props }) {
       </Offcanvas>
     </>
   );
+}
+export async function getServerSideProps(context) {
+  const { params, req, res } = context;
+
+  console.log(params, "GETSERVERSide");
+
+  const { isLoggedIn } = context.req.cookies;
+  return {
+    props: {
+      isLoggedIn: isLoggedIn === "true",
+    },
+  };
 }
 
 export default Header;

@@ -6,8 +6,8 @@ import { message } from "antd";
 const ProtectedRoute = ({ children }) => {
   const router = useRouter();
   useEffect(() => {
-    // check if user is authenticated
-    const IsAuthenticated = sessionStorage.getItem("token"); // your authentication logic here
+    //* check if user is authenticated
+    const IsAuthenticated = sessionStorage.getItem("token");
     const Token = IsAuthenticated;
 
     //! User Get Profile API Call
@@ -19,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
       console.log(response, "user authenticated");
     }).catch((error) => {
       if (!IsAuthenticated || error.response.status === 401) {
-        // redirect to login page
+        //* redirect to login page
         router.push("/");
       }
       console.log(error, "user not authenticated");

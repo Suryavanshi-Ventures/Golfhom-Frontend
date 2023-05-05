@@ -26,10 +26,12 @@
 
 .top_header_row_container {
   justify-content: space-between;
-  /* align-self: flex-end; */
   width: -webkit-fill-available;
 }
-
+.off_canvas_col {
+  display: flex;
+  align-items: center;
+}
 .top_header_Col_container {
   align-self: center;
 }
@@ -133,6 +135,9 @@
   }
   .top_nav_bar_col {
     justify-content: center;
+  }
+  .top_header_row_container {
+    justify-content: flex-end;
   }
 }
 
