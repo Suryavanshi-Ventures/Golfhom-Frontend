@@ -17,6 +17,7 @@ import GolfHomMobileMenuLogo from "../public/images/GOLFHOM-Logo-mobile-menu.png
 import MobileMenuHomeLogo from "../public/images/vector/home.svg";
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth_context";
+import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 
 const Header = () => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
@@ -33,7 +34,7 @@ const Header = () => {
   const [form] = Form.useForm();
 
   //* REGISTER BTN DISABLED
-  const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(true);
+  const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(false);
 
   // CHECKBOX TERMS CONDITION USESTATE END
 
@@ -381,6 +382,7 @@ const Header = () => {
                 >
                   <Input
                     name="user_name"
+                    prefix={<UserOutlined />}
                     placeholder="Enter User name"
                     className={HeaderCss.inputA}
                   />
@@ -403,6 +405,7 @@ const Header = () => {
                 >
                   <Input
                     name="email"
+                    prefix={<MailOutlined />}
                     placeholder="Email"
                     className={HeaderCss.inputB}
                   />
@@ -426,6 +429,7 @@ const Header = () => {
                 >
                   <Input.Password
                     name="password"
+                    prefix={<LockOutlined />}
                     placeholder="Password"
                     className={HeaderCss.inputC}
                   />
@@ -458,6 +462,7 @@ const Header = () => {
                   ]}
                 >
                   <Input.Password
+                    prefix={<LockOutlined />}
                     placeholder="Repeat Password"
                     className={HeaderCss.inputD}
                   />
@@ -475,8 +480,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -497,8 +502,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >

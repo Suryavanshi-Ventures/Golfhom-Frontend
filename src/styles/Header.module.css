@@ -285,8 +285,8 @@
   border-radius: 0px;
 
   border: 1px solid var(--light-font-color) !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  /* border-top: none !important;
+  border-bottom: none !important; */
 }
 
 .inputC {
@@ -295,7 +295,7 @@
   border-radius: 0px;
 
   border: 1px solid var(--light-font-color) !important;
-  border-bottom: none !important;
+  /* border-bottom: none !important; */
 }
 
 .inputD {
