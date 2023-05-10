@@ -26,7 +26,7 @@
   }
 
   .checkapply {
-    font-size: 0.96rem
+    font-size: 0.9rem
   }
 
   .title {
@@ -39,9 +39,22 @@
     padding: 10px 12px;
   }
 
-  .listingbed {
-    padding: 30px 0px;
+  .inputBox {
+    margin-bottom: 20px;
   }
+
+  .listingA {
+    padding: 10px 12px;
+    margin-bottom: 50px;
+  }
+
+  .listingbed {
+    padding: 16px 0px;
+  }
+
+  .headingInput {
+    padding: 30px 0px;
+ }
 
   .subheading {
     font-family: var(--font-amiri);
@@ -52,21 +65,43 @@
   .twobtn {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 80px;
   }
 
   .savebtn {
     font-family: var(--font-poppins);
     font-weight: 600;
-    
+    padding: 10px 24px;
+    border-radius: 5px;
+    background: var(--white-font-color);
+    border: 1px solid #999494;
   }
 
-  .continuebtn, .continuebtn:hover {
+  .savebtn:hover {
+    background: var(--btn-background-secondary) !important;
+    border: 1px solid var(--btn-background-secondary) !important;
+    color: var(--white-font-color);
+    /* letter-spacing: 0.8px; this property make letter in proper spacing but button size also get changed so I need to discuss then remove thhis */
+  }
+
+  .continuebtn {
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    letter-spacing: 0.8px;
     width: 14%;
     display: flex;
     justify-content: center;
     background-color: var(--btn-background-secondary);
     color: var(--white-font-color) !important;
     border: none;
+    padding: 10px 24px;
+    border-radius: 5px;
+    border: 1px solid var(--btn-background-secondary);
+  }
+
+  .continuebtn:hover {
+    background-color: var(--black-btn-color);
+    border: 1px solid var(--black-btn-color);
   }
 
   .para {

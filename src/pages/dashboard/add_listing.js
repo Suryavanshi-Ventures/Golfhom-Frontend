@@ -6,7 +6,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import ProtectedRoute from "../../../common components/protected_route";
-import { Button, Checkbox, Input } from "antd";
+import { Checkbox, Input } from "antd";
 import { CaretDownOutlined } from '@ant-design/icons';
 // import ReactQuill from 'react-quill';
 // import 'react-quill/dist/quill.snow.css';
@@ -56,13 +56,17 @@ const Addlisting = () => {
               <Col md={3}> <p className={AddListingCss.checkapply}>Please check all that applies</p></Col>
             </Row>
 
-            <h4 className={AddListingCss.title}>Title*</h4>
+            <Row>
+              <Col md={12}>
+                <h4 className={AddListingCss.title}>Title*</h4>
 
-            <Input
-              type="text"
-              placeholder="Enter the listing title"
-              className={AddListingCss.listing}
-            />
+                <Input
+                  type="text"
+                  placeholder="Enter the listing title"
+                  className={AddListingCss.listing}
+                />
+              </Col>
+            </Row>
 
             <p className={AddListingCss.para}>Vicinity Golf Course(s) - Please highlight all courses within 1 mile of the listing* (Hold command button down if selecting multiple courses)</p>
 
@@ -90,7 +94,7 @@ const Addlisting = () => {
           </Row> */}
 
             <Row className={AddListingCss.listingbed}>
-              <Col md={6}>
+              <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Type of listing*</h4>
                 <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Select listing Type" suffix={<CaretDownOutlined />} className={AddListingCss.listing} />
                 <datalist id="data">
@@ -102,7 +106,7 @@ const Addlisting = () => {
                 </datalist>
               </Col>
 
-              <Col md={6}>
+              <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
                 <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Enter number of bedrooms" suffix={<CaretDownOutlined />} className={AddListingCss.listing} />
                 <datalist id="data">
@@ -116,7 +120,7 @@ const Addlisting = () => {
             </Row>
 
             <Row className={AddListingCss.listingbed}>
-              <Col md={6}>
+              <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
                 <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Enter number of bedrooms" suffix={<CaretDownOutlined />} className={AddListingCss.listing} />
                 <datalist id="data">
@@ -128,20 +132,22 @@ const Addlisting = () => {
                 </datalist>
               </Col>
 
-              <Col md={6}>
+              <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of beds*</h4>
                 <Input type="text" placeholder="Enter number of bed" className={AddListingCss.listing} />
               </Col>
             </Row>
 
-            <Row className={AddListingCss.listingbed}>
-              <h4 className={AddListingCss.subheading}>Max number or overnight guests*</h4>
-              <Input type="text" placeholder="Numbers of guests" className={AddListingCss.listing} />
+            <Row>
+              <Col md={12}>
+                <h4 className={AddListingCss.subheading}>Max number or overnight guests*</h4>
+                <Input type="text" placeholder="Numbers of guests" className={AddListingCss.listingA} />
+              </Col>
             </Row>
 
             <div className={AddListingCss.twobtn}>
-              <Button className={AddListingCss.savebtn}>Save as Draft</Button>
-              <Button className={AddListingCss.continuebtn}>Continue</Button>
+              <button className={AddListingCss.savebtn}>Save as Draft</button>
+              <button className={AddListingCss.continuebtn}>Continue</button>
             </div>
 
           </Col>
