@@ -126,6 +126,37 @@
         background-color: #DFDFDF;
       }
 
+      .radioA {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid var( --dark-grey-font);
+        border-radius: 5px;
+        padding: 10px 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .radioA:hover {
+        border: 1px solid var( --btn-background-secondary);
+      }
+
+      .daily {
+        margin-bottom: 0px;
+        color: var(--dark-grey-font);
+        font-weight: 400;
+        font-family: var(--font-poppins);
+      }
+
+      .perStay {
+        margin-bottom: 0px;
+        color: var(--btn-background-secondary);
+        font-weight: 400;
+        font-family: var(--font-poppins);
+      }
+
+      .dot {
+        color: var(--btn-background-secondary);
+      }
       /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .listing {

@@ -130,11 +130,17 @@ const Addlisting01 = () => {
                             </Col>
 
                             <Col md={4} className={AddListing01Css.radio}>
-                                <Input type="text" placeholder="Daily" className={AddListing01Css.listing} />
+                                <div className={AddListing01Css.radioA}>
+                                    <p className={AddListing01Css.daily}>Daily</p>
+                                    <input type="radio" />
+                                </div>
                             </Col>
 
                             <Col md={4} className={AddListing01Css.radio}>
-                                <Input type="text" placeholder="Per Stay" className={AddListing01Css.listing} />
+                                <div className={AddListing01Css.radioA}>
+                                    <p className={AddListing01Css.perStay}>Per Stay</p>
+                                    <input type="radio" className={AddListing01Css.dot} />
+                                </div>
                             </Col>
 
                             <div className={AddListing01Css.twobtn}>
