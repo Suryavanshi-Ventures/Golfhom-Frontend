@@ -34,7 +34,7 @@ const Addlisting02 = () => {
                 {/*     -------------------------     TEXT AREA      ----------------------------    */}
 
                 <Container>
-                    <Col md={9}>
+                    <Col md={10}>
                         <h2 className={AddListing02Css.addListing}>Add Listing</h2>
 
                         <h3 className={AddListing02Css.info}>Media</h3>
@@ -60,26 +60,25 @@ const Addlisting02 = () => {
                                 <button className={AddListing02Css.select}>Select and Upload</button>
                             </div>
                         </Row>
-                    </Col>
 
-                    <Row>
-                        <h3 className={AddListing02Css.info}>Video URL</h3>
 
                         <Row>
-                            <Col md={9}>
+                            <h3 className={AddListing02Css.info}>Video URL</h3>
+
+                            <Row>
                                 <Input type="text" placeholder="Select the video link or URL Supported formats: youtube, vimeo, SWF, and MOV" className={AddListing02Css.listing} />
-                            </Col>
 
-                            <div className={AddListing02Css.twobtn}>
-                                <button className={AddListing02Css.savebtn}>Back</button>
-                                <button className={AddListing02Css.savebtn}>Save as Draft</button>
-                            </div>
+                                <div className={AddListing02Css.twobtn}>
+                                    <button className={AddListing02Css.savebtn}>Back</button>
+                                    <button className={AddListing02Css.savebtn}>Save as Draft</button>
+                                </div>
 
-                            <Row className={AddListing02Css.addbtnparent}>
-                                <button className={AddListing02Css.addbtn}> Continue</button>
+                                <div className={AddListing02Css.addbtnparent}>
+                                    <button className={AddListing02Css.addbtn}> Continue</button>
+                                </div>
                             </Row>
                         </Row>
-                    </Row>
+                    </Col>
                 </Container>
             </ProtectedRoute>
         </>

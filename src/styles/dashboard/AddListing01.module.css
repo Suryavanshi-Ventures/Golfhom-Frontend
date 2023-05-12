@@ -63,7 +63,6 @@
         font-family: var(--font-poppins);
         font-weight: 600;
         letter-spacing: 0.8px;
-        width: 14%;
         display: flex;
         justify-content: center;
         background-color: var(--btn-background-secondary);
@@ -74,13 +73,30 @@
         border: 1px solid var(--btn-background-secondary);
       }
 
-      /* .addbtn {
-        background-image: url('/public/images/vector/plus.svg');
-        background-repeat: no-repeat;
-        background-position: start;
-        background-size: 20px 20px;     this is not working why?
-        padding-left: 20px;
-      } */
+      .dropbtn {
+        padding: 9px 12px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        color: var(--dark-grey-font);
+        font-weight: 400;
+        font-family: var(--font-poppins);
+        background: var(--white-font-color);
+        border: 1px solid var( --dark-grey-font);
+      }
+
+      .dropbtn:hover {
+        background: var(--white-font-color);
+        color: var(--dark-grey-font);
+        border: 1px solid var(--btn-background-secondary);
+      }
+
+      .dropOption {
+        width: 100%;
+        color: var(--dark-grey-font);
+        font-weight: 400;
+        font-family: var(--font-poppins);
+      }
 
       .plus {
         padding-top: 4px;

@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import FAQBannerImg from "../../../public/images/faq_banner_img.svg";
 import AddListing01Css from "../../styles/dashboard/AddListing01.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import { Input } from "antd";
-import { CaretDownOutlined, PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 
 const Addlisting01 = () => {
-    const [val, setVal] = useState(' ');
-    const data = ["One", "Two", "Three"]
 
     return (
         <>
@@ -35,124 +33,128 @@ const Addlisting01 = () => {
                 {/*     -------------------------     TEXT AREA      ----------------------------    */}
 
                 <Container>
-                    <Col md={9}>
+                    <Col md={10}>
                         <h2 className={AddListing01Css.addListing}>Add Listing</h2>
 
                         <h3 className={AddListing01Css.info}>Pricing</h3>
 
                         <hr />
-                    </Col>
 
-                    <Row>
-                        <Col md={7}>
-                            <h4 className={AddListing01Css.title}>Nightly*</h4>
-
-                            <Input
-                                type="text"
-                                placeholder="Enter price for 1 night"
-                                className={AddListing01Css.listing}
-                            />
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col md={12} className={AddListing01Css.colParent}>
-                            <h4 className={AddListing01Css.title}>Nightly*</h4>
-
-                            <Input
-                                type="text"
-                                placeholder="Enter price for 1 night"
-                                className={AddListing01Css.listing}
-                            />
-                        </Col>
-                    </Row>
-                    <hr />
-
-                    <Row>
-                        <Col md={12} className={AddListing01Css.colParent}>
-                            <h4 className={AddListing01Css.title}>Long-term pricing</h4>
-                            <h5 className={AddListing01Css.weekly}>Weekly - 7+ nights</h5>
-
-                            <Input
-                                type="text"
-                                placeholder="Enter the Unit price for a single day"
-                                className={AddListing01Css.listing}
-                            />
-                        </Col>
-                    </Row>
-                    <hr />
-
-                    <Row>
-                        <h3 className={AddListing01Css.info}>Setup Extra Services Price</h3>
-
-                        <Row className={AddListing01Css.twoinputDropdown}>
-                            <Col md={4}>
-                                <h5 className={AddListing01Css.name}>Name</h5>
-                                <Input type="text" placeholder="Enter Service name" className={AddListing01Css.listing} />
-                            </Col>
-
-                            <Col md={4}>
-                                <h5 className={AddListing01Css.price}>Price</h5>
-                                <Input type="text" placeholder="Enter price - only digits" className={AddListing01Css.listing} />
-
-                            </Col>
-
-                            <Col md={4}>
-                                <h5 className={AddListing01Css.type}>Type</h5>
-                                <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Single free" suffix={<CaretDownOutlined />} className={AddListing01Css.listing} />
-                                <datalist id="data">
-                                    <option>One</option>
-                                    <option>Two</option>
-                                    <option>Three</option>
-                                    <option>Four</option>
-                                    {data.map((op) => <optiopn>{op}</optiopn>)}
-                                </datalist>
-                            </Col>
-
-                            <Row className={AddListing01Css.btnparent}>
-                                <button className={AddListing01Css.deletebtn}>Delete</button>
-                            </Row>
-                        </Row>
-
-                        <Row className={AddListing01Css.addbtnparent}>
-                            <button className={AddListing01Css.addbtn}><PlusOutlined className={AddListing01Css.plus} /> Add More</button>
-                        </Row>
-                    </Row>
-                    <hr />
-
-                    <Row>
-                        <h3 className={AddListing01Css.info}>Additional costs</h3>
 
                         <Row>
-                            <Col md={4}>
-                                <h5 className={AddListing01Css.name}>Cleaning fee</h5>
-                                <Input type="text" placeholder="Enter the Unit price for a single day" className={AddListing01Css.listing} />
-                            </Col>
+                            <Col md={7}>
+                                <h4 className={AddListing01Css.title}>Nightly*</h4>
 
-                            <Col md={4} className={AddListing01Css.radio}>
-                                <div className={AddListing01Css.radioA}>
-                                    <p className={AddListing01Css.daily}>Daily</p>
-                                    <input type="radio" />
+                                <Input
+                                    type="text"
+                                    placeholder="Enter price for 1 night"
+                                    className={AddListing01Css.listing}
+                                />
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col md={12} className={AddListing01Css.colParent}>
+                                <h4 className={AddListing01Css.title}>Nightly*</h4>
+
+                                <Input
+                                    type="text"
+                                    placeholder="Enter price for 1 night"
+                                    className={AddListing01Css.listing}
+                                />
+                            </Col>
+                        </Row>
+                        <hr />
+
+                        <Row>
+                            <Col md={12} className={AddListing01Css.colParent}>
+                                <h4 className={AddListing01Css.title}>Long-term pricing</h4>
+                                <h5 className={AddListing01Css.weekly}>Weekly - 7+ nights</h5>
+
+                                <Input
+                                    type="text"
+                                    placeholder="Enter the Unit price for a single day"
+                                    className={AddListing01Css.listing}
+                                />
+                            </Col>
+                        </Row>
+                        <hr />
+
+                        <Row>
+                            <h3 className={AddListing01Css.info}>Setup Extra Services Price</h3>
+
+                            <Row className={AddListing01Css.twoinputDropdown}>
+                                <Col md={4}>
+                                    <h5 className={AddListing01Css.name}>Name</h5>
+                                    <Input type="text" placeholder="Enter Service name" className={AddListing01Css.listing} />
+                                </Col>
+
+                                <Col md={4}>
+                                    <h5 className={AddListing01Css.price}>Price</h5>
+                                    <Input type="text" placeholder="Enter price - only digits" className={AddListing01Css.listing} />
+
+                                </Col>
+
+                                <Col md={4}>
+                                    <h5 className={AddListing01Css.type}>Type</h5>
+                                    <Dropdown>
+                                        <Dropdown.Toggle className={AddListing01Css.dropbtn}>
+                                            Single free
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu className={AddListing01Css.dropOption}>
+                                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Col>
+
+                                <div className={AddListing01Css.btnparent}>
+                                    <button className={AddListing01Css.deletebtn}>Delete</button>
                                 </div>
-                            </Col>
+                            </Row>
 
-                            <Col md={4} className={AddListing01Css.radio}>
-                                <div className={AddListing01Css.radioA}>
-                                    <p className={AddListing01Css.perStay}>Per Stay</p>
-                                    <input type="radio" className={AddListing01Css.dot} />
-                                </div>
-                            </Col>
-
-                            <div className={AddListing01Css.twobtn}>
-                                <button className={AddListing01Css.savebtn}>Back</button>
-                                <button className={AddListing01Css.savebtn}>Save as Draft</button>
+                            <div className={AddListing01Css.addbtnparent}>
+                                <button className={AddListing01Css.addbtn}><PlusOutlined className={AddListing01Css.plus} /> Add More</button>
                             </div>
+                        </Row>
+                        <hr />
 
-                            <Row className={AddListing01Css.addbtnparent}>
-                                <button className={AddListing01Css.addbtn}> Continue</button>
+                        <Row>
+                            <h3 className={AddListing01Css.info}>Additional costs</h3>
+
+                            <Row>
+                                <Col md={4}>
+                                    <h5 className={AddListing01Css.name}>Cleaning fee</h5>
+                                    <Input type="text" placeholder="Enter the Unit price for a single day" className={AddListing01Css.listing} />
+                                </Col>
+
+                                <Col md={4} className={AddListing01Css.radio}>
+                                    <div className={AddListing01Css.radioA}>
+                                        <p className={AddListing01Css.daily}>Daily</p>
+                                        <input type="radio" />
+                                    </div>
+                                </Col>
+
+                                <Col md={4} className={AddListing01Css.radio}>
+                                    <div className={AddListing01Css.radioA}>
+                                        <p className={AddListing01Css.perStay}>Per Stay</p>
+                                        <input type="radio" className={AddListing01Css.dot} />
+                                    </div>
+                                </Col>
+
+                                <div className={AddListing01Css.twobtn}>
+                                    <button className={AddListing01Css.savebtn}>Back</button>
+                                    <button className={AddListing01Css.savebtn}>Save as Draft</button>
+                                </div>
+
+                                <div className={AddListing01Css.addbtnparent}>
+                                    <button className={AddListing01Css.addbtn}> Continue</button>
+                                </div>
                             </Row>
                         </Row>
-                    </Row>
+                    </Col>
                 </Container>
             </ProtectedRoute>
         </>

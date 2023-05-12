@@ -55,7 +55,6 @@
         font-family: var(--font-poppins);
         font-weight: 600;
         letter-spacing: 0.8px;
-        width: 14%;
         display: flex;
         justify-content: center;
         background-color: var(--btn-background-secondary);

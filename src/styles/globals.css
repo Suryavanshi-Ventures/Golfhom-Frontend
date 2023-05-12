@@ -220,3 +220,8 @@
 .ant-input:hover, .ant-input-affix-wrapper {
   border: 1px solid var( --btn-background-secondary);
 }
+
+/* BOOTSTRAP DROPDOWN */
+.dropdown-toggle::after {
+  align-self: center;
+}
