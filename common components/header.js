@@ -29,8 +29,18 @@ import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 
 const Header = () => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
-
   const ContextUserDetails = useContext(AuthContext);
+
+  useEffect(() => {
+    ContextUserDetails.setUserState(sessionStorage.getItem("token"));
+    console.log(ContextUserDetails, "Session");
+
+    if (ContextUserDetails.UserState != null) {
+      SetIsLoggedIn(true);
+    }
+
+    return () => {};
+  }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
 
@@ -193,6 +203,7 @@ const Header = () => {
   const Logout = () => {
     sessionStorage.clear();
     SetIsLoggedIn(false);
+    ContextUserDetails.setUserState(null);
   };
 
   return (
@@ -541,7 +552,7 @@ const Header = () => {
                         <Link
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://www.aliyun.com"
+                          href="/"
                         >
                           2nd menu item (disabled)
                         </Link>
@@ -555,7 +566,7 @@ const Header = () => {
                         <Link
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://www.luohanacademy.com"
+                          href="/"
                         >
                           3rd menu item (disabled)
                         </Link>
@@ -570,12 +581,12 @@ const Header = () => {
                   ],
                 }}
               >
-                <a onClick={(e) => e.preventDefault()}>
+                <Link href="/" onClick={(e) => e.preventDefault()}>
                   <Space>
                     USD
                     <DownOutlined />
                   </Space>
-                </a>
+                </Link>
               </Dropdown>
 
               {IsLoggedIn ? (
@@ -1015,7 +1026,7 @@ function OffCanvasExample({ name, ...props }) {
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
+  const showLoginModalMobile = () => {
     setIsModalOpen(true);
   };
   const handleSignup = () => {
@@ -1343,208 +1354,6 @@ function OffCanvasExample({ name, ...props }) {
           {/* Mobile Menu Main Container */}
           <nav className={HeaderCss.mobile_menu}>
             <div className={HeaderCss.mobile_menu_main_container}>
-              {IsLoggedIn ? (
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Dropdown
-                    menu={{
-                      items: [
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard"
-                            >
-                              {" "}
-                              <Image
-                                src={MobileMenuHomeLogo}
-                                alt="home icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Dashboard
-                            </Link>
-                          ),
-                          key: "1",
-                        },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard/user_profile"
-                            >
-                              {" "}
-                              <Image
-                                src={ProfileIconMobileMenu}
-                                alt="profile icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Profile
-                            </Link>
-                          ),
-                          key: "2",
-                        },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard/reservation"
-                            >
-                              {" "}
-                              <Image
-                                src={ReservationIconMobileMenu}
-                                alt="reservation icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Reservation
-                            </Link>
-                          ),
-                          key: "3",
-                        },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard/favorites"
-                            >
-                              {" "}
-                              <Image
-                                src={FavIconMobileMenu}
-                                alt="favorite icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Favorites
-                            </Link>
-                          ),
-                          key: "4",
-                        },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard/invoice"
-                            >
-                              {" "}
-                              <Image
-                                src={InvoiceIconMobileMenu}
-                                alt="invoice icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Invoices
-                            </Link>
-                          ),
-                          key: "5",
-                        },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard/messages"
-                            >
-                              {" "}
-                              <Image
-                                src={MessageIconMobileMenu}
-                                alt="message icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Message
-                            </Link>
-                          ),
-                          key: "6",
-                        },
-
-                        {
-                          type: "divider",
-                        },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/"
-                              onClick={() => {
-                                Logout();
-                              }}
-                            >
-                              {" "}
-                              <Image
-                                src={LogoutIconMobileMenu}
-                                alt="logout icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Logout
-                            </Link>
-                          ),
-                          key: "7",
-                        },
-                      ],
-                    }}
-                  >
-                    <Link
-                      href="/"
-                      className={HeaderCss.top_header_logggedin_link}
-                    >
-                      <Space className={HeaderCss.top_header_logggedin_space}>
-                        Rajul Verma
-                        <Image
-                          width={20}
-                          height={20}
-                          src={ProfileIcon}
-                          alt="profile icon"
-                        ></Image>
-                      </Space>
-                    </Link>
-                  </Dropdown>
-                </Col>
-              ) : (
-                <Col xs={"auto"} className={HeaderCss.top_header_Col_container}>
-                  <Link href="/register_to_host">
-                    <Button type="primary" className={HeaderCss.register_btn}>
-                      Register To Host
-                    </Button>
-                  </Link>
-                </Col>
-              )}
-
               <div className={HeaderCss.mobile_menu_div_container}>
                 <Image src={MobileMenuHomeLogo} alt="home icon"></Image>
                 <Link className={HeaderCss.top_header_a} href="/">
@@ -1574,7 +1383,10 @@ function OffCanvasExample({ name, ...props }) {
                   onClick={(e) => e.preventDefault()}
                 >
                   <Space>
-                    <Button className={HeaderCss.signUpBtn} onClick={showModal}>
+                    <Button
+                      className={HeaderCss.signUpBtn}
+                      onClick={showLoginModalMobile}
+                    >
                       Log in & Sign up
                     </Button>
                   </Space>
