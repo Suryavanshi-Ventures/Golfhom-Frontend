@@ -6,6 +6,14 @@
   
       /*     -------------------------     TEXT AREA      ----------------------------    */
 
+      .inner_input_date_picker:hover {
+        border-color: var(--btn-background);
+        border-inline-end-width: 1px;
+      }
+      .inner_input_date_picker:focus {
+        border-color: var(--btn-background);
+        border-inline-end-width: 1px;
+      }
   
       .invoices {
         font-family: var(--font-amiri);
@@ -49,7 +57,7 @@
       color: var(--black-color);
     }
 
-    .colA, .colB, .colC, .colD {
+    .colA, .colB {
       width: 100%;
       height: auto;
       padding: 8px 14px;

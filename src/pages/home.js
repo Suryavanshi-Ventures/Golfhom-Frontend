@@ -138,18 +138,26 @@ const Home = () => {
             best golf courses! Golfhōm has a growing selection of golf
             course-vicinity vacation rentals that deliver the comforts of home,
             luxe amenities, and access to plenty of Arizona and Florida
-            attractions! Golfhōm is transforming how golfers locate and book
-            their next luxury golf vacation rental. Book with us today!
+            attractions!
           </p>
 
-          <Link
-            href="/search/view_all_property"
-            style={{ textDecoration: "none" }}
-          >
-            <div className={HomeCss.viewallBtnParent}>
-              <Button className={HomeCss.viewallBtn}>View All</Button>
-            </div>
-          </Link>
+          <Row>
+            <Col md={9}>
+              <p className={HomeCss.para}> Golfhōm is transforming how golfers locate and book
+                their next luxury golf vacation rental. Book with us today!</p>
+            </Col>
+
+            <Col md={3}>
+              <Link
+                href="/search/view_all_property"
+                style={{ textDecoration: "none" }}
+              >
+                <div className={HomeCss.viewallBtnParent}>
+                  <Button className={HomeCss.viewallBtn}>View All</Button>
+                </div>
+              </Link>
+            </Col>
+          </Row>
         </div>
 
         <Slider slides={slides} />
@@ -467,19 +475,20 @@ const Home = () => {
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
       <Container className={HomeCss.staffCard}>
-        <div className={HomeCss.staffCard_title_main_container}>
-          <h2 className={HomeCss.staffCard_title}>
-            From the Golfhōm Staff and Guest Writers
-          </h2>
-          <div className={HomeCss.viewallBtnParent}>
+        <Row>
+          <Col md={8} className={HomeCss.staffCard_title_main_container}>
+            <h2 className={HomeCss.staffCard_title}>
+              From the Golfhōm Staff and Guest Writers
+            </h2>
+          </Col>
+
+          <Col md={4} className={HomeCss.viewallBtnParent}>
             <Button className={HomeCss.viewallBtn}>View All</Button>
-          </div>
-        </div>
+          </Col></Row>
 
         <Review reviews={review} />
       </Container>
 
-      {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
       <BottomSection />
     </>

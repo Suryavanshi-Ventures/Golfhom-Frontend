@@ -26,56 +26,56 @@ const Addlisting03 = () => {
     const heat = "Central Heat";
     const centeral = [];
 
-    for (let i = 0; i < 20; i++) {
+    for (let rowAcolA = 0; rowAcolA < 20; rowAcolA++) {
         elements.push(
-            <div key={i} className={AddListing03Css.checkWord}>
-                <Input type="checkbox" id={'uprowA-${i}'} className={AddListing03Css.tickbox} />
-                <label htmlFor={'chekcbox-${i}'}>{beds}</label>
+            <div key={rowAcolA} className={AddListing03Css.checkWord}>
+                <Input type="checkbox" id={'uprowA-${rowAcolA}'} className={AddListing03Css.tickbox} />
+                <label htmlFor={'chekcbox-${rowAcolA}'}>{beds}</label>
             </div>
         );
     }
 
-    for (let j = 0; j < 20; j++) {
+    for (let rowAcolB = 0; rowAcolB < 20; rowAcolB++) {
         hour.push(
-            <div key={j} className={AddListing03Css.checkWord}>
-                <Input type="checkbox" id={'uprowB-${j}'} className={AddListing03Css.tickbox} />
-                <label htmlFor={'chekcbox-${j}'}>{security}</label>
+            <div key={rowAcolB} className={AddListing03Css.checkWord}>
+                <Input type="checkbox" id={'uprowB-${rowAcolB}'} className={AddListing03Css.tickbox} />
+                <label htmlFor={'chekcbox-${rowAcolB}'}>{security}</label>
             </div>
         );
     }
 
-    for (let k = 0; k < 20; k++) {
+    for (let rowAcolC = 0; rowAcolC < 20; rowAcolC++) {
         door.push(
-            <div key={k} className={AddListing03Css.checkWord}>
-                <Input type="checkbox" id={'uprowC-${k}'} className={AddListing03Css.tickbox} />
-                <label htmlFor={'chekcbox-${k}'}>{terrace}</label>
+            <div key={rowAcolC} className={AddListing03Css.checkWord}>
+                <Input type="checkbox" id={'uprowC-${rowAcolC}'} className={AddListing03Css.tickbox} />
+                <label htmlFor={'chekcbox-${rowAcolC}'}>{terrace}</label>
             </div>
         );
     }
 
-    for (let i = 0; i < 10; i++) {
+    for (let rowBcolA = 0; rowBcolA < 10; rowBcolA++) {
         back.push(
-            <div key={i} className={AddListing03Css.checkWord}>
-                <Input type="checkbox" id={'downrowA-${i}'} className={AddListing03Css.tickbox} />
-                <label htmlFor={'chekcbox-${i}'}>{generator}</label>
+            <div key={rowBcolA} className={AddListing03Css.checkWord}>
+                <Input type="checkbox" id={'downrowA-${rowBcolA}'} className={AddListing03Css.tickbox} />
+                <label htmlFor={'chekcbox-${rowBcolA}'}>{generator}</label>
             </div>
         );
     }
 
-    for (let j = 0; j < 10; j++) {
+    for (let rowBcolB = 0; rowBcolB < 10; rowBcolB++) {
         center.push(
-            <div key={j} className={AddListing03Css.checkWord}>
-                <Input type="checkbox" id={'downrowB-${j}'} className={AddListing03Css.tickbox} />
-                <label htmlFor={'chekcbox-${j}'}>{condition}</label>
+            <div key={rowBcolB} className={AddListing03Css.checkWord}>
+                <Input type="checkbox" id={'downrowB-${rowBcolB}'} className={AddListing03Css.tickbox} />
+                <label htmlFor={'chekcbox-${rowBcolB}'}>{condition}</label>
             </div>
         );
     }
 
-    for (let k = 0; k < 10; k++) {
+    for (let rowBcolC = 0; rowBcolC < 10; rowBcolC++) {
         centeral.push(
-            <div key={k} className={AddListing03Css.checkWord}>
-                <Input type="checkbox" id={'downrowC-${k}'} className={AddListing03Css.tickbox} />
-                <label htmlFor={'chekcbox-${k}'}>{heat}</label>
+            <div key={rowBcolC} className={AddListing03Css.checkWord}>
+                <Input type="checkbox" id={'downrowC-${rowBcolC}'} className={AddListing03Css.tickbox} />
+                <label htmlFor={'chekcbox-${rowBcolC}'}>{heat}</label>
             </div>
         );
     }

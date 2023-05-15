@@ -4,8 +4,8 @@ import BottomSection from "../../../common components/bottomGroup";
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
 import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { DatePicker } from "antd";
+const { RangePicker } = DatePicker;
 import Nextimg from "../../../public/images/vector/next.svg";
 import Head from "next/head";
 import { Dropdown, Space, Typography } from "antd";
@@ -13,8 +13,6 @@ import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
 
 const Invoice = () => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
 
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -95,24 +93,16 @@ const Invoice = () => {
               <tbody>
                 <tr className={InvoiceCss.tableRow}>
                   <td>
-                    <DatePicker
-                      selected={startDate}
-                      onChange={(date) => setStartDate(date)}
-                      dateFormat="MMMM d, yyyy"
-                      placeholderText="April 12,2023"
-                      showMonthYearPicker
-                      className={InvoiceCss.colA}
+                    <RangePicker
+                      size="large"
+                      className={InvoiceCss.inner_input_date_picker}
                     />
                   </td>
 
                   <td>
-                    <DatePicker
-                      selected={endDate}
-                      onChange={(date) => setEndDate(date)}
-                      dateFormat="MMMM d, yyyy"
-                      placeholderText="April 12,2023"
-                      showMonthYearPicker
-                      className={InvoiceCss.colB}
+                    <RangePicker
+                      size="large"
+                      className={InvoiceCss.inner_input_date_picker}
                     />
                   </td>
 
@@ -127,7 +117,7 @@ const Invoice = () => {
                       id="my-dropdown"
                       value={selectedOption}
                       onChange={handleOptionChange}
-                      className={InvoiceCss.colC}
+                      className={InvoiceCss.colA}
                       prefix={<DownOutlined />}
                     >
                       <span onClick={(e) => e.preventDefault()}>
@@ -156,7 +146,7 @@ const Invoice = () => {
                       id="my-dropdown"
                       value={selectedOption}
                       onChange={handleOptionChange}
-                      className={InvoiceCss.colD}
+                      className={InvoiceCss.colB}
                       prefix={<DownOutlined />}
                     >
                       <span onClick={(e) => e.preventDefault()}>
