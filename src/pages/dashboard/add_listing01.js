@@ -5,7 +5,7 @@ import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Dropdown, Row } from "react-bootstrap";
-import { Input } from "antd";
+import { Button, Input } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 
 const Addlisting01 = () => {
@@ -111,12 +111,12 @@ const Addlisting01 = () => {
                                 </Col>
 
                                 <div className={AddListing01Css.btnparent}>
-                                    <button className={AddListing01Css.deletebtn}>Delete</button>
+                                    <Button className={AddListing01Css.deletebtn}>Delete</Button>
                                 </div>
                             </Row>
 
                             <div className={AddListing01Css.addbtnparent}>
-                                <button className={AddListing01Css.addbtn}><PlusOutlined className={AddListing01Css.plus} /> Add More</button>
+                                <Button className={AddListing01Css.addbtn}><PlusOutlined className={AddListing01Css.plus} /> Add More</Button>
                             </div>
                         </Row>
                         <hr />
@@ -133,24 +133,24 @@ const Addlisting01 = () => {
                                 <Col md={4} className={AddListing01Css.radio}>
                                     <div className={AddListing01Css.radioA}>
                                         <p className={AddListing01Css.daily}>Daily</p>
-                                        <input type="radio" />
+                                        <Input type="radio" />
                                     </div>
                                 </Col>
 
                                 <Col md={4} className={AddListing01Css.radio}>
                                     <div className={AddListing01Css.radioA}>
                                         <p className={AddListing01Css.perStay}>Per Stay</p>
-                                        <input type="radio" className={AddListing01Css.dot} />
+                                        <Input type="radio" className={AddListing01Css.dot} />
                                     </div>
                                 </Col>
 
                                 <div className={AddListing01Css.twobtn}>
-                                    <button className={AddListing01Css.savebtn}>Back</button>
-                                    <button className={AddListing01Css.savebtn}>Save as Draft</button>
+                                    <Button className={AddListing01Css.savebtn}>Back</Button>
+                                    <Button className={AddListing01Css.savebtn}>Save as Draft</Button>
                                 </div>
 
                                 <div className={AddListing01Css.addbtnparent}>
-                                    <button className={AddListing01Css.addbtn}> Continue</button>
+                                    <Button className={AddListing01Css.addbtn}> Continue</Button>
                                 </div>
                             </Row>
                         </Row>

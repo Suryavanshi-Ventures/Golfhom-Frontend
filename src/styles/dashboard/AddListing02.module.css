@@ -36,12 +36,13 @@
         border-radius: 5px;
         background: var(--white-font-color);
         border: 1px solid #999494;
+        height: auto;
       }
     
       .savebtn:hover {
         background: var(--btn-background-secondary) !important;
         border: 1px solid var(--btn-background-secondary) !important;
-        color: var(--white-font-color);
+        color: var(--white-font-color) !important;
         /* letter-spacing: 0.8px; this property make letter in proper spacing but button size also get changed so I need to discuss then remove thhis */
       }
 
@@ -63,6 +64,7 @@
         padding: 10px 24px;
         border-radius: 5px;
         border: 1px solid var(--btn-background-secondary);
+        height: auto;
       }
 
       .addbtn:hover, .select:hover {
@@ -132,7 +134,7 @@
         font-family: var(--font-poppins);
         font-weight: 600;
         letter-spacing: 0.8px;
-        
+        height: auto;
         display: flex;
         justify-content: center;
         background-color: var(--btn-background-secondary);

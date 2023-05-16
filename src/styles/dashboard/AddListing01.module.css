@@ -61,6 +61,7 @@
 
       .deletebtn, .addbtn {
         font-family: var(--font-poppins);
+        height: auto;
         font-weight: 600;
         letter-spacing: 0.8px;
         display: flex;
@@ -121,12 +122,13 @@
         border-radius: 5px;
         background: var(--white-font-color);
         border: 1px solid #999494;
+        height: auto;
       }
     
       .savebtn:hover {
         background: var(--btn-background-secondary) !important;
         border: 1px solid var(--btn-background-secondary) !important;
-        color: var(--white-font-color);
+        color: var(--white-font-color) !important;
         /* letter-spacing: 0.8px; this property make letter in proper spacing but button size also get changed so I need to discuss then remove thhis */
       }
 

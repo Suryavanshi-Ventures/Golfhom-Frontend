@@ -15,14 +15,32 @@ import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
 import GolfHomMobileMenuLogo from "../public/images/GOLFHOM-Logo-mobile-menu.png";
 import MobileMenuHomeLogo from "../public/images/vector/home.svg";
+import ProfileIcon from "../public/images/vector/profile_icon.png";
+import ProfileIconMobileMenu from "../public/images/vector/profile_loggedin.png";
+import ReservationIconMobileMenu from "../public/images/vector/reservation_loggedin.png";
+import FavIconMobileMenu from "../public/images/vector/favourite_loggedin.png";
+import InvoiceIconMobileMenu from "../public/images/vector/invoice_loggedin.png";
+import MessageIconMobileMenu from "../public/images/vector/messages_loggedin.png";
+import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
+
 import { useContext } from "react";
 import { AuthContext } from "@/context/auth_context";
-import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 
 const Header = () => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
-
   const ContextUserDetails = useContext(AuthContext);
+
+  useEffect(() => {
+    ContextUserDetails.setUserState(sessionStorage.getItem("token"));
+    console.log(ContextUserDetails, "Session");
+
+    if (ContextUserDetails.UserState != null) {
+      SetIsLoggedIn(true);
+    }
+
+    return () => { };
+  }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
 
@@ -30,7 +48,7 @@ const Header = () => {
     /* -----------       SIGN UP SECTION        -----------------*/
   }
 
-  //! SIGNUP LOGIN FORM INSTANCE
+  //! SIGNUP & LOGIN FORM INSTANCE
   const [form] = Form.useForm();
 
   //* REGISTER BTN DISABLED
@@ -111,6 +129,7 @@ const Header = () => {
         ContextUserDetails.setUserState(response.data.token);
         setIsModalOpen(false);
         sessionStorage.setItem("token", response.data.token);
+
         // sessionStorage.setItem("status", true);
         SetIsLoggedIn(true);
         message.success(response.data.message);
@@ -181,52 +200,11 @@ const Header = () => {
     onClick: handleMenuClick,
   };
 
-  const ItemsOfUSDCurreny = [
-    {
-      key: "1",
-      label: (
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </Link>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item (disabled)
-        </Link>
-      ),
-      icon: <SmileOutlined />,
-      disabled: true,
-    },
-    {
-      key: "3",
-      label: (
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item (disabled)
-        </Link>
-      ),
-      disabled: true,
-    },
-    {
-      key: "4",
-      danger: true,
-      label: "a danger item",
-    },
-  ];
+  const Logout = () => {
+    sessionStorage.clear();
+    SetIsLoggedIn(false);
+    ContextUserDetails.setUserState(null);
+  };
 
   return (
     <>
@@ -555,15 +533,60 @@ const Header = () => {
             <div>
               <Dropdown
                 menu={{
-                  ItemsOfUSDCurreny,
+                  items: [
+                    {
+                      key: "1",
+                      label: (
+                        <Link
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.antgroup.com"
+                        >
+                          1st menu item
+                        </Link>
+                      ),
+                    },
+                    {
+                      key: "2",
+                      label: (
+                        <Link
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="/"
+                        >
+                          2nd menu item (disabled)
+                        </Link>
+                      ),
+                      icon: <SmileOutlined />,
+                      disabled: true,
+                    },
+                    {
+                      key: "3",
+                      label: (
+                        <Link
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="/"
+                        >
+                          3rd menu item (disabled)
+                        </Link>
+                      ),
+                      disabled: true,
+                    },
+                    {
+                      key: "4",
+                      danger: true,
+                      label: "a danger item",
+                    },
+                  ],
                 }}
               >
-                <a onClick={(e) => e.preventDefault()}>
+                <Link href="/" onClick={(e) => e.preventDefault()}>
                   <Space>
                     USD
                     <DownOutlined />
                   </Space>
-                </a>
+                </Link>
               </Dropdown>
 
               {IsLoggedIn ? (
@@ -768,19 +791,219 @@ const Header = () => {
                       </Link>
                     </Col>
 
-                    <Col
-                      xs={"auto"}
-                      className={HeaderCss.top_header_Col_container}
-                    >
-                      <Link href="/register_to_host">
-                        <Button
-                          type="primary"
-                          className={HeaderCss.register_btn}
+                    {/* LOGGED IN USER PROFILE MENU */}
+                    {IsLoggedIn ? (
+                      <Col
+                        xs={"auto"}
+                        className={HeaderCss.top_header_Col_container}
+                      >
+                        <Dropdown
+                          menu={{
+                            items: [
+                              {
+                                label: (
+                                  <Link
+                                    className={
+                                      HeaderCss.top_header_menu_logggedin_link
+                                    }
+                                    href="/dashboard"
+                                  >
+                                    {" "}
+                                    <Image
+                                      src={MobileMenuHomeLogo}
+                                      alt="home icon"
+                                      width={18}
+                                      height={18}
+                                      className={
+                                        HeaderCss.top_header_menu_logggedin_link_icons
+                                      }
+                                    ></Image>
+                                    Dashboard
+                                  </Link>
+                                ),
+                                key: "1",
+                              },
+                              {
+                                label: (
+                                  <Link
+                                    className={
+                                      HeaderCss.top_header_menu_logggedin_link
+                                    }
+                                    href="/dashboard/user_profile"
+                                  >
+                                    {" "}
+                                    <Image
+                                      src={ProfileIconMobileMenu}
+                                      alt="profile icon"
+                                      width={18}
+                                      height={18}
+                                      className={
+                                        HeaderCss.top_header_menu_logggedin_link_icons
+                                      }
+                                    ></Image>
+                                    Profile
+                                  </Link>
+                                ),
+                                key: "2",
+                              },
+                              {
+                                label: (
+                                  <Link
+                                    className={
+                                      HeaderCss.top_header_menu_logggedin_link
+                                    }
+                                    href="/dashboard/reservation"
+                                  >
+                                    {" "}
+                                    <Image
+                                      src={ReservationIconMobileMenu}
+                                      alt="reservation icon"
+                                      width={18}
+                                      height={18}
+                                      className={
+                                        HeaderCss.top_header_menu_logggedin_link_icons
+                                      }
+                                    ></Image>
+                                    Reservation
+                                  </Link>
+                                ),
+                                key: "3",
+                              },
+                              {
+                                label: (
+                                  <Link
+                                    className={
+                                      HeaderCss.top_header_menu_logggedin_link
+                                    }
+                                    href="/dashboard/favorites"
+                                  >
+                                    {" "}
+                                    <Image
+                                      src={FavIconMobileMenu}
+                                      alt="favorite icon"
+                                      width={18}
+                                      height={18}
+                                      className={
+                                        HeaderCss.top_header_menu_logggedin_link_icons
+                                      }
+                                    ></Image>
+                                    Favorites
+                                  </Link>
+                                ),
+                                key: "4",
+                              },
+                              {
+                                label: (
+                                  <Link
+                                    className={
+                                      HeaderCss.top_header_menu_logggedin_link
+                                    }
+                                    href="/dashboard/invoice"
+                                  >
+                                    {" "}
+                                    <Image
+                                      src={InvoiceIconMobileMenu}
+                                      alt="invoice icon"
+                                      width={18}
+                                      height={18}
+                                      className={
+                                        HeaderCss.top_header_menu_logggedin_link_icons
+                                      }
+                                    ></Image>
+                                    Invoices
+                                  </Link>
+                                ),
+                                key: "5",
+                              },
+                              {
+                                label: (
+                                  <Link
+                                    className={
+                                      HeaderCss.top_header_menu_logggedin_link
+                                    }
+                                    href="/dashboard/messages"
+                                  >
+                                    {" "}
+                                    <Image
+                                      src={MessageIconMobileMenu}
+                                      alt="message icon"
+                                      width={18}
+                                      height={18}
+                                      className={
+                                        HeaderCss.top_header_menu_logggedin_link_icons
+                                      }
+                                    ></Image>
+                                    Message
+                                  </Link>
+                                ),
+                                key: "6",
+                              },
+
+                              {
+                                type: "divider",
+                              },
+                              {
+                                label: (
+                                  <Link
+                                    className={
+                                      HeaderCss.top_header_menu_logggedin_link
+                                    }
+                                    href="/"
+                                    onClick={() => {
+                                      Logout();
+                                    }}
+                                  >
+                                    {" "}
+                                    <Image
+                                      src={LogoutIconMobileMenu}
+                                      alt="logout icon"
+                                      width={18}
+                                      height={18}
+                                      className={
+                                        HeaderCss.top_header_menu_logggedin_link_icons
+                                      }
+                                    ></Image>
+                                    Logout
+                                  </Link>
+                                ),
+                                key: "7",
+                              },
+                            ],
+                          }}
                         >
-                          Register To Host
-                        </Button>
-                      </Link>
-                    </Col>
+                          <Link
+                            href="/"
+                            className={HeaderCss.top_header_logggedin_link}
+                          >
+                            <Space
+                              className={HeaderCss.top_header_logggedin_space}
+                            >
+                              Rajul Verma
+                              <Image
+                                width={20}
+                                height={20}
+                                src={ProfileIcon}
+                                alt="profile icon"
+                              ></Image>
+                            </Space>
+                          </Link>
+                        </Dropdown>
+                      </Col>
+                    ) : (
+                      <Col
+                        xs={"auto"}
+                        className={HeaderCss.top_header_Col_container}
+                      >
+                        <Link href="/register_to_host">
+                          <Button
+                            type="primary"
+                            className={HeaderCss.register_btn}
+                          >
+                            Register To Host
+                          </Button>
+                        </Link>
+                      </Col>
+                    )}
                   </Row>
                 </Col>
               </Row>
@@ -794,52 +1017,6 @@ const Header = () => {
 
 //** Off Canvas Function  **/
 function OffCanvasExample({ name, ...props }) {
-  const items = [
-    {
-      key: "1",
-      label: (
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </Link>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item (disabled)
-        </Link>
-      ),
-      icon: <SmileOutlined />,
-      disabled: true,
-    },
-    {
-      key: "3",
-      label: (
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item (disabled)
-        </Link>
-      ),
-      disabled: true,
-    },
-    {
-      key: "4",
-      danger: true,
-      label: "a danger item",
-    },
-  ];
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -849,7 +1026,7 @@ function OffCanvasExample({ name, ...props }) {
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
+  const showLoginModalMobile = () => {
     setIsModalOpen(true);
   };
   const handleSignup = () => {
@@ -1206,7 +1383,10 @@ function OffCanvasExample({ name, ...props }) {
                   onClick={(e) => e.preventDefault()}
                 >
                   <Space>
-                    <Button className={HeaderCss.signUpBtn} onClick={showModal}>
+                    <Button
+                      className={HeaderCss.signUpBtn}
+                      onClick={showLoginModalMobile}
+                    >
                       Log in & Sign up
                     </Button>
                   </Space>

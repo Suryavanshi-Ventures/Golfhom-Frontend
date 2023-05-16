@@ -71,7 +71,7 @@
 
 .below_header_a {
   text-decoration: none;
-  color: black;
+  color: var(--light-font-color);
   font-weight: 500;
   font-family: var(--font-poppins);
   transition-duration: 0.5s;
@@ -82,6 +82,43 @@
 .below_header_a:hover {
   transition-duration: 0.5s;
   color: var(--btn-background);
+}
+
+.top_header_menu_logggedin_link {
+  text-decoration: none;
+  display: inline-block;
+  margin: 3px 0;
+  width: 180px;
+  padding: 5px 0;
+  font-family: var(--font-poppins);
+  transition-duration: 0.5s;
+}
+
+.top_header_menu_logggedin_link:hover {
+  transition-duration: 0.5s;
+  color: var(--btn-background) !important;
+}
+
+.top_header_menu_logggedin_link_icons {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.top_header_logggedin_link {
+  color: black;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  transition-duration: 0.5s;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+.top_header_logggedin_link:hover {
+  transition-duration: 0.5s;
+  color: var(--btn-background);
+}
+
+.top_header_logggedin_space {
+  font-size: 17px;
 }
 
 .register_btn {
