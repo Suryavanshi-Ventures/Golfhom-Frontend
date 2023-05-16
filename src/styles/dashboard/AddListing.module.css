@@ -71,30 +71,30 @@
   .savebtn {
     font-family: var(--font-poppins);
     font-weight: 600;
-    padding: 10px 24px;
+    padding: 0px 12px;
     border-radius: 5px;
     background: var(--white-font-color);
     border: 1px solid #999494;
+    height: auto;
   }
 
   .savebtn:hover {
     background: var(--btn-background-secondary) !important;
     border: 1px solid var(--btn-background-secondary) !important;
     color: var(--white-font-color);
-    /* letter-spacing: 0.8px; this property make letter in proper spacing but button size also get changed so I need to discuss then remove thhis */
+    font-weight: 500;
   }
 
   .continuebtn {
     font-family: var(--font-poppins);
-    font-weight: 600;
+    font-weight: 500;
+    padding: 6px 12px;
     letter-spacing: 0.8px;
-    width: 14%;
     display: flex;
     justify-content: center;
     background-color: var(--btn-background-secondary);
     color: var(--white-font-color) !important;
     border: none;
-    padding: 10px 24px;
     border-radius: 5px;
     border: 1px solid var(--btn-background-secondary);
   }
@@ -104,9 +104,44 @@
     border: 1px solid var(--black-btn-color);
   }
 
+  .top_down_arrow {
+    display: flex;
+    flex-direction: column;
+    background-color: #DFDFDF;
+    padding: 5px 4px;
+    border-radius: 0px 4px 4px 0px;
+    position: relative;
+    left: 24px;
+  }
+
   .para {
     font-size: 1.1rem;
     font-family: var(--font-amiri);
     font-weight: 400;
     margin: 30px 0px 20px;
+  }
+
+  .colA {
+    width: 100%;
+    height: auto;
+    padding: 8px 14px;
+    border: 1px solid var(--dark-grey-font);
+    border-radius: 4px;
+    font-family: var(--font-poppins);
+    font-weight: 400;
+    color: var(--dark-grey-font);
+    background-color: var(--white-btn-font-color);
+  }
+
+  .colA:hover {
+    border: 1px solid var(--btn-background-secondary);
+  }
+
+  .search_by_golf_input_search_by_tourni {
+    height: auto;
+    border-radius: 4px;
+    width: 90%;
+    justify-content: space-between;
+    color: var(--dark-grey-font);
+    padding: 10px;
   }

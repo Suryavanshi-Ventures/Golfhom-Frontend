@@ -6,16 +6,18 @@ import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import ProtectedRoute from "../../../common components/protected_route";
-import { Checkbox, Input } from "antd";
-import { CaretDownOutlined } from '@ant-design/icons';
+import { Checkbox, Dropdown, Input, Space, Typography } from "antd";
+import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 // import ReactQuill from 'react-quill';
 // import 'react-quill/dist/quill.snow.css';
 
 const Addlisting = () => {
-  const [val, setVal] = useState(' ');
-  const data = ["One", "Two", "Three"]
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  // const [value, setValue] = useState('');
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   return (
     <>
       <ProtectedRoute>
@@ -72,14 +74,39 @@ const Addlisting = () => {
 
             <Row>
               <Col md={3}>
-                <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Location" suffix={<CaretDownOutlined />} className={AddListingCss.listing} />
-                <datalist id="data">
-                  <option>One</option>
-                  <option>Two</option>
-                  <option>Three</option>
-                  <option>Four</option>
-                  {data.map((op) => <optiopn>{op}</optiopn>)}
-                </datalist>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: "1",
+                        label: "Florida",
+                      },
+                      {
+                        key: "2",
+                        label: "Arizona",
+                      },
+                      {
+                        key: "3",
+                        label: "Sanfrancisco",
+                      },
+                    ],
+                    selectable: true,
+                    defaultSelectedKeys: ["3"],
+                  }}
+                  trigger={["click"]}
+                  value={selectedOption}
+                  onChange={handleOptionChange}
+                  className={AddListingCss.colA}
+                >
+                  <span onClick={(e) => e.preventDefault()}>
+                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
+                        Location
+                        <CaretDownOutlined />
+                      </Space>
+                    </Typography.Link>
+                  </span>
+                </Dropdown>
               </Col>
 
               <Col md={5}></Col>
@@ -96,40 +123,121 @@ const Addlisting = () => {
             <Row className={AddListingCss.listingbed}>
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Type of listing*</h4>
-                <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Select listing Type" suffix={<CaretDownOutlined />} className={AddListingCss.listing} />
-                <datalist id="data">
-                  <option>One</option>
-                  <option>Two</option>
-                  <option>Three</option>
-                  <option>Four</option>
-                  {data.map((op) => <optiopn>{op}</optiopn>)}
-                </datalist>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: "4",
+                        label: "Florida",
+                      },
+                      {
+                        key: "5",
+                        label: "Arizona",
+                      },
+                      {
+                        key: "6",
+                        label: "Sanfrancisco",
+                      },
+                    ],
+                    selectable: true,
+                    defaultSelectedKeys: ["5"],
+                  }}
+                  trigger={["click"]}
+                  value={selectedOption}
+                  onChange={handleOptionChange}
+                  className={AddListingCss.colA}
+                >
+                  <span onClick={(e) => e.preventDefault()}>
+                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
+                        Select listing Type
+                        <CaretDownOutlined />
+                      </Space>
+                    </Typography.Link>
+                  </span>
+                </Dropdown>
               </Col>
 
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
-                <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Enter number of bedrooms" suffix={<CaretDownOutlined />} className={AddListingCss.listing} />
-                <datalist id="data">
-                  <option>One</option>
-                  <option>Two</option>
-                  <option>Three</option>
-                  <option>Four</option>
-                  {data.map((op) => <optiopn>{op}</optiopn>)}
-                </datalist>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: "7",
+                        label: "Florida",
+                      },
+                      {
+                        key: "8",
+                        label: "Arizona",
+                      },
+                      {
+                        key: "9",
+                        label: "Sanfrancisco",
+                      },
+                    ],
+                    selectable: true,
+                    defaultSelectedKeys: ["7"],
+                  }}
+                  trigger={["click"]}
+                  value={selectedOption}
+                  onChange={handleOptionChange}
+                  className={AddListingCss.colA}
+                >
+                  <span onClick={(e) => e.preventDefault()}>
+                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
+                        Enter number of bedrooms
+                        <div className={AddListingCss.top_down_arrow}>
+                          <CaretUpOutlined />
+                          <CaretDownOutlined />
+                        </div>
+                      </Space>
+                    </Typography.Link>
+                  </span>
+                </Dropdown>
               </Col>
             </Row>
 
             <Row className={AddListingCss.listingbed}>
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
-                <Input list="data" onChange={(e) => setVal(e.target.value)} placeholder="Enter number of bedrooms" suffix={<CaretDownOutlined />} className={AddListingCss.listing} />
-                <datalist id="data">
-                  <option>One</option>
-                  <option>Two</option>
-                  <option>Three</option>
-                  <option>Four</option>
-                  {data.map((op) => <optiopn>{op}</optiopn>)}
-                </datalist>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        key: "10",
+                        label: "Florida",
+                      },
+                      {
+                        key: "11",
+                        label: "Arizona",
+                      },
+                      {
+                        key: "12",
+                        label: "Sanfrancisco",
+                      },
+                    ],
+                    selectable: true,
+                    defaultSelectedKeys: ["11"],
+                  }}
+                  trigger={["click"]}
+                  value={selectedOption}
+                  onChange={handleOptionChange}
+                  className={AddListingCss.colA}
+                >
+                  <span onClick={(e) => e.preventDefault()}>
+                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
+                        Enter number of bedrooms
+                        <div className={AddListingCss.top_down_arrow}>
+                          <CaretUpOutlined />
+                          <CaretDownOutlined />
+                        </div>
+                      </Space>
+                    </Typography.Link>
+                  </span>
+                </Dropdown>
               </Col>
 
               <Col md={6} className={AddListingCss.inputBox}>

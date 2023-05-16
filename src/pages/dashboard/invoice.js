@@ -11,6 +11,7 @@ import Head from "next/head";
 import { Dropdown, Space, Typography } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
+import Link from "next/link";
 
 const Invoice = () => {
 
@@ -138,24 +139,31 @@ const Invoice = () => {
                   <td>
                     <Dropdown
                       menu={{
-                        item,
+                        items: [
+                          {
+                            key: "4",
+                            label: "Any",
+                          },
+                          {
+                            key: "5",
+                            label: "Paid",
+                          },
+                          {
+                            key: "6",
+                            label: "NotPaid",
+                          },
+                        ],
                         selectable: true,
                         defaultSelectedKeys: ["5"],
                       }}
                       trigger={["click"]}
-                      id="my-dropdown"
                       value={selectedOption}
                       onChange={handleOptionChange}
                       className={InvoiceCss.colB}
-                      prefix={<DownOutlined />}
                     >
                       <span onClick={(e) => e.preventDefault()}>
-                        <Typography.Link>
-                          <Space
-                            className={
-                              InvoiceCss.search_by_golf_input_search_by_tourni
-                            }
-                          >
+                        <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                          <Space className={InvoiceCss.search_by_golf_input_search_by_tourni}>
                             Paid
                             <DownOutlined />
                           </Space>

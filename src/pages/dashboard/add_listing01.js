@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import FAQBannerImg from "../../../public/images/faq_banner_img.svg";
 import AddListing01Css from "../../styles/dashboard/AddListing01.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
 import Image from "next/image";
-import { Col, Container, Dropdown, Row } from "react-bootstrap";
-import { Button, Input } from "antd";
+import { Col, Container, Row } from "react-bootstrap";
+import { Button, Dropdown, Input, Space, Typography } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from "@ant-design/icons";
 
 const Addlisting01 = () => {
+    const [selectedOption, setSelectedOption] = useState(null);
+
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
     return (
         <>
@@ -97,16 +103,39 @@ const Addlisting01 = () => {
 
                                 <Col md={4}>
                                     <h5 className={AddListing01Css.type}>Type</h5>
-                                    <Dropdown>
-                                        <Dropdown.Toggle className={AddListing01Css.dropbtn}>
-                                            Single free
-                                        </Dropdown.Toggle>
 
-                                        <Dropdown.Menu className={AddListing01Css.dropOption}>
-                                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                                        </Dropdown.Menu>
+                                    <Dropdown
+                                        menu={{
+                                            items: [
+                                                {
+                                                    key: "1",
+                                                    label: "Action",
+                                                },
+                                                {
+                                                    key: "2",
+                                                    label: "Another action",
+                                                },
+                                                {
+                                                    key: "3",
+                                                    label: "Something else",
+                                                },
+                                            ],
+                                            selectable: true,
+                                            defaultSelectedKeys: ["3"],
+                                        }}
+                                        trigger={["click"]}
+                                        value={selectedOption}
+                                        onChange={handleOptionChange}
+                                        className={AddListing01Css.colA}
+                                    >
+                                        <span onClick={(e) => e.preventDefault()}>
+                                            <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                                                <Space className={AddListing01Css.search_by_golf_input_search_by_tourni}>
+                                                    Single free
+                                                    <CaretDownOutlined />
+                                                </Space>
+                                            </Typography.Link>
+                                        </span>
                                     </Dropdown>
                                 </Col>
 
@@ -132,15 +161,25 @@ const Addlisting01 = () => {
 
                                 <Col md={4} className={AddListing01Css.radio}>
                                     <div className={AddListing01Css.radioA}>
-                                        <p className={AddListing01Css.daily}>Daily</p>
-                                        <Input type="radio" />
+                                        <Col md={8}>
+                                            <p className={AddListing01Css.daily}>Daily</p>
+                                        </Col>
+
+                                        <Col md={4} className={AddListing01Css.circle}>
+                                            <Input type="radio" />
+                                        </Col>
                                     </div>
                                 </Col>
 
                                 <Col md={4} className={AddListing01Css.radio}>
                                     <div className={AddListing01Css.radioA}>
-                                        <p className={AddListing01Css.perStay}>Per Stay</p>
-                                        <Input type="radio" className={AddListing01Css.dot} />
+                                        <Col md={8}>
+                                            <p className={AddListing01Css.perStay}>Per Stay</p>
+                                        </Col>
+
+                                        <Col md={4} className={AddListing01Css.circle}>
+                                            <Input type="radio" className={AddListing01Css.dot} />
+                                        </Col>
                                     </div>
                                 </Col>
 

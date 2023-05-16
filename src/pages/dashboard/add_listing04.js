@@ -5,7 +5,7 @@ import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
-import { Input } from "antd";
+import { Button, Input } from "antd";
 
 const AddListing04 = () => {
   return (
@@ -29,13 +29,88 @@ const AddListing04 = () => {
         </div>
 
         <Container>
-          <Col md={10}>
-            <h2 className={AddListing04Css.addListing}>Add Listing</h2>
+          <Row>
+            <Col md={10}>
+              <h2 className={AddListing04Css.addListing}>Add Listing</h2>
 
-            <h3 className={AddListing04Css.info}>Features</h3>
+              <h3 className={AddListing04Css.info}>Location</h3>
 
-            <hr />
-          </Col>
+              <hr />
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={10}>
+
+
+              <Row>
+                <Col md={6}>
+                  <h4 className={AddListing04Css.title}>Address*</h4>
+
+                  <Input
+                    type="text"
+                    placeholder="1170 SE 12th Terrace, Miami, FL 33132, USA"
+                    className={AddListing04Css.listing}
+                  />
+                </Col>
+
+                <Col md={6}>
+                  <h4 className={AddListing04Css.title}>City</h4>
+
+                  <Input
+                    type="text"
+                    placeholder="Miami"
+                    className={AddListing04Css.listing}
+                  />
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={6}>
+                  <h4 className={AddListing04Css.title}>State</h4>
+
+                  <Input
+                    type="text"
+                    placeholder="Florida"
+                    className={AddListing04Css.listing}
+                  />
+                </Col>
+
+                <Col md={6}>
+                  <h4 className={AddListing04Css.title}>Zip Code</h4>
+
+                  <Input
+                    type="text"
+                    placeholder="33132"
+                    className={AddListing04Css.listing}
+                  />
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={6}>
+                  <h4 className={AddListing04Css.title}>Country</h4>
+
+                  <Input
+                    type="text"
+                    placeholder="United States"
+                    className={AddListing04Css.listing}
+                  />
+                </Col>
+              </Row>
+
+              <div className={AddListing04Css.twobtn}>
+                <Button className={AddListing04Css.savebtn}>Back</Button>
+                <Button className={AddListing04Css.savebtn}>
+                  Save as Draft
+                </Button>
+              </div>
+
+              <div className={AddListing04Css.addbtnparent}>
+                <Button className={AddListing04Css.addbtn}>Continue</Button>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </ProtectedRoute>
     </>

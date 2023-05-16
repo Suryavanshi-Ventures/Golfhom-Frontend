@@ -59,15 +59,16 @@ const Addlisting02 = () => {
               </p>
 
               <div className={AddListing02Css.cloudParent}>
-                <div className={AddListing02Css.cloudImg}>
-                  <Image
-                    src={cloud}
-                    alt="cloud"
-                    fill
-                    className={AddListing02Css.mount}
-                  />
-                </div>
+
                 <Button className={AddListing02Css.select}>
+                  <div className={AddListing02Css.cloudImg}>
+                    <Image
+                      src={cloud}
+                      alt="cloud"
+                      fill
+                      className={AddListing02Css.mount}
+                    />
+                  </div>
                   Select and Upload
                 </Button>
               </div>
