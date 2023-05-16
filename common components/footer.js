@@ -11,6 +11,8 @@ import LinkedinIcon from "../public/linkedin.svg";
 import FacebookIcon from "../public/facebook.svg";
 import InstaIcon from "../public/insta.svg";
 import YoutubeIcon from "../public/youtube.svg";
+import PinterestIcon from "../public/pinterest.svg";
+import TwittereIcon from "../public/twitter.svg";
 
 const Footer = () => {
   return (
@@ -52,7 +54,10 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li}>
-                    <Link href="/blog_and_podcast" className={FooterCss.nav_link_a}>
+                    <Link
+                      href="/blog_and_podcast"
+                      className={FooterCss.nav_link_a}
+                    >
                       Partner Blogs and Podcasts!
                     </Link>
                   </li>
@@ -143,20 +148,6 @@ const Footer = () => {
                       className={FooterCss.icons_a}
                     >
                       <Image
-                        src={LinkedinIcon}
-                        className={FooterCss.social_icons}
-                        alt="Linkedin"
-                      />
-                    </Link>
-                  </span>
-
-                  <span className={FooterCss.icons_spans}>
-                    <Link
-                      href="/"
-                      target="_blank"
-                      className={FooterCss.icons_a}
-                    >
-                      <Image
                         src={FacebookIcon}
                         className={FooterCss.social_icons}
                         alt="Facebook"
@@ -187,6 +178,47 @@ const Footer = () => {
                         src={YoutubeIcon}
                         className={FooterCss.social_icons}
                         alt="Youtube"
+                      />
+                    </Link>
+                  </span>
+                  <span className={FooterCss.icons_spans}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
+                      <Image
+                        src={LinkedinIcon}
+                        className={FooterCss.social_icons}
+                        alt="Linkedin"
+                      />
+                    </Link>
+                  </span>
+
+                  <span className={FooterCss.icons_spans}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
+                      <Image
+                        src={TwittereIcon}
+                        className={FooterCss.social_icons}
+                        alt="Twitter"
+                      />
+                    </Link>
+                  </span>
+
+                  <span className={FooterCss.icons_spans}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
+                      <Image
+                        src={PinterestIcon}
+                        className={FooterCss.social_icons}
+                        alt="Pinterest"
                       />
                     </Link>
                   </span>
