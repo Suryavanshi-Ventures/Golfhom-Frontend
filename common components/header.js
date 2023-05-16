@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import { Button, Checkbox, Input, Form, message } from "antd";
@@ -22,8 +22,6 @@ import FavIconMobileMenu from "../public/images/vector/favourite_loggedin.png";
 import InvoiceIconMobileMenu from "../public/images/vector/invoice_loggedin.png";
 import MessageIconMobileMenu from "../public/images/vector/messages_loggedin.png";
 import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
-
-import { useContext } from "react";
 import { AuthContext } from "@/context/auth_context";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 
@@ -32,14 +30,15 @@ const Header = () => {
   const ContextUserDetails = useContext(AuthContext);
 
   useEffect(() => {
-    ContextUserDetails.setUserState(sessionStorage.getItem("token"));
-    console.log(ContextUserDetails, "Session");
+    ContextUserDetails.setUserState(
+      sessionStorage.getItem("token") || localStorage.getItem("token")
+    );
 
     if (ContextUserDetails.UserState != null) {
       SetIsLoggedIn(true);
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -98,7 +97,11 @@ const Header = () => {
 
       //* Close Register Modal on Success Signup
       if (response.status === 201) {
+        ContextUserDetails.setUserState(response.data.token);
+        setIsModalOpen(false);
+        SetIsLoggedIn(true);
         handleCancelRegister();
+        sessionStorage.setItem("token", response.data.token);
         message.success(response.data.message);
       }
     } catch (error) {
@@ -128,10 +131,12 @@ const Header = () => {
       if (response.status === 200) {
         ContextUserDetails.setUserState(response.data.token);
         setIsModalOpen(false);
-        sessionStorage.setItem("token", response.data.token);
-
-        // sessionStorage.setItem("status", true);
         SetIsLoggedIn(true);
+        if (!RememberMe) {
+          sessionStorage.setItem("token", response.data.token);
+        } else {
+          localStorage.setItem("token", response.data.token);
+        }
         message.success(response.data.message);
       } else {
         message.error("Invalid login credentials!");
@@ -201,8 +206,10 @@ const Header = () => {
   };
 
   const Logout = () => {
-    sessionStorage.clear();
+    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     SetIsLoggedIn(false);
+    message.success("Logout successfully!");
     ContextUserDetails.setUserState(null);
   };
 
@@ -458,8 +465,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -480,8 +487,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >

@@ -1,9 +1,12 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { message } from "antd";
+import { AuthContext } from "@/context/auth_context";
 
 const ProtectedRoute = ({ children }) => {
+  const ContextUserDetails = useContext(AuthContext);
+
   const router = useRouter();
   useEffect(() => {
     //* check if user is authenticated
@@ -23,9 +26,13 @@ const ProtectedRoute = ({ children }) => {
         router.push("/");
       }
       console.log(error, "user not authenticated");
+      sessionStorage.removeItem("token");
+      localStorage.removeItem("token");
+      ContextUserDetails.setUserState(null);
+
       message.error(error.response.data.message);
     });
-  }, [router]);
+  }, []);
 
   return <>{children}</>;
 };

@@ -89,3 +89,9 @@
   position: relative !important;
   max-width: 700px;
 }
+
+@media only screen and (min-width: 768px) {
+  .contact_us_input_container {
+    width: 50%;
+  }
+}
