@@ -128,7 +128,7 @@ const ViewProperty = () => {
             {/*  ------------    Total price box    ----------   */}
             <Col md={4} className={ViewPropertyCss.backgroundWhite}>
               <div className={ViewPropertyCss.totalParent}>
-                <div col-md-5 className={ViewPropertyCss.totalPrice}>
+                <div className={ViewPropertyCss.totalPrice}>
                   <div className={ViewPropertyCss.totalTitle}>
                     <h4>
                       Total <br /> Price
@@ -139,7 +139,7 @@ const ViewProperty = () => {
                   </div>
                 </div>
 
-                <div col-md-7 className={ViewPropertyCss.bookParent}>
+                <div className={ViewPropertyCss.bookParent}>
                   <Button className={ViewPropertyCss.bookNow}>Book now</Button>
                 </div>
               </div>

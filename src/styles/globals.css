@@ -238,3 +238,7 @@ input[type=number]::-webkit-outer-spin-button {
    opacity: 1;
 
 }
+
+.ant-picker-range-separator {
+  line-height: 2px !important;
+}

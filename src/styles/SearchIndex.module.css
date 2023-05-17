@@ -148,6 +148,7 @@
 .mapParent {
   flex: 1;
   padding: 140px 0px 147px 22px;
+  position: relative;
 }
 
 .map {
