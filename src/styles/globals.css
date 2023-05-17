@@ -225,3 +225,16 @@
 .dropdown-toggle::after {
   align-self: center;
 }
+
+.ant-space-item {
+  display: flex;
+}
+
+ /* FOR INPUT NUMBER OF ANT DESGIN */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}

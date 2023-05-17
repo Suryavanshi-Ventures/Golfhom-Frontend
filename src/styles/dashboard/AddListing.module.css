@@ -124,7 +124,7 @@
   .colA {
     width: 100%;
     height: auto;
-    padding: 8px 14px;
+    padding: 8px 12px;
     border: 1px solid var(--dark-grey-font);
     border-radius: 4px;
     font-family: var(--font-poppins);
@@ -143,5 +143,22 @@
     width: 90%;
     justify-content: space-between;
     color: var(--dark-grey-font);
-    padding: 10px;
+    padding: 10px 0px;
+  }
+
+  .number_parent {
+    position: relative;
+  }
+
+  .number_parent:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-image: url('/path/to/arrow-image.png');
+    background-repeat: no-repeat;
+    background-position: center;
   }

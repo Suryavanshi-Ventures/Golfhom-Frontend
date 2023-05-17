@@ -38,7 +38,7 @@ const Header = () => {
       SetIsLoggedIn(true);
     }
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -465,8 +465,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -487,8 +487,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >
@@ -985,7 +985,7 @@ const Header = () => {
                             <Space
                               className={HeaderCss.top_header_logggedin_space}
                             >
-                              Rajul Verma
+                              Akash Suryavanshi
                               <Image
                                 width={20}
                                 height={20}

@@ -5,7 +5,7 @@ import { Container, Col, Row, Card, Carousel } from "react-bootstrap";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import { Checkbox, Input } from "antd";
 import { DatePicker } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { DownOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Space } from "antd";
 import Image from "next/image";
 import { Pagination } from "antd";
@@ -276,7 +276,7 @@ const Index = () => {
                       <Button size="large">
                         <Space>
                           Default order
-                          <DownOutlined />
+                          <CaretDownOutlined />
                         </Space>
                       </Button>
                     </Dropdown>

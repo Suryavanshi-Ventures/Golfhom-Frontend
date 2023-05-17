@@ -284,7 +284,7 @@ const CarouselMap = () => {
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
-            activeIndexCC={indexC}
+            activeIndex={indexC}
             onSelect={handleSelectC}
             indicators={false}
             interval={5000}
@@ -392,7 +392,7 @@ const CarouselMap = () => {
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
-            activeIndexD={indexD}
+            activeIndex={indexD}
             onSelect={handleSelectD}
             indicators={false}
             interval={5000}
@@ -500,7 +500,7 @@ const CarouselMap = () => {
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
-            activeIndexE={indexE}
+            activeIndex={indexE}
             onSelect={handleSelectE}
             indicators={false}
             interval={5000}
@@ -607,7 +607,7 @@ const CarouselMap = () => {
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
-            activeIndexF={indexF}
+            activeIndex={indexF}
             onSelect={handleSelectF}
             indicators={false}
             interval={5000}
@@ -715,7 +715,7 @@ const CarouselMap = () => {
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
-            activeIndexG={indexG}
+            activeIndex={indexG}
             onSelect={handleSelectG}
             indicators={false}
             interval={5000}
@@ -823,7 +823,7 @@ const CarouselMap = () => {
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
-            activeIndexH={indexH}
+            activeIndex={indexH}
             onSelect={handleSelectH}
             indicators={false}
             interval={5000}

@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import ProtectedRoute from "../../../common components/protected_route";
 import { Checkbox, Dropdown, Input, Space, Typography } from "antd";
-import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 // import ReactQuill from 'react-quill';
 // import 'react-quill/dist/quill.snow.css';
 
@@ -160,89 +160,25 @@ const Addlisting = () => {
 
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        key: "7",
-                        label: "Florida",
-                      },
-                      {
-                        key: "8",
-                        label: "Arizona",
-                      },
-                      {
-                        key: "9",
-                        label: "Sanfrancisco",
-                      },
-                    ],
-                    selectable: true,
-                    defaultSelectedKeys: ["7"],
-                  }}
-                  trigger={["click"]}
-                  value={selectedOption}
-                  onChange={handleOptionChange}
-                  className={AddListingCss.colA}
-                >
-                  <span onClick={(e) => e.preventDefault()}>
-                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
-                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
-                        Enter number of bedrooms
-                        <div className={AddListingCss.top_down_arrow}>
-                          <CaretUpOutlined />
-                          <CaretDownOutlined />
-                        </div>
-                      </Space>
-                    </Typography.Link>
-                  </span>
-                </Dropdown>
+                <div>
+                  <Input type="number" placeholder="Enter number of bedrooms" className={AddListingCss.colA} />
+                </div>
               </Col>
             </Row>
 
             <Row className={AddListingCss.listingbed}>
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        key: "10",
-                        label: "Florida",
-                      },
-                      {
-                        key: "11",
-                        label: "Arizona",
-                      },
-                      {
-                        key: "12",
-                        label: "Sanfrancisco",
-                      },
-                    ],
-                    selectable: true,
-                    defaultSelectedKeys: ["11"],
-                  }}
-                  trigger={["click"]}
-                  value={selectedOption}
-                  onChange={handleOptionChange}
+                <Input
+                  type="number"
+                  placeholder=" Enter number of bedrooms"
                   className={AddListingCss.colA}
-                >
-                  <span onClick={(e) => e.preventDefault()}>
-                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
-                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
-                        Enter number of bedrooms
-                        <div className={AddListingCss.top_down_arrow}>
-                          <CaretUpOutlined />
-                          <CaretDownOutlined />
-                        </div>
-                      </Space>
-                    </Typography.Link>
-                  </span>
-                </Dropdown>
+                />
               </Col>
 
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of beds*</h4>
-                <Input type="text" placeholder="Enter number of bed" className={AddListingCss.listing} />
+                <Input type="number" placeholder="Enter number of bed" className={AddListingCss.colA} />
               </Col>
             </Row>
 
