@@ -1019,14 +1019,10 @@ const Header = () => {
                             <Space
                               className={HeaderCss.top_header_logggedin_space}
                             >
-<<<<<<< HEAD
-                              Akash Suryavanshi
-=======
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                  UserName.slice(1)
+                                UserName.slice(1)
                                 : "Anyonums "}
->>>>>>> 003cca5d39d5cb38cb00dd3dd2252276eb6fb899
                               <Image
                                 width={20}
                                 height={20}
