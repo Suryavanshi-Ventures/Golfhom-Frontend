@@ -27,6 +27,8 @@ import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 
 const Header = () => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
+  const [UserName, SetUserName] = useState("");
+
   const ContextUserDetails = useContext(AuthContext);
 
   useEffect(() => {
@@ -36,6 +38,11 @@ const Header = () => {
 
     if (ContextUserDetails.UserState != null) {
       SetIsLoggedIn(true);
+    }
+    if (!UserName) {
+      SetUserName(
+        sessionStorage.getItem("Uname") || localStorage.getItem("Uname")
+      );
     }
 
     return () => { };
@@ -48,7 +55,8 @@ const Header = () => {
   }
 
   //! SIGNUP & LOGIN FORM INSTANCE
-  const [form] = Form.useForm();
+  const [form1] = Form.useForm();
+  const [form2] = Form.useForm();
 
   //* REGISTER BTN DISABLED
   const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(false);
@@ -114,9 +122,9 @@ const Header = () => {
   const onSubmitLogin = async () => {
     try {
       // LOGIN FIELDS VALUES
-      const LoginEmail = form.getFieldValue("email_login");
-      const LoginPassword = form.getFieldValue("password_login");
-      const RememberMe = form.getFieldValue("remember_me");
+      const LoginEmail = form2.getFieldValue("email_login");
+      const LoginPassword = form2.getFieldValue("password_login");
+      const RememberMe = form2.getFieldValue("remember_me");
 
       //! LOGIN API CALL
       const response = await axios.post(
@@ -132,12 +140,41 @@ const Header = () => {
         ContextUserDetails.setUserState(response.data.token);
         setIsModalOpen(false);
         SetIsLoggedIn(true);
+
         if (!RememberMe) {
           sessionStorage.setItem("token", response.data.token);
         } else {
           localStorage.setItem("token", response.data.token);
         }
         message.success(response.data.message);
+
+        //! User Get Profile API Call
+        const Token = response.data.token;
+        const User = axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/profile`,
+          { headers: { Authorization: `Bearer ${Token}` } }
+        );
+        User.then((response) => {
+          if (response.status === 200) {
+            console.log(response, "user authenticated");
+            const LoggedInUserName = response.data.data.user.username;
+
+            if (!RememberMe) {
+              sessionStorage.setItem("Uname", LoggedInUserName);
+            } else {
+              localStorage.setItem("Uname", LoggedInUserName);
+            }
+
+            if (
+              localStorage.getItem("Uname") ||
+              sessionStorage.getItem("Uname") != ""
+            ) {
+              SetUserName(LoggedInUserName);
+            }
+          }
+        }).catch((error) => {
+          message.error(error.response.data.message);
+        });
       } else {
         message.error("Invalid login credentials!");
       }
@@ -208,6 +245,8 @@ const Header = () => {
   const Logout = () => {
     sessionStorage.removeItem("token");
     localStorage.removeItem("token");
+    sessionStorage.removeItem("Uname");
+    localStorage.removeItem("Uname");
     SetIsLoggedIn(false);
     message.success("Logout successfully!");
     ContextUserDetails.setUserState(null);
@@ -228,7 +267,7 @@ const Header = () => {
           >
             <div className={HeaderCss.textParent}>
               <Form
-                form={form}
+                form={form2}
                 layout="vertical"
                 name="login_form"
                 scrollToFirstError
@@ -347,9 +386,12 @@ const Header = () => {
           >
             <Form
               onFinish={onSubmitSignup}
-              form={form}
+              form={form1}
               name="register_form"
               scrollToFirstError
+              onFinishFailed={(failure) => {
+                console.log(failure);
+              }}
             >
               <Col className={HeaderCss.inputParent}>
                 {/*  FORM VALIDATION SIGNUP */}
@@ -538,64 +580,56 @@ const Header = () => {
 
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <div>
-              <Dropdown
-                menu={{
-                  items: [
-                    {
-                      key: "1",
-                      label: (
-                        <Link
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://www.antgroup.com"
-                        >
-                          1st menu item
-                        </Link>
-                      ),
-                    },
-                    {
-                      key: "2",
-                      label: (
-                        <Link
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="/"
-                        >
-                          2nd menu item (disabled)
-                        </Link>
-                      ),
-                      icon: <SmileOutlined />,
-                      disabled: true,
-                    },
-                    {
-                      key: "3",
-                      label: (
-                        <Link
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="/"
-                        >
-                          3rd menu item (disabled)
-                        </Link>
-                      ),
-                      disabled: true,
-                    },
-                    {
-                      key: "4",
-                      danger: true,
-                      label: "a danger item",
-                    },
-                  ],
-                }}
-              >
-                <Link href="/" onClick={(e) => e.preventDefault()}>
-                  <Space>
-                    USD
-                    <DownOutlined />
-                  </Space>
-                </Link>
-              </Dropdown>
-
+              {IsLoggedIn ? (
+                <div className={HeaderCss.top_nav_bar_usd_dropdown_container}>
+                  <Dropdown
+                    className={HeaderCss.top_nav_bar_usd_dropdown_links}
+                    menu={{
+                      items: [
+                        {
+                          key: "1",
+                          label: (
+                            <Link
+                              className={
+                                HeaderCss.top_nav_bar_usd_dropdown_links
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="https://www.antgroup.com"
+                            >
+                              1st menu item
+                            </Link>
+                          ),
+                        },
+                        {
+                          key: "2",
+                          label: (
+                            <Link
+                              className={
+                                HeaderCss.top_nav_bar_usd_dropdown_links
+                              }
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="/"
+                            >
+                              2nd menu item (disabled)
+                            </Link>
+                          ),
+                        },
+                      ],
+                    }}
+                  >
+                    <Link href="/" onClick={(e) => e.preventDefault()}>
+                      <Space>
+                        USD
+                        <DownOutlined />
+                      </Space>
+                    </Link>
+                  </Dropdown>
+                </div>
+              ) : (
+                ""
+              )}
               {IsLoggedIn ? (
                 ""
               ) : (
@@ -985,7 +1019,14 @@ const Header = () => {
                             <Space
                               className={HeaderCss.top_header_logggedin_space}
                             >
+<<<<<<< HEAD
                               Akash Suryavanshi
+=======
+                              {UserName
+                                ? UserName.charAt(0).toUpperCase() +
+                                  UserName.slice(1)
+                                : "Anyonums "}
+>>>>>>> 003cca5d39d5cb38cb00dd3dd2252276eb6fb899
                               <Image
                                 width={20}
                                 height={20}
