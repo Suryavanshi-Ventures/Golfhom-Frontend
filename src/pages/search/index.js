@@ -313,130 +313,129 @@ const Index = () => {
                 {/* ------------------- CAROUSEL IMAGES STARTS  -----------------------  */}
                 {/* <CarouselImages /> */}
                 <Row>
-                  {PropertyData.map((data, index) => (
-                    <>
-                      <Col
-                        md={6}
-                        key={index}
-                        className={CarasoulMapCss.carouselBlock}
+                  {PropertyData.map((data, i) => (
+                    <Col
+                      md={6}
+                      key={data.id}
+                      className={CarasoulMapCss.carouselBlock}
+                    >
+                      <Carousel
+                        wrap={true}
+                        key={data.id}
+                        activeIndex={index}
+                        onSelect={handleSelectA}
+                        indicators={false}
+                        interval={5000}
+                        className={CarasoulMapCss.carouselParent}
                       >
-                        <Carousel
-                          wrap={true}
-                          activeIndex={index}
-                          onSelect={handleSelectA}
-                          indicators={false}
-                          interval={5000}
-                          className={CarasoulMapCss.carouselParent}
-                        >
-                          <Carousel.Item className={CarasoulMapCss.imageGap}>
+                        <Carousel.Item className={CarasoulMapCss.imageGap}>
+                          <Link href="/search/view_property">
+                            <Image
+                              src={HotelA}
+                              alt="Hotel View"
+                              fill
+                              className={CarasoulMapCss.carouselImage}
+                              priority
+                            ></Image>
+                          </Link>
+
+                          <div className={CarasoulMapCss.heartParent}>
                             <Link href="/search/view_property">
                               <Image
-                                src={HotelA}
-                                alt="Hotel View"
+                                src={Heart}
+                                alt="Heart"
                                 fill
-                                className={CarasoulMapCss.carouselImage}
-                                priority
+                                className={CarasoulMapCss.heart}
                               ></Image>
                             </Link>
+                          </div>
+                        </Carousel.Item>
 
-                            <div className={CarasoulMapCss.heartParent}>
-                              <Link href="/search/view_property">
-                                <Image
-                                  src={Heart}
-                                  alt="Heart"
-                                  fill
-                                  className={CarasoulMapCss.heart}
-                                ></Image>
-                              </Link>
-                            </div>
-                          </Carousel.Item>
+                        <Carousel.Item className={CarasoulMapCss.imageGap}>
+                          <Link href="/search/view_property">
+                            <Image
+                              src={HotelA}
+                              alt="Hotel View"
+                              fill
+                              className={CarasoulMapCss.carouselImage}
+                            ></Image>
+                          </Link>
 
-                          <Carousel.Item className={CarasoulMapCss.imageGap}>
+                          <div className={CarasoulMapCss.heartParent}>
                             <Link href="/search/view_property">
                               <Image
-                                src={HotelA}
-                                alt="Hotel View"
+                                src={Heart}
+                                alt="Heart"
                                 fill
-                                className={CarasoulMapCss.carouselImage}
+                                className={CarasoulMapCss.heart}
                               ></Image>
                             </Link>
+                          </div>
+                        </Carousel.Item>
 
-                            <div className={CarasoulMapCss.heartParent}>
-                              <Link href="/search/view_property">
-                                <Image
-                                  src={Heart}
-                                  alt="Heart"
-                                  fill
-                                  className={CarasoulMapCss.heart}
-                                ></Image>
-                              </Link>
-                            </div>
-                          </Carousel.Item>
+                        <Carousel.Item className={CarasoulMapCss.imageGap}>
+                          <Link href="/search/view_property">
+                            <Image
+                              src={HotelA}
+                              alt="Hotel View"
+                              fill
+                              className={CarasoulMapCss.carouselImage}
+                            ></Image>
+                          </Link>
 
-                          <Carousel.Item className={CarasoulMapCss.imageGap}>
+                          <div className={CarasoulMapCss.heartParent}>
                             <Link href="/search/view_property">
                               <Image
-                                src={HotelA}
-                                alt="Hotel View"
+                                src={Heart}
+                                alt="Heart"
                                 fill
-                                className={CarasoulMapCss.carouselImage}
+                                className={CarasoulMapCss.heart}
                               ></Image>
                             </Link>
+                          </div>
+                        </Carousel.Item>
+                        <ol className="carousel-indicators">
+                          <li
+                            className={index === 0 ? "active" : ""}
+                            onClick={() => setIndex(0)}
+                          ></li>
+                          <li
+                            className={index === 1 ? "active" : ""}
+                            onClick={() => setIndex(1)}
+                          ></li>
+                          <li
+                            className={index === 2 ? "active" : ""}
+                            onClick={() => setIndex(2)}
+                          ></li>
+                        </ol>
+                      </Carousel>
 
-                            <div className={CarasoulMapCss.heartParent}>
-                              <Link href="/search/view_property">
-                                <Image
-                                  src={Heart}
-                                  alt="Heart"
-                                  fill
-                                  className={CarasoulMapCss.heart}
-                                ></Image>
-                              </Link>
-                            </div>
-                          </Carousel.Item>
-                          <ol className="carousel-indicators">
-                            <li
-                              className={index === 0 ? "active" : ""}
-                              onClick={() => setIndex(0)}
-                            ></li>
-                            <li
-                              className={index === 1 ? "active" : ""}
-                              onClick={() => setIndex(1)}
-                            ></li>
-                            <li
-                              className={index === 2 ? "active" : ""}
-                              onClick={() => setIndex(2)}
-                            ></li>
-                          </ol>
-                        </Carousel>
+                      <Link
+                        href="/search/view_property"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <h4 className={CarasoulMapCss.carouselHeading}>
+                          {data.name}
+                        </h4>
+                      </Link>
+                      <p className={CarasoulMapCss.discribeOfCard}>
+                        Saddlebrook Resort - Saddlebrook & 1 more
+                      </p>
 
-                        <Link
-                          href="/search/view_property"
-                          style={{ textDecoration: "none" }}
-                        >
-                          <h4 className={CarasoulMapCss.carouselHeading}>
-                            {data.name}
-                          </h4>
-                        </Link>
-                        <p className={CarasoulMapCss.discribeOfCard}>
-                          Saddlebrook Resort - Saddlebrook & 1 more
-                        </p>
-
-                        <div>
-                          <span className={CarasoulMapCss.discribeOfCard}>
-                            {data.bedrooms} Bed Rooms
-                          </span>
-                          <Image
-                            src={Dot}
-                            alt="Dot"
-                            className={CarasoulMapCss.dot}
-                          ></Image>
-                          <span className={CarasoulMapCss.discribeOfCard}>
-                            8 Guests Villa
-                          </span>
-                        </div>
-                      </Col>
-                    </>
+                      <div>
+                        <span className={CarasoulMapCss.discribeOfCard}>
+                          {data.bedrooms} Bed Rooms
+                        </span>
+                        <Image
+                          src={Dot}
+                          alt="Dot"
+                          className={CarasoulMapCss.dot}
+                        ></Image>
+                        <span className={CarasoulMapCss.discribeOfCard}>
+                          {data.accomodation} Guests Villa
+                        </span>
+                      </div>
+                    </Col>
                   ))}
                 </Row>
               </div>
