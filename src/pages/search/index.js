@@ -434,6 +434,10 @@ const Index = () => {
                         <span className={CarasoulMapCss.discribeOfCard}>
                           {data.accomodation} Guests Villa
                         </span>
+
+                        <h5 className={CarasoulMapCss.price_of_property}>
+                          <sup>From</sup> ${data.price}/Night
+                        </h5>
                       </div>
                     </Col>
                   ))}
