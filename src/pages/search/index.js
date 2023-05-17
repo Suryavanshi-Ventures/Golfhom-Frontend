@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react";
+import { useState, useEffect, React } from "react";
 import Head from "next/head";
 import { Container, Col, Row, Card, Carousel } from "react-bootstrap";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
@@ -13,11 +13,26 @@ import Link from "next/link";
 import Buildings from "../../../public/images/buildings.png";
 import BottomSection from "../../../common components/bottomGroup";
 import CarouselImages from "../../../common components/carouselMap";
-
+import axios from "axios";
 const { RangePicker } = DatePicker;
 
 const Index = () => {
   const [showHidden, setShowHidden] = useState(false);
+  const [PropertyData, setPropertyData] = useState({});
+
+  useEffect(() => {
+    const GetPropertyData = axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property`
+    );
+    GetPropertyData.then((response) => {
+      setPropertyData(response.data);
+      console.log(PropertyData, "RES");
+    }).catch((err) => {
+      console.log(err, "ERERRE");
+    });
+
+    return () => {};
+  }, []);
 
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);

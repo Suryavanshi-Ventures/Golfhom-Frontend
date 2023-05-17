@@ -41,6 +41,16 @@
   justify-content: space-between;
 }
 
+.top_nav_bar_usd_dropdown_container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.top_nav_bar_usd_dropdown_links {
+  text-decoration: none;
+  color: var(--light-font-color) !important;
+}
+
 .top_nav_bar_row {
   justify-content: flex-end;
 }
