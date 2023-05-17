@@ -171,7 +171,7 @@ const CarouselMap = () => {
             </span>
           </div>
         </Col>
-
+        {/* 
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
@@ -277,10 +277,10 @@ const CarouselMap = () => {
               8 Guests Villa
             </span>
           </div>
-        </Col>
+        </Col> */}
       </Row>
 
-      <Row>
+      {/* <Row>
         <Col md={6} className={CarouselMapCss.carouselBlock}>
           <Carousel
             wrap={true}
@@ -927,7 +927,7 @@ const CarouselMap = () => {
             </span>
           </div>
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 };
