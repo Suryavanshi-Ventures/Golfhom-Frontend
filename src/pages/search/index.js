@@ -415,7 +415,7 @@ const Index = () => {
                           style={{ textDecoration: "none" }}
                         >
                           <h4 className={CarasoulMapCss.carouselHeading}>
-                            {data.ownerName}
+                            {data.name}
                           </h4>
                         </Link>
                         <p className={CarasoulMapCss.discribeOfCard}>
