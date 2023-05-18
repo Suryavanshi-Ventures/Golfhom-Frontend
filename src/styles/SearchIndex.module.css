@@ -29,6 +29,11 @@
   border-color: var(--btn-background);
 }
 
+.edit_details_btn:hover {
+  color: var(--btn-background) !important;
+  border-color: var(--btn-background) !important;
+}
+
 .edit_room_dropdown_btn {
   width: 100%;
 }
@@ -58,6 +63,7 @@
   align-content: flex-end;
   font-family: var(--font-poppins);
   font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 
 .searching,
@@ -147,7 +153,7 @@
 
 .mapParent {
   flex: 1;
-  padding: 140px 0px 147px 22px;
+  padding: 140px 0px 0px 22px;
   position: relative;
 }
 
@@ -222,5 +228,13 @@
     right: 0px;
     bottom: 0px;
     color: transparent;
+  }
+
+  .twoCheckbox {
+    justify-content: flex-start !important;
+  }
+
+  .searching {
+    margin-top: 1.5rem;
   }
 }

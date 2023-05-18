@@ -6,7 +6,7 @@ import Carousel from "react-bootstrap/Carousel";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import { Checkbox, Input } from "antd";
 import { DatePicker } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { DownOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Space } from "antd";
 import Image from "next/image";
 import { Pagination } from "antd";
@@ -18,6 +18,7 @@ import CarasoulMapCss from "../../styles/CarouselMap.module.css";
 import HotelA from "../../../public/images/hotelA.svg";
 import Heart from "../../../public/images/vector/heart.svg";
 import Dot from "../../../public/images/vector/dot.svg";
+import Map from "../../../common components/map";
 
 import axios from "axios";
 const { RangePicker } = DatePicker;
@@ -26,6 +27,12 @@ const Index = () => {
   const [showHidden, setShowHidden] = useState(false);
   const [PropertyData, SetPropertyData] = useState([]);
   const [index, setIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleClick = () => {
+    setShowHidden(true);
+    setIsVisible(false);
+  };
 
   useEffect(() => {
     const GetPropertyData = axios.get(
@@ -76,73 +83,86 @@ const Index = () => {
         {/* EDIT DROP DETAIL SECTION */}
 
         <Row>
-          <Col md={6} className={SearchIndexCss.twoDropdown}>
-            <Col md={4}>
-              <div className={SearchIndexCss.edit_details_divs}>
-                <p className={SearchIndexCss.edit_details_titles}>
-                  Golf Course Choice
-                </p>
-                <div className={SearchIndexCss.edit_details_inputs_container}>
-                  <Dropdown menu={menuProps}>
-                    <Button
-                      size="large"
-                      className={SearchIndexCss.edit_room_dropdown_btn}
+          <Col
+            md={3}
+            className={SearchIndexCss.edit_details_container_cols}
+          >
+            <div className={SearchIndexCss.edit_details_divs}>
+              <p className={SearchIndexCss.edit_details_titles}>
+                Golf Course Choice
+              </p>
+              <div
+                className={SearchIndexCss.edit_details_inputs_container}
+              >
+                <Dropdown menu={menuProps}>
+                  <Button
+                    size="large"
+                    className={SearchIndexCss.edit_room_dropdown_btn}
+                  >
+                    <Space
+                      className={
+                        SearchIndexCss.edit_room_dropdown_btn_space
+                      }
                     >
-                      <Space
-                        className={SearchIndexCss.edit_room_dropdown_btn_space}
-                      >
-                        Location
-                        <DownOutlined
-                          className={SearchIndexCss.edit_room_dropdown_icon}
-                        />
-                      </Space>
-                    </Button>
-                  </Dropdown>
-                </div>
+                      Location
+                      <DownOutlined
+                        className={SearchIndexCss.edit_room_dropdown_icon}
+                      />
+                    </Space>
+                  </Button>
+                </Dropdown>
               </div>
-            </Col>
-
-            <Col md={8}>
-              <div className={SearchIndexCss.edit_details_divs}>
-                <p className={SearchIndexCss.edit_details_titles}>
-                  Golf Course
-                </p>
-                <div className={SearchIndexCss.edit_details_inputs_container}>
-                  <Dropdown menu={menuProps}>
-                    <Button
-                      size="large"
-                      className={SearchIndexCss.edit_room_dropdown_btn}
-                    >
-                      <Space
-                        className={SearchIndexCss.edit_room_dropdown_btn_space}
-                      >
-                        Location
-                        <DownOutlined
-                          className={SearchIndexCss.edit_room_dropdown_icon}
-                        />
-                      </Space>
-                    </Button>
-                  </Dropdown>
-                </div>
-              </div>
-            </Col>
+            </div>
           </Col>
 
-          <Col mmd={6} className={SearchIndexCss.twoCheckbox}>
-            <div>
+          <Col
+            md={3}
+            className={SearchIndexCss.edit_details_container_cols}
+          >
+            <div className={SearchIndexCss.edit_details_divs}>
+              <p className={SearchIndexCss.edit_details_titles}>
+                Golf Course
+              </p>
+              <div
+                className={SearchIndexCss.edit_details_inputs_container}
+              >
+                <Dropdown menu={menuProps}>
+                  <Button
+                    size="large"
+                    className={SearchIndexCss.edit_room_dropdown_btn}
+                  >
+                    <Space
+                      className={
+                        SearchIndexCss.edit_room_dropdown_btn_space
+                      }
+                    >
+                      Location
+                      <DownOutlined
+                        className={SearchIndexCss.edit_room_dropdown_icon}
+                      />
+                    </Space>
+                  </Button>
+                </Dropdown>
+              </div>
+            </div>
+          </Col>
+
+          <Col md={6} className={SearchIndexCss.twoCheckbox}>
+            <Col md={3} sm={6}>
               <Checkbox>Golf Course Front</Checkbox>
-            </div>
-            <div>
+            </Col>
+            <Col md={4} sm={6}>
               <Checkbox>Golf Course Community</Checkbox>
-            </div>
-            <div>
+            </Col>
+
+            <Col md={3} sm={5}>
               <Button
-                onClick={() => setShowHidden(false)}
+                onClick={() => setShowHidden(true)}
                 className={SearchIndexCss.searching}
               >
                 Search
               </Button>
-            </div>
+            </Col>
           </Col>
         </Row>
       </>
@@ -247,13 +267,18 @@ const Index = () => {
                         SearchIndexCss.edit_details_btn_child_container
                       }
                     >
-                      <Button
-                        size="large"
-                        className={SearchIndexCss.edit_details_btn}
-                        onClick={() => setShowHidden(true)}
-                      >
-                        Edit
-                      </Button>
+                      {isVisible && (
+                        <Button
+                          size="large"
+                          className={SearchIndexCss.edit_details_btn}
+                          // onClick={() => setShowHidden(true)}
+                          onClick={handleClick}
+                        >
+                          Edit
+                        </Button>
+                      )}
+
+
                     </div>
                   </div>
                 </Col>
@@ -303,7 +328,7 @@ const Index = () => {
                       <Button size="large">
                         <Space>
                           Default order
-                          <DownOutlined />
+                          <CaretDownOutlined />
                         </Space>
                       </Button>
                     </Dropdown>
@@ -444,12 +469,7 @@ const Index = () => {
 
             {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
             <Col md={4} className={SearchIndexCss.mapParent}>
-              <Image
-                fill
-                src="/images/mapGroup.svg"
-                alt="Map"
-                className={SearchIndexCss.map}
-              />
+              <Map />
             </Col>
           </Row>
 
