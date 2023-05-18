@@ -28,7 +28,7 @@
   --header-background-color: #f7f7f7;
   --light-grey-background: #d9d9d9;
   --dark-grey-font: #404040;
-  --border-light-grey: #949CA5;
+  --border-light-grey: #949ca5;
 }
 
 * {
@@ -102,30 +102,29 @@
 
 .ant-pagination-item-active {
   background-color: var(--btn-background-secondary) !important;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none !important;
 }
 
 .ant-pagination-item:not(.ant-pagination-item-active) a {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 /* PAGINATION NEXT AND PRIVIOUS ARROWS */
 
-.anticon-left, .anticon-right {
-  color: #FF7757;
+.anticon-left,
+.anticon-right {
+  color: #ff7757;
 }
 /* 
 .anticon {
   color: #FF7757;   "Use this color only when the calendar and dropdown arrow need to be in it."
 } */
 
-
 /* BOOTSTRAP CAROUSEL */
 
-
 .carousel-indicators li {
-  background-color: #DFDFDF;
+  background-color: #dfdfdf;
   border-radius: 50%;
   display: inline-block;
   height: 10px;
@@ -140,7 +139,7 @@
 
 .carousel-control-next,
 .carousel-control-prev {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: none;
   width: 40px;
   height: 40px;
@@ -163,7 +162,7 @@
 
 .carousel-control-next::after,
 .carousel-control-prev::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 13px;
   height: 13px;
@@ -208,17 +207,18 @@
 }
 
 .swiper-button-next {
-  color: var(--black-btn-color)black !important;
+  color: var(--black-btn-color) black !important;
 }
 
 /* ANT DESIGN INPUT */
 
 .ant-input {
-  border: 1px solid var( --dark-grey-font);
+  border: 1px solid var(--dark-grey-font);
 }
 
-.ant-input:hover, .ant-input-affix-wrapper {
-  border: 1px solid var( --btn-background-secondary);
+.ant-input:hover,
+.ant-input-affix-wrapper {
+  border: 1px solid var(--btn-background-secondary);
 }
 
 /* BOOTSTRAP DROPDOWN */
@@ -230,15 +230,51 @@
   display: flex;
 }
 
- /* FOR INPUT NUMBER OF ANT DESGIN */
+/* FOR INPUT NUMBER OF ANT DESGIN */
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {  
-
-   opacity: 1;
-
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
 }
 
 .ant-picker-range-separator {
   line-height: 2px !important;
+}
+
+/* LOADER CSS */
+
+@-webkit-keyframes whirl-bounce {
+  0% {
+    -webkit-transform: translate(0, -150%) scaleX(1) scaleY(1);
+    transform: translate(0, -150%) scaleX(1) scaleY(1);
+  }
+  100% {
+    -webkit-transform: translate(0, 150%) scaleX(1.1) scaleY(0.9);
+    transform: translate(0, 150%) scaleX(1.1) scaleY(0.9);
+  }
+}
+@keyframes whirl-bounce {
+  0% {
+    -webkit-transform: translate(0, -150%) scaleX(1) scaleY(1);
+    transform: translate(0, -150%) scaleX(1) scaleY(1);
+  }
+  100% {
+    -webkit-transform: translate(0, 150%) scaleX(1.1) scaleY(0.9);
+    transform: translate(0, 150%) scaleX(1.1) scaleY(0.9);
+  }
+}
+
+.bounce:before {
+  -webkit-animation: whirl-bounce 0.5s cubic-bezier(0.6, 0.3, 0.8, 0.5)
+    alternate infinite;
+  animation: whirl-bounce 0.5s cubic-bezier(0.6, 0.3, 0.8, 0.5) alternate
+    infinite;
+  background: var(--btn-background);
+  border-radius: 100%;
+  content: "";
+  display: block;
+  height: 20px;
+  width: 20px;
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
 }

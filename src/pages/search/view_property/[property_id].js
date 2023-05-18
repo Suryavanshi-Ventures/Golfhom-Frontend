@@ -1,34 +1,63 @@
-import React, { useState } from "react";
+import { useState, React, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Button, Dropdown } from "react-bootstrap";
-import ViewPropertyCss from "../../styles/ViewProperty.module.css";
+import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
 import Image from "next/image";
-import GirlGroupBannerImage from "../../../public/images/group_girls_banner.svg";
+import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.svg";
 import { Checkbox, Input, Modal, Space, Tabs } from "antd";
-import TabContentOverview from "./tab_content_overview";
+import TabContentOverview from "../tab_content_overview";
 import Carousel from "react-bootstrap/Carousel";
-import CarouselGalleryImg from "../../../public/images/view_prop_gallery_img_1.svg";
+import CarouselGalleryImg from "../../../../public/images/view_prop_gallery_img_1.svg";
 import { DatePicker } from "antd";
-import FeatureTickIcon from "../../../public/images/vector/feature_tick.svg";
-import PriceSquareIcon from "../../../public/images/vector/price_square_icon.svg";
-import RulesCrossIcon from "../../../public/images/vector/rules_cross_icon.svg";
-import Calendar from "../../../public/images/vector/calendar.svg";
-import BottomSection from "../../../common components/bottomGroup";
-import Blacktick from "../../../public/images/vector/blackTick.svg";
-import ViewPropMap from "../../../public/images/view_prop_Map.svg";
+import FeatureTickIcon from "../../../../public/images/vector/feature_tick.svg";
+import PriceSquareIcon from "../../../../public/images/vector/price_square_icon.svg";
+import RulesCrossIcon from "../../../../public/images/vector/rules_cross_icon.svg";
+import Calendar from "../../../../public/images/vector/calendar.svg";
+import BottomSection from "../../../../common components/bottomGroup";
+import Blacktick from "../../../../public/images/vector/blackTick.svg";
+import ViewPropMap from "../../../../public/images/view_prop_Map.svg";
+import axios from "axios";
 const { TextArea } = Input;
+import { useRouter } from "next/router";
 
 const ViewProperty = () => {
+  const router = useRouter();
+  const PropertyId = router.query.property_id; // Access the ID from the URL
+  const [SpecificPropAPIData, SetSpecificPropAPIData] = useState({});
+
   const onTabChange = (key) => {
     console.log(key);
   };
 
+  useEffect(() => {
+    const UrlParamId = window.location.pathname.split("/")[3];
+    console.log(UrlParamId, "PARAMS ID");
+
+    const SpecificPropData = axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
+        PropertyId || UrlParamId
+      }`
+    );
+
+    SpecificPropData.then((response) => {
+      if (response.status === 200) {
+        SetSpecificPropAPIData(response.data.data);
+        console.log("API Success", response.data.data);
+      }
+    }).catch((err) => {
+      console.log(err, "ERR");
+    });
+
+    return () => {};
+  }, []);
+
+  console.log(SpecificPropAPIData, "FROM VIEW PROP");
   const items = [
     {
       key: "1",
       label: `Overview`,
-      children: <TabContentOverview />,
+      children: <TabContentOverview data={SpecificPropAPIData} />,
     },
     {
       key: "2",
@@ -358,6 +387,7 @@ const ViewProperty = () => {
                     ></Image>
                   </div>
 
+                  {}
                   <p className={ViewPropertyCss.feature_section_text}>
                     Air conditioning
                   </p>
@@ -917,9 +947,8 @@ const ViewProperty = () => {
                 height="100%"
                 src="https://www.youtube.com/embed/aWKFpMRiMX4"
                 title="YouTube video player"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
           </Container>

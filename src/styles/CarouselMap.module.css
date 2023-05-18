@@ -56,6 +56,12 @@
   margin-bottom: 2px;
 }
 
+.price_of_property {
+  margin-top: 10px;
+  font-size: 17px;
+  font-family: var(--font-poppins);
+}
+
 .mapParent {
   flex: 1;
   height: 695px;
