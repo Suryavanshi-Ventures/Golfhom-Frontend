@@ -5,6 +5,8 @@
 
 .view_prop_bannerimg {
   position: relative !important;
+  max-height: 500px;
+  object-fit: cover;
 }
 
 /* OVERVIEW TAB SECTION */
@@ -92,6 +94,8 @@
 }
 .carasoul_images {
   position: relative !important;
+  height: 720px !important;
+  object-fit: cover;
 }
 
 /*  ------------    Total price box    ----------   */
@@ -185,14 +189,15 @@
   align-self: center;
 }
 
-.guest:hover, .guest:focus {
+.guest:hover,
+.guest:focus {
   background: none !important;
   border: none !important;
   color: #111111 !important;
 }
 
 .guest:active {
-background: transparent !important;
+  background: transparent !important;
 }
 
 .increase {
@@ -219,7 +224,8 @@ background: transparent !important;
   border: none;
 }
 
-.checkParent, .contactParent {
+.checkParent,
+.contactParent {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -297,7 +303,6 @@ background: transparent !important;
   width: 100%;
   height: auto;
   margin-left: 0px !important;
-
 }
 
 .inputD {
@@ -322,26 +327,26 @@ background: transparent !important;
 }
 
 .registerBtn {
- width: 100%;
- background: var(--black-color);
- color: var(--white-font-color);
- font-size: 0.8rem;
- font-weight: 500;
- font-family: var(--font-poppins);
- text-align: center;
- border-radius: 0% !important;
- margin: 8px 0px;
- margin-bottom: 38px;
- padding: 4% 0%;
- display: flex;
- flex-direction: row;
- justify-content: center;
- align-items: center;
- border: none !important;
+  width: 100%;
+  background: var(--black-color);
+  color: var(--white-font-color);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  text-align: center;
+  border-radius: 0% !important;
+  margin: 8px 0px;
+  margin-bottom: 38px;
+  padding: 4% 0%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none !important;
 }
 
 .registBtnParent {
-  margin: 10px 20px ;
+  margin: 10px 20px;
   padding: 0px 0px 12px;
 }
 
@@ -349,8 +354,8 @@ background: transparent !important;
   text-decoration: none;
 }
 .registerBtn:hover {
-background-color: var(--btn-background-secondary);
-border: none !important;
+  background-color: var(--btn-background-secondary);
+  border: none !important;
 }
 
 .adultChild {
@@ -374,7 +379,8 @@ border: none !important;
   padding: 2px 9px;
 }
 
-.increaseAdult:hover, .increaseAdult:focus {
+.increaseAdult:hover,
+.increaseAdult:focus {
   background: var(--white-font-color) !important;
   color: var(--btn-background-secondary) !important;
   border: 1px solid var(--btn-background-secondary) !important;
@@ -385,9 +391,9 @@ border: none !important;
 }
 
 .decreasebtn {
-   padding: 0px 10px;
-   font-size: 1.4rem;
-   margin-right: 20px;
+  padding: 0px 10px;
+  font-size: 1.4rem;
+  margin-right: 20px;
 }
 
 .increasebtn {
@@ -508,9 +514,9 @@ border: none !important;
 }
 
 .tickParent {
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .tick_with_blackbg {

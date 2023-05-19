@@ -53,14 +53,16 @@ const Index = () => {
       console.log(err, "ERR");
     });
   }, []);
-
   console.log(PropertyData, "API RESPONSE");
 
   const handleSelectA = (selectedIndex) => {
     setIndex(selectedIndex);
+    console.log("ONCCHANGEEEEEEEEEEEEEEE 11111111111111111");
   };
 
   const OnPaginationChange = (pageNumber) => {
+    console.log("ONCCHANGEEEEEEEEEEEEEEE 222222222222");
+
     const GetPropertyData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${pageNumber}`
     );
@@ -72,6 +74,7 @@ const Index = () => {
     }).catch((err) => {
       console.log(err, "ERR");
     });
+
     SetPagination(pageNumber);
     console.log("Page: ", pageNumber);
   };
@@ -358,7 +361,6 @@ const Index = () => {
                           key={data.id}
                           className={CarasoulMapCss.carouselBlock}
                         >
-                          {console.log(id, "PROP DATA INDEX")}
                           <Carousel
                             wrap={true}
                             key={data.id}
@@ -380,22 +382,19 @@ const Index = () => {
                               >
                                 {data.otherImageUrls.map(
                                   (ImageUrl, ImageIndex) => {
-                                    {
-                                      console.log(
-                                        ImageIndex,
-                                        "Image DATA INDEX"
-                                      );
+                                    return (
                                       <Image
-                                        src={data.otherImageUrls[ImageIndex]}
-                                        onClick={(e) => {
+                                        key={ImageIndex}
+                                        src={ImageUrl}
+                                        onClick={() => {
                                           SendPropertyData(data);
                                         }}
                                         alt="Hotel View"
                                         fill
                                         className={CarasoulMapCss.carouselImage}
                                         priority
-                                      ></Image>;
-                                    }
+                                      ></Image>
+                                    );
                                   }
                                 )}
                               </Link>

@@ -44,7 +44,7 @@
 
 .search_btn {
   height: auto;
-  padding: 1rem 7rem;
+  padding: 1rem 6rem;
   border-radius: 100px;
   background-color: var(--btn-background);
   color: var(--white-font-color);
@@ -115,7 +115,7 @@
 
 .para {
   line-height: 26px;
- font-weight: 400;
+  font-weight: 400;
   font-family: var(--font-poppins);
 }
 

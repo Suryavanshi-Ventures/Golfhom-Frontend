@@ -32,7 +32,6 @@ const ViewProperty = () => {
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
-    console.log(UrlParamId, "PARAMS ID");
 
     const SpecificPropData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
@@ -64,7 +63,7 @@ const ViewProperty = () => {
       label: `Gallery`,
       children: (
         <>
-          <h1>yoo</h1>
+          <h1>Test Gallery</h1>
         </>
       ),
     },
@@ -142,7 +141,7 @@ const ViewProperty = () => {
           <Image
             alt="Golf group"
             className={ViewPropertyCss.view_prop_bannerimg}
-            src={GirlGroupBannerImage}
+            src={SpecificPropAPIData.imageUrl || GirlGroupBannerImage}
             fill
           ></Image>
         </div>
@@ -338,30 +337,21 @@ const ViewProperty = () => {
         {/* CARASOUL SECTION STARTS HERE */}
         <section className={ViewPropertyCss.carasoul_section}>
           <Carousel>
-            <Carousel.Item>
-              <Image
-                className={ViewPropertyCss.carasoul_images}
-                fill
-                src={CarouselGalleryImg}
-                alt="First slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image
-                className={ViewPropertyCss.carasoul_images}
-                fill
-                src={CarouselGalleryImg}
-                alt="Second slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image
-                className={ViewPropertyCss.carasoul_images}
-                fill
-                src={CarouselGalleryImg}
-                alt="Third slide"
-              />
-            </Carousel.Item>
+            {SpecificPropAPIData?.otherImageUrls?.map(
+              (OtherImage, OtherImageUrlIndex) => {
+                console.log(OtherImageUrlIndex);
+                return (
+                  <Carousel.Item key={OtherImageUrlIndex}>
+                    <Image
+                      className={ViewPropertyCss.carasoul_images}
+                      fill
+                      src={OtherImage}
+                      alt="First slide"
+                    />
+                  </Carousel.Item>
+                );
+              }
+            )}
           </Carousel>
         </section>
 
@@ -373,6 +363,33 @@ const ViewProperty = () => {
             </h5>
             <Row>
               <Col md={4}>
+                {SpecificPropAPIData?.amenities?.map((data, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={ViewPropertyCss.feature_section_div_container}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.feature_section_tick_icon_container
+                        }
+                      >
+                        <Image
+                          width={24}
+                          height={24}
+                          src={FeatureTickIcon}
+                          alt="features of golfhom"
+                        ></Image>
+                      </div>
+
+                      <p className={ViewPropertyCss.feature_section_text}>
+                        {data}
+                      </p>
+                    </div>
+                  );
+                })}
+              </Col>
+              {/* <Col md={4}>
                 <div className={ViewPropertyCss.feature_section_div_container}>
                   <div
                     className={
@@ -387,7 +404,6 @@ const ViewProperty = () => {
                     ></Image>
                   </div>
 
-                  {}
                   <p className={ViewPropertyCss.feature_section_text}>
                     Air conditioning
                   </p>
@@ -736,189 +752,7 @@ const ViewProperty = () => {
                     Air conditioning
                   </p>
                 </div>
-              </Col>
-              <Col md={4}>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-                <div className={ViewPropertyCss.feature_section_div_container}>
-                  <div
-                    className={
-                      ViewPropertyCss.feature_section_tick_icon_container
-                    }
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      src={FeatureTickIcon}
-                      alt="features of golfhom"
-                    ></Image>
-                  </div>
-
-                  <p className={ViewPropertyCss.feature_section_text}>
-                    Air conditioning
-                  </p>
-                </div>
-              </Col>
+              </Col> */}
             </Row>
           </Container>
         </section>
@@ -1461,34 +1295,10 @@ const ViewProperty = () => {
                         alt="Prices"
                       ></Image>
                     </div>
-                    <p className={ViewPropertyCss.words}>ID: 58228</p>
+                    <p className={ViewPropertyCss.words}>
+                      ID: {SpecificPropAPIData.id}
+                    </p>
                   </div>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></Image>
-                  </div>
-                  <p className={ViewPropertyCss.words}>Rooms: 6</p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></Image>
-                  </div>
-                  <p className={ViewPropertyCss.words}>Guests: 8</p>
                 </div>
 
                 <div className={ViewPropertyCss.tickParent}>
@@ -1502,7 +1312,7 @@ const ViewProperty = () => {
                     ></Image>
                   </div>
                   <p className={ViewPropertyCss.words}>
-                    Check-in After: 4:00 PM
+                    Rooms: {SpecificPropAPIData.bedrooms}
                   </p>
                 </div>
 
@@ -1516,7 +1326,9 @@ const ViewProperty = () => {
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Bedrooms: 4</p>
+                  <p className={ViewPropertyCss.words}>
+                    Guests: {SpecificPropAPIData.accomodation}
+                  </p>
                 </div>
 
                 <div className={ViewPropertyCss.tickParent}>
@@ -1530,7 +1342,37 @@ const ViewProperty = () => {
                     ></Image>
                   </div>
                   <p className={ViewPropertyCss.words}>
-                    Check-out Before: 11:00 AM
+                    Check-in After: {SpecificPropAPIData.checkIn}
+                  </p>
+                </div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
+                    <Image
+                      className={ViewPropertyCss.tick_with_blackbg}
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>
+                    Check-out Before: {SpecificPropAPIData.checkOut}
+                  </p>
+                </div>
+
+                <div className={ViewPropertyCss.tickParent}>
+                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
+                    <Image
+                      className={ViewPropertyCss.tick_with_blackbg}
+                      src={Blacktick}
+                      width={24}
+                      height={24}
+                      alt="Prices"
+                    ></Image>
+                  </div>
+                  <p className={ViewPropertyCss.words}>
+                    Bedrooms: {SpecificPropAPIData.bedrooms}
                   </p>
                 </div>
 
@@ -1572,7 +1414,9 @@ const ViewProperty = () => {
                       alt="Prices"
                     ></Image>
                   </div>
-                  <p className={ViewPropertyCss.words}>Bathrooms: 2</p>
+                  <p className={ViewPropertyCss.words}>
+                    Bathrooms: {SpecificPropAPIData.bathrooms}
+                  </p>
                 </div>
               </Col>
             </Row>
