@@ -106,26 +106,19 @@ const Index = () => {
         {/* EDIT DROP DETAIL SECTION */}
 
         <Row>
-          <Col
-            md={3}
-            className={SearchIndexCss.edit_details_container_cols}
-          >
+          <Col md={3} className={SearchIndexCss.edit_details_container_cols}>
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>
                 Golf Course Choice
               </p>
-              <div
-                className={SearchIndexCss.edit_details_inputs_container}
-              >
+              <div className={SearchIndexCss.edit_details_inputs_container}>
                 <Dropdown menu={menuProps}>
                   <Button
                     size="large"
                     className={SearchIndexCss.edit_room_dropdown_btn}
                   >
                     <Space
-                      className={
-                        SearchIndexCss.edit_room_dropdown_btn_space
-                      }
+                      className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
                       Location
                       <DownOutlined
@@ -138,26 +131,17 @@ const Index = () => {
             </div>
           </Col>
 
-          <Col
-            md={3}
-            className={SearchIndexCss.edit_details_container_cols}
-          >
+          <Col md={3} className={SearchIndexCss.edit_details_container_cols}>
             <div className={SearchIndexCss.edit_details_divs}>
-              <p className={SearchIndexCss.edit_details_titles}>
-                Golf Course
-              </p>
-              <div
-                className={SearchIndexCss.edit_details_inputs_container}
-              >
+              <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
+              <div className={SearchIndexCss.edit_details_inputs_container}>
                 <Dropdown menu={menuProps}>
                   <Button
                     size="large"
                     className={SearchIndexCss.edit_room_dropdown_btn}
                   >
                     <Space
-                      className={
-                        SearchIndexCss.edit_room_dropdown_btn_space
-                      }
+                      className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
                       Location
                       <DownOutlined
@@ -300,8 +284,6 @@ const Index = () => {
                           Edit
                         </Button>
                       )}
-
-
                     </div>
                   </div>
                 </Col>
@@ -370,19 +352,20 @@ const Index = () => {
                     </>
                   ) : (
                     <>
-                      {PropertyData.map((data, i) => (
+                      {PropertyData.map((data, id) => (
                         <Col
                           md={6}
                           key={data.id}
                           className={CarasoulMapCss.carouselBlock}
                         >
+                          {console.log(id, "PROP DATA INDEX")}
                           <Carousel
                             wrap={true}
                             key={data.id}
                             activeIndex={index}
                             onSelect={handleSelectA}
                             indicators={false}
-                            interval={5000}
+                            interval={null}
                             className={CarasoulMapCss.carouselParent}
                           >
                             <Carousel.Item className={CarasoulMapCss.imageGap}>
@@ -395,16 +378,26 @@ const Index = () => {
                                 }}
                                 href=""
                               >
-                                <Image
-                                  src={HotelA}
-                                  onClick={(e) => {
-                                    SendPropertyData(data);
-                                  }}
-                                  alt="Hotel View"
-                                  fill
-                                  className={CarasoulMapCss.carouselImage}
-                                  priority
-                                ></Image>
+                                {data.otherImageUrls.map(
+                                  (ImageUrl, ImageIndex) => {
+                                    {
+                                      console.log(
+                                        ImageIndex,
+                                        "Image DATA INDEX"
+                                      );
+                                      <Image
+                                        src={data.otherImageUrls[ImageIndex]}
+                                        onClick={(e) => {
+                                          SendPropertyData(data);
+                                        }}
+                                        alt="Hotel View"
+                                        fill
+                                        className={CarasoulMapCss.carouselImage}
+                                        priority
+                                      ></Image>;
+                                    }
+                                  }
+                                )}
                               </Link>
 
                               {/* <div className={CarasoulMapCss.heartParent}>
@@ -419,71 +412,6 @@ const Index = () => {
                               </div> */}
                             </Carousel.Item>
 
-                            <Carousel.Item className={CarasoulMapCss.imageGap}>
-                              <Link
-                                onClick={(e) => {
-                                  Router.push(
-                                    `search/view_property/${data.id}`
-                                  );
-                                  e.preventDefault();
-                                }}
-                                href=""
-                              >
-                                <Image
-                                  onClick={(e) => {
-                                    SendPropertyData(data);
-                                  }}
-                                  src={HotelA}
-                                  alt="Hotel View"
-                                  fill
-                                  className={CarasoulMapCss.carouselImage}
-                                ></Image>
-                              </Link>
-
-                              {/* <div className={CarasoulMapCss.heartParent}>
-                                <Link href="/search/view_property">
-                                  <Image
-                                    src={Heart}
-                                    alt="Heart"
-                                    fill
-                                    className={CarasoulMapCss.heart}
-                                  ></Image>
-                                </Link>
-                              </div> */}
-                            </Carousel.Item>
-
-                            <Carousel.Item className={CarasoulMapCss.imageGap}>
-                              <Link
-                                onClick={(e) => {
-                                  Router.push(
-                                    `search/view_property/${data.id}`
-                                  );
-                                  e.preventDefault();
-                                }}
-                                href=""
-                              >
-                                <Image
-                                  onClick={(e) => {
-                                    SendPropertyData(data);
-                                  }}
-                                  src={HotelA}
-                                  alt="Hotel View"
-                                  fill
-                                  className={CarasoulMapCss.carouselImage}
-                                ></Image>
-                              </Link>
-
-                              {/* <div className={CarasoulMapCss.heartParent}>
-                                <Link href="/search/view_property">
-                                  <Image
-                                    src={Heart}
-                                    alt="Heart"
-                                    fill
-                                    className={CarasoulMapCss.heart}
-                                  ></Image>
-                                </Link>
-                              </div> */}
-                            </Carousel.Item>
                             <ol className="carousel-indicators">
                               <li
                                 className={index === 0 ? "active" : ""}
