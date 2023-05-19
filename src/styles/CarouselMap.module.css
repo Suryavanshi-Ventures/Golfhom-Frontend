@@ -12,6 +12,8 @@
 .carouselImage {
   position: relative !important;
   object-fit: cover;
+  border-radius: 16px;
+  height: 235px !important;
 }
 
 .heartParent {
@@ -36,7 +38,7 @@
 }
 
 .imageGap {
-  position: static;
+  position: relative;
 }
 
 .carouselHeading {

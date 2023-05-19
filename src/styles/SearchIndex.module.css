@@ -153,8 +153,11 @@
 
 .mapParent {
   flex: 1;
-  padding: 140px 0px 0px 22px;
   position: relative;
+}
+
+.mapParent > div {
+  border: 1px solid var(--btn-background);
 }
 
 .map {
