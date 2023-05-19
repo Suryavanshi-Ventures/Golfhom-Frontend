@@ -45,7 +45,7 @@ const Header = () => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -60,8 +60,6 @@ const Header = () => {
 
   //* REGISTER BTN DISABLED
   const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(false);
-
-  // CHECKBOX TERMS CONDITION USESTATE END
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -507,8 +505,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -529,8 +527,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -595,7 +593,7 @@ const Header = () => {
                               }
                               target="_blank"
                               rel="noopener noreferrer"
-                              href="https://www.antgroup.com"
+                              href="/"
                             >
                               1st menu item
                             </Link>
@@ -1021,7 +1019,7 @@ const Header = () => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
@@ -1066,18 +1064,19 @@ function OffCanvasExample({ name, ...props }) {
   const handleShow = () => setShow(true);
 
   {
-    /* -----------       SIGN UP SECTION        -----------------*/
+    /* -----------       MOBILE LOGIN SECTION        -----------------*/
   }
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [IsLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   const showLoginModalMobile = () => {
-    setIsModalOpen(true);
+    setIsLoginModalOpen(true);
   };
   const handleSignup = () => {
-    setIsModalOpen(false);
+    setIsLoginModalOpen(false);
   };
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setIsLoginModalOpen(false);
   };
 
   {
@@ -1159,12 +1158,12 @@ function OffCanvasExample({ name, ...props }) {
       {/* MOBILE HAMBURGER MENU BTN */}
       <UilAlignJustify size="40" onClick={handleShow} />
 
-      {/* -----------       SIGN UP SECTION        -----------------*/}
+      {/* -----------       LOGIN SECTION MOBILE        -----------------*/}
 
       <Modal
         title="Log In to your account"
         footer={null}
-        open={isModalOpen}
+        open={IsLoginModalOpen}
         onSignup={handleSignup}
         onCancel={handleCancel}
         width={344}
@@ -1419,7 +1418,7 @@ function OffCanvasExample({ name, ...props }) {
                   Contact Us
                 </Link>
               </div>
-
+              {/* MOBILE LOGIN MODAL BTN */}
               <div className={HeaderCss.mobile_menu_div_container}>
                 <Link
                   className={HeaderCss.top_header_a}
@@ -1465,18 +1464,6 @@ function OffCanvasExample({ name, ...props }) {
       </Offcanvas>
     </>
   );
-}
-export async function getServerSideProps(context) {
-  const { params, req, res } = context;
-
-  console.log(params, "GETSERVERSide");
-
-  const { isLoggedIn } = context.req.cookies;
-  return {
-    props: {
-      isLoggedIn: isLoggedIn === "true",
-    },
-  };
 }
 
 export default Header;
