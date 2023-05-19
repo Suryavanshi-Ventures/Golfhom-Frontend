@@ -412,6 +412,14 @@
   font-weight: 400;
 }
 
+.edit_room_dropdown_btn:hover {
+  border: 1px solid var(--light-font-color) !important;
+}
+
+.twoCheckboxes {
+  margin: 0px 10px;
+}
+
 .edit_room_dropdown_btn_space {
   width: 100%;
   justify-content: space-between;

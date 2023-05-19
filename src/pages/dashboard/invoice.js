@@ -10,7 +10,14 @@ import { Dropdown, Space, Typography, DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
 import Link from "next/link";
+import moment from 'moment';
+import 'moment/locale/en-gb';
+
+moment.locale('en-gb');
+
 const { RangePicker } = DatePicker;
+const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY', 'DD-MM-YYYY', 'DD-MM-YY'];
+const dateFormat = 'MMMM D,YYYY';
 
 const Invoice = () => {
 
@@ -93,17 +100,15 @@ const Invoice = () => {
               <tbody>
                 <tr className={InvoiceCss.tableRow}>
                   <td>
-                    <RangePicker
-                      size="large"
-                      className={InvoiceCss.inner_input_date_picker}
-                    />
+                    <div className={InvoiceCss.dateParent}>
+                      <DatePicker placeholder="Start date" showToday={false} format={dateFormat} size="large" className={InvoiceCss.inner_input_date_picker} />
+                    </div>
                   </td>
 
                   <td>
-                    <RangePicker
-                      size="large"
-                      className={InvoiceCss.inner_input_date_picker}
-                    />
+                    <div className={InvoiceCss.dateParent}>
+                      <DatePicker placeholder="End date" showToday={false} format={dateFormat} size="large" className={InvoiceCss.inner_input_date_picker} />
+                    </div>
                   </td>
 
                   <td>

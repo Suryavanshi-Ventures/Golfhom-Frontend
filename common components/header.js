@@ -9,7 +9,7 @@ import UserIcon from "../public/user icon.svg";
 import Logo from "../public/logo.svg";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Link from "next/link";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
+import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
@@ -45,7 +45,7 @@ const Header = () => {
       );
     }
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -254,7 +254,7 @@ const Header = () => {
     <>
       <header className={HeaderCss.header}>
         <Container className={HeaderCss.container_header}>
-          {/* -----------       SIGN UP SECTION        -----------------*/}
+          {/* -----------       LOGIN SECTION IN BIG DEVICE        -----------------*/}
           <Modal
             title="Log In to your account"
             footer={null}
@@ -505,8 +505,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -527,8 +527,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >
@@ -1019,7 +1019,7 @@ const Header = () => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                  UserName.slice(1)
+                                UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
@@ -1067,90 +1067,71 @@ function OffCanvasExample({ name, ...props }) {
     /* -----------       MOBILE LOGIN SECTION        -----------------*/
   }
 
-  const [IsLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [loginOpenInMobile, setLoginOpenInMobile] = useState(false);
 
   const showLoginModalMobile = () => {
-    setIsLoginModalOpen(true);
+    setLoginOpenInMobile(true);
   };
   const handleSignup = () => {
-    setIsLoginModalOpen(false);
+    setLoginOpenInMobile(false);
   };
   const handleCancel = () => {
-    setIsLoginModalOpen(false);
+    setLoginOpenInMobile(false);
   };
 
   {
-    /* -----------      REGISTER SECTION        -----------------*/
+    /* -----------      REGISTER SECTION IN MOBILE       -----------------*/
   }
 
-  const [isModalOpens, setIsModalOpens] = useState(false);
-  const showRegister = () => {
-    setIsModalOpens(true);
+  const [registerInMobile, setRegisterInMobile] = useState(false);
+  const showRegisterInMobile = () => {
+    setRegisterInMobile(true);
     handleCancel();
   };
-  const handleRegister = () => {
-    setIsModalOpens(false);
+  const handleRegisterInMobile = () => {
+    setRegisterInMobile(false);
   };
-  const handleCancelRegister = () => {
-    setIsModalOpens(false);
+  const handleCancelRegisterInMobile = () => {
+    setRegisterInMobile(false);
   };
 
   {
-    /* -----------      REGISTER TO RENT SECTION        -----------------*/
+    /* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/
   }
 
-  const [isModalOpened, setIsModalOpened] = useState(false);
-  const showRegisterRent = () => {
-    setIsModalOpened(true);
+  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] = useState(false);
+  const mobileRegistertoRent = () => {
+    setMobileRegisterToRentModal(true);
     handleCancel();
   };
-  const handleRegisterRent = () => {
-    setIsModalOpened(false);
+  const handleRegistertoRentInMobile = () => {
+    setMobileRegisterToRentModal(false);
   };
-  const handleCancelRegisterRent = () => {
-    setIsModalOpened(false);
+  const handleCancelRegistertoRentInMobile = () => {
+    setMobileRegisterToRentModal(false);
   };
 
   {
-    /* -----------      FORGET PASSWORD SECTION        -----------------*/
+    /* -----------      FORGET PASSWORD IN MOBILE SECTION        -----------------*/
   }
 
-  const [isModalForgot, setIsModalForgot] = useState(false);
+  const [forgetModalInMobile, setForgetModalInMobile] = useState(false);
   const showForgot = () => {
-    setIsModalForgot(true);
+    setForgetModalInMobile(true);
     handleCancel();
   };
-  const handleForgot = () => {
-    setIsModalForgot(false);
+  const handleForgotInMobile = () => {
+    setForgetModalInMobile(false);
   };
-  const handleCancelForgot = () => {
-    setIsModalForgot(false);
-  };
-
-  // DROPDOWN CONTENT
-
-  const handleMenuClick = (e) => {
-    console.log("click", e);
+  const handleCancelForgotInMobile = () => {
+    setForgetModalInMobile(false);
   };
 
-  const item = [
-    {
-      label: "Select",
-      key: "1",
-    },
-    {
-      label: "Register to Rent",
-      key: "2",
-    },
-    {
-      label: "Register to Host",
-      key: "3",
-    },
-  ];
+  // SELECTED OPTION FEATURE IS FOR REGISTER TO RENT DROPDOWN
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const menuProps = {
-    item,
-    onClick: handleMenuClick,
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
   return (
@@ -1158,12 +1139,13 @@ function OffCanvasExample({ name, ...props }) {
       {/* MOBILE HAMBURGER MENU BTN */}
       <UilAlignJustify size="40" onClick={handleShow} />
 
-      {/* -----------       LOGIN SECTION MOBILE        -----------------*/}
+      {/* -----------       LOGIN SECTION IN MOBILE        -----------------*/}
 
       <Modal
+        Modal
         title="Log In to your account"
         footer={null}
-        open={IsLoginModalOpen}
+        open={loginOpenInMobile}
         onSignup={handleSignup}
         onCancel={handleCancel}
         width={344}
@@ -1207,7 +1189,7 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
-                <Link className={HeaderCss.register} onClick={showRegister}>
+                <Link className={HeaderCss.register} onClick={showRegisterInMobile}>
                   Register
                 </Link>
               </Space>
@@ -1216,15 +1198,15 @@ function OffCanvasExample({ name, ...props }) {
         </div>
       </Modal>
 
-      {/* -----------      REGISTER SECTION        -----------------*/}
+      {/* -----------      REGISTER SECTION IN MOBILE        -----------------*/}
 
       <Modal
         Modal
         title="Register"
         footer={null}
-        open={isModalOpens}
-        onSignup={handleRegister}
-        onCancel={handleCancelRegister}
+        open={registerInMobile}
+        onSignup={handleRegisterInMobile}
+        onCancel={handleCancelRegisterInMobile}
         width={440}
         className={HeaderCss.headerReg}
       >
@@ -1280,15 +1262,15 @@ function OffCanvasExample({ name, ...props }) {
         </div>
       </Modal>
 
-      {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
+      {/* -----------       FORGET PASSWORD SECTION IN MOBILE       -----------------*/}
 
       <Modal
         Modal
         title="Forgot Password"
         footer={null}
-        open={isModalForgot}
-        onSignup={handleForgot}
-        onCancel={handleCancelForgot}
+        open={forgetModalInMobile}
+        onSignup={handleForgotInMobile}
+        onCancel={handleCancelForgotInMobile}
         width={800}
         className={HeaderCss.headerForgot}
       >
@@ -1306,15 +1288,15 @@ function OffCanvasExample({ name, ...props }) {
         </div>
       </Modal>
 
-      {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
+      {/* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/}
 
       <Modal
         Modal
         title="Register"
         footer={null}
-        open={isModalOpened}
-        onSignup={handleRegisterRent}
-        onCancel={handleCancelRegisterRent}
+        open={mobileRegisterToRentModal}
+        onRegister={handleRegistertoRentInMobile}
+        onCancel={handleCancelRegistertoRentInMobile}
         width={440}
         className={HeaderCss.headerReg}
       >
@@ -1324,7 +1306,7 @@ function OffCanvasExample({ name, ...props }) {
               className={HeaderCss.inputA}
               type="text"
               placeholder="Enter User name"
-            ></Input>
+            />
           </div>
 
           <div>
@@ -1332,7 +1314,7 @@ function OffCanvasExample({ name, ...props }) {
               className={HeaderCss.inputB}
               type="email"
               placeholder="Email"
-            ></Input>
+            />
           </div>
 
           <div>
@@ -1340,7 +1322,7 @@ function OffCanvasExample({ name, ...props }) {
               className={HeaderCss.inputC}
               type="password"
               placeholder="Password"
-            ></Input>
+            />
           </div>
 
           <div>
@@ -1348,11 +1330,33 @@ function OffCanvasExample({ name, ...props }) {
               className={HeaderCss.inputD}
               type="password"
               placeholder="Repeat Password"
-            ></Input>
+            />
           </div>
         </Col>
 
-        <Dropdown menu={menuProps}>
+        <Dropdown
+          menu={{
+            items: [
+              {
+                label: "Select",
+                key: "1",
+              },
+              {
+                label: "Register to Rent",
+                key: "2",
+              },
+              {
+                label: "Register to Host",
+                key: "3",
+              },
+            ],
+            selectable: true,
+          }}
+          trigger={["click"]}
+          value={selectedOption}
+          onChange={handleOptionChange}
+          className={HeaderCss.edit_room_dropdown_btn}
+        >
           <Button size="large" className={HeaderCss.edit_room_dropdown_btn}>
             <Space className={HeaderCss.edit_room_dropdown_btn_space}>
               I want to Rent
@@ -1361,7 +1365,7 @@ function OffCanvasExample({ name, ...props }) {
           </Button>
         </Dropdown>
 
-        <Row>
+        <Row className={HeaderCss.twoCheckboxes}>
           <div>
             <Checkbox className={HeaderCss.agreeOptionA}>
               I agree with your Terms & Conditions
@@ -1435,6 +1439,7 @@ function OffCanvasExample({ name, ...props }) {
                   </Space>
                 </Link>
               </div>
+
               <div className={HeaderCss.mobile_menu_div_container}>
                 <Link
                   className={HeaderCss.top_header_a}
@@ -1444,7 +1449,7 @@ function OffCanvasExample({ name, ...props }) {
                   <Space>
                     <Button
                       className={HeaderCss.signUpBtn}
-                      onClick={showRegisterRent}
+                      onClick={mobileRegistertoRent}
                     >
                       Register to Rent
                     </Button>
