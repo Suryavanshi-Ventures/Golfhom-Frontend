@@ -4,14 +4,13 @@ import BottomSection from "../../../common components/bottomGroup";
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
 import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
-import { DatePicker } from "antd";
-const { RangePicker } = DatePicker;
 import Nextimg from "../../../public/images/vector/next.svg";
 import Head from "next/head";
-import { Dropdown, Space, Typography } from "antd";
+import { Dropdown, Space, Typography, DatePicker } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
 import Link from "next/link";
+const { RangePicker } = DatePicker;
 
 const Invoice = () => {
 
