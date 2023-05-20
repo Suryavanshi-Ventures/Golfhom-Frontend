@@ -1102,7 +1102,8 @@ function OffCanvasExample({ name, ...props }) {
     /* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/
   }
 
-  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] = useState(false);
+  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] =
+    useState(false);
   const mobileRegistertoRent = () => {
     setMobileRegisterToRentModal(true);
     handleCancel();
@@ -1192,9 +1193,9 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
-                <div className={HeaderCss.register} onClick={showRegisterInMobile}>
+                <Link href="/" className={HeaderCss.register} onClick={showRegisterInMobile}>
                   Register
-                </div>
+                </Link>
               </Space>
             </Link>
           </div>

@@ -10,7 +10,8 @@ const ProtectedRoute = ({ children }) => {
   const router = useRouter();
   useEffect(() => {
     //* check if user is authenticated
-    const IsAuthenticated = sessionStorage.getItem("token");
+    const IsAuthenticated =
+      sessionStorage.getItem("token") || localStorage.getItem("token");
     const Token = IsAuthenticated;
 
     //! User Get Profile API Call

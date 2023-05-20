@@ -57,12 +57,9 @@ const Index = () => {
 
   const handleSelectA = (selectedIndex) => {
     setIndex(selectedIndex);
-    console.log("ONCCHANGEEEEEEEEEEEEEEE 11111111111111111");
   };
 
   const OnPaginationChange = (pageNumber) => {
-    console.log("ONCCHANGEEEEEEEEEEEEEEE 222222222222");
-
     const GetPropertyData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${pageNumber}`
     );
