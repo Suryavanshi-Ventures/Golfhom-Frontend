@@ -45,7 +45,7 @@ const Header = () => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -505,8 +505,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -527,8 +527,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -1019,7 +1019,7 @@ const Header = () => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
@@ -1099,7 +1099,8 @@ function OffCanvasExample({ name, ...props }) {
     /* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/
   }
 
-  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] = useState(false);
+  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] =
+    useState(false);
   const mobileRegistertoRent = () => {
     setMobileRegisterToRentModal(true);
     handleCancel();
@@ -1189,7 +1190,10 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
-                <Link className={HeaderCss.register} onClick={showRegisterInMobile}>
+                <Link
+                  className={HeaderCss.register}
+                  onClick={showRegisterInMobile}
+                >
                   Register
                 </Link>
               </Space>

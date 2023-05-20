@@ -1,11 +1,11 @@
-import { useState, React, useEffect } from "react";
+import { useState, React, useEffect, useContext } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Button, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
 import Image from "next/image";
 import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.svg";
-import { Checkbox, Input, Modal, Space, Tabs } from "antd";
+import { Checkbox, Input, Modal, Space, Tabs, message } from "antd";
 import TabContentOverview from "../tab_content_overview";
 import Carousel from "react-bootstrap/Carousel";
 import CarouselGalleryImg from "../../../../public/images/view_prop_gallery_img_1.svg";
@@ -18,13 +18,29 @@ import BottomSection from "../../../../common components/bottomGroup";
 import Blacktick from "../../../../public/images/vector/blackTick.svg";
 import ViewPropMap from "../../../../public/images/view_prop_Map.svg";
 import axios from "axios";
+import { AuthContext } from "@/context/auth_context";
 const { TextArea } = Input;
 import { useRouter } from "next/router";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  CardElement,
+  Elements,
+  useStripe,
+  useElements,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
+const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_TEST_KEY}`);
+const { RangePicker } = DatePicker;
+import Checkout from "./checkout";
 
 const ViewProperty = () => {
+  const ContextUserDetails = useContext(AuthContext);
   const router = useRouter();
   const PropertyId = router.query.property_id; // Access the ID from the URL
   const [SpecificPropAPIData, SetSpecificPropAPIData] = useState({});
+  const [BookingDate, SetBookingDate] = useState([]);
+  const [PaymentIntentObject, setPaymentIntentObject] = useState(null);
+  const [Options, setOptions] = useState(null);
 
   const onTabChange = (key) => {
     console.log(key);
@@ -32,7 +48,6 @@ const ViewProperty = () => {
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
-
     const SpecificPropData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
         PropertyId || UrlParamId
@@ -42,7 +57,6 @@ const ViewProperty = () => {
     SpecificPropData.then((response) => {
       if (response.status === 200) {
         SetSpecificPropAPIData(response.data.data);
-        console.log("API Success", response.data.data);
       }
     }).catch((err) => {
       console.log(err, "ERR");
@@ -50,6 +64,15 @@ const ViewProperty = () => {
 
     return () => {};
   }, []);
+
+  useEffect(() => {
+    if (PaymentIntentObject != null) {
+      setOptions(PaymentIntentObject);
+      console.log("IF CONDIII");
+    }
+
+    return () => {};
+  }, [PaymentIntentObject]);
 
   console.log(SpecificPropAPIData, "FROM VIEW PROP");
   const items = [
@@ -74,10 +97,7 @@ const ViewProperty = () => {
     },
   ];
 
-  const { RangePicker } = DatePicker;
-
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
-
   const [adult, setAdult] = useState(0);
 
   const incAdult = () => {
@@ -126,6 +146,57 @@ const ViewProperty = () => {
     setIsModalOpen(false);
   };
 
+  const CreatePatymentIntent = async () => {
+    const PaymentRes = axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
+      {
+        propertyId: SpecificPropAPIData.id,
+        from: BookingDate[0],
+        to: BookingDate[1],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${ContextUserDetails.UserState}`,
+        },
+      }
+    );
+    PaymentRes.then((response) => {
+      if (response.status === 200) {
+        message.info("Please fill the details and click on pay!");
+        console.log("RESPONSE PAYMENT INTENT", response.data.paymentIntent);
+        setPaymentIntentObject({
+          ClientSecret: response.data.paymentIntent.client_secret,
+          PaymentIntentId: response.data.paymentIntent.id,
+        });
+      }
+    }).catch((err) => {
+      message.error(
+        err.response.data.message + ", Please login to book hotels!"
+      );
+      console.log("ERROR IN PAYMENT INTENT", err.response.data.message);
+    });
+  };
+
+  const BookingHotelDone = () => {
+    // const BookingRes = axios.post(
+    //   `${process.env.NEXT_PUBLIC_API_URL}/v1/booking`,
+    //   {
+    //     propertyId: SpecificPropAPIData.id,
+    //     from: BookingDate[0],
+    //     to: BookingDate[1],
+    //   },
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${ContextUserDetails.UserState}`,
+    //     },
+    //   }
+    // );
+  };
+
+  const OnChangeDateInput = (date, DateValue) => {
+    SetBookingDate(DateValue);
+  };
+
   return (
     <>
       <Head>
@@ -163,18 +234,25 @@ const ViewProperty = () => {
                     </h4>
                   </div>
                   <div className={ViewPropertyCss.amount}>
-                    <h5>$0.00</h5>
+                    <h5>${SpecificPropAPIData.price}</h5>
                   </div>
                 </div>
 
                 <div className={ViewPropertyCss.bookParent}>
-                  <Button className={ViewPropertyCss.bookNow}>Book now</Button>
+                  <Button
+                    className={ViewPropertyCss.bookNow}
+                    onClick={CreatePatymentIntent}
+                  >
+                    Book now
+                  </Button>
                 </div>
               </div>
               <hr className={ViewPropertyCss.horizonaline} />
               <div className={ViewPropertyCss.inner_input_date_picker}>
                 <RangePicker
                   size="large"
+                  style={{ width: "100%" }}
+                  onChange={OnChangeDateInput}
                   className={ViewPropertyCss.inner_input_date_picker}
                 />
               </div>
@@ -330,6 +408,19 @@ const ViewProperty = () => {
                   </Button>
                 </Space>
               </div>
+              {Options != null && (
+                <>
+                  {console.log(Options, "LOGGGG FROM ELEMENT")}
+                  <Elements
+                    stripe={stripePromise}
+                    options={{ clientSecret: Options.ClientSecret }}
+                  >
+                    <PaymentElement />
+
+                    <Checkout />
+                  </Elements>
+                </>
+              )}
             </Col>
           </Row>
         </Container>
@@ -339,7 +430,6 @@ const ViewProperty = () => {
           <Carousel>
             {SpecificPropAPIData?.otherImageUrls?.map(
               (OtherImage, OtherImageUrlIndex) => {
-                console.log(OtherImageUrlIndex);
                 return (
                   <Carousel.Item key={OtherImageUrlIndex}>
                     <Image
