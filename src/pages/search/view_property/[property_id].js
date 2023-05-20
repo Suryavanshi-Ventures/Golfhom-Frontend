@@ -17,6 +17,7 @@ import Calendar from "../../../../public/images/vector/calendar.svg";
 import BottomSection from "../../../../common components/bottomGroup";
 import Blacktick from "../../../../public/images/vector/blackTick.svg";
 import ViewPropMap from "../../../../public/images/view_prop_Map.svg";
+import Map from "../../../../common components/map";
 import axios from "axios";
 const { TextArea } = Input;
 import { useRouter } from "next/router";
@@ -34,8 +35,7 @@ const ViewProperty = () => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
     const SpecificPropData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
-        PropertyId || UrlParamId
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${PropertyId || UrlParamId
       }`
     );
 
@@ -48,7 +48,7 @@ const ViewProperty = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, []);
 
   console.log(SpecificPropAPIData, "FROM VIEW PROP");

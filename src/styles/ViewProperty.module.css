@@ -416,6 +416,15 @@
   padding: 8px 42px;
 }
 
+.mapParent {
+  flex: 1;
+  position: relative;
+}
+
+.mapParent > div {
+  border: 1px solid var(--btn-background);
+}
+
 .apply:hover {
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color);

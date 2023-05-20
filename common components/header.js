@@ -25,6 +25,7 @@ import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
 import { AuthContext } from "@/context/auth_context";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 
+
 const Header = () => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
   const [UserName, SetUserName] = useState("");
@@ -1079,6 +1080,8 @@ function OffCanvasExample({ name, ...props }) {
     setLoginOpenInMobile(false);
   };
 
+
+
   {
     /* -----------      REGISTER SECTION IN MOBILE       -----------------*/
   }
@@ -1148,7 +1151,7 @@ function OffCanvasExample({ name, ...props }) {
         open={loginOpenInMobile}
         onSignup={handleSignup}
         onCancel={handleCancel}
-        width={344}
+        width={400}
       >
         <div className={HeaderCss.textParent}>
           <p className={HeaderCss.emailNumber}>Email or Member Number</p>
@@ -1157,7 +1160,7 @@ function OffCanvasExample({ name, ...props }) {
           <Input className={HeaderCss.password} type="password"></Input>
         </div>
 
-        <div className={HeaderCss.remember}>
+        <div className={HeaderCss.rememberMobile}>
           <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
           <Button className={HeaderCss.signIn}>Log In</Button>
         </div>
@@ -1189,9 +1192,9 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
-                <Link className={HeaderCss.register} onClick={showRegisterInMobile}>
+                <div className={HeaderCss.register} onClick={showRegisterInMobile}>
                   Register
-                </Link>
+                </div>
               </Space>
             </Link>
           </div>
@@ -1422,6 +1425,7 @@ function OffCanvasExample({ name, ...props }) {
                   Contact Us
                 </Link>
               </div>
+
               {/* MOBILE LOGIN MODAL BTN */}
               <div className={HeaderCss.mobile_menu_div_container}>
                 <Link

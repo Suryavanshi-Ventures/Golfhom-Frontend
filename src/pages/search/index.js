@@ -108,7 +108,7 @@ const Index = () => {
       <>
         {/* EDIT DROP DETAIL SECTION */}
 
-        <Row>
+        <Row className={SearchIndexCss.course_choice_parent}>
           <Col md={3} className={SearchIndexCss.edit_details_container_cols}>
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>

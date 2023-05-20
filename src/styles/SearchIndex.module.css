@@ -164,6 +164,12 @@
   position: relative !important;
 }
 
+.course_choice_parent {
+  padding-right: 0px;
+  margin-right: 0px;
+  padding-left: 18px;
+}
+
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
 
 .pagination_container {
