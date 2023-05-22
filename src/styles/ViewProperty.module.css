@@ -367,7 +367,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 2px 9px;
+  padding: 0;
 }
 
 .increaseAdult:hover,
@@ -382,15 +382,27 @@
 }
 
 .decreasebtn {
-  padding: 0px 10px;
+  /* padding: 0px 10px; */
   font-size: 1.4rem;
-  margin-right: 20px;
+  width: 50px;
+  /* margin-right: 20px; */
+  transition-duration: 0.5s;
+}
+.decreasebtn:hover {
+  background-color: var(--btn-background);
+  color: var(--white-background);
 }
 
 .increasebtn {
-  padding: 0px 10px;
+  /* padding: 0px 10px; */
+  transition-duration: 0.5s;
+  width: 50px;
   font-size: 1.4rem;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+}
+.increasebtn:hover {
+  background-color: var(--btn-background);
+  color: var(--white-background);
 }
 
 .applyParent {

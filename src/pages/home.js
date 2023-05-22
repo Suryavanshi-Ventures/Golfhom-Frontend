@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import { React, useState, useEffect } from "react";
 import Head from "next/head";
 import HomeCss from "../styles/Home.module.css";
 import Slider from "../slider";
@@ -8,9 +8,8 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import ads from "../pages/json/ads.json";
 import Advertise from "../advertise";
 import Image from "next/image";
-import { Dropdown, Input, Space, Typography } from "antd";
-import { Button } from "antd";
-import { DatePicker } from "antd";
+import { Dropdown, Input, Space, Typography, message } from "antd";
+import { Button, DatePicker, AutoComplete } from "antd";
 const { RangePicker } = DatePicker;
 import Video from "../video";
 import video from "../pages/json/video.json";
@@ -20,9 +19,32 @@ import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { DownOutlined } from "@ant-design/icons";
 import BottomSection from "../../common components/bottomGroup";
+import axios from "axios";
 
 const Home = () => {
   const onSearch = (value) => console.log(value);
+
+  const [SearchOptions, setSearchOptions] = useState([]);
+
+  useEffect(() => {
+    const FetchLocationAPI = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/location`
+        );
+        if (response.status === 200) {
+          console.log(response.data.data);
+          setSearchOptions(response.data.data);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    FetchLocationAPI();
+
+    return () => {};
+  }, []);
 
   // DROPDOWN FOR SEARCH
 
@@ -49,6 +71,51 @@ const Home = () => {
     },
   ];
 
+  // FOR ADULT BUTTON INCREMENT AND DECREMENT
+  const [adult, setAdult] = useState(1);
+
+  const incAdult = () => {
+    setAdult(adult + 1);
+  };
+
+  const decAdult = () => {
+    if (adult > 1) {
+      setAdult(adult - 1);
+    } else {
+      message.error("Sorry number of adults can not be less than 1");
+      setAdult(1);
+    }
+  };
+
+  // FOR CHILD BUTTON INCREMENT AND DECREMENT
+
+  const [child, setChild] = useState(1);
+
+  const incChild = () => {
+    setChild(child + 1);
+  };
+
+  const decChild = () => {
+    if (child > 1) {
+      setChild(child - 1);
+    } else {
+      message.error("Sorry number of children can not be less than 1");
+      setChild(1);
+    }
+  };
+
+  // const SearchOptions = [
+  //   {
+  //     value: "Burns Bay Road",
+  //   },
+  //   {
+  //     value: "Downing Street",
+  //   },
+  //   {
+  //     value: "Wall Street",
+  //   },
+  // ];
+
   return (
     <>
       <Head>
@@ -64,7 +131,7 @@ const Home = () => {
         <div className={HomeCss.search_bar_main_container}>
           <div className={HomeCss.search_bar_container}>
             <Row className={HomeCss.searchBar}>
-              <Col md={4} className={HomeCss.search_cols_4}>
+              <Col md={3} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_icon_container}>
                     <Image
@@ -78,16 +145,91 @@ const Home = () => {
                   <div className={HomeCss.inner_input_container}>
                     <h6 className={HomeCss.destination}>DESTINATION</h6>
                     <div className={HomeCss.inner_input}>
-                      <Input
+                      {/* <Input
                         className={HomeCss.inner_input_box}
                         size="large"
                         placeholder="Where you want to stay"
+                      /> */}
+
+                      <AutoComplete
+                        style={{
+                          width: 200,
+                        }}
+                        options={SearchOptions.map((country) => ({
+                          value: country.name,
+                        }))}
+                        size="large"
+                        placeholder="Where you want to stay"
+                        filterOption={(inputValue, option) =>
+                          option.value
+                            .toUpperCase()
+                            .indexOf(inputValue.toUpperCase()) !== -1
+                        }
                       />
                     </div>
                   </div>
                 </div>
               </Col>
-              <Col md={4} className={HomeCss.search_cols_4}>
+              <Col md={3} className={HomeCss.search_cols_4}>
+                <div className={HomeCss.inner_main_container}>
+                  <div className={HomeCss.inner_icon_container}>
+                    <Image
+                      className={HomeCss.location}
+                      width={35}
+                      height={35}
+                      src="/images/vector/family_search_icon.svg"
+                      alt="Calender Image"
+                    ></Image>
+                  </div>
+                  <div className={HomeCss.inner_input_container}>
+                    <h6 className={HomeCss.destination}>
+                      Guests: {adult} Adult / {child} Children
+                    </h6>
+                    <div className={HomeCss.inner_input_guest_selector}>
+                      {/* <RangePicker
+                        size="large"
+                        className={HomeCss.inner_input_date_picker}
+                      /> */}
+                      <div className={HomeCss.geust_incri_btns_div}>
+                        <p className={HomeCss.geust_incri_btns_p}>Adult</p>
+                        <Button className={HomeCss.increaseAdult}>
+                          <div
+                            className={HomeCss.decreasebtn}
+                            onClick={decAdult}
+                          >
+                            -
+                          </div>
+                          <div
+                            className={HomeCss.increasebtn}
+                            onClick={incAdult}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
+
+                      <div className={HomeCss.geust_incri_btns_div}>
+                        <p className={HomeCss.geust_incri_btns_p}>Children</p>
+                        <Button className={HomeCss.increaseAdult}>
+                          <div
+                            className={HomeCss.decreasebtn}
+                            onClick={decChild}
+                          >
+                            -
+                          </div>
+                          <div
+                            className={HomeCss.increasebtn}
+                            onClick={incChild}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col md={3} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_icon_container}>
                     <Image
@@ -109,7 +251,7 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col md={4} className={HomeCss.search_btn_col}>
+              <Col md={12} lg={3} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
                   <Link href="/search">
                     <Button className={HomeCss.search_btn} type="primary">
@@ -143,8 +285,11 @@ const Home = () => {
 
           <Row>
             <Col md={9}>
-              <p className={HomeCss.para}> Golfhōm is transforming how golfers locate and book
-                their next luxury golf vacation rental. Book with us today!</p>
+              <p className={HomeCss.para}>
+                {" "}
+                Golfhōm is transforming how golfers locate and book their next
+                luxury golf vacation rental. Book with us today!
+              </p>
             </Col>
 
             <Col md={3}>
@@ -484,11 +629,11 @@ const Home = () => {
 
           <Col md={4} className={HomeCss.viewallBtnParent}>
             <Button className={HomeCss.viewallBtn}>View All</Button>
-          </Col></Row>
+          </Col>
+        </Row>
 
         <Review reviews={review} />
       </Container>
-
 
       <BottomSection />
     </>

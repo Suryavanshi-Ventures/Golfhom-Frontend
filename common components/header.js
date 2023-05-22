@@ -28,6 +28,7 @@ import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 const Header = ({ name, ...props }) => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
   const [UserName, SetUserName] = useState("");
+  const [loadings, setLoadings] = useState(false);
 
   const ContextUserDetails = useContext(AuthContext);
 
@@ -92,6 +93,7 @@ const Header = ({ name, ...props }) => {
 
   //! SIGNUP API FUNCTION
   const onSubmitSignup = async (values) => {
+    setLoadings(true);
     try {
       //! SIGNUP API
       const response = await axios.post(
@@ -105,6 +107,7 @@ const Header = ({ name, ...props }) => {
 
       //* Close Register Modal on Success Signup
       if (response.status === 201) {
+        setLoadings(true);
         ContextUserDetails.setUserState(response.data.token);
         setLoginModalLgDevice(false);
         SetIsLoggedIn(true);
@@ -114,12 +117,15 @@ const Header = ({ name, ...props }) => {
       }
     } catch (error) {
       console.log("Sigup error: ", error);
+      setLoadings(false);
+      message.error(error.message);
     }
     // console.log(values);
   };
 
   //! LOGIN API FUNCTION
   const onSubmitLogin = async () => {
+    setLoadings(true);
     try {
       // LOGIN FIELDS VALUES
       const LoginEmail = form2.getFieldValue("email_login");
@@ -140,6 +146,7 @@ const Header = ({ name, ...props }) => {
         ContextUserDetails.setUserState(response.data.token);
         setLoginModalLgDevice(false);
         SetIsLoggedIn(true);
+        setLoadings(false);
 
         if (!RememberMe) {
           sessionStorage.setItem("token", response.data.token);
@@ -177,10 +184,12 @@ const Header = ({ name, ...props }) => {
         });
       } else {
         message.error("Invalid login credentials!");
+        setLoadings(false);
       }
     } catch (err) {
       //* IF LOGIN FAILED
-      message.error("Invalid login credentials!");
+      message.error("Something went wrong!");
+      setLoadings(false);
     }
   };
 
@@ -410,6 +419,7 @@ const Header = ({ name, ...props }) => {
                     onClick={onSubmitLogin}
                     htmlType="submit_login"
                     className={HeaderCss.signIn}
+                    loading={loadings}
                   >
                     Log In
                   </Button>
@@ -898,6 +908,7 @@ const Header = ({ name, ...props }) => {
                   <Button
                     disabled={IsRegisterBtnDisable}
                     htmlType="submit_signup"
+                    loading={loadings}
                     className={HeaderCss.registerBtn}
                   >
                     Register

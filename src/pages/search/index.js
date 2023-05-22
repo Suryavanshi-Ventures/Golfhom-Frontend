@@ -344,11 +344,11 @@ const Index = () => {
                 {/* ------------------- CAROUSEL IMAGES STARTS  -----------------------  */}
                 {/* <CarouselImages /> */}
                 <Row>
-                  {/* <Loader /> */}
-
                   {PropertyData.length === 0 ? (
                     <>
-                      <Loader />
+                      <div className={SearchIndexCss.loader_main_div}>
+                        <Loader />
+                      </div>
                     </>
                   ) : (
                     <>

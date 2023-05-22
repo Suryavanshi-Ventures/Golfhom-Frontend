@@ -21,7 +21,10 @@ const ProtectedRoute = ({ children }) => {
     );
     User.then((response) => {
       console.log(response, "user authenticated");
+      return <>{children}</>;
     }).catch((error) => {
+      //* redirect to login page
+      router.push("/");
       if (!IsAuthenticated || error.response.status === 401) {
         //* redirect to login page
         router.push("/");
@@ -34,8 +37,6 @@ const ProtectedRoute = ({ children }) => {
       message.error(error.response.data.message);
     });
   }, []);
-
-  return <>{children}</>;
 };
 
 export default ProtectedRoute;
