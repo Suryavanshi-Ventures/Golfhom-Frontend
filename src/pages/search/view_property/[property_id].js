@@ -50,7 +50,8 @@ const ViewProperty = () => {
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
     const SpecificPropData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${PropertyId || UrlParamId
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
+        PropertyId || UrlParamId
       }`
     );
 
@@ -62,7 +63,7 @@ const ViewProperty = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, []);
 
   useEffect(() => {

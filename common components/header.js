@@ -25,7 +25,6 @@ import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
 import { AuthContext } from "@/context/auth_context";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 
-
 const Header = () => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
   const [UserName, SetUserName] = useState("");
@@ -46,7 +45,7 @@ const Header = () => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -506,8 +505,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -528,8 +527,8 @@ const Header = () => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -1020,7 +1019,7 @@ const Header = () => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
@@ -1079,8 +1078,6 @@ function OffCanvasExample({ name, ...props }) {
   const handleCancel = () => {
     setLoginOpenInMobile(false);
   };
-
-
 
   {
     /* -----------      REGISTER SECTION IN MOBILE       -----------------*/
@@ -1182,7 +1179,6 @@ function OffCanvasExample({ name, ...props }) {
               </Button>
             </Space>
           </Link>
-
           <div className={HeaderCss.dont_link_parent}>
             <h5 className={HeaderCss.donthaveAcc}>
               Don't you have an account?
@@ -1193,9 +1189,12 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
-                <Link href="/" className={HeaderCss.register} onClick={showRegisterInMobile}>
+                <span
+                  className={HeaderCss.register}
+                  onClick={showRegisterInMobile}
+                >
                   Register
-                </Link>
+                </span>
               </Space>
             </Link>
           </div>

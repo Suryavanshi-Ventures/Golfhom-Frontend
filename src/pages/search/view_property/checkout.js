@@ -39,13 +39,22 @@ const Checkout = () => {
       return;
     }
 
-    const { error } = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      confirmParams: {
-        return_url: "http://localhost:3000/search/view_property/success",
-      },
-    });
+    const { error } = await stripe
+      .confirmPayment({
+        //`Elements` instance that was used to create the Payment Element
+        elements,
+        confirmParams: {
+          return_url: "http://localhost:3000/search/view_property/success",
+        },
+      })
+      .then((response) => {
+        console.log("RESPONSE OF PAYMENY", response);
+      })
+      .catch((err) => {
+        console.log("ERROR OF PAYMENY", err);
+      });
+
+    console.log(error);
   };
 
   return (
