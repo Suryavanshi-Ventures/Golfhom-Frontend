@@ -72,7 +72,7 @@ const ViewProperty = () => {
       console.log("IF CONDIII");
     }
 
-    return () => {};
+    return () => { };
   }, [PaymentIntentObject]);
 
   console.log(SpecificPropAPIData, "FROM VIEW PROP");
@@ -852,12 +852,7 @@ const ViewProperty = () => {
         <section className={ViewPropertyCss.map_section}>
           <Container>
             <div className={ViewPropertyCss.map_section_main_container}>
-              <Image
-                fill
-                src={ViewPropMap}
-                alt="golfhom map"
-                className={ViewPropertyCss.map_section_image}
-              ></Image>
+              <Map />
             </div>
           </Container>
         </section>

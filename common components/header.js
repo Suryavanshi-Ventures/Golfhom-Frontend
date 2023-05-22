@@ -61,31 +61,33 @@ const Header = () => {
   //* REGISTER BTN DISABLED
   const [IsRegisterBtnDisable, SetRegisterBtnDisable] = useState(false);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
+  // LOGIN MODAL FOR LARGE DEVICES
+
+  const [loginModalLgDevice, setLoginModalLgDevice] = useState(false);
+  const loginLgDevice = () => {
+    setLoginModalLgDevice(true);
   };
-  const handleSignup = () => {
-    setIsModalOpen(false);
+  const handleLoginLgDevice = () => {
+    setLoginModalLgDevice(false);
   };
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setLoginModalLgDevice(false);
   };
 
   {
-    /* -----------      REGISTER SECTION        -----------------*/
+    /* -----------      REGISTER SECTION IN LARGE Device      -----------------*/
   }
 
-  const [isModalOpens, setIsModalOpens] = useState(false);
-  const showRegister = () => {
-    setIsModalOpens(true);
+  const [registerModaInLgDevice, setRegisterModaInLgDevice] = useState(false);
+  const registerLgDevice = () => {
+    setRegisterModaInLgDevice(true);
     handleCancel();
   };
-  const handleRegister = () => {
-    setIsModalOpens(false);
+  const handleRegisterLgDevice = () => {
+    setRegisterModaInLgDevice(false);
   };
-  const handleCancelRegister = () => {
-    setIsModalOpens(false);
+  const handleCancelRegisterLgDevice = () => {
+    setRegisterModaInLgDevice(false);
   };
 
   //! SIGNUP API FUNCTION
@@ -104,9 +106,9 @@ const Header = () => {
       //* Close Register Modal on Success Signup
       if (response.status === 201) {
         ContextUserDetails.setUserState(response.data.token);
-        setIsModalOpen(false);
+        setLoginModalLgDevice(false);
         SetIsLoggedIn(true);
-        handleCancelRegister();
+        handleCancelRegisterLgDevice();
         sessionStorage.setItem("token", response.data.token);
         message.success(response.data.message);
       }
@@ -136,7 +138,7 @@ const Header = () => {
       //* IF LOGIN SUCCESSFUL
       if (response.status === 200) {
         ContextUserDetails.setUserState(response.data.token);
-        setIsModalOpen(false);
+        setLoginModalLgDevice(false);
         SetIsLoggedIn(true);
 
         if (!RememberMe) {
@@ -183,35 +185,35 @@ const Header = () => {
   };
 
   {
-    /* -----------      REGISTER TO RENT SECTION        -----------------*/
+    /* -----------      REGISTER TO RENT SECTION  IN LARGE DEVICE      -----------------*/
   }
 
-  const [isModalOpened, setIsModalOpened] = useState(false);
-  const showRegisterRent = () => {
-    setIsModalOpened(true);
+  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] = useState(false);
+  const registerToRentLgDevice = () => {
+    setRegisterToRentModalgDevice(true);
     handleCancel();
   };
-  const handleRegisterRent = () => {
-    setIsModalOpened(false);
+  const handleRegisterToRentLgDevice = () => {
+    setRegisterToRentModalgDevice(false);
   };
-  const handleCancelRegisterRent = () => {
-    setIsModalOpened(false);
+  const handleCancelRegisterToRentLgDevice = () => {
+    setRegisterToRentModalgDevice(false);
   };
 
   {
-    /* -----------      FORGET PASSWORD SECTION        -----------------*/
+    /* -----------      FORGET PASSWORD SECTION IN LARGE DEVICE       -----------------*/
   }
 
-  const [isModalForgot, setIsModalForgot] = useState(false);
-  const showForgot = () => {
-    setIsModalForgot(true);
+  const [forgotModalLgDevice, setForgotModalLgDevice] = useState(false);
+  const forgotLgDevice = () => {
+    setForgotModalLgDevice(true);
     handleCancel();
   };
-  const handleForgot = () => {
-    setIsModalForgot(false);
+  const handleForgotLgDevice = () => {
+    setForgotModalLgDevice(false);
   };
-  const handleCancelForgot = () => {
-    setIsModalForgot(false);
+  const handleCancelForgotLgDevice = () => {
+    setForgotModalLgDevice(false);
   };
 
   // DROPDOWN CONTENT
@@ -254,12 +256,12 @@ const Header = () => {
     <>
       <header className={HeaderCss.header}>
         <Container className={HeaderCss.container_header}>
-          {/* -----------       LOGIN SECTION IN BIG DEVICE        -----------------*/}
+          {/* -----------       LOGIN SECTION IN LARGE DEVICE        -----------------*/}
           <Modal
             title="Log In to your account"
             footer={null}
-            open={isModalOpen}
-            onSignup={handleSignup}
+            open={loginModalLgDevice}
+            onSignup={handleLoginLgDevice}
             onCancel={handleCancel}
             width={372}
           >
@@ -345,7 +347,7 @@ const Header = () => {
                 <Space>
                   <Button
                     className={HeaderCss.signUpBtn}
-                    onClick={showForgot}
+                    onClick={forgotLgDevice}
                     onCancel={handleCancel}
                   >
                     Forgot Password ?
@@ -363,7 +365,7 @@ const Header = () => {
                   onClick={(e) => e.preventDefault()}
                 >
                   <Space>
-                    <span className={HeaderCss.register} onClick={showRegister}>
+                    <span className={HeaderCss.register} onClick={registerLgDevice}>
                       Register
                     </span>
                   </Space>
@@ -372,13 +374,13 @@ const Header = () => {
             </div>
           </Modal>
 
-          {/* -----------      REGISTER SECTION        -----------------*/}
+          {/* -----------      REGISTER SECTION IN LARGE DEVICE       -----------------*/}
           <Modal
             title="Register"
             footer={null}
-            open={isModalOpens}
-            onSignup={handleRegister}
-            onCancel={handleCancelRegister}
+            open={registerModaInLgDevice}
+            onSignup={handleRegisterLgDevice}
+            onCancel={handleCancelRegisterLgDevice}
             width={440}
             className={HeaderCss.headerReg}
           >
@@ -551,14 +553,14 @@ const Header = () => {
             </Form>
           </Modal>
 
-          {/* -----------       FORGET PASSWORD SECTION        -----------------*/}
+          {/* -----------       FORGET PASSWORD SECTION IN LARGE DEVICE     -----------------*/}
 
           <Modal
             title="Forgot Password"
             footer={null}
-            open={isModalForgot}
-            onSignup={handleForgot}
-            onCancel={handleCancelForgot}
+            open={forgotModalLgDevice}
+            onSignup={handleForgotLgDevice}
+            onCancel={handleCancelForgotLgDevice}
             width={800}
             className={HeaderCss.headerForgot}
           >
@@ -658,21 +660,21 @@ const Header = () => {
                       <Space>
                         <Button
                           className={HeaderCss.signUpBtn}
-                          onClick={showRegisterRent}
+                          onClick={registerToRentLgDevice}
                         >
                           Register to Rent
                         </Button>
                       </Space>
                     </Link>
 
-                    {/* -----------      REGISTER TO RENT SECTION        -----------------*/}
+                    {/* -----------      REGISTER TO RENT SECTION IN LARGE DEVICE       -----------------*/}
 
                     <Modal
                       title="Register To Rent"
                       footer={null}
-                      open={isModalOpened}
-                      onSignup={handleRegisterRent}
-                      onCancel={handleCancelRegisterRent}
+                      open={registerToRentModalgDevice}
+                      onSignup={handleRegisterToRentLgDevice}
+                      onCancel={handleCancelRegisterToRentLgDevice}
                       width={440}
                       className={HeaderCss.headerReg}
                     >
@@ -763,7 +765,7 @@ const Header = () => {
                       <Space>
                         <Button
                           className={HeaderCss.signUpBtn}
-                          onClick={showModal}
+                          onClick={loginLgDevice}
                         >
                           Log in & Sign up
                         </Button>
@@ -1072,7 +1074,7 @@ function OffCanvasExample({ name, ...props }) {
   const showLoginModalMobile = () => {
     setLoginOpenInMobile(true);
   };
-  const handleSignup = () => {
+  const handleLoginInMobile = () => {
     setLoginOpenInMobile(false);
   };
   const handleCancel = () => {
@@ -1117,7 +1119,7 @@ function OffCanvasExample({ name, ...props }) {
   }
 
   const [forgetModalInMobile, setForgetModalInMobile] = useState(false);
-  const showForgot = () => {
+  const forgotInMobile = () => {
     setForgetModalInMobile(true);
     handleCancel();
   };
@@ -1147,7 +1149,7 @@ function OffCanvasExample({ name, ...props }) {
         title="Log In to your account"
         footer={null}
         open={loginOpenInMobile}
-        onSignup={handleSignup}
+        onSignup={handleLoginInMobile}
         onCancel={handleCancel}
         width={400}
       >
@@ -1172,7 +1174,7 @@ function OffCanvasExample({ name, ...props }) {
             <Space>
               <Button
                 className={HeaderCss.signUpBtn}
-                onClick={showForgot}
+                onClick={forgotInMobile}
                 onCancel={handleCancel}
               >
                 Forgot Password ?
@@ -1189,10 +1191,14 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
+<<<<<<< HEAD
                 <span
                   className={HeaderCss.register}
                   onClick={showRegisterInMobile}
                 >
+=======
+                <span className={HeaderCss.register} onClick={showRegisterInMobile}>
+>>>>>>> d21419366ca6b2423264d7eb2c107480da6ee941
                   Register
                 </span>
               </Space>
