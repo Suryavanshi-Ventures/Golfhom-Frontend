@@ -407,15 +407,6 @@
   padding: 8px 42px;
 }
 
-.mapParent {
-  flex: 1;
-  position: relative;
-}
-
-.mapParent > div {
-  border: 1px solid var(--btn-background);
-}
-
 .apply:hover {
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color);
@@ -433,8 +424,17 @@
   padding: 5rem 0;
 }
 
-.map_section_image {
+.mapParent {
+  flex: 1;
+  position: static !important;
+}
+
+.map_section_main_container {
   position: relative !important;
+}
+
+.mapParent > div {
+  border: 1px solid var(--btn-background);
 }
 
 /* VIDEO SECTION */
