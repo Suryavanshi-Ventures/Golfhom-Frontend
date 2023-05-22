@@ -25,7 +25,7 @@ import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
 import { AuthContext } from "@/context/auth_context";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 
-const Header = () => {
+const Header = ({ name, ...props }) => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
   const [UserName, SetUserName] = useState("");
 
@@ -243,6 +243,84 @@ const Header = () => {
     onClick: handleMenuClick,
   };
 
+  //!------------------------------------------------------------------
+
+  const [ShowMobileMenu, setShowMobileMenu] = useState(false);
+  const CloseOffCanvas = () => setShowMobileMenu(false);
+  const HamburgerMenuMobileBtn = () => setShowMobileMenu(true);
+
+  {
+    /* -----------       MOBILE LOGIN SECTION        -----------------*/
+  }
+
+  const [loginOpenInMobile, setLoginOpenInMobile] = useState(false);
+
+  const showLoginModalMobile = () => {
+    setLoginOpenInMobile(true);
+  };
+  const handleLoginInMobile = () => {
+    setLoginOpenInMobile(false);
+  };
+  const handleCancelMobile = () => {
+    setLoginOpenInMobile(false);
+  };
+
+  {
+    /* -----------      REGISTER SECTION IN MOBILE       -----------------*/
+  }
+
+  const [registerInMobile, setRegisterInMobile] = useState(false);
+  const showRegisterInMobile = () => {
+    setRegisterInMobile(true);
+    handleCancelMobile();
+  };
+  const handleRegisterInMobile = () => {
+    setRegisterInMobile(false);
+  };
+  const handleCancelRegisterInMobile = () => {
+    setRegisterInMobile(false);
+  };
+
+  {
+    /* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/
+  }
+
+  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] =
+    useState(false);
+  const mobileRegistertoRent = () => {
+    setMobileRegisterToRentModal(true);
+    handleCancelMobile();
+  };
+  const handleRegistertoRentInMobile = () => {
+    setMobileRegisterToRentModal(false);
+  };
+  const handleCancelRegistertoRentInMobile = () => {
+    setMobileRegisterToRentModal(false);
+  };
+
+  {
+    /* -----------      FORGET PASSWORD IN MOBILE SECTION        -----------------*/
+  }
+
+  const [forgetModalInMobile, setForgetModalInMobile] = useState(false);
+  const forgotInMobile = () => {
+    setForgetModalInMobile(true);
+    handleCancelMobile();
+  };
+  const handleForgotInMobile = () => {
+    setForgetModalInMobile(false);
+  };
+  const handleCancelForgotInMobile = () => {
+    setForgetModalInMobile(false);
+  };
+
+  // SELECTED OPTION FEATURE IS FOR REGISTER TO RENT DROPDOWN
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+  //!----------------------------------------------------------------
   const Logout = () => {
     sessionStorage.removeItem("token");
     localStorage.removeItem("token");
@@ -377,6 +455,278 @@ const Header = () => {
               </div>
             </div>
           </Modal>
+
+          {/* -----------       LOGIN SECTION IN MOBILE        -----------------*/}
+
+          <Offcanvas
+            key={1}
+            placement={["end"]}
+            name={["end"]}
+            className={HeaderCss.off_canvas}
+            show={ShowMobileMenu}
+            onHide={CloseOffCanvas}
+            scroll={true}
+            {...props}
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>Menu</Offcanvas.Title>
+            </Offcanvas.Header>
+            <div className={HeaderCss.mobile_menu_logo_container}>
+              <Image src={GolfHomMobileMenuLogo} alt="Golfhom logo"></Image>
+            </div>
+            <Offcanvas.Body>
+              {/* Mobile Menu Main Container */}
+              <div className={HeaderCss.mobile_dropdown_parent_div}>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        label: (
+                          <Link
+                            className={HeaderCss.top_header_menu_logggedin_link}
+                            href="/dashboard"
+                          >
+                            {" "}
+                            <Image
+                              src={MobileMenuHomeLogo}
+                              alt="home icon"
+                              width={18}
+                              height={18}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link_icons
+                              }
+                            ></Image>
+                            Dashboard
+                          </Link>
+                        ),
+                        key: "1",
+                      },
+                      {
+                        label: (
+                          <Link
+                            className={HeaderCss.top_header_menu_logggedin_link}
+                            href="/dashboard/user_profile"
+                          >
+                            {" "}
+                            <Image
+                              src={ProfileIconMobileMenu}
+                              alt="profile icon"
+                              width={18}
+                              height={18}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link_icons
+                              }
+                            ></Image>
+                            Profile
+                          </Link>
+                        ),
+                        key: "2",
+                      },
+                      {
+                        label: (
+                          <Link
+                            className={HeaderCss.top_header_menu_logggedin_link}
+                            href="/dashboard/reservation"
+                          >
+                            {" "}
+                            <Image
+                              src={ReservationIconMobileMenu}
+                              alt="reservation icon"
+                              width={18}
+                              height={18}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link_icons
+                              }
+                            ></Image>
+                            Reservation
+                          </Link>
+                        ),
+                        key: "3",
+                      },
+                      {
+                        label: (
+                          <Link
+                            className={HeaderCss.top_header_menu_logggedin_link}
+                            href="/dashboard/favorites"
+                          >
+                            {" "}
+                            <Image
+                              src={FavIconMobileMenu}
+                              alt="favorite icon"
+                              width={18}
+                              height={18}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link_icons
+                              }
+                            ></Image>
+                            Favorites
+                          </Link>
+                        ),
+                        key: "4",
+                      },
+                      {
+                        label: (
+                          <Link
+                            className={HeaderCss.top_header_menu_logggedin_link}
+                            href="/dashboard/invoice"
+                          >
+                            {" "}
+                            <Image
+                              src={InvoiceIconMobileMenu}
+                              alt="invoice icon"
+                              width={18}
+                              height={18}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link_icons
+                              }
+                            ></Image>
+                            Invoices
+                          </Link>
+                        ),
+                        key: "5",
+                      },
+                      {
+                        label: (
+                          <Link
+                            className={HeaderCss.top_header_menu_logggedin_link}
+                            href="/dashboard/messages"
+                          >
+                            {" "}
+                            <Image
+                              src={MessageIconMobileMenu}
+                              alt="message icon"
+                              width={18}
+                              height={18}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link_icons
+                              }
+                            ></Image>
+                            Message
+                          </Link>
+                        ),
+                        key: "6",
+                      },
+
+                      {
+                        type: "divider",
+                      },
+                      {
+                        label: (
+                          <Link
+                            className={HeaderCss.top_header_menu_logggedin_link}
+                            href="/"
+                            onClick={() => {
+                              Logout();
+                            }}
+                          >
+                            {" "}
+                            <Image
+                              src={LogoutIconMobileMenu}
+                              alt="logout icon"
+                              width={18}
+                              height={18}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link_icons
+                              }
+                            ></Image>
+                            Logout
+                          </Link>
+                        ),
+                        key: "7",
+                      },
+                    ],
+                  }}
+                >
+                  <Link
+                    href="/"
+                    className={HeaderCss.top_header_logggedin_link_mobile}
+                  >
+                    <Space
+                      className={HeaderCss.top_header_logggedin_space_mobile}
+                    >
+                      <Image
+                        width={20}
+                        height={20}
+                        src={ProfileIcon}
+                        alt="profile icon"
+                      ></Image>
+                      {UserName
+                        ? UserName.charAt(0).toUpperCase() + UserName.slice(1)
+                        : "Anyonums "}
+                    </Space>
+                  </Link>
+                </Dropdown>
+              </div>
+
+              <nav className={HeaderCss.mobile_menu}>
+                <div className={HeaderCss.mobile_menu_main_container}>
+                  <div className={HeaderCss.mobile_menu_div_container}>
+                    <Image src={MobileMenuHomeLogo} alt="home icon"></Image>
+                    <Link className={HeaderCss.top_header_a} href="/">
+                      Home
+                    </Link>
+                  </div>
+                  <div className={HeaderCss.mobile_menu_div_container}>
+                    <Link className={HeaderCss.top_header_a} href="/about">
+                      About
+                    </Link>
+                  </div>
+                  <div className={HeaderCss.mobile_menu_div_container}>
+                    <Link className={HeaderCss.top_header_a} href="/blog">
+                      Blog
+                    </Link>
+                  </div>
+                  <div className={HeaderCss.mobile_menu_div_container}>
+                    <Link className={HeaderCss.top_header_a} href="/contact_us">
+                      Contact Us
+                    </Link>
+                  </div>
+
+                  {/* MOBILE LOGIN MODAL BTN */}
+                  <div className={HeaderCss.mobile_menu_div_container}>
+                    <Link
+                      className={HeaderCss.top_header_a}
+                      href="/"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <Space>
+                        <Button
+                          className={HeaderCss.signUpBtn}
+                          onClick={loginLgDevice}
+                        >
+                          Log in & Sign up
+                        </Button>
+                      </Space>
+                    </Link>
+                  </div>
+
+                  <div className={HeaderCss.mobile_menu_div_container}>
+                    <Link
+                      className={HeaderCss.top_header_a}
+                      href="/"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <Space>
+                        <Button
+                          className={HeaderCss.signUpBtn}
+                          onClick={mobileRegistertoRent}
+                        >
+                          Register to Rent
+                        </Button>
+                      </Space>
+                    </Link>
+                  </div>
+                  <div className={HeaderCss.mobile_menu_div_container}>
+                    <Link href="register_to_host">
+                      <Button type="primary" className={HeaderCss.register_btn}>
+                        Register To Host
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </nav>
+            </Offcanvas.Body>
+          </Offcanvas>
 
           {/* -----------      REGISTER SECTION IN LARGE DEVICE       -----------------*/}
           <Modal
@@ -796,7 +1146,11 @@ const Header = () => {
                   <Row className={HeaderCss.top_header_row_container}>
                     {/*//*  Off Canvas Btn  */}
                     <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
-                      <OffCanvasExample />
+                      {/* MOBILE HAMBURGER MENU BTN */}
+                      <UilAlignJustify
+                        size="40"
+                        onClick={HamburgerMenuMobileBtn}
+                      />
                     </Col>
 
                     <Col
@@ -1064,421 +1418,8 @@ const Header = () => {
 };
 
 //** Off Canvas Function  **/
-function OffCanvasExample({ name, ...props }) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  {
-    /* -----------       MOBILE LOGIN SECTION        -----------------*/
-  }
-
-  const [loginOpenInMobile, setLoginOpenInMobile] = useState(false);
-
-  const showLoginModalMobile = () => {
-    setLoginOpenInMobile(true);
-  };
-  const handleLoginInMobile = () => {
-    setLoginOpenInMobile(false);
-  };
-  const handleCancel = () => {
-    setLoginOpenInMobile(false);
-  };
-
-  {
-    /* -----------      REGISTER SECTION IN MOBILE       -----------------*/
-  }
-
-  const [registerInMobile, setRegisterInMobile] = useState(false);
-  const showRegisterInMobile = () => {
-    setRegisterInMobile(true);
-    handleCancel();
-  };
-  const handleRegisterInMobile = () => {
-    setRegisterInMobile(false);
-  };
-  const handleCancelRegisterInMobile = () => {
-    setRegisterInMobile(false);
-  };
-
-  {
-    /* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/
-  }
-
-  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] =
-    useState(false);
-  const mobileRegistertoRent = () => {
-    setMobileRegisterToRentModal(true);
-    handleCancel();
-  };
-  const handleRegistertoRentInMobile = () => {
-    setMobileRegisterToRentModal(false);
-  };
-  const handleCancelRegistertoRentInMobile = () => {
-    setMobileRegisterToRentModal(false);
-  };
-
-  {
-    /* -----------      FORGET PASSWORD IN MOBILE SECTION        -----------------*/
-  }
-
-  const [forgetModalInMobile, setForgetModalInMobile] = useState(false);
-  const forgotInMobile = () => {
-    setForgetModalInMobile(true);
-    handleCancel();
-  };
-  const handleForgotInMobile = () => {
-    setForgetModalInMobile(false);
-  };
-  const handleCancelForgotInMobile = () => {
-    setForgetModalInMobile(false);
-  };
-
-  // SELECTED OPTION FEATURE IS FOR REGISTER TO RENT DROPDOWN
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  return (
-    <>
-      {/* MOBILE HAMBURGER MENU BTN */}
-      <UilAlignJustify size="40" onClick={handleShow} />
-
-      {/* -----------       LOGIN SECTION IN MOBILE        -----------------*/}
-
-      <Modal
-        Modal
-        title="Log In to your account"
-        footer={null}
-        open={loginOpenInMobile}
-        onSignup={handleLoginInMobile}
-        onCancel={handleCancel}
-        width={400}
-      >
-        <div className={HeaderCss.textParent}>
-          <p className={HeaderCss.emailNumber}>Email or Member Number</p>
-          <Input className={HeaderCss.password} type="text"></Input>
-          <p className={HeaderCss.emailNumber}>Password</p>
-          <Input className={HeaderCss.password} type="password"></Input>
-        </div>
-
-        <div className={HeaderCss.rememberMobile}>
-          <Checkbox className={HeaderCss.meBox}>Remember Me</Checkbox>
-          <Button className={HeaderCss.signIn}>Log In</Button>
-        </div>
-
-        <div className={HeaderCss.forgotActive}>
-          <Link
-            href="/"
-            className={HeaderCss.forgot}
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>
-              <Button
-                className={HeaderCss.signUpBtn}
-                onClick={forgotInMobile}
-                onCancel={handleCancel}
-              >
-                Forgot Password ?
-              </Button>
-            </Space>
-          </Link>
-          <div className={HeaderCss.dont_link_parent}>
-            <h5 className={HeaderCss.donthaveAcc}>
-              Don't you have an account?
-            </h5>
-            <Link
-              href="/"
-              className={HeaderCss.registerLink}
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>
-                <span
-                  className={HeaderCss.register}
-                  onClick={showRegisterInMobile}
-                >
-                  Register
-                </span>
-              </Space>
-            </Link>
-          </div>
-        </div>
-      </Modal>
-
-      {/* -----------      REGISTER SECTION IN MOBILE        -----------------*/}
-
-      <Modal
-        Modal
-        title="Register"
-        footer={null}
-        open={registerInMobile}
-        onSignup={handleRegisterInMobile}
-        onCancel={handleCancelRegisterInMobile}
-        width={440}
-        className={HeaderCss.headerReg}
-      >
-        <Col className={HeaderCss.inputParent}>
-          <div>
-            <Input
-              className={HeaderCss.inputA}
-              type="text"
-              placeholder="Enter User name"
-            ></Input>
-          </div>
-
-          <div>
-            <Input
-              className={HeaderCss.inputB}
-              type="email"
-              placeholder="Email"
-            ></Input>
-          </div>
-
-          <div>
-            <Input
-              className={HeaderCss.inputC}
-              type="password"
-              placeholder="Password"
-            ></Input>
-          </div>
-
-          <div>
-            <Input
-              className={HeaderCss.inputD}
-              type="password"
-              placeholder="Repeat Password"
-            ></Input>
-          </div>
-        </Col>
-
-        <Row className={HeaderCss.twoAgree}>
-          <div>
-            <Checkbox className={HeaderCss.agreeOptionA}>
-              I agree with your Terms & Conditions
-            </Checkbox>
-          </div>
-          <div>
-            <Checkbox className={HeaderCss.agreeOptionB}>
-              I agree with your Privacy Policy
-            </Checkbox>
-          </div>
-        </Row>
-
-        <div className={HeaderCss.registBtnParent}>
-          <Button className={HeaderCss.registerBtn}>Register</Button>
-        </div>
-      </Modal>
-
-      {/* -----------       FORGET PASSWORD SECTION IN MOBILE       -----------------*/}
-
-      <Modal
-        Modal
-        title="Forgot Password"
-        footer={null}
-        open={forgetModalInMobile}
-        onSignup={handleForgotInMobile}
-        onCancel={handleCancelForgotInMobile}
-        width={800}
-        className={HeaderCss.headerForgot}
-      >
-        <h5 className={HeaderCss.forgotHeading}>
-          Please enter your username or email address. You will receive a link
-          to create a new password via email.
-        </h5>
-        <Input
-          type="email"
-          placeholder="Enter your user name or email"
-          className={HeaderCss.forgotInput}
-        ></Input>
-        <div className={HeaderCss.forgotBtn}>
-          <Button className={HeaderCss.registBtn}>Register</Button>
-        </div>
-      </Modal>
-
-      {/* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/}
-
-      <Modal
-        Modal
-        title="Register"
-        footer={null}
-        open={mobileRegisterToRentModal}
-        onRegister={handleRegistertoRentInMobile}
-        onCancel={handleCancelRegistertoRentInMobile}
-        width={440}
-        className={HeaderCss.headerReg}
-      >
-        <Col className={HeaderCss.inputParent}>
-          <div>
-            <Input
-              className={HeaderCss.inputA}
-              type="text"
-              placeholder="Enter User name"
-            />
-          </div>
-
-          <div>
-            <Input
-              className={HeaderCss.inputB}
-              type="email"
-              placeholder="Email"
-            />
-          </div>
-
-          <div>
-            <Input
-              className={HeaderCss.inputC}
-              type="password"
-              placeholder="Password"
-            />
-          </div>
-
-          <div>
-            <Input
-              className={HeaderCss.inputD}
-              type="password"
-              placeholder="Repeat Password"
-            />
-          </div>
-        </Col>
-
-        <Dropdown
-          menu={{
-            items: [
-              {
-                label: "Select",
-                key: "1",
-              },
-              {
-                label: "Register to Rent",
-                key: "2",
-              },
-              {
-                label: "Register to Host",
-                key: "3",
-              },
-            ],
-            selectable: true,
-          }}
-          trigger={["click"]}
-          value={selectedOption}
-          onChange={handleOptionChange}
-          className={HeaderCss.edit_room_dropdown_btn}
-        >
-          <Button size="large" className={HeaderCss.edit_room_dropdown_btn}>
-            <Space className={HeaderCss.edit_room_dropdown_btn_space}>
-              I want to Rent
-              <DownOutlined className={HeaderCss.edit_room_dropdown_icon} />
-            </Space>
-          </Button>
-        </Dropdown>
-
-        <Row className={HeaderCss.twoCheckboxes}>
-          <div>
-            <Checkbox className={HeaderCss.agreeOptionA}>
-              I agree with your Terms & Conditions
-            </Checkbox>
-          </div>
-          <div>
-            <Checkbox className={HeaderCss.agreeOptionB}>
-              I agree with your Privacy Policy
-            </Checkbox>
-          </div>
-        </Row>
-
-        <Button className={HeaderCss.registerBtn}>Register</Button>
-      </Modal>
-
-      <Offcanvas
-        key={1}
-        placement={["end"]}
-        name={["end"]}
-        className={HeaderCss.off_canvas}
-        show={show}
-        onHide={handleClose}
-        scroll={true}
-        {...props}
-      >
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Menu</Offcanvas.Title>
-        </Offcanvas.Header>
-        <div className={HeaderCss.mobile_menu_logo_container}>
-          <Image src={GolfHomMobileMenuLogo} alt="Golfhom logo"></Image>
-        </div>
-        <Offcanvas.Body>
-          {/* Mobile Menu Main Container */}
-          <nav className={HeaderCss.mobile_menu}>
-            <div className={HeaderCss.mobile_menu_main_container}>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Image src={MobileMenuHomeLogo} alt="home icon"></Image>
-                <Link className={HeaderCss.top_header_a} href="/">
-                  Home
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/about">
-                  About
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/blog">
-                  Blog
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link className={HeaderCss.top_header_a} href="/contact_us">
-                  Contact Us
-                </Link>
-              </div>
-
-              {/* MOBILE LOGIN MODAL BTN */}
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link
-                  className={HeaderCss.top_header_a}
-                  href="/"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <Space>
-                    <Button
-                      className={HeaderCss.signUpBtn}
-                      onClick={showLoginModalMobile}
-                    >
-                      Log in & Sign up
-                    </Button>
-                  </Space>
-                </Link>
-              </div>
-
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link
-                  className={HeaderCss.top_header_a}
-                  href="/"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <Space>
-                    <Button
-                      className={HeaderCss.signUpBtn}
-                      onClick={mobileRegistertoRent}
-                    >
-                      Register to Rent
-                    </Button>
-                  </Space>
-                </Link>
-              </div>
-              <div className={HeaderCss.mobile_menu_div_container}>
-                <Link href="register_to_host">
-                  <Button type="primary" className={HeaderCss.register_btn}>
-                    Register To Host
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </nav>
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
+function OffCanvasExample() {
+  return <></>;
 }
 
 export default Header;

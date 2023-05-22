@@ -94,6 +94,11 @@
   color: var(--btn-background);
 }
 
+.mobile_dropdown_parent_div {
+  display: flex;
+  justify-content: center;
+}
+
 .top_header_menu_logggedin_link {
   text-decoration: none;
   display: inline-block;
@@ -128,6 +133,23 @@
 }
 
 .top_header_logggedin_space {
+  font-size: 17px;
+}
+
+.top_header_logggedin_link_mobile {
+  color: black;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  transition-duration: 0.5s;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+.top_header_logggedin_link_mobile:hover {
+  transition-duration: 0.5s;
+  color: var(--btn-background);
+}
+
+.top_header_logggedin_space_mobile {
   font-size: 17px;
 }
 
