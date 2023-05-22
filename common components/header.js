@@ -188,7 +188,8 @@ const Header = () => {
     /* -----------      REGISTER TO RENT SECTION  IN LARGE DEVICE      -----------------*/
   }
 
-  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] = useState(false);
+  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] =
+    useState(false);
   const registerToRentLgDevice = () => {
     setRegisterToRentModalgDevice(true);
     handleCancel();
@@ -365,7 +366,10 @@ const Header = () => {
                   onClick={(e) => e.preventDefault()}
                 >
                   <Space>
-                    <span className={HeaderCss.register} onClick={registerLgDevice}>
+                    <span
+                      className={HeaderCss.register}
+                      onClick={registerLgDevice}
+                    >
                       Register
                     </span>
                   </Space>
@@ -1191,14 +1195,10 @@ function OffCanvasExample({ name, ...props }) {
               onClick={(e) => e.preventDefault()}
             >
               <Space>
-<<<<<<< HEAD
                 <span
                   className={HeaderCss.register}
                   onClick={showRegisterInMobile}
                 >
-=======
-                <span className={HeaderCss.register} onClick={showRegisterInMobile}>
->>>>>>> d21419366ca6b2423264d7eb2c107480da6ee941
                   Register
                 </span>
               </Space>
