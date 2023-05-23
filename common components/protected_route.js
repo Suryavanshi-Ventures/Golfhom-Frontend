@@ -20,7 +20,7 @@ const ProtectedRoute = ({ children }) => {
       { headers: { Authorization: `Bearer ${Token}` } }
     );
     User.then((response) => {
-      console.log(response, "user authenticated");
+      // console.log(response, "user authenticated");
       return <>{children}</>;
     }).catch((error) => {
       //* redirect to login page
@@ -29,7 +29,7 @@ const ProtectedRoute = ({ children }) => {
         //* redirect to login page
         router.push("/");
       }
-      console.log(error, "user not authenticated");
+      // console.log(error, "user not authenticated");
       sessionStorage.removeItem("token");
       localStorage.removeItem("token");
       ContextUserDetails.setUserState(null);
@@ -37,7 +37,8 @@ const ProtectedRoute = ({ children }) => {
       message.error(error.response.data.message);
     });
   }, []);
-  return children
+
+  return children;
 };
 
 export default ProtectedRoute;

@@ -46,7 +46,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -197,7 +197,8 @@ const Header = ({ name, ...props }) => {
     /* -----------      REGISTER TO RENT SECTION  IN LARGE DEVICE      -----------------*/
   }
 
-  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] = useState(false);
+  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] =
+    useState(false);
   const registerToRentLgDevice = () => {
     setRegisterToRentModalgDevice(true);
     handleCancel();
@@ -277,7 +278,8 @@ const Header = ({ name, ...props }) => {
     /* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/
   }
 
-  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] = useState(false);
+  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] =
+    useState(false);
   const mobileRegistertoRent = () => {
     setMobileRegisterToRentModal(true);
     handleCancelMobile();
@@ -476,7 +478,9 @@ const Header = ({ name, ...props }) => {
                         {
                           label: (
                             <Link
-                              className={HeaderCss.top_header_menu_logggedin_link}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link
+                              }
                               href="/dashboard"
                             >
                               {" "}
@@ -497,7 +501,9 @@ const Header = ({ name, ...props }) => {
                         {
                           label: (
                             <Link
-                              className={HeaderCss.top_header_menu_logggedin_link}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link
+                              }
                               href="/dashboard/user_profile"
                             >
                               {" "}
@@ -518,7 +524,9 @@ const Header = ({ name, ...props }) => {
                         {
                           label: (
                             <Link
-                              className={HeaderCss.top_header_menu_logggedin_link}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link
+                              }
                               href="/dashboard/reservation"
                             >
                               {" "}
@@ -539,7 +547,9 @@ const Header = ({ name, ...props }) => {
                         {
                           label: (
                             <Link
-                              className={HeaderCss.top_header_menu_logggedin_link}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link
+                              }
                               href="/dashboard/favorites"
                             >
                               {" "}
@@ -560,7 +570,9 @@ const Header = ({ name, ...props }) => {
                         {
                           label: (
                             <Link
-                              className={HeaderCss.top_header_menu_logggedin_link}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link
+                              }
                               href="/dashboard/invoice"
                             >
                               {" "}
@@ -581,7 +593,9 @@ const Header = ({ name, ...props }) => {
                         {
                           label: (
                             <Link
-                              className={HeaderCss.top_header_menu_logggedin_link}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link
+                              }
                               href="/dashboard/messages"
                             >
                               {" "}
@@ -606,7 +620,9 @@ const Header = ({ name, ...props }) => {
                         {
                           label: (
                             <Link
-                              className={HeaderCss.top_header_menu_logggedin_link}
+                              className={
+                                HeaderCss.top_header_menu_logggedin_link
+                              }
                               href="/"
                               onClick={() => {
                                 Logout();
@@ -638,8 +654,7 @@ const Header = ({ name, ...props }) => {
                         className={HeaderCss.top_header_logggedin_space_mobile}
                       >
                         {UserName
-                          ? UserName.charAt(0).toUpperCase() +
-                          UserName.slice(1)
+                          ? UserName.charAt(0).toUpperCase() + UserName.slice(1)
                           : "Anyonums "}
                         <Image
                           width={20}
@@ -654,7 +669,6 @@ const Header = ({ name, ...props }) => {
               ) : (
                 ""
               )}
-
 
               {/* HEADER SECTION NAVBAR IN LARGE DEVICE */}
               <nav className={HeaderCss.mobile_menu}>
@@ -676,7 +690,7 @@ const Header = ({ name, ...props }) => {
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
-                    {<ContactsFilled size={60} />}
+                    {<ContactsFilled size={80} />}
                     <Link className={HeaderCss.top_header_a} href="/contact_us">
                       Contact Us
                     </Link>
@@ -862,8 +876,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -884,8 +898,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -1069,8 +1083,8 @@ const Header = ({ name, ...props }) => {
                         </div>
                       </Col>
 
-                      <Dropdown menu=
-                        {{
+                      <Dropdown
+                        menu={{
                           items: [
                             {
                               key: "31",
@@ -1084,8 +1098,9 @@ const Header = ({ name, ...props }) => {
                               key: "33",
                               label: "Register to Host",
                             },
-                          ]
-                        }}>
+                          ],
+                        }}
+                      >
                         <Button
                           size="large"
                           className={HeaderCss.edit_room_dropdown_btn}
@@ -1399,7 +1414,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
