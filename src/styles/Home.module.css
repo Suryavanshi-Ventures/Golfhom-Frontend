@@ -8,6 +8,11 @@
   background-size: cover;
 }
 
+.inner_icon_container {
+  position: relative;
+  bottom: 6px;
+}
+
 .search_bar_main_container {
   display: flex;
   justify-content: center;
@@ -62,6 +67,10 @@
 
 .search_btn:hover {
   background-color: var(--btn-background) !important;
+}
+
+.image_destination {
+  display: flex;
 }
 
 .inner_main_container {
@@ -435,11 +444,12 @@
 
 .explore_more_container {
   display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
-.explore_more_arrow_icon {
-  color: black;
-  margin-left: 10px;
-  font-size: 25px;
+
+.image_Parent {
+  height: 320px;
 }
 
 .arrivalContainer {

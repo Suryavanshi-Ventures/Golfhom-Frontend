@@ -11,7 +11,7 @@ const Slider = ({ slides }) => {
       spaceBetween={50}
       slidesPerView={3.5}
       pagination={{ clickable: true }}
-      onSlideChange={() => {}}
+      onSlideChange={() => { }}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -41,13 +41,15 @@ const Slider = ({ slides }) => {
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.id} className={HomeCss.parentImage}>
-          <Image
-            className={HomeCss.sliderImage}
-            src={slide.image}
-            alt={slide.name}
-            width={360}
-            height={280}
-          ></Image>
+          <div className={HomeCss.image_Parent}>
+            <Image
+              className={HomeCss.sliderImage}
+              src={slide.image}
+              alt={slide.name}
+              fill
+            ></Image>
+          </div>
+
           <h4 className={HomeCss.countryName}>{slide.name}</h4>
         </SwiperSlide>
       ))}

@@ -22,6 +22,7 @@ import BottomSection from "../../common components/bottomGroup";
 import axios from "axios";
 import Router from "next/router";
 import moment from "moment";
+import BlackArrow from "../../public/images/vector/backArrow.svg";
 
 const Home = () => {
   const [SearchOptions, setSearchOptions] = useState([]);
@@ -121,45 +122,47 @@ const Home = () => {
           <div className={HomeCss.search_bar_container}>
             <Row className={HomeCss.searchBar}>
               <Col md={3} className={HomeCss.search_cols_4}>
-                <div className={HomeCss.inner_main_container}>
-                  <div className={HomeCss.inner_icon_container}>
-                    <Image
-                      className={HomeCss.location}
-                      width={25}
-                      height={25}
-                      src="/images/vector/location.svg"
-                      alt="Location Image"
-                    ></Image>
-                  </div>
-                  <div className={HomeCss.inner_input_container}>
+                {/* <div className={HomeCss.inner_main_container}> */}
+                <div className={HomeCss.inner_input_container}>
+                  <div className={HomeCss.image_destination}>
+                    <div className={HomeCss.inner_icon_container}>
+                      <Image
+                        className={HomeCss.location}
+                        width={25}
+                        height={25}
+                        src="/images/vector/location.svg"
+                        alt="Location Image"
+                      ></Image>
+                    </div>
                     <h6 className={HomeCss.destination}>DESTINATION</h6>
-                    <div className={HomeCss.inner_input}>
-                      {/* <Input
+                  </div>
+                  <div className={HomeCss.inner_input}>
+                    {/* <Input
                         className={HomeCss.inner_input_box}
                         size="large"
                         placeholder="Where you want to stay"
                       /> */}
 
-                      <AutoComplete
-                        style={{
-                          width: 200,
-                        }}
-                        options={SearchOptions.map((country) => ({
-                          value: country.name,
-                          Uid: country.id,
-                        }))}
-                        onChange={OnChangeDestination}
-                        size="large"
-                        placeholder="Where you want to stay"
-                        filterOption={(inputValue, option) =>
-                          option.value
-                            .toUpperCase()
-                            .indexOf(inputValue.toUpperCase()) !== -1
-                        }
-                      />
-                    </div>
+                    <AutoComplete
+                      style={{
+                        width: 200,
+                      }}
+                      options={SearchOptions.map((country) => ({
+                        value: country.name,
+                        Uid: country.id,
+                      }))}
+                      onChange={OnChangeDestination}
+                      size="large"
+                      placeholder="Where you want to stay"
+                      filterOption={(inputValue, option) =>
+                        option.value
+                          .toUpperCase()
+                          .indexOf(inputValue.toUpperCase()) !== -1
+                      }
+                    />
                   </div>
                 </div>
+                {/* </div> */}
               </Col>
               <Col md={3} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
@@ -499,11 +502,12 @@ const Home = () => {
                     Explore More New Rentals{" "}
                   </h4>
                   <div className={HomeCss.explore_more_arrow_container}>
-                    <Link href="/">
-                      <ArrowRightOutlined
-                        className={HomeCss.explore_more_arrow_icon}
-                      />
-                    </Link>
+                    <Image
+                      src={BlackArrow}
+                      alt="BlackArrow"
+                      width={22}
+                      height={20}
+                    />
                   </div>
                 </div>
               </div>

@@ -24,6 +24,7 @@ import MessageIconMobileMenu from "../public/images/vector/messages_loggedin.png
 import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
 import { AuthContext } from "@/context/auth_context";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
+import Register from "../public/images/vector/registerToRent.svg";
 
 const Header = ({ name, ...props }) => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
@@ -46,7 +47,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -716,6 +717,7 @@ const Header = ({ name, ...props }) => {
 
                   {/* MOBILE REGISTER MODAL BTN */}
                   <div className={HeaderCss.mobile_menu_div_container}>
+                    <Image src={Register} alt="Register" width={20} height={20} />
                     <Link
                       className={HeaderCss.top_header_a}
                       href="/"
@@ -876,8 +878,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -898,8 +900,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >
@@ -1414,7 +1416,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                  UserName.slice(1)
+                                UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
