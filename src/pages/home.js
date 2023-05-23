@@ -20,11 +20,16 @@ import Link from "next/link";
 import { DownOutlined } from "@ant-design/icons";
 import BottomSection from "../../common components/bottomGroup";
 import axios from "axios";
+import Router from "next/router";
+import moment from "moment";
 
 const Home = () => {
-  const onSearch = (value) => console.log(value);
-
   const [SearchOptions, setSearchOptions] = useState([]);
+  const [UrlParamsDestination, setUrlParamsDestination] = useState({
+    country_name: "",
+    id: "",
+  });
+  const [SearchData, setSearchData] = useState(null);
 
   useEffect(() => {
     const FetchLocationAPI = async () => {
@@ -48,28 +53,24 @@ const Home = () => {
 
   // DROPDOWN FOR SEARCH
 
-  const items = [
-    {
-      label: "PGA Championship",
-      key: "1",
-    },
-    {
-      label: "The Master",
-      key: "2",
-    },
-    {
-      label: "The open champioship",
-      key: "3",
-    },
-    {
-      label: "The Tradition at Quinta",
-      key: "4",
-    },
-    {
-      label: "US Open",
-      key: "5",
-    },
-  ];
+  const OnChangeDestination = (LocationName, DateValue) => {
+    setUrlParamsDestination({
+      country_name: DateValue.value,
+      id: DateValue.Uid,
+    });
+
+    DateValue = {
+      UrlParamsDestination,
+      DateValue,
+    };
+    setSearchData(DateValue);
+    console.log("SEARCH DATA", DateValue);
+  };
+
+  const OnSubmitSearch = (e) => {
+    e.preventDefault();
+    console.log(SearchData, "SEARCH ON CLICK");
+  };
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
   const [adult, setAdult] = useState(1);
@@ -79,11 +80,11 @@ const Home = () => {
   };
 
   const decAdult = () => {
-    if (adult > 1) {
+    if (adult > 0) {
       setAdult(adult - 1);
     } else {
       message.error("Sorry number of adults can not be less than 1");
-      setAdult(1);
+      setAdult(0);
     }
   };
 
@@ -96,25 +97,13 @@ const Home = () => {
   };
 
   const decChild = () => {
-    if (child > 1) {
+    if (child > 0) {
       setChild(child - 1);
     } else {
       message.error("Sorry number of children can not be less than 1");
-      setChild(1);
+      setChild(0);
     }
   };
-
-  // const SearchOptions = [
-  //   {
-  //     value: "Burns Bay Road",
-  //   },
-  //   {
-  //     value: "Downing Street",
-  //   },
-  //   {
-  //     value: "Wall Street",
-  //   },
-  // ];
 
   return (
     <>
@@ -157,7 +146,9 @@ const Home = () => {
                         }}
                         options={SearchOptions.map((country) => ({
                           value: country.name,
+                          Uid: country.id,
                         }))}
+                        onChange={OnChangeDestination}
                         size="large"
                         placeholder="Where you want to stay"
                         filterOption={(inputValue, option) =>
@@ -245,6 +236,10 @@ const Home = () => {
                     <div className={HomeCss.inner_input_date_picker}>
                       <RangePicker
                         size="large"
+                        disabledDate={(current) => {
+                          return current && current < moment().endOf("day");
+                        }}
+                        onChange={OnChangeDestination}
                         className={HomeCss.inner_input_date_picker}
                       />
                     </div>
@@ -253,7 +248,17 @@ const Home = () => {
               </Col>
               <Col md={12} lg={3} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
-                  <Link href="/search">
+                  <Link
+                    href={`/search?location_id=${encodeURIComponent(
+                      SearchData?.UrlParamsDestination?.id
+                    )}&location_name=${encodeURIComponent(
+                      SearchData?.UrlParamsDestination?.country_name
+                    )}&guest=${encodeURIComponent(
+                      adult + child
+                    )}&from=${encodeURIComponent(
+                      SearchData?.DateValue[0]
+                    )}&to=${encodeURIComponent(SearchData?.DateValue[1])}`}
+                  >
                     <Button className={HomeCss.search_btn} type="primary">
                       Search
                     </Button>
@@ -414,7 +419,28 @@ const Home = () => {
                           >
                             <Dropdown
                               menu={{
-                                items,
+                                items: [
+                                  {
+                                    label: "PGA Championship",
+                                    key: "1",
+                                  },
+                                  {
+                                    label: "The Master",
+                                    key: "2",
+                                  },
+                                  {
+                                    label: "The open champioship",
+                                    key: "3",
+                                  },
+                                  {
+                                    label: "The Tradition at Quinta",
+                                    key: "4",
+                                  },
+                                  {
+                                    label: "US Open",
+                                    key: "5",
+                                  },
+                                ],
                                 selectable: true,
                                 defaultSelectedKeys: ["3"],
                               }}

@@ -13,16 +13,12 @@ import { Pagination } from "antd";
 import Link from "next/link";
 import Buildings from "../../../public/images/buildings.png";
 import BottomSection from "../../../common components/bottomGroup";
-import CarouselImages from "../../../common components/carouselMap";
 import CarasoulMapCss from "../../styles/CarouselMap.module.css";
-import HotelA from "../../../public/images/hotelA.svg";
-import Heart from "../../../public/images/vector/heart.svg";
 import Dot from "../../../public/images/vector/dot.svg";
 import Map from "../../../common components/map";
 import Loader from "../../../common components/loader";
 import axios from "axios";
 import { useRouter } from "next/router";
-
 const { RangePicker } = DatePicker;
 
 const Index = () => {
@@ -31,18 +27,23 @@ const Index = () => {
   const [LengthOfProperty, SetLengthOfProperty] = useState(0);
   const [PropertyData, SetPropertyData] = useState([]);
   const [PaginationState, SetPagination] = useState(1);
-
   const [index, setIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const param = Router.query;
 
   const handleClick = () => {
     setShowHidden(true);
     setIsVisible(false);
   };
 
+  console.log(param, "PARAAAAAAAAAAMs");
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}`
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "locationId=" + param.location_id
+      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
+        "to=" + param.to
+      }&limit=10&page=${PaginationState}`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
@@ -53,7 +54,6 @@ const Index = () => {
       console.log(err, "ERR");
     });
   }, []);
-  console.log(PropertyData, "API RESPONSE");
 
   const handleSelectA = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -61,7 +61,11 @@ const Index = () => {
 
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${pageNumber}`
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "locationId=" + param.location_id
+      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
+        "to=" + param.to
+      }&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
@@ -79,25 +83,8 @@ const Index = () => {
   const SendPropertyData = (params) => {
     console.log(params, "SPEECIFIC DATA");
   };
-
-  const handleMenuClick = (e) => {
-    console.log("click", e);
-  };
-
-  const items = [
-    {
-      label: "1st menu item",
-      key: "1",
-    },
-    {
-      label: "2nd menu item",
-      key: "2",
-    },
-  ];
-
-  const menuProps = {
-    items,
-    onClick: handleMenuClick,
+  const onClick = ({ value }) => {
+    console.log(`${value}`);
   };
 
   const HiddenModal = () => {
@@ -112,7 +99,20 @@ const Index = () => {
                 Golf Course Choice
               </p>
               <div className={SearchIndexCss.edit_details_inputs_container}>
-                <Dropdown menu={menuProps}>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        label: "Price (Low to High)",
+                        key: "1",
+                      },
+                      {
+                        label: "Price (High to Low)",
+                        key: "2",
+                      },
+                    ],
+                  }}
+                >
                   <Button
                     size="large"
                     className={SearchIndexCss.edit_room_dropdown_btn}
@@ -135,7 +135,20 @@ const Index = () => {
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
               <div className={SearchIndexCss.edit_details_inputs_container}>
-                <Dropdown menu={menuProps}>
+                <Dropdown
+                  menu={{
+                    items: [
+                      {
+                        label: "Price (Low to High)",
+                        key: "1",
+                      },
+                      {
+                        label: "Price (High to Low)",
+                        key: "2",
+                      },
+                    ],
+                  }}
+                >
                   <Button
                     size="large"
                     className={SearchIndexCss.edit_room_dropdown_btn}
@@ -206,7 +219,7 @@ const Index = () => {
                       <Input
                         size="large"
                         className={SearchIndexCss.edit_details_inputs}
-                        placeholder="Basic usage"
+                        placeholder="Where you want to stay"
                       />
                     </div>
                   </div>
@@ -242,7 +255,20 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      <Dropdown menu={menuProps}>
+                      <Dropdown
+                        menu={{
+                          items: [
+                            {
+                              label: "Price (Low to High)",
+                              key: "1",
+                            },
+                            {
+                              label: "Price (High to Low)",
+                              key: "2",
+                            },
+                          ],
+                        }}
+                      >
                         <Button
                           size="large"
                           className={SearchIndexCss.edit_room_dropdown_btn}
@@ -313,7 +339,9 @@ const Index = () => {
       <section className={SearchIndexCss.search_main_section}>
         <Container>
           <Row>
-            <h4 className={SearchIndexCss.orlandoHead}>Orlando</h4>
+            <h4 className={SearchIndexCss.orlandoHead}>
+              {param.location_name ? param.location_name : ""}
+            </h4>
             {/*    ----------------      CARD MAP SECTION      -------------------   */}
             <Col md={8}>
               <hr />
@@ -326,9 +354,33 @@ const Index = () => {
 
                   <div className={SearchIndexCss.sortdiv}>
                     <h6 className={SearchIndexCss.sort}>Sort By:</h6>
-
                     <Dropdown
-                      menu={menuProps}
+                      menu={{
+                        items: [
+                          {
+                            label: "Price (Low to High)",
+                            key: "1",
+                          },
+                          {
+                            label: "Price (High to Low)",
+                            key: "2",
+                          },
+
+                          {
+                            label: "Featured First",
+                            key: "3",
+                          },
+                          {
+                            label: "Date Old to New",
+                            key: "4",
+                          },
+                          {
+                            label: "Date New to Old",
+                            key: "5",
+                          },
+                        ],
+                        onClick,
+                      }}
                       className={SearchIndexCss.default}
                     >
                       <Button size="large">
@@ -370,9 +422,7 @@ const Index = () => {
                             <Carousel.Item className={CarasoulMapCss.imageGap}>
                               <Link
                                 onClick={(e) => {
-                                  Router.push(
-                                    `search/view_property/${data.id}`
-                                  );
+                                  Router.push(`search/1`);
                                   e.preventDefault();
                                 }}
                                 href=""
