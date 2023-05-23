@@ -53,7 +53,7 @@ const Index = () => {
     }).catch((err) => {
       console.log(err, "ERR");
     });
-  }, []);
+  }, [PaginationState, param.from, param.guest, param.location_id, param.to]);
 
   const handleSelectA = (selectedIndex) => {
     setIndex(selectedIndex);

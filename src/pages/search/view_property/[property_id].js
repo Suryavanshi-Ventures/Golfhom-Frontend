@@ -65,7 +65,7 @@ const ViewProperty = () => {
     });
 
     return () => {};
-  }, []);
+  }, [PropertyId]);
 
   useEffect(() => {
     if (PaymentIntentObject != null) {

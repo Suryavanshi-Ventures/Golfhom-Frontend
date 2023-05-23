@@ -49,7 +49,7 @@ const Index = () => {
     };
 
     GetBookingData();
-  }, []);
+  }, [UserName]);
 
   return (
     <>
