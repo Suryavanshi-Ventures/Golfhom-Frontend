@@ -9,7 +9,7 @@ import UserIcon from "../public/user icon.svg";
 import Logo from "../public/logo.svg";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Link from "next/link";
-import { DownOutlined } from "@ant-design/icons";
+import { DownOutlined, ContactsFilled } from "@ant-design/icons";
 import { Dropdown, Space, Modal } from "antd";
 import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
@@ -45,7 +45,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -188,8 +188,7 @@ const Header = ({ name, ...props }) => {
     /* -----------      REGISTER TO RENT SECTION  IN LARGE DEVICE      -----------------*/
   }
 
-  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] =
-    useState(false);
+  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] = useState(false);
   const registerToRentLgDevice = () => {
     setRegisterToRentModalgDevice(true);
     handleCancel();
@@ -223,23 +222,7 @@ const Header = ({ name, ...props }) => {
     console.log("click", e);
   };
 
-  const items = [
-    {
-      label: "Select",
-      key: "1",
-    },
-    {
-      label: "Register to Rent",
-      key: "2",
-    },
-    {
-      label: "Register to Host",
-      key: "3",
-    },
-  ];
-
-  const menuProps = {
-    items,
+  const items = {
     onClick: handleMenuClick,
   };
 
@@ -285,8 +268,7 @@ const Header = ({ name, ...props }) => {
     /* -----------      REGISTER TO RENT IN MOBILE SECTION        -----------------*/
   }
 
-  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] =
-    useState(false);
+  const [mobileRegisterToRentModal, setMobileRegisterToRentModal] = useState(false);
   const mobileRegistertoRent = () => {
     setMobileRegisterToRentModal(true);
     handleCancelMobile();
@@ -476,188 +458,195 @@ const Header = ({ name, ...props }) => {
             </div>
             <Offcanvas.Body>
               {/* Mobile Menu Main Container */}
-              <div className={HeaderCss.mobile_dropdown_parent_div}>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        label: (
-                          <Link
-                            className={HeaderCss.top_header_menu_logggedin_link}
-                            href="/dashboard"
-                          >
-                            {" "}
-                            <Image
-                              src={MobileMenuHomeLogo}
-                              alt="home icon"
-                              width={18}
-                              height={18}
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link_icons
-                              }
-                            ></Image>
-                            Dashboard
-                          </Link>
-                        ),
-                        key: "1",
-                      },
-                      {
-                        label: (
-                          <Link
-                            className={HeaderCss.top_header_menu_logggedin_link}
-                            href="/dashboard/user_profile"
-                          >
-                            {" "}
-                            <Image
-                              src={ProfileIconMobileMenu}
-                              alt="profile icon"
-                              width={18}
-                              height={18}
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link_icons
-                              }
-                            ></Image>
-                            Profile
-                          </Link>
-                        ),
-                        key: "2",
-                      },
-                      {
-                        label: (
-                          <Link
-                            className={HeaderCss.top_header_menu_logggedin_link}
-                            href="/dashboard/reservation"
-                          >
-                            {" "}
-                            <Image
-                              src={ReservationIconMobileMenu}
-                              alt="reservation icon"
-                              width={18}
-                              height={18}
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link_icons
-                              }
-                            ></Image>
-                            Reservation
-                          </Link>
-                        ),
-                        key: "3",
-                      },
-                      {
-                        label: (
-                          <Link
-                            className={HeaderCss.top_header_menu_logggedin_link}
-                            href="/dashboard/favorites"
-                          >
-                            {" "}
-                            <Image
-                              src={FavIconMobileMenu}
-                              alt="favorite icon"
-                              width={18}
-                              height={18}
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link_icons
-                              }
-                            ></Image>
-                            Favorites
-                          </Link>
-                        ),
-                        key: "4",
-                      },
-                      {
-                        label: (
-                          <Link
-                            className={HeaderCss.top_header_menu_logggedin_link}
-                            href="/dashboard/invoice"
-                          >
-                            {" "}
-                            <Image
-                              src={InvoiceIconMobileMenu}
-                              alt="invoice icon"
-                              width={18}
-                              height={18}
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link_icons
-                              }
-                            ></Image>
-                            Invoices
-                          </Link>
-                        ),
-                        key: "5",
-                      },
-                      {
-                        label: (
-                          <Link
-                            className={HeaderCss.top_header_menu_logggedin_link}
-                            href="/dashboard/messages"
-                          >
-                            {" "}
-                            <Image
-                              src={MessageIconMobileMenu}
-                              alt="message icon"
-                              width={18}
-                              height={18}
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link_icons
-                              }
-                            ></Image>
-                            Message
-                          </Link>
-                        ),
-                        key: "6",
-                      },
+              {IsLoggedIn ? (
+                <div className={HeaderCss.mobile_dropdown_parent_div}>
+                  <Dropdown
+                    menu={{
+                      items: [
+                        {
+                          label: (
+                            <Link
+                              className={HeaderCss.top_header_menu_logggedin_link}
+                              href="/dashboard"
+                            >
+                              {" "}
+                              <Image
+                                src={MobileMenuHomeLogo}
+                                alt="home icon"
+                                width={18}
+                                height={18}
+                                className={
+                                  HeaderCss.top_header_menu_logggedin_link_icons
+                                }
+                              ></Image>
+                              Dashboard
+                            </Link>
+                          ),
+                          key: "1",
+                        },
+                        {
+                          label: (
+                            <Link
+                              className={HeaderCss.top_header_menu_logggedin_link}
+                              href="/dashboard/user_profile"
+                            >
+                              {" "}
+                              <Image
+                                src={ProfileIconMobileMenu}
+                                alt="profile icon"
+                                width={18}
+                                height={18}
+                                className={
+                                  HeaderCss.top_header_menu_logggedin_link_icons
+                                }
+                              ></Image>
+                              Profile
+                            </Link>
+                          ),
+                          key: "2",
+                        },
+                        {
+                          label: (
+                            <Link
+                              className={HeaderCss.top_header_menu_logggedin_link}
+                              href="/dashboard/reservation"
+                            >
+                              {" "}
+                              <Image
+                                src={ReservationIconMobileMenu}
+                                alt="reservation icon"
+                                width={18}
+                                height={18}
+                                className={
+                                  HeaderCss.top_header_menu_logggedin_link_icons
+                                }
+                              ></Image>
+                              Reservation
+                            </Link>
+                          ),
+                          key: "3",
+                        },
+                        {
+                          label: (
+                            <Link
+                              className={HeaderCss.top_header_menu_logggedin_link}
+                              href="/dashboard/favorites"
+                            >
+                              {" "}
+                              <Image
+                                src={FavIconMobileMenu}
+                                alt="favorite icon"
+                                width={18}
+                                height={18}
+                                className={
+                                  HeaderCss.top_header_menu_logggedin_link_icons
+                                }
+                              ></Image>
+                              Favorites
+                            </Link>
+                          ),
+                          key: "4",
+                        },
+                        {
+                          label: (
+                            <Link
+                              className={HeaderCss.top_header_menu_logggedin_link}
+                              href="/dashboard/invoice"
+                            >
+                              {" "}
+                              <Image
+                                src={InvoiceIconMobileMenu}
+                                alt="invoice icon"
+                                width={18}
+                                height={18}
+                                className={
+                                  HeaderCss.top_header_menu_logggedin_link_icons
+                                }
+                              ></Image>
+                              Invoices
+                            </Link>
+                          ),
+                          key: "5",
+                        },
+                        {
+                          label: (
+                            <Link
+                              className={HeaderCss.top_header_menu_logggedin_link}
+                              href="/dashboard/messages"
+                            >
+                              {" "}
+                              <Image
+                                src={MessageIconMobileMenu}
+                                alt="message icon"
+                                width={18}
+                                height={18}
+                                className={
+                                  HeaderCss.top_header_menu_logggedin_link_icons
+                                }
+                              ></Image>
+                              Message
+                            </Link>
+                          ),
+                          key: "6",
+                        },
 
-                      {
-                        type: "divider",
-                      },
-                      {
-                        label: (
-                          <Link
-                            className={HeaderCss.top_header_menu_logggedin_link}
-                            href="/"
-                            onClick={() => {
-                              Logout();
-                            }}
-                          >
-                            {" "}
-                            <Image
-                              src={LogoutIconMobileMenu}
-                              alt="logout icon"
-                              width={18}
-                              height={18}
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link_icons
-                              }
-                            ></Image>
-                            Logout
-                          </Link>
-                        ),
-                        key: "7",
-                      },
-                    ],
-                  }}
-                >
-                  <Link
-                    href="/"
-                    className={HeaderCss.top_header_logggedin_link_mobile}
+                        {
+                          type: "divider",
+                        },
+                        {
+                          label: (
+                            <Link
+                              className={HeaderCss.top_header_menu_logggedin_link}
+                              href="/"
+                              onClick={() => {
+                                Logout();
+                              }}
+                            >
+                              {" "}
+                              <Image
+                                src={LogoutIconMobileMenu}
+                                alt="logout icon"
+                                width={18}
+                                height={18}
+                                className={
+                                  HeaderCss.top_header_menu_logggedin_link_icons
+                                }
+                              ></Image>
+                              Logout
+                            </Link>
+                          ),
+                          key: "8",
+                        },
+                      ],
+                    }}
                   >
-                    <Space
-                      className={HeaderCss.top_header_logggedin_space_mobile}
+                    <Link
+                      href="/"
+                      className={HeaderCss.top_header_logggedin_link_mobile}
                     >
-                      <Image
-                        width={20}
-                        height={20}
-                        src={ProfileIcon}
-                        alt="profile icon"
-                      ></Image>
-                      {UserName
-                        ? UserName.charAt(0).toUpperCase() + UserName.slice(1)
-                        : "Anyonums "}
-                    </Space>
-                  </Link>
-                </Dropdown>
-              </div>
+                      <Space
+                        className={HeaderCss.top_header_logggedin_space_mobile}
+                      >
+                        {UserName
+                          ? UserName.charAt(0).toUpperCase() +
+                          UserName.slice(1)
+                          : "Anyonums "}
+                        <Image
+                          width={20}
+                          height={20}
+                          src={ProfileIcon}
+                          alt="profile icon"
+                        ></Image>
+                      </Space>
+                    </Link>
+                  </Dropdown>
+                </div>
+              ) : (
+                ""
+              )}
 
+
+              {/* HEADER SECTION NAVBAR IN LARGE DEVICE */}
               <nav className={HeaderCss.mobile_menu}>
                 <div className={HeaderCss.mobile_menu_main_container}>
                   <div className={HeaderCss.mobile_menu_div_container}>
@@ -677,6 +666,7 @@ const Header = ({ name, ...props }) => {
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
+                    {<ContactsFilled size={60} />}
                     <Link className={HeaderCss.top_header_a} href="/contact_us">
                       Contact Us
                     </Link>
@@ -700,6 +690,7 @@ const Header = ({ name, ...props }) => {
                     </Link>
                   </div>
 
+                  {/* MOBILE REGISTER MODAL BTN */}
                   <div className={HeaderCss.mobile_menu_div_container}>
                     <Link
                       className={HeaderCss.top_header_a}
@@ -861,8 +852,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -883,8 +874,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >
@@ -932,6 +923,7 @@ const Header = ({ name, ...props }) => {
             </div>
           </Modal>
 
+          {/* PROFILE DROPDOWN IN LARGE DEVICE */}
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <div>
               {IsLoggedIn ? (
@@ -941,7 +933,7 @@ const Header = ({ name, ...props }) => {
                     menu={{
                       items: [
                         {
-                          key: "1",
+                          key: "11",
                           label: (
                             <Link
                               className={
@@ -956,7 +948,7 @@ const Header = ({ name, ...props }) => {
                           ),
                         },
                         {
-                          key: "2",
+                          key: "12",
                           label: (
                             <Link
                               className={
@@ -1066,7 +1058,23 @@ const Header = ({ name, ...props }) => {
                         </div>
                       </Col>
 
-                      <Dropdown menu={menuProps}>
+                      <Dropdown menu=
+                        {{
+                          items: [
+                            {
+                              key: "31",
+                              label: "Select",
+                            },
+                            {
+                              key: "32",
+                              label: "Register to Rent",
+                            },
+                            {
+                              key: "33",
+                              label: "Register to Host",
+                            },
+                          ]
+                        }}>
                         <Button
                           size="large"
                           className={HeaderCss.edit_room_dropdown_btn}
@@ -1178,6 +1186,7 @@ const Header = ({ name, ...props }) => {
                         Blog
                       </Link>
                     </Col>
+
                     <Col
                       xs={"auto"}
                       className={HeaderCss.top_header_Col_container}
@@ -1379,7 +1388,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                  UserName.slice(1)
+                                UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
