@@ -15,7 +15,7 @@ const TabContentOverview = (PropData) => {
         </h1>
         <p className={ViewPropertyCss.tab_overview_prop_small_subheading}>
           Golf Course Vicinity:{" "}
-          {PropData.data.golfCourseName ? PropData.data.golfCourseName : "Na"}
+          {PropData.data.golfCourseName ? PropData.data.golfCourseName : "N/A"}
         </p>
         <p className={ViewPropertyCss.tab_overview_prop_subheading}>
           Orange Tree Golf Club - Orange Tree
