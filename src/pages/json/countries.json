@@ -16,14 +16,14 @@
   {
     "id": 3,
     "image": "/images/sanfrancisco.svg",
-    "name": "Sanfrancisco",
+    "name": "San Francisco",
     "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 4,
     "image": "/images/Newyork.svg",
-    "name": "Newyork",
+    "name": "New York",
     "next": "/images/vector/forwardArrow.svg"
   },
 
@@ -44,14 +44,14 @@
   {
     "id": 7,
     "image": "/images/sanfrancisco.svg",
-    "name": "Sanfrancisco",
+    "name": "San Francisco",
     "next": "/images/vector/forwardArrow.svg"
   },
 
   {
     "id": 8,
     "image": "/images/Newyork.svg",
-    "name": "Newyork",
+    "name": "New York",
     "next": "/images/vector/forwardArrow.svg"
   }
 ]

@@ -37,6 +37,7 @@ const ProtectedRoute = ({ children }) => {
       message.error(error.response.data.message);
     });
   }, []);
+  return children
 };
 
 export default ProtectedRoute;

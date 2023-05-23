@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React, { useMemo, useState, useCallback } from 'react'
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
     width: '100%',
@@ -8,45 +8,47 @@ const containerStyle = {
 };
 
 const center = {
-    lat: 34.14778490,
-    lng: -118.14451550
+    lat: 37.7749,
+    lng: -122.4194
 };
+
+const markers = [
+    { lat: 37.7749, lng: -122.4194 }, // San Francisco
+    { lat: 32.7157, lng: -117.1611 }, // San Diego
+    { lat: 26.168954, lng: -80.1161671 },
+    { lat: 25.9600522, lng: -80.1379787 },
+    { lat: 26.168954, lng: -80.1161671 },
+    { lat: 30.3164945, lng: 78.0321918 },
+];
 
 function MyComponent() {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: "AIzaSyBfYxWDRxvC8H61TYmlUpzzQBWyQ-QMGkU"
-    })
+    });
 
     const [map, setMap] = React.useState(null)
-    const options = useMemo(() => ({
-        // mapId: "b181cac70f27f5e6",   for dark mode
-        disableDefaultUI: true,
-        clickableIcons: false
-    }), [])
 
-    // const onLoad = React.useCallback(function callback(map) {
-
-    //     const bounds = new window.google.maps.LatLngBounds(center);
-    //     map.fitBounds(bounds);
-
-    //     setMap(map)
-    // }, [])
+    const onLoad = useCallback(function callback(map) {
+        setMap(map);
+    }, []);
 
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
-    }, [])
+    }, []);
 
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
             zoom={10}
-            options={options}
-            // onLoad={onLoad}
+            onLoad={onLoad}
             onUnmount={onUnmount}
             style={{ position: 'static', width: '100%', height: '100%' }}
         >
+            {markers.map((marker, index) => (
+                <Marker key={index} position={marker} />
+            ))}
         </GoogleMap>
     ) : <></>
 }

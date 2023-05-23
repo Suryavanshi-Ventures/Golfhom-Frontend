@@ -43,7 +43,7 @@ const Home = () => {
 
     FetchLocationAPI();
 
-    return () => {};
+    return () => { };
   }, []);
 
   // DROPDOWN FOR SEARCH
@@ -275,20 +275,14 @@ const Home = () => {
           <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
           <p className={HomeCss.para}>
-            Arizona and Florida are renowned for their beautiful surroundings,
-            outdoor lifeHomeCsss, & of course for having some of the world’s
-            best golf courses! Golfhōm has a growing selection of golf
-            course-vicinity vacation rentals that deliver the comforts of home,
-            luxe amenities, and access to plenty of Arizona and Florida
-            attractions!
+            Arizona and Florida are renowned for their beautiful surroundings, outdoor lifestyles, & of course for having some of the world’s best golf courses! Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts of home, luxe amenities, and access to plenty of Arizona and Florida attractions!
           </p>
 
           <Row>
             <Col md={9}>
               <p className={HomeCss.para}>
                 {" "}
-                Golfhōm is transforming how golfers locate and book their next
-                luxury golf vacation rental. Book with us today!
+                Golfhōm is transforming how golfers locate and book their next luxury golf vacation rental. Book with us today!
               </p>
             </Col>
 
