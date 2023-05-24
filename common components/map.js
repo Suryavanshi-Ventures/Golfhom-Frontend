@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useCallback } from 'react'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+import MarkerIcon from "../public/images/vector/marker.svg";
 
 const containerStyle = {
     width: '100%',
@@ -18,6 +19,7 @@ const markers = [
     { lat: 26.168954, lng: -80.1161671 },
     { lat: 25.9600522, lng: -80.1379787 },
     { lat: 26.168954, lng: -80.1161671 },
+    { lat: 26.1755733, lng: -80.1069346 },
     { lat: 30.3164945, lng: 78.0321918 },
 ];
 
@@ -36,6 +38,11 @@ function MyComponent() {
     const onUnmount = React.useCallback(function callback(map) {
         setMap(null)
     }, []);
+
+    const mapOptions = {
+        center: { lat: 41.881832, lng: -87.623177 },
+        zoom: 12
+    }
 
     return isLoaded ? (
         <GoogleMap

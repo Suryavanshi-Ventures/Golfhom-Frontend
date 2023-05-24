@@ -121,7 +121,7 @@ const Home = () => {
         <div className={HomeCss.search_bar_main_container}>
           <div className={HomeCss.search_bar_container}>
             <Row className={HomeCss.searchBar}>
-              <Col md={3} className={HomeCss.search_cols_4}>
+              <Col lg={3} md={3} className={HomeCss.search_cols_4}>
                 {/* <div className={HomeCss.inner_main_container}> */}
                 <div className={HomeCss.inner_input_container}>
                   <div className={HomeCss.image_destination}>
@@ -164,7 +164,7 @@ const Home = () => {
                 </div>
                 {/* </div> */}
               </Col>
-              <Col md={3} className={HomeCss.search_cols_4}>
+              <Col lg={3} md={3} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_icon_container}>
                     <Image
@@ -223,7 +223,7 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col md={3} className={HomeCss.search_cols_4}>
+              <Col lg={3} md={3} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_icon_container}>
                     <Image
@@ -249,7 +249,7 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col md={12} lg={3} className={HomeCss.search_btn_col}>
+              <Col lg={3} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
                   <Link
                     href={`/search?location_id=${encodeURIComponent(

@@ -323,6 +323,7 @@ const Header = ({ name, ...props }) => {
     SetIsLoggedIn(false);
     message.success("Logout successfully!");
     ContextUserDetails.setUserState(null);
+    setShowMobileMenu(false);
   };
 
   return (
@@ -337,6 +338,7 @@ const Header = ({ name, ...props }) => {
             onSignup={handleLoginLgDevice}
             onCancel={handleCancel}
             width={372}
+            centered
           >
             <div className={HeaderCss.textParent}>
               <Form
@@ -705,12 +707,14 @@ const Header = ({ name, ...props }) => {
                       onClick={(e) => e.preventDefault()}
                     >
                       <Space>
-                        <Button
-                          className={HeaderCss.signUpBtn}
-                          onClick={loginLgDevice}
-                        >
-                          Log in & Sign up
-                        </Button>
+                        {!IsLoggedIn &&
+                          <Button
+                            className={HeaderCss.signUpBtn}
+                            onClick={loginLgDevice}
+                          >
+                            Log in & Sign up
+                          </Button>
+                        }
                       </Space>
                     </Link>
                   </div>
@@ -740,6 +744,8 @@ const Header = ({ name, ...props }) => {
                       </Button>
                     </Link>
                   </div>
+
+
                 </div>
               </nav>
             </Offcanvas.Body>

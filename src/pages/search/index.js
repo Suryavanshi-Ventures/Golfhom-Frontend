@@ -15,7 +15,7 @@ import Buildings from "../../../public/images/buildings.png";
 import BottomSection from "../../../common components/bottomGroup";
 import CarasoulMapCss from "../../styles/CarouselMap.module.css";
 import Dot from "../../../public/images/vector/dot.svg";
-import Map from "../../../common components/map";
+import MyComponent from "../../../common components/map";
 import Loader from "../../../common components/loader";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -39,16 +39,15 @@ const Index = () => {
   console.log(param, "PARAAAAAAAAAAMs");
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
-        "to=" + param.to
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
+      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
       }&limit=10&page=${PaginationState}`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
         SetPropertyData(response.data.data);
         SetLengthOfProperty(response.data.data.length);
+        console.log(response.data.data, "APi data");
       }
     }).catch((err) => {
       console.log(err, "ERR");
@@ -61,10 +60,8 @@ const Index = () => {
 
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
-        "to=" + param.to
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
+      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
       }&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {
@@ -516,7 +513,7 @@ const Index = () => {
             </Col>
             {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
             <Col md={4} className={SearchIndexCss.mapParent}>
-              <Map />
+              < MyComponent />
             </Col>
           </Row>
 
