@@ -4,12 +4,19 @@ import Head from "next/head";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
-import { Checkbox, Input } from "antd";
-import { DatePicker } from "antd";
+import {
+  Checkbox,
+  Input,
+  Switch,
+  Button,
+  Dropdown,
+  Space,
+  DatePicker,
+  Pagination,
+  AutoComplete,
+} from "antd";
 import { DownOutlined, CaretDownOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Space } from "antd";
 import Image from "next/image";
-import { Pagination } from "antd";
 import Link from "next/link";
 import Buildings from "../../../public/images/buildings.png";
 import BottomSection from "../../../common components/bottomGroup";
@@ -29,30 +36,82 @@ const Index = () => {
   const [PaginationState, SetPagination] = useState(1);
   const [index, setIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const [SortBy, setSortBy] = useState("");
+  const [SortByParam, setSortByParam] = useState("");
+  const [SearchOptions, setSearchOptions] = useState([]);
+
   const param = Router.query;
 
-  const handleClick = () => {
+  const EditBtn = () => {
     setShowHidden(true);
     setIsVisible(false);
   };
 
   console.log(param, "PARAAAAAAAAAAMs");
   useEffect(() => {
+    const FetchLocationAPI = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/location`
+        );
+        if (response.status === 200) {
+          console.log(response.data.data);
+          setSearchOptions(response.data.data);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    FetchLocationAPI();
+
+    return () => {};
+  }, []);
+  useEffect(() => {
     const GetPropertyData = axios.get(
+<<<<<<< HEAD
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
       }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
       }&limit=10&page=${PaginationState}`
+=======
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "locationId=" + param.location_id
+      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
+        "to=" + param.to
+      }&limit=10&page=${PaginationState}&sort="price"`
+>>>>>>> 111146e0a84bc6c8a5da2d1ba453e5abea7b3192
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
         SetPropertyData(response.data.data);
         SetLengthOfProperty(response.data.data.length);
+<<<<<<< HEAD
         console.log(response.data.data, "APi data");
+=======
+        console.log(response.data.data, "API DATA PROPERTY ");
+>>>>>>> 111146e0a84bc6c8a5da2d1ba453e5abea7b3192
       }
     }).catch((err) => {
       console.log(err, "ERR");
     });
+
+    return () => {};
   }, [PaginationState, param.from, param.guest, param.location_id, param.to]);
+
+  useEffect(() => {
+    const GetPropertyData = axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}&sort=${SortBy}${SortByParam}`
+    );
+    GetPropertyData.then((response) => {
+      if (response.status === 200) {
+        SetPropertyData(response.data.data);
+        SetLengthOfProperty(response.data.data.length);
+        console.log(response.data.data, "API DATA PROPERTY ");
+      }
+    }).catch((err) => {
+      console.log(err, "ERR");
+    });
+  }, [SortBy, PaginationState, SortByParam]);
 
   const handleSelectA = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -80,8 +139,30 @@ const Index = () => {
   const SendPropertyData = (params) => {
     console.log(params, "SPEECIFIC DATA");
   };
-  const onClick = ({ value }) => {
-    console.log(`${value}`);
+  const onClick = (event) => {
+    console.log(`${event.key}`);
+    setSortBy(event.key);
+    if (event.key === "price_low") {
+      setSortBy("price");
+      setSortByParam("&sortBy=ASC");
+    } else if (event.key === "price_high") {
+      setSortBy("price");
+      setSortByParam("&sortBy=DESC");
+    } else if (event.key === "createdAt_old_to_new") {
+      setSortBy("createdAt");
+      setSortByParam("&sortBy=ASC");
+    } else if (event.key === "createdAt_new_to_old") {
+      setSortBy("createdAt");
+      setSortByParam("&sortBy=DESC");
+    }
+  };
+  const OnChangeDestination = (LocationName, DateValue) => {
+    setUrlParamsDestination({
+      country_name: DateValue.value,
+      id: DateValue.Uid,
+    });
+
+    console.log("ON CHANGE DATA DESTINATION", DateValue);
   };
 
   const HiddenModal = () => {
@@ -213,10 +294,22 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      <Input
+                      <AutoComplete
+                        style={{
+                          width: 200,
+                        }}
+                        options={SearchOptions.map((country) => ({
+                          value: country.name,
+                          Uid: country.id,
+                        }))}
+                        onChange={OnChangeDestination}
                         size="large"
-                        className={SearchIndexCss.edit_details_inputs}
                         placeholder="Where you want to stay"
+                        filterOption={(inputValue, option) =>
+                          option.value
+                            .toUpperCase()
+                            .indexOf(inputValue.toUpperCase()) !== -1
+                        }
                       />
                     </div>
                   </div>
@@ -301,8 +394,7 @@ const Index = () => {
                         <Button
                           size="large"
                           className={SearchIndexCss.edit_details_btn}
-                          // onClick={() => setShowHidden(true)}
-                          onClick={handleClick}
+                          onClick={EditBtn}
                         >
                           Edit
                         </Button>
@@ -356,24 +448,19 @@ const Index = () => {
                         items: [
                           {
                             label: "Price (Low to High)",
-                            key: "1",
+                            key: "price_low",
                           },
                           {
                             label: "Price (High to Low)",
-                            key: "2",
-                          },
-
-                          {
-                            label: "Featured First",
-                            key: "3",
+                            key: "price_high",
                           },
                           {
                             label: "Date Old to New",
-                            key: "4",
+                            key: "createdAt_old_to_new",
                           },
                           {
                             label: "Date New to Old",
-                            key: "5",
+                            key: "createdAt_new_to_old",
                           },
                         ],
                         onClick,
@@ -442,17 +529,6 @@ const Index = () => {
                                   }
                                 )}
                               </Link>
-
-                              {/* <div className={CarasoulMapCss.heartParent}>
-                                <Link href="/search/view_property">
-                                  <Image
-                                    src={Heart}
-                                    alt="Heart"
-                                    fill
-                                    className={CarasoulMapCss.heart}
-                                  ></Image>
-                                </Link>
-                              </div> */}
                             </Carousel.Item>
 
                             <ol className="carousel-indicators">

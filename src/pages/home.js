@@ -30,6 +30,8 @@ const Home = () => {
     country_name: "",
     id: "",
   });
+  const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
+
   const [SearchData, setSearchData] = useState(null);
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const Home = () => {
 
     FetchLocationAPI();
 
-    return () => { };
+    return () => {};
   }, []);
 
   // DROPDOWN FOR SEARCH
@@ -60,14 +62,12 @@ const Home = () => {
       id: DateValue.Uid,
     });
 
-    DateValue = {
-      UrlParamsDestination,
-      DateValue,
-    };
-    setSearchData(DateValue);
-    console.log("SEARCH DATA", DateValue);
+    console.log("ON CHANGE DATA DESTINATION", DateValue);
   };
-
+  const OnChangeDateRange = (LocationName, DateValue) => {
+    setUrlParamsDateRange(DateValue);
+    console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
+  };
   const OnSubmitSearch = (e) => {
     e.preventDefault();
     console.log(SearchData, "SEARCH ON CLICK");
@@ -134,7 +134,9 @@ const Home = () => {
                         alt="Location Image"
                       ></Image>
                     </div>
-                    <h6 className={HomeCss.destination}>DESTINATION</h6>
+                    <h6 className={HomeCss.destination}>
+                      DESTINATION {UrlParamsDestination.country_name}
+                    </h6>
                   </div>
                   <div className={HomeCss.inner_input}>
                     {/* <Input
@@ -235,14 +237,21 @@ const Home = () => {
                     ></Image>
                   </div>
                   <div className={HomeCss.inner_input_container}>
-                    <h6 className={HomeCss.destination}>2 NIGHT</h6>
+                    <h6 className={HomeCss.destination}>
+                      {(() => {
+                        const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
+                        const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
+                        return endDate.diff(startDate, "days") || 0;
+                      })()}{" "}
+                      NIGHTS
+                    </h6>
                     <div className={HomeCss.inner_input_date_picker}>
                       <RangePicker
                         size="large"
                         disabledDate={(current) => {
                           return current && current < moment().endOf("day");
                         }}
-                        onChange={OnChangeDestination}
+                        onChange={OnChangeDateRange}
                         className={HomeCss.inner_input_date_picker}
                       />
                     </div>
@@ -253,14 +262,18 @@ const Home = () => {
                 <div className={HomeCss.search_btn_container}>
                   <Link
                     href={`/search?location_id=${encodeURIComponent(
-                      SearchData?.UrlParamsDestination?.id
+                      UrlParamsDestination?.id
                     )}&location_name=${encodeURIComponent(
-                      SearchData?.UrlParamsDestination?.country_name
-                    )}&guest=${encodeURIComponent(
-                      adult + child
-                    )}&from=${encodeURIComponent(
-                      SearchData?.DateValue[0]
-                    )}&to=${encodeURIComponent(SearchData?.DateValue[1])}`}
+                      UrlParamsDestination?.country_name
+                    )}&guest=${encodeURIComponent(adult + child)}&from=${
+                      UrlParamsDateRange[0]
+                        ? UrlParamsDateRange[0]
+                        : moment().format("DD-MM-YYYY")
+                    }&to=${
+                      UrlParamsDateRange[1]
+                        ? UrlParamsDateRange[1]
+                        : moment().format("DD-MM-YYYY")
+                    }`}
                   >
                     <Button className={HomeCss.search_btn} type="primary">
                       Search
@@ -283,14 +296,20 @@ const Home = () => {
           <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
           <p className={HomeCss.para}>
-            Arizona and Florida are renowned for their beautiful surroundings, outdoor lifestyles, & of course for having some of the world’s best golf courses! Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts of home, luxe amenities, and access to plenty of Arizona and Florida attractions!
+            Arizona and Florida are renowned for their beautiful surroundings,
+            outdoor lifestyles, & of course for having some of the world’s best
+            golf courses! Golfhōm has a growing selection of golf
+            course-vicinity vacation rentals that deliver the comforts of home,
+            luxe amenities, and access to plenty of Arizona and Florida
+            attractions!
           </p>
 
           <Row>
             <Col md={9}>
               <p className={HomeCss.para}>
                 {" "}
-                Golfhōm is transforming how golfers locate and book their next luxury golf vacation rental. Book with us today!
+                Golfhōm is transforming how golfers locate and book their next
+                luxury golf vacation rental. Book with us today!
               </p>
             </Col>
 
