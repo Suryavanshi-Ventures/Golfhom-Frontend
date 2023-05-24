@@ -47,7 +47,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -68,6 +68,7 @@ const Header = ({ name, ...props }) => {
   const [loginModalLgDevice, setLoginModalLgDevice] = useState(false);
   const loginLgDevice = () => {
     setLoginModalLgDevice(true);
+    setShowMobileMenu(false);
   };
   const handleLoginLgDevice = () => {
     setLoginModalLgDevice(false);
@@ -233,10 +234,6 @@ const Header = ({ name, ...props }) => {
     console.log("click", e);
   };
 
-  const items = {
-    onClick: handleMenuClick,
-  };
-
   //!------------------------------------------------------------------
 
   const [ShowMobileMenu, setShowMobileMenu] = useState(false);
@@ -323,6 +320,7 @@ const Header = ({ name, ...props }) => {
     SetIsLoggedIn(false);
     message.success("Logout successfully!");
     ContextUserDetails.setUserState(null);
+    setShowMobileMenu(false);
   };
 
   return (
@@ -464,7 +462,7 @@ const Header = ({ name, ...props }) => {
             {...props}
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Menu</Offcanvas.Title>
+              <Offcanvas.Title></Offcanvas.Title>
             </Offcanvas.Header>
             <div className={HeaderCss.mobile_menu_logo_container}>
               <Image src={GolfHomMobileMenuLogo} alt="Golfhom logo"></Image>
@@ -717,7 +715,12 @@ const Header = ({ name, ...props }) => {
 
                   {/* MOBILE REGISTER MODAL BTN */}
                   <div className={HeaderCss.mobile_menu_div_container}>
-                    <Image src={Register} alt="Register" width={20} height={20} />
+                    <Image
+                      src={Register}
+                      alt="Register"
+                      width={20}
+                      height={20}
+                    />
                     <Link
                       className={HeaderCss.top_header_a}
                       href="/"
@@ -878,8 +881,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -900,8 +903,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -1416,7 +1419,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}

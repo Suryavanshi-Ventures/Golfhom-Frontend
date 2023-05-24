@@ -86,7 +86,7 @@
   font-family: var(--font-poppins);
   transition-duration: 0.5s;
   display: inline-block;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   font-size: 14px;
 }
 .below_header_a:hover {
@@ -97,6 +97,7 @@
 .mobile_dropdown_parent_div {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .top_header_menu_logggedin_link {
@@ -141,7 +142,6 @@
   font-weight: 500;
   font-family: var(--font-poppins);
   transition-duration: 0.5s;
-  margin-bottom: 5px;
   display: inline-block;
 }
 .top_header_logggedin_link_mobile:hover {

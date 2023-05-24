@@ -17,6 +17,10 @@
   justify-content: flex-end;
 }
 
+.edit_details_titles {
+  font-family: var(--font-poppins);
+}
+
 .edit_details_date_picker {
   width: 100%;
 }
@@ -69,11 +73,11 @@
 .searching,
 .searching:hover {
   width: 100%;
-  display: flex;
-  justify-content: center;
   background-color: var(--btn-background);
   color: var(--white-font-color) !important;
   border: none;
+  height: 50px;
+  /* width: 100px; */
 }
 
 /*    ----------------      CARD MAP SECTION      -------------------   */
@@ -111,6 +115,11 @@
   flex-wrap: wrap;
 }
 
+.asc_dsc_switch_div {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .cardCol {
   height: auto;
   flex: 1;
@@ -138,7 +147,6 @@
 
 .sortdiv {
   display: flex;
-  margin-right: 20px;
 }
 
 .default {
