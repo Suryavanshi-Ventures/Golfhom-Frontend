@@ -14,6 +14,7 @@
   object-fit: cover;
   border-radius: 16px;
   height: 235px !important;
+  filter: brightness(0.8);
 }
 
 .heartParent {
