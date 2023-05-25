@@ -51,7 +51,7 @@ const Home = () => {
 
     FetchLocationAPI();
 
-    return () => {};
+    return () => { };
   }, []);
 
   // DROPDOWN FOR SEARCH
@@ -121,7 +121,7 @@ const Home = () => {
         <div className={HomeCss.search_bar_main_container}>
           <div className={HomeCss.search_bar_container}>
             <Row className={HomeCss.searchBar}>
-              <Col lg={3} md={3} className={HomeCss.search_cols_4}>
+              <Col lg={3} md={4} className={HomeCss.search_cols_4}>
                 {/* <div className={HomeCss.inner_main_container}> */}
                 <div className={HomeCss.inner_input_container}>
                   <div className={HomeCss.image_destination}>
@@ -166,7 +166,7 @@ const Home = () => {
                 </div>
                 {/* </div> */}
               </Col>
-              <Col lg={3} md={3} className={HomeCss.search_cols_4}>
+              <Col lg={3} md={4} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_icon_container}>
                     <Image
@@ -225,7 +225,7 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col lg={3} md={3} className={HomeCss.search_cols_4}>
+              <Col lg={3} md={4} className={HomeCss.search_cols_45}>
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_icon_container}>
                     <Image
@@ -236,7 +236,7 @@ const Home = () => {
                       alt="Calender Image"
                     ></Image>
                   </div>
-                  <div className={HomeCss.inner_input_container}>
+                  <div className={HomeCss.inner_input_containerNight}>
                     <h6 className={HomeCss.destination}>
                       {(() => {
                         const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
@@ -265,15 +265,14 @@ const Home = () => {
                       UrlParamsDestination?.id
                     )}&location_name=${encodeURIComponent(
                       UrlParamsDestination?.country_name
-                    )}&guest=${encodeURIComponent(adult + child)}&from=${
-                      UrlParamsDateRange[0]
-                        ? UrlParamsDateRange[0]
-                        : moment().format("DD-MM-YYYY")
-                    }&to=${
-                      UrlParamsDateRange[1]
+                    )}&guest=${encodeURIComponent(adult + child)}&from=${UrlParamsDateRange[0]
+                      ? UrlParamsDateRange[0]
+                      : moment().format("DD-MM-YYYY")
+                      }&to=${UrlParamsDateRange[1]
                         ? UrlParamsDateRange[1]
                         : moment().format("DD-MM-YYYY")
-                    }`}
+                      }`}
+                    className={HomeCss.buttonParent}
                   >
                     <Button className={HomeCss.search_btn} type="primary">
                       Search

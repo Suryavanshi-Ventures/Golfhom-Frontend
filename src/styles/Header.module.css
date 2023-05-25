@@ -312,6 +312,10 @@
   font-size: 1.2rem;
 }
 
+.contactFill {
+  margin-right: 4px;
+}
+
 .donthaveAcc {
   font-family: var(--font-amiri);
   color: var(--black-color);

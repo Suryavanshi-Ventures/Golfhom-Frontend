@@ -73,7 +73,7 @@ const Footer = () => {
                   </li>
                   <li className={FooterCss.nav_link_li}>
                     <Link
-                      href="/termAndConditions"
+                      href="/term_and_conditions"
                       className={FooterCss.nav_link_a}
                     >
                       Terms and Conditions

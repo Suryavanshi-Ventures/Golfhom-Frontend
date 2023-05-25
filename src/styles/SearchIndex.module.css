@@ -70,6 +70,11 @@
   margin-bottom: 1.5rem;
 }
 
+.front {
+display: flex;
+align-items: center;
+}
+
 .searching,
 .searching:hover {
   width: 100%;
@@ -77,6 +82,8 @@
   color: var(--white-font-color) !important;
   border: none;
   height: 50px;
+  font-size: 1rem;
+  font-weight: 600;
   /* width: 100px; */
 }
 

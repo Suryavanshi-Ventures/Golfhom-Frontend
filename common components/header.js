@@ -25,6 +25,9 @@ import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
 import { AuthContext } from "@/context/auth_context";
 import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
 import Register from "../public/images/vector/registerToRent.svg";
+import Login from "../public/images/vector/log&signup.svg";
+import Blog from "../public/images/vector/Blog.svg";
+import About from "../public/images/vector/About.svg";
 
 const Header = ({ name, ...props }) => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
@@ -47,7 +50,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -680,41 +683,63 @@ const Header = ({ name, ...props }) => {
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
+                    <Image
+                      src={About}
+                      alt="About"
+                      width={20}
+                      height={20}
+                    />
                     <Link className={HeaderCss.top_header_a} href="/about">
                       About
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
+                    <Image
+                      src={Blog}
+                      alt="Blog"
+                      width={20}
+                      height={20}
+                    />
                     <Link className={HeaderCss.top_header_a} href="/blog">
                       Blog
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
-                    {<ContactsFilled size={80} />}
+                    {<ContactsFilled size={80} className={HeaderCss.contactFill} />}
                     <Link className={HeaderCss.top_header_a} href="/contact_us">
                       Contact Us
                     </Link>
                   </div>
 
                   {/* MOBILE LOGIN MODAL BTN */}
-                  <div className={HeaderCss.mobile_menu_div_container}>
-                    <Link
-                      className={HeaderCss.top_header_a}
-                      href="/"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <Space>
-                        {!IsLoggedIn &&
+                  {!IsLoggedIn &&
+                    <div className={HeaderCss.mobile_menu_div_container}>
+                      {/* <Image
+                      src={Login}
+                      alt="Login"
+                      width={20}
+                      height={20}
+                    /> */}
+                      {/* <span className={HeaderCss.headphones_icon}> */}
+                      <Image src={UserIcon} alt="user icon" />
+                      {/* </span> */}
+                      <Link
+                        className={HeaderCss.top_header_a}
+                        href="/"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <Space>
+
                           <Button
                             className={HeaderCss.signUpBtn}
                             onClick={loginLgDevice}
                           >
                             Log in & Sign up
                           </Button>
-                        }
-                      </Space>
-                    </Link>
-                  </div>
+                        </Space>
+                      </Link>
+                    </div>
+                  }
 
                   {/* MOBILE REGISTER MODAL BTN */}
                   <div className={HeaderCss.mobile_menu_div_container}>
@@ -886,8 +911,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -908,8 +933,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >
@@ -1015,7 +1040,7 @@ const Header = ({ name, ...props }) => {
                 ""
               ) : (
                 <Row md={12} className={HeaderCss.top_nav_bar_row}>
-                  <Col
+                  {/* <Col
                     xs={"auto"}
                     className={HeaderCss.top_header_Col_container}
                   >
@@ -1027,12 +1052,18 @@ const Header = ({ name, ...props }) => {
                         <Button className={HeaderCss.signUpBtn}>Help</Button>
                       </Space>
                     </Link>
-                  </Col>
+                  </Col> */}
 
                   <Col
                     xs={"auto"}
                     className={HeaderCss.top_header_Col_container}
-                  >
+                  >    <span>  <Image
+                    src={Register}
+                    alt="Register"
+                    width={17}
+                    height={17}
+                  />
+                    </span>
                     <Link
                       href="/"
                       className={HeaderCss.top_header_a}
@@ -1424,7 +1455,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                  UserName.slice(1)
+                                UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}

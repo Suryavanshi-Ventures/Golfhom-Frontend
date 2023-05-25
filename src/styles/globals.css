@@ -279,3 +279,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-transform-origin: bottom center;
   transform-origin: bottom center;
 }
+
+.ant-select, .ant-select-auto-complete, .ant-select-lg, .ant-select-show-search, .ant-select-single {
+width: 100% !important;
+}

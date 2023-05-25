@@ -44,7 +44,7 @@ const Index = () => {
 
   const EditBtn = () => {
     setShowHidden(true);
-    setIsVisible(false);
+    setIsVisible(true);
   };
 
   console.log(param, "PARAAAAAAAAAAMs");
@@ -65,37 +65,25 @@ const Index = () => {
 
     FetchLocationAPI();
 
-    return () => {};
+    return () => { };
   }, []);
   useEffect(() => {
     const GetPropertyData = axios.get(
-<<<<<<< HEAD
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
       }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
-      }&limit=10&page=${PaginationState}`
-=======
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
-        "to=" + param.to
       }&limit=10&page=${PaginationState}&sort="price"`
->>>>>>> 111146e0a84bc6c8a5da2d1ba453e5abea7b3192
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
         SetPropertyData(response.data.data);
         SetLengthOfProperty(response.data.data.length);
-<<<<<<< HEAD
-        console.log(response.data.data, "APi data");
-=======
         console.log(response.data.data, "API DATA PROPERTY ");
->>>>>>> 111146e0a84bc6c8a5da2d1ba453e5abea7b3192
       }
     }).catch((err) => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [PaginationState, param.from, param.guest, param.location_id, param.to]);
 
   useEffect(() => {
@@ -246,10 +234,10 @@ const Index = () => {
           </Col>
 
           <Col md={6} className={SearchIndexCss.twoCheckbox}>
-            <Col md={3} sm={6}>
+            <Col md={3} sm={6} className={SearchIndexCss.front}>
               <Checkbox>Golf Course Front</Checkbox>
             </Col>
-            <Col md={4} sm={6}>
+            <Col md={4} sm={6} className={SearchIndexCss.front}>
               <Checkbox>Golf Course Community</Checkbox>
             </Col>
 
