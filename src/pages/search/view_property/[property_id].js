@@ -44,10 +44,6 @@ const ViewProperty = () => {
   const [PaymentIntentObject, setPaymentIntentObject] = useState(null);
   const [Options, setOptions] = useState(null);
 
-  const onTabChange = (key) => {
-    console.log(key);
-  };
-
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
     const SpecificPropData = axios.get(
@@ -70,11 +66,14 @@ const ViewProperty = () => {
   useEffect(() => {
     if (PaymentIntentObject != null) {
       setOptions(PaymentIntentObject);
-      console.log("IF CONDIII");
     }
 
     return () => {};
   }, [PaymentIntentObject]);
+
+  const onTabChange = (key) => {
+    console.log(key);
+  };
 
   console.log(SpecificPropAPIData, "FROM VIEW PROP");
   const items = [
@@ -255,6 +254,10 @@ const ViewProperty = () => {
                   size="large"
                   style={{ width: "100%" }}
                   onChange={OnChangeDateInput}
+                  disabledDate={(current) => {
+                    return current && current < moment().endOf("day");
+                  }}
+                  onC
                   className={ViewPropertyCss.inner_input_date_picker}
                 />
               </div>
@@ -417,9 +420,8 @@ const ViewProperty = () => {
                     stripe={stripePromise}
                     options={{ clientSecret: Options.ClientSecret }}
                   >
-                    <PaymentElement />
-
                     <Checkout />
+                    <PaymentElement />
                   </Elements>
                 </>
               )}
@@ -489,7 +491,7 @@ const ViewProperty = () => {
         <section className={ViewPropertyCss.map_section}>
           <Container>
             <div className={ViewPropertyCss.map_section_main_container}>
-              <Map />
+              <Map data={[SpecificPropAPIData]} />
             </div>
           </Container>
         </section>

@@ -498,7 +498,9 @@ const Index = () => {
                             <Carousel.Item className={CarasoulMapCss.imageGap}>
                               <Link
                                 onClick={(e) => {
-                                  Router.push(`search/1`);
+                                  Router.push(
+                                    `search/view_property/${data.id}`
+                                  );
                                   e.preventDefault();
                                 }}
                                 href=""
@@ -525,16 +527,8 @@ const Index = () => {
 
                             <ol className="carousel-indicators">
                               <li
-                                className={index === 0 ? "active" : ""}
-                                onClick={() => setIndex(0)}
-                              ></li>
-                              <li
-                                className={index === 1 ? "active" : ""}
-                                onClick={() => setIndex(1)}
-                              ></li>
-                              <li
-                                className={index === 2 ? "active" : ""}
-                                onClick={() => setIndex(2)}
+                                className={id === 0 ? "active" : ""}
+                                onClick={() => setIndex(id)}
                               ></li>
                             </ol>
                           </Carousel>
@@ -581,7 +575,7 @@ const Index = () => {
             </Col>
             {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
             <Col md={4} className={SearchIndexCss.mapParent}>
-              <Map />
+              <Map data={PropertyData} />
             </Col>
           </Row>
 

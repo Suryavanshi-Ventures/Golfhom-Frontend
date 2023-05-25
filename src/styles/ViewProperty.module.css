@@ -103,12 +103,13 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 .inner_input_date_picker {
-  border: none;
   padding: 6px 10px;
+  border-color: var(--btn-background-secondary);
 }
 
 .inner_input_date_picker:hover {
-  border: none;
+  border-color: var(--black-color);
+
   border-inline-end-width: 1px;
 }
 .inner_input_date_picker:focus {
@@ -442,7 +443,8 @@
 }
 
 .map_section_main_container {
-  position: relative !important;
+  position: relative;
+  height: 600px;
 }
 
 .mapParent > div {
