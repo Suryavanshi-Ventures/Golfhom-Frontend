@@ -3,18 +3,18 @@ import { Navigation, Pagination, A11y } from "swiper";
 import HomeCss from "./styles/Home.module.css";
 import "swiper/swiper-bundle.min.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const Advertise = ({ ads }) => {
-
   return (
     <Swiper
       modules={[Navigation, Pagination, A11y]}
       spaceBetween={50}
       slidesPerView={5}
       pagination={{
-        clickable: true
+        clickable: true,
       }}
-      onSlideChange={() => { }}
+      onSlideChange={() => {}}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -45,13 +45,15 @@ const Advertise = ({ ads }) => {
     >
       {ads.map((ads) => (
         <SwiperSlide key={ads.id} className={HomeCss.parentAds}>
-          <Image
-            className={HomeCss.adsImage}
-            width={146}
-            height={146}
-            src={ads.image}
-            alt={ads.name}
-          ></Image>
+          <Link href={ads.link} target="_blank">
+            <Image
+              className={HomeCss.adsImage}
+              width={146}
+              height={146}
+              src={ads.image}
+              alt={ads.name}
+            ></Image>
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

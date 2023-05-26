@@ -568,7 +568,7 @@ const Index = () => {
                             </span>
 
                             <h5 className={CarasoulMapCss.price_of_property}>
-                              <sup>From</sup> ${data.price}/Night
+                              From: ${data.price}/Night
                             </h5>
                           </div>
                         </Col>

@@ -127,9 +127,13 @@
 
 .totalPrice {
   display: flex;
-  flex-direction: row;
-  /* flex-wrap: wrap; */
+  align-items: center;
+
   justify-content: space-between;
+}
+
+.totalTitle_h5 {
+  margin-bottom: 0px;
 }
 
 .totalTitle {

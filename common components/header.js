@@ -1276,7 +1276,10 @@ const Header = ({ name, ...props }) => {
                 {IsLoggedIn ? (
                   ""
                 ) : (
-                  <Col xs={"auto"}>
+                  <Col
+                    xs={"auto"}
+                    className={HeaderCss.top_header_Col_container}
+                  >
                     <Row>
                       {/* LOGIN SIGNUP AFTER USER IS LOGGED IN */}
                       <Col
