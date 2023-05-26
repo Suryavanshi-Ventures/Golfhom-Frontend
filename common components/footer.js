@@ -136,7 +136,7 @@ const Footer = () => {
                 <div className={FooterCss.icons_container}>
                   <span className={FooterCss.icons_spans}>
                     <Link
-                      href="/"
+                      href="https://www.linkedin.com/company/golfh%C5%8Dm/"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
@@ -150,7 +150,7 @@ const Footer = () => {
 
                   <span className={FooterCss.icons_spans}>
                     <Link
-                      href="/"
+                      href="https://www.facebook.com/golfhom1/"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
@@ -164,7 +164,7 @@ const Footer = () => {
 
                   <span className={FooterCss.icons_spans}>
                     <Link
-                      href="/"
+                      href="https://www.instagram.com/golfhom/"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
@@ -177,20 +177,7 @@ const Footer = () => {
                   </span>
                   <span className={FooterCss.icons_spans}>
                     <Link
-                      href="/"
-                      target="_blank"
-                      className={FooterCss.icons_a}
-                    >
-                      <Image
-                        src={YoutubeIcon}
-                        className={FooterCss.social_icons}
-                        alt="Youtube"
-                      />
-                    </Link>
-                  </span>
-                  <span className={FooterCss.icons_spans}>
-                    <Link
-                      href="/"
+                      href="https://twitter.com/golfhom?s=20"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
