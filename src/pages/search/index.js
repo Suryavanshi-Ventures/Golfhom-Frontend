@@ -184,7 +184,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Location
+                      Florida USA
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -220,7 +220,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Location
+                      Marmot Ridge Golf Course
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -354,7 +354,7 @@ const Index = () => {
                               SearchIndexCss.edit_room_dropdown_btn_space
                             }
                           >
-                            Button Drop Down
+                            1 Room: 1 Adult/ Room
                             <DownOutlined
                               className={SearchIndexCss.edit_room_dropdown_icon}
                             />
