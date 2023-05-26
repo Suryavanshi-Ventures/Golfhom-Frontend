@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect, React } from "react";
 import Head from "next/head";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import {
@@ -67,9 +67,9 @@ const Index = () => {
   }, []);
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
-      }&limit=10&page=${PaginationState}&sort="price"`
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort="price"`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
