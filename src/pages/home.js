@@ -9,50 +9,66 @@ import ads from "../pages/json/ads.json";
 import Advertise from "../advertise";
 import Image from "next/image";
 import { Dropdown, Input, Space, Typography, message } from "antd";
-import { Button, DatePicker, AutoComplete } from "antd";
+import { Button, DatePicker, Skeleton } from "antd";
 const { RangePicker } = DatePicker;
 import Video from "../video";
 import video from "../pages/json/video.json";
 import Review from "../review";
 import review from "../pages/json/review.json";
-import { SearchOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { DownOutlined } from "@ant-design/icons";
 import BottomSection from "../../common components/bottomGroup";
 import axios from "axios";
-import Router from "next/router";
 import moment from "moment";
 import BlackArrow from "../../public/images/vector/backArrow.svg";
+import { Autocomplete, useLoadScript } from "@react-google-maps/api";
+const placesLibrary = ["places"];
 
 const Home = () => {
-  const [SearchOptions, setSearchOptions] = useState([]);
   const [UrlParamsDestination, setUrlParamsDestination] = useState({
     country_name: "",
     id: "",
   });
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
+  const [searchResult, setSearchResult] = useState("");
+  const [UrlParamsGeoData, setUrlParamsGeoData] = useState({
+    latitude: "",
+    longitude: "",
+    location_name: "",
+  });
+  // FOR ADULT BUTTON INCREMENT AND DECREMENT
+  const [adult, setAdult] = useState(0);
+  // FOR CHILD BUTTON INCREMENT AND DECREMENT
+  const [child, setChild] = useState(0);
 
-  const [SearchData, setSearchData] = useState(null);
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: placesLibrary,
+  });
 
-  useEffect(() => {
-    const FetchLocationAPI = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/location`
-        );
-        if (response.status === 200) {
-          console.log(response.data.data);
-          setSearchOptions(response.data.data);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
+  const onLoad = (autocomplete) => {
+    setSearchResult(autocomplete);
+  };
 
-    FetchLocationAPI();
-
-    return () => { };
-  }, []);
+  const onPlaceChanged = () => {
+    if (searchResult != null) {
+      const place = searchResult.getPlace();
+      const name = place.name;
+      const status = place.business_status;
+      const formattedAddress = place.formatted_address;
+      setUrlParamsGeoData({
+        latitude: place.geometry?.location.lat(),
+        longitude: place.geometry?.location.lng(),
+        location_name: name,
+      });
+      console.log(`Name: ${name}`);
+      console.log(`Business Status: ${status}`);
+      console.log(`Formatted Address: ${formattedAddress}`);
+    } else {
+      alert("Please enter text");
+    }
+  };
 
   // DROPDOWN FOR SEARCH
 
@@ -68,13 +84,6 @@ const Home = () => {
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
   };
-  const OnSubmitSearch = (e) => {
-    e.preventDefault();
-    console.log(SearchData, "SEARCH ON CLICK");
-  };
-
-  // FOR ADULT BUTTON INCREMENT AND DECREMENT
-  const [adult, setAdult] = useState(1);
 
   const incAdult = () => {
     setAdult(adult + 1);
@@ -84,14 +93,10 @@ const Home = () => {
     if (adult > 0) {
       setAdult(adult - 1);
     } else {
-      message.error("Sorry number of adults can not be less than 1");
+      message.error("Sorry number of adults can not be less than 0");
       setAdult(0);
     }
   };
-
-  // FOR CHILD BUTTON INCREMENT AND DECREMENT
-
-  const [child, setChild] = useState(1);
 
   const incChild = () => {
     setChild(child + 1);
@@ -101,11 +106,13 @@ const Home = () => {
     if (child > 0) {
       setChild(child - 1);
     } else {
-      message.error("Sorry number of children can not be less than 1");
+      message.error("Sorry number of children can not be less than 0");
       setChild(0);
     }
   };
-
+  const OnSearchInputChange = (event) => {
+    console.log(event.target.value);
+  };
   return (
     <>
       <Head>
@@ -125,18 +132,25 @@ const Home = () => {
                 {/* <div className={HomeCss.inner_main_container}> */}
                 <div className={HomeCss.inner_input_container}>
                   <div className={HomeCss.image_destination}>
-                    <div className={HomeCss.inner_icon_container}>
-                      <Image
-                        className={HomeCss.location}
-                        width={25}
-                        height={25}
-                        src="/images/vector/location.svg"
-                        alt="Location Image"
-                      ></Image>
-                    </div>
-                    <h6 className={HomeCss.destination}>
-                      DESTINATION {UrlParamsDestination.country_name}
-                    </h6>
+                    <Row>
+                      <Col xs={"auto"}>
+                        <div className={HomeCss.inner_icon_container}>
+                          <Image
+                            className={HomeCss.location}
+                            width={25}
+                            height={25}
+                            src="/images/vector/location.svg"
+                            alt="Location Image"
+                          ></Image>
+                        </div>
+                      </Col>
+
+                      <Col>
+                        <h6 className={HomeCss.destination}>
+                          Destination {UrlParamsDestination.country_name}
+                        </h6>
+                      </Col>
+                    </Row>
                   </div>
                   <div className={HomeCss.inner_input}>
                     {/* <Input
@@ -145,42 +159,75 @@ const Home = () => {
                         placeholder="Where you want to stay"
                       /> */}
 
-                    <AutoComplete
-                      style={{
-                        width: 200,
-                      }}
-                      options={SearchOptions.map((country) => ({
-                        value: country.name,
-                        Uid: country.id,
-                      }))}
-                      onChange={OnChangeDestination}
-                      size="large"
-                      placeholder="Where you want to stay"
-                      filterOption={(inputValue, option) =>
-                        option.value
-                          .toUpperCase()
-                          .indexOf(inputValue.toUpperCase()) !== -1
-                      }
-                    />
+                    {isLoaded ? (
+                      <Autocomplete
+                        onPlaceChanged={onPlaceChanged}
+                        onLoad={onLoad}
+                      >
+                        <Input
+                          className={HomeCss.inner_input_box}
+                          size="large"
+                          onChange={OnSearchInputChange}
+                          name="search_input"
+                          placeholder="Where you want to stay"
+                        />
+                      </Autocomplete>
+                    ) : (
+                      <Skeleton.Input
+                        active={true}
+                        size={"mid"}
+                        className={HomeCss.input_skeleton}
+                      />
+                    )}
+
+                    {/* <Autocomplete
+                      onPlaceChanged={onPlaceChanged}
+                      onLoad={onLoad}
+                    >
+                      <input
+                        type="text"
+                        placeholder="Search for Tide Information"
+                        style={{
+                          boxSizing: `border-box`,
+                          border: `1px solid transparent`,
+                          width: `240px`,
+                          height: `32px`,
+                          padding: `0 12px`,
+                          borderRadius: `3px`,
+                          boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                          fontSize: `14px`,
+                          outline: `none`,
+                          textOverflow: `ellipses`,
+                        }}
+                      />
+                    </Autocomplete> */}
                   </div>
                 </div>
                 {/* </div> */}
               </Col>
               <Col lg={3} md={4} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
-                  <div className={HomeCss.inner_icon_container}>
-                    <Image
-                      className={HomeCss.location}
-                      width={35}
-                      height={35}
-                      src="/images/vector/family_search_icon.svg"
-                      alt="Calender Image"
-                    ></Image>
-                  </div>
                   <div className={HomeCss.inner_input_container}>
-                    <h6 className={HomeCss.destination}>
-                      Guests: {adult} Adult / {child} Children
-                    </h6>
+                    <Row>
+                      <Col xs={"auto"}>
+                        <div className={HomeCss.inner_icon_container}>
+                          <Image
+                            className={HomeCss.location}
+                            width={35}
+                            height={35}
+                            src="/images/vector/family_search_icon.svg"
+                            alt="family Image"
+                          ></Image>
+                        </div>
+                      </Col>
+
+                      <Col>
+                        <h6 className={HomeCss.destination}>
+                          Guests: {adult} Adult / {child} Children
+                        </h6>
+                      </Col>
+                    </Row>
+
                     <div className={HomeCss.inner_input_guest_selector}>
                       {/* <RangePicker
                         size="large"
@@ -225,31 +272,37 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col lg={3} md={4} className={HomeCss.search_cols_45}>
+              <Col lg={3} md={4} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
-                  <div className={HomeCss.inner_icon_container}>
-                    <Image
-                      className={HomeCss.location}
-                      width={25}
-                      height={25}
-                      src="/images/vector/calender.svg"
-                      alt="Calender Image"
-                    ></Image>
-                  </div>
                   <div className={HomeCss.inner_input_containerNight}>
-                    <h6 className={HomeCss.destination}>
-                      {(() => {
-                        const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
-                        const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
-                        return endDate.diff(startDate, "days") || 0;
-                      })()}{" "}
-                      NIGHTS
-                    </h6>
+                    <Row>
+                      <Col xs={"auto"}>
+                        <div className={HomeCss.inner_icon_container}>
+                          <Image
+                            className={HomeCss.location}
+                            width={25}
+                            height={25}
+                            src="/images/vector/calender.svg"
+                            alt="Calender Image"
+                          ></Image>
+                        </div>
+                      </Col>
+                      <Col>
+                        <h6 className={HomeCss.destination}>
+                          {(() => {
+                            const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
+                            const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
+                            return endDate.diff(startDate, "days") || 0;
+                          })()}{" "}
+                          Nights
+                        </h6>
+                      </Col>
+                    </Row>
                     <div className={HomeCss.inner_input_date_picker}>
                       <RangePicker
                         size="large"
                         disabledDate={(current) => {
-                          return current && current < moment().endOf("day");
+                          return current && current < moment().startOf("day");
                         }}
                         onChange={OnChangeDateRange}
                         className={HomeCss.inner_input_date_picker}
@@ -261,17 +314,21 @@ const Home = () => {
               <Col lg={3} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
                   <Link
-                    href={`/search?location_id=${encodeURIComponent(
-                      UrlParamsDestination?.id
+                    href={`/search?latitude=${encodeURIComponent(
+                      UrlParamsGeoData?.latitude
+                    )}longitude=${encodeURIComponent(
+                      UrlParamsGeoData?.longitude
                     )}&location_name=${encodeURIComponent(
-                      UrlParamsDestination?.country_name
-                    )}&guest=${encodeURIComponent(adult + child)}&from=${UrlParamsDateRange[0]
-                      ? UrlParamsDateRange[0]
-                      : moment().format("DD-MM-YYYY")
-                      }&to=${UrlParamsDateRange[1]
+                      UrlParamsGeoData?.location_name
+                    )}&guest=${encodeURIComponent(adult + child)}&from=${
+                      UrlParamsDateRange[0]
+                        ? UrlParamsDateRange[0]
+                        : moment().format("DD-MM-YYYY")
+                    }&to=${
+                      UrlParamsDateRange[1]
                         ? UrlParamsDateRange[1]
                         : moment().format("DD-MM-YYYY")
-                      }`}
+                    }`}
                     className={HomeCss.buttonParent}
                   >
                     <Button className={HomeCss.search_btn} type="primary">

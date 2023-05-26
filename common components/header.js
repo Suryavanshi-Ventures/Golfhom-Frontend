@@ -50,7 +50,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -683,53 +683,40 @@ const Header = ({ name, ...props }) => {
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
-                    <Image
-                      src={About}
-                      alt="About"
-                      width={20}
-                      height={20}
-                    />
+                    <Image src={About} alt="About" width={20} height={20} />
                     <Link className={HeaderCss.top_header_a} href="/about">
                       About
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
-                    <Image
-                      src={Blog}
-                      alt="Blog"
-                      width={20}
-                      height={20}
-                    />
+                    <Image src={Blog} alt="Blog" width={20} height={20} />
                     <Link className={HeaderCss.top_header_a} href="/blog">
                       Blog
                     </Link>
                   </div>
                   <div className={HeaderCss.mobile_menu_div_container}>
-                    {<ContactsFilled size={80} className={HeaderCss.contactFill} />}
+                    {
+                      <ContactsFilled
+                        size={80}
+                        className={HeaderCss.contactFill}
+                      />
+                    }
                     <Link className={HeaderCss.top_header_a} href="/contact_us">
                       Contact Us
                     </Link>
                   </div>
 
                   {/* MOBILE LOGIN MODAL BTN */}
-                  {!IsLoggedIn &&
+                  {!IsLoggedIn && (
                     <div className={HeaderCss.mobile_menu_div_container}>
-                      {/* <Image
-                      src={Login}
-                      alt="Login"
-                      width={20}
-                      height={20}
-                    /> */}
-                      {/* <span className={HeaderCss.headphones_icon}> */}
                       <Image src={UserIcon} alt="user icon" />
-                      {/* </span> */}
+
                       <Link
                         className={HeaderCss.top_header_a}
                         href="/"
                         onClick={(e) => e.preventDefault()}
                       >
                         <Space>
-
                           <Button
                             className={HeaderCss.signUpBtn}
                             onClick={loginLgDevice}
@@ -739,7 +726,7 @@ const Header = ({ name, ...props }) => {
                         </Space>
                       </Link>
                     </div>
-                  }
+                  )}
 
                   {/* MOBILE REGISTER MODAL BTN */}
                   <div className={HeaderCss.mobile_menu_div_container}>
@@ -771,8 +758,6 @@ const Header = ({ name, ...props }) => {
                       </Button>
                     </Link>
                   </div>
-
-
                 </div>
               </nav>
             </Offcanvas.Body>
@@ -911,8 +896,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -933,8 +918,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -986,224 +971,6 @@ const Header = ({ name, ...props }) => {
           {/* PROFILE DROPDOWN IN LARGE DEVICE */}
           <Row className={HeaderCss.top_nav_bar_main_row}>
             <div>
-              {IsLoggedIn ? (
-                <div className={HeaderCss.top_nav_bar_usd_dropdown_container}>
-                  <Dropdown
-                    className={HeaderCss.top_nav_bar_usd_dropdown_links}
-                    menu={{
-                      items: [
-                        {
-                          key: "11",
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_nav_bar_usd_dropdown_links
-                              }
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="/"
-                            >
-                              1st menu item
-                            </Link>
-                          ),
-                        },
-                        {
-                          key: "12",
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_nav_bar_usd_dropdown_links
-                              }
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="/"
-                            >
-                              2nd menu item (disabled)
-                            </Link>
-                          ),
-                        },
-                      ],
-                    }}
-                  >
-                    <Link href="/" onClick={(e) => e.preventDefault()}>
-                      <Space>
-                        USD
-                        <DownOutlined />
-                      </Space>
-                    </Link>
-                  </Dropdown>
-                </div>
-              ) : (
-                ""
-              )}
-              {IsLoggedIn ? (
-                ""
-              ) : (
-                <Row md={12} className={HeaderCss.top_nav_bar_row}>
-                  {/* <Col
-                    xs={"auto"}
-                    className={HeaderCss.top_header_Col_container}
-                  >
-                    <span className={HeaderCss.headphones_icon}>
-                      <Image src={HeadPhoneIcon} alt="headphones" />
-                    </span>
-                    <Link className={HeaderCss.top_header_a} href="/">
-                      <Space>
-                        <Button className={HeaderCss.signUpBtn}>Help</Button>
-                      </Space>
-                    </Link>
-                  </Col> */}
-
-                  <Col
-                    xs={"auto"}
-                    className={HeaderCss.top_header_Col_container}
-                  >    <span>  <Image
-                    src={Register}
-                    alt="Register"
-                    width={17}
-                    height={17}
-                  />
-                    </span>
-                    <Link
-                      href="/"
-                      className={HeaderCss.top_header_a}
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <Space>
-                        <Button
-                          className={HeaderCss.signUpBtn}
-                          onClick={registerToRentLgDevice}
-                        >
-                          Register to Rent
-                        </Button>
-                      </Space>
-                    </Link>
-
-                    {/* -----------      REGISTER TO RENT SECTION IN LARGE DEVICE       -----------------*/}
-
-                    <Modal
-                      title="Register To Rent"
-                      footer={null}
-                      open={registerToRentModalgDevice}
-                      onSignup={handleRegisterToRentLgDevice}
-                      onCancel={handleCancelRegisterToRentLgDevice}
-                      width={440}
-                      className={HeaderCss.headerReg}
-                    >
-                      <Col className={HeaderCss.inputParent}>
-                        <div>
-                          <Input
-                            className={HeaderCss.inputA}
-                            type="text"
-                            placeholder="Enter User name"
-                          ></Input>
-                        </div>
-
-                        <div>
-                          <Input
-                            className={HeaderCss.inputB}
-                            type="email"
-                            placeholder="Email"
-                          ></Input>
-                        </div>
-
-                        <div>
-                          <Input
-                            className={HeaderCss.inputC}
-                            type="password"
-                            placeholder="Password"
-                          ></Input>
-                        </div>
-
-                        <div>
-                          <Input
-                            className={HeaderCss.inputD}
-                            type="password"
-                            placeholder="Repeat Password"
-                          ></Input>
-                        </div>
-                      </Col>
-
-                      <Dropdown
-                        menu={{
-                          items: [
-                            {
-                              key: "31",
-                              label: "Select",
-                            },
-                            {
-                              key: "32",
-                              label: "Register to Rent",
-                            },
-                            {
-                              key: "33",
-                              label: "Register to Host",
-                            },
-                          ],
-                        }}
-                      >
-                        <Button
-                          size="large"
-                          className={HeaderCss.edit_room_dropdown_btn}
-                        >
-                          <Space
-                            className={HeaderCss.edit_room_dropdown_btn_space}
-                          >
-                            I want to Rent
-                            <DownOutlined
-                              className={HeaderCss.edit_room_dropdown_icon}
-                            />
-                          </Space>
-                        </Button>
-                      </Dropdown>
-
-                      <Row className={HeaderCss.twoAgree}>
-                        <div>
-                          <Checkbox className={HeaderCss.agreeOptionA}>
-                            I agree with your Terms & Conditions
-                          </Checkbox>
-                        </div>
-                        <div>
-                          <Checkbox className={HeaderCss.agreeOptionB}>
-                            I agree with your Privacy Policy
-                          </Checkbox>
-                        </div>
-                      </Row>
-
-                      <div className={HeaderCss.registBtnParent}>
-                        <Button className={HeaderCss.registerBtn}>
-                          Register
-                        </Button>
-                      </div>
-                    </Modal>
-                  </Col>
-
-                  <Col
-                    xs={"auto"}
-                    className={HeaderCss.top_header_Col_container}
-                  >
-                    <span className={HeaderCss.headphones_icon}>
-                      <Image src={UserIcon} alt="user icon" />
-                    </span>
-
-                    <Link
-                      href="/"
-                      className={HeaderCss.top_header_a}
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <Space>
-                        <Button
-                          className={HeaderCss.signUpBtn}
-                          onClick={loginLgDevice}
-                        >
-                          Log in & Sign up
-                        </Button>
-                      </Space>
-                    </Link>
-                  </Col>
-                </Row>
-              )}
-
               <Row
                 className={`${HeaderCss.top_nav_bar_row} ${HeaderCss.register_host_btn_row}`}
               >
@@ -1214,7 +981,7 @@ const Header = ({ name, ...props }) => {
                 </Col>
 
                 <Col
-                  md={7}
+                  md={5}
                   xs={"auto"}
                   className={HeaderCss.top_header_register_host_col_container}
                 >
@@ -1455,7 +1222,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
@@ -1468,6 +1235,50 @@ const Header = ({ name, ...props }) => {
                         </Dropdown>
                       </Col>
                     ) : (
+                      <>
+                        {/* <Col
+                          xs={"auto"}
+                          className={HeaderCss.top_header_Col_container}
+                        >
+                          <Link href="/register_to_host">
+                            <Button
+                              type="primary"
+                              className={HeaderCss.register_btn}
+                            >
+                              Register To Host
+                            </Button>
+                          </Link>
+                        </Col>
+                        <Col
+                          xs={"auto"}
+                          className={HeaderCss.top_header_Col_container}
+                        >
+                          <Link
+                            href="/"
+                            className={HeaderCss.top_header_a}
+                            onClick={(e) => e.preventDefault()}
+                          >
+                            <Space>
+                              <Button
+                                className={HeaderCss.signUpBtn}
+                                onClick={loginLgDevice}
+                              >
+                                Log in & Sign up
+                              </Button>
+                            </Space>
+                          </Link>
+                        </Col> */}
+                      </>
+                    )}
+                  </Row>
+                </Col>
+
+                {IsLoggedIn ? (
+                  ""
+                ) : (
+                  <Col xs={"auto"}>
+                    <Row>
+                      {/* LOGIN SIGNUP AFTER USER IS LOGGED IN */}
                       <Col
                         xs={"auto"}
                         className={HeaderCss.top_header_Col_container}
@@ -1481,9 +1292,28 @@ const Header = ({ name, ...props }) => {
                           </Button>
                         </Link>
                       </Col>
-                    )}
-                  </Row>
-                </Col>
+                      <Col
+                        xs={"auto"}
+                        className={HeaderCss.top_header_Col_container}
+                      >
+                        <Link
+                          href="/"
+                          className={HeaderCss.top_header_a}
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          <Space>
+                            <Button
+                              className={HeaderCss.signUpBtn}
+                              onClick={loginLgDevice}
+                            >
+                              Log in & Sign up
+                            </Button>
+                          </Space>
+                        </Link>
+                      </Col>
+                    </Row>
+                  </Col>
+                )}
               </Row>
             </div>
           </Row>
