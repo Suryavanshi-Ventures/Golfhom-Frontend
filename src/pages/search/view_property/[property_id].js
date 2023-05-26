@@ -47,7 +47,8 @@ const ViewProperty = () => {
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
     const SpecificPropData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${PropertyId || UrlParamId
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
+        PropertyId || UrlParamId
       }`
     );
 
@@ -59,7 +60,7 @@ const ViewProperty = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [PropertyId]);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const ViewProperty = () => {
       setOptions(PaymentIntentObject);
     }
 
-    return () => { };
+    return () => {};
   }, [PaymentIntentObject]);
 
   const onTabChange = (key) => {
@@ -229,12 +230,14 @@ const ViewProperty = () => {
               <div className={ViewPropertyCss.totalParent}>
                 <div className={ViewPropertyCss.totalPrice}>
                   <div className={ViewPropertyCss.totalTitle}>
-                    <h4>
-                      Total <br /> Price
-                    </h4>
+                    <h5 className={ViewPropertyCss.totalTitle_h5}>
+                      Price / Night
+                    </h5>
                   </div>
                   <div className={ViewPropertyCss.amount}>
-                    <h5>${SpecificPropAPIData.price}</h5>
+                    <h5 className={ViewPropertyCss.totalTitle_h5}>
+                      ${SpecificPropAPIData.price}
+                    </h5>
                   </div>
                 </div>
 
@@ -254,7 +257,7 @@ const ViewProperty = () => {
                   style={{ width: "100%" }}
                   onChange={OnChangeDateInput}
                   disabledDate={(current) => {
-                    return current && current < moment().endOf("day");
+                    return current && current < moment().startOf("day");
                   }}
                   onC
                   className={ViewPropertyCss.inner_input_date_picker}
@@ -379,7 +382,8 @@ const ViewProperty = () => {
                         className={ViewPropertyCss.inputD}
                         type="address"
                         placeholder="Message"
-                        rows="3" cols="50"
+                        rows="3"
+                        cols="50"
                       />
                     </div>
                   </Col>

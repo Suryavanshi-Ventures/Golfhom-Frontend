@@ -16,9 +16,7 @@ const ErrorPage = () => {
       <section className={ErrorPageStyle.page_404}>
         <div className={ErrorPageStyle.container}>
           <div className={ErrorPageStyle.row}>
-            <div className={ErrorPageStyle.four_zero_four_bg}>
-              <h1 className={ErrorPageStyle.four_zero_four_bg_h1}>404</h1>
-            </div>
+            <div className={ErrorPageStyle.four_zero_four_bg}></div>
             <div className={ErrorPageStyle.four_zero_four_bg_btn_container}>
               <h3 className={ErrorPageStyle.h2}>Look like you're lost</h3>
               <p>the page you are looking for not available!</p>

@@ -26,17 +26,17 @@ import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 const placesLibrary = ["places"];
 
 const Home = () => {
-  const [UrlParamsDestination, setUrlParamsDestination] = useState({
-    country_name: "",
-    id: "",
-  });
-  const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [searchResult, setSearchResult] = useState("");
+  const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [UrlParamsGeoData, setUrlParamsGeoData] = useState({
     latitude: "",
     longitude: "",
     location_name: "",
   });
+  const [InputValue, setInputValue] = useState({
+    search_input: "",
+  });
+
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
   const [adult, setAdult] = useState(0);
   // FOR CHILD BUTTON INCREMENT AND DECREMENT
@@ -65,6 +65,9 @@ const Home = () => {
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
+      setInputValue({
+        search_input: formattedAddress,
+      });
     } else {
       alert("Please enter text");
     }
@@ -72,14 +75,6 @@ const Home = () => {
 
   // DROPDOWN FOR SEARCH
 
-  const OnChangeDestination = (LocationName, DateValue) => {
-    setUrlParamsDestination({
-      country_name: DateValue.value,
-      id: DateValue.Uid,
-    });
-
-    console.log("ON CHANGE DATA DESTINATION", DateValue);
-  };
   const OnChangeDateRange = (LocationName, DateValue) => {
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
@@ -112,6 +107,7 @@ const Home = () => {
   };
   const OnSearchInputChange = (event) => {
     console.log(event.target.value);
+    setInputValue(event.target.value);
   };
   return (
     <>
@@ -146,9 +142,7 @@ const Home = () => {
                       </Col>
 
                       <Col>
-                        <h6 className={HomeCss.destination}>
-                          Destination {UrlParamsDestination.country_name}
-                        </h6>
+                        <h6 className={HomeCss.destination}>Destination</h6>
                       </Col>
                     </Row>
                   </div>
@@ -167,6 +161,7 @@ const Home = () => {
                         <Input
                           className={HomeCss.inner_input_box}
                           size="large"
+                          value={InputValue.search_input}
                           onChange={OnSearchInputChange}
                           name="search_input"
                           placeholder="Where you want to stay"
@@ -293,7 +288,7 @@ const Home = () => {
                   <Link
                     href={`/search?latitude=${encodeURIComponent(
                       UrlParamsGeoData?.latitude
-                    )}longitude=${encodeURIComponent(
+                    )}&longitude=${encodeURIComponent(
                       UrlParamsGeoData?.longitude
                     )}&location_name=${encodeURIComponent(
                       UrlParamsGeoData?.location_name

@@ -1,61 +1,71 @@
 [
-    {
-        "id": 11,
-        "image": "/images/circleIsGolf.svg",
-        "name": "15"
-    },
+  {
+    "id": 11,
+    "image": "/images/circleIsGolf.svg",
+    "name": "15",
+    "link": "https://circle15golf.com/"
+  },
 
-    {
-        "id": 12,
-        "image": "/images/hudson.svg",
-        "name": "15"
-    },
+  {
+    "id": 12,
+    "image": "/images/hudson.svg",
+    "name": "15",
+    "link": "https://www.dhudsongolfwear.com/"
+  },
 
-    {
-        "id": 13,
-        "image": "/images/cap.svg",
-        "name": "15"
-    },
+  {
+    "id": 13,
+    "image": "/images/cap.svg",
+    "name": "15",
+    "link": "https://www.vicegolf.com/"
+  },
 
-    {
-        "id": 14,
-        "image": "/images/auto.svg",
-        "name": "15"
-    },
+  {
+    "id": 14,
+    "image": "/images/auto.svg",
+    "name": "15",
+    "link": "https://www.autoeurope.eu"
+  },
 
-    {
-        "id": 15,
-        "image": "/images/shipSticks.svg",
-        "name": "15"
-    },
+  {
+    "id": 15,
+    "image": "/images/shipSticks.svg",
+    "name": "15",
+    "link": "https://www.shipsticks.com/"
+  },
 
-    {
-        "id": 16,
-        "image": "/images/circleIsGolf.svg",
-        "name": "15"
-    },
+  {
+    "id": 16,
+    "image": "/images/circleIsGolf.svg",
+    "name": "15",
+    "link": "https://circle15golf.com/"
+  },
 
-    {
-        "id": 17,
-        "image": "/images/hudson.svg",
-        "name": "15"
-    },
+  {
+    "id": 17,
+    "image": "/images/hudson.svg",
+    "name": "15",
+    "link": "https://www.dhudsongolfwear.com/"
+  },
 
-    {
-        "id": 18,
-        "image": "/images/cap.svg",
-        "name": "15"
-    },
+  {
+    "id": 18,
+    "image": "/images/cap.svg",
+    "name": "15",
+    "link": "https://www.vicegolf.com/"
+  },
 
-    {
-        "id": 19,
-        "image": "/images/auto.svg",
-        "name": "15"
-    },
+  {
+    "id": 19,
+    "image": "/images/auto.svg",
+    "name": "15",
+    "link": "https://www.autoeurope.eu"
+  },
 
-    {
-        "id": 20,
-        "image": "/images/shipSticks.svg",
-        "name": "15"
-    }
+  {
+    "id": 20,
+    "image": "/images/shipSticks.svg",
+    "name": "15",
+    "link": "https://www.shipsticks.com/"
+  }
 ]

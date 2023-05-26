@@ -63,12 +63,14 @@ const Index = () => {
 
     FetchLocationAPI();
 
-    return () => { };
+    return () => {};
   }, []);
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort="price"`
     );
     GetPropertyData.then((response) => {
@@ -81,8 +83,15 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
-  }, [PaginationState, param.from, param.guest, param.location_id, param.to]);
+    return () => {};
+  }, [
+    PaginationState,
+    param.from,
+    param.guest,
+    param.latitude,
+    param.to,
+    param.longitude,
+  ]);
 
   useEffect(() => {
     const GetPropertyData = axios.get(
@@ -105,8 +114,10 @@ const Index = () => {
 
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "locationId=" + param.location_id
+      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
+        "to=" + param.to
       }&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {
@@ -557,7 +568,7 @@ const Index = () => {
                             </span>
 
                             <h5 className={CarasoulMapCss.price_of_property}>
-                              <sup>From</sup> ${data.price}/Night
+                              From: ${data.price}/Night
                             </h5>
                           </div>
                         </Col>
