@@ -293,7 +293,7 @@ const Home = () => {
                   <Link
                     href={`/search?latitude=${encodeURIComponent(
                       UrlParamsGeoData?.latitude
-                    )}longitude=${encodeURIComponent(
+                    )}&longitude=${encodeURIComponent(
                       UrlParamsGeoData?.longitude
                     )}&location_name=${encodeURIComponent(
                       UrlParamsGeoData?.location_name

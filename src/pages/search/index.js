@@ -84,7 +84,14 @@ const Index = () => {
     });
 
     return () => {};
-  }, [PaginationState, param.from, param.guest, param.location_id, param.to]);
+  }, [
+    PaginationState,
+    param.from,
+    param.guest,
+    param.latitude,
+    param.to,
+    param.longitude,
+  ]);
 
   useEffect(() => {
     const GetPropertyData = axios.get(
