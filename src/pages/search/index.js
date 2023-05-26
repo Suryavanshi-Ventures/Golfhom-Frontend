@@ -22,7 +22,7 @@ import Buildings from "../../../public/images/buildings.png";
 import BottomSection from "../../../common components/bottomGroup";
 import CarasoulMapCss from "../../styles/CarouselMap.module.css";
 import Dot from "../../../public/images/vector/dot.svg";
-import MyComponent from "../../../common components/map";
+import Map from "../../../common components/map";
 import Loader from "../../../common components/loader";
 import axios from "axios";
 import { useRouter } from "next/router";

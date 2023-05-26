@@ -31,8 +31,8 @@ const ContactUs = () => {
           ></Image>
         </div>
 
-        <Container>
-          <div className={ContactUsCss.contact_us_input_section}>
+        <Container className={ContactUsCss.parent_container}>
+          <Col md={7} className={ContactUsCss.contact_us_input_section}>
             <h3 className={ContactUsCss.contact_us_input_heading}>
               Contact us
             </h3>
@@ -86,7 +86,7 @@ const ContactUs = () => {
             <div className={ContactUsCss.contact_us_input_container}>
               <Button className={ContactUsCss.contact_us_send_btn}>Send</Button>
             </div>
-          </div>
+          </Col>
         </Container>
 
         {/* THANKS FOR REACHING SECTION */}

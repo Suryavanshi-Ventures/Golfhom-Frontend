@@ -33,7 +33,7 @@ const privacy = () => {
                 <p className={PrivacyPolicyCss.paraD}>When you visit the Site, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies that are installed on your device. Additionally, as you browse the Site, we collect information about the individual web pages or products that you view, what websites or search terms referred you to the Site, and information about how you interact with the Site. We refer to this automatically-collected information as “Device Information.”</p>
 
 
-                <p className={PrivacyPolicyCss.paraE}>We collect Device Information using the following technologies:</p>
+                <p className={PrivacyPolicyCss.paraE}>We collect Device Information using the following technologies :</p>
 
 
                 <p className={PrivacyPolicyCss.paraF}>– “Cookies” are data files that are placed on your device or computer and often include an anonymous unique identifier. For more information about cookies, and how to disable cookies, visit http://www.allaboutcookies.org.</p>
@@ -93,9 +93,9 @@ const privacy = () => {
 
                 <p className={PrivacyPolicyCss.paraS}>  • to let you have a portable copy of the personal data we hold about you, where we are required by law to do so;</p>
 
-                <p className={PrivacyPolicyCss.paraS}>  • to stop processing any of your personal data that we process on the basis of our legitimate interests; and</p>
+                <p className={PrivacyPolicyCss.paraS}>  • to stop processing any of your personal data that we process on the basis of our legitimate interests;</p>
 
-                <p className={PrivacyPolicyCss.paraS}> • to stop sending you marketing material. However please note that we may continue to send you service related (i.e. non-marketing) communications, such as email updates.</p>
+                <p className={PrivacyPolicyCss.paraS}> • And to stop sending you marketing material. However please note that we may continue to send you service related (i.e. non-marketing) communications, such as email updates.</p>
 
 
                 <p className={PrivacyPolicyCss.paraT}>If you are a European resident, you also of course have the right to access personal information we hold about you and to ask that your personal information be corrected, updated, or deleted. If you would like to exercise this right, please contact us through the contact link below.</p>

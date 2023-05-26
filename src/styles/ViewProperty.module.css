@@ -271,6 +271,10 @@
   padding: 10px;
   border-radius: 8px 8px 0px 0px;
   border: 1px solid var(--light-font-color) !important;
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 0.9rem;
 }
 
 .inputB {
@@ -279,6 +283,11 @@
   border: 1px solid var(--light-font-color) !important;
   border-top: none !important;
   border-bottom: none !important;
+  border-radius: 0px;
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 0.9rem;
 }
 
 .inputC {
@@ -286,6 +295,11 @@
   padding: 10px;
   border: 1px solid var(--light-font-color) !important;
   border-bottom: none !important;
+  border-radius: 0px;
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 0.9rem;
 }
 
 .inputDParent {
@@ -303,6 +317,10 @@
   border: 1px solid var(--light-font-color) !important;
   height: auto;
   border-radius: 0px 0px 8px 8px;
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 0.9rem;
 }
 
 .agreeBox {
@@ -320,21 +338,20 @@
 
 .registerBtn {
   width: 100%;
-  background: var(--black-color);
-  color: var(--white-font-color);
-  font-size: 0.8rem;
-  font-weight: 500;
+  background: var(--white-font-color);
+  color: var(--btn-background-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
   font-family: var(--font-poppins);
   text-align: center;
-  border-radius: 0% !important;
-  margin: 8px 0px;
-  margin-bottom: 38px;
-  padding: 4% 0%;
+  border-radius: 10px;
+  margin: 20px 0px;
+  padding: 3% 0%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: none !important;
+  border: 1px solid var(--black-btn-color);
 }
 
 .registBtnParent {
@@ -345,11 +362,12 @@
 .registerLink {
   text-decoration: none;
 }
-.registerBtn:hover {
-  background-color: var(--btn-background-secondary);
-  border: none !important;
-}
 
+.registerBtn:hover {
+  background: var(--btn-background-secondary);
+  border: none !important;
+  letter-spacing: 0.6px;
+}
 .adultChild {
   width: 100%;
   padding: 18px;

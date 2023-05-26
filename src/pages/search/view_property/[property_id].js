@@ -47,8 +47,7 @@ const ViewProperty = () => {
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
     const SpecificPropData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
-        PropertyId || UrlParamId
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${PropertyId || UrlParamId
       }`
     );
 
@@ -60,7 +59,7 @@ const ViewProperty = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [PropertyId]);
 
   useEffect(() => {
@@ -68,7 +67,7 @@ const ViewProperty = () => {
       setOptions(PaymentIntentObject);
     }
 
-    return () => {};
+    return () => { };
   }, [PaymentIntentObject]);
 
   const onTabChange = (key) => {
@@ -380,6 +379,7 @@ const ViewProperty = () => {
                         className={ViewPropertyCss.inputD}
                         type="address"
                         placeholder="Message"
+                        rows="3" cols="50"
                       />
                     </div>
                   </Col>

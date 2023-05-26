@@ -1,7 +1,7 @@
 import React from "react";
 import FooterCss from "./../src/styles/Footer.module.css";
 import Link from "next/link";
-import { Navbar, Nav, Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import { Button } from "antd";
 import FooterLogo from "../public/footer logo.svg";
@@ -33,9 +33,8 @@ const Footer = () => {
               </div>
             </Col>
 
-            <Col md={"auto"} className={FooterCss.footer_cols}>
-              <div className={FooterCss.footer_divs}>
-                <h5 className={FooterCss.footer_headings}>About Us</h5>
+            <Col md={5} className={FooterCss.footer_cols_text}>
+              <div className={FooterCss.footer_divs_unorderdlist}>
                 <ul className={FooterCss.nav_link_ul}>
                   <li className={FooterCss.nav_link_li}>
                     <Link href="/" className={FooterCss.nav_link_a}>
@@ -48,12 +47,12 @@ const Footer = () => {
                     </Link>
                   </li>
 
-                  <li className={FooterCss.nav_link_li}>
+                  <li className={FooterCss.nav_link_li_blog}>
                     <Link href="/" className={FooterCss.nav_link_a}>
                       Golfom Blog & Press
                     </Link>
                   </li>
-                  <li className={FooterCss.nav_link_li}>
+                  <li className={FooterCss.nav_link_li_blog}>
                     <Link
                       href="/blog_and_podcast"
                       className={FooterCss.nav_link_a}
@@ -61,6 +60,11 @@ const Footer = () => {
                       Partner Blogs and Podcasts!
                     </Link>
                   </li>
+                </ul>
+              </div>
+
+              <div className={FooterCss.footer_divs_unorderdlist}>
+                <ul className={FooterCss.nav_link_ul}>
                   <li className={FooterCss.nav_link_li}>
                     <Link href="/faq" className={FooterCss.nav_link_a}>
                       FAQ’s
@@ -84,31 +88,16 @@ const Footer = () => {
                       Privacy Policy
                     </Link>
                   </li>
-                  <li className={FooterCss.nav_link_li}>
-                    <Link href="/search" className={FooterCss.nav_link_a}>
-                      Listings
-                    </Link>
-                  </li>
                 </ul>
               </div>
             </Col>
 
-            <Col md={4} className={FooterCss.footer_cols}>
-              <div className={FooterCss.footer_divs}>
-                <h5 className={FooterCss.footer_headings}>
-                  Subscribe for our newsletter
-                </h5>
-
+            <Col md={3} className={FooterCss.footer_cols}>
+              <div className={FooterCss.footer_div_email}>
                 <div className={FooterCss.newsletter_container}>
-                  <div className={FooterCss.input_container}>
-                    <p className={FooterCss.input_title}>Name</p>
-                    <Input
-                      className={FooterCss.inputs}
-                      size="large"
-                      placeholder="Enter Your Name Please"
-                      prefix={<UserOutlined />}
-                    />
-                  </div>
+                  <h5 className={FooterCss.footer_headings}>
+                    Subscribe for our newsletter
+                  </h5>
 
                   <div className={FooterCss.input_container}>
                     <p className={FooterCss.input_title}>Email</p>
@@ -120,11 +109,15 @@ const Footer = () => {
                     />
                   </div>
 
-                  <div className={FooterCss.sub_btn_container}>
-                    <Button className={FooterCss.sub_btn} type="primary">
-                      Subscribe
-                    </Button>
-                  </div>
+
+                </div>
+              </div>
+
+              <div className={FooterCss.footer_div_email}>
+                <div className={FooterCss.sub_btn_container}>
+                  <Button className={FooterCss.sub_btn} type="primary">
+                    Subscribe
+                  </Button>
                 </div>
               </div>
             </Col>
@@ -135,12 +128,26 @@ const Footer = () => {
             <Row className={FooterCss.copyright_section_row}>
               <Col md={6}>
                 <p className={FooterCss.copyright_section_p}>
-                  GOLFHŌM LLC - @2021All rights reserved
+                  GOLFHŌM LLC &nbsp; - &nbsp; 2023 All rights reserved
                 </p>
               </Col>
 
               <Col md={6} className={FooterCss.copyright_section_col_icon}>
                 <div className={FooterCss.icons_container}>
+                  <span className={FooterCss.icons_spans}>
+                    <Link
+                      href="/"
+                      target="_blank"
+                      className={FooterCss.icons_a}
+                    >
+                      <Image
+                        src={LinkedinIcon}
+                        className={FooterCss.social_icons}
+                        alt="Linkedin"
+                      />
+                    </Link>
+                  </span>
+
                   <span className={FooterCss.icons_spans}>
                     <Link
                       href="/"
@@ -188,37 +195,9 @@ const Footer = () => {
                       className={FooterCss.icons_a}
                     >
                       <Image
-                        src={LinkedinIcon}
-                        className={FooterCss.social_icons}
-                        alt="Linkedin"
-                      />
-                    </Link>
-                  </span>
-
-                  <span className={FooterCss.icons_spans}>
-                    <Link
-                      href="/"
-                      target="_blank"
-                      className={FooterCss.icons_a}
-                    >
-                      <Image
                         src={TwittereIcon}
                         className={FooterCss.social_icons}
                         alt="Twitter"
-                      />
-                    </Link>
-                  </span>
-
-                  <span className={FooterCss.icons_spans}>
-                    <Link
-                      href="/"
-                      target="_blank"
-                      className={FooterCss.icons_a}
-                    >
-                      <Image
-                        src={PinterestIcon}
-                        className={FooterCss.social_icons}
-                        alt="Pinterest"
                       />
                     </Link>
                   </span>
