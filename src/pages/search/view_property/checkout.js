@@ -1,15 +1,7 @@
 import React from "react";
-import {
-  CardElement,
-  Elements,
-  useStripe,
-  useElements,
-  PaymentElement,
-} from "@stripe/react-stripe-js";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Button } from "antd";
-import Head from "next/head";
-import axios from "axios";
 
 const Checkout = () => {
   const stripe = useStripe();

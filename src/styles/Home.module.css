@@ -10,15 +10,15 @@
 
 .inner_icon_container {
   position: relative;
-  bottom: 6px;
+  /* bottom: 6px; */
 }
 
 .search_bar_main_container {
   display: flex;
   justify-content: center;
-  padding-top: 4rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-top: 28rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 
 .search_bar_container {
@@ -37,7 +37,8 @@
   min-height: 130px;
 }
 
-.search_cols_4, .search_cols_45 {
+.search_cols_4,
+.search_cols_45 {
   display: flex;
   align-items: center;
   /* min-height: 80px; */
@@ -47,7 +48,6 @@
 .search_btn_col {
   display: flex;
   justify-content: center !important;
-  
 }
 
 .search_btn_container {
@@ -65,7 +65,7 @@
 
 .search_btn {
   height: auto;
-  padding: 1rem 5rem;
+  padding: 1rem 3rem;
   border-radius: 100px;
   background-color: var(--btn-background);
   color: var(--white-font-color);
@@ -80,7 +80,12 @@
 
 .image_destination {
   display: flex;
+  margin-bottom: 10px;
   width: 100%;
+}
+
+.input_skeleton {
+  width: 100% !important;
 }
 
 .inner_main_container {
@@ -89,7 +94,8 @@
   height: 100%;
 }
 
-.inner_input_container, .inner_input_containerNight {
+.inner_input_container,
+.inner_input_containerNight {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -99,7 +105,6 @@
 }
 
 .inner_input_box {
-  border: none;
   font-size: 15px;
   font-family: var(--font-poppins);
   border-color: var(--btn-background) !important;
@@ -140,10 +145,11 @@
 
 .destination {
   color: var(--dark-grey-color);
-  /* letter-spacing: 1px; */
   margin-bottom: 0px;
-  margin-left: 0.7rem;
+  /* margin-left: 0.7rem; */
   font-family: var(--font-amiri);
+  font-size: 19px;
+  /* margin-bottom: 10px; */
 }
 
 .guest {
@@ -293,8 +299,6 @@
 
 /* --------------------------------------- SEARCH CONTAINER ----------------------------------  */
 
-.search_by_golf_containers {
-}
 .search_by_golf_input_parent_container {
   display: flex;
   justify-content: space-between;
@@ -392,12 +396,6 @@
 .searchPart {
   display: flex;
   justify-content: space-evenly;
-}
-
-.tournamentDiv {
-}
-
-.searchbox {
 }
 
 .textArea {
@@ -829,6 +827,8 @@
   }
   .search_bar_main_container {
     padding-top: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   .inner_main_container {
     width: 100%;
@@ -847,16 +847,16 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .search_cols_4, .search_cols_45 {
+  .search_cols_4,
+  .search_cols_45 {
     width: 100%;
     margin-bottom: 1rem;
   }
-  
+
   .search_btn_col {
     margin-top: 0px;
   }
 }
-
 
 @media only screen and (max-width: 576px) {
   .search_btn_col {
@@ -876,8 +876,4 @@
   .searchBar {
     gap: 8px;
   }
-}
-
-@media only screen and (max-width: 360px) {
-
 }

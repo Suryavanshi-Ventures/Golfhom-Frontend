@@ -917,7 +917,7 @@ const ViewProperty = () => {
 
                   {/* Availability SECTION */}
                   <div className={ViewPropertyCss.things_to_know_section_rows}>
-                    <Col md={8}>
+                    <Col md={12}>
                       <div
                         className={
                           ViewPropertyCss.things_to_know_main_content_container
@@ -935,7 +935,7 @@ const ViewProperty = () => {
                             className={
                               ViewPropertyCss.things_to_know_section_cols
                             }
-                            md={6}
+                            xs={"auto"}
                           >
                             <div
                               className={

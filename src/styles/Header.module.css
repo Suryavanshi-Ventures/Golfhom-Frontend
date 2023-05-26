@@ -154,13 +154,15 @@
 }
 
 .register_btn {
-  background-color: var(--black-color);
+  background-color: var(--header-background-color);
   font-family: var(--font-poppins);
   font-weight: 500;
   font-size: 14px;
+  color: var(--btn-background);
   height: auto;
   padding: 1rem 1.9rem;
-  border-radius: 0;
+  border-radius: 10px;
+  border: 1px solid var(--black-color);
 }
 
 .register_btn:hover {
@@ -270,7 +272,7 @@
   background: none;
   padding: 0;
   font-family: var(--font-poppins);
-  color: var(--light-font-color);
+  color: var(--btn-background);
   font-weight: 500;
 }
 
