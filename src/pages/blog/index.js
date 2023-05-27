@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import BlogCss from "../../styles/Blog.module.css";
 import ViewAllProps from "../../../public/images/viewAllProps.svg";
@@ -8,11 +8,20 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Pagination } from "antd";
 import blogs from "../json/blogs.json";
 import Link from "next/link";
+import axios from "axios";
 
 const Index = ({ cards }) => {
-  const onChange = (pageNumber) => {
-    console.log("Page: ", pageNumber);
-  };
+  // const onChange = (pageNumber) => {
+  //   console.log("Page: ", pageNumber);
+  // };
+
+  useEffect(() => {
+    const GetBlogData = () => {};
+
+    // const BlogsAPIData =
+
+    return () => {};
+  }, []);
 
   return (
     <>

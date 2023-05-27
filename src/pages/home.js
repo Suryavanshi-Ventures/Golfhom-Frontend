@@ -244,7 +244,11 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col lg={3} md={4} className={HomeCss.search_cols_4}>
+              <Col
+                lg={3}
+                md={4}
+                className={`${HomeCss.search_cols_4} ${HomeCss.search_bar_nights_col}`}
+              >
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_input_containerNight}>
                     <Row>
@@ -283,7 +287,7 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col lg={3} className={HomeCss.search_btn_col}>
+              <Col lg={"auto"} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
                   <Link
                     href={`/search?latitude=${encodeURIComponent(

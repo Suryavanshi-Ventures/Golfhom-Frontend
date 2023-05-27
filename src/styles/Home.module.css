@@ -32,7 +32,7 @@
   padding: 1rem;
   padding-right: 0px;
   border-radius: 15px;
-  width: 100%;
+  /* width: 100%; */
   background: var(--white-font-color);
   min-height: 130px;
 }
@@ -65,13 +65,16 @@
 
 .search_btn {
   height: auto;
-  padding: 1rem 3rem;
+  padding: 7px 3rem;
   border-radius: 100px;
   background-color: var(--btn-background);
   color: var(--white-font-color);
   font-size: 20px;
   font-family: var(--font-poppins);
   font-weight: 500;
+}
+.search_bar_nights_col {
+  border: 0;
 }
 
 .search_btn:hover {
@@ -194,10 +197,8 @@
 }
 
 .decreasebtn {
-  /* padding: 0px 10px; */
   font-size: 1.4rem;
   width: 35px;
-  /* margin-right: 20px; */
   line-height: 1.2;
   align-self: center;
   height: 100%;
@@ -209,7 +210,6 @@
 }
 
 .increasebtn {
-  /* padding: 0px 10px; */
   transition-duration: 0.5s;
   width: 35px;
   line-height: 1.2;

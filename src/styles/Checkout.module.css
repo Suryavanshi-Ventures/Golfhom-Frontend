@@ -1,0 +1,20 @@
+.checkout_btn_main_div {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.checkout_btn {
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color);
+  padding: 6px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  height: auto;
+}
+
+.checkout_btn:hover {
+  background-color: var(--black-btn-color);
+  border-color: var(--white-font-color) !important;
+  color: var(--white-font-color) !important;
+}

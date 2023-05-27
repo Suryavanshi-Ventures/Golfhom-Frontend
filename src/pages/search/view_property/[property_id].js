@@ -148,6 +148,11 @@ const ViewProperty = () => {
   };
 
   const CreatePatymentIntent = async () => {
+    if (BookingDate.length === 0) {
+      message.error("Please enter the checkin checkout date");
+      return;
+    }
+
     const PaymentRes = axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
       {
@@ -171,10 +176,11 @@ const ViewProperty = () => {
         });
       }
     }).catch((err) => {
-      message.error(
-        err.response.data.message + ", Please login to book hotels!"
-      );
-      console.log("ERROR IN PAYMENT INTENT", err.response.data.message);
+      if (err.response.data.message === "User not authorized") {
+        message.error("Please login to book hotels");
+        return;
+      }
+      message.error(err.response.data.message);
     });
   };
 
@@ -196,6 +202,7 @@ const ViewProperty = () => {
 
   const OnChangeDateInput = (date, DateValue) => {
     SetBookingDate(DateValue);
+    console.log();
   };
 
   return (
@@ -417,18 +424,23 @@ const ViewProperty = () => {
                   </Button>
                 </Space>
               </div>
-              {Options != null && (
-                <>
-                  {console.log(Options, "LOGGGG FROM ELEMENT")}
+              <div className={ViewPropertyCss.checkout_payment_main_div}>
+                {Options != null && (
                   <Elements
                     stripe={stripePromise}
                     options={{ clientSecret: Options.ClientSecret }}
                   >
-                    <Checkout />
                     <PaymentElement />
+                    <Checkout
+                      data={[
+                        SpecificPropAPIData,
+                        BookingDate[0],
+                        BookingDate[1],
+                      ]}
+                    />
                   </Elements>
-                </>
-              )}
+                )}
+              </div>
             </Col>
           </Row>
         </Container>

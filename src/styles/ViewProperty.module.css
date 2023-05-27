@@ -559,3 +559,9 @@
 .words {
   margin-left: 24px;
 }
+
+/* CHECKOUT SECTION */
+
+.checkout_payment_main_div {
+  padding: 0px 20px;
+}

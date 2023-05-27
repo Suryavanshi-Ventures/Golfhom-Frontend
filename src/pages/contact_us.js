@@ -34,7 +34,7 @@ const ContactUs = () => {
         <Container className={ContactUsCss.parent_container}>
           <Col md={7} className={ContactUsCss.contact_us_input_section}>
             <h3 className={ContactUsCss.contact_us_input_heading}>
-              Contact us
+              Contact Us
             </h3>
 
             <p className={ContactUsCss.contact_us_input_subheading}>
@@ -88,43 +88,6 @@ const ContactUs = () => {
             </div>
           </Col>
         </Container>
-
-        {/* THANKS FOR REACHING SECTION */}
-        <main className={ContactUsCss.contact_us_thanks_main_section}>
-          <Container>
-            <Row className={ContactUsCss.contact_us_thanks_row}>
-              <Col md={6} className={ContactUsCss.contact_us_thanks_cols}>
-                <div className={ContactUsCss.contact_us_thanks_inner_div}>
-                  <h2 className={ContactUsCss.contact_us_thanks_heading}>
-                    Thanks for reaching out!
-                  </h2>
-                  <p className={ContactUsCss.contact_us_thanks_para}>
-                    The Golfhōm staff is excited to help you with your travel,
-                    golf and vacation rental questions and concerns! We’ll get
-                    back to you as soon as we can. In the meantime, please also
-                    feel free to search for clarification on your issue on our
-                    FAQ page.
-                  </p>
-
-                  <p className={ContactUsCss.contact_us_thanks_freq_ask_para}>
-                    Frequently Asked Questions{" "}
-                  </p>
-                </div>
-              </Col>
-
-              <Col md={6} className={ContactUsCss.contact_us_thanks_cols}>
-                <div className={ContactUsCss.contact_us_thanks_img_container}>
-                  <Image
-                    className={ContactUsCss.contact_us_thanks_img}
-                    fill
-                    src={ManThumbsUpImg}
-                    alt="thanks for reaching thumbs up"
-                  ></Image>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </main>
 
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
