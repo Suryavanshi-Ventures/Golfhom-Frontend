@@ -472,11 +472,10 @@ const ViewProperty = () => {
               Features
             </h5>
             <Row>
-              <Col md={4}>
-                {SpecificPropAPIData?.amenities?.map((data, index) => {
-                  return (
+              {SpecificPropAPIData?.amenities?.map((data, index) => {
+                return (
+                  <Col key={index} md={4}>
                     <div
-                      key={index}
                       className={ViewPropertyCss.feature_section_div_container}
                     >
                       <div
@@ -496,9 +495,9 @@ const ViewProperty = () => {
                         {data}
                       </p>
                     </div>
-                  );
-                })}
-              </Col>
+                  </Col>
+                );
+              })}
             </Row>
           </Container>
         </section>

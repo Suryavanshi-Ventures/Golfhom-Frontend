@@ -91,7 +91,7 @@
   font-size: 14px;
   font-weight: 400;
   text-decoration: none;
-  color: var( --dark-grey-font);
+  color: var(--dark-grey-font);
   transition-duration: 0.5s;
 }
 
@@ -104,11 +104,11 @@
   color: var(--footer-font-color);
 }
 .inputs {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .inputs:hover {
- border: 1px solid var(--btn-background-secondary) !important;
+  border: 1px solid var(--btn-background-secondary) !important;
 }
 
 .sub_btn_conatiner {

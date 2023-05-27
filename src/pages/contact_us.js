@@ -1,15 +1,46 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";
 import ContactUsBannerImage from "../../public/images/contact_us_banner_img.svg";
 import Image from "next/image";
-import { Button, Input } from "antd";
+import { Button, Input, Form, message } from "antd";
 const { TextArea } = Input;
 import ManThumbsUpImg from "../../public/images/contact_us_thumbs_up_man.svg";
 import BottomSection from "../../common components/bottomGroup";
+import axios from "axios";
 
 const ContactUs = () => {
+  const [form] = Form.useForm();
+  const [Loading, setLoading] = useState(false);
+
+  const SubmitContactUs = async (FormData) => {
+    try {
+      const ContactUsResponse = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/contactUs`,
+        {
+          name: FormData.contact_us_name,
+          email: FormData.contact_us_email,
+          subject: FormData.contact_us_subject,
+          message: FormData.contact_us_message,
+        }
+      );
+      setLoading(true);
+
+      if (ContactUsResponse.status === 201) {
+        setLoading(false);
+        form.resetFields();
+        message.success(
+          "Thank you for contacting us. Your message is appreciated."
+        );
+      }
+    } catch (error) {
+      console.log("ERROR: ", error);
+    }
+
+    console.log(FormData);
+  };
+
   return (
     <>
       <Head>
@@ -45,47 +76,74 @@ const ContactUs = () => {
               Please contact our staff via the form below. We will respond as
               soon as we’re able.
             </p>
+            <Form layout="vertical" form={form} onFinish={SubmitContactUs}>
+              <Form.Item
+                label="Name"
+                name="contact_us_name"
+                rules={[{ required: true, message: "Name is required" }]}
+              >
+                {/* INPUTS */}
 
-            {/* INPUTS */}
-            <div className={ContactUsCss.contact_us_input_container}>
-              <label className={ContactUsCss.input_label}>Name</label>
-              <Input
-                className={ContactUsCss.contact_us_input}
-                size="large"
-                placeholder="Enter Your name"
-              />
-            </div>
+                <Input
+                  className={ContactUsCss.contact_us_input}
+                  size="large"
+                  placeholder="Enter Your name"
+                />
+              </Form.Item>
 
-            {/* INPUTSS */}
-            <div className={ContactUsCss.contact_us_input_container}>
-              <label className={ContactUsCss.input_label}>Email</label>
-              <Input
-                type="email"
-                className={ContactUsCss.contact_us_input}
-                size="large"
-                placeholder="Enter Your email"
-              />
-            </div>
+              <Form.Item
+                label="Email"
+                name="contact_us_email"
+                rules={[{ required: true, message: "Email is required" }]}
+              >
+                {/* INPUTSS */}
 
-            {/* INPUTS */}
-            <div className={ContactUsCss.contact_us_input_container}>
-              <label className={ContactUsCss.input_label}>Subject</label>
-              <Input
-                className={ContactUsCss.contact_us_input}
-                size="large"
-                placeholder="Enter Your subject"
-              />
-            </div>
+                <Input
+                  type="email"
+                  className={ContactUsCss.contact_us_input}
+                  size="large"
+                  placeholder="Enter Your email"
+                />
+              </Form.Item>
 
-            {/* INPUTS */}
-            <div className={ContactUsCss.contact_us_input_container}>
-              <label className={ContactUsCss.input_label}>Message</label>
-              <TextArea className={ContactUsCss.input_textarea} rows={4} />
-            </div>
+              <Form.Item
+                label="Subject"
+                name="contact_us_subject"
+                rules={[{ required: true, message: "Subject is required" }]}
+              >
+                <Input
+                  className={ContactUsCss.contact_us_input}
+                  size="large"
+                  placeholder="Enter Your subject"
+                />
+              </Form.Item>
 
-            <div className={ContactUsCss.contact_us_input_container}>
-              <Button className={ContactUsCss.contact_us_send_btn}>Send</Button>
-            </div>
+              <Form.Item
+                label="Message"
+                name="contact_us_message"
+                rules={[{ required: true, message: "Message is required" }]}
+              >
+                {/* INPUTS */}
+
+                <TextArea
+                  placeholder="Please write something here..."
+                  className={ContactUsCss.input_textarea}
+                  rows={4}
+                />
+              </Form.Item>
+
+              <Form.Item name="contact_us_message">
+                <div className={ContactUsCss.contact_us_input_container}>
+                  <Button
+                    loading={Loading}
+                    htmlType="submit"
+                    className={ContactUsCss.contact_us_send_btn}
+                  >
+                    Send
+                  </Button>
+                </div>
+              </Form.Item>
+            </Form>
           </Col>
         </Container>
 

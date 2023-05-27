@@ -27,7 +27,9 @@ const Checkout = (props) => {
     const { error, paymentIntent } = await stripe.confirmPayment({
       //`Elements` instance that was used to create the Payment Element
       elements,
-      redirect: "if_required",
+      confirmParams: {
+        return_url: "http://localhost:3000/search/view_property/success",
+      },
     });
 
     if (error?.code) {

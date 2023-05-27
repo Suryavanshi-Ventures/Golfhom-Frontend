@@ -10,41 +10,41 @@
     "id": 2,
     "image": "/images/man.svg",
     "name": "Man",
-    "link": ""
+    "link": "https://youtube.com/embed/W90vHXDT15c"
   },
 
   {
     "id": 3,
     "image": "/images/supportive.svg",
     "name": "Support",
-    "link": ""
+    "link": "https://youtube.com/embed/LkNKOmQefXI"
   },
 
   {
     "id": 4,
     "image": "/images/girl.svg",
     "name": "Girl",
-    "link": ""
+    "link": "https://youtube.com/embed/EqsYEyL43R8"
   },
 
   {
     "id": 5,
     "image": "/images/man.svg",
     "name": "Man",
-    "link": ""
+    "link": "https://youtube.com/embed/FKUbiMNjeKQ"
   },
 
   {
     "id": 6,
     "image": "/images/supportive.svg",
     "name": "Support",
-    "link": ""
+    "link": "https://youtube.com/embed/vDwWazu-J20"
   },
 
   {
     "id": 7,
     "image": "/images/girl.svg",
     "name": "Girl",
-    "link": ""
+    "link": "https://youtube.com/embed/e0DmQxuRo5Q"
   }
 ]

@@ -287,7 +287,7 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col lg={"auto"} className={HomeCss.search_btn_col}>
+              <Col lg={3} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
                   <Link
                     href={`/search?latitude=${encodeURIComponent(
@@ -304,7 +304,7 @@ const Home = () => {
                       UrlParamsDateRange[1]
                         ? UrlParamsDateRange[1]
                         : moment().format("DD-MM-YYYY")
-                    }`}
+                    }&limit=10`}
                     className={HomeCss.buttonParent}
                   >
                     <Button className={HomeCss.search_btn} type="primary">

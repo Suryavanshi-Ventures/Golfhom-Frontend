@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect, React } from "react";
 import Head from "next/head";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Card } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import {
   Checkbox,
+  Input,
+  Switch,
   Button,
   Dropdown,
   Space,
@@ -84,14 +86,7 @@ const Index = () => {
     });
 
     return () => {};
-  }, [
-    PaginationState,
-    param.from,
-    param.guest,
-    param.latitude,
-    param.to,
-    param.longitude,
-  ]);
+  }, [PaginationState, param.from, param.guest, param.location_id, param.to]);
 
   useEffect(() => {
     const GetPropertyData = axios.get(
@@ -115,10 +110,10 @@ const Index = () => {
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
-        "to=" + param.to
-      }&limit=10&page=${pageNumber}`
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
+      }&${"to=" + param.to}&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
@@ -195,7 +190,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Florida USA
+                      Location
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -231,7 +226,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Marmot Ridge Golf Course
+                      Location
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -365,7 +360,7 @@ const Index = () => {
                               SearchIndexCss.edit_room_dropdown_btn_space
                             }
                           >
-                            1 Room: 1 Adult/ Room
+                            Button Drop Down
                             <DownOutlined
                               className={SearchIndexCss.edit_room_dropdown_icon}
                             />
@@ -510,7 +505,7 @@ const Index = () => {
                                 }}
                                 href=""
                               >
-                                {data.otherImageUrls.map(
+                                {/* {data.otherImageUrls.map(
                                   (ImageUrl, ImageIndex) => {
                                     return (
                                       <Image
@@ -526,7 +521,7 @@ const Index = () => {
                                       ></Image>
                                     );
                                   }
-                                )}
+                                )} */}
                               </Link>
                             </Carousel.Item>
 
@@ -568,7 +563,7 @@ const Index = () => {
                             </span>
 
                             <h5 className={CarasoulMapCss.price_of_property}>
-                              From: ${data.price}/Night
+                              <sup>From</sup> ${data.price}/Night
                             </h5>
                           </div>
                         </Col>
