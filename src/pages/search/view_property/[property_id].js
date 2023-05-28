@@ -46,21 +46,27 @@ const ViewProperty = () => {
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
-    const SpecificPropData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
-        PropertyId || UrlParamId
-      }`
-    );
 
-    SpecificPropData.then((response) => {
-      if (response.status === 200) {
-        SetSpecificPropAPIData(response.data.data);
+    const GetPropertyById = async () => {
+      try {
+        const SpecificPropData = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
+            PropertyId || UrlParamId
+          }`
+        );
+
+        if (SpecificPropData.status === 200) {
+          SetSpecificPropAPIData(SpecificPropData.data.data);
+        }
+      } catch (error) {
+        console.log(error, "ERR");
       }
-    }).catch((err) => {
-      console.log(err, "ERR");
-    });
+    };
 
-    return () => {};
+    GetPropertyById();
+    return () => {
+      GetPropertyById();
+    };
   }, [PropertyId]);
 
   useEffect(() => {
@@ -76,6 +82,7 @@ const ViewProperty = () => {
   };
 
   console.log(SpecificPropAPIData, "FROM VIEW PROP");
+
   const items = [
     {
       key: "1",
@@ -115,7 +122,6 @@ const ViewProperty = () => {
   };
 
   // FOR CHILD BUTTON INCREMENT AND DECREMENT
-
   const [child, setChild] = useState(0);
 
   const incChild = () => {
@@ -149,7 +155,7 @@ const ViewProperty = () => {
 
   const CreatePatymentIntent = async () => {
     if (BookingDate.length === 0) {
-      message.error("Please enter the checkin checkout date");
+      message.error("Please select the check-in & check-out date");
       return;
     }
 
@@ -202,7 +208,6 @@ const ViewProperty = () => {
 
   const OnChangeDateInput = (date, DateValue) => {
     SetBookingDate(DateValue);
-    console.log();
   };
 
   return (
@@ -260,6 +265,7 @@ const ViewProperty = () => {
               <hr className={ViewPropertyCss.horizonaline} />
               <div className={ViewPropertyCss.inner_input_date_picker}>
                 <RangePicker
+                  format={"MM-DD-YYYY"}
                   size="large"
                   style={{ width: "100%" }}
                   onChange={OnChangeDateInput}
@@ -277,7 +283,7 @@ const ViewProperty = () => {
                   className={ViewPropertyCss.guest}
                   id="dropdown-basic"
                 >
-                  Guest
+                  {adult} Adults, {child} Children
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className={ViewPropertyCss.adultChild}>
@@ -436,6 +442,11 @@ const ViewProperty = () => {
                         SpecificPropAPIData,
                         BookingDate[0],
                         BookingDate[1],
+                        {
+                          adult: adult,
+                          child: child,
+                          total_guests: adult + child,
+                        },
                       ]}
                     />
                   </Elements>

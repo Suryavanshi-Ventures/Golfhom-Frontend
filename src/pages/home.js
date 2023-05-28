@@ -299,11 +299,11 @@ const Home = () => {
                     )}&guest=${encodeURIComponent(adult + child)}&from=${
                       UrlParamsDateRange[0]
                         ? UrlParamsDateRange[0]
-                        : moment().format("DD-MM-YYYY")
+                        : moment().format("MM-DD-YYYY")
                     }&to=${
                       UrlParamsDateRange[1]
                         ? UrlParamsDateRange[1]
-                        : moment().format("DD-MM-YYYY")
+                        : moment().format("MM-DD-YYYY")
                     }&limit=10`}
                     className={HomeCss.buttonParent}
                   >
@@ -536,12 +536,12 @@ const Home = () => {
       {/* -------------------------------------    Golfhōm Hottest New Arrivals ---------------------------- */}
       <main className={HomeCss.hottest_new_arrival_section}>
         <Container>
-          <h2 className={HomeCss.hottest_new_arrival__heading}>
-            Golfhōm Hottest New Arrivals
-          </h2>
           <div className={HomeCss.arrivalContainer}>
             <div className={HomeCss.arrivalContainer_child}>
               <div className={HomeCss.paraHeading}>
+                <h2 className={HomeCss.hottest_new_arrival__heading}>
+                  Golfhōm Hottest New Arrivals
+                </h2>
                 <p className={HomeCss.subHeading}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -562,9 +562,9 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <h6 className={HomeCss.newyork}>
+              {/* <h6 className={HomeCss.newyork}>
                 The Ritz-Carlton New York, NoMad
-              </h6>
+              </h6> */}
             </div>
 
             <div className={HomeCss.midImage}>

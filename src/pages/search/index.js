@@ -47,33 +47,13 @@ const Index = () => {
     setIsVisible(true);
   };
 
-  console.log(param, "PARAAAAAAAAAAMs");
-  useEffect(() => {
-    const FetchLocationAPI = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/location`
-        );
-        if (response.status === 200) {
-          console.log(response.data.data);
-          setSearchOptions(response.data.data);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    FetchLocationAPI();
-
-    return () => {};
-  }, []);
   useEffect(() => {
     const GetPropertyData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
         "latitude=" + param.latitude
       }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
         "from=" + param.from
-      }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort="price"`
+      }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
@@ -86,7 +66,14 @@ const Index = () => {
     });
 
     return () => {};
-  }, [PaginationState, param.from, param.guest, param.location_id, param.to]);
+  }, [
+    PaginationState,
+    param.from,
+    param.guest,
+    param.latitude,
+    param.to,
+    param.longitude,
+  ]);
 
   useEffect(() => {
     const GetPropertyData = axios.get(
@@ -495,42 +482,39 @@ const Index = () => {
                             interval={null}
                             className={CarasoulMapCss.carouselParent}
                           >
-                            <Carousel.Item className={CarasoulMapCss.imageGap}>
-                              <Link
-                                onClick={(e) => {
-                                  Router.push(
-                                    `search/view_property/${data.id}`
-                                  );
-                                  e.preventDefault();
-                                }}
-                                href=""
-                              >
-                                {/* {data.otherImageUrls.map(
-                                  (ImageUrl, ImageIndex) => {
-                                    return (
-                                      <Image
-                                        key={ImageIndex}
-                                        src={ImageUrl}
-                                        onClick={() => {
-                                          SendPropertyData(data);
-                                        }}
-                                        alt="Hotel View"
-                                        fill
-                                        className={CarasoulMapCss.carouselImage}
-                                        priority
-                                      ></Image>
-                                    );
-                                  }
-                                )} */}
-                              </Link>
-                            </Carousel.Item>
+                            {data.otherImageUrls.map((element, ind) => {
+                              return (
+                                <Carousel.Item
+                                  key={ind}
+                                  className={CarasoulMapCss.imageGap}
+                                >
+                                  <Link
+                                    onClick={(e) => {
+                                      Router.push(
+                                        `search/view_property/${data.id}`
+                                      );
+                                      e.preventDefault();
+                                    }}
+                                    href=""
+                                  >
+                                    <Image
+                                      src={element}
+                                      alt={`image ${data.id}`}
+                                      fill
+                                      className={CarasoulMapCss.carouselImage}
+                                      priority
+                                    ></Image>
 
-                            <ol className="carousel-indicators">
-                              <li
-                                className={id === 0 ? "active" : ""}
-                                onClick={() => setIndex(id)}
-                              ></li>
-                            </ol>
+                                    <ol className="carousel-indicators">
+                                      <li
+                                        className={ind === 0 ? "active" : ""}
+                                        onClick={() => setIndex(ind)}
+                                      ></li>
+                                    </ol>
+                                  </Link>
+                                </Carousel.Item>
+                              );
+                            })}
                           </Carousel>
 
                           <Link

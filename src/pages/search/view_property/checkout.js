@@ -10,11 +10,14 @@ import { Button, message } from "antd";
 import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
 import CheckoutCss from "../../../styles/Checkout.module.css";
+import moment from "moment";
+import { useRouter } from "next/router";
 
 const Checkout = (props) => {
+  const Router = useRouter();
   const stripe = useStripe();
   const elements = useElements();
-  console.log("PROPS DATA", props.data[0]);
+  console.log("PROPS DATA CHECKOUT", props.data);
   const ContextUserDetails = useContext(AuthContext);
 
   const BookingHotelDone = async () => {
@@ -27,9 +30,10 @@ const Checkout = (props) => {
     const { error, paymentIntent } = await stripe.confirmPayment({
       //`Elements` instance that was used to create the Payment Element
       elements,
-      confirmParams: {
-        return_url: "http://localhost:3000/search/view_property/success",
-      },
+      // confirmParams: {
+      //   return_url: "http://localhost:3000/search/view_property/success",
+      // },
+      redirect: "if_required",
     });
 
     if (error?.code) {
@@ -41,8 +45,8 @@ const Checkout = (props) => {
           propertyId: props.data[0].id,
           from: props.data[1],
           to: props.data[2],
-          guest: props.data[0].accomodation,
-          children: 5,
+          guest: props.data[3].total_guests,
+          children: props.data[3].child,
           paymentIntent: paymentIntent.id,
           pets: true,
         },
@@ -52,8 +56,12 @@ const Checkout = (props) => {
           },
         }
       );
-      if (BookingRes.status === 200) {
-        console.log("RESPONSE BOOKING API ", BookingRes);
+      if (BookingRes.status === 201) {
+        console.log("RESPONSE BOOKING API BACKEND", BookingRes);
+        console.log("RESPONSE STRIPE PAYMENT INTENT ", paymentIntent);
+        Router.push(
+          `http://localhost:3000/search/view_property/success?transaction_id=${paymentIntent.id}&payment_method=${paymentIntent.payment_method_types[0]}&payment_status=${paymentIntent.status}&payment_amount=${paymentIntent.amount}&payment_currency=${paymentIntent.currency}`
+        );
       }
     }
 

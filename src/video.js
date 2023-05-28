@@ -57,7 +57,6 @@ const Video = ({ videos }) => {
               allowFullScreen
             ></iframe>
           </Card>
-          <p className={HomeCss.titleShadow}>Video Title</p>
         </SwiperSlide>
       ))}
     </Swiper>
