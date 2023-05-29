@@ -71,8 +71,8 @@
 }
 
 .front {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .searching,
@@ -157,7 +157,7 @@ align-items: center;
 }
 
 .default {
-  font-family: var(--font-poppins);
+  font-family: var(--font-poppins) !important;
   font-weight: 500;
 }
 

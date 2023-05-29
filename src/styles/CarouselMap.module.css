@@ -41,6 +41,9 @@
 .imageGap {
   position: relative;
 }
+.image_container {
+  cursor: pointer;
+}
 
 .carouselHeading {
   font-family: var(--font-amiri);

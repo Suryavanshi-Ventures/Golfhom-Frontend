@@ -3,9 +3,9 @@ import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Button, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
-import Image from "next/image";
 import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.svg";
-import { Checkbox, Input, Modal, Space, Tabs, message } from "antd";
+import { Checkbox, Input, Modal, Space, Tabs, message, Image } from "antd";
+import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
 import Carousel from "react-bootstrap/Carousel";
 import CarouselGalleryImg from "../../../../public/images/view_prop_gallery_img_1.svg";
@@ -89,20 +89,20 @@ const ViewProperty = () => {
       label: `Overview`,
       children: <TabContentOverview data={SpecificPropAPIData} />,
     },
-    {
-      key: "2",
-      label: `Gallery`,
-      children: (
-        <>
-          <h1>Test Gallery</h1>
-        </>
-      ),
-    },
-    {
-      key: "3",
-      label: `Features`,
-      children: `Content of Tab Pane 3`,
-    },
+    // {
+    //   key: "2",
+    //   label: `Gallery`,
+    //   children: (
+    //     <>
+    //       <h1>Test Gallery</h1>
+    //     </>
+    //   ),
+    // },
+    // {
+    //   key: "3",
+    //   label: `Features`,
+    //   children: `Content of Tab Pane 3`,
+    // },
   ];
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
@@ -222,12 +222,12 @@ const ViewProperty = () => {
       {/* VIEW PROPERTY PAGE STARTED HERE */}
       <main className={ViewPropertyCss.view_prop_bannerimg_section}>
         <div className={ViewPropertyCss.view_prop_bannerimg_container}>
-          <Image
+          <NextImage
             alt="Golf group"
             className={ViewPropertyCss.view_prop_bannerimg}
             src={SpecificPropAPIData.imageUrl || GirlGroupBannerImage}
             fill
-          ></Image>
+          ></NextImage>
         </div>
 
         {/* PROP AMENITITES SECTION START HERE */}
@@ -457,13 +457,42 @@ const ViewProperty = () => {
         </Container>
 
         {/* CARASOUL SECTION STARTS HERE */}
-        <section className={ViewPropertyCss.carasoul_section}>
+        <Container className={ViewPropertyCss.carasoul_section}>
+          <section>
+            <div className={ViewPropertyCss.carasoul_section_inner_div}>
+              <Image.PreviewGroup
+                preview={{
+                  onChange: (current, prev) =>
+                    console.log(
+                      `current index: ${current}, prev index: ${prev}`
+                    ),
+                }}
+              >
+                {SpecificPropAPIData?.otherImageUrls?.map(
+                  (OtherImage, OtherImageUrlIndex) => {
+                    return (
+                      <Image
+                        key={OtherImageUrlIndex}
+                        className={ViewPropertyCss.carasoul_images}
+                        fill
+                        src={OtherImage}
+                        alt="First slide"
+                      ></Image>
+                    );
+                  }
+                )}
+              </Image.PreviewGroup>
+            </div>
+          </section>
+        </Container>
+
+        {/* <section className={ViewPropertyCss.carasoul_section}>
           <Carousel>
             {SpecificPropAPIData?.otherImageUrls?.map(
               (OtherImage, OtherImageUrlIndex) => {
                 return (
                   <Carousel.Item key={OtherImageUrlIndex}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.carasoul_images}
                       fill
                       src={OtherImage}
@@ -474,7 +503,7 @@ const ViewProperty = () => {
               }
             )}
           </Carousel>
-        </section>
+        </section> */}
 
         {/* FEATURE SECTION STARTS HERE */}
         <section className={ViewPropertyCss.feature_section}>
@@ -494,12 +523,12 @@ const ViewProperty = () => {
                           ViewPropertyCss.feature_section_tick_icon_container
                         }
                       >
-                        <Image
+                        <NextImage
                           width={24}
                           height={24}
                           src={FeatureTickIcon}
                           alt="features of golfhom"
-                        ></Image>
+                        ></NextImage>
                       </div>
 
                       <p className={ViewPropertyCss.feature_section_text}>
@@ -523,25 +552,29 @@ const ViewProperty = () => {
         </section>
 
         {/* VIDEO SECTION STARTS HERE */}
-        <section className={ViewPropertyCss.video_section}>
-          <Container>
-            <h5 className={ViewPropertyCss.feature_section_heading}>Video</h5>
-            <div className={ViewPropertyCss.video_section_container}>
-              <iframe
-                width="100%"
-                height="100%"
-                src={
-                  SpecificPropAPIData.videoUrl
-                    ? SpecificPropAPIData.videoUrl
-                    : "https://www.youtube.com/embed/aWKFpMRiMX4"
-                }
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </Container>
-        </section>
+        {SpecificPropAPIData.videoUrl ? (
+          <section className={ViewPropertyCss.video_section}>
+            <Container>
+              <h5 className={ViewPropertyCss.feature_section_heading}>Video</h5>
+              <div className={ViewPropertyCss.video_section_container}>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={
+                    SpecificPropAPIData.videoUrl
+                      ? SpecificPropAPIData.videoUrl
+                      : "https://www.youtube.com/embed/aWKFpMRiMX4"
+                  }
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </Container>
+          </section>
+        ) : (
+          ""
+        )}
 
         {/* THINGS TO KNOW SECTION  */}
         <section className={ViewPropertyCss.things_to_know_section}>
@@ -577,7 +610,7 @@ const ViewProperty = () => {
                             ViewPropertyCss.things_to_know_price_icon_container
                           }
                         >
-                          <Image
+                          <NextImage
                             className={
                               ViewPropertyCss.things_to_know_price_icon
                             }
@@ -585,7 +618,7 @@ const ViewProperty = () => {
                             width={15}
                             height={15}
                             alt="Prices"
-                          ></Image>
+                          ></NextImage>
                         </div>
 
                         <p
@@ -614,7 +647,7 @@ const ViewProperty = () => {
                             ViewPropertyCss.things_to_know_price_icon_container
                           }
                         >
-                          <Image
+                          <NextImage
                             className={
                               ViewPropertyCss.things_to_know_price_icon
                             }
@@ -622,7 +655,7 @@ const ViewProperty = () => {
                             width={15}
                             height={15}
                             alt="Prices"
-                          ></Image>
+                          ></NextImage>
                         </div>
 
                         <p
@@ -651,7 +684,7 @@ const ViewProperty = () => {
                             ViewPropertyCss.things_to_know_price_icon_container
                           }
                         >
-                          <Image
+                          <NextImage
                             className={
                               ViewPropertyCss.things_to_know_price_icon
                             }
@@ -659,7 +692,7 @@ const ViewProperty = () => {
                             width={15}
                             height={15}
                             alt="Prices"
-                          ></Image>
+                          ></NextImage>
                         </div>
 
                         <p
@@ -688,7 +721,7 @@ const ViewProperty = () => {
                             ViewPropertyCss.things_to_know_price_icon_container
                           }
                         >
-                          <Image
+                          <NextImage
                             className={
                               ViewPropertyCss.things_to_know_price_icon
                             }
@@ -696,7 +729,7 @@ const ViewProperty = () => {
                             width={15}
                             height={15}
                             alt="Prices"
-                          ></Image>
+                          ></NextImage>
                         </div>
 
                         <p
@@ -747,7 +780,7 @@ const ViewProperty = () => {
                                   ViewPropertyCss.things_to_know_price_icon_container
                                 }
                               >
-                                <Image
+                                <NextImage
                                   className={
                                     ViewPropertyCss.things_to_know_price_icon
                                   }
@@ -755,7 +788,7 @@ const ViewProperty = () => {
                                   width={15}
                                   height={15}
                                   alt="Prices"
-                                ></Image>
+                                ></NextImage>
                               </div>
 
                               <p
@@ -783,7 +816,7 @@ const ViewProperty = () => {
                                   ViewPropertyCss.things_to_know_price_icon_container
                                 }
                               >
-                                <Image
+                                <NextImage
                                   className={
                                     ViewPropertyCss.things_to_know_price_icon
                                   }
@@ -791,7 +824,7 @@ const ViewProperty = () => {
                                   width={15}
                                   height={15}
                                   alt="Prices"
-                                ></Image>
+                                ></NextImage>
                               </div>
 
                               <p
@@ -819,7 +852,7 @@ const ViewProperty = () => {
                                   ViewPropertyCss.things_to_know_price_icon_container
                                 }
                               >
-                                <Image
+                                <NextImage
                                   className={
                                     ViewPropertyCss.things_to_know_price_icon
                                   }
@@ -827,7 +860,7 @@ const ViewProperty = () => {
                                   width={15}
                                   height={15}
                                   alt="Prices"
-                                ></Image>
+                                ></NextImage>
                               </div>
 
                               <p
@@ -855,7 +888,7 @@ const ViewProperty = () => {
                                   ViewPropertyCss.things_to_know_price_icon_container
                                 }
                               >
-                                <Image
+                                <NextImage
                                   className={
                                     ViewPropertyCss.things_to_know_price_icon
                                   }
@@ -863,7 +896,7 @@ const ViewProperty = () => {
                                   width={24}
                                   height={24}
                                   alt="Prices"
-                                ></Image>
+                                ></NextImage>
                               </div>
 
                               <p
@@ -973,7 +1006,7 @@ const ViewProperty = () => {
                                   ViewPropertyCss.things_to_know_price_icon_container
                                 }
                               >
-                                <Image
+                                <NextImage
                                   className={
                                     ViewPropertyCss.things_to_know_price_icon
                                   }
@@ -981,7 +1014,7 @@ const ViewProperty = () => {
                                   width={30}
                                   height={30}
                                   alt="Prices"
-                                ></Image>
+                                ></NextImage>
                               </div>
 
                               <p
@@ -1009,7 +1042,7 @@ const ViewProperty = () => {
                                   ViewPropertyCss.things_to_know_price_icon_container
                                 }
                               >
-                                <Image
+                                <NextImage
                                   className={
                                     ViewPropertyCss.things_to_know_price_icon
                                   }
@@ -1017,7 +1050,7 @@ const ViewProperty = () => {
                                   width={30}
                                   height={30}
                                   alt="Prices"
-                                ></Image>
+                                ></NextImage>
                               </div>
 
                               <p
@@ -1043,13 +1076,13 @@ const ViewProperty = () => {
                     <div
                       className={ViewPropertyCss.tick_with_blackbg_container}
                     >
-                      <Image
+                      <NextImage
                         className={ViewPropertyCss.tick_with_blackbg}
                         src={Blacktick}
                         width={24}
                         height={24}
                         alt="Prices"
-                      ></Image>
+                      ></NextImage>
                     </div>
                     <p className={ViewPropertyCss.words}>
                       ID: {SpecificPropAPIData.id}
@@ -1059,13 +1092,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Rooms: {SpecificPropAPIData.rooms}
@@ -1074,13 +1107,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Guests: {SpecificPropAPIData.accomodation}
@@ -1089,13 +1122,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Check-in After:{" "}
@@ -1107,13 +1140,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Check-out Before:{" "}
@@ -1125,13 +1158,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Bedrooms: {SpecificPropAPIData.bedrooms}
@@ -1140,13 +1173,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Beds: {SpecificPropAPIData.beds}
@@ -1155,13 +1188,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Payment Methods: Credit Card
@@ -1170,13 +1203,13 @@ const ViewProperty = () => {
 
                 <div className={ViewPropertyCss.tickParent}>
                   <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <Image
+                    <NextImage
                       className={ViewPropertyCss.tick_with_blackbg}
                       src={Blacktick}
                       width={24}
                       height={24}
                       alt="Prices"
-                    ></Image>
+                    ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Bathrooms: {SpecificPropAPIData.bathrooms}
