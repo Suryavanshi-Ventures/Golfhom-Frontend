@@ -42,6 +42,8 @@ const Index = () => {
   const [UpdateSortByText, setUpdateSortByText] = useState(
     "Price (High to Low)"
   );
+  const [TotalDataCount, setTotalDataCount] = useState();
+
   const param = Router.query;
 
   const EditBtn = () => {
@@ -61,7 +63,8 @@ const Index = () => {
       if (response.status === 200) {
         SetPropertyData(response.data.data);
         SetLengthOfProperty(response.data.data.length);
-        console.log(response.data.data, "API DATA PROPERTY ");
+        setTotalDataCount(response.data.count);
+        console.log(response.data, "API DATA PROPERTY ");
       }
     }).catch((err) => {
       console.log(err, "ERR");
@@ -102,22 +105,23 @@ const Index = () => {
     setParentindex(LocalParent);
   };
 
-  const OnPaginationChange = (pageNumber) => {
-    const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
-      }&${"to=" + param.to}&limit=10&page=${pageNumber}`
-    );
-    GetPropertyData.then((response) => {
-      if (response.status === 200) {
-        SetPropertyData(response.data.data);
-        SetLengthOfProperty(response.data.data.length);
+  const OnPaginationChange = async (pageNumber) => {
+    try {
+      const GetPropertyData = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${"to=" + param.to}&limit=10&page=${pageNumber}`
+      );
+
+      if (GetPropertyData.status === 200) {
+        SetPropertyData(GetPropertyData.data.data);
+        SetLengthOfProperty(GetPropertyData.data.data.length);
       }
-    }).catch((err) => {
-      console.log(err, "ERR");
-    });
+    } catch (error) {
+      console.log(error, "ERR");
+    }
 
     SetPagination(pageNumber);
     console.log("Page: ", pageNumber);
@@ -575,7 +579,7 @@ const Index = () => {
               showQuickJumper={false}
               showSizeChanger={false}
               defaultCurrent={1}
-              total={500}
+              total={TotalDataCount}
               onChange={OnPaginationChange}
               className={SearchIndexCss.pagination}
             />

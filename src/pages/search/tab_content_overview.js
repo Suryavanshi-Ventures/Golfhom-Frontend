@@ -6,7 +6,6 @@ import ViewPropBathroomIcon from "../../../public/images/vector/bathroom_icon.sv
 import Image from "next/image";
 
 const TabContentOverview = (PropData) => {
-  console.log(PropData);
   return (
     <>
       <main className={ViewPropertyCss.tabOverviewSection}>

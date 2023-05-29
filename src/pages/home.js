@@ -169,7 +169,7 @@ const Home = () => {
           UrlParamsDateRange[1]
             ? UrlParamsDateRange[1]
             : moment().format("MM-DD-YYYY")
-        }&limit=10`
+        }&limit=10sort=price`
       );
     }
   };
@@ -346,6 +346,7 @@ const Home = () => {
                     <div className={HomeCss.inner_input_date_picker}>
                       <RangePicker
                         size="large"
+                        format={"MM-DD-YYYY"}
                         disabledDate={(current) => {
                           return current && current < moment().startOf("day");
                         }}

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -51,6 +51,13 @@ const GoogleMaps = (PropertyData) => {
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      markers;
+      center;
+    };
   }, []);
 
   return isLoaded ? (

@@ -43,6 +43,9 @@ const ViewProperty = () => {
   const [BookingDate, SetBookingDate] = useState([]);
   const [PaymentIntentObject, setPaymentIntentObject] = useState(null);
   const [Options, setOptions] = useState(null);
+  const [Availability, setAvailability] = useState({});
+  const [NotAvailable, setNotAvailable] = useState(false);
+  const [Available, setAvailable] = useState(false);
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -81,7 +84,7 @@ const ViewProperty = () => {
     console.log(key);
   };
 
-  console.log(SpecificPropAPIData, "FROM VIEW PROP");
+  // console.log(SpecificPropAPIData, "FROM VIEW PROP");
 
   const items = [
     {
@@ -190,24 +193,35 @@ const ViewProperty = () => {
     });
   };
 
-  const BookingHotelDone = () => {
-    // const BookingRes = axios.post(
-    //   `${process.env.NEXT_PUBLIC_API_URL}/v1/booking`,
-    //   {
-    //     propertyId: SpecificPropAPIData.id,
-    //     from: BookingDate[0],
-    //     to: BookingDate[1],
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${ContextUserDetails.UserState}`,
-    //     },
-    //   }
-    // );
-  };
-
   const OnChangeDateInput = (date, DateValue) => {
     SetBookingDate(DateValue);
+  };
+
+  const CheckAvail = async () => {
+    console.log(BookingDate[0]);
+    if (BookingDate.length === 0) {
+      message.error("Please select a booking date to check availability");
+      return;
+    } else {
+      try {
+        const CheckAvailRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${SpecificPropAPIData.id}?from=${BookingDate[0]}&to=${BookingDate[1]}`
+        );
+        if (CheckAvailRes.status === 200) {
+          setAvailability(CheckAvailRes.data);
+          console.log(CheckAvailRes.data.data);
+          if (CheckAvailRes.data.data.available) {
+            setAvailable(true);
+            setNotAvailable(false);
+          } else if (CheckAvailRes.data.data.available != true) {
+            setAvailable(false);
+            setNotAvailable(true);
+          }
+        }
+      } catch (error) {
+        console.log(error, "ERROR CheckAvailability");
+      }
+    }
   };
 
   return (
@@ -263,6 +277,20 @@ const ViewProperty = () => {
                 </div>
               </div>
               <hr className={ViewPropertyCss.horizonaline} />
+              {Available ? (
+                <p className={ViewPropertyCss.date_avail_text}>
+                  Your Date are available!
+                </p>
+              ) : (
+                ""
+              )}
+              {NotAvailable ? (
+                <p className={ViewPropertyCss.date_not_avail_text}>
+                  Your Date are not available!
+                </p>
+              ) : (
+                ""
+              )}
               <div className={ViewPropertyCss.inner_input_date_picker}>
                 <RangePicker
                   format={"MM-DD-YYYY"}
@@ -348,7 +376,7 @@ const ViewProperty = () => {
               </Dropdown>
               <hr />
 
-              <div className={ViewPropertyCss.checkParent}>
+              <div className={ViewPropertyCss.checkParent} onClick={CheckAvail}>
                 <Button className={ViewPropertyCss.check}>
                   Check availability
                 </Button>
