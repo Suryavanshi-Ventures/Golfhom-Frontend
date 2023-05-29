@@ -3,6 +3,7 @@ import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const Slider = ({ slides }) => {
   return (
@@ -11,7 +12,7 @@ const Slider = ({ slides }) => {
       spaceBetween={50}
       slidesPerView={3.5}
       pagination={{ clickable: true }}
-      onSlideChange={() => { }}
+      onSlideChange={() => {}}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -41,14 +42,23 @@ const Slider = ({ slides }) => {
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.id} className={HomeCss.parentImage}>
-          <div className={HomeCss.image_Parent}>
-            <Image
-              className={HomeCss.sliderImage}
-              src={slide.image}
-              alt={slide.name}
-              fill
-            ></Image>
-          </div>
+          <Link
+            href={`/search?latitude=${encodeURIComponent(
+              slide?.lat
+            )}&longitude=${encodeURIComponent(
+              slide?.lng
+            )}&location_name=${encodeURIComponent(slide?.name)}&limit=10`}
+          >
+            {" "}
+            <div className={HomeCss.image_Parent}>
+              <Image
+                className={HomeCss.sliderImage}
+                src={slide.image}
+                alt={slide.name}
+                fill
+              ></Image>
+            </div>
+          </Link>
 
           <h4 className={HomeCss.countryName}>{slide.name}</h4>
         </SwiperSlide>

@@ -36,6 +36,28 @@ const Home = () => {
   const [InputValue, setInputValue] = useState({
     search_input: "",
   });
+  const [AllPropertyData, setAllPropertyData] = useState([{}]);
+
+  useEffect(() => {
+    const GetPropDataFunc = async () => {
+      try {
+        const GetPropertyDataRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=5`
+        );
+        if (GetPropertyDataRes.status === 200) {
+          setAllPropertyData(GetPropertyDataRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR getting property data", error);
+      }
+    };
+
+    GetPropDataFunc();
+
+    return () => {
+      GetPropDataFunc();
+    };
+  }, []);
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
   const [adult, setAdult] = useState(0);
@@ -69,7 +91,7 @@ const Home = () => {
         search_input: formattedAddress,
       });
     } else {
-      alert("Please enter text");
+      message.error("Please enter text");
     }
   };
 
@@ -244,7 +266,11 @@ const Home = () => {
                   </div>
                 </div>
               </Col>
-              <Col lg={3} md={4} className={HomeCss.search_cols_4}>
+              <Col
+                lg={3}
+                md={4}
+                className={`${HomeCss.search_cols_4} ${HomeCss.search_bar_nights_col}`}
+              >
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_input_containerNight}>
                     <Row>
@@ -293,12 +319,12 @@ const Home = () => {
                     )}&location_name=${encodeURIComponent(
                       UrlParamsGeoData?.location_name
                     )}&guest=${encodeURIComponent(adult + child)}&from=${UrlParamsDateRange[0]
-                      ? UrlParamsDateRange[0]
-                      : moment().format("DD-MM-YYYY")
+                        ? UrlParamsDateRange[0]
+                        : moment().format("MM-DD-YYYY")
                       }&to=${UrlParamsDateRange[1]
                         ? UrlParamsDateRange[1]
-                        : moment().format("DD-MM-YYYY")
-                      }`}
+                        : moment().format("MM-DD-YYYY")
+                      }&limit=10`}
                     className={HomeCss.buttonParent}
                   >
                     <Button className={HomeCss.search_btn} type="primary">
@@ -530,12 +556,12 @@ const Home = () => {
       {/* -------------------------------------    Golfhōm Hottest New Arrivals ---------------------------- */}
       <main className={HomeCss.hottest_new_arrival_section}>
         <Container>
-          <h2 className={HomeCss.hottest_new_arrival__heading}>
-            Golfhōm Hottest New Arrivals
-          </h2>
           <div className={HomeCss.arrivalContainer}>
             <div className={HomeCss.arrivalContainer_child}>
               <div className={HomeCss.paraHeading}>
+                <h2 className={HomeCss.hottest_new_arrival__heading}>
+                  Golfhōm Hottest New Arrivals
+                </h2>
                 <p className={HomeCss.subHeading}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -556,9 +582,9 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <h6 className={HomeCss.newyork}>
+              {/* <h6 className={HomeCss.newyork}>
                 The Ritz-Carlton New York, NoMad
-              </h6>
+              </h6> */}
             </div>
 
             <div className={HomeCss.midImage}>
@@ -585,79 +611,93 @@ const Home = () => {
       <div className={HomeCss.cardBg}>
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
-          <Card className={HomeCss.MainCard}>
-            <Card.Img
-              variant="top"
-              className={HomeCss.cardImg}
-              src="/images/bedRoom.svg"
-              alt="Bed Image"
-            />
-            <Card.Body>
-              <Card.Title className={HomeCss.cardImgTitle}>
-                Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
-              </Card.Title>
+          <Row>
+            {AllPropertyData.map((data, i) => {
+              return (
+                <Col md={5} lg={4} key={i}>
+                  <Card className={HomeCss.MainCard}>
+                    <Card.Img
+                      variant="top"
+                      className={HomeCss.cardImg}
+                      src="/images/bedRoom.svg"
+                      alt="Bed Image"
+                    />
+                    <Card.Body>
+                      <Card.Title className={HomeCss.cardImgTitle}>
+                        Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
+                      </Card.Title>
 
-              <div>
-                <p className={HomeCss.saddle}>
-                  {" "}
-                  Saddlebrook Resort - Saddlebrook & 1 more
-                </p>
+                      <div>
+                        <p className={HomeCss.saddle}>
+                          {" "}
+                          Saddlebrook Resort - Saddlebrook & 1 more
+                        </p>
 
-                <div className={HomeCss.icon}>
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={18}
-                      height={18}
-                      src="/images/vector/bed.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>5 Bed Rooms</span>
-                  </div>
+                        <div className={HomeCss.icon}>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/bed.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              5 Bed Rooms
+                            </span>
+                          </div>
 
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={18}
-                      height={18}
-                      src="/images/vector/bath-tub.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>4 Baths</span>
-                  </div>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/bath-tub.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              4 Baths
+                            </span>
+                          </div>
 
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={18}
-                      height={18}
-                      src="/images/vector/guest.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>
-                      5 Guests Villa
-                    </span>
-                  </div>
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/images/vector/parking-area.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>Parking Area</span>
-                  </div>
-                </div>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/guest.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              5 Guests Villa
+                            </span>
+                          </div>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={20}
+                              height={20}
+                              src="/images/vector/parking-area.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              Parking Area
+                            </span>
+                          </div>
+                        </div>
 
-                <div className={HomeCss.parking}>
-                  <Image
-                    width={20}
-                    height={14}
-                    className={HomeCss.rightArrow}
-                    src="/images/vector/right_Arrow.svg"
-                    alt="iconImage"
-                  ></Image>
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
+                        <div className={HomeCss.parking}>
+                          <Image
+                            width={20}
+                            height={14}
+                            className={HomeCss.rightArrow}
+                            src="/images/vector/right_Arrow.svg"
+                            alt="iconImage"
+                          ></Image>
+                        </div>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
         </Container>
       </div>
 

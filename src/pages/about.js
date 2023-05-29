@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Head from "next/head";
 import { Button, Space } from "antd";
@@ -91,21 +92,69 @@ const About = () => {
                 About Golfhom.com
               </h4>
               <p className={AboutUsCss.about_golfhom_para}>
-                Welcome to Golfhōm, your new haven for discovering the perfect golf vacation rental. Say goodbye to the days of tirelessly sorting through irrelevant results on generic vacation websites. Instead, allow yourself to dive into a platform meticulously curated for passionate golf enthusiasts.
+                Welcome to Golfhōm, your new haven for discovering the perfect
+                golf vacation rental. Say goodbye to the days of tirelessly
+                sorting through irrelevant results on generic vacation websites.
+                Instead, allow yourself to dive into a platform meticulously
+                curated for passionate golf enthusiasts.
               </p>
 
-              <p className={AboutUsCss.about_golfhom_para}> At Golfhōm, we recognize your passion for golf and that's why we've custom-built our search algorithm to cater to your specific needs. We offer you exclusive access to a premium selection of golf course-proximate homes, condos, and villas. Whether you prefer searching by course, tournament, or city, we make the quest for your next golf vacation rental a breeze, ensuring it's as enjoyable as the sport you love.</p>
+              <p className={AboutUsCss.about_golfhom_para}>
+                {" "}
+                At Golfhōm, we recognize your passion for golf and that's why
+                we've custom-built our search algorithm to cater to your
+                specific needs. We offer you exclusive access to a premium
+                selection of golf course-proximate homes, condos, and villas.
+                Whether you prefer searching by course, tournament, or city, we
+                make the quest for your next golf vacation rental a breeze,
+                ensuring it's as enjoyable as the sport you love.
+              </p>
 
-              <p className={AboutUsCss.about_golfhom_para}>  Your safety and convenience are of paramount importance to us. Once you've found your ideal golf stay, you can secure your booking seamlessly. We've partnered with trusted payment platform, Stripe, to facilitate a smooth and secure checkout process.</p>
+              <p className={AboutUsCss.about_golfhom_para}>
+                {" "}
+                Your safety and convenience are of paramount importance to us.
+                Once you've found your ideal golf stay, you can secure your
+                booking seamlessly. We've partnered with trusted payment
+                platform, Stripe, to facilitate a smooth and secure checkout
+                process.
+              </p>
 
-              <p className={AboutUsCss.about_golfhom_para}>But we don't stop at providing incredible rentals. Understanding that a golf vacation encapsulates more than just the stay, we offer an assortment of complementary services, all without the need to leave the platform.</p>
+              <p className={AboutUsCss.about_golfhom_para}>
+                But we don't stop at providing incredible rentals. Understanding
+                that a golf vacation encapsulates more than just the stay, we
+                offer an assortment of complementary services, all without the
+                need to leave the platform.
+              </p>
 
-              <p className={AboutUsCss.about_golfhom_para}> Ship your clubs conveniently via Ship Sticks, leaving behind any concerns about transporting your valued golf gear.
-                Effortlessly organize your group's tee time and plot your games to optimize your vacation. Looking to improve your swing? Tap into our online training resources and sharpen your skills before stepping onto the green.</p>
+              <p className={AboutUsCss.about_golfhom_para}>
+                {" "}
+                Ship your clubs conveniently via Ship Sticks, leaving behind any
+                concerns about transporting your valued golf gear. Effortlessly
+                organize your group's tee time and plot your games to optimize
+                your vacation. Looking to improve your swing? Tap into our
+                online training resources and sharpen your skills before
+                stepping onto the green.
+              </p>
 
-              <p className={AboutUsCss.about_golfhom_para}>   A great golf experience necessitates the right gear. On Golfhōm, you have the ability to shop from our partner golf swag, ensuring you're well-equipped to make your golf trip memorable. While you're at it, immerse yourself in our wide range of golf articles. Stay updated on the latest trends, tips, and tricks in the golf world, amplifying your enjoyment of your favorite sport.</p>
+              <p className={AboutUsCss.about_golfhom_para}>
+                {" "}
+                A great golf experience necessitates the right gear. On Golfhōm,
+                you have the ability to shop from our partner golf swag,
+                ensuring you're well-equipped to make your golf trip memorable.
+                While you're at it, immerse yourself in our wide range of golf
+                articles. Stay updated on the latest trends, tips, and tricks in
+                the golf world, amplifying your enjoyment of your favorite
+                sport.
+              </p>
 
-              <p className={AboutUsCss.about_golfhom_para}> At Golfhōm, we're not merely a platform for locating rentals. We're dedicated to crafting a comprehensive golf travel experience. We're redefining how golf travelers find and book their luxury rentals - creating an experience that's as sophisticated, exclusive, and enjoyable as the game of golf itself!
+              <p className={AboutUsCss.about_golfhom_para}>
+                {" "}
+                At Golfhōm, we're not merely a platform for locating rentals.
+                We're dedicated to crafting a comprehensive golf travel
+                experience. We're redefining how golf travelers find and book
+                their luxury rentals - creating an experience that's as
+                sophisticated, exclusive, and enjoyable as the game of golf
+                itself!
               </p>
             </div>
           </Container>

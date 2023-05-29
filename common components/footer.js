@@ -1,20 +1,41 @@
-import React from "react";
+import { React, useState } from "react";
 import FooterCss from "./../src/styles/Footer.module.css";
 import Link from "next/link";
 import { Container, Col, Row } from "react-bootstrap";
 import Image from "next/image";
-import { Button } from "antd";
+import { Button, Input, message, Form } from "antd";
 import FooterLogo from "../public/footer logo.svg";
-import { Input } from "antd";
-import { UserOutlined, MailOutlined } from "@ant-design/icons";
+import { MailOutlined } from "@ant-design/icons";
 import LinkedinIcon from "../public/linkedin.svg";
 import FacebookIcon from "../public/facebook.svg";
 import InstaIcon from "../public/insta.svg";
 import YoutubeIcon from "../public/youtube.svg";
 import PinterestIcon from "../public/pinterest.svg";
 import TwittereIcon from "../public/twitter.svg";
+import axios from "axios";
 
 const Footer = () => {
+  const [form] = Form.useForm();
+  const DateCC = new Date().getFullYear();
+  const [Loading, setLoading] = useState(false);
+
+  const SubmitSubscribe = async (FormValue) => {
+    console.log(FormValue);
+    const SubmitSubRes = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/subscribe`,
+      {
+        subscribeBy: FormValue.subscribe_email,
+      }
+    );
+    setLoading(true);
+    if (SubmitSubRes.status === 201) {
+      setLoading(false);
+      message.success(
+        "Thank you for subscribing to our newsletter. Happy reading!"
+      );
+    }
+  };
+
   return (
     <>
       <footer className={FooterCss.footer}>
@@ -100,24 +121,44 @@ const Footer = () => {
                   </h5>
 
                   <div className={FooterCss.input_container}>
-                    <p className={FooterCss.input_title}>Email</p>
-                    <Input
-                      className={FooterCss.inputs}
-                      size="large"
-                      placeholder="Enter Your Email Please"
-                      prefix={<MailOutlined />}
-                    />
+                    <Form
+                      layout="vertical"
+                      name="subscribe_form"
+                      onFinish={SubmitSubscribe}
+                    >
+                      <Form.Item
+                        name="subscribe_email"
+                        label="Email"
+                        rules={[
+                          {
+                            type: "email",
+                          },
+                        ]}
+                      >
+                        <Input
+                          className={FooterCss.inputs}
+                          size="large"
+                          required
+                          placeholder="Enter Your Email Please"
+                          prefix={<MailOutlined />}
+                        />
+                      </Form.Item>
+                      <Form.Item>
+                        <div className={FooterCss.footer_div_email}>
+                          <div className={FooterCss.sub_btn_container}>
+                            <Button
+                              loading={Loading}
+                              htmlType="submit"
+                              className={FooterCss.sub_btn}
+                              type="primary"
+                            >
+                              Subscribe
+                            </Button>
+                          </div>
+                        </div>
+                      </Form.Item>
+                    </Form>
                   </div>
-
-
-                </div>
-              </div>
-
-              <div className={FooterCss.footer_div_email}>
-                <div className={FooterCss.sub_btn_container}>
-                  <Button className={FooterCss.sub_btn} type="primary">
-                    Subscribe
-                  </Button>
                 </div>
               </div>
             </Col>
@@ -128,7 +169,7 @@ const Footer = () => {
             <Row className={FooterCss.copyright_section_row}>
               <Col md={6}>
                 <p className={FooterCss.copyright_section_p}>
-                  GOLFHŌM LLC &nbsp; - &nbsp; 2023 All rights reserved
+                  GOLFHŌM LLC &nbsp; - &nbsp; {DateCC} All rights reserved
                 </p>
               </Col>
 

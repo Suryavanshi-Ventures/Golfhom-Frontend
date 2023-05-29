@@ -1,50 +1,84 @@
-import React from "react";
-import { useStripe, useElements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import { Button } from "antd";
+import { React, useContext } from "react";
+import {
+  CardElement,
+  Elements,
+  useStripe,
+  useElements,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
+import { Button, message } from "antd";
+import axios from "axios";
+import { AuthContext } from "@/context/auth_context";
+import CheckoutCss from "../../../styles/Checkout.module.css";
+import moment from "moment";
+import { useRouter } from "next/router";
 
-const Checkout = () => {
+const Checkout = (props) => {
+  const Router = useRouter();
   const stripe = useStripe();
   const elements = useElements();
-  const stripePromise = loadStripe(
-    `${process.env.NEXT_PUBLIC_STRIPE_TEST_KEY}`
-  );
+  console.log("PROPS DATA CHECKOUT", props.data);
+  const ContextUserDetails = useContext(AuthContext);
 
   const BookingHotelDone = async () => {
-    // const BookingRes = axios.post(
-    //   `${process.env.NEXT_PUBLIC_API_URL}/v1/booking`,
-    //   {
-    //     propertyId: SpecificPropAPIData.id,
-    //     from: BookingDate[0],
-    //     to: BookingDate[1],
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${ContextUserDetails.UserState}`,
-    //     },
-    //   }
-    // );
-
     if (!stripe || !elements) {
       // Stripe.js hasn't yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
-    const { error } = await stripe.confirmPayment({
+    const { error, paymentIntent } = await stripe.confirmPayment({
       //`Elements` instance that was used to create the Payment Element
       elements,
-      confirmParams: {
-        return_url: "http://localhost:3000/search/view_property/success",
-      },
+      // confirmParams: {
+      //   return_url: "http://localhost:3000/search/view_property/success",
+      // },
+      redirect: "if_required",
     });
+
+    if (error?.code) {
+      message.error(error.message);
+    } else if (error === undefined && paymentIntent) {
+      const BookingRes = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/booking`,
+        {
+          propertyId: props.data[0].id,
+          from: props.data[1],
+          to: props.data[2],
+          guest: props.data[3].total_guests,
+          children: props.data[3].child,
+          paymentIntent: paymentIntent.id,
+          pets: true,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${ContextUserDetails.UserState}`,
+          },
+        }
+      );
+      if (BookingRes.status === 201) {
+        console.log("RESPONSE BOOKING API BACKEND", BookingRes);
+        console.log("RESPONSE STRIPE PAYMENT INTENT ", paymentIntent);
+        Router.push(
+          `http://localhost:3000/search/view_property/success?transaction_id=${paymentIntent.id}&payment_method=${paymentIntent.payment_method_types[0]}&payment_status=${paymentIntent.status}&payment_amount=${paymentIntent.amount}&payment_currency=${paymentIntent.currency}`
+        );
+      }
+    }
+
+    console.log("ERROR - Stripe", error);
+    // message.error(error?.message);
   };
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          <Button onClick={BookingHotelDone}>Pay</Button>
+      <div className={CheckoutCss.checkout_btn_main_div}>
+        <div className={CheckoutCss.checkout_btn_div}>
+          <Button
+            className={CheckoutCss.checkout_btn}
+            onClick={BookingHotelDone}
+          >
+            Pay
+          </Button>
         </div>
       </div>
     </>

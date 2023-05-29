@@ -175,9 +175,9 @@
   flex-direction: row;
   justify-content: space-between;
   background: none;
-  color: #111111;
+  color: var(--light-font-color);
   border: none;
-  font-size: 1.4rem;
+  font-size: 17px;
   font-weight: 600;
 }
 
@@ -558,4 +558,10 @@
 
 .words {
   margin-left: 24px;
+}
+
+/* CHECKOUT SECTION */
+
+.checkout_payment_main_div {
+  padding: 0px 20px;
 }

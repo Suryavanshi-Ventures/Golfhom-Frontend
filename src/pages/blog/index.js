@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import BlogCss from "../../styles/Blog.module.css";
 import ViewAllProps from "../../../public/images/viewAllProps.svg";
@@ -8,11 +8,35 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Pagination } from "antd";
 import blogs from "../json/blogs.json";
 import Link from "next/link";
+import axios from "axios";
+import Loader from "../../../common components/loader";
 
 const Index = ({ cards }) => {
+  const [BlogData, setBlogData] = useState([{}]);
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
   };
+
+  useEffect(() => {
+    const GetBlogData = async () => {
+      try {
+        const BlogAPIRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/blog`
+        );
+
+        if (BlogAPIRes.status === 200) {
+          setBlogData(BlogAPIRes.data.data);
+          console.log(BlogAPIRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR ", error);
+      }
+    };
+    GetBlogData();
+    return () => {
+      GetBlogData();
+    };
+  }, []);
 
   return (
     <>
@@ -39,15 +63,14 @@ const Index = ({ cards }) => {
         <h2 className={BlogCss.cardsTitle}>
           From the Golfhōm Staff and Guest Writers
         </h2>
-
         <Row>
-          {blogs.blogs?.map((item, index) => {
+          {BlogData?.map((item, index) => {
             return (
               <Col md={4} xs={12} key={index} className={BlogCss.columnParent}>
                 <div className={BlogCss.parentOf_img_textCard}>
                   <div className={BlogCss.imageChild}>
                     <Image
-                      src={item.img}
+                      src={item.image}
                       fill
                       className={BlogCss.blog_img}
                       alt={item.naming}
@@ -56,7 +79,7 @@ const Index = ({ cards }) => {
 
                   <div className={BlogCss.cardTextParent}>
                     <Link href="blog/view_blog" className={BlogCss.a_tag}>
-                      <h5 className={BlogCss.card_title}>{item.heading}</h5>
+                      <h5 className={BlogCss.card_title}>{item.title}</h5>
                     </Link>
                     <div className={BlogCss.contact_div}>
                       <Image
@@ -66,12 +89,14 @@ const Index = ({ cards }) => {
                         height={15}
                         className={BlogCss.contact}
                       ></Image>{" "}
-                      <span className={BlogCss.byAdmin}>{item.name}</span>
+                      <span className={BlogCss.byAdmin}>
+                        {item.createdBy ? item.createdBy : "N/A"}
+                      </span>
                     </div>
 
                     <div className={BlogCss.bookmarkDiv}>
                       <span className={BlogCss.bookmark_text}>
-                        {item.golfline}
+                        {item.tag?.join(", ")}
                       </span>
                     </div>
 

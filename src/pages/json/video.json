@@ -1,61 +1,50 @@
 [
-    {
-        "id": 21,
-        "image": "/images/girl.svg",
-        "name": "Girl"
-    },
+  {
+    "id": 1,
+    "image": "/images/girl.svg",
+    "name": "Girl",
+    "link": "https://www.youtube.com/embed/vDwWazu-J20"
+  },
 
-    {
-        "id": 22,
-        "image": "/images/man.svg",
-        "name": "Man"
-    },
+  {
+    "id": 2,
+    "image": "/images/man.svg",
+    "name": "Man",
+    "link": "https://youtube.com/embed/W90vHXDT15c"
+  },
 
-    {
-        "id": 23,
-        "image": "/images/supportive.svg",
-        "name": "Support"
-    },
+  {
+    "id": 3,
+    "image": "/images/supportive.svg",
+    "name": "Support",
+    "link": "https://youtube.com/embed/LkNKOmQefXI"
+  },
 
-    {
-        "id": 24,
-        "image": "/images/girl.svg",
-        "name": "Girl"
-    },
+  {
+    "id": 4,
+    "image": "/images/girl.svg",
+    "name": "Girl",
+    "link": "https://youtube.com/embed/EqsYEyL43R8"
+  },
 
-    {
-        "id": 25,
-        "image": "/images/man.svg",
-        "name": "Man"
-    },
+  {
+    "id": 5,
+    "image": "/images/man.svg",
+    "name": "Man",
+    "link": "https://youtube.com/embed/FKUbiMNjeKQ"
+  },
 
-    {
-        "id": 26,
-        "image": "/images/supportive.svg",
-        "name": "Support"
-    },
+  {
+    "id": 6,
+    "image": "/images/supportive.svg",
+    "name": "Support",
+    "link": "https://youtube.com/embed/vDwWazu-J20"
+  },
 
-    {
-        "id": 27,
-        "image": "/images/girl.svg",
-        "name": "Girl"
-    },
-
-    {
-        "id": 28,
-        "image": "/images/man.svg",
-        "name": "Man"
-    },
-
-    {
-        "id": 29,
-        "image": "/images/supportive.svg",
-        "name": "Support"
-    },
-
-    {
-        "id": 20,
-        "image": "/images/girl.svg",
-        "name": "Girl"
-    }
+  {
+    "id": 7,
+    "image": "/images/girl.svg",
+    "name": "Girl",
+    "link": "https://youtube.com/embed/e0DmQxuRo5Q"
+  }
 ]

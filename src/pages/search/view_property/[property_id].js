@@ -46,21 +46,27 @@ const ViewProperty = () => {
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
-    const SpecificPropData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
-        PropertyId || UrlParamId
-      }`
-    );
 
-    SpecificPropData.then((response) => {
-      if (response.status === 200) {
-        SetSpecificPropAPIData(response.data.data);
+    const GetPropertyById = async () => {
+      try {
+        const SpecificPropData = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
+            PropertyId || UrlParamId
+          }`
+        );
+
+        if (SpecificPropData.status === 200) {
+          SetSpecificPropAPIData(SpecificPropData.data.data);
+        }
+      } catch (error) {
+        console.log(error, "ERR");
       }
-    }).catch((err) => {
-      console.log(err, "ERR");
-    });
+    };
 
-    return () => {};
+    GetPropertyById();
+    return () => {
+      GetPropertyById();
+    };
   }, [PropertyId]);
 
   useEffect(() => {
@@ -76,6 +82,7 @@ const ViewProperty = () => {
   };
 
   console.log(SpecificPropAPIData, "FROM VIEW PROP");
+
   const items = [
     {
       key: "1",
@@ -115,7 +122,6 @@ const ViewProperty = () => {
   };
 
   // FOR CHILD BUTTON INCREMENT AND DECREMENT
-
   const [child, setChild] = useState(0);
 
   const incChild = () => {
@@ -148,6 +154,11 @@ const ViewProperty = () => {
   };
 
   const CreatePatymentIntent = async () => {
+    if (BookingDate.length === 0) {
+      message.error("Please select the check-in & check-out date");
+      return;
+    }
+
     const PaymentRes = axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
       {
@@ -171,10 +182,11 @@ const ViewProperty = () => {
         });
       }
     }).catch((err) => {
-      message.error(
-        err.response.data.message + ", Please login to book hotels!"
-      );
-      console.log("ERROR IN PAYMENT INTENT", err.response.data.message);
+      if (err.response.data.message === "User not authorized") {
+        message.error("Please login to book hotels");
+        return;
+      }
+      message.error(err.response.data.message);
     });
   };
 
@@ -253,6 +265,7 @@ const ViewProperty = () => {
               <hr className={ViewPropertyCss.horizonaline} />
               <div className={ViewPropertyCss.inner_input_date_picker}>
                 <RangePicker
+                  format={"MM-DD-YYYY"}
                   size="large"
                   style={{ width: "100%" }}
                   onChange={OnChangeDateInput}
@@ -270,7 +283,7 @@ const ViewProperty = () => {
                   className={ViewPropertyCss.guest}
                   id="dropdown-basic"
                 >
-                  Guest
+                  {adult} Adults, {child} Children
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className={ViewPropertyCss.adultChild}>
@@ -417,18 +430,28 @@ const ViewProperty = () => {
                   </Button>
                 </Space>
               </div>
-              {Options != null && (
-                <>
-                  {console.log(Options, "LOGGGG FROM ELEMENT")}
+              <div className={ViewPropertyCss.checkout_payment_main_div}>
+                {Options != null && (
                   <Elements
                     stripe={stripePromise}
                     options={{ clientSecret: Options.ClientSecret }}
                   >
-                    <Checkout />
                     <PaymentElement />
+                    <Checkout
+                      data={[
+                        SpecificPropAPIData,
+                        BookingDate[0],
+                        BookingDate[1],
+                        {
+                          adult: adult,
+                          child: child,
+                          total_guests: adult + child,
+                        },
+                      ]}
+                    />
                   </Elements>
-                </>
-              )}
+                )}
+              </div>
             </Col>
           </Row>
         </Container>
@@ -460,11 +483,10 @@ const ViewProperty = () => {
               Features
             </h5>
             <Row>
-              <Col md={4}>
-                {SpecificPropAPIData?.amenities?.map((data, index) => {
-                  return (
+              {SpecificPropAPIData?.amenities?.map((data, index) => {
+                return (
+                  <Col key={index} md={4}>
                     <div
-                      key={index}
                       className={ViewPropertyCss.feature_section_div_container}
                     >
                       <div
@@ -484,9 +506,9 @@ const ViewProperty = () => {
                         {data}
                       </p>
                     </div>
-                  );
-                })}
-              </Col>
+                  </Col>
+                );
+              })}
             </Row>
           </Container>
         </section>

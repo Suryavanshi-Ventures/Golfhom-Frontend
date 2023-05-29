@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect, React } from "react";
 import Head from "next/head";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Card } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import {
   Checkbox,
+  Input,
+  Switch,
   Button,
   Dropdown,
   Space,
@@ -33,6 +35,8 @@ const Index = () => {
   const [PropertyData, SetPropertyData] = useState([]);
   const [PaginationState, SetPagination] = useState(1);
   const [index, setIndex] = useState(0);
+  const [Parentindex, setParentindex] = useState([]);
+
   const [isVisible, setIsVisible] = useState(true);
   const [SortBy, setSortBy] = useState("");
   const [SortByParam, setSortByParam] = useState("");
@@ -45,31 +49,11 @@ const Index = () => {
     setIsVisible(true);
   };
 
-  console.log(param, "PARAAAAAAAAAAMs");
-  useEffect(() => {
-    const FetchLocationAPI = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/location`
-        );
-        if (response.status === 200) {
-          console.log(response.data.data);
-          setSearchOptions(response.data.data);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    FetchLocationAPI();
-
-    return () => { };
-  }, []);
   useEffect(() => {
     const GetPropertyData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
       }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-      }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort="price"`
+      }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
@@ -106,15 +90,23 @@ const Index = () => {
     });
   }, [SortBy, PaginationState, SortByParam]);
 
-  const handleSelectA = (selectedIndex) => {
-    setIndex(selectedIndex);
+  const handleSelectA = (selectedIndex, ParentIndexs, length) => {
+    // setIndex(selectedIndex);
+    const LocalParent = [...Parentindex];
+    console.log(selectedIndex, "SELECT INDEX");
+    if (selectedIndex > length || selectedIndex < 0) {
+      LocalParent[ParentIndexs] = 0;
+    } else {
+      LocalParent[ParentIndexs] = selectedIndex;
+    }
+    setParentindex(LocalParent);
   };
 
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
-      }&limit=10&page=${pageNumber}`
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      }&${"to=" + param.to}&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
@@ -150,10 +142,10 @@ const Index = () => {
     }
   };
   const OnChangeDestination = (LocationName, DateValue) => {
-    setUrlParamsDestination({
-      country_name: DateValue.value,
-      id: DateValue.Uid,
-    });
+    // setUrlParamsDestination({
+    //   country_name: DateValue.value,
+    //   id: DateValue.Uid,
+    // });
 
     console.log("ON CHANGE DATA DESTINATION", DateValue);
   };
@@ -191,7 +183,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Florida USA
+                      Location
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -227,7 +219,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Marmot Ridge Golf Course
+                      Location
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -361,7 +353,7 @@ const Index = () => {
                               SearchIndexCss.edit_room_dropdown_btn_space
                             }
                           >
-                            1 Room: 1 Adult/ Room
+                            Button Drop Down
                             <DownOutlined
                               className={SearchIndexCss.edit_room_dropdown_icon}
                             />
@@ -490,51 +482,61 @@ const Index = () => {
                           <Carousel
                             wrap={true}
                             key={data.id}
-                            activeIndex={index}
-                            onSelect={handleSelectA}
+                            activeIndex={Parentindex[id]}
+                            onSelect={(selectedIndex) => {
+                              handleSelectA(
+                                selectedIndex,
+                                id,
+                                data.otherImageUrls?.length
+                              );
+                            }}
                             indicators={false}
                             interval={null}
                             className={CarasoulMapCss.carouselParent}
                           >
-                            <Carousel.Item className={CarasoulMapCss.imageGap}>
-                              <Link
-                                onClick={(e) => {
-                                  Router.push(
-                                    `search/view_property/${data.id}`
-                                  );
-                                  e.preventDefault();
-                                }}
-                                href=""
-                              >
-                                {data.otherImageUrls.map(
-                                  (ImageUrl, ImageIndex) => {
-                                    return (
-                                      <Image
-                                        key={ImageIndex}
-                                        src={ImageUrl}
-                                        onClick={() => {
-                                          SendPropertyData(data);
-                                        }}
-                                        alt="Hotel View"
-                                        fill
-                                        className={CarasoulMapCss.carouselImage}
-                                        priority
-                                      ></Image>
-                                    );
-                                  }
-                                )}
-                              </Link>
-                            </Carousel.Item>
-
+                            {data.otherImageUrls.map((element, ind) => {
+                              return (
+                                <Carousel.Item
+                                  key={ind}
+                                  style={{ position: "relative" }}
+                                  className={CarasoulMapCss.imageGap}
+                                >
+                                  <div
+                                    onClick={(e) => {
+                                      Router.push(
+                                        `search/view_property/${data.id}`
+                                      );
+                                      e.preventDefault();
+                                    }}
+                                    href=""
+                                    style={{ position: "relative" }}
+                                  >
+                                    <Image
+                                      src={element}
+                                      alt={`image ${data.id}`}
+                                      fill
+                                      className={CarasoulMapCss.carouselImage}
+                                      priority
+                                    ></Image>
+                                  </div>
+                                </Carousel.Item>
+                              );
+                            })}
                             <ol className="carousel-indicators">
-                              <li
-                                className={id === 0 ? "active" : ""}
-                                onClick={() => setIndex(id)}
-                              ></li>
+                              {data.otherImageUrls.map((element, ind) => {
+                                return (
+                                  <li
+                                    key={ind}
+                                    className={ind === 0 ? "active" : ""}
+                                    onClick={() => setIndex(ind)}
+                                  ></li>
+                                );
+                              })}
                             </ol>
+                            ;
                           </Carousel>
 
-                          <Link
+                          <div
                             onClick={(e) => {
                               Router.push(`search/view_property/${data.id}`);
                               e.preventDefault();
@@ -545,7 +547,7 @@ const Index = () => {
                             <h4 className={CarasoulMapCss.carouselHeading}>
                               {data.name}
                             </h4>
-                          </Link>
+                          </div>
                           <p className={CarasoulMapCss.discribeOfCard}>
                             {data.golfCourseName}
                           </p>
@@ -564,7 +566,7 @@ const Index = () => {
                             </span>
 
                             <h5 className={CarasoulMapCss.price_of_property}>
-                              From: ${data.price}/Night
+                              <sup>From</sup> ${data.price}/Night
                             </h5>
                           </div>
                         </Col>
