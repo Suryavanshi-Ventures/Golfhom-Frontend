@@ -63,14 +63,12 @@ const Index = () => {
 
     FetchLocationAPI();
 
-    return () => {};
+    return () => { };
   }, []);
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort="price"`
     );
     GetPropertyData.then((response) => {
@@ -83,7 +81,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     PaginationState,
     param.from,
@@ -114,10 +112,8 @@ const Index = () => {
 
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "locationId=" + param.location_id
-      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${
-        "to=" + param.to
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"locationId=" + param.location_id
+      }&${"accomodation=" + param.guest}&${"from=" + param.from}&${"to=" + param.to
       }&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {

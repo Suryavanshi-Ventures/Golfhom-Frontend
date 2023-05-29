@@ -292,15 +292,13 @@ const Home = () => {
                       UrlParamsGeoData?.longitude
                     )}&location_name=${encodeURIComponent(
                       UrlParamsGeoData?.location_name
-                    )}&guest=${encodeURIComponent(adult + child)}&from=${
-                      UrlParamsDateRange[0]
-                        ? UrlParamsDateRange[0]
-                        : moment().format("DD-MM-YYYY")
-                    }&to=${
-                      UrlParamsDateRange[1]
+                    )}&guest=${encodeURIComponent(adult + child)}&from=${UrlParamsDateRange[0]
+                      ? UrlParamsDateRange[0]
+                      : moment().format("DD-MM-YYYY")
+                      }&to=${UrlParamsDateRange[1]
                         ? UrlParamsDateRange[1]
                         : moment().format("DD-MM-YYYY")
-                    }`}
+                      }`}
                     className={HomeCss.buttonParent}
                   >
                     <Button className={HomeCss.search_btn} type="primary">
