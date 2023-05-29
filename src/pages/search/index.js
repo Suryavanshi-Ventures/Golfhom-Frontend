@@ -67,6 +67,12 @@ const Index = () => {
     libraries: placesLibrary,
   });
 
+  const [guest, setGuest] = useState(param.guest || 0);
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  const onChangeGuest = (value) => {
+    setGuest(value);
+  };
   const [InputValue, setInputValue] = useState(param.location_name ? param.location_name : "");
 
   const onLoad = (autocomplete) => {
@@ -107,10 +113,8 @@ const Index = () => {
 
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
@@ -123,7 +127,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     PaginationState,
     param.from,
@@ -160,10 +164,8 @@ const Index = () => {
 
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {
@@ -379,11 +381,11 @@ const Index = () => {
                 >
                   <div className={SearchIndexCss.edit_details_divs}>
                     <p className={SearchIndexCss.edit_details_titles}>
-                      Stay {(() => {
+                      {(() => {
                         const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
                         const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
                         return endDate.diff(startDate, "days") || 0;
-                      })()}{" "} Night
+                      })()}{" "} Nights
                     </p>
 
                     <div
@@ -411,7 +413,7 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      <Dropdown
+                      {/* <Dropdown
                         menu={{
                           items: [
                             {
@@ -440,7 +442,17 @@ const Index = () => {
                             />
                           </Space>
                         </Button>
-                      </Dropdown>
+                      </Dropdown> */}
+
+                      <Input
+                        type="number"
+                        className={SearchIndexCss.inner_input_box}
+                        size="large"
+                        value={guest}
+                        onChange={(e) => onChangeGuest(parseInt(e.target.value))}
+                      // onChange={OnChangeGuest}
+                      />
+
                     </div>
                   </div>
                 </Col>
