@@ -10,9 +10,9 @@ const Slider = ({ slides }) => {
     <Swiper
       modules={[Navigation, Pagination, A11y]}
       spaceBetween={50}
-      slidesPerView={3.5}
+      slidesPerView={4}
       pagination={{ clickable: true }}
-      onSlideChange={() => {}}
+      onSlideChange={() => { }}
       breakpoints={{
         0: {
           slidesPerView: 1,

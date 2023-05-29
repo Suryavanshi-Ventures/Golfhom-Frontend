@@ -66,7 +66,7 @@ const Index = ({ cards }) => {
         <Row>
           {BlogData?.map((item, index) => {
             return (
-              <Col md={4} xs={12} key={index} className={BlogCss.columnParent}>
+              <Col lg={4} md={6} sm={12} xs={12} key={index} className={BlogCss.columnParent}>
                 <div className={BlogCss.parentOf_img_textCard}>
                   <div className={BlogCss.imageChild}>
                     <Image
@@ -106,8 +106,8 @@ const Index = ({ cards }) => {
                         className={BlogCss.learnIcon}
                         src="/images/vector/learnMore.svg"
                         alt="learnMore"
-                        width={15}
-                        height={15}
+                        width={18}
+                        height={18}
                       ></Image>{" "}
                     </div>
                   </div>

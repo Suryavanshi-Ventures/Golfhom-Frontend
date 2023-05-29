@@ -39,8 +39,8 @@ const GolfhomStaffSlider = ({ review }) => {
             className={HomeCss.learnIcon}
             src="/images/vector/learnMore.svg"
             alt="learnMore"
-            width={15}
-            height={15}
+            width={16}
+            height={16}
           ></Image>{" "}
         </div>
       </div>
