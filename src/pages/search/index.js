@@ -107,8 +107,10 @@ const Index = () => {
 
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
@@ -121,7 +123,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     PaginationState,
     param.from,
@@ -131,20 +133,20 @@ const Index = () => {
     param.longitude,
   ]);
 
-  useEffect(() => {
-    const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}&sort=${SortBy}${SortByParam}`
-    );
-    GetPropertyData.then((response) => {
-      if (response.status === 200) {
-        SetPropertyData(response.data.data);
-        SetLengthOfProperty(response.data.data.length);
-        console.log(response.data.data, "API DATA PROPERTY ");
-      }
-    }).catch((err) => {
-      console.log(err, "ERR");
-    });
-  }, [SortBy, PaginationState, SortByParam]);
+  // useEffect(() => {
+  //   const GetPropertyData = axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}&sort=${SortBy}${SortByParam}`
+  //   );
+  //   GetPropertyData.then((response) => {
+  //     if (response.status === 200) {
+  //       SetPropertyData(response.data.data);
+  //       SetLengthOfProperty(response.data.data.length);
+  //       console.log(response.data.data, "API DATA PROPERTY ");
+  //     }
+  //   }).catch((err) => {
+  //     console.log(err, "ERR");
+  //   });
+  // }, [SortBy, PaginationState, SortByParam]);
 
   const handleSelectA = (selectedIndex, ParentIndexs, length) => {
     const LocalParent = [...Parentindex];
@@ -158,8 +160,10 @@ const Index = () => {
 
   const OnPaginationChange = (pageNumber) => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${pageNumber}`
     );
     GetPropertyData.then((response) => {

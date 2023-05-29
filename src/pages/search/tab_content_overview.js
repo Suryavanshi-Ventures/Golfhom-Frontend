@@ -81,7 +81,7 @@ const TabContentOverview = (PropData) => {
                 Bathrooms
               </h1>
               <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data.bathrooms ? PropData.data.bathrooms : "N/A"} Full
+                {PropData.data.bathrooms ? PropData.data.bathrooms : "1"} Full
               </p>
             </div>
           </Col>
