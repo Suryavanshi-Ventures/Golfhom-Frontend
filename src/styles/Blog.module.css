@@ -122,12 +122,13 @@
 }
 
 .columnParent {
-  margin-bottom: 60px;
-  padding-bottom: 42px;
+  /* margin-bottom: 60px;
+  padding-bottom: 42px; */
   position: relative !important;
 }
 
 .parentOf_img_textCard {
+  width: 100%;
 }
 
 .blog_img {
@@ -140,12 +141,11 @@
 .cardTextParent {
   overflow: hidden;
   background: var(--white-background);
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: fit-content;
   padding: 16px;
-  position: absolute;
-  top: 200px;
-  flex-shrink: 3;
+  position: relative;
+  bottom: 80px;
 }
 
 .a_tag {
@@ -199,11 +199,12 @@
   margin-right: 10px;
   font-weight: 400;
   font-size: 1.1rem;
+  margin-bottom: 0px;
 }
 
 .learnIcon {
   position: relative;
-  top: 5px;
+  top: 6px;
 }
 
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
@@ -221,32 +222,32 @@
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
 @media only screen and (max-width: 768px) {
   .cardTextParent {
-    flex-shrink: 2;
+    /* flex-shrink: 2;
     top: 240px !important;
-    width: 60% !important;
+    width: 60% !important; */
   }
 
   .bookmark_text {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
   }
 }
 
 @media only screen and (max-width: 1400px) {
-  .cardTextParent {
+  /* .cardTextParent {
     top: 155px;
-  }
+  } */
 }
 
 @media only screen and (max-width: 1200px) {
-  .cardTextParent {
+  /* .cardTextParent {
     top: 114px;
     font-size: 10px;
-    width: 84%;
-  }
+    width: 82%;
+  } */
 }
 
 @media only screen and (max-width: 1000px) {
-  .cardTextParent {
+  /* .cardTextParent {
     top: 114px;
     font-size: 10px;
     width: 86%;
@@ -271,5 +272,16 @@
 
   .learnbtn {
     margin-top: 2px;
+  } */
+}
+
+@media only screen and (max-width: 992px) {
+
+}
+
+@media only screen and (max-width: 576px) {
+  .cardsParent {
+    padding: 0px 30px;
   }
+
 }

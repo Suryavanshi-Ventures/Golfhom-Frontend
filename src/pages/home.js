@@ -319,8 +319,8 @@ const Home = () => {
                     )}&location_name=${encodeURIComponent(
                       UrlParamsGeoData?.location_name
                     )}&guest=${encodeURIComponent(adult + child)}&from=${UrlParamsDateRange[0]
-                        ? UrlParamsDateRange[0]
-                        : moment().format("MM-DD-YYYY")
+                      ? UrlParamsDateRange[0]
+                      : moment().format("MM-DD-YYYY")
                       }&to=${UrlParamsDateRange[1]
                         ? UrlParamsDateRange[1]
                         : moment().format("MM-DD-YYYY")

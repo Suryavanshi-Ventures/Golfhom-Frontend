@@ -82,7 +82,7 @@ const FAQ = () => {
                     </h3>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        How can I list my property Golfhom ?
+                        How Do I Get more info about the Property amenities?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonA}>
                         {showA ? "-" : "+"}
@@ -91,9 +91,7 @@ const FAQ = () => {
                     {showA && (
                       <div>
                         <p className={FAQCss.faqPara}>
-                          Create a Host account, and take just 5 minutes to
-                          complete our simple listing loop. Make sure to post
-                          great images of your home!
+                          You can find information on a property’s amenities on the home’s profile page. Reach out to the host for more specific information.
                         </p>
                       </div>
                     )}
@@ -104,7 +102,7 @@ const FAQ = () => {
                   <div>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        How do I communicate with my guests?
+                        How Do I Get more info about the Property amenities?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonB}>
                         {showB ? "-" : "+"}
@@ -125,7 +123,7 @@ const FAQ = () => {
 
                   <div className={FAQCss.headingSign}>
                     <p className={FAQCss.faqTitle}>
-                      How do I price my property?
+                      How Do I Get more info about the Property amenities?
                     </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonC}>
                       {showC ? "-" : "+"}
@@ -136,7 +134,7 @@ const FAQ = () => {
 
                   <div className={FAQCss.headingSign}>
                     <p className={FAQCss.faqTitle}>
-                      How does Golfhom.com pay me?
+                      How Do I Get more info about the Property amenities?
                     </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonD}>
                       {showD ? "-" : "+"}
@@ -147,7 +145,7 @@ const FAQ = () => {
 
                   <div className={FAQCss.headingSign}>
                     <p className={FAQCss.faqTitle}>
-                      How can I upgrade my listing to featured ?
+                      How Do I Get more info about the Property amenities?
                     </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonE}>
                       {showE ? "-" : "+"}
@@ -158,7 +156,7 @@ const FAQ = () => {
 
                   <div className={FAQCss.headingSign}>
                     <p className={FAQCss.faqTitle}>
-                      What happens if a renter cancels a reservation?
+                      How Do I Get more info about the Property amenities?
                     </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonF}>
                       {showF ? "-" : "+"}
@@ -174,7 +172,7 @@ const FAQ = () => {
                     </h3>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        How can I list my property Golfhom ?
+                        Can I cancel a current reservation?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonA}>
                         {showA ? "-" : "+"}
@@ -183,31 +181,7 @@ const FAQ = () => {
                     {showA && (
                       <div>
                         <p className={FAQCss.faqPara}>
-                          Create a Host account, and take just 5 minutes to
-                          complete our simple listing loop. Make sure to post
-                          great images of your home!
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  <hr className={FAQCss.horizontaLine} />
-
-                  <div>
-                    <div className={FAQCss.headingSign}>
-                      <p className={FAQCss.faqTitle}>
-                        How do I communicate with my guests?
-                      </p>
-                      <Button className={FAQCss.sign} onClick={toggleButtonB}>
-                        {showB ? "-" : "+"}
-                      </Button>
-                    </div>
-                    {showB && (
-                      <div>
-                        <p>
-                          Create a Host account, and take just 5 minutes to
-                          complete our simple listing loop. Make sure to post
-                          great images of your home!
+                          Yes, cancellations happen. Any cancellation fees are determined by the property’s stated cancellation policy, which you can find on the home’s profile page and in your reservation.
                         </p>
                       </div>
                     )}
@@ -217,7 +191,7 @@ const FAQ = () => {
 
                   <div className={FAQCss.headingSign}>
                     <p className={FAQCss.faqTitle}>
-                      How do I price my property?
+                      Can I cancel a current reservation?
                     </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonC}>
                       {showC ? "-" : "+"}
@@ -228,18 +202,7 @@ const FAQ = () => {
 
                   <div className={FAQCss.headingSign}>
                     <p className={FAQCss.faqTitle}>
-                      How does Golfhom.com pay me?
-                    </p>
-                    <Button className={FAQCss.sign} onClick={toggleButtonD}>
-                      {showD ? "-" : "+"}
-                    </Button>
-                  </div>
-
-                  <hr className={FAQCss.horizontaLine} />
-
-                  <div className={FAQCss.headingSign}>
-                    <p className={FAQCss.faqTitle}>
-                      How can I upgrade my listing to featured ?
+                      Can I cancel a current reservation?
                     </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonE}>
                       {showE ? "-" : "+"}
@@ -250,7 +213,7 @@ const FAQ = () => {
 
                   <div className={FAQCss.headingSign}>
                     <p className={FAQCss.faqTitle}>
-                      What happens if a renter cancels a reservation?
+                      Can I cancel a current reservation?
                     </p>
                     <Button className={FAQCss.sign} onClick={toggleButtonF}>
                       {showF ? "-" : "+"}

@@ -11,6 +11,7 @@ import {
   Button,
   Dropdown,
   Space,
+  Skeleton,
   DatePicker,
   Pagination,
   AutoComplete,
@@ -25,8 +26,11 @@ import Dot from "../../../public/images/vector/dot.svg";
 import Map from "../../../common components/map";
 import Loader from "../../../common components/loader";
 import axios from "axios";
+import moment from "moment";
 import { useRouter } from "next/router";
+import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 const { RangePicker } = DatePicker;
+const placesLibrary = ["places"];
 
 const Index = () => {
   const Router = useRouter();
@@ -42,7 +46,58 @@ const Index = () => {
   const [SortByParam, setSortByParam] = useState("");
   const [SearchOptions, setSearchOptions] = useState([]);
 
+  const [searchResult, setSearchResult] = useState("");
+  const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
+
   const param = Router.query;
+  console.log(Router, "check");
+
+  const { from, to } = Router.query;
+
+  // DROPDOWN FOR SEARCH
+
+  const OnChangeDateRange = (LocationName, DateValue) => {
+    setUrlParamsDateRange(DateValue);
+    console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
+  };
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: placesLibrary,
+  });
+
+  const [InputValue, setInputValue] = useState(param.location_name ? param.location_name : "");
+
+  const onLoad = (autocomplete) => {
+    setSearchResult(autocomplete);
+  };
+
+  const OnSearchInputChange = (event) => {
+    console.log(event.target.value);
+    setInputValue(event.target.value);
+  };
+
+  const onPlaceChanged = () => {
+    if (searchResult != null) {
+      const place = searchResult.getPlace();
+      const name = place.name;
+      const status = place.business_status;
+      const formattedAddress = place.formatted_address;
+      // setUrlParamsGeoData({
+      //   latitude: place.geometry?.location.lat(),
+      //   longitude: place.geometry?.location.lng(),
+      //   location_name: name,
+      // });
+      console.log(`Name: ${name}`);
+      console.log(`Business Status: ${status}`);
+      console.log(`Formatted Address: ${formattedAddress}`);
+      setInputValue({
+        search_input: formattedAddress,
+      });
+    } else {
+      message.error("Please enter text");
+    }
+  };
 
   const EditBtn = () => {
     setShowHidden(true);
@@ -166,11 +221,11 @@ const Index = () => {
                   menu={{
                     items: [
                       {
-                        label: "Price (Low to High)",
+                        label: "Orlando",
                         key: "1",
                       },
                       {
-                        label: "Price (High to Low)",
+                        label: "Portugal",
                         key: "2",
                       },
                     ],
@@ -183,7 +238,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Location
+                      Florida USA
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -202,11 +257,11 @@ const Index = () => {
                   menu={{
                     items: [
                       {
-                        label: "Price (Low to High)",
+                        label: "Arizona",
                         key: "1",
                       },
                       {
-                        label: "Price (High to Low)",
+                        label: "New York",
                         key: "2",
                       },
                     ],
@@ -219,7 +274,7 @@ const Index = () => {
                     <Space
                       className={SearchIndexCss.edit_room_dropdown_btn_space}
                     >
-                      Location
+                      Marmot Ridge Golf Course
                       <DownOutlined
                         className={SearchIndexCss.edit_room_dropdown_icon}
                       />
@@ -279,7 +334,7 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      <AutoComplete
+                      {/* <AutoComplete
                         style={{
                           width: 200,
                         }}
@@ -289,13 +344,37 @@ const Index = () => {
                         }))}
                         onChange={OnChangeDestination}
                         size="large"
-                        placeholder="Where you want to stay"
+                        // placeholder="Where you want to stay"
+                        placeholder={param.location_name}
+                        // value={param.location_name}
                         filterOption={(inputValue, option) =>
                           option.value
                             .toUpperCase()
                             .indexOf(inputValue.toUpperCase()) !== -1
                         }
-                      />
+                      /> */}
+
+                      {isLoaded ? (
+                        <Autocomplete
+                          onPlaceChanged={onPlaceChanged}
+                          onLoad={onLoad}
+                        >
+                          <Input
+                            className={SearchIndexCss.inner_input_box}
+                            size="large"
+                            value={InputValue}
+                            onChange={OnSearchInputChange}
+                            name="search_input"
+                            allowClear
+                          />
+                        </Autocomplete>
+                      ) : (
+                        <Skeleton.Input
+                          active={true}
+                          size={"mid"}
+                          className={SearchIndexCss.input_skeleton}
+                        />
+                      )}
                     </div>
                   </div>
                 </Col>
@@ -306,7 +385,11 @@ const Index = () => {
                 >
                   <div className={SearchIndexCss.edit_details_divs}>
                     <p className={SearchIndexCss.edit_details_titles}>
-                      Stay Dates (1 Night)
+                      Stay {(() => {
+                        const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
+                        const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
+                        return endDate.diff(startDate, "days") || 0;
+                      })()}{" "} Night
                     </p>
 
                     <div
@@ -314,6 +397,10 @@ const Index = () => {
                     >
                       <RangePicker
                         size="large"
+                        disabledDate={(current) => {
+                          return current && current < moment().startOf("day");
+                        }}
+                        onChange={OnChangeDateRange}
                         className={SearchIndexCss.edit_details_date_picker}
                       />
                     </div>
@@ -334,11 +421,11 @@ const Index = () => {
                         menu={{
                           items: [
                             {
-                              label: "Price (Low to High)",
+                              label: "2",
                               key: "1",
                             },
                             {
-                              label: "Price (High to Low)",
+                              label: "3",
                               key: "2",
                             },
                           ],
@@ -353,7 +440,7 @@ const Index = () => {
                               SearchIndexCss.edit_room_dropdown_btn_space
                             }
                           >
-                            Button Drop Down
+                            {param.guest}
                             <DownOutlined
                               className={SearchIndexCss.edit_room_dropdown_icon}
                             />

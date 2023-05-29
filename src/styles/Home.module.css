@@ -465,6 +465,7 @@
 
 .arrivalContainer {
   display: flex;
+  align-items: center;
   /* margin: 30px 0px 80px 0px; */
   /* justify-content: space-around; */
   width: auto;
@@ -620,6 +621,7 @@
   font-size: 12px;
   margin: 0 7px;
   font-family: var(--font-poppins);
+  padding-top: 4px;
 }
 
 .parking {
