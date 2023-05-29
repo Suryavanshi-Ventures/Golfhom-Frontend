@@ -38,9 +38,7 @@ const Index = () => {
   const [LengthOfProperty, SetLengthOfProperty] = useState(0);
   const [PropertyData, SetPropertyData] = useState([]);
   const [PaginationState, SetPagination] = useState(1);
-  const [index, setIndex] = useState(0);
   const [Parentindex, setParentindex] = useState([]);
-
   const [isVisible, setIsVisible] = useState(true);
   const [SortBy, setSortBy] = useState("");
   const [SortByParam, setSortByParam] = useState("");
@@ -49,6 +47,9 @@ const Index = () => {
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
 
+  const [UpdateSortByText, setUpdateSortByText] = useState(
+    "Price (High to Low)"
+  );
   const param = Router.query;
   console.log(Router, "check");
 
@@ -146,10 +147,8 @@ const Index = () => {
   }, [SortBy, PaginationState, SortByParam]);
 
   const handleSelectA = (selectedIndex, ParentIndexs, length) => {
-    // setIndex(selectedIndex);
     const LocalParent = [...Parentindex];
-    console.log(selectedIndex, "SELECT INDEX");
-    if (selectedIndex > length || selectedIndex < 0) {
+    if (selectedIndex > length - 1 || selectedIndex < 0) {
       LocalParent[ParentIndexs] = 0;
     } else {
       LocalParent[ParentIndexs] = selectedIndex;
@@ -176,33 +175,25 @@ const Index = () => {
     console.log("Page: ", pageNumber);
   };
 
-  const SendPropertyData = (params) => {
-    console.log(params, "SPEECIFIC DATA");
-  };
   const onClick = (event) => {
-    console.log(`${event.key}`);
     setSortBy(event.key);
     if (event.key === "price_low") {
       setSortBy("price");
       setSortByParam("&sortBy=ASC");
+      setUpdateSortByText("Price (Low to High)");
     } else if (event.key === "price_high") {
       setSortBy("price");
       setSortByParam("&sortBy=DESC");
+      setUpdateSortByText("Price (High to Low)");
     } else if (event.key === "createdAt_old_to_new") {
       setSortBy("createdAt");
       setSortByParam("&sortBy=ASC");
+      setUpdateSortByText("Date Old to New");
     } else if (event.key === "createdAt_new_to_old") {
       setSortBy("createdAt");
       setSortByParam("&sortBy=DESC");
+      setUpdateSortByText("Date New to Old");
     }
-  };
-  const OnChangeDestination = (LocationName, DateValue) => {
-    // setUrlParamsDestination({
-    //   country_name: DateValue.value,
-    //   id: DateValue.Uid,
-    // });
-
-    console.log("ON CHANGE DATA DESTINATION", DateValue);
   };
 
   const HiddenModal = () => {
@@ -342,7 +333,6 @@ const Index = () => {
                           value: country.name,
                           Uid: country.id,
                         }))}
-                        onChange={OnChangeDestination}
                         size="large"
                         // placeholder="Where you want to stay"
                         placeholder={param.location_name}
@@ -412,7 +402,7 @@ const Index = () => {
                 >
                   <div className={SearchIndexCss.edit_details_divs}>
                     <p className={SearchIndexCss.edit_details_titles}>
-                      Room & Guests
+                      Guests
                     </p>
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
@@ -483,7 +473,7 @@ const Index = () => {
 
       {/* -----------------------           HEAD IMAGE SECTION             ---------------------  */}
 
-      <section>
+      {/* <section>
         <div className={SearchIndexCss.buildings}>
           <Image
             className={SearchIndexCss.buildingImg}
@@ -493,7 +483,7 @@ const Index = () => {
             priority
           ></Image>
         </div>
-      </section>
+      </section> */}
 
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
@@ -541,7 +531,7 @@ const Index = () => {
                     >
                       <Button size="large">
                         <Space>
-                          Default order
+                          {UpdateSortByText}
                           <CaretDownOutlined />
                         </Space>
                       </Button>
@@ -589,13 +579,12 @@ const Index = () => {
                                   className={CarasoulMapCss.imageGap}
                                 >
                                   <div
+                                    className={CarasoulMapCss.image_container}
                                     onClick={(e) => {
                                       Router.push(
-                                        `search/view_property/${data.id}`
+                                        `search/${data.name}/${data.id}`
                                       );
-                                      e.preventDefault();
                                     }}
-                                    href=""
                                     style={{ position: "relative" }}
                                   >
                                     <Image
@@ -609,27 +598,13 @@ const Index = () => {
                                 </Carousel.Item>
                               );
                             })}
-                            <ol className="carousel-indicators">
-                              {data.otherImageUrls.map((element, ind) => {
-                                return (
-                                  <li
-                                    key={ind}
-                                    className={ind === 0 ? "active" : ""}
-                                    onClick={() => setIndex(ind)}
-                                  ></li>
-                                );
-                              })}
-                            </ol>
-                            ;
                           </Carousel>
 
                           <div
                             onClick={(e) => {
-                              Router.push(`search/view_property/${data.id}`);
-                              e.preventDefault();
+                              Router.push(`search/${data.name}/${data.id}`);
                             }}
-                            href=""
-                            style={{ textDecoration: "none" }}
+                            className={CarasoulMapCss.image_container}
                           >
                             <h4 className={CarasoulMapCss.carouselHeading}>
                               {data.name}
@@ -639,7 +614,12 @@ const Index = () => {
                             {data.golfCourseName}
                           </p>
 
-                          <div>
+                          <div
+                            onClick={(e) => {
+                              Router.push(`search/${data.name}/${data.id}`);
+                            }}
+                            className={CarasoulMapCss.image_container}
+                          >
                             <span className={CarasoulMapCss.discribeOfCard}>
                               {data.bedrooms} Bed Rooms
                             </span>
@@ -653,7 +633,11 @@ const Index = () => {
                             </span>
 
                             <h5 className={CarasoulMapCss.price_of_property}>
-                              <sup>From</sup> ${data.price}/Night
+                              <sup>From</sup> $
+                              {data.price >= 0.5
+                                ? Math.ceil(data.price)
+                                : Math.floor(data.price)}
+                              /Night
                             </h5>
                           </div>
                         </Col>

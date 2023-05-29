@@ -23,9 +23,11 @@ import axios from "axios";
 import moment from "moment";
 import BlackArrow from "../../public/images/vector/backArrow.svg";
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
+import { useRouter } from "next/router";
 const placesLibrary = ["places"];
 
 const Home = () => {
+  const Router = useRouter();
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [UrlParamsGeoData, setUrlParamsGeoData] = useState({
@@ -42,7 +44,8 @@ const Home = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=5`
+          `${process.env.NEXT_PUBLIC_API_URL
+          }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
         );
         if (GetPropertyDataRes.status === 200) {
           setAllPropertyData(GetPropertyDataRes.data.data);
@@ -82,7 +85,7 @@ const Home = () => {
       setUrlParamsGeoData({
         latitude: place.geometry?.location.lat(),
         longitude: place.geometry?.location.lng(),
-        location_name: name,
+        location_name: formattedAddress,
       });
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
@@ -131,6 +134,36 @@ const Home = () => {
     console.log(event.target.value);
     setInputValue(event.target.value);
   };
+
+  const SearchProperty = (e) => {
+    e.preventDefault();
+
+    if (
+      UrlParamsGeoData?.location_name === "" ||
+      adult + child === 0 ||
+      UrlParamsDateRange[0] === "" ||
+      UrlParamsDateRange[1] === ""
+    ) {
+      message.error("Please fill all the required search fields");
+      return;
+    } else {
+      Router.push(
+        `/search?latitude=${encodeURIComponent(
+          UrlParamsGeoData?.latitude
+        )}&longitude=${encodeURIComponent(
+          UrlParamsGeoData?.longitude
+        )}&location_name=${UrlParamsGeoData?.location_name
+        }&guest=${encodeURIComponent(adult + child)}&from=${UrlParamsDateRange[0]
+          ? UrlParamsDateRange[0]
+          : moment().format("MM-DD-YYYY")
+        }&to=${UrlParamsDateRange[1]
+          ? UrlParamsDateRange[1]
+          : moment().format("MM-DD-YYYY")
+        }&limit=10`
+      );
+    }
+  };
+
   return (
     <>
       <Head>
@@ -164,7 +197,12 @@ const Home = () => {
                       </Col>
 
                       <Col>
-                        <h6 className={HomeCss.destination}>Destination</h6>
+                        <h6 className={HomeCss.destination}>
+                          Destination
+                          <sup className={HomeCss.important_input_mark}>
+                            *
+                          </sup>{" "}
+                        </h6>
                       </Col>
                     </Row>
                   </div>
@@ -217,7 +255,8 @@ const Home = () => {
 
                       <Col>
                         <h6 className={HomeCss.destination}>
-                          Guests: {adult} Adult / {child} Children
+                          {adult + child} Guests
+                          <sup className={HomeCss.important_input_mark}>*</sup>
                         </h6>
                       </Col>
                     </Row>
@@ -236,6 +275,7 @@ const Home = () => {
                           >
                             -
                           </div>
+                          <div className={HomeCss.guest_count_div}>{adult}</div>
                           <div
                             className={HomeCss.increasebtn}
                             onClick={incAdult}
@@ -254,6 +294,7 @@ const Home = () => {
                           >
                             -
                           </div>
+                          <div className={HomeCss.guest_count_div}>{child}</div>
                           <div
                             className={HomeCss.increasebtn}
                             onClick={incChild}
@@ -293,12 +334,14 @@ const Home = () => {
                             return endDate.diff(startDate, "days") || 0;
                           })()}{" "}
                           Nights
+                          <sup className={HomeCss.important_input_mark}>*</sup>
                         </h6>
                       </Col>
                     </Row>
                     <div className={HomeCss.inner_input_date_picker}>
                       <RangePicker
                         size="large"
+                        format={"MM-DD-YYYY"}
                         disabledDate={(current) => {
                           return current && current < moment().startOf("day");
                         }}
@@ -311,26 +354,13 @@ const Home = () => {
               </Col>
               <Col lg={3} className={HomeCss.search_btn_col}>
                 <div className={HomeCss.search_btn_container}>
-                  <Link
-                    href={`/search?latitude=${encodeURIComponent(
-                      UrlParamsGeoData?.latitude
-                    )}&longitude=${encodeURIComponent(
-                      UrlParamsGeoData?.longitude
-                    )}&location_name=${encodeURIComponent(
-                      UrlParamsGeoData?.location_name
-                    )}&guest=${encodeURIComponent(adult + child)}&from=${UrlParamsDateRange[0]
-                      ? UrlParamsDateRange[0]
-                      : moment().format("MM-DD-YYYY")
-                      }&to=${UrlParamsDateRange[1]
-                        ? UrlParamsDateRange[1]
-                        : moment().format("MM-DD-YYYY")
-                      }&limit=10`}
-                    className={HomeCss.buttonParent}
+                  <Button
+                    onClick={SearchProperty}
+                    className={HomeCss.search_btn}
+                    type="primary"
                   >
-                    <Button className={HomeCss.search_btn} type="primary">
-                      Search
-                    </Button>
-                  </Link>
+                    Search
+                  </Button>
                 </div>
               </Col>
             </Row>
@@ -615,7 +645,12 @@ const Home = () => {
             {AllPropertyData.map((data, i) => {
               return (
                 <Col md={5} lg={4} key={i}>
-                  <Card className={HomeCss.MainCard}>
+                  <Card
+                    onClick={() => {
+                      Router.push(`search/${data.name}/${data.id}`);
+                    }}
+                    className={HomeCss.MainCard}
+                  >
                     <Card.Img
                       variant="top"
                       className={HomeCss.cardImg}
@@ -624,7 +659,7 @@ const Home = () => {
                     />
                     <Card.Body>
                       <Card.Title className={HomeCss.cardImgTitle}>
-                        Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
+                        {data.name}
                       </Card.Title>
 
                       <div>
@@ -642,7 +677,7 @@ const Home = () => {
                               alt="iconImage"
                             ></Image>
                             <span className={HomeCss.iconImg_spans}>
-                              5 Bed Rooms
+                              {data.bedrooms ? data.bedrooms : "N/A"} Bed Rooms
                             </span>
                           </div>
 
@@ -654,7 +689,7 @@ const Home = () => {
                               alt="iconImage"
                             ></Image>
                             <span className={HomeCss.iconImg_spans}>
-                              4 Baths
+                              {data.bathrooms ? data.bathrooms : "N/A"} Baths
                             </span>
                           </div>
 
@@ -666,10 +701,11 @@ const Home = () => {
                               alt="iconImage"
                             ></Image>
                             <span className={HomeCss.iconImg_spans}>
-                              5 Guests Villa
+                              {data.accomodation ? data.accomodation : "N/A"}{" "}
+                              Guests Villa
                             </span>
                           </div>
-                          <div className={HomeCss.iconImg}>
+                          {/* <div className={HomeCss.iconImg}>
                             <Image
                               width={20}
                               height={20}
@@ -679,7 +715,7 @@ const Home = () => {
                             <span className={HomeCss.iconImg_spans}>
                               Parking Area
                             </span>
-                          </div>
+                          </div> */}
                         </div>
 
                         <div className={HomeCss.parking}>

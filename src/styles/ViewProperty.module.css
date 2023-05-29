@@ -34,6 +34,7 @@
 .amenities_details_main_heading {
   font-family: var(--font-poppins);
   font-size: 20px;
+  color: var(--light-font-color);
 }
 
 .amenities_details_main_subheading {
@@ -49,6 +50,7 @@
 }
 .about_section_para {
   font-family: var(--font-poppins);
+  color: var(--light-font-color);
   font-size: 13px;
   margin: 2rem 0;
 }
@@ -82,13 +84,21 @@
 
 /* CARASOUL IMAGE SECTION STARTED HERE */
 .carasoul_section {
-}
-.carasoul_images {
-  position: relative !important;
-  height: 720px !important;
-  object-fit: cover;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
+.carasoul_images {
+  position: relative !important;
+  object-fit: cover;
+  margin: 10px;
+  width: 200px !important;
+  height: 200px !important;
+}
+.carasoul_section_inner_div {
+  display: flex !important;
+  flex-wrap: wrap;
+}
 /*  ------------    Total price box    ----------   */
 
 .parentRow {
@@ -99,6 +109,7 @@
   background: var(--white-font-color);
   position: relative;
   bottom: 95px;
+  height: fit-content;
   padding: 0;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
@@ -564,4 +575,32 @@
 
 .checkout_payment_main_div {
   padding: 0px 20px;
+}
+
+/* TAB OVERVIEW SECTION */
+
+.tabOverviewPropHeading {
+  font-family: var(--font-amiri);
+  font-weight: 700;
+}
+.tabOverviewPropSmallSubheading {
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+}
+
+.tabOverviewPropSubheading {
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+}
+
+@media only screen and (max-width: 768px) {
+  .carasoul_section_inner_div {
+    display: flex !important;
+    overflow: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  .backgroundWhite {
+    position: initial;
+  }
 }

@@ -1,17 +1,10 @@
 import { React, useContext } from "react";
-import {
-  CardElement,
-  Elements,
-  useStripe,
-  useElements,
-  PaymentElement,
-} from "@stripe/react-stripe-js";
-import { Button, message } from "antd";
-import axios from "axios";
+import { Elements, useStripe, useElements } from "@stripe/react-stripe-js";
+import { Button } from "antd";
 import { AuthContext } from "@/context/auth_context";
 import CheckoutCss from "../../../styles/Checkout.module.css";
-import moment from "moment";
 import { useRouter } from "next/router";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Checkout = (props) => {
   const Router = useRouter();
@@ -85,4 +78,13 @@ const Checkout = (props) => {
   );
 };
 
-export default Checkout;
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_TEST_KEY);
+
+// Wrap the Checkout component with the Elements provider
+const CheckoutWithStripe = () => (
+  <Elements stripe={stripePromise}>
+    <Checkout />
+  </Elements>
+);
+
+export default CheckoutWithStripe;
