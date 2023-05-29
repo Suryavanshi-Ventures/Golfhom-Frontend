@@ -36,6 +36,28 @@ const Home = () => {
   const [InputValue, setInputValue] = useState({
     search_input: "",
   });
+  const [AllPropertyData, setAllPropertyData] = useState([{}]);
+
+  useEffect(() => {
+    const GetPropDataFunc = async () => {
+      try {
+        const GetPropertyDataRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=5`
+        );
+        if (GetPropertyDataRes.status === 200) {
+          setAllPropertyData(GetPropertyDataRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR getting property data", error);
+      }
+    };
+
+    GetPropDataFunc();
+
+    return () => {
+      GetPropDataFunc();
+    };
+  }, []);
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
   const [adult, setAdult] = useState(0);
@@ -69,7 +91,7 @@ const Home = () => {
         search_input: formattedAddress,
       });
     } else {
-      alert("Please enter text");
+      message.error("Please enter text");
     }
   };
 
@@ -591,79 +613,93 @@ const Home = () => {
       <div className={HomeCss.cardBg}>
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
-          <Card className={HomeCss.MainCard}>
-            <Card.Img
-              variant="top"
-              className={HomeCss.cardImg}
-              src="/images/bedRoom.svg"
-              alt="Bed Image"
-            />
-            <Card.Body>
-              <Card.Title className={HomeCss.cardImgTitle}>
-                Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
-              </Card.Title>
+          <Row>
+            {AllPropertyData.map((data, i) => {
+              return (
+                <Col md={5} lg={4} key={i}>
+                  <Card className={HomeCss.MainCard}>
+                    <Card.Img
+                      variant="top"
+                      className={HomeCss.cardImg}
+                      src="/images/bedRoom.svg"
+                      alt="Bed Image"
+                    />
+                    <Card.Body>
+                      <Card.Title className={HomeCss.cardImgTitle}>
+                        Tampa Golf Villas 5 King or 12 Beds at Saddlebrook
+                      </Card.Title>
 
-              <div>
-                <p className={HomeCss.saddle}>
-                  {" "}
-                  Saddlebrook Resort - Saddlebrook & 1 more
-                </p>
+                      <div>
+                        <p className={HomeCss.saddle}>
+                          {" "}
+                          Saddlebrook Resort - Saddlebrook & 1 more
+                        </p>
 
-                <div className={HomeCss.icon}>
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={18}
-                      height={18}
-                      src="/images/vector/bed.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>5 Bed Rooms</span>
-                  </div>
+                        <div className={HomeCss.icon}>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/bed.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              5 Bed Rooms
+                            </span>
+                          </div>
 
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={18}
-                      height={18}
-                      src="/images/vector/bath-tub.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>4 Baths</span>
-                  </div>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/bath-tub.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              4 Baths
+                            </span>
+                          </div>
 
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={18}
-                      height={18}
-                      src="/images/vector/guest.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>
-                      5 Guests Villa
-                    </span>
-                  </div>
-                  <div className={HomeCss.iconImg}>
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/images/vector/parking-area.svg"
-                      alt="iconImage"
-                    ></Image>
-                    <span className={HomeCss.iconImg_spans}>Parking Area</span>
-                  </div>
-                </div>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/guest.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              5 Guests Villa
+                            </span>
+                          </div>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={20}
+                              height={20}
+                              src="/images/vector/parking-area.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              Parking Area
+                            </span>
+                          </div>
+                        </div>
 
-                <div className={HomeCss.parking}>
-                  <Image
-                    width={20}
-                    height={14}
-                    className={HomeCss.rightArrow}
-                    src="/images/vector/right_Arrow.svg"
-                    alt="iconImage"
-                  ></Image>
-                </div>
-              </div>
-            </Card.Body>
-          </Card>
+                        <div className={HomeCss.parking}>
+                          <Image
+                            width={20}
+                            height={14}
+                            className={HomeCss.rightArrow}
+                            src="/images/vector/right_Arrow.svg"
+                            alt="iconImage"
+                          ></Image>
+                        </div>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
         </Container>
       </div>
 

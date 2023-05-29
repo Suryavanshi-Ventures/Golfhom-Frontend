@@ -35,6 +35,8 @@ const Index = () => {
   const [PropertyData, SetPropertyData] = useState([]);
   const [PaginationState, SetPagination] = useState(1);
   const [index, setIndex] = useState(0);
+  const [Parentindex, setParentindex] = useState([]);
+
   const [isVisible, setIsVisible] = useState(true);
   const [SortBy, setSortBy] = useState("");
   const [SortByParam, setSortByParam] = useState("");
@@ -90,8 +92,16 @@ const Index = () => {
     });
   }, [SortBy, PaginationState, SortByParam]);
 
-  const handleSelectA = (selectedIndex) => {
-    setIndex(selectedIndex);
+  const handleSelectA = (selectedIndex, ParentIndexs, length) => {
+    // setIndex(selectedIndex);
+    const LocalParent = [...Parentindex];
+    console.log(selectedIndex, "SELECT INDEX");
+    if (selectedIndex > length || selectedIndex < 0) {
+      LocalParent[ParentIndexs] = 0;
+    } else {
+      LocalParent[ParentIndexs] = selectedIndex;
+    }
+    setParentindex(LocalParent);
   };
 
   const OnPaginationChange = (pageNumber) => {
@@ -136,10 +146,10 @@ const Index = () => {
     }
   };
   const OnChangeDestination = (LocationName, DateValue) => {
-    setUrlParamsDestination({
-      country_name: DateValue.value,
-      id: DateValue.Uid,
-    });
+    // setUrlParamsDestination({
+    //   country_name: DateValue.value,
+    //   id: DateValue.Uid,
+    // });
 
     console.log("ON CHANGE DATA DESTINATION", DateValue);
   };
@@ -476,8 +486,14 @@ const Index = () => {
                           <Carousel
                             wrap={true}
                             key={data.id}
-                            activeIndex={index}
-                            onSelect={handleSelectA}
+                            activeIndex={Parentindex[id]}
+                            onSelect={(selectedIndex) => {
+                              handleSelectA(
+                                selectedIndex,
+                                id,
+                                data.otherImageUrls?.length
+                              );
+                            }}
                             indicators={false}
                             interval={null}
                             className={CarasoulMapCss.carouselParent}
@@ -486,9 +502,10 @@ const Index = () => {
                               return (
                                 <Carousel.Item
                                   key={ind}
+                                  style={{ position: "relative" }}
                                   className={CarasoulMapCss.imageGap}
                                 >
-                                  <Link
+                                  <div
                                     onClick={(e) => {
                                       Router.push(
                                         `search/view_property/${data.id}`
@@ -496,6 +513,7 @@ const Index = () => {
                                       e.preventDefault();
                                     }}
                                     href=""
+                                    style={{ position: "relative" }}
                                   >
                                     <Image
                                       src={element}
@@ -504,20 +522,25 @@ const Index = () => {
                                       className={CarasoulMapCss.carouselImage}
                                       priority
                                     ></Image>
-
-                                    <ol className="carousel-indicators">
-                                      <li
-                                        className={ind === 0 ? "active" : ""}
-                                        onClick={() => setIndex(ind)}
-                                      ></li>
-                                    </ol>
-                                  </Link>
+                                  </div>
                                 </Carousel.Item>
                               );
                             })}
+                            <ol className="carousel-indicators">
+                              {data.otherImageUrls.map((element, ind) => {
+                                return (
+                                  <li
+                                    key={ind}
+                                    className={ind === 0 ? "active" : ""}
+                                    onClick={() => setIndex(ind)}
+                                  ></li>
+                                );
+                              })}
+                            </ol>
+                            ;
                           </Carousel>
 
-                          <Link
+                          <div
                             onClick={(e) => {
                               Router.push(`search/view_property/${data.id}`);
                               e.preventDefault();
@@ -528,7 +551,7 @@ const Index = () => {
                             <h4 className={CarasoulMapCss.carouselHeading}>
                               {data.name}
                             </h4>
-                          </Link>
+                          </div>
                           <p className={CarasoulMapCss.discribeOfCard}>
                             {data.golfCourseName}
                           </p>
