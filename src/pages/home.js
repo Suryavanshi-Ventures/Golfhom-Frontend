@@ -39,6 +39,7 @@ const Home = () => {
     search_input: "",
   });
   const [AllPropertyData, setAllPropertyData] = useState([{}]);
+  const [NightsCounter, setNightsCounter] = useState(0);
 
   useEffect(() => {
     const GetPropDataFunc = async () => {
@@ -102,6 +103,9 @@ const Home = () => {
   // DROPDOWN FOR SEARCH
 
   const OnChangeDateRange = (LocationName, DateValue) => {
+    const startDate = moment(DateValue[0]); // Replace with your start date
+    const endDate = moment(DateValue[1]); // Replace with your end date
+    setNightsCounter(endDate.diff(startDate, "days") || 0);
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
   };
@@ -155,7 +159,9 @@ const Home = () => {
           UrlParamsGeoData?.longitude
         )}&location_name=${
           UrlParamsGeoData?.location_name
-        }&guest=${encodeURIComponent(adult + child)}&from=${
+        }&nights=${NightsCounter}&guest=${encodeURIComponent(
+          adult + child
+        )}&from=${
           UrlParamsDateRange[0]
             ? UrlParamsDateRange[0]
             : moment().format("MM-DD-YYYY")
@@ -332,12 +338,7 @@ const Home = () => {
                       </Col>
                       <Col>
                         <h6 className={HomeCss.destination}>
-                          {(() => {
-                            const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
-                            const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
-                            return endDate.diff(startDate, "days") || 0;
-                          })()}{" "}
-                          Nights
+                          {NightsCounter} Nights
                           <sup className={HomeCss.important_input_mark}>*</sup>
                         </h6>
                       </Col>
@@ -692,7 +693,7 @@ const Home = () => {
                               alt="iconImage"
                             ></Image>
                             <span className={HomeCss.iconImg_spans}>
-                              {data.bathrooms ? data.bathrooms : "N/A"} Baths
+                              {data.bathrooms ? data.bathrooms : "1"} Baths
                             </span>
                           </div>
 
