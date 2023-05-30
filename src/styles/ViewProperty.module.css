@@ -238,6 +238,12 @@
   margin-top: 14px;
 }
 
+.total_price_main_div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
 .check {
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color);

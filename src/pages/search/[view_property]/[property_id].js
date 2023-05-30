@@ -46,6 +46,7 @@ const ViewProperty = () => {
   const [Availability, setAvailability] = useState({});
   const [NotAvailable, setNotAvailable] = useState(false);
   const [Available, setAvailable] = useState(false);
+  const [ShowTotalPaymentText, setShowTotalPaymentText] = useState(false);
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -59,7 +60,7 @@ const ViewProperty = () => {
         );
 
         if (SpecificPropData.status === 200) {
-          SetSpecificPropAPIData(SpecificPropData.data.data);
+          SetSpecificPropAPIData(SpecificPropData.data);
         }
       } catch (error) {
         console.log(error, "ERR");
@@ -84,28 +85,14 @@ const ViewProperty = () => {
     console.log(key);
   };
 
-  // console.log(SpecificPropAPIData, "FROM VIEW PROP");
+  console.log(SpecificPropAPIData.price, "FROM VIEW PROP");
 
   const items = [
     {
       key: "1",
       label: `Overview`,
-      children: <TabContentOverview data={SpecificPropAPIData} />,
+      children: <TabContentOverview data={SpecificPropAPIData.data} />,
     },
-    // {
-    //   key: "2",
-    //   label: `Gallery`,
-    //   children: (
-    //     <>
-    //       <h1>Test Gallery</h1>
-    //     </>
-    //   ),
-    // },
-    // {
-    //   key: "3",
-    //   label: `Features`,
-    //   children: `Content of Tab Pane 3`,
-    // },
   ];
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
@@ -165,7 +152,7 @@ const ViewProperty = () => {
     const PaymentRes = axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
       {
-        propertyId: SpecificPropAPIData.id,
+        propertyId: SpecificPropAPIData.data?.id,
         from: BookingDate[0],
         to: BookingDate[1],
       },
@@ -178,18 +165,18 @@ const ViewProperty = () => {
     PaymentRes.then((response) => {
       if (response.status === 200) {
         message.info("Please fill the details and click on pay!");
-        console.log("RESPONSE PAYMENT INTENT", response.data.paymentIntent);
+        console.log("RESPONSE PAYMENT INTENT", response.data?.paymentIntent);
         setPaymentIntentObject({
-          ClientSecret: response.data.paymentIntent.client_secret,
-          PaymentIntentId: response.data.paymentIntent.id,
+          ClientSecret: response.data?.paymentIntent.client_secret,
+          PaymentIntentId: response.data?.paymentIntent.id,
         });
       }
     }).catch((err) => {
-      if (err.response.data.message === "User not authorized") {
+      if (err.response.data?.message === "User not authorized") {
         message.error("Please login to book hotels");
         return;
       }
-      message.error(err.response.data.message);
+      message.error(err.response.data?.message);
     });
   };
 
@@ -205,15 +192,15 @@ const ViewProperty = () => {
     } else {
       try {
         const CheckAvailRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${SpecificPropAPIData.id}?from=${BookingDate[0]}&to=${BookingDate[1]}`
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${SpecificPropAPIData.data?.id}?from=${BookingDate[0]}&to=${BookingDate[1]}`
         );
         if (CheckAvailRes.status === 200) {
           setAvailability(CheckAvailRes.data);
-          console.log(CheckAvailRes.data.data);
-          if (CheckAvailRes.data.data.available) {
+          console.log(CheckAvailRes.data?.data);
+          if (CheckAvailRes.data?.data?.available) {
             setAvailable(true);
             setNotAvailable(false);
-          } else if (CheckAvailRes.data.data.available != true) {
+          } else if (CheckAvailRes.data?.data?.available != true) {
             setAvailable(false);
             setNotAvailable(true);
           }
@@ -239,7 +226,7 @@ const ViewProperty = () => {
           <NextImage
             alt="Golf group"
             className={ViewPropertyCss.view_prop_bannerimg}
-            src={SpecificPropAPIData.imageUrl || GirlGroupBannerImage}
+            src={SpecificPropAPIData.data?.imageUrl || GirlGroupBannerImage}
             fill
           ></NextImage>
         </div>
@@ -262,7 +249,10 @@ const ViewProperty = () => {
                   </div>
                   <div className={ViewPropertyCss.amount}>
                     <h5 className={ViewPropertyCss.totalTitle_h5}>
-                      ${SpecificPropAPIData.price}
+                      $
+                      {SpecificPropAPIData.data?.price >= 0.5
+                        ? Math.ceil(SpecificPropAPIData.data?.price)
+                        : Math.floor(SpecificPropAPIData.data?.price)}
                     </h5>
                   </div>
                 </div>
@@ -376,6 +366,19 @@ const ViewProperty = () => {
               </Dropdown>
               <hr />
 
+              <div className={ViewPropertyCss.total_price_main_div}>
+                <div className={ViewPropertyCss.total_price_text_div}>
+                  <h6>Total</h6>
+                  <p>fasasf</p>
+                </div>
+                <div className={ViewPropertyCss.total_price_text_div}>
+                  <p>fasasf</p>
+                  <p>fasasf</p>
+                </div>
+              </div>
+
+              <hr />
+
               <div className={ViewPropertyCss.checkParent} onClick={CheckAvail}>
                 <Button className={ViewPropertyCss.check}>
                   Check availability
@@ -467,7 +470,7 @@ const ViewProperty = () => {
                     <PaymentElement />
                     <Checkout
                       data={[
-                        SpecificPropAPIData,
+                        SpecificPropAPIData.data,
                         BookingDate[0],
                         BookingDate[1],
                         {
@@ -496,7 +499,7 @@ const ViewProperty = () => {
                     ),
                 }}
               >
-                {SpecificPropAPIData?.otherImageUrls?.map(
+                {SpecificPropAPIData.data?.otherImageUrls?.map(
                   (OtherImage, OtherImageUrlIndex) => {
                     return (
                       <Image
@@ -504,7 +507,8 @@ const ViewProperty = () => {
                         className={ViewPropertyCss.carasoul_images}
                         fill
                         src={OtherImage}
-                        alt="First slide"
+                        alt={`image ${OtherImageUrlIndex}`}
+                        fallback="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAADDCAYAAADQvc6UAAABRWlDQ1BJQ0MgUHJvZmlsZQAAKJFjYGASSSwoyGFhYGDIzSspCnJ3UoiIjFJgf8LAwSDCIMogwMCcmFxc4BgQ4ANUwgCjUcG3awyMIPqyLsis7PPOq3QdDFcvjV3jOD1boQVTPQrgSkktTgbSf4A4LbmgqISBgTEFyFYuLykAsTuAbJEioKOA7DkgdjqEvQHEToKwj4DVhAQ5A9k3gGyB5IxEoBmML4BsnSQk8XQkNtReEOBxcfXxUQg1Mjc0dyHgXNJBSWpFCYh2zi+oLMpMzyhRcASGUqqCZ16yno6CkYGRAQMDKMwhqj/fAIcloxgHQqxAjIHBEugw5sUIsSQpBobtQPdLciLEVJYzMPBHMDBsayhILEqEO4DxG0txmrERhM29nYGBddr//5/DGRjYNRkY/l7/39v///y4Dmn+LgeHANwDrkl1AuO+pmgAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAwqADAAQAAAABAAAAwwAAAAD9b/HnAAAHlklEQVR4Ae3dP3PTWBSGcbGzM6GCKqlIBRV0dHRJFarQ0eUT8LH4BnRU0NHR0UEFVdIlFRV7TzRksomPY8uykTk/zewQfKw/9znv4yvJynLv4uLiV2dBoDiBf4qP3/ARuCRABEFAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghggQAQZQKAnYEaQBAQaASKIAQJEkAEEegJmBElAoBEgghgg0Aj8i0JO4OzsrPv69Wv+hi2qPHr0qNvf39+iI97soRIh4f3z58/u7du3SXX7Xt7Z2enevHmzfQe+oSN2apSAPj09TSrb+XKI/f379+08+A0cNRE2ANkupk+ACNPvkSPcAAEibACyXUyfABGm3yNHuAECRNgAZLuYPgEirKlHu7u7XdyytGwHAd8jjNyng4OD7vnz51dbPT8/7z58+NB9+/bt6jU/TI+AGWHEnrx48eJ/EsSmHzx40L18+fLyzxF3ZVMjEyDCiEDjMYZZS5wiPXnyZFbJaxMhQIQRGzHvWR7XCyOCXsOmiDAi1HmPMMQjDpbpEiDCiL358eNHurW/5SnWdIBbXiDCiA38/Pnzrce2YyZ4//59F3ePLNMl4PbpiL2J0L979+7yDtHDhw8vtzzvdGnEXdvUigSIsCLAWavHp/+qM0BcXMd/q25n1vF57TYBp0a3mUzilePj4+7k5KSLb6gt6ydAhPUzXnoPR0dHl79WGTNCfBnn1uvSCJdegQhLI1vvCk+fPu2ePXt2tZOYEV6/fn31dz+shwAR1sP1cqvLntbEN9MxA9xcYjsxS1jWR4AIa2Ibzx0tc44fYX/16lV6NDFLXH+YL32jwiACRBiEbf5KcXoTIsQSpzXx4N28Ja4BQoK7rgXiydbHjx/P25TaQAJEGAguWy0+2Q8PD6/Ki4R8EVl+bzBOnZY95fq9rj9zAkTI2SxdidBHqG9+skdw43borCXO/ZcJdraPWdv22uIEiLA4q7nvvCug8WTqzQveOH26fodo7g6uFe/a17W3+nFBAkRYENRdb1vkkz1CH9cPsVy/jrhr27PqMYvENYNlHAIesRiBYwRy0V+8iXP8+/fvX11Mr7L7ECueb/r48eMqm7FuI2BGWDEG8cm+7G3NEOfmdcTQw4h9/55lhm7DekRYKQPZF2ArbXTAyu4kDYB2YxUzwg0gi/41ztHnfQG26HbGel/crVrm7tNY+/1btkOEAZ2M05r4FB7r9GbAIdxaZYrHdOsgJ/wCEQY0J74TmOKnbxxT9n3FgGGWWsVdowHtjt9Nnvf7yQM2aZU/TIAIAxrw6dOnAWtZZcoEnBpNuTuObWMEiLAx1HY0ZQJEmHJ3HNvGCBBhY6jtaMoEiJB0Z29vL6ls58vxPcO8/zfrdo5qvKO+d3Fx8Wu8zf1dW4p/cPzLly/dtv9Ts/EbcvGAHhHyfBIhZ6NSiIBTo0LNNtScABFyNiqFCBChULMNNSdAhJyNSiECRCjUbEPNCRAhZ6NSiAARCjXbUHMCRMjZqBQiQIRCzTbUnAARcjYqhQgQoVCzDTUnQIScjUohAkQo1GxDzQkQIWejUogAEQo121BzAkTI2agUIkCEQs021JwAEXI2KoUIEKFQsw01J0CEnI1KIQJEKNRsQ80JECFno1KIABEKNdtQcwJEyNmoFCJAhELNNtScABFyNiqFCBChULMNNSdAhJyNSiECRCjUbEPNCRAhZ6NSiAARCjXbUHMCRMjZqBQiQIRCzTbUnAARcjYqhQgQoVCzDTUnQIScjUohAkQo1GxDzQkQIWejUogAEQo121BzAkTI2agUIkCEQs021JwAEXI2KoUIEKFQsw01J0CEnI1KIQJEKNRsQ80JECFno1KIABEKNdtQcwJEyNmoFCJAhELNNtScABFyNiqFCBChULMNNSdAhJyNSiECRCjUbEPNCRAhZ6NSiAARCjXbUHMCRMjZqBQiQIRCzTbUnAARcjYqhQgQoVCzDTUnQIScjUohAkQo1GxDzQkQIWejUogAEQo121BzAkTI2agUIkCEQs021JwAEXI2KoUIEKFQsw01J0CEnI1KIQJEKNRsQ80JECFno1KIABEKNdtQcwJEyNmoFCJAhELNNtScABFyNiqFCBChULMNNSdAhJyNSiEC/wGgKKC4YMA4TAAAAABJRU5ErkJggg=="
                       ></Image>
                     );
                   }
@@ -516,7 +520,7 @@ const ViewProperty = () => {
 
         {/* <section className={ViewPropertyCss.carasoul_section}>
           <Carousel>
-            {SpecificPropAPIData?.otherImageUrls?.map(
+            {SpecificPropAPIData.data??.otherImageUrls?.map(
               (OtherImage, OtherImageUrlIndex) => {
                 return (
                   <Carousel.Item key={OtherImageUrlIndex}>
@@ -540,7 +544,7 @@ const ViewProperty = () => {
               Features
             </h5>
             <Row>
-              {SpecificPropAPIData?.amenities?.map((data, index) => {
+              {SpecificPropAPIData.data?.amenities?.map((data, index) => {
                 return (
                   <Col key={index} md={4}>
                     <div
@@ -574,13 +578,13 @@ const ViewProperty = () => {
         <section className={ViewPropertyCss.map_section}>
           <Container>
             <div className={ViewPropertyCss.map_section_main_container}>
-              <Map data={[SpecificPropAPIData]} />
+              <Map data={[SpecificPropAPIData.data]} />
             </div>
           </Container>
         </section>
 
         {/* VIDEO SECTION STARTS HERE */}
-        {SpecificPropAPIData.videoUrl ? (
+        {SpecificPropAPIData.data?.videoUrl ? (
           <section className={ViewPropertyCss.video_section}>
             <Container>
               <h5 className={ViewPropertyCss.feature_section_heading}>Video</h5>
@@ -589,8 +593,8 @@ const ViewProperty = () => {
                   width="100%"
                   height="100%"
                   src={
-                    SpecificPropAPIData.videoUrl
-                      ? SpecificPropAPIData.videoUrl
+                    SpecificPropAPIData.data?.videoUrl
+                      ? SpecificPropAPIData.data?.videoUrl
                       : "https://www.youtube.com/embed/aWKFpMRiMX4"
                   }
                   title="YouTube video player"
@@ -656,7 +660,7 @@ const ViewProperty = () => {
                           <span
                             className={ViewPropertyCss.things_to_know_info_span}
                           >
-                            ${SpecificPropAPIData.price}
+                            ${SpecificPropAPIData.data?.price}
                           </span>
                         </p>
                       </div>
@@ -730,7 +734,7 @@ const ViewProperty = () => {
                           <span
                             className={ViewPropertyCss.things_to_know_info_span}
                           >
-                            {SpecificPropAPIData.minNightsOfBooking}
+                            {SpecificPropAPIData.data?.minNightsOfBooking}
                           </span>
                         </p>
                       </div>
@@ -767,7 +771,7 @@ const ViewProperty = () => {
                           <span
                             className={ViewPropertyCss.things_to_know_info_span}
                           >
-                            {SpecificPropAPIData.maxNightsOfBooking}
+                            {SpecificPropAPIData.data?.maxNightsOfBooking}
                           </span>
                         </p>
                       </div>
@@ -963,8 +967,8 @@ const ViewProperty = () => {
                               ViewPropertyCss.things_to_know_privacy_text
                             }
                           >
-                            {SpecificPropAPIData.cancellationPolicy
-                              ? SpecificPropAPIData.cancellationPolicy
+                            {SpecificPropAPIData.data?.cancellationPolicy
+                              ? SpecificPropAPIData.data?.cancellationPolicy
                               : "N/A"}
                           </p>
                         </Row>
@@ -993,8 +997,10 @@ const ViewProperty = () => {
                               ViewPropertyCss.things_to_know_privacy_text
                             }
                           >
-                            {SpecificPropAPIData.additionalRulesInformation
-                              ? SpecificPropAPIData.additionalRulesInformation
+                            {SpecificPropAPIData.data
+                              ?.additionalRulesInformation
+                              ? SpecificPropAPIData.data
+                                  ?.additionalRulesInformation
                               : "N/A"}
                           </p>
                         </Row>
@@ -1113,7 +1119,7 @@ const ViewProperty = () => {
                       ></NextImage>
                     </div>
                     <p className={ViewPropertyCss.words}>
-                      ID: {SpecificPropAPIData.id}
+                      ID: {SpecificPropAPIData.data?.id}
                     </p>
                   </div>
                 </div>
@@ -1129,7 +1135,7 @@ const ViewProperty = () => {
                     ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
-                    Rooms: {SpecificPropAPIData.rooms}
+                    Rooms: {SpecificPropAPIData.data?.rooms}
                   </p>
                 </div>
 
@@ -1144,7 +1150,7 @@ const ViewProperty = () => {
                     ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
-                    Guests: {SpecificPropAPIData.accomodation}
+                    Guests: {SpecificPropAPIData.data?.accomodation}
                   </p>
                 </div>
 
@@ -1160,9 +1166,10 @@ const ViewProperty = () => {
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Check-in After:{" "}
-                    {moment(SpecificPropAPIData.checkIn, "hh:mm A").format(
+                    {moment(
+                      SpecificPropAPIData.data?.checkIn,
                       "hh:mm A"
-                    )}
+                    ).format("hh:mm A")}
                   </p>
                 </div>
 
@@ -1178,9 +1185,10 @@ const ViewProperty = () => {
                   </div>
                   <p className={ViewPropertyCss.words}>
                     Check-out Before:{" "}
-                    {moment(SpecificPropAPIData.checkOut, "hh:mm A").format(
+                    {moment(
+                      SpecificPropAPIData.data?.checkOut,
                       "hh:mm A"
-                    )}
+                    ).format("hh:mm A")}
                   </p>
                 </div>
 
@@ -1195,7 +1203,7 @@ const ViewProperty = () => {
                     ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
-                    Bedrooms: {SpecificPropAPIData.bedrooms}
+                    Bedrooms: {SpecificPropAPIData.data?.bedrooms}
                   </p>
                 </div>
 
@@ -1210,7 +1218,7 @@ const ViewProperty = () => {
                     ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
-                    Beds: {SpecificPropAPIData.beds}
+                    Beds: {SpecificPropAPIData.data?.beds}
                   </p>
                 </div>
 
@@ -1240,7 +1248,7 @@ const ViewProperty = () => {
                     ></NextImage>
                   </div>
                   <p className={ViewPropertyCss.words}>
-                    Bathrooms: {SpecificPropAPIData.bathrooms}
+                    Bathrooms: {SpecificPropAPIData.data?.bathrooms}
                   </p>
                 </div>
               </Col>

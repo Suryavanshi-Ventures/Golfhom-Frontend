@@ -6,11 +6,12 @@ import ViewPropBathroomIcon from "../../../public/images/vector/bathroom_icon.sv
 import Image from "next/image";
 
 const TabContentOverview = (PropData) => {
+  console.log(PropData);
   return (
     <>
       <main className={ViewPropertyCss.tabOverviewSection}>
         <h1 className={ViewPropertyCss.tabOverviewPropHeading}>
-          {PropData.data.name ? PropData.data.name : "N/A"}
+          {PropData.data?.name ? PropData.data?.name : "N/A"}
         </h1>
         <p className={ViewPropertyCss.tabOverviewPropSmallSubheading}>
           Golf Course Vicinity:{" "}
@@ -37,8 +38,8 @@ const TabContentOverview = (PropData) => {
                 Accommodation
               </h1>
               <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data.accomodation
-                  ? PropData.data.accomodation
+                {PropData.data?.accomodation
+                  ? PropData.data?.accomodation
                   : "N/A"}{" "}
                 Guests
               </p>
@@ -59,8 +60,8 @@ const TabContentOverview = (PropData) => {
                 Bedrooms
               </h1>
               <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data.bedrooms ? PropData.data.bedrooms : "N/A"}{" "}
-                Bedrooms / {PropData.data.beds ? PropData.data.beds : "N/A"}{" "}
+                {PropData.data?.bedrooms ? PropData.data?.bedrooms : "N/A"}{" "}
+                Bedrooms / {PropData.data?.beds ? PropData.data?.beds : "N/A"}{" "}
                 Beds
               </p>
             </div>
@@ -80,7 +81,7 @@ const TabContentOverview = (PropData) => {
                 Bathrooms
               </h1>
               <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data.bathrooms ? PropData.data.bathrooms : "1"} Full
+                {PropData.data?.bathrooms ? PropData.data?.bathrooms : "1"} Full
               </p>
             </div>
           </Col>
@@ -94,7 +95,7 @@ const TabContentOverview = (PropData) => {
                 Description
               </h1>
               <p className={ViewPropertyCss.about_section_para}>
-                {PropData.data.description}
+                {PropData.data?.description}
               </p>
             </div>
           </Col>

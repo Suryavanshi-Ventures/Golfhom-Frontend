@@ -499,18 +499,6 @@ const Index = () => {
 
       {/* -----------------------           HEAD IMAGE SECTION             ---------------------  */}
 
-      {/* <section>
-        <div className={SearchIndexCss.buildings}>
-          <Image
-            className={SearchIndexCss.buildingImg}
-            src={Buildings}
-            alt="buildings"
-            fill
-            priority
-          ></Image>
-        </div>
-      </section> */}
-
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
       <section className={SearchIndexCss.search_main_section}>
@@ -566,7 +554,7 @@ const Index = () => {
                 </div>
 
                 {/* ------------------- CAROUSEL IMAGES STARTS  -----------------------  */}
-                {/* <CarouselImages /> */}
+
                 <Row>
                   {PropertyData.length === 0 ? (
                     <>
@@ -608,7 +596,9 @@ const Index = () => {
                                     className={CarasoulMapCss.image_container}
                                     onClick={(e) => {
                                       Router.push(
-                                        `search/${data.name}/${data.id}`
+                                        `search/${encodeURIComponent(
+                                          data.name
+                                        )}/${data.id}`
                                       );
                                     }}
                                     style={{ position: "relative" }}
@@ -618,7 +608,6 @@ const Index = () => {
                                       alt={`image ${data.id}`}
                                       fill
                                       className={CarasoulMapCss.carouselImage}
-                                      priority
                                     ></Image>
                                   </div>
                                 </Carousel.Item>
@@ -628,11 +617,24 @@ const Index = () => {
 
                           <div
                             onClick={(e) => {
-                              Router.push(`search/${data.name}/${data.id}`);
+                              Router.push(
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
+                                }`
+                              );
                             }}
                             className={CarasoulMapCss.image_container}
                           >
-                            <h4 className={CarasoulMapCss.carouselHeading}>
+                            <h4
+                              onClick={(e) => {
+                                Router.push(
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
+                                  }`
+                                );
+                              }}
+                              className={CarasoulMapCss.carouselHeading}
+                            >
                               {data.name}
                             </h4>
                           </div>
@@ -642,7 +644,11 @@ const Index = () => {
 
                           <div
                             onClick={(e) => {
-                              Router.push(`search/${data.name}/${data.id}`);
+                              Router.push(
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
+                                }`
+                              );
                             }}
                             className={CarasoulMapCss.image_container}
                           >
@@ -658,7 +664,16 @@ const Index = () => {
                               {data.accomodation} Guests Villa
                             </span>
 
-                            <h5 className={CarasoulMapCss.price_of_property}>
+                            <h5
+                              onClick={(e) => {
+                                Router.push(
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
+                                  }`
+                                );
+                              }}
+                              className={CarasoulMapCss.price_of_property}
+                            >
                               <sup>From</sup> $
                               {data.price >= 0.5
                                 ? Math.ceil(data.price)
