@@ -89,7 +89,7 @@ const ViewProperty = () => {
   console.log(
     SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
       .PropertyPrice,
-    "FROM VIEW PROP"
+    "FROM VIEW PRO"
   );
 
   const items = [
