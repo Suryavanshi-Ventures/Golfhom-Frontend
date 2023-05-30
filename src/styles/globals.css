@@ -29,6 +29,7 @@
   --light-grey-background: #d9d9d9;
   --dark-grey-font: #404040;
   --border-light-grey: #949ca5;
+  --success-green: #4bc12d;
 }
 
 * {
@@ -280,6 +281,10 @@ input[type="number"]::-webkit-outer-spin-button {
   transform-origin: bottom center;
 }
 
-.ant-select, .ant-select-auto-complete, .ant-select-lg, .ant-select-show-search, .ant-select-single {
-width: 100% !important;
+.ant-select,
+.ant-select-auto-complete,
+.ant-select-lg,
+.ant-select-show-search,
+.ant-select-single {
+  width: 100% !important;
 }

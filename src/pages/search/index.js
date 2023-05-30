@@ -50,6 +50,8 @@ const Index = () => {
   const [UpdateSortByText, setUpdateSortByText] = useState(
     "Price (High to Low)"
   );
+  const [TotalDataCount, setTotalDataCount] = useState();
+
   const param = Router.query;
   console.log(Router, "check");
 
@@ -73,7 +75,9 @@ const Index = () => {
   const onChangeGuest = (value) => {
     setGuest(value);
   };
-  const [InputValue, setInputValue] = useState(param.location_name ? param.location_name : "");
+  const [InputValue, setInputValue] = useState(
+    param.location_name ? param.location_name : ""
+  );
 
   const onLoad = (autocomplete) => {
     setSearchResult(autocomplete);
@@ -113,21 +117,24 @@ const Index = () => {
 
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
         SetPropertyData(response.data.data);
         SetLengthOfProperty(response.data.data.length);
-        console.log(response.data.data, "API DATA PROPERTY ");
+        setTotalDataCount(response.data.count);
+        console.log(response.data, "API DATA PROPERTY ");
       }
     }).catch((err) => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     PaginationState,
     param.from,
@@ -162,20 +169,23 @@ const Index = () => {
     setParentindex(LocalParent);
   };
 
-  const OnPaginationChange = (pageNumber) => {
-    const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-      }&${"to=" + param.to}&limit=10&page=${pageNumber}`
-    );
-    GetPropertyData.then((response) => {
-      if (response.status === 200) {
-        SetPropertyData(response.data.data);
-        SetLengthOfProperty(response.data.data.length);
+  const OnPaginationChange = async (pageNumber) => {
+    try {
+      const GetPropertyData = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${"to=" + param.to}&limit=10&page=${pageNumber}`
+      );
+
+      if (GetPropertyData.status === 200) {
+        SetPropertyData(GetPropertyData.data.data);
+        SetLengthOfProperty(GetPropertyData.data.data.length);
       }
-    }).catch((err) => {
-      console.log(err, "ERR");
-    });
+    } catch (error) {
+      console.log(error, "ERR");
+    }
 
     SetPagination(pageNumber);
     console.log("Page: ", pageNumber);
@@ -385,7 +395,8 @@ const Index = () => {
                         const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
                         const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
                         return endDate.diff(startDate, "days") || 0;
-                      })()}{" "} Nights
+                      })()}{" "}
+                      Nights
                     </p>
 
                     <div
@@ -407,9 +418,7 @@ const Index = () => {
                   className={SearchIndexCss.edit_details_container_cols}
                 >
                   <div className={SearchIndexCss.edit_details_divs}>
-                    <p className={SearchIndexCss.edit_details_titles}>
-                      Guests
-                    </p>
+                    <p className={SearchIndexCss.edit_details_titles}>Guests</p>
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
@@ -449,10 +458,11 @@ const Index = () => {
                         className={SearchIndexCss.inner_input_box}
                         size="large"
                         value={guest}
-                        onChange={(e) => onChangeGuest(parseInt(e.target.value))}
-                      // onChange={OnChangeGuest}
+                        onChange={(e) =>
+                          onChangeGuest(parseInt(e.target.value))
+                        }
+                        // onChange={OnChangeGuest}
                       />
-
                     </div>
                   </div>
                 </Col>
@@ -488,18 +498,6 @@ const Index = () => {
       </section>
 
       {/* -----------------------           HEAD IMAGE SECTION             ---------------------  */}
-
-      {/* <section>
-        <div className={SearchIndexCss.buildings}>
-          <Image
-            className={SearchIndexCss.buildingImg}
-            src={Buildings}
-            alt="buildings"
-            fill
-            priority
-          ></Image>
-        </div>
-      </section> */}
 
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
@@ -556,7 +554,7 @@ const Index = () => {
                 </div>
 
                 {/* ------------------- CAROUSEL IMAGES STARTS  -----------------------  */}
-                {/* <CarouselImages /> */}
+
                 <Row>
                   {PropertyData.length === 0 ? (
                     <>
@@ -598,7 +596,9 @@ const Index = () => {
                                     className={CarasoulMapCss.image_container}
                                     onClick={(e) => {
                                       Router.push(
-                                        `search/${data.name}/${data.id}`
+                                        `search/${encodeURIComponent(
+                                          data.name
+                                        )}/${data.id}`
                                       );
                                     }}
                                     style={{ position: "relative" }}
@@ -608,7 +608,6 @@ const Index = () => {
                                       alt={`image ${data.id}`}
                                       fill
                                       className={CarasoulMapCss.carouselImage}
-                                      priority
                                     ></Image>
                                   </div>
                                 </Carousel.Item>
@@ -618,11 +617,24 @@ const Index = () => {
 
                           <div
                             onClick={(e) => {
-                              Router.push(`search/${data.name}/${data.id}`);
+                              Router.push(
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
+                                }`
+                              );
                             }}
                             className={CarasoulMapCss.image_container}
                           >
-                            <h4 className={CarasoulMapCss.carouselHeading}>
+                            <h4
+                              onClick={(e) => {
+                                Router.push(
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
+                                  }`
+                                );
+                              }}
+                              className={CarasoulMapCss.carouselHeading}
+                            >
                               {data.name}
                             </h4>
                           </div>
@@ -632,7 +644,11 @@ const Index = () => {
 
                           <div
                             onClick={(e) => {
-                              Router.push(`search/${data.name}/${data.id}`);
+                              Router.push(
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
+                                }`
+                              );
                             }}
                             className={CarasoulMapCss.image_container}
                           >
@@ -648,7 +664,16 @@ const Index = () => {
                               {data.accomodation} Guests Villa
                             </span>
 
-                            <h5 className={CarasoulMapCss.price_of_property}>
+                            <h5
+                              onClick={(e) => {
+                                Router.push(
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
+                                  }`
+                                );
+                              }}
+                              className={CarasoulMapCss.price_of_property}
+                            >
                               <sup>From</sup> $
                               {data.price >= 0.5
                                 ? Math.ceil(data.price)
@@ -675,7 +700,7 @@ const Index = () => {
               showQuickJumper={false}
               showSizeChanger={false}
               defaultCurrent={1}
-              total={500}
+              total={TotalDataCount}
               onChange={OnPaginationChange}
               className={SearchIndexCss.pagination}
             />

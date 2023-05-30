@@ -49,7 +49,8 @@ const Home = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL
+          `${
+            process.env.NEXT_PUBLIC_API_URL
           }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
         );
         if (GetPropertyDataRes.status === 200) {
@@ -160,16 +161,19 @@ const Home = () => {
           UrlParamsGeoData?.latitude
         )}&longitude=${encodeURIComponent(
           UrlParamsGeoData?.longitude
-        )}&location_name=${UrlParamsGeoData?.location_name
+        )}&location_name=${
+          UrlParamsGeoData?.location_name
         }&nights=${NightsCounter}&guest=${encodeURIComponent(
           adult + child
-        )}&from=${UrlParamsDateRange[0]
-          ? UrlParamsDateRange[0]
-          : moment().format("MM-DD-YYYY")
-        }&to=${UrlParamsDateRange[1]
-          ? UrlParamsDateRange[1]
-          : moment().format("MM-DD-YYYY")
-        }&limit=10`
+        )}&from=${
+          UrlParamsDateRange[0]
+            ? UrlParamsDateRange[0]
+            : moment().format("MM-DD-YYYY")
+        }&to=${
+          UrlParamsDateRange[1]
+            ? UrlParamsDateRange[1]
+            : moment().format("MM-DD-YYYY")
+        }&limit=10sort=price`
       );
     }
   };

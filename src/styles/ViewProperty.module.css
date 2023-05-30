@@ -179,6 +179,28 @@
 .horizonaline {
   border: 1px solid black;
 }
+.date_avail_text {
+  text-align: center;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  color: var(--success-green);
+  margin-bottom: 0;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.date_not_avail_text {
+  text-align: center;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  color: red;
+  margin-bottom: 0;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .guest {
   width: 100%;
@@ -214,6 +236,12 @@
   flex-direction: row;
   justify-content: space-between;
   margin-top: 14px;
+}
+
+.total_price_main_div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
 }
 
 .check {
