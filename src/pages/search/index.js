@@ -130,20 +130,20 @@ const Index = () => {
   ]);
 
   //! DEBUGG THIS
-  useEffect(() => {
-    const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}&sort=${SortBy}${SortByParam}`
-    );
-    GetPropertyData.then((response) => {
-      if (response.status === 200) {
-        SetPropertyData(response.data.data);
-        SetLengthOfProperty(response.data.data.length);
-        console.log(response.data.data, "API DATA PROPERTY ");
-      }
-    }).catch((err) => {
-      console.log(err, "ERR");
-    });
-  }, [SortBy, PaginationState, SortByParam]);
+  // useEffect(() => {
+  //   const GetPropertyData = axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}&sort=${SortBy}${SortByParam}`
+  //   );
+  //   GetPropertyData.then((response) => {
+  //     if (response.status === 200) {
+  //       SetPropertyData(response.data.data);
+  //       SetLengthOfProperty(response.data.data.length);
+  //       console.log(response.data.data, "API DATA PROPERTY ");
+  //     }
+  //   }).catch((err) => {
+  //     console.log(err, "ERR");
+  //   });
+  // }, [SortBy, PaginationState, SortByParam]);
 
   const handleSelectA = (selectedIndex, ParentIndexs, length) => {
     const LocalParent = [...Parentindex];
