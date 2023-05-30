@@ -242,6 +242,37 @@
   display: flex;
   justify-content: space-between;
   padding: 0 12px;
+  height: 45px;
+  align-items: center;
+}
+
+.total_price_text_div {
+  /* height: 100%; */
+}
+
+.total_price_text {
+  font-family: var(--font-amiri);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.total_price_inc_tax_text {
+  font-family: var(--font-poppins);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.total_price {
+  font-family: var(--font-poppins);
+  margin-bottom: 10px;
+}
+
+.total_price_view_details {
+  color: var(--success-green);
+  margin-bottom: 10px;
+  font-family: var(--font-poppins);
+  font-size: 13px;
+  cursor: pointer;
 }
 
 .check {

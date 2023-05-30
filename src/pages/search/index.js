@@ -43,19 +43,13 @@ const Index = () => {
   const [SortBy, setSortBy] = useState("");
   const [SortByParam, setSortByParam] = useState("");
   const [SearchOptions, setSearchOptions] = useState([]);
-
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
-
   const [UpdateSortByText, setUpdateSortByText] = useState(
     "Price (High to Low)"
   );
   const [TotalDataCount, setTotalDataCount] = useState();
-
   const param = Router.query;
-  console.log(Router, "check");
-
-  const { from, to } = Router.query;
 
   // DROPDOWN FOR SEARCH
 
@@ -63,15 +57,11 @@ const Index = () => {
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
   };
-
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
     libraries: placesLibrary,
   });
-
   const [guest, setGuest] = useState(param.guest || 0);
-  const [isEditMode, setIsEditMode] = useState(false);
-
   const onChangeGuest = (value) => {
     setGuest(value);
   };
@@ -94,11 +84,6 @@ const Index = () => {
       const name = place.name;
       const status = place.business_status;
       const formattedAddress = place.formatted_address;
-      // setUrlParamsGeoData({
-      //   latitude: place.geometry?.location.lat(),
-      //   longitude: place.geometry?.location.lng(),
-      //   location_name: name,
-      // });
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
@@ -341,25 +326,6 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      {/* <AutoComplete
-                        style={{
-                          width: 200,
-                        }}
-                        options={SearchOptions.map((country) => ({
-                          value: country.name,
-                          Uid: country.id,
-                        }))}
-                        size="large"
-                        // placeholder="Where you want to stay"
-                        placeholder={param.location_name}
-                        // value={param.location_name}
-                        filterOption={(inputValue, option) =>
-                          option.value
-                            .toUpperCase()
-                            .indexOf(inputValue.toUpperCase()) !== -1
-                        }
-                      /> */}
-
                       {isLoaded ? (
                         <Autocomplete
                           onPlaceChanged={onPlaceChanged}
