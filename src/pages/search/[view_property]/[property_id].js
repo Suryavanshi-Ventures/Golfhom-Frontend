@@ -47,6 +47,7 @@ const ViewProperty = () => {
   const [NotAvailable, setNotAvailable] = useState(false);
   const [Available, setAvailable] = useState(false);
   const [ShowTotalPaymentText, setShowTotalPaymentText] = useState(false);
+  const [ShowOtherDetails, setShowOtherDetails] = useState(false);
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -85,7 +86,11 @@ const ViewProperty = () => {
     console.log(key);
   };
 
-  console.log(SpecificPropAPIData.price, "FROM VIEW PROP");
+  console.log(
+    SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+      .PropertyPrice,
+    "FROM VIEW PRO"
+  );
 
   const items = [
     {
@@ -170,6 +175,7 @@ const ViewProperty = () => {
           ClientSecret: response.data?.paymentIntent.client_secret,
           PaymentIntentId: response.data?.paymentIntent.id,
         });
+        setShowTotalPaymentText(true);
       }
     }).catch((err) => {
       if (err.response.data?.message === "User not authorized") {
@@ -366,18 +372,177 @@ const ViewProperty = () => {
               </Dropdown>
               <hr />
 
-              <div className={ViewPropertyCss.total_price_main_div}>
-                <div className={ViewPropertyCss.total_price_text_div}>
-                  <h6>Total</h6>
-                  <p>fasasf</p>
-                </div>
-                <div className={ViewPropertyCss.total_price_text_div}>
-                  <p>fasasf</p>
-                  <p>fasasf</p>
-                </div>
-              </div>
+              {ShowTotalPaymentText ? (
+                <>
+                  {" "}
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Total
+                      </h5>
+                      <p className={ViewPropertyCss.total_price_inc_tax_text}>
+                        Includes taxes and fees
+                      </p>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>$3,640.00</p>
+                      <p
+                        onClick={() => {
+                          ShowOtherDetails
+                            ? setShowOtherDetails(false)
+                            : setShowOtherDetails(true);
+                        }}
+                        className={ViewPropertyCss.total_price_view_details}
+                      >
+                        {ShowOtherDetails ? "Hide" : "View"} details
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
 
-              <hr />
+              {ShowOtherDetails ? (
+                <>
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Additional Fee
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes
+                          .AdditionalFees
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.AdditionalFees
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Cleaning
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Cleaning
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Cleaning
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Deposit
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Deposit
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Deposit
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Extra Person Price
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes
+                          .ExtraPersonPrice
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.ExtraPersonPrice
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>Fees</h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Fees
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Fees
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Security Deposit
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes
+                          .SecurityDeposit
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.SecurityDeposit
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Taxes
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Taxes
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                </>
+              ) : (
+                ""
+              )}
 
               <div className={ViewPropertyCss.checkParent} onClick={CheckAvail}>
                 <Button className={ViewPropertyCss.check}>
