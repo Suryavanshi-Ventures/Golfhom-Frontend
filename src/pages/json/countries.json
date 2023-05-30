@@ -37,7 +37,7 @@
 
   {
     "id": 5,
-    "image": "/images/florida.svg",
+    "image": "/images/Florida.png",
     "name": "Florida",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 27.994402,
@@ -46,7 +46,7 @@
 
   {
     "id": 6,
-    "image": "/images/arizona.svg",
+    "image": "/images/Arizona.png",
     "name": "Arizona",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 34.048927,
@@ -55,7 +55,7 @@
 
   {
     "id": 7,
-    "image": "/images/sanfrancisco.svg",
+    "image": "/images/Sanfrancisco.png",
     "name": "San Francisco",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 37.773972,
@@ -64,7 +64,7 @@
 
   {
     "id": 8,
-    "image": "/images/Newyork.svg",
+    "image": "/images/Newyork.png",
     "name": "New York",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 40.73061,

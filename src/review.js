@@ -1,18 +1,43 @@
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
-import GolfhomStaffSlider from "./utilities/golfhom_staff_silder";
+import Link from "next/link";
+import axios from "axios";
 
 const Review = ({ reviews }) => {
+  const [BlogData, setBlogData] = useState([{}]);
+
+  useEffect(() => {
+    const GetBlogData = async () => {
+      try {
+        const BlogAPIRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/blog`
+        );
+
+        if (BlogAPIRes.status === 200) {
+          setBlogData(BlogAPIRes.data.data);
+          console.log(BlogAPIRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR ", error);
+      }
+    };
+    GetBlogData();
+    return () => {
+      GetBlogData();
+    };
+  }, []);
+
   return (
     <Swiper
       modules={[Navigation, Pagination, A11y]}
       spaceBetween={50}
       slidesPerView={3}
       pagination={{ clickable: true }}
-      onSlideChange={() => {}}
+      onSlideChange={() => { }}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -40,11 +65,53 @@ const Review = ({ reviews }) => {
         },
       }}
     >
-      {reviews.map((review) => (
-        <SwiperSlide key={review.id} className={HomeCss.parentReview}>
-          <GolfhomStaffSlider review={review} />
-        </SwiperSlide>
-      ))}
+      {BlogData?.map((item, index) => {
+        return (
+          <SwiperSlide key={index.id} className={HomeCss.parentReview}>
+            <div className={HomeCss.parentOf_img_textCard}>
+              <Image
+                className={HomeCss.cardReview}
+                src={item.image}
+                alt={item.name}
+                width={380}
+                height={260}
+              ></Image>
+
+              <div className={HomeCss.cardTextParent}>
+                <h5 className={HomeCss.card_title}>
+                  {item.title}
+                </h5>
+                <div className={HomeCss.contact_div}>
+                  <Image
+                    src="/images/vector/contact.svg"
+                    alt="Contact Image"
+                    width={20}
+                    height={15}
+                  ></Image>{" "}
+                  <span className={HomeCss.byAdmin}>{item.createdBy ? item.createdBy : "N/A"}</span>
+                </div>
+
+                <div className={HomeCss.bookmarkDiv}>
+                  <span className={HomeCss.bookmark_text}>
+                    {item.tag?.join(", ")}
+                  </span>
+                </div>
+
+                <div className={HomeCss.learnbtn}>
+                  <h6 className={HomeCss.learnbtn_text}>Learn More</h6>
+                  <Image
+                    className={HomeCss.learnIcon}
+                    src="/images/vector/learnMore.svg"
+                    alt="learnMore"
+                    width={16}
+                    height={16}
+                  ></Image>{" "}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        )
+      })}
     </Swiper>
   );
 };
