@@ -1,41 +1,5 @@
 [
   {
-    "id": 1,
-    "image": "/images/florida.svg",
-    "name": "Florida",
-    "next": "/images/vector/forwardArrow.svg",
-    "lat": 27.994402,
-    "lng": -81.760254
-  },
-
-  {
-    "id": 2,
-    "image": "/images/arizona.svg",
-    "name": "Arizona",
-    "next": "/images/vector/forwardArrow.svg",
-    "lat": 34.048927,
-    "lng": -111.093735
-  },
-
-  {
-    "id": 3,
-    "image": "/images/sanfrancisco.svg",
-    "name": "San Francisco",
-    "next": "/images/vector/forwardArrow.svg",
-    "lat": 37.773972,
-    "lng": -122.431297
-  },
-
-  {
-    "id": 4,
-    "image": "/images/Newyork.svg",
-    "name": "New York",
-    "next": "/images/vector/forwardArrow.svg",
-    "lat": 40.73061,
-    "lng": -73.935242
-  },
-
-  {
     "id": 5,
     "image": "/images/Florida.png",
     "name": "Florida",

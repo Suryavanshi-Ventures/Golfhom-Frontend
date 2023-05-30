@@ -242,18 +242,38 @@
   display: flex;
   justify-content: space-between;
   padding: 0 12px;
-  height: 45px;
+  height: 70px;
   align-items: center;
 }
-
+.total_price_charge_main_div {
+  display: flex;
+  padding: 0 12px;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
 .total_price_text_div {
   /* height: 100%; */
+}
+
+.total_charges_text {
+  font-family: var(--font-amiri);
+  font-weight: 600;
+}
+
+.total_charges {
+  font-family: var(--font-poppins);
+  font-weight: 500;
 }
 
 .total_price_text {
   font-family: var(--font-amiri);
   font-weight: 600;
   margin-bottom: 10px;
+}
+.total_price_charges_text {
+  font-family: var(--font-poppins);
+  font-size: 14px;
 }
 
 .total_price_inc_tax_text {
@@ -265,6 +285,7 @@
 .total_price {
   font-family: var(--font-poppins);
   margin-bottom: 10px;
+  text-align: end;
 }
 
 .total_price_view_details {

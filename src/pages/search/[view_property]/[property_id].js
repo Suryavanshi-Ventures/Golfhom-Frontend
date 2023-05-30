@@ -371,7 +371,256 @@ const ViewProperty = () => {
                 </Dropdown.Menu>
               </Dropdown>
               <hr />
+              {/* TOTAL CHARGES */}
 
+              {ShowOtherDetails ? (
+                <>
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_charges_text}>
+                        Additional Fee
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes
+                          .AdditionalFees
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.AdditionalFees >=
+                            0.5
+                            ? Math.ceil(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.AdditionalFees
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.AdditionalFees
+                              )
+                          : 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_charges_text}>
+                        Cleaning
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Cleaning
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Cleaning >= 0.5
+                            ? Math.ceil(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Cleaning
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Cleaning
+                              )
+                          : 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_charges_text}>
+                        Deposit
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Deposit
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Deposit >= 0.5
+                            ? Math.ceil(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Deposit
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Deposit
+                              )
+                          : 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_charges_text}>
+                        Extra Person Price
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes
+                          .ExtraPersonPrice
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.ExtraPersonPrice >=
+                            0.5
+                            ? Math.ceil(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
+                              )
+                          : 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_charges_text}>
+                        Fees
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Fees
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Fees >= 0.5
+                            ? Math.ceil(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Fees
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Fees
+                              )
+                          : 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_charges_text}>
+                        Security Deposit
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes
+                          .SecurityDeposit
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.SecurityDeposit >=
+                            0.5
+                            ? Math.ceil(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.SecurityDeposit
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.SecurityDeposit
+                              )
+                          : 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_charges_text}>
+                        Taxes
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Taxes >= 0.5
+                            ? Math.ceil(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Taxes
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Taxes
+                              )
+                          : 0}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.total_price_charge_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_charges_text}>
+                        Charges Total
+                      </h5>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_charges}>
+                        $
+                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._text >= 0.5
+                          ? Math.ceil(
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text
+                            )
+                          : Math.floor(
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text
+                            )}
+                        {/* {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                          ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
+                          ? SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Taxes
+                          : "N/A"} */}
+                      </p>
+                    </div>
+                  </div>
+
+                  <hr />
+                </>
+              ) : (
+                ""
+              )}
+              {/* TOTAL AMOUNT */}
               {ShowTotalPaymentText ? (
                 <>
                   {" "}
@@ -385,7 +634,45 @@ const ViewProperty = () => {
                       </p>
                     </div>
                     <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>$3,640.00</p>
+                      <p className={ViewPropertyCss.total_price}>
+                        {" "}
+                        <strong>
+                          $
+                          {SpecificPropAPIData.data?.price >= 0.5
+                            ? Math.ceil(SpecificPropAPIData.data?.price) +
+                              Number(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._text >= 0.5
+                                  ? Math.ceil(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                                  : Math.floor(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                              )
+                            : Math.floor(SpecificPropAPIData.data?.price) +
+                              Number(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._text >= 0.5
+                                  ? Math.ceil(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                                  : Math.floor(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                              )}
+                        </strong>{" "}
+                      </p>
                       <p
                         onClick={() => {
                           ShowOtherDetails
@@ -395,146 +682,6 @@ const ViewProperty = () => {
                         className={ViewPropertyCss.total_price_view_details}
                       >
                         {ShowOtherDetails ? "Hide" : "View"} details
-                      </p>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                ""
-              )}
-
-              {ShowOtherDetails ? (
-                <>
-                  <div className={ViewPropertyCss.total_price_main_div}>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <h5 className={ViewPropertyCss.total_price_text}>
-                        Additional Fee
-                      </h5>
-                    </div>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>
-                        $
-                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                          ?.PropertyPrices.PropertyPrice[0]._attributes
-                          .AdditionalFees
-                          ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.AdditionalFees
-                          : "N/A"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.total_price_main_div}>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <h5 className={ViewPropertyCss.total_price_text}>
-                        Cleaning
-                      </h5>
-                    </div>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>
-                        $
-                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                          ?.PropertyPrices.PropertyPrice[0]._attributes.Cleaning
-                          ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Cleaning
-                          : "N/A"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.total_price_main_div}>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <h5 className={ViewPropertyCss.total_price_text}>
-                        Deposit
-                      </h5>
-                    </div>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>
-                        $
-                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                          ?.PropertyPrices.PropertyPrice[0]._attributes.Deposit
-                          ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Deposit
-                          : "N/A"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.total_price_main_div}>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <h5 className={ViewPropertyCss.total_price_text}>
-                        Extra Person Price
-                      </h5>
-                    </div>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>
-                        $
-                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                          ?.PropertyPrices.PropertyPrice[0]._attributes
-                          .ExtraPersonPrice
-                          ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.ExtraPersonPrice
-                          : "N/A"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.total_price_main_div}>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <h5 className={ViewPropertyCss.total_price_text}>Fees</h5>
-                    </div>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>
-                        $
-                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                          ?.PropertyPrices.PropertyPrice[0]._attributes.Fees
-                          ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Fees
-                          : "N/A"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.total_price_main_div}>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <h5 className={ViewPropertyCss.total_price_text}>
-                        Security Deposit
-                      </h5>
-                    </div>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>
-                        $
-                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                          ?.PropertyPrices.PropertyPrice[0]._attributes
-                          .SecurityDeposit
-                          ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.SecurityDeposit
-                          : "N/A"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.total_price_main_div}>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <h5 className={ViewPropertyCss.total_price_text}>
-                        Taxes
-                      </h5>
-                    </div>
-                    <div className={ViewPropertyCss.total_price_text_div}>
-                      <p className={ViewPropertyCss.total_price}>
-                        $
-                        {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                          ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
-                          ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Taxes
-                          : "N/A"}
                       </p>
                     </div>
                   </div>
