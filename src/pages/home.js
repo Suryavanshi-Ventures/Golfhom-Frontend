@@ -41,6 +41,10 @@ const Home = () => {
   const [AllPropertyData, setAllPropertyData] = useState([{}]);
   const [NightsCounter, setNightsCounter] = useState(0);
 
+  const from = '2023-05-01';
+  const to = '2023-05-31';
+
+
   useEffect(() => {
     const GetPropDataFunc = async () => {
       try {
@@ -594,9 +598,9 @@ const Home = () => {
                   Golfhōm Hottest New Arrivals
                 </h2>
                 <p className={HomeCss.subHeading}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text.
+                  Experience the Coolest Golfhōms on the Planet:
+                  Step into a world of luxury and innovation,
+                  where impeccable design meets unrivaled performance.
                 </p>
 
                 <div className={HomeCss.explore_more_container}>
@@ -754,9 +758,7 @@ const Home = () => {
         <h2 className={HomeCss.golf_training_heading}>Golf Training Videos</h2>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            <br /> industry. Lorem Ipsum has been the industry's standard dummy
-            text.
+            Enhance your skills with expert guidance from <br /> professional instructors and coaches.
           </p>
         </div>
 
