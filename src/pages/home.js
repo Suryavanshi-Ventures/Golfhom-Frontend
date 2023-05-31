@@ -41,10 +41,6 @@ const Home = () => {
   const [AllPropertyData, setAllPropertyData] = useState([{}]);
   const [NightsCounter, setNightsCounter] = useState(0);
 
-  const from = '2023-05-01';
-  const to = '2023-05-31';
-
-
   useEffect(() => {
     const GetPropDataFunc = async () => {
       try {

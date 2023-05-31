@@ -81,19 +81,19 @@ const privacy = () => {
 
                 <p className={PrivacyPolicyCss.paraR}>You have the right to ask us at any time:</p>
 
-                <p className={PrivacyPolicyCss.paraS}> • to confirm whether we hold any of your personal data;</p>
+                <p className={PrivacyPolicyCss.paraS}> • To confirm whether we hold any of your personal data.</p>
 
-                <p className={PrivacyPolicyCss.paraS}>   • to send you a copy of any personal data that we hold about you;</p>
+                <p className={PrivacyPolicyCss.paraS}>   • To send you a copy of any personal data that we hold about you.</p>
 
-                <p className={PrivacyPolicyCss.paraS}>  • to correct any inaccuracies in your personal data and to add relevant details where the personal data we hold is incomplete;</p>
+                <p className={PrivacyPolicyCss.paraS}>  • To correct any inaccuracies in your personal data and to add relevant details where the personal data we hold is incomplete.</p>
 
-                <p className={PrivacyPolicyCss.paraS}> • to delete (to the extent possible) any of your personal data, where we are required by law to do so;</p>
+                <p className={PrivacyPolicyCss.paraS}> • To delete (to the extent possible) any of your personal data, where we are required by law to do so.</p>
 
-                <p className={PrivacyPolicyCss.paraS}>  • to stop processing your personal data, where we are required by law to do so;</p>
+                <p className={PrivacyPolicyCss.paraS}>  • To stop processing your personal data, where we are required by law to do so.</p>
 
-                <p className={PrivacyPolicyCss.paraS}>  • to let you have a portable copy of the personal data we hold about you, where we are required by law to do so;</p>
+                <p className={PrivacyPolicyCss.paraS}>  • To let you have a portable copy of the personal data we hold about you, where we are required by law to do so.</p>
 
-                <p className={PrivacyPolicyCss.paraS}>  • to stop processing any of your personal data that we process on the basis of our legitimate interests;</p>
+                <p className={PrivacyPolicyCss.paraS}>  • To stop processing any of your personal data that we process on the basis of our legitimate interests.</p>
 
                 <p className={PrivacyPolicyCss.paraS}> • And to stop sending you marketing material. However please note that we may continue to send you service related (i.e. non-marketing) communications, such as email updates.</p>
 
@@ -123,7 +123,7 @@ const privacy = () => {
 
                 <h5 className={PrivacyPolicyCss.smallHeading}> CONTACT US</h5>
 
-                <p className={PrivacyPolicyCss.paraX}>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us via our <span>Contact Us page</span></p>
+                <p className={PrivacyPolicyCss.paraX}>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us via our <span>Contact Us page.</span></p>
 
             </Container>
 

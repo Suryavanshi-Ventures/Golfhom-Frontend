@@ -57,10 +57,7 @@ const Index = () => {
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
   };
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
-    libraries: placesLibrary,
-  });
+
   const [guest, setGuest] = useState(param.guest || 0);
   const onChangeGuest = (value) => {
     setGuest(value);
@@ -69,13 +66,18 @@ const Index = () => {
     param.location_name ? param.location_name : ""
   );
 
-  const onLoad = (autocomplete) => {
-    setSearchResult(autocomplete);
-  };
-
   const OnSearchInputChange = (event) => {
     console.log(event.target.value);
     setInputValue(event.target.value);
+  };
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: placesLibrary,
+  });
+
+  const onLoad = (autocomplete) => {
+    setSearchResult(autocomplete);
   };
 
   const onPlaceChanged = () => {
@@ -96,16 +98,14 @@ const Index = () => {
   };
 
   const EditBtn = () => {
-    setShowHidden(true);
+    setShowHidden(!showHidden);
     setIsVisible(true);
   };
 
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
@@ -119,7 +119,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     PaginationState,
     param.from,
@@ -158,10 +158,8 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-          "latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-          "from=" + param.from
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
         }&${"to=" + param.to}&limit=10&page=${pageNumber}`
       );
 
@@ -389,37 +387,6 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      {/* <Dropdown
-                        menu={{
-                          items: [
-                            {
-                              label: "2",
-                              key: "1",
-                            },
-                            {
-                              label: "3",
-                              key: "2",
-                            },
-                          ],
-                        }}
-                      >
-                        <Button
-                          size="large"
-                          className={SearchIndexCss.edit_room_dropdown_btn}
-                        >
-                          <Space
-                            className={
-                              SearchIndexCss.edit_room_dropdown_btn_space
-                            }
-                          >
-                            {param.guest}
-                            <DownOutlined
-                              className={SearchIndexCss.edit_room_dropdown_icon}
-                            />
-                          </Space>
-                        </Button>
-                      </Dropdown> */}
-
                       <Input
                         type="number"
                         className={SearchIndexCss.inner_input_box}
@@ -428,7 +395,7 @@ const Index = () => {
                         onChange={(e) =>
                           onChangeGuest(parseInt(e.target.value))
                         }
-                        // onChange={OnChangeGuest}
+                      // onChange={OnChangeGuest}
                       />
                     </div>
                   </div>
@@ -451,7 +418,7 @@ const Index = () => {
                           className={SearchIndexCss.edit_details_btn}
                           onClick={EditBtn}
                         >
-                          Edit
+                          {!showHidden ? 'Edit' : 'Close'}
                         </Button>
                       )}
                     </div>
@@ -585,8 +552,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -595,8 +561,7 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}
@@ -612,8 +577,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -634,8 +598,7 @@ const Index = () => {
                             <h5
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}
