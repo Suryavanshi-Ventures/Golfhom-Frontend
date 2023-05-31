@@ -57,7 +57,10 @@ const Index = () => {
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
   };
-
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: placesLibrary,
+  });
   const [guest, setGuest] = useState(param.guest || 0);
   const onChangeGuest = (value) => {
     setGuest(value);
@@ -66,18 +69,13 @@ const Index = () => {
     param.location_name ? param.location_name : ""
   );
 
+  const onLoad = (autocomplete) => {
+    setSearchResult(autocomplete);
+  };
+
   const OnSearchInputChange = (event) => {
     console.log(event.target.value);
     setInputValue(event.target.value);
-  };
-
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
-    libraries: placesLibrary,
-  });
-
-  const onLoad = (autocomplete) => {
-    setSearchResult(autocomplete);
   };
 
   const onPlaceChanged = () => {
@@ -98,14 +96,16 @@ const Index = () => {
   };
 
   const EditBtn = () => {
-    setShowHidden(!showHidden);
+    setShowHidden(true);
     setIsVisible(true);
   };
 
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
@@ -119,7 +119,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     PaginationState,
     param.from,
@@ -158,8 +158,10 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
         }&${"to=" + param.to}&limit=10&page=${pageNumber}`
       );
 
@@ -417,7 +419,7 @@ const Index = () => {
                           className={SearchIndexCss.edit_details_btn}
                           onClick={EditBtn}
                         >
-                          {!showHidden ? 'Edit' : 'Close'}
+                          Edit
                         </Button>
                       )}
                     </div>
@@ -528,11 +530,18 @@ const Index = () => {
                                   <div
                                     className={CarasoulMapCss.image_container}
                                     onClick={(e) => {
-                                      Router.push(
-                                        `search/${encodeURIComponent(
+                                      Router.push({
+                                        pathname: `search/${encodeURIComponent(
                                           data.name
-                                        )}/${data.id}`
-                                      );
+                                        )}/${data.id}`,
+                                        query: {
+                                          date_from: param.from,
+                                          date_to: param.to,
+                                          total_guest: param.guest,
+                                          adults: param.adults,
+                                          childs: param.childs,
+                                        },
+                                      });
                                     }}
                                     style={{ position: "relative" }}
                                   >
@@ -551,7 +560,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -560,7 +570,8 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}
@@ -576,7 +587,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -597,7 +609,8 @@ const Index = () => {
                             <h5
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}

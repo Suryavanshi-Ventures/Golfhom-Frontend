@@ -161,18 +161,21 @@
 
 .bookParent {
   align-self: center;
-  width: fit-content;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .bookNow {
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color);
   border: none;
+  font-weight: 500;
 }
 
 .bookNow:hover {
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
+  background-color: var(--black-color);
+  color: var(--white-font-color) !important;
   border: none;
 }
 
@@ -302,12 +305,13 @@
   border: none;
   padding: 12px 50px;
   font-size: 1.1rem;
+  height: auto;
   font-weight: 600;
 }
 
 .check:hover {
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
+  background-color: var(--black-btn-color);
+  color: var(--white-font-color) !important;
   border: none;
 }
 
@@ -326,6 +330,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin: 26px 0px;
+  height: auto;
 }
 
 .contact:hover {

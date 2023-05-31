@@ -92,9 +92,9 @@ const TabContentOverview = (PropData) => {
               <h1 className={ViewPropertyCss.about_section_main_heading}>
                 Description
               </h1>
-              <p className={ViewPropertyCss.about_section_para}>
-                {PropData.data?.description}
-              </p>
+              <pre className={ViewPropertyCss.about_section_para}>
+                {PropData.data?.description?.replace(/\*|BR|BA|#|/g, "")}
+              </pre>
             </div>
           </Col>
         </Row>
