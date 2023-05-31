@@ -14,8 +14,8 @@ const markers = [];
 const GoogleMaps = (PropertyData) => {
   if (PropertyData.data?.length > 1) {
     const LangLats = PropertyData.data.forEach((element, index) => {
-      console.log(element.latitude);
-      console.log(element.longitude);
+      // console.log(element.latitude, "MULTIPLE PROP LAT LANG");
+      // console.log(element.longitude, "MULTIPLE PROP LAT LANG");
 
       markers.push({
         lat: Number(element.latitude),
@@ -28,6 +28,10 @@ const GoogleMaps = (PropertyData) => {
       lng: markers[0]?.lng,
     };
   }
+
+  // console.log(PropertyData.data[0]?.latitude, "SINGLE PROP LAT LANG");
+  // console.log(PropertyData.data[0]?.longitude, "SINGLE PROP LAT LANG");
+
   markers.push({
     lat: Number(PropertyData.data[0]?.latitude),
     lng: Number(PropertyData.data[0]?.longitude),

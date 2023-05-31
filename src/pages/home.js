@@ -41,15 +41,15 @@ const Home = () => {
   const [AllPropertyData, setAllPropertyData] = useState([{}]);
   const [NightsCounter, setNightsCounter] = useState(0);
 
-  const from = '2023-05-01';
-  const to = '2023-05-31';
-
+  const from = "2023-05-01";
+  const to = "2023-05-31";
 
   useEffect(() => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL
+          `${
+            process.env.NEXT_PUBLIC_API_URL
           }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
         );
         if (GetPropertyDataRes.status === 200) {
@@ -160,15 +160,20 @@ const Home = () => {
           UrlParamsGeoData?.latitude
         )}&longitude=${encodeURIComponent(
           UrlParamsGeoData?.longitude
-        )}&location_name=${UrlParamsGeoData?.location_name
+        )}&location_name=${
+          UrlParamsGeoData?.location_name
         }&nights=${NightsCounter}&guest=${encodeURIComponent(
           adult + child
-        )}&from=${UrlParamsDateRange[0]
-          ? UrlParamsDateRange[0]
-          : moment().format("MM-DD-YYYY")
-        }&to=${UrlParamsDateRange[1]
-          ? UrlParamsDateRange[1]
-          : moment().format("MM-DD-YYYY")
+        )}&adults=${encodeURIComponent(adult)}&childs=${encodeURIComponent(
+          adult
+        )}&from=${
+          UrlParamsDateRange[0]
+            ? UrlParamsDateRange[0]
+            : moment().format("MM-DD-YYYY")
+        }&to=${
+          UrlParamsDateRange[1]
+            ? UrlParamsDateRange[1]
+            : moment().format("MM-DD-YYYY")
         }&limit=10`
       );
     }
@@ -532,7 +537,7 @@ const Home = () => {
                                     key: "2",
                                   },
                                   {
-                                    label: "The open champioship",
+                                    label: "The open championship",
                                     key: "3",
                                   },
                                   {
@@ -598,9 +603,9 @@ const Home = () => {
                   Golfhōm Hottest New Arrivals
                 </h2>
                 <p className={HomeCss.subHeading}>
-                  Experience the Coolest Golfhōms on the Planet:
-                  Step into a world of luxury and innovation,
-                  where impeccable design meets unrivaled performance.
+                  Experience the Coolest Golfhōms on the Planet: Step into a
+                  world of luxury and innovation, where impeccable design meets
+                  unrivaled performance.
                 </p>
 
                 <div className={HomeCss.explore_more_container}>
@@ -652,7 +657,9 @@ const Home = () => {
                 <Col md={5} lg={4} key={i}>
                   <Card
                     onClick={() => {
-                      Router.push(`search/${data.name}/${data.id}`);
+                      Router.push(
+                        `search/${encodeURIComponent(data.name)}/${data.id}`
+                      );
                     }}
                     className={HomeCss.MainCard}
                   >
@@ -682,7 +689,7 @@ const Home = () => {
                               alt="iconImage"
                             ></Image>
                             <span className={HomeCss.iconImg_spans}>
-                              {data.bedrooms ? data.bedrooms : "N/A"} Bed Rooms
+                              {data.bedrooms ? data.bedrooms : 1} Bed Rooms
                             </span>
                           </div>
 
@@ -694,7 +701,7 @@ const Home = () => {
                               alt="iconImage"
                             ></Image>
                             <span className={HomeCss.iconImg_spans}>
-                              {data.bathrooms ? data.bathrooms : "1"} Baths
+                              {data.bathrooms ? data.bathrooms : 1} Baths
                             </span>
                           </div>
 
@@ -706,8 +713,8 @@ const Home = () => {
                               alt="iconImage"
                             ></Image>
                             <span className={HomeCss.iconImg_spans}>
-                              {data.accomodation ? data.accomodation : "N/A"}{" "}
-                              Guests Villa
+                              {data.accomodation ? data.accomodation : 1} Guests
+                              Villa
                             </span>
                           </div>
                           {/* <div className={HomeCss.iconImg}>
@@ -758,7 +765,8 @@ const Home = () => {
         <h2 className={HomeCss.golf_training_heading}>Golf Training Videos</h2>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
-            Enhance your skills with expert guidance from <br /> professional instructors and coaches.
+            Enhance your skills with expert guidance from <br /> professional
+            instructors and coaches.
           </p>
         </div>
 

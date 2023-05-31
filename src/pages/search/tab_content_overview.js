@@ -6,7 +6,6 @@ import ViewPropBathroomIcon from "../../../public/images/vector/bathroom_icon.sv
 import Image from "next/image";
 
 const TabContentOverview = (PropData) => {
-  console.log(PropData);
   return (
     <>
       <main className={ViewPropertyCss.tabOverviewSection}>
@@ -60,9 +59,8 @@ const TabContentOverview = (PropData) => {
                 Bedrooms
               </h1>
               <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data?.bedrooms ? PropData.data?.bedrooms : "N/A"}{" "}
-                Bedrooms / {PropData.data?.beds ? PropData.data?.beds : "N/A"}{" "}
-                Beds
+                {PropData.data?.bedrooms ? PropData.data?.bedrooms : 1} Bedrooms
+                / {PropData.data?.beds ? PropData.data?.beds : 1} Beds
               </p>
             </div>
           </Col>

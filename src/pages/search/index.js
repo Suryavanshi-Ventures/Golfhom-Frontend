@@ -130,20 +130,20 @@ const Index = () => {
   ]);
 
   //! DEBUGG THIS
-  useEffect(() => {
-    const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}&sort=${SortBy}${SortByParam}`
-    );
-    GetPropertyData.then((response) => {
-      if (response.status === 200) {
-        SetPropertyData(response.data.data);
-        SetLengthOfProperty(response.data.data.length);
-        console.log(response.data.data, "API DATA PROPERTY ");
-      }
-    }).catch((err) => {
-      console.log(err, "ERR");
-    });
-  }, [SortBy, PaginationState, SortByParam]);
+  // useEffect(() => {
+  //   const GetPropertyData = axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=10&page=${PaginationState}&sort=${SortBy}${SortByParam}`
+  //   );
+  //   GetPropertyData.then((response) => {
+  //     if (response.status === 200) {
+  //       SetPropertyData(response.data.data);
+  //       SetLengthOfProperty(response.data.data.length);
+  //       console.log(response.data.data, "API DATA PROPERTY ");
+  //     }
+  //   }).catch((err) => {
+  //     console.log(err, "ERR");
+  //   });
+  // }, [SortBy, PaginationState, SortByParam]);
 
   const handleSelectA = (selectedIndex, ParentIndexs, length) => {
     const LocalParent = [...Parentindex];
@@ -389,37 +389,6 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      {/* <Dropdown
-                        menu={{
-                          items: [
-                            {
-                              label: "2",
-                              key: "1",
-                            },
-                            {
-                              label: "3",
-                              key: "2",
-                            },
-                          ],
-                        }}
-                      >
-                        <Button
-                          size="large"
-                          className={SearchIndexCss.edit_room_dropdown_btn}
-                        >
-                          <Space
-                            className={
-                              SearchIndexCss.edit_room_dropdown_btn_space
-                            }
-                          >
-                            {param.guest}
-                            <DownOutlined
-                              className={SearchIndexCss.edit_room_dropdown_icon}
-                            />
-                          </Space>
-                        </Button>
-                      </Dropdown> */}
-
                       <Input
                         type="number"
                         className={SearchIndexCss.inner_input_box}
@@ -428,7 +397,6 @@ const Index = () => {
                         onChange={(e) =>
                           onChangeGuest(parseInt(e.target.value))
                         }
-                        // onChange={OnChangeGuest}
                       />
                     </div>
                   </div>
