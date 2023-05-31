@@ -320,7 +320,13 @@
 
 .search_by_golf_input_container {
   width: 100%;
-  max-width: 250px;
+  max-width: 250px; 
+  font-family: var(--font-poppins);
+}
+
+.search_by_golf_input_container_select {
+  margin-bottom: 30px;
+  width: 100%;
   font-family: var(--font-poppins);
 }
 
@@ -333,7 +339,7 @@
   flex-direction: row-reverse;
   height: 45px;
   width: 100%;
-  border-radius: 2px;
+  border-radius: 2px !important;
   margin-bottom: 2rem;
   font-family: var(--font-poppins);
   justify-content: space-between;
@@ -475,12 +481,9 @@
 .arrivalContainer {
   display: flex;
   align-items: center;
-  /* margin: 30px 0px 80px 0px; */
-  /* justify-content: space-around; */
   width: auto;
   white-space: break-spaces;
   justify-content: space-between;
-  min-width: 200px;
   /* max-width: 200px;     this won't let these images to sit in flex (horizontally) when screen is full, so don't use it */
   flex-wrap: wrap;
   margin: auto;
@@ -489,8 +492,6 @@
 }
 
 .arrivalContainer_child {
-  width: 100%;
-  max-width: 400px;
 }
 
 .newyork {
@@ -514,8 +515,6 @@
 .midImage {
   display: flex;
   place-self: self-end;
-  width: 100%;
-  max-width: 400px;
 }
 
 .midImgTitle {
@@ -541,8 +540,6 @@
 .twoImgContainer {
   display: grid;
   place-self: end;
-  width: 100%;
-  max-width: 400px;
 }
 
 .madridImg {
@@ -755,6 +752,7 @@
 .parentReview {
   padding: 40px 0px 200px 0px;
   min-width: 320px;
+  margin-right: 0px !important;
 }
 
 .cardReview {
@@ -866,6 +864,12 @@
 
   .search_btn_col {
     margin-top: 0px;
+  }
+
+  .arrivalContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
   }
 }
 

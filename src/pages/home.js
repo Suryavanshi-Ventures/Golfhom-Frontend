@@ -9,7 +9,7 @@ import ads from "../pages/json/ads.json";
 import Advertise from "../advertise";
 import Image from "next/image";
 import { Dropdown, Input, Space, Typography, message } from "antd";
-import { Button, DatePicker, Skeleton } from "antd";
+import { Button, DatePicker, Skeleton, Select } from "antd";
 const { RangePicker } = DatePicker;
 import Video from "../video";
 import video from "../pages/json/video.json";
@@ -515,10 +515,10 @@ const Home = () => {
                         >
                           <div
                             className={
-                              HomeCss.search_by_golf_input_container_tourni
+                              HomeCss.search_by_golf_input_container_select
                             }
                           >
-                            <Dropdown
+                            {/* <Dropdown
                               menu={{
                                 items: [
                                   {
@@ -563,7 +563,53 @@ const Home = () => {
                                   </Space>
                                 </Typography.Link>
                               </span>
-                            </Dropdown>
+                            </Dropdown> */}
+
+                            <Select
+                              defaultValue=" Please select tournament"
+                              style={{
+                                width: 120,
+                              }}
+                              options={[
+                                {
+                                  value: 'PGA Championship',
+                                  label: 'PGA Championship',
+                                },
+                                {
+                                  value: 'The Master',
+                                  label: 'The Master',
+                                },
+                                {
+                                  value: 'The open championship',
+                                  label: 'The open championship',
+                                },
+                                {
+                                  value: 'The Tradition at Quinta',
+                                  label: 'The Tradition at Quinta',
+                                },
+                                {
+                                  value: 'US Open',
+                                  label: 'US Open',
+                                },
+                              ]}
+                              trigger={["click"]}
+                              className={
+                                HomeCss.search_by_golf_input_container_tourniA
+                              }
+                              size="large"
+                            >
+                              <span onClick={(e) => e.preventDefault()}>
+                                <Typography.Link>
+                                  <Space
+                                    className={
+                                      HomeCss.search_by_golf_input_search_by_tourni
+                                    }
+                                  >
+                                  </Space>
+                                </Typography.Link>
+                              </span>
+                            </Select>
+
                           </div>
                         </div>
                       </div>
@@ -583,14 +629,14 @@ const Home = () => {
               </div>
             </div>
           </main>
-        </Container>
-      </main>
+        </Container >
+      </main >
 
       {/* -------------------------------------    Golfhōm Hottest New Arrivals ---------------------------- */}
-      <main className={HomeCss.hottest_new_arrival_section}>
+      <main main className={HomeCss.hottest_new_arrival_section} >
         <Container>
-          <div className={HomeCss.arrivalContainer}>
-            <div className={HomeCss.arrivalContainer_child}>
+          <Row className={HomeCss.arrivalContainer}>
+            <Col xl={4} lg={4} className={HomeCss.arrivalContainer_child}>
               <div className={HomeCss.paraHeading}>
                 <h2 className={HomeCss.hottest_new_arrival__heading}>
                   Golfhōm Hottest New Arrivals
@@ -615,16 +661,13 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              {/* <h6 className={HomeCss.newyork}>
-                The Ritz-Carlton New York, NoMad
-              </h6> */}
-            </div>
+            </Col>
 
-            <div className={HomeCss.midImage}>
+            <Col xl={4} lg={4} className={HomeCss.midImage}>
               <h6 className={HomeCss.midImgTitle}> Sao Paulo, New york </h6>
-            </div>
+            </Col>
 
-            <div className={HomeCss.twoImgContainer}>
+            <Col xl={4} lg={4} className={HomeCss.twoImgContainer}>
               <div>
                 <h6 className={HomeCss.madridImg}> The Madrid EDITION</h6>
               </div>
@@ -634,14 +677,14 @@ const Home = () => {
                   The Westin Anaheim Resort{" "}
                 </h6>
               </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </Container>
-      </main>
+      </main >
 
       {/* --------------------------------------    CARD SECTION   -----------------------------   */}
 
-      <div className={HomeCss.cardBg}>
+      <div div className={HomeCss.cardBg} >
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
           <Row>
@@ -740,21 +783,21 @@ const Home = () => {
             })}
           </Row>
         </Container>
-      </div>
+      </div >
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
-      <Container className={HomeCss.ads}>
+      <Container Container className={HomeCss.ads} >
         <h2 className={HomeCss.adsTitle}>
           Golfing and Traveling, Both Better with Friends
         </h2>
 
         <Advertise ads={ads} />
-      </Container>
+      </Container >
 
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
-      <Container className={HomeCss.videoContain}>
+      <Container Container className={HomeCss.videoContain} >
         <h2 className={HomeCss.golf_training_heading}>Golf Training Videos</h2>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
@@ -764,11 +807,11 @@ const Home = () => {
         </div>
 
         <Video videos={video} />
-      </Container>
+      </Container >
 
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
-      <Container className={HomeCss.staffCard}>
+      <Container Container className={HomeCss.staffCard} >
         <Row>
           <Col md={8} className={HomeCss.staffCard_title_main_container}>
             <h2 className={HomeCss.staffCard_title}>
@@ -782,7 +825,7 @@ const Home = () => {
         </Row>
 
         <Review reviews={review} />
-      </Container>
+      </Container >
 
       <BottomSection />
     </>
