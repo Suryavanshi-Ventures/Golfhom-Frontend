@@ -52,6 +52,10 @@ const ViewProperty = () => {
     useState(false);
   const Params = router.query;
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
+  const [range, setRange] = useState([
+    moment("2023-05-31"),
+    moment("2023-06-01"),
+  ]);
 
   useEffect(() => {
     console.log(Params, "PARAMs");
@@ -101,7 +105,6 @@ const ViewProperty = () => {
     GetPropertyById();
     return () => {
       CheckAvail();
-
       GetPropertyById();
     };
   }, [Params.property_id]);
@@ -228,6 +231,7 @@ const ViewProperty = () => {
 
   const OnChangeDateInput = (date, DateValue) => {
     SetBookingDate(DateValue);
+    console.log(DateValue, "DATEEE VALUE", date, "DATEEE");
   };
 
   return (
@@ -293,14 +297,12 @@ const ViewProperty = () => {
               )}
               <div className={ViewPropertyCss.inner_input_date_picker}>
                 <RangePicker
-                  format={"MM-DD-YYYY"}
                   size="large"
                   style={{ width: "100%" }}
                   onChange={OnChangeDateInput}
                   disabledDate={(current) => {
                     return current && current < moment().startOf("day");
                   }}
-                  onC
                   className={ViewPropertyCss.inner_input_date_picker}
                 />
               </div>
