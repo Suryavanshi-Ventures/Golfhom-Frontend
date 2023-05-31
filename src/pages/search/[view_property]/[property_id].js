@@ -972,25 +972,6 @@ const ViewProperty = () => {
           </section>
         </Container>
 
-        {/* <section className={ViewPropertyCss.carasoul_section}>
-          <Carousel>
-            {SpecificPropAPIData.data??.otherImageUrls?.map(
-              (OtherImage, OtherImageUrlIndex) => {
-                return (
-                  <Carousel.Item key={OtherImageUrlIndex}>
-                    <NextImage
-                      className={ViewPropertyCss.carasoul_images}
-                      fill
-                      src={OtherImage}
-                      alt="First slide"
-                    />
-                  </Carousel.Item>
-                );
-              }
-            )}
-          </Carousel>
-        </section> */}
-
         {/* FEATURE SECTION STARTS HERE */}
         <section className={ViewPropertyCss.feature_section}>
           <Container>
