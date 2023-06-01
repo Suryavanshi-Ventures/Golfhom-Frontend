@@ -10,8 +10,11 @@ import blogs from "../json/blogs.json";
 import Link from "next/link";
 import axios from "axios";
 import Loader from "../../../common components/loader";
+import { useRouter } from "next/router";
+import { Skeleton } from "antd";
 
 const Index = ({ cards }) => {
+  const Router = useRouter();
   const [BlogData, setBlogData] = useState([{}]);
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
@@ -66,8 +69,25 @@ const Index = ({ cards }) => {
         <Row>
           {BlogData?.map((item, index) => {
             return (
-              <Col lg={4} md={6} sm={12} xs={12} key={index} className={BlogCss.columnParent}>
-                <div className={BlogCss.parentOf_img_textCard}>
+              <Col
+                lg={4}
+                md={6}
+                sm={12}
+                xs={12}
+                key={index}
+                className={BlogCss.columnParent}
+              >
+                <div
+                  onClick={(e) => {
+                    Router.push({
+                      pathname: `blog/${encodeURIComponent(item.title)}`,
+                      query: {
+                        id: item.id,
+                      },
+                    });
+                  }}
+                  className={BlogCss.parentOf_img_textCard}
+                >
                   <div className={BlogCss.imageChild}>
                     <Image
                       src={item.image}
@@ -78,9 +98,19 @@ const Index = ({ cards }) => {
                   </div>
 
                   <div className={BlogCss.cardTextParent}>
-                    <Link href="blog/view_blog" className={BlogCss.a_tag}>
+                    <span
+                      onClick={(e) => {
+                        Router.push({
+                          pathname: `blog/${encodeURIComponent(item.title)}`,
+                          query: {
+                            id: item.id,
+                          },
+                        });
+                      }}
+                      className={BlogCss.a_tag}
+                    >
                       <h5 className={BlogCss.card_title}>{item.title}</h5>
-                    </Link>
+                    </span>
                     <div className={BlogCss.contact_div}>
                       <Image
                         src="/images/vector/contact.svg"
@@ -115,6 +145,10 @@ const Index = ({ cards }) => {
               </Col>
             );
           })}
+
+          {/* <div className={BlogCss.skeliton_image_div}>
+            <Skeleton.Image active={true} />
+          </div> */}
         </Row>
       </Container>
 

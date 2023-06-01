@@ -4,11 +4,12 @@ import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Review = ({ reviews }) => {
-  const [BlogData, setBlogData] = useState([]);
+  const Router = useRouter();
+  const [BlogData, setBlogData] = useState([{}]);
 
   useEffect(() => {
     const GetBlogData = async () => {
@@ -16,7 +17,6 @@ const Review = ({ reviews }) => {
         const BlogAPIRes = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/v1/blog`
         );
-
         if (BlogAPIRes.status === 200) {
           setBlogData(BlogAPIRes.data.data);
           console.log(BlogAPIRes.data.data);
@@ -78,55 +78,78 @@ const Review = ({ reviews }) => {
     >
       {BlogData?.map((item, index) => {
         return (
-          <SwiperSlide key={item.id} className={HomeCss.parentReview}>
+          <SwiperSlide key={index.id} className={HomeCss.parentReview}>
             <div className={HomeCss.swiper_container}>
-              <div className={HomeCss.parentOf_img_textCard}>
+              <div
+                className={HomeCss.parentOf_img_textCard}
+                onClick={(e) => {
+                  Router.push({
+                    pathname: `blog/${encodeURIComponent(item.title)}`,
+                    query: {
+                      id: item.id,
+                    },
+                  });
+                }}
+              >
                 <div className={HomeCss.swiper_img}>
                   <Image
                     className={HomeCss.cardReview}
                     src={item.image}
                     alt={item.name}
-                    // width={380}
-                    // height={260}
                     fill
                   ></Image>
-                </div>
 
-                <div className={HomeCss.cardTextParent}>
-                  <h5 className={HomeCss.card_title}>
-                    {item.title}
-                  </h5>
-                  <div className={HomeCss.contact_div}>
-                    <Image
-                      src="/images/vector/contact.svg"
-                      alt="Contact Image"
-                      width={20}
-                      height={15}
-                    ></Image>{" "}
-                    <span className={HomeCss.byAdmin}>{item.createdBy ? item.createdBy : "N/A"}</span>
-                  </div>
+                  <div className={HomeCss.cardTextParent}>
+                    <h5 className={HomeCss.card_title}>{item.title}</h5>
+                    <div className={HomeCss.contact_div}>
+                      <Image
+                        src="/images/vector/contact.svg"
+                        alt="Contact Image"
+                        width={20}
+                        height={15}
+                      ></Image>{" "}
+                      <span className={HomeCss.byAdmin}>
+                        {item.createdBy ? item.createdBy : "N/A"}
+                      </span>
+                    </div>
 
-                  <div className={HomeCss.bookmarkDiv}>
-                    <span className={HomeCss.bookmark_text}>
-                      {item.tag?.join(", ")}
-                    </span>
-                  </div>
+                    <div className={HomeCss.cardTextParent}>
+                      <h5 className={HomeCss.card_title}>
+                        {item.title}
+                      </h5>
+                      <div className={HomeCss.contact_div}>
+                        <Image
+                          src="/images/vector/contact.svg"
+                          alt="Contact Image"
+                          width={20}
+                          height={15}
+                        ></Image>{" "}
+                        <span className={HomeCss.byAdmin}>{item.createdBy ? item.createdBy : "N/A"}</span>
+                      </div>
 
-                  <div className={HomeCss.learnbtn}>
-                    <h6 className={HomeCss.learnbtn_text}>Learn More</h6>
-                    <Image
-                      className={HomeCss.learnIcon}
-                      src="/images/vector/learnMore.svg"
-                      alt="learnMore"
-                      width={16}
-                      height={16}
-                    ></Image>{" "}
+                      <div className={HomeCss.bookmarkDiv}>
+                        <span className={HomeCss.bookmark_text}>
+                          {item.tag?.join(", ")}
+                        </span>
+                      </div>
+
+                      <div className={HomeCss.learnbtn}>
+                        <h6 className={HomeCss.learnbtn_text}>Learn More</h6>
+                        <Image
+                          className={HomeCss.learnIcon}
+                          src="/images/vector/learnMore.svg"
+                          alt="learnMore"
+                          width={16}
+                          height={16}
+                        ></Image>{" "}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </SwiperSlide>
-        )
+        );
       })}
     </Swiper>
   );

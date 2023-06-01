@@ -45,7 +45,8 @@ const Home = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL
+          `${
+            process.env.NEXT_PUBLIC_API_URL
           }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
         );
         if (GetPropertyDataRes.status === 200) {
@@ -156,17 +157,20 @@ const Home = () => {
           UrlParamsGeoData?.latitude
         )}&longitude=${encodeURIComponent(
           UrlParamsGeoData?.longitude
-        )}&location_name=${UrlParamsGeoData?.location_name
+        )}&location_name=${
+          UrlParamsGeoData?.location_name
         }&nights=${NightsCounter}&guest=${encodeURIComponent(
           adult + child
         )}&adults=${encodeURIComponent(adult)}&childs=${encodeURIComponent(
           adult
-        )}&from=${UrlParamsDateRange[0]
-          ? UrlParamsDateRange[0]
-          : moment().format("MM-DD-YYYY")
-        }&to=${UrlParamsDateRange[1]
-          ? UrlParamsDateRange[1]
-          : moment().format("MM-DD-YYYY")
+        )}&from=${
+          UrlParamsDateRange[0]
+            ? UrlParamsDateRange[0]
+            : moment().format("MM-DD-YYYY")
+        }&to=${
+          UrlParamsDateRange[1]
+            ? UrlParamsDateRange[1]
+            : moment().format("MM-DD-YYYY")
         }&limit=10`
       );
     }
@@ -525,24 +529,24 @@ const Home = () => {
                               }}
                               options={[
                                 {
-                                  value: 'PGA Championship',
-                                  label: 'PGA Championship',
+                                  value: "PGA Championship",
+                                  label: "PGA Championship",
                                 },
                                 {
-                                  value: 'The Master',
-                                  label: 'The Master',
+                                  value: "The Master",
+                                  label: "The Master",
                                 },
                                 {
-                                  value: 'The open championship',
-                                  label: 'The open championship',
+                                  value: "The open championship",
+                                  label: "The open championship",
                                 },
                                 {
-                                  value: 'The Tradition at Quinta',
-                                  label: 'The Tradition at Quinta',
+                                  value: "The Tradition at Quinta",
+                                  label: "The Tradition at Quinta",
                                 },
                                 {
-                                  value: 'US Open',
-                                  label: 'US Open',
+                                  value: "US Open",
+                                  label: "US Open",
                                 },
                               ]}
                               trigger={["click"]}
@@ -557,12 +561,10 @@ const Home = () => {
                                     className={
                                       HomeCss.search_by_golf_input_search_by_tourni
                                     }
-                                  >
-                                  </Space>
+                                  ></Space>
                                 </Typography.Link>
                               </span>
                             </Select>
-
                           </div>
                         </div>
                       </div>
@@ -582,11 +584,11 @@ const Home = () => {
               </div>
             </div>
           </main>
-        </Container >
-      </main >
+        </Container>
+      </main>
 
       {/* -------------------------------------    Golfhōm Hottest New Arrivals ---------------------------- */}
-      <main main className={HomeCss.hottest_new_arrival_section} >
+      <main main className={HomeCss.hottest_new_arrival_section}>
         <Container>
           <Row className={HomeCss.arrivalContainer}>
             <Col xl={4} lg={4} className={HomeCss.arrivalContainer_child}>
@@ -637,7 +639,7 @@ const Home = () => {
 
       {/* --------------------------------------    CARD SECTION   -----------------------------   */}
 
-      <div div className={HomeCss.cardBg} >
+      <div div className={HomeCss.cardBg}>
         <Container>
           <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
           <Row>
@@ -655,7 +657,7 @@ const Home = () => {
                     <Card.Img
                       variant="top"
                       className={HomeCss.cardImg}
-                      src="/images/bedRoom.svg"
+                      src={data.imageUrl}
                       alt="Bed Image"
                     />
                     <Card.Body>
@@ -740,7 +742,7 @@ const Home = () => {
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
-      <Container Container className={HomeCss.ads} >
+      <Container Container className={HomeCss.ads}>
         <h2 className={HomeCss.adsTitle}>
           Golfing and Traveling, Both Better with Friends
         </h2>
@@ -750,7 +752,7 @@ const Home = () => {
 
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
-      <Container Container className={HomeCss.videoContain} >
+      <Container Container className={HomeCss.videoContain}>
         <h2 className={HomeCss.golf_training_heading}>Golf Training Videos</h2>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
@@ -764,7 +766,7 @@ const Home = () => {
 
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
-      <Container Container className={HomeCss.staffCard} >
+      <Container Container className={HomeCss.staffCard}>
         <Row>
           <Col md={8} className={HomeCss.staffCard_title_main_container}>
             <h2 className={HomeCss.staffCard_title}>
@@ -776,7 +778,6 @@ const Home = () => {
             <Button className={HomeCss.viewallBtn}>View All</Button>
           </Col>
         </Row>
-
         <Review reviews={review} />
       </Container>
 
