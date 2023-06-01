@@ -5,10 +5,14 @@
 /* BANNER IMAGE  */
 .view_blog_banner_img {
   position: relative !important;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
 .imageChild {
   position: relative !important;
+  cursor: pointer;
 }
 
 /* VIEW BLOG STYLE */
@@ -16,7 +20,13 @@
 .view_blog_date {
   font-family: var(--font-poppins);
   font-size: 14px;
-  margin-top: 30px;
+  margin: 30px 0;
+  color: var(--border-light-grey);
+}
+.view_blog_posted_date {
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  /* margin: 30px 0; */
   color: var(--border-light-grey);
 }
 
@@ -32,6 +42,9 @@
 .view_blog_category_cols {
   margin: 1rem 0;
   align-self: center;
+}
+.small_logo_icon {
+  object-fit: none;
 }
 
 .view_blog_category_container {
@@ -146,6 +159,7 @@
   padding: 16px;
   position: relative;
   bottom: 80px;
+  cursor: pointer;
 }
 
 .a_tag {
@@ -276,12 +290,10 @@
 }
 
 @media only screen and (max-width: 992px) {
-
 }
 
 @media only screen and (max-width: 576px) {
   .cardsParent {
     padding: 0px 30px;
   }
-
 }

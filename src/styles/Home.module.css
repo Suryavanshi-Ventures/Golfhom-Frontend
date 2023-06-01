@@ -320,7 +320,7 @@
 
 .search_by_golf_input_container {
   width: 100%;
-  max-width: 250px; 
+  max-width: 250px;
   font-family: var(--font-poppins);
 }
 
@@ -747,6 +747,7 @@
 
 .parentOf_img_textCard {
   position: relative;
+  cursor: pointer;
 }
 
 .parentReview {
@@ -892,6 +893,3 @@
     gap: 8px;
   }
 }
-
-
-

@@ -4,10 +4,11 @@ import { Navigation, Pagination, A11y } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const Review = ({ reviews }) => {
+  const Router = useRouter();
   const [BlogData, setBlogData] = useState([{}]);
 
   useEffect(() => {
@@ -16,7 +17,6 @@ const Review = ({ reviews }) => {
         const BlogAPIRes = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/v1/blog`
         );
-
         if (BlogAPIRes.status === 200) {
           setBlogData(BlogAPIRes.data.data);
           console.log(BlogAPIRes.data.data);
@@ -37,7 +37,7 @@ const Review = ({ reviews }) => {
       spaceBetween={50}
       slidesPerView={3}
       pagination={{ clickable: true }}
-      onSlideChange={() => { }}
+      onSlideChange={() => {}}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -68,7 +68,17 @@ const Review = ({ reviews }) => {
       {BlogData?.map((item, index) => {
         return (
           <SwiperSlide key={index.id} className={HomeCss.parentReview}>
-            <div className={HomeCss.parentOf_img_textCard}>
+            <div
+              className={HomeCss.parentOf_img_textCard}
+              onClick={(e) => {
+                Router.push({
+                  pathname: `blog/${encodeURIComponent(item.title)}`,
+                  query: {
+                    id: item.id,
+                  },
+                });
+              }}
+            >
               <Image
                 className={HomeCss.cardReview}
                 src={item.image}
@@ -78,9 +88,7 @@ const Review = ({ reviews }) => {
               ></Image>
 
               <div className={HomeCss.cardTextParent}>
-                <h5 className={HomeCss.card_title}>
-                  {item.title}
-                </h5>
+                <h5 className={HomeCss.card_title}>{item.title}</h5>
                 <div className={HomeCss.contact_div}>
                   <Image
                     src="/images/vector/contact.svg"
@@ -88,7 +96,9 @@ const Review = ({ reviews }) => {
                     width={20}
                     height={15}
                   ></Image>{" "}
-                  <span className={HomeCss.byAdmin}>{item.createdBy ? item.createdBy : "N/A"}</span>
+                  <span className={HomeCss.byAdmin}>
+                    {item.createdBy ? item.createdBy : "N/A"}
+                  </span>
                 </div>
 
                 <div className={HomeCss.bookmarkDiv}>
@@ -110,7 +120,7 @@ const Review = ({ reviews }) => {
               </div>
             </div>
           </SwiperSlide>
-        )
+        );
       })}
     </Swiper>
   );

@@ -288,3 +288,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .ant-select-single {
   width: 100% !important;
 }
+
+/* DATE PICKER IN VIEW PROPERTY PAGE */
+.rmdp-range {
+  background-color: var(--success-green) !important;
+}
+
+/* SKELETON SECTION  */
+.ant-skeleton-image {
+  height: 100%;
+  width: 100%;
+}

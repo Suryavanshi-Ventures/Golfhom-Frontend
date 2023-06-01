@@ -13,7 +13,6 @@ import {
   message,
   Image,
   Button,
-  DatePicker,
 } from "antd";
 import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
@@ -31,7 +30,8 @@ import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement } from "@stripe/react-stripe-js";
 const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_TEST_KEY}`);
-const { RangePicker } = DatePicker;
+// const { RangePicker } = DatePicker;
+import DatePicker from "react-multi-date-picker";
 import Checkout from "./checkout";
 import moment from "moment";
 
@@ -52,9 +52,9 @@ const ViewProperty = () => {
     useState(false);
   const Params = router.query;
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [range, setRange] = useState([
-    moment("2023-05-31"),
-    moment("2023-06-01"),
+  const [values, setValues] = useState([
+    moment().format("MM-DD-YYYY"),
+    moment().format("MM-DD-YYYY"),
   ]);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const ViewProperty = () => {
         );
         if (CheckAvailRes.status === 200) {
           setAvailability(CheckAvailRes.data);
-          setAvailabilityCalender(CheckAvailRes.calender);
+          setAvailabilityCalender(CheckAvailRes.data.data.calender);
 
           if (CheckAvailRes.data?.data?.available) {
             setAvailable(true);
@@ -116,9 +116,25 @@ const ViewProperty = () => {
     return () => {};
   }, [PaymentIntentObject]);
 
+  useEffect(() => {
+    if (Available) {
+      const LengthOfAvailDate = AvailabilityCalender?.length - 1;
+      const StartDate = AvailabilityCalender[0];
+      const LastDate = AvailabilityCalender[LengthOfAvailDate];
+      setValues([
+        moment(StartDate?._attributes?.Date).format("MM-DD-YYYY"),
+        moment(LastDate?._attributes?.Date).format("MM-DD-YYYY"),
+      ]);
+    }
+
+    return () => {};
+  }, [Available, AvailabilityCalender]);
+
   const onTabChange = (key) => {
     console.log(key);
   };
+
+  console.log(AvailabilityCalender, "DATES OF AVALABILITY");
 
   const items = [
     {
@@ -296,7 +312,7 @@ const ViewProperty = () => {
                 ""
               )}
               <div className={ViewPropertyCss.inner_input_date_picker}>
-                <RangePicker
+                {/* <RangePicker
                   size="large"
                   style={{ width: "100%" }}
                   onChange={OnChangeDateInput}
@@ -304,8 +320,16 @@ const ViewProperty = () => {
                     return current && current < moment().startOf("day");
                   }}
                   className={ViewPropertyCss.inner_input_date_picker}
+                /> */}
+                <DatePicker
+                  value={values}
+                  format={"MM-DD-YYYY"}
+                  onChange={setValues}
+                  range={true}
+                  className={ViewPropertyCss.inner_input_date_picker}
                 />
               </div>
+
               <hr />
 
               <Dropdown>
