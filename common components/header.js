@@ -123,7 +123,8 @@ const Header = ({ name, ...props }) => {
     } catch (error) {
       console.log("Sigup error: ", error);
       setLoadings(false);
-      message.error(error.message);
+      const errorMessage = error.response ? error.response.data.message : "An error occurred during signup.";
+      message.error(errorMessage);
     }
     // console.log(values);
   };
