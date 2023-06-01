@@ -50,7 +50,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails]);
 
   console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -896,8 +896,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Terms & Conditions")
-                            ),
+                            new Error("Should accept Terms & Conditions")
+                          ),
                     },
                   ]}
                 >
@@ -918,8 +918,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                              new Error("Should accept Privacy & Policy")
-                            ),
+                            new Error("Should accept Privacy & Policy")
+                          ),
                     },
                   ]}
                 >
@@ -1222,7 +1222,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                  UserName.slice(1)
+                                UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}

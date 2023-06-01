@@ -1,20 +1,18 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect, React } from "react";
 import Head from "next/head";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import {
   Checkbox,
   Input,
-  Switch,
   Button,
   Dropdown,
   Space,
   Skeleton,
   DatePicker,
   Pagination,
-  AutoComplete,
 } from "antd";
 import { DownOutlined, CaretDownOutlined } from "@ant-design/icons";
 import Image from "next/image";
@@ -45,6 +43,11 @@ const Index = () => {
   const [SearchOptions, setSearchOptions] = useState([]);
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
+  const [UrlParamsGeoData, setUrlParamsGeoData] = useState({
+    latitude: "",
+    longitude: "",
+    location_name: "",
+  });
   const [UpdateSortByText, setUpdateSortByText] = useState(
     "Price (High to Low)"
   );
@@ -96,16 +99,14 @@ const Index = () => {
   };
 
   const EditBtn = () => {
-    setShowHidden(true);
+    setShowHidden(!showHidden);
     setIsVisible(true);
   };
 
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
     );
     GetPropertyData.then((response) => {
@@ -119,7 +120,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     PaginationState,
     param.from,
@@ -158,10 +159,8 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-          "latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-          "from=" + param.from
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
         }&${"to=" + param.to}&limit=10&page=${pageNumber}`
       );
 
@@ -419,7 +418,9 @@ const Index = () => {
                           className={SearchIndexCss.edit_details_btn}
                           onClick={EditBtn}
                         >
-                          Edit
+
+                          {showHidden ? 'Close' : 'Edit'}
+
                         </Button>
                       )}
                     </div>
@@ -560,8 +561,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -570,8 +570,7 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}
@@ -587,8 +586,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -609,8 +607,7 @@ const Index = () => {
                             <h5
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}

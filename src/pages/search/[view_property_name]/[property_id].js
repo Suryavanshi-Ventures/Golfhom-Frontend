@@ -59,15 +59,16 @@ const ViewProperty = () => {
 
   useEffect(() => {
     console.log(Params, "PARAMs");
-    setAdult(Params.adults);
-    setChild(Params.childs);
+    // setAdult(Params.adults);
+    // setChild(Params.childs);
+
+
 
     const UrlParamId = window.location.pathname.split("/")[3];
     const GetPropertyById = async () => {
       try {
         const SpecificPropData = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
-            Params.property_id || UrlParamId
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${Params.property_id || UrlParamId
           }`
         );
 
@@ -113,7 +114,7 @@ const ViewProperty = () => {
     if (PaymentIntentObject != null) {
       setOptions(PaymentIntentObject);
     }
-    return () => {};
+    return () => { };
   }, [PaymentIntentObject]);
 
   const onTabChange = (key) => {
@@ -130,6 +131,8 @@ const ViewProperty = () => {
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
   const [adult, setAdult] = useState(0);
+  // FOR CHILD BUTTON INCREMENT AND DECREMENT
+  const [child, setChild] = useState(0);
 
   const incAdult = () => {
     setAdult(adult + 1);
@@ -139,13 +142,10 @@ const ViewProperty = () => {
     if (adult > 0) {
       setAdult(adult - 1);
     } else {
-      alert("Sorry Could not take negative value ");
+      message.error("Sorry number of adults can not be less than 0");
       setAdult(0);
     }
   };
-
-  // FOR CHILD BUTTON INCREMENT AND DECREMENT
-  const [child, setChild] = useState(0);
 
   const incChild = () => {
     setChild(child + 1);
@@ -155,7 +155,7 @@ const ViewProperty = () => {
     if (child > 0) {
       setChild(child - 1);
     } else {
-      alert("Sorry Could not take negative value ");
+      message.error("Sorry number of children can not be less than 0");
       setChild(0);
     }
   };
@@ -317,16 +317,17 @@ const ViewProperty = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className={ViewPropertyCss.adultChild}>
-                  <div className={ViewPropertyCss.increase}>
-                    <div>
+                  <Row className={ViewPropertyCss.increase}>
+                    <Col md={3}>
                       <Dropdown.Item href="#/action-1">
                         {" "}
                         <h5 className={ViewPropertyCss.ageName}>
                           {adult} Adults
                         </h5>
                       </Dropdown.Item>
-                    </div>
-                    <div>
+                    </Col>
+
+                    <Col md={4} className={ViewPropertyCss.geust_incri_btns_div}>
                       <Button className={ViewPropertyCss.increaseAdult}>
                         <div
                           className={ViewPropertyCss.decreasebtn}
@@ -334,6 +335,7 @@ const ViewProperty = () => {
                         >
                           -
                         </div>
+                        <div className={ViewPropertyCss.guest_count_div}>{adult}</div>
                         <div
                           className={ViewPropertyCss.increasebtn}
                           onClick={incAdult}
@@ -341,19 +343,20 @@ const ViewProperty = () => {
                           +
                         </div>
                       </Button>
-                    </div>
-                  </div>
+                    </Col>
+                  </Row>
 
-                  <div className={ViewPropertyCss.increase}>
-                    <div>
+                  <Row className={ViewPropertyCss.increase}>
+                    <Col md={3}>
                       <Dropdown.Item href="#/action-2">
                         {" "}
                         <h5 className={ViewPropertyCss.ageName}>
                           {child} Children
                         </h5>
                       </Dropdown.Item>
-                    </div>
-                    <div>
+                    </Col>
+
+                    <Col md={4} className={ViewPropertyCss.geust_incri_btns_div}>
                       <Button className={ViewPropertyCss.increaseAdult}>
                         <div
                           className={ViewPropertyCss.decreasebtn}
@@ -361,6 +364,7 @@ const ViewProperty = () => {
                         >
                           -
                         </div>
+                        <div className={ViewPropertyCss.guest_count_div}>{child}</div>
                         <div
                           className={ViewPropertyCss.increasebtn}
                           onClick={incChild}
@@ -368,8 +372,8 @@ const ViewProperty = () => {
                           +
                         </div>
                       </Button>
-                    </div>
-                  </div>
+                    </Col>
+                  </Row>
 
                   <div className={ViewPropertyCss.applyParent}>
                     <Button className={ViewPropertyCss.apply}>Apply</Button>
@@ -492,19 +496,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .AdditionalFees
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.AdditionalFees >=
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.AdditionalFees >=
                             0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.AdditionalFees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.AdditionalFees
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.AdditionalFees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.AdditionalFees
+                            )
                           : 0}
                       </p>
                     </div>
@@ -522,18 +526,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Cleaning
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Cleaning >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Cleaning >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Cleaning
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Cleaning
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Cleaning
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Cleaning
+                            )
                           : 0}
                       </p>
                     </div>
@@ -551,18 +555,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Deposit
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Deposit >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Deposit >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Deposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Deposit
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Deposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Deposit
+                            )
                           : 0}
                       </p>
                     </div>
@@ -581,19 +585,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .ExtraPersonPrice
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.ExtraPersonPrice >=
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.ExtraPersonPrice >=
                             0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.ExtraPersonPrice
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.ExtraPersonPrice
+                            )
                           : 0}
                       </p>
                     </div>
@@ -611,18 +615,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Fees
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Fees >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Fees >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Fees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Fees
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Fees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Fees
+                            )
                           : 0}
                       </p>
                     </div>
@@ -641,19 +645,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .SecurityDeposit
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.SecurityDeposit >=
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.SecurityDeposit >=
                             0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.SecurityDeposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.SecurityDeposit
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.SecurityDeposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.SecurityDeposit
+                            )
                           : 0}
                       </p>
                     </div>
@@ -671,18 +675,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Taxes >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Taxes >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Taxes
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Taxes
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Taxes
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Taxes
+                            )
                           : 0}
                       </p>
                     </div>
@@ -700,15 +704,15 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._text >= 0.5
                           ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text
-                            )
+                            SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._text
+                          )
                           : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text
-                            )}
+                            SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._text
+                          )}
                       </p>
                     </div>
                   </div>
@@ -757,8 +761,8 @@ const ViewProperty = () => {
 
               {/* TOTAL AMOUNT */}
               {ShowTotalPaymentText &&
-              SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                ?.PropertyPrices?.PropertyPrice[0] ? (
+                SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                  ?.PropertyPrices?.PropertyPrice[0] ? (
                 <>
                   {" "}
                   <div className={ViewPropertyCss.total_price_main_div}>
@@ -777,37 +781,37 @@ const ViewProperty = () => {
                           $
                           {SpecificPropAPIData.data?.price >= 0.5
                             ? Math.ceil(SpecificPropAPIData.data?.price) +
-                              Number(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._text >= 0.5
-                                  ? Math.ceil(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                                  : Math.floor(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                              )
+                            Number(
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text >= 0.5
+                                ? Math.ceil(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                                : Math.floor(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                            )
                             : Math.floor(SpecificPropAPIData.data?.price) +
-                              Number(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._text >= 0.5
-                                  ? Math.ceil(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                                  : Math.floor(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                              )}
+                            Number(
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text >= 0.5
+                                ? Math.ceil(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                                : Math.floor(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                            )}
                         </strong>{" "}
                       </p>
                       <p
@@ -1440,7 +1444,7 @@ const ViewProperty = () => {
                             {SpecificPropAPIData.data
                               ?.additionalRulesInformation
                               ? SpecificPropAPIData.data
-                                  ?.additionalRulesInformation
+                                ?.additionalRulesInformation
                               : "N/A"}
                           </p>
                         </Row>

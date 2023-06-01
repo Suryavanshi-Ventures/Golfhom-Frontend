@@ -8,7 +8,7 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import ads from "../pages/json/ads.json";
 import Advertise from "../advertise";
 import Image from "next/image";
-import { Dropdown, Input, Space, Typography, message } from "antd";
+import { Input, Space, Typography, message } from "antd";
 import { Button, DatePicker, Skeleton, Select } from "antd";
 const { RangePicker } = DatePicker;
 import Video from "../video";
@@ -518,53 +518,6 @@ const Home = () => {
                               HomeCss.search_by_golf_input_container_select
                             }
                           >
-                            {/* <Dropdown
-                              menu={{
-                                items: [
-                                  {
-                                    label: "PGA Championship",
-                                    key: "1",
-                                  },
-                                  {
-                                    label: "The Master",
-                                    key: "2",
-                                  },
-                                  {
-                                    label: "The open championship",
-                                    key: "3",
-                                  },
-                                  {
-                                    label: "The Tradition at Quinta",
-                                    key: "4",
-                                  },
-                                  {
-                                    label: "US Open",
-                                    key: "5",
-                                  },
-                                ],
-                                selectable: true,
-                                defaultSelectedKeys: ["3"],
-                              }}
-                              trigger={["click"]}
-                              className={
-                                HomeCss.search_by_golf_input_container_tourni
-                              }
-                              prefix={<DownOutlined />}
-                            >
-                              <span onClick={(e) => e.preventDefault()}>
-                                <Typography.Link>
-                                  <Space
-                                    className={
-                                      HomeCss.search_by_golf_input_search_by_tourni
-                                    }
-                                  >
-                                    <DownOutlined />
-                                    Please select tournament
-                                  </Space>
-                                </Typography.Link>
-                              </span>
-                            </Dropdown> */}
-
                             <Select
                               defaultValue=" Please select tournament"
                               style={{
@@ -680,7 +633,7 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-      </main >
+      </main>
 
       {/* --------------------------------------    CARD SECTION   -----------------------------   */}
 
@@ -783,7 +736,7 @@ const Home = () => {
             })}
           </Row>
         </Container>
-      </div >
+      </div>
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
@@ -793,7 +746,7 @@ const Home = () => {
         </h2>
 
         <Advertise ads={ads} />
-      </Container >
+      </Container>
 
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
@@ -807,7 +760,7 @@ const Home = () => {
         </div>
 
         <Video videos={video} />
-      </Container >
+      </Container>
 
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
@@ -825,7 +778,7 @@ const Home = () => {
         </Row>
 
         <Review reviews={review} />
-      </Container >
+      </Container>
 
       <BottomSection />
     </>

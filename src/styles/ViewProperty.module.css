@@ -221,6 +221,51 @@
   align-self: center;
 }
 
+.increaseAdult {
+  background: var(--white-font-color);
+  color: var(--btn-background-secondary);
+  border: 1px solid var(--btn-background-secondary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.geust_incri_btns_div {
+  margin-top: 10px;
+}
+
+.increasebtn {
+  transition-duration: 0.5s;
+  width: 35px;
+  line-height: 1.2;
+  align-self: center;
+  height: 100%;
+  font-size: 1.4rem;
+  /* margin-left: 20px; */
+}
+.increasebtn:hover {
+  background-color: var(--btn-background);
+  color: var(--white-background);
+}
+
+.decreasebtn {
+  font-size: 1.4rem;
+  width: 35px;
+  line-height: 1.2;
+  align-self: center;
+  height: 100%;
+  transition-duration: 0.5s;
+}
+.decreasebtn:hover {
+  background-color: var(--btn-background);
+  color: var(--white-background);
+}
+
+
 .guest:hover,
 .guest:focus {
   background: none !important;

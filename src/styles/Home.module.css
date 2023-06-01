@@ -751,8 +751,16 @@
 
 .parentReview {
   padding: 40px 0px 200px 0px;
-  min-width: 320px;
-  margin-right: 0px !important;
+}
+
+.swiper_container {
+  display: flex;
+}
+
+.swiper_img {
+  width: 329px;
+  height: 260px;
+  object-fit: cover;
 }
 
 .cardReview {
@@ -823,6 +831,34 @@
 }
 
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
+
+@media only screen and (max-width: 1199px) {
+  .parentOf_img_textCard {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1920px) {
+  .parentOf_img_textCard {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .search_btn_col {
+    margin-top: 20px;
+  }
+
+  .search_cols_45 {
+    margin-bottom: 0.7rem;
+    border-right: none;
+  }
+
+  .parentOf_img_textCard {
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .search_cols_4 {
     margin-bottom: 0.7rem;
@@ -842,20 +878,11 @@
   .inner_main_container {
     width: 100%;
   }
-}
 
-@media only screen and (max-width: 992px) {
-  .search_btn_col {
-    margin-top: 20px;
+  .parentOf_img_textCard {
+    width: 100%;
   }
 
-  .search_cols_45 {
-    margin-bottom: 0.7rem;
-    border-right: none;
-  }
-}
-
-@media only screen and (max-width: 768px) {
   .search_cols_4,
   .search_cols_45 {
     width: 100%;
