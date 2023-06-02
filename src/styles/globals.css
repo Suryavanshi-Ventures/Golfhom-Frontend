@@ -295,9 +295,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* SKELETON SECTION  */
-.ant-skeleton-image {
-  height: 100%;
-  width: 100%;
+.ant-skeleton-image,
+.ant-skeleton-active {
+  height: 100% !important;
+  width: 100% !important;
 }
 
 .rmdp-input {

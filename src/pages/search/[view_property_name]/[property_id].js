@@ -29,10 +29,12 @@ const { TextArea } = Input;
 import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement } from "@stripe/react-stripe-js";
-const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_TEST_KEY}`);
+const stripePromise = loadStripe(
+  `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
+);
 // const { RangePicker } = DatePicker;
 import DatePicker from "react-multi-date-picker";
-import Checkout from "./checkout";
+import Checkout from "../../../checkout";
 import moment from "moment";
 
 const ViewProperty = () => {
@@ -61,6 +63,7 @@ const ViewProperty = () => {
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
+
     if (Params.adults || Params.childs) {
       setAdult(Params.adults);
       setChild(Params.childs);
@@ -886,11 +889,11 @@ const ViewProperty = () => {
                 </Button>
               </div>
 
-              <div className={ViewPropertyCss.checkParent}>
+              {/* <div className={ViewPropertyCss.checkParent}>
                 <Button className={ViewPropertyCss.check}>
                   Check availability
                 </Button>
-              </div>
+              </div> */}
 
               <div className={ViewPropertyCss.contactParent}>
                 {/* -----------      CONTACT TO HOST SECTION        -----------------*/}

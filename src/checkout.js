@@ -2,7 +2,7 @@ import { React, useContext } from "react";
 import { Elements, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Button, message } from "antd";
 import { AuthContext } from "@/context/auth_context";
-import CheckoutCss from "../../../styles/Checkout.module.css";
+import CheckoutCss from "../src/styles/Checkout.module.css";
 import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
@@ -79,7 +79,7 @@ const Checkout = (props) => {
   );
 };
 
-// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_TEST_KEY);
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY);
 
 // // // Wrap the Checkout component with the Elements provider
 // // const CheckoutWithStripe = () => (
