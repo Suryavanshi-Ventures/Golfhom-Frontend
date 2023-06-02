@@ -135,11 +135,11 @@
 }
 
 .columnParent {
-  /* margin-bottom: 60px;
-  padding-bottom: 42px; */
   position: relative !important;
 }
-
+.image_skeleton_div {
+  height: 300px;
+}
 .parentOf_img_textCard {
   width: 100%;
 }
