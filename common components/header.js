@@ -50,10 +50,10 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
-  console.log(ContextUserDetails, "CONTAXT USER DETAILS");
+  // console.log(ContextUserDetails, "CONTAXT USER DETAILS");
 
   {
     /* -----------       SIGN UP SECTION        -----------------*/
@@ -123,7 +123,9 @@ const Header = ({ name, ...props }) => {
     } catch (error) {
       console.log("Sigup error: ", error);
       setLoadings(false);
-      const errorMessage = error.response ? error.response.data.message : "An error occurred during signup.";
+      const errorMessage = error.response
+        ? error.response.data.message
+        : "An error occurred during signup.";
       message.error(errorMessage);
     }
     // console.log(values);
@@ -897,8 +899,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -919,8 +921,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -1223,7 +1225,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}
