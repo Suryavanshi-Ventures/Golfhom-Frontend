@@ -879,11 +879,11 @@ const ViewProperty = () => {
                 </Button>
               </div>
 
-              <div className={ViewPropertyCss.checkParent}>
+              {/* <div className={ViewPropertyCss.checkParent}>
                 <Button className={ViewPropertyCss.check}>
                   Check availability
                 </Button>
-              </div>
+              </div> */}
 
               <div className={ViewPropertyCss.contactParent}>
                 {/* -----------      CONTACT TO HOST SECTION        -----------------*/}
