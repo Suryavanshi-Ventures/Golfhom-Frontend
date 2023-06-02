@@ -36,7 +36,7 @@ const ViewBlog = () => {
     };
     GetBlogsById();
 
-    return () => {};
+    return () => { };
   }, [UrlParams]);
 
   return (
@@ -72,7 +72,7 @@ const ViewBlog = () => {
                 <Image
                   width={100}
                   height={50}
-                  src="/images/golfhom_small_logo.png"
+                  src="/images/golfhom_small_logo.webp"
                   alt="golfom category"
                   className={BlogCss.small_logo_icon}
                 ></Image>

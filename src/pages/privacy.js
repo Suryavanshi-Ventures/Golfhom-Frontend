@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import Privacy from "../../public/images/privacy.svg";
+import Privacy from "../../public/images/privacy.webp";
 import PrivacyPolicyCss from "../styles/PrivacyPolicy.module.css";
 import { Button, Col, Container } from 'react-bootstrap';
 import BottomSection from "../../common components/bottomGroup";

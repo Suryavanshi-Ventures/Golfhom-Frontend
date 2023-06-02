@@ -1,35 +1,35 @@
 [
   {
     "id": 11,
-    "image": "/images/circleIsGolf.svg",
+    "image": "/images/circleIsGolf.webp",
     "name": "15",
     "link": "https://circle15golf.com/"
   },
 
   {
     "id": 12,
-    "image": "/images/hudson.svg",
+    "image": "/images/hudson.webp",
     "name": "15",
     "link": "https://www.dhudsongolfwear.com/"
   },
 
   {
     "id": 13,
-    "image": "/images/cap.svg",
+    "image": "/images/cap.webp",
     "name": "15",
     "link": "https://www.vicegolf.com/"
   },
 
   {
     "id": 14,
-    "image": "/images/auto.svg",
+    "image": "/images/auto.webp",
     "name": "15",
     "link": "https://www.autoeurope.eu"
   },
 
   {
     "id": 15,
-    "image": "/images/shipSticks.svg",
+    "image": "/images/shipSticks.webp",
     "name": "15",
     "link": "https://www.shipsticks.com/"
   }

@@ -114,8 +114,10 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 .inner_input_date_picker {
-  padding: 6px 10px;
+  padding: 6px 24px;
   border-color: var(--btn-background-secondary);
+  display: flex;
+  justify-content: space-between;
 }
 
 .inner_input_date_picker:hover {
@@ -133,7 +135,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 14px 14px 0px 14px;
+  padding: 14px 24px 0px 24px
 }
 
 .totalPrice {
@@ -215,6 +217,7 @@
   border: none;
   font-size: 17px;
   font-weight: 600;
+  padding: 6px 24px;
 }
 
 .guest::after {

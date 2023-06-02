@@ -2,7 +2,7 @@ import React from "react";
 import UserProfieCss from "../../styles/dashboard/UserProfile.module.css";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import Head from "next/head";
-import UserImg from "../../../public/images/user_img.jpg";
+import UserImg from "../../../public/images/user_img.webp";
 import Image from "next/image";
 import { Input, Button } from "antd";
 const { TextArea } = Input;
