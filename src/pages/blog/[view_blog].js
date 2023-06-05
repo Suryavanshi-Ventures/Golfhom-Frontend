@@ -5,7 +5,7 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import BlogCss from "../../styles/Blog.module.css";
 import Image from "next/image";
 import CategoryIcon from "../../../public/images/vector/category_icon.svg";
-import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.svg";
+import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.png";
 import BottomSection from "../../../common components/bottomGroup";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -31,7 +31,7 @@ const ViewBlog = () => {
     };
     GetBlogsById();
 
-    return () => { };
+    return () => {};
   }, [UrlParams]);
 
   return (

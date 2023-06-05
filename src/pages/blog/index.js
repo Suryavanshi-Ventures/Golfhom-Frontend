@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import BlogCss from "../../styles/Blog.module.css";
-import ViewAllProps from "../../../public/images/viewAllProps.svg";
+import ViewAllProps from "../../../public/images/viewAllProps.png";
 import Image from "next/image";
 import BottomSection from "../../../common components/bottomGroup";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";

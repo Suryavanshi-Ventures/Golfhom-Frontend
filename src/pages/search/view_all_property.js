@@ -7,10 +7,10 @@ import Image from "next/image";
 import ViewAllProps from "../../../public/images/viewAllProps.png";
 import BottomSection from "../../../common components/bottomGroup";
 import { Pagination } from "antd";
-import Florida from "../../../public/images/florida.svg";
-import Arizona from "../../../public/images/arizona.svg";
-import Sanfrancisco from "../../../public/images/sanfrancisco.svg";
-import Newyork from "../../../public/images/Newyork.svg";
+import Florida from "../../../public/images/Florida.webp";
+import Arizona from "../../../public/images/arizona.webp";
+import Sanfrancisco from "../../../public/images/sanfrancisco.webp";
+import Newyork from "../../../public/images/Newyork.webp";
 
 const ViewAllProperty = () => {
   const onChange = (pageNumber) => {

@@ -3,8 +3,8 @@ import CarouselMapCss from "../src/styles/CarouselMap.module.css";
 import { Carousel, Col, Row } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
-import HotelA from "../public/images/hotelA.svg";
-import Heart from "../public/images/vector/heart.svg";
+import HotelA from "../public/images/vector/dot.svg";
+import Heart from "../public/images/vector/dot.svg";
 import Dot from "../public/images/vector/dot.svg";
 
 const CarouselMap = () => {
