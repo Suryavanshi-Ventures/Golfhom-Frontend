@@ -167,7 +167,18 @@
   align-items: center;
   min-height: 500px;
 }
+.no_property_main_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  justify-content: center;
+}
 
+.no_property_text {
+  margin-top: 20px;
+  font-family: var(--font-poppins);
+}
 .cardMapParent {
   display: flex;
   flex-wrap: wrap;

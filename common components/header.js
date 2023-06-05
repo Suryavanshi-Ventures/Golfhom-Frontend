@@ -50,7 +50,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   // console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -341,7 +341,7 @@ const Header = ({ name, ...props }) => {
             onSignup={handleLoginLgDevice}
             onCancel={handleCancel}
             width={372}
-            centered
+            centered={true} // Enable centering
           >
             <div className={HeaderCss.textParent}>
               <Form
@@ -774,6 +774,7 @@ const Header = ({ name, ...props }) => {
             onSignup={handleRegisterLgDevice}
             onCancel={handleCancelRegisterLgDevice}
             width={440}
+            centered={true} // Enable centering
             className={HeaderCss.headerReg}
           >
             <Form
@@ -899,8 +900,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -921,8 +922,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -955,6 +956,7 @@ const Header = ({ name, ...props }) => {
             onSignup={handleForgotLgDevice}
             onCancel={handleCancelForgotLgDevice}
             width={800}
+            centered={true} // Enable centering
             className={HeaderCss.headerForgot}
           >
             <h5 className={HeaderCss.forgotHeading}>
@@ -1225,7 +1227,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}

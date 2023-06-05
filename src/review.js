@@ -19,16 +19,16 @@ const Review = ({ reviews }) => {
         );
         if (BlogAPIRes.status === 200) {
           setBlogData(BlogAPIRes.data.data);
-          console.log(BlogAPIRes.data.data);
+          // console.log(BlogAPIRes.data.data);
         }
       } catch (error) {
         console.log("ERROR ", error);
       }
     };
     GetBlogData();
-    // return () => {
-    //   GetBlogData();
-    // };
+    return () => {
+      GetBlogData();
+    };
   }, []);
 
   return (
@@ -38,7 +38,7 @@ const Review = ({ reviews }) => {
       slidesPerView={3}
       grabCursor={true}
       pagination={{ clickable: true }}
-      onSlideChange={() => { }}
+      onSlideChange={() => {}}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -74,11 +74,10 @@ const Review = ({ reviews }) => {
           loop: false,
         },
       }}
-
     >
       {BlogData?.map((item, index) => {
         return (
-          <SwiperSlide key={index.id} className={HomeCss.parentReview}>
+          <SwiperSlide key={index} className={HomeCss.parentReview}>
             <div className={HomeCss.swiper_container}>
               <div
                 className={HomeCss.parentOf_img_textCard}
@@ -95,7 +94,7 @@ const Review = ({ reviews }) => {
                   <Image
                     className={HomeCss.cardReview}
                     src={item.image}
-                    alt={item.name}
+                    alt="golfhom"
                     fill
                   ></Image>
 
@@ -114,9 +113,7 @@ const Review = ({ reviews }) => {
                     </div>
 
                     <div className={HomeCss.cardTextParent}>
-                      <h5 className={HomeCss.card_title}>
-                        {item.title}
-                      </h5>
+                      <h5 className={HomeCss.card_title}>{item.title}</h5>
                       <div className={HomeCss.contact_div}>
                         <Image
                           src="/images/vector/contact.svg"
@@ -124,7 +121,9 @@ const Review = ({ reviews }) => {
                           width={20}
                           height={15}
                         ></Image>{" "}
-                        <span className={HomeCss.byAdmin}>{item.createdBy ? item.createdBy : "N/A"}</span>
+                        <span className={HomeCss.byAdmin}>
+                          {item.createdBy ? item.createdBy : "N/A"}
+                        </span>
                       </div>
 
                       <div className={HomeCss.bookmarkDiv}>

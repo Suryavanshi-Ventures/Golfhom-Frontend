@@ -16,8 +16,6 @@ import {
 } from "antd";
 import { DownOutlined, CaretDownOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import Link from "next/link";
-import Buildings from "../../../public/images/buildings.png";
 import BottomSection from "../../../common components/bottomGroup";
 import CarasoulMapCss from "../../styles/CarouselMap.module.css";
 import Dot from "../../../public/images/vector/dot.svg";
@@ -35,27 +33,22 @@ const Index = () => {
   const [showHidden, setShowHidden] = useState(false);
   const [LengthOfProperty, SetLengthOfProperty] = useState(0);
   const [PropertyData, SetPropertyData] = useState([]);
-  const [PaginationState, SetPagination] = useState(1);
+  const [PaginationState, setPagination] = useState(1);
   const [Parentindex, setParentindex] = useState([]);
   const [isVisible, setIsVisible] = useState(true);
-  const [SortBy, setSortBy] = useState("");
+  const [SortBy, setSortBy] = useState("price");
   const [SortByParam, setSortByParam] = useState("");
   const [SearchOptions, setSearchOptions] = useState([]);
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
-  const [UrlParamsGeoData, setUrlParamsGeoData] = useState({
-    latitude: "",
-    longitude: "",
-    location_name: "",
-  });
   const [UpdateSortByText, setUpdateSortByText] = useState(
     "Price (High to Low)"
   );
   const [TotalDataCount, setTotalDataCount] = useState();
   const param = Router.query;
+  const [IsLoaderVisible, setIsLoaderVisible] = useState(true);
 
   // DROPDOWN FOR SEARCH
-
   const OnChangeDateRange = (LocationName, DateValue) => {
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
@@ -103,17 +96,19 @@ const Index = () => {
     setIsVisible(true);
   };
 
+  //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
       }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-      }&${"to=" + param.to}&limit=10&page=${PaginationState}&sort=price`
+      }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
       if (response.status === 200) {
         SetPropertyData(response.data.data);
         SetLengthOfProperty(response.data.data.length);
         setTotalDataCount(response.data.count);
+        setIsLoaderVisible(false);
         console.log(response.data, "API DATA PROPERTY ");
       }
     }).catch((err) => {
@@ -122,12 +117,13 @@ const Index = () => {
 
     return () => { };
   }, [
-    PaginationState,
     param.from,
     param.guest,
     param.latitude,
     param.to,
     param.longitude,
+    SortBy,
+    SortByParam,
   ]);
 
   //! DEBUGG THIS
@@ -161,18 +157,19 @@ const Index = () => {
       const GetPropertyData = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
         }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to}&limit=10&page=${pageNumber}`
+        }&${"to=" + param.to
+        }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
       if (GetPropertyData.status === 200) {
         SetPropertyData(GetPropertyData.data.data);
         SetLengthOfProperty(GetPropertyData.data.data.length);
+        setPagination(pageNumber);
       }
     } catch (error) {
       console.log(error, "ERR");
     }
 
-    SetPagination(pageNumber);
     console.log("Page: ", pageNumber);
   };
 
@@ -490,12 +487,25 @@ const Index = () => {
                 {/* ------------------- CAROUSEL IMAGES STARTS  -----------------------  */}
 
                 <Row>
-                  {PropertyData.length === 0 ? (
+                  {IsLoaderVisible ? (
                     <>
                       <div className={SearchIndexCss.loader_main_div}>
                         <Loader />
                       </div>
                     </>
+                  ) : !IsLoaderVisible && PropertyData.length === 0 ? (
+                    <div className={SearchIndexCss.no_property_main_div}>
+                      <Image
+                        width={70}
+                        height={70}
+                        src="/images/vector/golf-hole.png"
+                        alt="property not found"
+                        className={SearchIndexCss.no_property_image}
+                      ></Image>
+                      <p className={SearchIndexCss.no_property_text}>
+                        No Property Found!
+                      </p>
+                    </div>
                   ) : (
                     <>
                       {PropertyData.map((data, id) => (
@@ -633,6 +643,7 @@ const Index = () => {
 
           <div className={SearchIndexCss.pagination_container}>
             <Pagination
+              current={PaginationState}
               colorText="#FF0000"
               showQuickJumper={false}
               showSizeChanger={false}

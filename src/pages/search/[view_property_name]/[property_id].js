@@ -13,6 +13,7 @@ import {
   message,
   Image,
   Button,
+  DatePicker,
 } from "antd";
 import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
@@ -29,17 +30,20 @@ const { TextArea } = Input;
 import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement } from "@stripe/react-stripe-js";
+const { RangePicker } = DatePicker;
+// import DatePicker from "react-multi-date-picker";
+import Checkout from "../../../checkout";
+import moment from "moment";
+import dayjs from "dayjs";
+
 const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
-// const { RangePicker } = DatePicker;
-import DatePicker from "react-multi-date-picker";
-import Checkout from "../../../checkout";
-import moment from "moment";
 
 const ViewProperty = () => {
-  const ContextUserDetails = useContext(AuthContext);
   const router = useRouter();
+  const ContextUserDetails = useContext(AuthContext);
+  const Params = router.query;
   const [SpecificPropAPIData, SetSpecificPropAPIData] = useState({});
   const [BookingDate, SetBookingDate] = useState([]);
   const [PaymentIntentObject, setPaymentIntentObject] = useState(null);
@@ -52,15 +56,13 @@ const ViewProperty = () => {
   const [ShowOtherDetailsStatic, setShowOtherDetailsStatic] = useState(false);
   const [ShowTotalPaymentTextStatic, setShowTotalPaymentTextStatic] =
     useState(false);
-  const Params = router.query;
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [DateInputValues, setDateInputValues] = useState([
-    moment().format("MM-DD-YYYY"),
-    moment().format("MM-DD-YYYY"),
-  ]);
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
-
+  const [DateInputValues, setDateInputValues] = useState([
+    dayjs(Params.from).format("MM-DD-YYYY"),
+    dayjs(Params.to).format("MM-DD-YYYY"),
+  ]);
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
@@ -72,7 +74,8 @@ const ViewProperty = () => {
     const GetPropertyById = async () => {
       try {
         const SpecificPropData = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${Params.property_id || UrlParamId
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
+            Params.property_id || UrlParamId
           }`
         );
 
@@ -120,28 +123,34 @@ const ViewProperty = () => {
     if (PaymentIntentObject != null) {
       setOptions(PaymentIntentObject);
     }
-    return () => { };
+    return () => {};
   }, [PaymentIntentObject]);
 
+  //* THIS USE EFFECT WILL SET THE URL PARAM DATES IN ANTD CALENDAR
   useEffect(() => {
     if (Available) {
       const LengthOfAvailDate = AvailabilityCalender?.length - 1;
-      const StartDate = AvailabilityCalender[0];
-      const LastDate = AvailabilityCalender[LengthOfAvailDate];
+      const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
+        "MM-DD-YYYY"
+      );
+      const LastDate = dayjs(
+        AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
+      ).format("MM-DD-YYYY");
+
       setDateInputValues([
-        moment(StartDate?._attributes?.Date).format("MM-DD-YYYY"),
-        moment(LastDate?._attributes?.Date).format("MM-DD-YYYY"),
+        dayjs(StartDate).format("MM-DD-YYYY"),
+        dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
 
-    return () => { };
+    return () => {};
   }, [Available, AvailabilityCalender]);
 
   const onTabChange = (key) => {
     console.log(key);
   };
 
-  console.log(AvailabilityCalender, "DATES OF AVALABILITY");
+  console.log(DateInputValues, "DATES OF AVALABILITY");
 
   const items = [
     {
@@ -247,10 +256,14 @@ const ViewProperty = () => {
   };
 
   const OnChangeDateInput = (date, DateValue) => {
-    setDateInputValues;
-    SetBookingDate(DateValue);
-    console.log(DateValue, "DATEEE VALUE", date, "DATEEE");
+    setDateInputValues(["", ""]);
+    // setDateInputValues([dayjs(DateValue[0]), dayjs(DateValue[1])]);
+
+    // SetBookingDate(DateValue);
+    console.log(DateValue, "DATEEE VALUE");
   };
+
+  //! ----------------------------------------------------------------
 
   return (
     <>
@@ -323,24 +336,37 @@ const ViewProperty = () => {
                   }}
                   className={ViewPropertyCss.inner_input_date_picker}
                 /> */}
-                <Col md={2}>
-                  <Image
+                {/* <Col md={2}>
+                  <NextImage
                     className={ViewPropertyCss.location}
                     width={25}
                     height={25}
                     src="/images/vector/calendar.svg"
                     alt="Calender Image"
-                  ></Image>
-                </Col>
+                  ></NextImage>
+                </Col> */}
 
                 <Col md={10}>
-                  <DatePicker
+                  {/* <DatePicker
                     value={DateInputValues}
                     format={"MM-DD-YYYY"}
                     onChange={OnChangeDateInput}
                     range={true}
+                    dateSeparator=" - "
                     className={ViewPropertyCss.inner_input_date_picker}
-                  /></Col>
+                  /> */}
+                  <RangePicker
+                    defaultValue={[
+                      dayjs(DateInputValues[0]),
+                      dayjs(DateInputValues[1]),
+                    ]}
+                    onChange={OnChangeDateInput}
+                    disabledDate={(current) => {
+                      return current && current < dayjs().startOf("day");
+                    }}
+                    format={"MM-DD-YYYY"}
+                  />
+                </Col>
               </Row>
 
               <hr />
@@ -541,19 +567,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .AdditionalFees
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.AdditionalFees >=
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.AdditionalFees >=
                             0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.AdditionalFees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.AdditionalFees
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.AdditionalFees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.AdditionalFees
+                              )
                           : 0}
                       </p>
                     </div>
@@ -571,18 +597,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Cleaning
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Cleaning >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Cleaning >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Cleaning
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Cleaning
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Cleaning
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Cleaning
+                              )
                           : 0}
                       </p>
                     </div>
@@ -600,18 +626,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Deposit
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Deposit >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Deposit >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Deposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Deposit
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Deposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Deposit
+                              )
                           : 0}
                       </p>
                     </div>
@@ -630,19 +656,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .ExtraPersonPrice
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.ExtraPersonPrice >=
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.ExtraPersonPrice >=
                             0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.ExtraPersonPrice
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.ExtraPersonPrice
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
+                              )
                           : 0}
                       </p>
                     </div>
@@ -660,18 +686,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Fees
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Fees >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Fees >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Fees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Fees
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Fees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Fees
+                              )
                           : 0}
                       </p>
                     </div>
@@ -690,19 +716,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .SecurityDeposit
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.SecurityDeposit >=
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.SecurityDeposit >=
                             0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.SecurityDeposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.SecurityDeposit
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.SecurityDeposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.SecurityDeposit
+                              )
                           : 0}
                       </p>
                     </div>
@@ -720,18 +746,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Taxes >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Taxes >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Taxes
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Taxes
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Taxes
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Taxes
+                              )
                           : 0}
                       </p>
                     </div>
@@ -749,15 +775,15 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._text >= 0.5
                           ? Math.ceil(
-                            SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._text
-                          )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text
+                            )
                           : Math.floor(
-                            SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._text
-                          )}
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text
+                            )}
                       </p>
                     </div>
                   </div>
@@ -806,8 +832,8 @@ const ViewProperty = () => {
 
               {/* TOTAL AMOUNT */}
               {ShowTotalPaymentText &&
-                SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                  ?.PropertyPrices?.PropertyPrice[0] ? (
+              SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                ?.PropertyPrices?.PropertyPrice[0] ? (
                 <>
                   {" "}
                   <div className={ViewPropertyCss.total_price_main_div}>
@@ -826,37 +852,37 @@ const ViewProperty = () => {
                           $
                           {SpecificPropAPIData.data?.price >= 0.5
                             ? Math.ceil(SpecificPropAPIData.data?.price) +
-                            Number(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text >= 0.5
-                                ? Math.ceil(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                                : Math.floor(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                            )
+                              Number(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._text >= 0.5
+                                  ? Math.ceil(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                                  : Math.floor(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                              )
                             : Math.floor(SpecificPropAPIData.data?.price) +
-                            Number(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text >= 0.5
-                                ? Math.ceil(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                                : Math.floor(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                            )}
+                              Number(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._text >= 0.5
+                                  ? Math.ceil(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                                  : Math.floor(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                              )}
                         </strong>{" "}
                       </p>
                       <p
@@ -902,6 +928,7 @@ const ViewProperty = () => {
                   onSignup={handleContact}
                   onCancel={handleCancelContact}
                   width={440}
+                  centered={true}
                   className={ViewPropertyCss.headerReg}
                 >
                   <Col className={ViewPropertyCss.inputParent}>
@@ -1489,7 +1516,7 @@ const ViewProperty = () => {
                             {SpecificPropAPIData.data
                               ?.additionalRulesInformation
                               ? SpecificPropAPIData.data
-                                ?.additionalRulesInformation
+                                  ?.additionalRulesInformation
                               : "N/A"}
                           </p>
                         </Row>
