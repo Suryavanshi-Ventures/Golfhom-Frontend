@@ -7,6 +7,7 @@ import HotelA from "../public/images/vector/dot.svg";
 import Heart from "../public/images/vector/dot.svg";
 import Dot from "../public/images/vector/dot.svg";
 
+// HERE
 const CarouselMap = () => {
   const [indexA, setIndexA] = useState(0);
 
