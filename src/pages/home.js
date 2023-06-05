@@ -736,7 +736,7 @@ const Home = () => {
                             width={20}
                             height={14}
                             className={HomeCss.rightArrow}
-                            src="/images/vector/right_arrow.svg"
+                            src="./images/vector/right_arrow.svg"
                             alt="iconImage"
                           ></Image>
                         </div>
