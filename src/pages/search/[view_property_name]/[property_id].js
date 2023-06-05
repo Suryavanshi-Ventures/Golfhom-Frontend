@@ -59,7 +59,6 @@ const ViewProperty = () => {
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
-  console.log(Params, "TTEEEEEEEEEEEEEEEEEEEEEEE");
   const [DateInputValues, setDateInputValues] = useState([
     dayjs(Params.from).format("MM-DD-YYYY"),
     dayjs(Params.to).format("MM-DD-YYYY"),
@@ -363,7 +362,7 @@ const ViewProperty = () => {
                     ]}
                     onChange={OnChangeDateInput}
                     disabledDate={(current) => {
-                      return current && current < moment().startOf("day");
+                      return current && current < dayjs().startOf("day");
                     }}
                     format={"MM-DD-YYYY"}
                   />
