@@ -45,8 +45,7 @@ const Home = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${
-            process.env.NEXT_PUBLIC_API_URL
+          `${process.env.NEXT_PUBLIC_API_URL
           }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
         );
         if (GetPropertyDataRes.status === 200) {
@@ -152,24 +151,24 @@ const Home = () => {
           UrlParamsGeoData?.latitude
         )}&longitude=${encodeURIComponent(
           UrlParamsGeoData?.longitude
-        )}&location_name=${
-          UrlParamsGeoData?.location_name
+        )}&location_name=${UrlParamsGeoData?.location_name
         }&nights=${NightsCounter}&guest=${encodeURIComponent(
           adult + child
         )}&adults=${encodeURIComponent(adult)}&childs=${encodeURIComponent(
           adult
-        )}&from=${
-          UrlParamsDateRange[0]
-            ? UrlParamsDateRange[0]
-            : moment().format("MM-DD-YYYY")
-        }&to=${
-          UrlParamsDateRange[1]
-            ? UrlParamsDateRange[1]
-            : moment().format("MM-DD-YYYY")
+        )}&from=${UrlParamsDateRange[0]
+          ? UrlParamsDateRange[0]
+          : moment().format("MM-DD-YYYY")
+        }&to=${UrlParamsDateRange[1]
+          ? UrlParamsDateRange[1]
+          : moment().format("MM-DD-YYYY")
         }&limit=10`
       );
     }
   };
+
+  const latitude = 27.994402;
+  const longitude = -81.760254;
 
   return (
     <>
@@ -613,17 +612,36 @@ const Home = () => {
             </Col>
 
             <Col xl={4} lg={4} className={HomeCss.midImage}>
-              <h6 className={HomeCss.midImgTitle}> Sao Paulo, New york </h6>
+
+              <h6 className={HomeCss.midImgTitle}>
+                <Link
+                  href={`/search?latitude=${encodeURIComponent(
+                    latitude
+                  )}&longitude=${encodeURIComponent(longitude)}`}
+                  style={{ textDecoration: 'none', color: 'inherit' }}>Sao Paulo, New york </Link>
+              </h6>
+
             </Col>
 
             <Col xl={4} lg={4} className={HomeCss.twoImgContainer}>
               <div>
-                <h6 className={HomeCss.madridImg}> The Madrid EDITION</h6>
+                <h6 className={HomeCss.madridImg}>
+                  <Link
+                    href={`/search?latitude=${encodeURIComponent(
+                      latitude
+                    )}&longitude=${encodeURIComponent(longitude)}`}
+                    style={{ textDecoration: 'none', color: 'inherit' }}>The Madrid EDITION </Link>
+                </h6>
               </div>
               <div>
                 <h6 className={HomeCss.resortImg}>
-                  {" "}
-                  The Westin Anaheim Resort{" "}
+                  <Link
+                    href={`/search?latitude=${encodeURIComponent(
+                      latitude
+                    )}&longitude=${encodeURIComponent(longitude)}`}
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    The Westin Anaheim Resort{" "}</Link>
                 </h6>
               </div>
             </Col>
