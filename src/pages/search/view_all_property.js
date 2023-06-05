@@ -9,8 +9,8 @@ import BottomSection from "../../../common components/bottomGroup";
 import { Pagination } from "antd";
 import Florida from "../../../public/images/Florida.webp";
 import Arizona from "../../../public/images/Arizona.webp";
-import Sanfrancisco from "../../../public/images/sanfrancisco.webp";
-import Newyork from "../../../public/images/Newyork.webp";
+import Sanfrancisco from "../../../public/images/SanFrancisco.webp";
+import Newyork from "../../../public/images/NewYork.webp";
 
 const ViewAllProperty = () => {
   const onChange = (pageNumber) => {
