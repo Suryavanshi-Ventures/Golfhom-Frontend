@@ -4,12 +4,7 @@ import Head from "next/head";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import BlogCss from "../../styles/Blog.module.css";
 import Image from "next/image";
-// import GolfHomLogoSmall from "../../../public/images/golfhom_small_logo.svg";
 import CategoryIcon from "../../../public/images/vector/category_icon.svg";
-import QuoteOpenIcon from "../../../public/images/vector/quote_open.svg";
-import QuoteCloseIcon from "../../../public/images/vector/quote_close.svg";
-import ViewBlogImg1 from "../../../public/images/view_blog_img1.svg";
-import ViewBlogImg2 from "../../../public/images/view_blog_img2.svg";
 import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.svg";
 import BottomSection from "../../../common components/bottomGroup";
 import { useRouter } from "next/router";
@@ -36,7 +31,7 @@ const ViewBlog = () => {
     };
     GetBlogsById();
 
-    return () => { };
+    return () => {};
   }, [UrlParams]);
 
   return (

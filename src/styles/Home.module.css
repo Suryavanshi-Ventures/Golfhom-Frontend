@@ -609,6 +609,9 @@
   max-width: 400px;
   cursor: pointer;
 }
+.cardImg {
+  min-height: 255px;
+}
 
 .icon {
   display: flex;
@@ -668,8 +671,10 @@
 }
 
 .parentAds {
-  /* min-width: 130px; */
   text-align: center;
+}
+.adsImage {
+  object-fit: contain;
 }
 
 .logo {

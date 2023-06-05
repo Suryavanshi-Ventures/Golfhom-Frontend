@@ -13,6 +13,7 @@ import {
   message,
   Image,
   Button,
+  DatePicker,
 } from "antd";
 import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
@@ -29,17 +30,20 @@ const { TextArea } = Input;
 import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement } from "@stripe/react-stripe-js";
+const { RangePicker } = DatePicker;
+// import DatePicker from "react-multi-date-picker";
+import Checkout from "../../../checkout";
+import moment from "moment";
+import dayjs from "dayjs";
+
 const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
-// const { RangePicker } = DatePicker;
-import DatePicker from "react-multi-date-picker";
-import Checkout from "../../../checkout";
-import moment from "moment";
 
 const ViewProperty = () => {
-  const ContextUserDetails = useContext(AuthContext);
   const router = useRouter();
+  const ContextUserDetails = useContext(AuthContext);
+  const Params = router.query;
   const [SpecificPropAPIData, SetSpecificPropAPIData] = useState({});
   const [BookingDate, SetBookingDate] = useState([]);
   const [PaymentIntentObject, setPaymentIntentObject] = useState(null);
@@ -52,15 +56,14 @@ const ViewProperty = () => {
   const [ShowOtherDetailsStatic, setShowOtherDetailsStatic] = useState(false);
   const [ShowTotalPaymentTextStatic, setShowTotalPaymentTextStatic] =
     useState(false);
-  const Params = router.query;
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [DateInputValues, setDateInputValues] = useState([
-    moment().format("MM-DD-YYYY"),
-    moment().format("MM-DD-YYYY"),
-  ]);
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
-
+  console.log(Params, "TTEEEEEEEEEEEEEEEEEEEEEEE");
+  const [DateInputValues, setDateInputValues] = useState([
+    dayjs(Params.from).format("MM-DD-YYYY"),
+    dayjs(Params.to).format("MM-DD-YYYY"),
+  ]);
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
@@ -124,14 +127,20 @@ const ViewProperty = () => {
     return () => {};
   }, [PaymentIntentObject]);
 
+  //* THIS USE EFFECT WILL SET THE URL PARAM DATES IN ANTD CALENDAR
   useEffect(() => {
     if (Available) {
       const LengthOfAvailDate = AvailabilityCalender?.length - 1;
-      const StartDate = AvailabilityCalender[0];
-      const LastDate = AvailabilityCalender[LengthOfAvailDate];
+      const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
+        "MM-DD-YYYY"
+      );
+      const LastDate = dayjs(
+        AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
+      ).format("MM-DD-YYYY");
+
       setDateInputValues([
-        moment(StartDate?._attributes?.Date).format("MM-DD-YYYY"),
-        moment(LastDate?._attributes?.Date).format("MM-DD-YYYY"),
+        dayjs(StartDate).format("MM-DD-YYYY"),
+        dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
 
@@ -142,7 +151,7 @@ const ViewProperty = () => {
     console.log(key);
   };
 
-  console.log(AvailabilityCalender, "DATES OF AVALABILITY");
+  console.log(DateInputValues, "DATES OF AVALABILITY");
 
   const items = [
     {
@@ -248,10 +257,14 @@ const ViewProperty = () => {
   };
 
   const OnChangeDateInput = (date, DateValue) => {
-    setDateInputValues;
-    SetBookingDate(DateValue);
+    setDateInputValues(["", ""]);
+    // setDateInputValues([dayjs(DateValue[0]), dayjs(DateValue[1])]);
+
+    // SetBookingDate(DateValue);
     console.log(DateValue, "DATEEE VALUE");
   };
+
+  //! ----------------------------------------------------------------
 
   return (
     <>
@@ -324,7 +337,7 @@ const ViewProperty = () => {
                   }}
                   className={ViewPropertyCss.inner_input_date_picker}
                 /> */}
-                <Col md={2}>
+                {/* <Col md={2}>
                   <NextImage
                     className={ViewPropertyCss.location}
                     width={25}
@@ -332,15 +345,27 @@ const ViewProperty = () => {
                     src="/images/vector/calendar.svg"
                     alt="Calender Image"
                   ></NextImage>
-                </Col>
+                </Col> */}
 
                 <Col md={10}>
-                  <DatePicker
+                  {/* <DatePicker
                     value={DateInputValues}
                     format={"MM-DD-YYYY"}
                     onChange={OnChangeDateInput}
                     range={true}
+                    dateSeparator=" - "
                     className={ViewPropertyCss.inner_input_date_picker}
+                  /> */}
+                  <RangePicker
+                    defaultValue={[
+                      dayjs(DateInputValues[0]),
+                      dayjs(DateInputValues[1]),
+                    ]}
+                    onChange={OnChangeDateInput}
+                    disabledDate={(current) => {
+                      return current && current < moment().startOf("day");
+                    }}
+                    format={"MM-DD-YYYY"}
                   />
                 </Col>
               </Row>
@@ -906,6 +931,7 @@ const ViewProperty = () => {
                   onSignup={handleContact}
                   onCancel={handleCancelContact}
                   width={440}
+                  centered={true}
                   className={ViewPropertyCss.headerReg}
                 >
                   <Col className={ViewPropertyCss.inputParent}>

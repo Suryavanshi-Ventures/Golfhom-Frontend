@@ -143,13 +143,8 @@ const Home = () => {
   const SearchProperty = (e) => {
     e.preventDefault();
 
-    if (
-      UrlParamsGeoData?.location_name === "" ||
-      adult + child === 0 ||
-      UrlParamsDateRange[0] === "" ||
-      UrlParamsDateRange[1] === ""
-    ) {
-      message.error("Please fill all the required search fields");
+    if (UrlParamsGeoData?.location_name === "") {
+      message.error("Please fill the destination field");
       return;
     } else {
       Router.push(
@@ -524,9 +519,6 @@ const Home = () => {
                           >
                             <Select
                               defaultValue=" Please select tournament"
-                              style={{
-                                width: 120,
-                              }}
                               options={[
                                 {
                                   value: "PGA Championship",
@@ -710,17 +702,6 @@ const Home = () => {
                               Villa
                             </span>
                           </div>
-                          {/* <div className={HomeCss.iconImg}>
-                            <Image
-                              width={20}
-                              height={20}
-                              src="/images/vector/parking-area.svg"
-                              alt="iconImage"
-                            ></Image>
-                            <span className={HomeCss.iconImg_spans}>
-                              Parking Area
-                            </span>
-                          </div> */}
                         </div>
 
                         <div className={HomeCss.parking}>
