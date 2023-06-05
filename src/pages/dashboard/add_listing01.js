@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.svg";
+import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import AddListing01Css from "../../styles/dashboard/AddListing01.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";

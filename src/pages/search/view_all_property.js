@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import ViewAllPropertyCss from "../../styles/ViewAllProperty.module.css";
 import Image from "next/image";
-import ViewAllProps from "../../../public/images/viewAllProps.svg";
+import ViewAllProps from "../../../public/images/viewAllProps.png";
 import BottomSection from "../../../common components/bottomGroup";
 import { Pagination } from "antd";
 import Florida from "../../../public/images/florida.svg";

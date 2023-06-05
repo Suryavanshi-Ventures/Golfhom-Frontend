@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
-import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.svg";
+import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.png";
 import {
   Checkbox,
   Input,
@@ -354,18 +354,17 @@ const ViewProperty = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className={ViewPropertyCss.adultChild}>
-                  <Row className={ViewPropertyCss.increase}>
-                    <Col md={3}>
+                  <div className={ViewPropertyCss.increase}>
+                    <div>
                       <Dropdown.Item href="#/action-1">
                         {" "}
                         <h5 className={ViewPropertyCss.ageName}>
                           {adult} Adults
                         </h5>
                       </Dropdown.Item>
-                    </Col>
+                    </div>
 
-                    <Col
-                      md={4}
+                    <div
                       className={ViewPropertyCss.geust_incri_btns_div}
                     >
                       <Button className={ViewPropertyCss.increaseAdult}>
@@ -385,21 +384,20 @@ const ViewProperty = () => {
                           +
                         </div>
                       </Button>
-                    </Col>
-                  </Row>
+                    </div>
+                  </div>
 
-                  <Row className={ViewPropertyCss.increase}>
-                    <Col md={3}>
+                  <div className={ViewPropertyCss.increase}>
+                    <div>
                       <Dropdown.Item href="#/action-2">
                         {" "}
                         <h5 className={ViewPropertyCss.ageName}>
                           {child} Children
                         </h5>
                       </Dropdown.Item>
-                    </Col>
+                    </div>
 
-                    <Col
-                      md={4}
+                    <div
                       className={ViewPropertyCss.geust_incri_btns_div}
                     >
                       <Button className={ViewPropertyCss.increaseAdult}>
@@ -419,8 +417,8 @@ const ViewProperty = () => {
                           +
                         </div>
                       </Button>
-                    </Col>
-                  </Row>
+                    </div>
+                  </div>
 
                   <div className={ViewPropertyCss.applyParent}>
                     <Button className={ViewPropertyCss.apply}>Apply</Button>

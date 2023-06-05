@@ -284,6 +284,7 @@
   flex-wrap: wrap;
   width: 100%;
   display: flex;
+  align-items: baseline;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 14px;
@@ -583,12 +584,14 @@
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color);
   border: none;
-  padding: 8px 42px;
+  /* padding: 8px 42px; */
+  height: 35px;
+  width: 108px;
 }
 
 .apply:hover {
-  background-color: var(--btn-background-secondary);
-  color: var(--white-font-color);
+  background-color: var(--black-btn-color);
+  color: var(--white-font-color) !important;
   border: none;
 }
 
@@ -735,5 +738,11 @@
   }
   .backgroundWhite {
     position: initial;
+  }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+  .increase, .applyParent {
+    justify-content: center;
   }
 }

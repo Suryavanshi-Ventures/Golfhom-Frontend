@@ -1,6 +1,6 @@
 import React from "react";
 import SearchByTourCss from "../styles/SearchByTournament.module.css";
-import Search from "../../public/images/search.svg";
+import Search from "../../public/images/search.png";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import { Dropdown, Pagination, Button, Space } from "antd";

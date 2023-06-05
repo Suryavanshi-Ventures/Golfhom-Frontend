@@ -1,5 +1,5 @@
 import { React, useEffect, useState, useContext } from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.svg";
+import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import BottomSection from "../../../common components/bottomGroup";
 import ProtectedRoute from "../../../common components/protected_route";
 import Image from "next/image";

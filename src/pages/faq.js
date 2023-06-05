@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import Image from "next/image";
 import FAQCss from "../styles/FAQ.module.css";
-import FAQBannerImg from "../../public/images/faq_banner_img.svg";
+import FAQBannerImg from "../../public/images/faq_banner_img.png";
 import BottomSection from "../../common components/bottomGroup";
 
 const FAQ = () => {

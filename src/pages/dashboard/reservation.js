@@ -1,5 +1,5 @@
 import React from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.svg";
+import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import BottomSection from "../../../common components/bottomGroup";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";

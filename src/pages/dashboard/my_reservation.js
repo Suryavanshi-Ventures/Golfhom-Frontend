@@ -1,7 +1,7 @@
 import React from "react";
 import MyReservationCss from "../../styles/dashboard/MyReservation.module.css";
 import BottomSection from "../../../common components/bottomGroup";
-import FAQBannerImg from "../../../public/images/faq_banner_img.svg";
+import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import Image from "next/image";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import Head from "next/head";

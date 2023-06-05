@@ -1,6 +1,6 @@
 import React from "react";
 import PodcastCss from "../styles/BlogsAndPodcasts.module.css";
-import TopImage from "../../public/images/topImage.svg";
+import TopImage from "../../public/images/topImage.png";
 import Image from "next/image";
 import BottomSection from "../../common components/bottomGroup";
 import { Col, Container, Row } from "react-bootstrap";

@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import RegisterToHost from "../styles/RegisterToHost.module.css";
-import targetBall from "../../public/images/targetBall.svg";
+import targetBall from "../../public/images/targetBall.png";
 import Image from "next/image";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { Checkbox, Input } from "antd";
-import condoView from "../../public/images/condoView.svg";
+import condoView from "../../public/images/condoView.png";
 import Lunch from "../../public/images/lunch.svg";
-import earnMoney from "../../public/images/earnMoney.svg";
-import Beach from "../../public/images/beach.svg";
+import earnMoney from "../../public/images/earnMoney.webp";
+import Beach from "../../public/images/beach.webp";
 import BottomSection from "../../common components/bottomGroup";
 import Head from "next/head";
 

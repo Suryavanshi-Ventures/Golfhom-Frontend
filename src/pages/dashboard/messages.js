@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import BottomSection from "../../../common components/bottomGroup";
 import MessageCss from "../../styles/dashboard/message.module.css";
 import Image from "next/image";
-import Laugh from "../../../public/images/laugh.svg";
+import Laugh from "../../../public/images/laugh.png";
 import { Container } from "react-bootstrap";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";

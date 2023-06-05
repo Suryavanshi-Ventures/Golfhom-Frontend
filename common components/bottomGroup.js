@@ -1,6 +1,6 @@
 import React from "react";
 import BottomGroupCss from "../src/styles/BottomGroup.module.css";
-import Sky from "../public/images/sky.svg";
+import Sky from "../public/images/sky.png";
 import Image from "next/image";
 import { Button, Col, Row } from "react-bootstrap";
 import Link from "next/link";
