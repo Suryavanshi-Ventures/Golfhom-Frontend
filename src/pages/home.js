@@ -555,7 +555,9 @@ const Home = () => {
                               }
                               size="large"
                             >
-                              <span onClick={(e) => e.preventDefault()}>
+                              <Select.Option
+                                onClick={(e) => e.preventDefault()}
+                              >
                                 <Typography.Link>
                                   <Space
                                     className={
@@ -563,7 +565,7 @@ const Home = () => {
                                     }
                                   ></Space>
                                 </Typography.Link>
-                              </span>
+                              </Select.Option>
                             </Select>
                           </div>
                         </div>
@@ -742,7 +744,7 @@ const Home = () => {
 
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
-      <Container Container className={HomeCss.ads}>
+      <Container className={HomeCss.ads}>
         <h2 className={HomeCss.adsTitle}>
           Golfing and Traveling, Both Better with Friends
         </h2>
@@ -752,7 +754,7 @@ const Home = () => {
 
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
-      <Container Container className={HomeCss.videoContain}>
+      <Container className={HomeCss.videoContain}>
         <h2 className={HomeCss.golf_training_heading}>Golf Training Videos</h2>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
@@ -766,7 +768,7 @@ const Home = () => {
 
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
-      <Container Container className={HomeCss.staffCard}>
+      <Container className={HomeCss.staffCard}>
         <Row>
           <Col md={8} className={HomeCss.staffCard_title_main_container}>
             <h2 className={HomeCss.staffCard_title}>

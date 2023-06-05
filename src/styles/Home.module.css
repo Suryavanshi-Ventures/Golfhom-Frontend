@@ -766,6 +766,7 @@
 
 .cardReview {
   border-radius: 12px;
+  position: relative !important;
 }
 
 .cardTextParent {

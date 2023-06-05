@@ -162,7 +162,7 @@
   height: auto;
   padding: 1rem 1.9rem;
   border-radius: 10px;
-  border: 1px solid var(--black-color);
+  border: 1px solid #dbd9d9;
   transition-duration: 0.3s;
 }
 
@@ -258,7 +258,7 @@
 
 .form_items_login label {
   font-family: var(--font-poppins);
-  color: var( --light-font-color) !important;
+  color: var(--light-font-color) !important;
 }
 
 .meBox {
