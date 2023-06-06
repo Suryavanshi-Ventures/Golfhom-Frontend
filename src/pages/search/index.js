@@ -19,6 +19,8 @@ import Image from "next/image";
 import BottomSection from "../../../common components/bottomGroup";
 import CarasoulMapCss from "../../styles/CarouselMap.module.css";
 import Dot from "../../../public/images/vector/dot.svg";
+import PropNotFoundImg from "../../../public/images/vector/golf-hole.png";
+
 import Map from "../../../common components/map";
 import Loader from "../../../common components/loader";
 import axios from "axios";
@@ -99,8 +101,10 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -115,7 +119,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     param.from,
     param.guest,
@@ -155,9 +159,12 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${
+          "to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -498,7 +505,7 @@ const Index = () => {
                       <Image
                         width={70}
                         height={70}
-                        src="/images/vector/golf-hole.png"
+                        src={PropNotFoundImg}
                         alt="property not found"
                         className={SearchIndexCss.no_property_image}
                       ></Image>
@@ -569,7 +576,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -578,7 +586,8 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}
@@ -594,7 +603,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -615,7 +625,8 @@ const Index = () => {
                             <h5
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}
