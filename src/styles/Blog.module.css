@@ -56,6 +56,9 @@
 .view_blog_category_text {
   margin: 0;
 }
+.view_blog_category_text_posted_by {
+  font-weight: 500;
+}
 
 .view_blog_middle_text_section {
   display: flex;
@@ -158,6 +161,7 @@
   height: fit-content;
   padding: 16px;
   position: relative;
+  border-radius: 0 7px 0 7px;
   bottom: 80px;
   cursor: pointer;
 }

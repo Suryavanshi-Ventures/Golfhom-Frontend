@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import TermConditions from "../../public/images/termConditions.webp";
+import TermConditions from "../../public/images/termConditions.png";
 import TermConditionsCss from "../styles/TermConditions.module.css";
 import { Button, Col, Container } from "react-bootstrap";
 import BottomSection from "../../common components/bottomGroup";

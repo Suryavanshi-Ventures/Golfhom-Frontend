@@ -73,6 +73,10 @@
   margin-left: 10px;
 }
 
+.active_nav_links {
+  color: green !important;
+}
+
 .top_header_a:hover,
 .registerLink:hover {
   transition-duration: 0.5s;

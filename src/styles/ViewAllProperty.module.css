@@ -38,18 +38,40 @@
 .columnsB,
 .columnsC,
 .columnsD {
-  width: 300px;
-  height: 264px;
+  width: 100%;
+  max-width: 300px;
+  height: 265px;
   position: relative !important;
-  margin: 30px 0px;
+  margin: 25px 0px;
+  cursor: pointer;
+}
+
+.card_image {
+  object-fit: cover;
+  border-radius: 16px;
+  filter: brightness(0.8);
 }
 
 .countryName {
   position: relative;
-  top: 208px;
-  left: 10px;
+  width: max-content;
+  top: 200px;
+  left: -12px;
+  max-width: 300px;
   color: var(--white-font-color);
   font-family: var(--font-amiri);
+  font-size: 18px;
+  padding: 7px 10px;
+  background-color: rgb(0 0 0 / 63%);
+  height: 64px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 0 0px 16px 16px;
+  margin-bottom: 0;
+  padding-top: 18px;
 }
 
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
@@ -91,4 +113,10 @@
 
 .words {
   margin-left: 24px;
+}
+
+@media only screen and (max-width: 768px) {
+  .columnParent {
+    justify-content: center;
+  }
 }

@@ -64,18 +64,11 @@ const ViewBlog = () => {
           <div className={BlogCss.view_blog_category_container_main}>
             <Row className={BlogCss.view_blog_category_rows}>
               <Col md={"auto"} className={BlogCss.view_blog_category_cols}>
-                <Image
-                  width={100}
-                  height={50}
-                  src="/images/golfhom_small_logo.webp"
-                  alt="golfom category"
-                  className={BlogCss.small_logo_icon}
-                ></Image>
-              </Col>
-
-              <Col md={"auto"} className={BlogCss.view_blog_category_cols}>
                 <p className={BlogCss.view_blog_category_text}>
-                  by {BlogData?.createdBy == null ? "N/A" : BlogData?.createdBy}
+                  by{" "}
+                  <span className={BlogCss.view_blog_category_text_posted_by}>
+                    {BlogData?.createdBy == null ? "N/A" : BlogData?.createdBy}
+                  </span>
                 </p>
               </Col>
 
@@ -116,14 +109,6 @@ const ViewBlog = () => {
             <main className={BlogCss.view_blog_middle_main_div}>
               <div className={BlogCss.view_blog_middle_text_para}>
                 {BlogData?.body ? BlogData?.body : <Skeleton active />}
-              </div>
-
-              <div className={BlogCss.view_blog_posted_date}>
-                {BlogData?.createdAt ? (
-                  moment(BlogData?.createdAt).format("MMMM DD, YYYY")
-                ) : (
-                  <Skeleton.Input size="small" active={true} />
-                )}
               </div>
             </main>
           </section>

@@ -28,6 +28,7 @@ const placesLibrary = ["places"];
 
 const Home = () => {
   const Router = useRouter();
+
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [UrlParamsGeoData, setUrlParamsGeoData] = useState({
@@ -56,7 +57,6 @@ const Home = () => {
         console.log("ERROR getting property data", error);
       }
     };
-
     GetPropDataFunc();
 
     return () => {
@@ -364,7 +364,6 @@ const Home = () => {
                   <Button
                     onClick={SearchProperty}
                     className={HomeCss.search_btn}
-                    type="primary"
                   >
                     Search
                   </Button>
@@ -403,14 +402,21 @@ const Home = () => {
             </Col>
 
             <Col md={3}>
-              <Link
-                href="/search/view_all_property"
-                style={{ textDecoration: "none" }}
+              <span
+                onClick={(e) => {
+                  Router.push({
+                    pathname: `search/view_all_property`,
+                    query: {
+                      latitude: 27.994402,
+                      longitude: -81.760254,
+                    },
+                  });
+                }}
               >
                 <div className={HomeCss.viewallBtnParent}>
                   <Button className={HomeCss.viewallBtn}>View All</Button>
                 </div>
-              </Link>
+              </span>
             </Col>
           </Row>
         </div>
@@ -483,10 +489,7 @@ const Home = () => {
                         </div>
 
                         <div className={HomeCss.search_by_golf_btn_container}>
-                          <Button
-                            className={HomeCss.search_by_golf_btn}
-                            type="primary"
-                          >
+                          <Button className={HomeCss.search_by_golf_btn}>
                             SEARCH
                           </Button>
                         </div>
@@ -569,10 +572,7 @@ const Home = () => {
                       </div>
                       <div className={HomeCss.search_by_golf_btn_container}>
                         <Link href="searchByTournaments">
-                          <Button
-                            className={HomeCss.search_by_golf_btn}
-                            type="primary"
-                          >
+                          <Button className={HomeCss.search_by_golf_btn}>
                             SEARCH
                           </Button>
                         </Link>

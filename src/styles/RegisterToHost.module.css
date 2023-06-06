@@ -112,6 +112,13 @@
   font-weight: var(--font-poppins);
 }
 
+.conditions_links {
+  text-decoration: none;
+}
+.conditions_links:hover {
+  color: var(--btn-background-secondary);
+}
+
 .agreeOptionB {
   font-size: 1rem;
   font-weight: 700;
@@ -243,6 +250,7 @@
 .earnMoney,
 .beach {
   position: relative !important;
+  border-radius: 16px;
 }
 
 /* Frequently Asked Questions */

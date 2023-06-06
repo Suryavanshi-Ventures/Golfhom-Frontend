@@ -73,12 +73,14 @@
   font-family: var(--font-poppins);
   font-weight: 500;
 }
+
 .search_bar_nights_col {
   border: 0;
 }
 
 .search_btn:hover {
-  background-color: var(--btn-background) !important;
+  background-color: var(--black-btn-color) !important;
+  color: var(--white-font-color) !important;
 }
 
 .image_destination {
@@ -287,7 +289,6 @@
 .viewallBtn {
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color);
-  padding: 1.6% 3.6%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -295,13 +296,13 @@
   font-weight: 500;
   border: none;
   text-decoration: none !important;
-  width: 160px;
-  height: 50px;
+  width: 110px;
+  height: 45px;
   justify-content: center;
 }
 
 .viewallBtn:hover {
-  background-color: var(--btn-background-secondary);
+  background-color: var(--black-btn-color);
   color: var(--white-font-color) !important;
   text-decoration: none !important;
 }
@@ -357,6 +358,12 @@
   font-family: var(--font-poppins);
   letter-spacing: 1px;
   font-size: 15px;
+  color: var(--white-btn-font-color);
+  border: none;
+}
+.search_by_golf_btn:hover {
+  background-color: var(--black-btn-color);
+  color: var(--white-btn-font-color) !important;
 }
 
 .search_by_golf_course_Section {
@@ -776,7 +783,7 @@
 }
 
 .cardReview {
-  border-radius: 12px;
+  border-radius: 16px;
   position: relative !important;
   object-fit: cover;
 }
@@ -787,6 +794,7 @@
   width: 70%;
   padding: 16px;
   position: absolute;
+  border-radius: 0 5px 0 0;
   top: 206px;
 }
 
