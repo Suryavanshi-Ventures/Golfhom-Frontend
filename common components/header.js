@@ -117,6 +117,7 @@ const Header = ({ name, ...props }) => {
         setLoginModalLgDevice(false);
         SetIsLoggedIn(true);
         handleCancelRegisterLgDevice();
+        sessionStorage.setItem("Uname", response.data.data.user.username);
         sessionStorage.setItem("token", response.data.token);
         message.success(response.data.message);
       }

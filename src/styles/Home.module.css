@@ -698,6 +698,10 @@
 .paratext {
   line-height: 2rem;
   font-family: var(--font-poppins);
+  max-width: 800px;
+}
+.account_link {
+  text-decoration: none;
 }
 
 .viewAll {
@@ -774,6 +778,7 @@
 .cardReview {
   border-radius: 12px;
   position: relative !important;
+  object-fit: cover;
 }
 
 .cardTextParent {

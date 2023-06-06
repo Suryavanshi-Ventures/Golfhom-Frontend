@@ -816,11 +816,19 @@ const Home = () => {
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
       <Container className={HomeCss.videoContain}>
-        <h2 className={HomeCss.golf_training_heading}>Golf Training Videos</h2>
+        <h2 className={HomeCss.golf_training_heading}>Jake Hutt Golf Raps</h2>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
-            Enhance your skills with expert guidance from <br /> professional
-            instructors and coaches.
+            Explore the infinite whys and hows of the golf swing with our
+            partner, Jake Hutt - PGA Instructor. Follow our good friend Jake at
+            @
+            <Link
+              href="https://www.instagram.com/jakehuttgolf"
+              target="_blank"
+              className={HomeCss.account_link}
+            >
+              jakehuttgolf
+            </Link>
           </p>
         </div>
 
