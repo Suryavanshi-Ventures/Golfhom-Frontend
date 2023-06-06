@@ -85,11 +85,7 @@ const FAQ = () => {
               <Col md={6} className={FAQCss.textParentD}>
                 <h2 className={FAQCss.textTitle}>Frequently Asked Questions</h2>
                 <p className={FAQCss.paragraph}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book..
+                  Our team has provided answers below to some frequently asked questions. Please feel free to reach out to our help team if further information is needed, and thanks for booking with Golfhōm!
                 </p>
               </Col>
 
