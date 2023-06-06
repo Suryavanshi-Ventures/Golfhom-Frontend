@@ -274,33 +274,29 @@ const Register_to_host = () => {
               Frequently Asked Questions
             </h2>
             <p className={RegisterToHost.paragraph}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book..
+              Our team has provided answers below to some frequently asked questions. Please feel free to reach out to our help team if further information is needed, and thanks for booking with Golfhōm!
             </p>
           </Col>
 
           <Col md={6}>
             <div>
-              <div className={RegisterToHost.headingSign}>
-                <p className={RegisterToHost.faqTitle}>
-                  How can I list my property Golfhom ?
-                </p>
-                <Button className={RegisterToHost.sign} onClick={toggleButtonA}>
-                  {showA ? "-" : "+"}
-                </Button>
-              </div>
-
-              {showA && (
-                <div>
-                  <p className={RegisterToHost.faqPara}>
-                    Create a Host account, and take just 5 minutes to complete
-                    our simple listing loop. Make sure to post great images of
-                    your home!
+              <div>
+                <div className={RegisterToHost.headingSign}>
+                  <p className={RegisterToHost.faqTitle}>
+                    How do I get more info about the property's amenities?
                   </p>
+                  <Button className={RegisterToHost.sign} onClick={toggleButtonA}>
+                    {showA ? "-" : "+"}
+                  </Button>
                 </div>
-              )}
+                {showA && (
+                  <div>
+                    <p className={RegisterToHost.faqPara}>
+                      You can find information on a property’s amenities on the home’s profile page.  Reach out to the host for more specific information.
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
 
             <hr className={RegisterToHost.horizontaLine} />
@@ -308,7 +304,7 @@ const Register_to_host = () => {
             <div>
               <div className={RegisterToHost.headingSign}>
                 <p className={RegisterToHost.faqTitle}>
-                  How do I communicate with my guests?
+                  I can't find my rental confirmation email. What Should I do?
                 </p>
                 <Button className={RegisterToHost.sign} onClick={toggleButtonB}>
                   {showB ? "-" : "+"}
@@ -317,9 +313,7 @@ const Register_to_host = () => {
               {showB && (
                 <div>
                   <p>
-                    Create a Host account, and take just 5 minutes to complete
-                    our simple listing loop. Make sure to post great images of
-                    your home!
+                    Please be sure to check your email inbox, junk, and spam folders. If you still can’t find your confirmation, refer to your Golfhōm admin area, or feel free to reach out to our help team.
                   </p>
                 </div>
               )}
@@ -327,46 +321,84 @@ const Register_to_host = () => {
 
             <hr className={RegisterToHost.horizontaLine} />
 
-            <div className={RegisterToHost.headingSign}>
-              <p className={RegisterToHost.faqTitle}>
-                How do I price my property?
-              </p>
-              <Button className={RegisterToHost.sign} onClick={toggleButtonC}>
-                {showC ? "-" : "+"}
-              </Button>
+            <div>
+              <div className={RegisterToHost.headingSign}>
+                <p className={RegisterToHost.faqTitle}>
+                  I'll be arriving outside check-in hours. Can I still check in?
+                </p>
+                <Button className={RegisterToHost.sign} onClick={toggleButtonC}>
+                  {showC ? "-" : "+"}
+                </Button>
+              </div>
+              {showC && (
+                <div>
+                  <p>
+                    This depends on the individual host, who will do their best to meet your needs.  We recommend dealing with arrival time issues as early in the process as possible.
+                  </p>
+                </div>
+              )}
+            </div>
+
+
+            <hr className={RegisterToHost.horizontaLine} />
+
+            <div>
+              <div className={RegisterToHost.headingSign}>
+                <p className={RegisterToHost.faqTitle}>
+                  I'd like to check out after the stated check-out time, is that possible?
+                </p>
+                <Button className={RegisterToHost.sign} onClick={toggleButtonD}>
+                  {showD ? "-" : "+"}
+                </Button>
+              </div>
+              {showD && (
+                <div>
+                  <p>
+                    A late check-out can only be arranged with the host, and is not guaranteed.  Reach out to see what can be arranged, and keep in mind that availability and proper cleaning time have to be accounted for.
+                  </p>
+                </div>
+              )}
+            </div>
+
+
+            <hr className={RegisterToHost.horizontaLine} />
+
+            <div>
+              <div className={RegisterToHost.headingSign}>
+                <p className={RegisterToHost.faqTitle}>
+                  How Do I find out if my desired property allows pets?
+                </p>
+                <Button className={RegisterToHost.sign} onClick={toggleButtonE}>
+                  {showE ? "-" : "+"}
+                </Button>
+              </div>
+              {showE && (
+                <div>
+                  <p>
+                    Pet policies should be clearly stated on the home’s profile page.  Reach out to the Host for any needed clarification, or to see if a variance can be made.
+                  </p>
+                </div>
+              )}
             </div>
 
             <hr className={RegisterToHost.horizontaLine} />
 
-            <div className={RegisterToHost.headingSign}>
-              <p className={RegisterToHost.faqTitle}>
-                How does Golfhom.com pay me?
-              </p>
-              <Button className={RegisterToHost.sign} onClick={toggleButtonD}>
-                {showD ? "-" : "+"}
-              </Button>
-            </div>
-
-            <hr className={RegisterToHost.horizontaLine} />
-
-            <div className={RegisterToHost.headingSign}>
-              <p className={RegisterToHost.faqTitle}>
-                How can I upgrade my listing to featured ?
-              </p>
-              <Button className={RegisterToHost.sign} onClick={toggleButtonE}>
-                {showE ? "-" : "+"}
-              </Button>
-            </div>
-
-            <hr className={RegisterToHost.horizontaLine} />
-
-            <div className={RegisterToHost.headingSign}>
-              <p className={RegisterToHost.faqTitle}>
-                What happens if a renter cancels a reservation?
-              </p>
-              <Button className={RegisterToHost.sign} onClick={toggleButtonF}>
-                {showF ? "-" : "+"}
-              </Button>
+            <div>
+              <div className={RegisterToHost.headingSign}>
+                <p className={RegisterToHost.faqTitle}>
+                  What payment methods are accepted by Golfhōm?
+                </p>
+                <Button className={RegisterToHost.sign} onClick={toggleButtonF}>
+                  {showF ? "-" : "+"}
+                </Button>
+              </div>
+              {showF && (
+                <div>
+                  <p>
+                    Major credit cards and Paypal are acceptable payment methods for properties listed on Golfhōm.com.  You will have your choice of payment methods at the tome of booking.
+                  </p>
+                </div>
+              )}
             </div>
           </Col>
         </Row>
