@@ -19,7 +19,7 @@
 
   {
     "id": 7,
-    "image": "/images/Sanfrancisco.webp",
+    "image": "/images/SanFrancisco.webp",
     "name": "San Francisco",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 37.773972,
@@ -28,7 +28,7 @@
 
   {
     "id": 8,
-    "image": "/images/Newyork.webp",
+    "image": "/images/NewYork.webp",
     "name": "New York",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 40.73061,
