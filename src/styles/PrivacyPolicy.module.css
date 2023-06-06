@@ -1,21 +1,23 @@
 /*------------------------ PRIVACY POLICY TOP IMAGE------------------------ */
 .topImage {
-    width: 100%;
-    height: auto;
-    position: relative;
+  width: 100%;
+  height: auto;
+  position: relative;
 }
 
 .topImgChild {
-    position: relative !important;
-    margin-bottom: 20px;
+  position: relative !important;
+  margin-bottom: 20px;
+  max-height: 500px;
+  object-fit: cover;
 }
 
 /*------------------------ PRIVACY POLICY TEXT CONATINER------------------------ */
 
 .privacyTitle {
-    margin: 20px 0px;
-    font-weight: 600;
-    font-family: var(--font-amiri);
+  margin: 20px 0px;
+  font-weight: 600;
+  font-family: var(--font-amiri);
 }
 
 .paraA, .paraB, .paraC, .paraD, .paraE, .paraI, .paraJ, .paraK, .paraL, .paraM, .paraN, .paraO, .paraP, .paraQ, .paraR, .paraS, .paraT, .paraU, .paraV, .paraW, .paraX {
@@ -39,14 +41,13 @@
 }
 
 .personal {
-    font-family: var(--font-poppins);
-    font-weight: 500;
-    margin: 18px 0px;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  margin: 18px 0px;
 }
 
 .smallHeading {
   font-family: var(--font-poppins);
-  
 }
 
 .contact {

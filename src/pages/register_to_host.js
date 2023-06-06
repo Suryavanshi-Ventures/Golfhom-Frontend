@@ -11,6 +11,7 @@ import earnMoney from "../../public/images/earnMoney.webp";
 import Beach from "../../public/images/beach.webp";
 import BottomSection from "../../common components/bottomGroup";
 import Head from "next/head";
+import Link from "next/link";
 
 const Register_to_host = () => {
   const [showA, setShowA] = useState(false);
@@ -117,12 +118,27 @@ const Register_to_host = () => {
                 <Row>
                   <div>
                     <Checkbox className={RegisterToHost.agreeOptionA}>
-                      I agree with your Terms & Conditions
+                      I agree with your{" "}
+                      <Link
+                        className={RegisterToHost.conditions_links}
+                        href="/term_and_conditions"
+                      >
+                        {" "}
+                        Terms & Conditions
+                      </Link>
                     </Checkbox>
                   </div>
                   <div>
                     <Checkbox className={RegisterToHost.agreeOptionB}>
-                      I agree with your Privacy Policy
+                      I agree with your{" "}
+                      <Link
+                        className={RegisterToHost.conditions_links}
+                        href="/privacy"
+                        target="_blank"
+                      >
+                        {" "}
+                        Privacy Policy{" "}
+                      </Link>
                     </Checkbox>
                   </div>
                 </Row>

@@ -1,27 +1,29 @@
 /* --------------------------TOP IMAGE SECTION OF TERM AND CONDITIONS ------------------ */
 
 .topImage {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .imageSelf {
-    position: relative !important;
+  position: relative !important;
+  object-fit: cover;
+  max-height: 500px;
 }
 
 /* -------------------------    TEXT SECTION    -------------------------------  */
 
 .term {
-    font-family: var(--font-amiri);
-    font-weight: 600;
-    margin-top: 44px;
+  font-family: var(--font-amiri);
+  font-weight: 600;
+  margin-top: 44px;
 }
 
 .update {
-    font-family: var(--font-poppins);
-    font-weight: 400;
-    color: var(--light-font-color);
-    font-size: 0.8rem;
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  color: var(--light-font-color);
+  font-size: 0.8rem;
 }
 
 .para, .paraL {
@@ -37,12 +39,12 @@
 }
 
 .bold {
-    color: var(--black-btn-color);
+  color: var(--black-btn-color);
 }
 
 .redWords {
-    color: var(--btn-background-secondary);
-    text-decoration: underline;
+  color: var(--btn-background-secondary);
+  text-decoration: underline;
 }
 
 .redWords:hover {

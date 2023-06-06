@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Button } from "react-bootstrap";
@@ -11,11 +11,39 @@ import Florida from "../../../public/images/Florida.webp";
 import Arizona from "../../../public/images/Arizona.webp";
 import Sanfrancisco from "../../../public/images/SanFrancisco.webp";
 import Newyork from "../../../public/images/NewYork.webp";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const ViewAllProperty = () => {
-  const onChange = (pageNumber) => {
-    console.log("Page: ", pageNumber);
-  };
+  const RouterRef = useRouter();
+
+  const [AllPropertyData, setAllPropertyData] = useState([{}]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ParamLatitude = urlParams.get("latitude");
+    const ParamLongitude = urlParams.get("longitude");
+
+    console.log(ParamLongitude);
+    const GetPropDataFunc = async () => {
+      try {
+        const GetPropertyDataRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=8&latitude=${ParamLatitude}&longitude=${ParamLongitude}&page=1`
+        );
+        if (GetPropertyDataRes.status === 200) {
+          setAllPropertyData(GetPropertyDataRes.data.data);
+          console.log(GetPropertyDataRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR getting property data", error);
+      }
+    };
+    GetPropDataFunc();
+
+    return () => {
+      GetPropDataFunc();
+    };
+  }, []);
 
   return (
     <>
@@ -62,79 +90,31 @@ const ViewAllProperty = () => {
       <section>
         <Container>
           <Row className={ViewAllPropertyCss.columnParent}>
-            <div className={ViewAllPropertyCss.columnsA}>
-              <Image fill src={Florida} alt="Florida"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Florida</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsB}>
-              <Image fill src={Arizona} alt="Arizona"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Arizona</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsC}>
-              <Image fill src={Sanfrancisco} alt="Sanfrancisco"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Sanfrancisco</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsD}>
-              <Image fill src={Newyork} alt="Newyork"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Newyork</h4>
-            </div>
-          </Row>
-
-          <Row className={ViewAllPropertyCss.columnParent}>
-            <div className={ViewAllPropertyCss.columnsA}>
-              <Image fill src={Florida} alt="Florida"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Florida</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsB}>
-              <Image fill src={Arizona} alt="Arizona"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Arizona</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsC}>
-              <Image fill src={Sanfrancisco} alt="Sanfrancisco"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Sanfrancisco</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsD}>
-              <Image fill src={Newyork} alt="Newyork"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Newyork</h4>
-            </div>
-          </Row>
-
-          <Row className={ViewAllPropertyCss.columnParent}>
-            <div className={ViewAllPropertyCss.columnsA}>
-              <Image fill src={Florida} alt="Florida"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Florida</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsB}>
-              <Image fill src={Arizona} alt="Arizona"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Arizona</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsC}>
-              <Image fill src={Sanfrancisco} alt="Sanfrancisco"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Sanfrancisco</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsD}>
-              <Image fill src={Newyork} alt="Newyork"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Newyork</h4>
-            </div>
-          </Row>
-
-          <Row className={ViewAllPropertyCss.columnParent}>
-            <div className={ViewAllPropertyCss.columnsA}>
-              <Image fill src={Florida} alt="Florida"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Florida</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsB}>
-              <Image fill src={Arizona} alt="Arizona"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Arizona</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsC}>
-              <Image fill src={Sanfrancisco} alt="Sanfrancisco"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Sanfrancisco</h4>
-            </div>
-            <div className={ViewAllPropertyCss.columnsD}>
-              <Image fill src={Newyork} alt="Newyork"></Image>
-              <h4 className={ViewAllPropertyCss.countryName}>Newyork</h4>
-            </div>
+            {AllPropertyData.map((Data, Index) => {
+              return (
+                <span
+                  onClick={(e) => {
+                    RouterRef.push({
+                      pathname: `/search/${encodeURIComponent(Data.name)}/${
+                        Data.id
+                      }`,
+                    });
+                  }}
+                  key={Index}
+                  className={ViewAllPropertyCss.columnsA}
+                >
+                  <Image
+                    fill
+                    src={Data.imageUrl}
+                    className={ViewAllPropertyCss.card_image}
+                    alt="Florida"
+                  ></Image>
+                  <h4 className={ViewAllPropertyCss.countryName}>
+                    {Data.name}
+                  </h4>
+                </span>
+              );
+            })}
           </Row>
         </Container>
       </section>
@@ -146,7 +126,6 @@ const ViewAllProperty = () => {
           showSizeChanger={false}
           defaultCurrent={2}
           total={500}
-          onChange={onChange}
           className={ViewAllPropertyCss.pagination}
         />
       </Container>

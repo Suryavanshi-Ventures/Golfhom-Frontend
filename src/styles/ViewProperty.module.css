@@ -53,6 +53,7 @@
   color: var(--light-font-color);
   font-size: 13px;
   margin: 2rem 0;
+  max-height: 500px;
 }
 
 /* FEATURE SECTION STARTED HERE */
@@ -742,7 +743,8 @@
 }
 
 @media only screen and (max-width: 992px) and (min-width: 768px) {
-  .increase, .applyParent {
+  .increase,
+  .applyParent {
     justify-content: center;
   }
 }

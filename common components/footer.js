@@ -9,8 +9,6 @@ import { MailOutlined } from "@ant-design/icons";
 import LinkedinIcon from "../public/linkedin.svg";
 import FacebookIcon from "../public/facebook.svg";
 import InstaIcon from "../public/insta.svg";
-import YoutubeIcon from "../public/youtube.svg";
-import PinterestIcon from "../public/pinterest.svg";
 import TwittereIcon from "../public/twitter.svg";
 import axios from "axios";
 
@@ -69,7 +67,7 @@ const Footer = () => {
                   </li>
 
                   <li className={FooterCss.nav_link_li_blog}>
-                    <Link href="/" className={FooterCss.nav_link_a}>
+                    <Link href="/blog" className={FooterCss.nav_link_a}>
                       Golfom Blog & Press
                     </Link>
                   </li>

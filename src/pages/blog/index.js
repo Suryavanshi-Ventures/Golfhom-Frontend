@@ -153,17 +153,17 @@ const Index = ({ cards }) => {
       </Container>
 
       {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
-      <Container className={BlogCss.pagination_container}>
+      {/* <Container className={BlogCss.pagination_container}>
         <Pagination
           colorText="#FF0000"
           showQuickJumper={false}
           showSizeChanger={false}
-          defaultCurrent={2}
+          defaultCurrent={1}
           total={500}
           onChange={onChange}
           className={BlogCss.pagination}
         />
-      </Container>
+      </Container> */}
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
