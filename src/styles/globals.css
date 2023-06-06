@@ -123,71 +123,71 @@
 /* BOOTSTRAP CAROUSEL */
 
 .carousel-indicators li {
-  background-color: #dfdfdf;
-  border-radius: 50%;
-  display: inline-block;
-  height: 10px;
-  margin-right: 5px;
-  width: 10px;
+  background-color: #dfdfdf !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  height: 10px !important;
+  margin-right: 5px !important;
+  width: 10px !important;
 }
 .carousel-indicators .active {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
 
 /* FOR NEXT OR PREVIOUS BUTTON */
 
 .carousel-control-next,
 .carousel-control-prev {
-  background-color: #ffffff;
-  border: none;
-  width: 40px;
-  height: 40px;
-  top: 50%;
-  border-radius: 8px;
-  transform: translateY(-50%);
-  opacity: 0.58;
+  background-color: #ffffff !important;
+  border: none !important;
+  width: 40px !important;
+  height: 40px !important;
+  top: 50% !important;
+  border-radius: 8px !important;
+  transform: translateY(-50%) !important;
+  opacity: 0.58 !important;
 }
 
 .carousel-control-next:focus,
 .carousel-control-prev:focus {
-  outline: none;
+  outline: none !important;
 }
 
 .carousel-control-next:hover,
 .carousel-control-prev:hover {
-  background-color: #d0d0d0;
-  opacity: 1;
+  background-color: #d0d0d0 !important;
+  opacity: 1 !important;
 }
 
 .carousel-control-next::after,
 .carousel-control-prev::before {
-  content: "";
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  border-top: 3px solid var(--black-btn-color);
-  border-right: 3px solid var(--black-btn-color);
-  transform: translateX(-50%) translateY(-50%) rotate(-135deg);
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  content: "" !important;
+  display: inline-block !important;
+  width: 13px !important;
+  height: 13px !important;
+  border-top: 3px solid var(--black-btn-color) !important;
+  border-right: 3px solid var(--black-btn-color) !important;
+  transform: translateX(-50%) translateY(-50%) rotate(-135deg) !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
 }
 
 .carousel-control-next::after {
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg) !important;
 }
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
-  display: none;
+  display: none !important;
 }
 
 .carousel-control-next {
-  right: 20px;
+  right: 20px !important;
 }
 
 .carousel-control-prev {
-  left: 20px;
+  left: 20px !important;
 }
 
 /* Define styles for pagination bullets */

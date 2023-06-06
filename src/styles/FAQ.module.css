@@ -26,6 +26,7 @@
 }
 .paragraph {
   font-family: var(--font-poppins);
+  font-size: 0.8rem;
 }
 
 .heading_question {

@@ -5,6 +5,7 @@ import TermConditionsCss from "../styles/TermConditions.module.css";
 import { Button, Col, Container } from "react-bootstrap";
 import BottomSection from "../../common components/bottomGroup";
 import Head from "next/head";
+import Link from "next/link";
 
 const termAndConditions = () => {
   return (
@@ -50,10 +51,10 @@ const termAndConditions = () => {
           limitations of liability and resolution of disputes.
         </p>
 
-        <h4 className={TermConditionsCss.subHeading}>
+        <h5 className={TermConditionsCss.subHeading}>
           1) Website is a Venue, and not a Party to any Rental Agreement or
           Transaction
-        </h4>
+        </h5>
 
         <p className={TermConditionsCss.para}>
           We strongly urge all users to be mindful and responsible when
@@ -85,7 +86,7 @@ const termAndConditions = () => {
           your reservation or related service.
         </p>
 
-        <h4 className={TermConditionsCss.subHeading}>2) Use of the Website</h4>
+        <h5 className={TermConditionsCss.subHeading}>2) Use of the Website</h5>
 
         <p className={TermConditionsCss.para}>
           Users are granted a limited, non-exclusive and revocable license to
@@ -110,11 +111,11 @@ const termAndConditions = () => {
           to the Website are an exception to the above prohibitions).
         </p>
 
-        <h4 className={TermConditionsCss.subHeading}>3) Privacy Policy</h4>
+        <h5 className={TermConditionsCss.subHeading}>3) Privacy Policy</h5>
 
         <p className={TermConditionsCss.para}>
           We respect your privacy and believe in protecting it. Please{" "}
-          <span className={TermConditionsCss.redWords}>CLICK HERE </span> to
+          <Link href="/privacy" className={TermConditionsCss.redWords}>CLICK HERE </Link> to
           review our current Privacy Policy.
         </p>
 
@@ -129,9 +130,9 @@ const termAndConditions = () => {
           User.
         </p>
 
-        <h4 className={TermConditionsCss.subHeading}>
-          4) Copyright Infringement Prohibited Hereon; DMCA Policy
-        </h4>
+        <h5 className={TermConditionsCss.subHeading}>
+          4) Copyright Infringement Prohibited Hereon: DMCA Policy
+        </h5>
 
         <p className={TermConditionsCss.paraL}>
           Website does not permit, and will not be a party to, users violating
@@ -140,7 +141,7 @@ const termAndConditions = () => {
           will freeze or terminate, when appropriate, any property listing or
           user account if copyright infringement is suspected. Please feel free
           to{" "}
-          <span className={TermConditionsCss.redWords}> CONTACT US HERE</span>{" "}
+          <Link href="/contact_us" className={TermConditionsCss.redWords}> CONTACT US HERE</Link>{" "}
           immediately if you believe a copyright violation exists on the
           Website.
         </p>
