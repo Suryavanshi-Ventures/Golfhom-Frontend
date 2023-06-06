@@ -515,6 +515,7 @@
 .midImage {
   display: flex;
   place-self: self-end;
+  cursor: pointer;
 }
 
 .midImgTitle {
@@ -540,6 +541,7 @@
 .twoImgContainer {
   display: grid;
   place-self: end;
+  cursor: pointer;
 }
 
 .madridImg {
@@ -562,7 +564,7 @@
 
 .resortImg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/gaintWheel.webp);
+    url(/images/gaintwheel.webp);
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;

@@ -171,8 +171,12 @@ const Home = () => {
     }
   };
 
-  const latitude = 27.994402;
-  const longitude = -81.760254;
+  const LatitudeSaoPaul = -23.533773;
+  const LongitudeSaoPaul = -46.62529;
+  const SpainMadridLatitude = 40.416775;
+  const SpainMadridLongitude = -3.70379;
+  const AnaheimLatitude = 33.835293;
+  const AnaheimLongitude = -117.914505;
 
   return (
     <>
@@ -266,7 +270,6 @@ const Home = () => {
                       <Col>
                         <h6 className={HomeCss.destination}>
                           {adult + child} Guests
-                          <sup className={HomeCss.important_input_mark}>*</sup>
                         </h6>
                       </Col>
                     </Row>
@@ -339,7 +342,6 @@ const Home = () => {
                       <Col>
                         <h6 className={HomeCss.destination}>
                           {NightsCounter} Nights
-                          <sup className={HomeCss.important_input_mark}>*</sup>
                         </h6>
                       </Col>
                     </Row>
@@ -615,42 +617,93 @@ const Home = () => {
               </div>
             </Col>
 
-            <Col xl={4} lg={4} className={HomeCss.midImage}>
+            <Col
+              onClick={(e) => {
+                e.preventDefault();
+                Router.push({
+                  pathname: `search`,
+                  query: {
+                    longitude: LongitudeSaoPaul,
+                    latitude: LatitudeSaoPaul,
+                    location_name: "Sao Paulo, Brazil",
+                  },
+                });
+              }}
+              xl={4}
+              lg={4}
+              className={HomeCss.midImage}
+            >
               <h6 className={HomeCss.midImgTitle}>
-                <Link
-                  href={`/search?latitude=${encodeURIComponent(
-                    latitude
-                  )}&longitude=${encodeURIComponent(longitude)}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    Router.push({
+                      pathname: `search`,
+                      query: {
+                        longitude: LongitudeSaoPaul,
+                        latitude: LatitudeSaoPaul,
+                        location_name: "Sao Paulo, Brazil",
+                      },
+                    });
+                  }}
                 >
-                  Sao Paulo, New york{" "}
-                </Link>
+                  Sao Paulo, Brazil{" "}
+                </span>
               </h6>
             </Col>
 
-            <Col xl={4} lg={4} className={HomeCss.twoImgContainer}>
+            <Col
+              onClick={(e) => {
+                e.preventDefault();
+                Router.push({
+                  pathname: `search`,
+                  query: {
+                    longitude: SpainMadridLongitude,
+                    latitude: SpainMadridLatitude,
+                    location_name: "The Madrid EDITION",
+                  },
+                });
+              }}
+              xl={4}
+              lg={4}
+              className={HomeCss.twoImgContainer}
+            >
               <div>
                 <h6 className={HomeCss.madridImg}>
-                  <Link
-                    href={`/search?latitude=${encodeURIComponent(
-                      latitude
-                    )}&longitude=${encodeURIComponent(longitude)}`}
-                    style={{ textDecoration: "none", color: "inherit" }}
+                  <span
+                    onClick={(e) => {
+                      e.preventDefault();
+                      Router.push({
+                        pathname: `search`,
+                        query: {
+                          longitude: SpainMadridLongitude,
+                          latitude: SpainMadridLatitude,
+                          location_name: "The Madrid EDITION",
+                        },
+                      });
+                    }}
                   >
                     The Madrid EDITION{" "}
-                  </Link>
+                  </span>
                 </h6>
               </div>
               <div>
                 <h6 className={HomeCss.resortImg}>
-                  <Link
-                    href={`/search?latitude=${encodeURIComponent(
-                      latitude
-                    )}&longitude=${encodeURIComponent(longitude)}`}
-                    style={{ textDecoration: "none", color: "inherit" }}
+                  <span
+                    onClick={(e) => {
+                      e.preventDefault();
+                      Router.push({
+                        pathname: `search`,
+                        query: {
+                          longitude: AnaheimLongitude,
+                          latitude: AnaheimLatitude,
+                          location_name: "The Westin Anaheim Resort",
+                        },
+                      });
+                    }}
                   >
                     The Westin Anaheim Resort{" "}
-                  </Link>
+                  </span>
                 </h6>
               </div>
             </Col>
