@@ -301,6 +301,10 @@
   justify-content: center;
 }
 
+.viewallBtn_link {
+  text-decoration: none;
+}
+
 .viewallBtn:hover {
   background-color: var(--black-btn-color);
   color: var(--white-font-color) !important;

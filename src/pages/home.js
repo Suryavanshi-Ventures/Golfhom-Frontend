@@ -846,7 +846,9 @@ const Home = () => {
           </Col>
 
           <Col md={4} className={HomeCss.viewallBtnParent}>
-            <Button className={HomeCss.viewallBtn}>View All</Button>
+            <Link href="/blog" className={HomeCss.viewallBtn_link}>
+              <Button className={HomeCss.viewallBtn}>View All</Button>
+            </Link>
           </Col>
         </Row>
         <Review reviews={review} />
