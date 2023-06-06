@@ -117,8 +117,24 @@ const Header = ({ name, ...props }) => {
         setLoginModalLgDevice(false);
         SetIsLoggedIn(true);
         handleCancelRegisterLgDevice();
-        sessionStorage.setItem("Uname", response.data.data.user.username);
+        setLoadings(false);
         sessionStorage.setItem("token", response.data.token);
+        //! User Get Profile API Call
+        const Token = response.data.token;
+        const User = axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/profile`,
+          { headers: { Authorization: `Bearer ${Token}` } }
+        );
+        User.then((response) => {
+          if (response.status === 200) {
+            console.log(response, "user authenticated");
+            const LoggedInUserName = response.data.data.user.username;
+            sessionStorage.setItem("Uname", LoggedInUserName);
+            SetUserName(LoggedInUserName);
+          }
+        }).catch((error) => {
+          message.error(error.response.data.message);
+        });
         message.success(response.data.message);
       }
     } catch (error) {

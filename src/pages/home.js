@@ -602,17 +602,17 @@ const Home = () => {
                 </p>
 
                 <div className={HomeCss.explore_more_container}>
-                  <h4 className={HomeCss.subHeading}>
+                  {/* <h4 className={HomeCss.subHeading}>
                     Explore More New Rentals{" "}
-                  </h4>
-                  <div className={HomeCss.explore_more_arrow_container}>
+                  </h4> */}
+                  {/* <div className={HomeCss.explore_more_arrow_container}>
                     <Image
                       src={BlackArrow}
                       alt="BlackArrow"
                       width={22}
                       height={20}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Col>
