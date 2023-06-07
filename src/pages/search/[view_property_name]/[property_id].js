@@ -55,8 +55,8 @@ const ViewProperty = () => {
   const [ShowTotalPaymentTextStatic, setShowTotalPaymentTextStatic] =
     useState(false);
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [adult, setAdult] = useState(0);
-  const [child, setChild] = useState(0);
+  const [adult, setAdult] = useState(1);
+  const [child, setChild] = useState(1);
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -471,10 +471,6 @@ const ViewProperty = () => {
                         </div>
                       </Button>
                     </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.applyParent}>
-                    <Button className={ViewPropertyCss.apply}>Apply</Button>
                   </div>
                 </Dropdown.Menu>
               </Dropdown>
