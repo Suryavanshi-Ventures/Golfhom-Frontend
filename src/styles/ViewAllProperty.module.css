@@ -20,7 +20,9 @@
 .textContainer {
   margin: 30px 0px;
 }
-
+.view_prop_cards_Container {
+  margin: 30px 0;
+}
 .para {
   font-family: var(--font-poppins);
 }
@@ -72,6 +74,7 @@
   border-radius: 0 0px 16px 16px;
   margin-bottom: 0;
   padding-top: 18px;
+  padding-right: 90px;
 }
 
 /*  -----------------     PAGINATION CONTAINER     -----------------   */

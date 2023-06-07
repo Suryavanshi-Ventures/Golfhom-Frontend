@@ -1,11 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import SuccessfullyGif from "../../../../public/images/vector/successfully-done.gif";
 import Checkout2Css from "../../../styles/Checkout2.module.css";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import moment from "moment";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
 const Success = () => {
   const UrlParams = useRouter();
@@ -35,7 +36,7 @@ const Success = () => {
           <h5 className={Checkout2Css.payment_discription}>
             Your payment has been processed
             <br />
-            and its successfully send to the receiver bank
+            successfully!
           </h5>
           <hr />
           <h4 className={Checkout2Css.transaction}>
@@ -50,7 +51,7 @@ const Success = () => {
             <h5 className={Checkout2Css.amount_master}>
               $
               {UrlParams.query.payment_amount
-                ? UrlParams.query.payment_amount
+                ? UrlParams.query.payment_amount / 100
                 : "N/A"}
             </h5>
           </div>
@@ -71,6 +72,19 @@ const Success = () => {
             </h5>
           </div>
           <hr />
+
+          <div className={Checkout2Css.go_to_dashboard_div}>
+            <Button
+              className={Checkout2Css.go_to_dashboard_button}
+              onClick={(e) => {
+                UrlParams.push({
+                  pathname: `/dashboard`,
+                });
+              }}
+            >
+              My Reservations
+            </Button>
+          </div>
         </Row>
       </Container>
     </>

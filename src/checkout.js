@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { React, useContext, useState } from "react";
 import { Elements, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Button, message } from "antd";
 import { AuthContext } from "@/context/auth_context";
@@ -13,9 +13,12 @@ const Checkout = (props) => {
   const elements = useElements();
   console.log("PROPS DATA CHECKOUT", props.data);
   const ContextUserDetails = useContext(AuthContext);
+  const [IsLoading, setIsLoading] = useState(false);
 
   const BookingHotelDone = async () => {
+    setIsLoading(true);
     if (!stripe || !elements) {
+      setIsLoading(false);
       // Stripe.js hasn't yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
@@ -32,6 +35,7 @@ const Checkout = (props) => {
 
     if (error?.code) {
       message.error(error.message);
+      setIsLoading(false);
     } else if (error === undefined && paymentIntent) {
       const BookingRes = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/v1/booking`,
@@ -51,6 +55,8 @@ const Checkout = (props) => {
         }
       );
       if (BookingRes.status === 201) {
+        setIsLoading(false);
+
         console.log("RESPONSE BOOKING API BACKEND", BookingRes);
         console.log("RESPONSE STRIPE PAYMENT INTENT ", paymentIntent);
         Router.push(
@@ -60,7 +66,6 @@ const Checkout = (props) => {
     }
 
     console.log("ERROR - Stripe", error);
-    // message.error(error?.message);
   };
 
   return (
@@ -68,6 +73,7 @@ const Checkout = (props) => {
       <div className={CheckoutCss.checkout_btn_main_div}>
         <div className={CheckoutCss.checkout_btn_div}>
           <Button
+            loading={IsLoading}
             className={CheckoutCss.checkout_btn}
             onClick={BookingHotelDone}
           >

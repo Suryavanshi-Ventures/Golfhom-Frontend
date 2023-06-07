@@ -21,22 +21,13 @@ const bottomGroup = () => {
             ></Image>
           </div>
 
-          <Row className={BottomGroupCss.newBtn}>
-            <Col md={8}>
+          <div className={BottomGroupCss.newBtn}>
+            <div md={8}>
               <h4 className={BottomGroupCss.grouptalkTitle}>
                 THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
               </h4>
-            </Col>
-
-            <Col md={3}>
-              <Link href="/search" className={BottomGroupCss.searchBottom_link}>
-                {" "}
-                <Button className={BottomGroupCss.searchBottom}>
-                  Search
-                </Button>{" "}
-              </Link>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </div>
       </section>
     </>
