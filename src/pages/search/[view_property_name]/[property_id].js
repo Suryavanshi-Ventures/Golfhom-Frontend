@@ -122,20 +122,23 @@ const ViewProperty = () => {
 
   //* THIS USE EFFECT WILL SET THE URL PARAM DATES IN ANTD CALENDAR
   useEffect(() => {
+    const LengthOfAvailDate = AvailabilityCalender?.length - 1;
+    const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
+      "MM-DD-YYYY"
+    );
+    const LastDate = dayjs(
+      AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
+    ).format("MM-DD-YYYY");
     if (Available) {
-      const LengthOfAvailDate = AvailabilityCalender?.length - 1;
-      const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
-        "MM-DD-YYYY"
-      );
-      const LastDate = dayjs(
-        AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
-      ).format("MM-DD-YYYY");
-
       SetBookingDate([StartDate, LastDate]); //SETTING BOOKING DATE TO CREATE PAYMENT INTENT METHOD
       form.setFieldsValue({
         date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
       });
     }
+
+    form.setFieldsValue({
+      date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
+    });
 
     return () => {};
   }, [Available, AvailabilityCalender]);
