@@ -28,7 +28,7 @@ const ViewAllProperty = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=8&latitude=${ParamLatitude}&longitude=${ParamLongitude}&page=1`
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=12&latitude=${ParamLatitude}&longitude=${ParamLongitude}&page=1`
         );
         if (GetPropertyDataRes.status === 200) {
           setAllPropertyData(GetPropertyDataRes.data.data);
@@ -87,7 +87,7 @@ const ViewAllProperty = () => {
         </Container>
       </section>
 
-      <section>
+      <section className={ViewAllPropertyCss.view_prop_cards_Container}>
         <Container>
           <Row className={ViewAllPropertyCss.columnParent}>
             {AllPropertyData.map((Data, Index) => {

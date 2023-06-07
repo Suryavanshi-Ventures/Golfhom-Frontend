@@ -114,12 +114,18 @@
   padding: 0;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
+.inner_input_date_picker_form_item {
+  margin-bottom: 0;
+}
+
 .inner_input_date_picker {
-  padding: 6px 24px;
+  /* padding: 6px 24px; */
   border-color: var(--btn-background-secondary);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-family: var(--font-poppins);
 }
 
 .inner_input_date_picker:hover {
@@ -175,6 +181,9 @@
   color: var(--white-font-color);
   border: none;
   font-weight: 500;
+  font-size: 16px;
+  padding: 12px 50px;
+  height: auto;
 }
 
 .bookNow:hover {
@@ -379,14 +388,14 @@
   padding: 12px 56px;
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 26px 0px;
   height: auto;
+  margin-top: 15px;
+  margin-bottom: 22px;
 }
 
 .contact:hover {
-  background-color: var(--white-background);
-  color: var(--black-color);
-  border: 1px solid black;
+  background-color: var(--btn-background-secondary);
+  color: var(--white-font-color) !important;
 }
 
 /* --------------          REGISTER BLOCK        ---------------   */

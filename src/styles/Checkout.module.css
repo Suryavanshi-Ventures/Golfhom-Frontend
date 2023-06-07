@@ -5,7 +5,7 @@
 }
 
 .checkout_btn {
-  background-color: var(--btn-background-secondary);
+  background-color: var(--success-green);
   color: var(--white-font-color);
   padding: 6px 40px;
   font-size: 1.1rem;
@@ -14,7 +14,7 @@
 }
 
 .checkout_btn:hover {
-  background-color: var(--black-btn-color);
+  background-color: var(--btn-background-secondary);
   border-color: var(--white-font-color) !important;
   color: var(--white-font-color) !important;
 }

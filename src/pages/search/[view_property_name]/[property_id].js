@@ -14,6 +14,7 @@ import {
   Image,
   Button,
   DatePicker,
+  Form,
 } from "antd";
 import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
@@ -31,11 +32,9 @@ import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement } from "@stripe/react-stripe-js";
 const { RangePicker } = DatePicker;
-// import DatePicker from "react-multi-date-picker";
 import Checkout from "../../../checkout";
 import moment from "moment";
 import dayjs from "dayjs";
-
 const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
@@ -48,7 +47,6 @@ const ViewProperty = () => {
   const [BookingDate, SetBookingDate] = useState([]);
   const [PaymentIntentObject, setPaymentIntentObject] = useState(null);
   const [Options, setOptions] = useState(null);
-  const [Availability, setAvailability] = useState({});
   const [NotAvailable, setNotAvailable] = useState(false);
   const [Available, setAvailable] = useState(false);
   const [ShowTotalPaymentText, setShowTotalPaymentText] = useState(false);
@@ -57,12 +55,10 @@ const ViewProperty = () => {
   const [ShowTotalPaymentTextStatic, setShowTotalPaymentTextStatic] =
     useState(false);
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [adult, setAdult] = useState(0);
-  const [child, setChild] = useState(0);
-  const [DateInputValues, setDateInputValues] = useState([
-    dayjs(Params.from).format("MM-DD-YYYY"),
-    dayjs(Params.to).format("MM-DD-YYYY"),
-  ]);
+  const [adult, setAdult] = useState(null);
+  const [child, setChild] = useState(null);
+  const [form] = Form.useForm();
+
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
@@ -94,9 +90,7 @@ const ViewProperty = () => {
             `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${Params.property_id}?from=${Params.from}&to=${Params.to}`
           );
           if (CheckAvailRes.status === 200) {
-            setAvailability(CheckAvailRes.data);
             setAvailabilityCalender(CheckAvailRes.data.data.calender);
-
             if (CheckAvailRes.data?.data?.available) {
               setAvailable(true);
               setNotAvailable(false);
@@ -136,10 +130,10 @@ const ViewProperty = () => {
         AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
       ).format("MM-DD-YYYY");
 
-      setDateInputValues([
-        dayjs(StartDate).format("MM-DD-YYYY"),
-        dayjs(LastDate).format("MM-DD-YYYY"),
-      ]);
+      SetBookingDate([StartDate, LastDate]); //SETTING BOOKING DATE TO CREATE PAYMENT INTENT METHOD
+      form.setFieldsValue({
+        date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
+      });
     }
 
     return () => { };
@@ -148,8 +142,6 @@ const ViewProperty = () => {
   const onTabChange = (key) => {
     console.log(key);
   };
-
-  console.log(DateInputValues, "DATES OF AVALABILITY");
 
   const items = [
     {
@@ -162,6 +154,7 @@ const ViewProperty = () => {
   const incAdult = () => {
     setAdult(adult + 1);
   };
+  console.log(typeof adult, "ADULT VALUE", typeof Params.adults);
 
   const decAdult = () => {
     if (adult > 0) {
@@ -255,10 +248,30 @@ const ViewProperty = () => {
   };
 
   const OnChangeDateInput = (date, DateValue) => {
-    setDateInputValues(["", ""]);
-    // setDateInputValues([dayjs(DateValue[0]), dayjs(DateValue[1])]);
+    if (DateValue[0] || DateValue[1]) {
+      SetBookingDate([DateValue[0], DateValue[1]]);
+      const CheckAvail = async () => {
+        try {
+          const CheckAvailRes = await axios.get(
+            `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${Params.property_id}?from=${DateValue[0]}&to=${DateValue[1]}`
+          );
+          if (CheckAvailRes.status === 200) {
+            setAvailabilityCalender(CheckAvailRes.data.data.calender);
+            if (CheckAvailRes.data?.data?.available) {
+              setAvailable(true);
+              setNotAvailable(false);
+            } else if (CheckAvailRes.data?.data?.available != true) {
+              setAvailable(false);
+              setNotAvailable(true);
+            }
+          }
+        } catch (error) {
+          console.log(error, "ERROR CheckAvailability");
+        }
+      };
+      CheckAvail();
+    }
 
-    // SetBookingDate(DateValue);
     console.log(DateValue, "DATEEE VALUE");
   };
 
@@ -325,7 +338,7 @@ const ViewProperty = () => {
               ) : (
                 ""
               )}
-              <Row className={ViewPropertyCss.inner_input_date_picker}>
+              <div className={ViewPropertyCss.inner_input_date_picker}>
                 {/* <RangePicker
                   size="large"
                   style={{ width: "100%" }}
@@ -345,7 +358,7 @@ const ViewProperty = () => {
                   ></NextImage>
                 </Col> */}
 
-                <Col md={10}>
+                <div>
                   {/* <DatePicker
                     value={DateInputValues}
                     format={"MM-DD-YYYY"}
@@ -354,8 +367,26 @@ const ViewProperty = () => {
                     dateSeparator=" - "
                     className={ViewPropertyCss.inner_input_date_picker}
                   /> */}
-                  <RangePicker
-                    defaultValue={[
+                  <Form name="control-hooks" layout="horizontal" form={form}>
+                    <Form.Item
+                      name="date_picker"
+                      className={
+                        ViewPropertyCss.inner_input_date_picker_form_item
+                      }
+                    >
+                      <RangePicker
+                        className={ViewPropertyCss.inner_input_date_picker}
+                        format={"MM-DD-YYYY"}
+                        onChange={OnChangeDateInput}
+                        disabledDate={(current) => {
+                          return current && current < dayjs().startOf("day");
+                        }}
+                      />
+                    </Form.Item>
+                  </Form>
+
+                  {/* <RangePicker
+                    value={[
                       dayjs(DateInputValues[0]),
                       dayjs(DateInputValues[1]),
                     ]}
@@ -364,9 +395,9 @@ const ViewProperty = () => {
                       return current && current < dayjs().startOf("day");
                     }}
                     format={"MM-DD-YYYY"}
-                  />
-                </Col>
-              </Row>
+                  /> */}
+                </div>
+              </div>
 
               <hr />
 
@@ -389,9 +420,7 @@ const ViewProperty = () => {
                       </Dropdown.Item>
                     </div>
 
-                    <div
-                      className={ViewPropertyCss.geust_incri_btns_div}
-                    >
+                    <div className={ViewPropertyCss.geust_incri_btns_div}>
                       <Button className={ViewPropertyCss.increaseAdult}>
                         <div
                           className={ViewPropertyCss.decreasebtn}
@@ -422,9 +451,7 @@ const ViewProperty = () => {
                       </Dropdown.Item>
                     </div>
 
-                    <div
-                      className={ViewPropertyCss.geust_incri_btns_div}
-                    >
+                    <div className={ViewPropertyCss.geust_incri_btns_div}>
                       <Button className={ViewPropertyCss.increaseAdult}>
                         <div
                           className={ViewPropertyCss.decreasebtn}
