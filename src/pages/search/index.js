@@ -27,6 +27,7 @@ import axios from "axios";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
+import dayjs from "dayjs";
 const { RangePicker } = DatePicker;
 const placesLibrary = ["places"];
 
@@ -43,6 +44,8 @@ const Index = () => {
   const [SearchOptions, setSearchOptions] = useState([]);
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
+  const [Available, setAvailable] = useState(false);
+  const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
   const [UpdateSortByText, setUpdateSortByText] = useState(
     "Price (High to Low)"
   );
@@ -91,6 +94,40 @@ const Index = () => {
     } else {
       message.error("Please enter text");
     }
+  };
+
+  const [DateInputValues, setDateInputValues] = useState([
+    dayjs(param.from).format("MM-DD-YYYY"),
+    dayjs(param.to).format("MM-DD-YYYY"),
+  ]);
+
+  console.log(DateInputValues, "DATES OF AVALABILITY");
+
+  //* THIS USE EFFECT WILL SET THE URL PARAM DATES IN ANTD CALENDAR
+  useEffect(() => {
+    if (Available) {
+      const LengthOfAvailDate = AvailabilityCalender?.length - 1;
+      const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
+        "MM-DD-YYYY"
+      );
+      const LastDate = dayjs(
+        AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
+      ).format("MM-DD-YYYY");
+
+      setDateInputValues([
+        dayjs(StartDate).format("MM-DD-YYYY"),
+        dayjs(LastDate).format("MM-DD-YYYY"),
+      ]);
+    }
+    return () => { };
+  }, [Available, AvailabilityCalender]);
+
+  const OnChangeDateInput = (date, DateValue) => {
+    setDateInputValues(["", ""]);
+    // setDateInputValues([dayjs(DateValue[0]), dayjs(DateValue[1])]);
+
+    // SetBookingDate(DateValue);
+    console.log(DateValue, "DATEEE VALUE");
   };
 
   const EditBtn = () => {
@@ -367,13 +404,25 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      <RangePicker
+                      {/* <RangePicker
                         size="large"
                         disabledDate={(current) => {
                           return current && current < moment().startOf("day");
                         }}
                         onChange={OnChangeDateRange}
                         className={SearchIndexCss.edit_details_date_picker}
+                      /> */}
+
+                      <RangePicker
+                        defaultValue={[
+                          dayjs(DateInputValues[0]),
+                          dayjs(DateInputValues[1]),
+                        ]}
+                        onChange={OnChangeDateInput}
+                        disabledDate={(current) => {
+                          return current && current < dayjs().startOf("day");
+                        }}
+                        format={"MM-DD-YYYY"}
                       />
                     </div>
                   </div>
