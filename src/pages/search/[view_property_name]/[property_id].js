@@ -55,8 +55,8 @@ const ViewProperty = () => {
   const [ShowTotalPaymentTextStatic, setShowTotalPaymentTextStatic] =
     useState(false);
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [adult, setAdult] = useState(0);
-  const [child, setChild] = useState(0);
+  const [adult, setAdult] = useState(1);
+  const [child, setChild] = useState(1);
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -128,20 +128,23 @@ const ViewProperty = () => {
 
   //* THIS USE EFFECT WILL SET THE URL PARAM DATES IN ANTD CALENDAR
   useEffect(() => {
+    const LengthOfAvailDate = AvailabilityCalender?.length - 1;
+    const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
+      "MM-DD-YYYY"
+    );
+    const LastDate = dayjs(
+      AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
+    ).format("MM-DD-YYYY");
     if (Available) {
-      const LengthOfAvailDate = AvailabilityCalender?.length - 1;
-      const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
-        "MM-DD-YYYY"
-      );
-      const LastDate = dayjs(
-        AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
-      ).format("MM-DD-YYYY");
-
       SetBookingDate([StartDate, LastDate]); //SETTING BOOKING DATE TO CREATE PAYMENT INTENT METHOD
       form.setFieldsValue({
         date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
       });
     }
+
+    form.setFieldsValue({
+      date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
+    });
 
     return () => { };
   }, [Available, AvailabilityCalender]);
@@ -477,10 +480,6 @@ const ViewProperty = () => {
                         </div>
                       </Button>
                     </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.applyParent}>
-                    <Button className={ViewPropertyCss.apply}>Apply</Button>
                   </div>
                 </Dropdown.Menu>
               </Dropdown>

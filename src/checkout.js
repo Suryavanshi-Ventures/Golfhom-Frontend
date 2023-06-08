@@ -60,7 +60,7 @@ const Checkout = (props) => {
         console.log("RESPONSE BOOKING API BACKEND", BookingRes);
         console.log("RESPONSE STRIPE PAYMENT INTENT ", paymentIntent);
         Router.push(
-          `http://localhost:3000/search/view_property/success?transaction_id=${paymentIntent.id}&payment_method=${paymentIntent.payment_method_types[0]}&payment_status=${paymentIntent.status}&payment_amount=${paymentIntent.amount}&payment_currency=${paymentIntent.currency}`
+          `https://golfhom.com/search/view_property/success?transaction_id=${paymentIntent.id}&payment_method=${paymentIntent.payment_method_types[0]}&payment_status=${paymentIntent.status}&payment_amount=${paymentIntent.amount}&payment_currency=${paymentIntent.currency}`
         );
       }
     }
