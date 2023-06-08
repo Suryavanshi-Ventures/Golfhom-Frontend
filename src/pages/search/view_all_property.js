@@ -7,41 +7,101 @@ import Image from "next/image";
 import ViewAllProps from "../../../public/images/viewAllProps.png";
 import BottomSection from "../../../common components/bottomGroup";
 import { Pagination } from "antd";
-import Florida from "../../../public/images/Florida.webp";
-import Arizona from "../../../public/images/Arizona.webp";
-import Sanfrancisco from "../../../public/images/SanFrancisco.webp";
-import Newyork from "../../../public/images/NewYork.webp";
 import { useRouter } from "next/router";
 import axios from "axios";
+import PropNotFoundImg from "../../../public/images/vector/golf-hole.png";
+import Loader from "../../../common components/loader";
 
 const ViewAllProperty = () => {
   const RouterRef = useRouter();
+  const [AllPropertyDataFlorida, setAllPropertyDataFlorida] = useState([{}]);
+  const [AllPropertyDataArizona, setAllPropertyDataArizona] = useState([{}]);
+  const [AllPropertyDataHawaii, setAllPropertyDataHawaii] = useState([{}]);
+  const [AllPropertyDataSouthCarolina, setAllPropertyDataSouthCarolina] =
+    useState([{}]);
+  const [IsLoaderVisible, setIsLoaderVisible] = useState(true);
 
-  const [AllPropertyData, setAllPropertyData] = useState([{}]);
+  const FloridaLat = 27.994402;
+  const FloridaLong = -81.760254;
+  const ArizonaLat = 34.048927;
+  const ArizonaLong = -111.093735;
+  const HawaiiLat = 19.741755;
+  const HawaiiLong = -155.844437;
+  const SouthCarolinaLat = 33.836082;
+  const SouthCarolinaLong = -81.163727;
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const ParamLatitude = urlParams.get("latitude");
-    const ParamLongitude = urlParams.get("longitude");
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const ParamLatitude = urlParams.get("latitude");
+    // const ParamLongitude = urlParams.get("longitude");
 
-    console.log(ParamLongitude);
-    const GetPropDataFunc = async () => {
+    // console.log(ParamLongitude);
+    const GetPropDataFloridaFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=12&latitude=${ParamLatitude}&longitude=${ParamLongitude}&page=1`
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=12&latitude=${FloridaLat}&longitude=${FloridaLong}&page=1&sort=createdAt`
         );
         if (GetPropertyDataRes.status === 200) {
-          setAllPropertyData(GetPropertyDataRes.data.data);
+          setAllPropertyDataFlorida(GetPropertyDataRes.data.data);
+          setIsLoaderVisible(false);
           console.log(GetPropertyDataRes.data.data);
         }
       } catch (error) {
         console.log("ERROR getting property data", error);
       }
     };
-    GetPropDataFunc();
+    GetPropDataFloridaFunc();
+
+    const GetPropDataArizonaFunc = async () => {
+      try {
+        const GetPropertyDataRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=12&latitude=${ArizonaLat}&longitude=${ArizonaLong}&page=1&sort=createdAt`
+        );
+        if (GetPropertyDataRes.status === 200) {
+          setAllPropertyDataArizona(GetPropertyDataRes.data.data);
+          console.log(GetPropertyDataRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR getting property data", error);
+      }
+    };
+    GetPropDataArizonaFunc();
+
+    const GetPropDataHawaiiFunc = async () => {
+      try {
+        const GetPropertyDataRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=12&latitude=${HawaiiLat}&longitude=${HawaiiLong}&page=1&sort=createdAt`
+        );
+        if (GetPropertyDataRes.status === 200) {
+          setAllPropertyDataHawaii(GetPropertyDataRes.data.data);
+          console.log(GetPropertyDataRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR getting property data", error);
+      }
+    };
+    GetPropDataHawaiiFunc();
+
+    const GetPropDataSouthCarolinaLatFunc = async () => {
+      try {
+        const GetPropertyDataRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property?limit=12&latitude=${SouthCarolinaLat}&longitude=${SouthCarolinaLong}&page=1&sort=createdAt`
+        );
+        if (GetPropertyDataRes.status === 200) {
+          setAllPropertyDataSouthCarolina(GetPropertyDataRes.data.data);
+          console.log(GetPropertyDataRes.data.data);
+        }
+      } catch (error) {
+        console.log("ERROR getting property data", error);
+      }
+    };
+    GetPropDataSouthCarolinaLatFunc();
 
     return () => {
-      GetPropDataFunc();
+      GetPropDataFloridaFunc();
+      GetPropDataArizonaFunc();
+      GetPropDataHawaiiFunc();
+      GetPropDataSouthCarolinaLatFunc();
     };
   }, []);
 
@@ -66,7 +126,8 @@ const ViewAllProperty = () => {
       <section className={ViewAllPropertyCss.textContainer}>
         <Container>
           <h2 className={ViewAllPropertyCss.heading}>
-            Find Great Vacation Rentals near Florida & Arizona
+            Find Great Vacation Rentals near Florida, Arizona, Hawaii & South
+            Carolina
           </h2>
 
           <h2 className={ViewAllPropertyCss.golfCourse}> Golf Courses!</h2>
@@ -90,31 +151,214 @@ const ViewAllProperty = () => {
       <section className={ViewAllPropertyCss.view_prop_cards_Container}>
         <Container>
           <Row className={ViewAllPropertyCss.columnParent}>
-            {AllPropertyData.map((Data, Index) => {
-              return (
-                <span
-                  onClick={(e) => {
-                    RouterRef.push({
-                      pathname: `/search/${encodeURIComponent(Data.name)}/${
-                        Data.id
-                      }`,
-                    });
-                  }}
-                  key={Index}
-                  className={ViewAllPropertyCss.columnsA}
-                >
-                  <Image
-                    fill
-                    src={Data.imageUrl}
-                    className={ViewAllPropertyCss.card_image}
-                    alt="Florida"
-                  ></Image>
-                  <h4 className={ViewAllPropertyCss.countryName}>
-                    {Data.name}
-                  </h4>
-                </span>
-              );
-            })}
+            {/* FLORDIA */}
+            <h2 className={ViewAllPropertyCss.heading}>Florida</h2>
+            {IsLoaderVisible ? (
+              <>
+                <div className={ViewAllPropertyCss.loader_main_div}>
+                  <Loader />
+                </div>
+              </>
+            ) : !IsLoaderVisible && AllPropertyDataFlorida.length === 0 ? (
+              <div className={ViewAllPropertyCss.no_property_main_div}>
+                <Image
+                  width={70}
+                  height={70}
+                  src={PropNotFoundImg}
+                  alt="property not found"
+                  className={ViewAllPropertyCss.no_property_image}
+                ></Image>
+                <p className={ViewAllPropertyCss.no_property_text}>
+                  No Property Found!
+                </p>
+              </div>
+            ) : (
+              <>
+                {" "}
+                {AllPropertyDataFlorida.map((Data, Index) => {
+                  return (
+                    <span
+                      onClick={(e) => {
+                        RouterRef.push({
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${
+                            Data.id
+                          }`,
+                        });
+                      }}
+                      key={Index}
+                      className={ViewAllPropertyCss.columnsA}
+                    >
+                      <Image
+                        fill
+                        src={Data.imageUrl}
+                        className={ViewAllPropertyCss.card_image}
+                        alt="Florida"
+                      ></Image>
+                      <h4 className={ViewAllPropertyCss.countryName}>
+                        {Data.name}
+                      </h4>
+                    </span>
+                  );
+                })}{" "}
+              </>
+            )}
+
+            {/* Arizona */}
+            <h2 className={ViewAllPropertyCss.heading}>Arizona</h2>
+            {IsLoaderVisible ? (
+              <>
+                <div className={ViewAllPropertyCss.loader_main_div}>
+                  <Loader />
+                </div>
+              </>
+            ) : !IsLoaderVisible && AllPropertyDataArizona.length === 0 ? (
+              <div className={ViewAllPropertyCss.no_property_main_div}>
+                <Image
+                  width={70}
+                  height={70}
+                  src={PropNotFoundImg}
+                  alt="property not found"
+                  className={ViewAllPropertyCss.no_property_image}
+                ></Image>
+                <p className={ViewAllPropertyCss.no_property_text}>
+                  No Property Found!
+                </p>
+              </div>
+            ) : (
+              <>
+                {" "}
+                {AllPropertyDataArizona.map((Data, Index) => {
+                  return (
+                    <span
+                      onClick={(e) => {
+                        RouterRef.push({
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${
+                            Data.id
+                          }`,
+                        });
+                      }}
+                      key={Index}
+                      className={ViewAllPropertyCss.columnsA}
+                    >
+                      <Image
+                        fill
+                        src={Data.imageUrl}
+                        className={ViewAllPropertyCss.card_image}
+                        alt="Florida"
+                      ></Image>
+                      <h4 className={ViewAllPropertyCss.countryName}>
+                        {Data.name}
+                      </h4>
+                    </span>
+                  );
+                })}{" "}
+              </>
+            )}
+
+            {/* Hawaii */}
+            <h2 className={ViewAllPropertyCss.heading}>Hawaii</h2>
+            {IsLoaderVisible ? (
+              <>
+                <div className={ViewAllPropertyCss.loader_main_div}>
+                  <Loader />
+                </div>
+              </>
+            ) : !IsLoaderVisible && AllPropertyDataHawaii.length === 0 ? (
+              <div className={ViewAllPropertyCss.no_property_main_div}>
+                <Image
+                  width={70}
+                  height={70}
+                  src={PropNotFoundImg}
+                  alt="property not found"
+                  className={ViewAllPropertyCss.no_property_image}
+                ></Image>
+                <p className={ViewAllPropertyCss.no_property_text}>
+                  No Property Found!
+                </p>
+              </div>
+            ) : (
+              <>
+                {" "}
+                {AllPropertyDataHawaii.map((Data, Index) => {
+                  return (
+                    <span
+                      onClick={(e) => {
+                        RouterRef.push({
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${
+                            Data.id
+                          }`,
+                        });
+                      }}
+                      key={Index}
+                      className={ViewAllPropertyCss.columnsA}
+                    >
+                      <Image
+                        fill
+                        src={Data.imageUrl}
+                        className={ViewAllPropertyCss.card_image}
+                        alt="Florida"
+                      ></Image>
+                      <h4 className={ViewAllPropertyCss.countryName}>
+                        {Data.name}
+                      </h4>
+                    </span>
+                  );
+                })}{" "}
+              </>
+            )}
+
+            <h2 className={ViewAllPropertyCss.heading}>South Carolina</h2>
+            {/* South Carolina */}
+            {IsLoaderVisible ? (
+              <>
+                <div className={ViewAllPropertyCss.loader_main_div}>
+                  <Loader />
+                </div>
+              </>
+            ) : !IsLoaderVisible &&
+              AllPropertyDataSouthCarolina.length === 0 ? (
+              <div className={ViewAllPropertyCss.no_property_main_div}>
+                <Image
+                  width={70}
+                  height={70}
+                  src={PropNotFoundImg}
+                  alt="property not found"
+                  className={ViewAllPropertyCss.no_property_image}
+                ></Image>
+                <p className={ViewAllPropertyCss.no_property_text}>
+                  No Property Found!
+                </p>
+              </div>
+            ) : (
+              <>
+                {" "}
+                {AllPropertyDataSouthCarolina.map((Data, Index) => {
+                  return (
+                    <span
+                      onClick={(e) => {
+                        RouterRef.push({
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${
+                            Data.id
+                          }`,
+                        });
+                      }}
+                      key={Index}
+                      className={ViewAllPropertyCss.columnsA}
+                    >
+                      <Image
+                        fill
+                        src={Data.imageUrl}
+                        className={ViewAllPropertyCss.card_image}
+                        alt="Florida"
+                      ></Image>
+                      <h4 className={ViewAllPropertyCss.countryName}>
+                        {Data.name}
+                      </h4>
+                    </span>
+                  );
+                })}{" "}
+              </>
+            )}
           </Row>
         </Container>
       </section>

@@ -8,9 +8,10 @@
 }
 
 .heading {
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   color: #2f2f2f;
   font-weight: 600;
+  font-size: 30px;
 }
 
 .golfCourse {
@@ -23,6 +24,25 @@
 .view_prop_cards_Container {
   margin: 30px 0;
 }
+.loader_main_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+.no_property_main_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+  justify-content: center;
+}
+
+.no_property_text {
+  margin-top: 20px;
+  font-family: var(--font-poppins);
+}
+
 .para {
   font-family: var(--font-poppins);
 }
