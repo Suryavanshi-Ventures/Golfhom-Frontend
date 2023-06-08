@@ -108,7 +108,12 @@ const ViewBlog = () => {
           <section className={BlogCss.view_blog_middle_text_section}>
             <main className={BlogCss.view_blog_middle_main_div}>
               <div className={BlogCss.view_blog_middle_text_para}>
-                {BlogData?.body ? BlogData?.body : <Skeleton active />}
+                {/* {BlogData?.body ? BlogData?.body : <Skeleton active />} */}
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: BlogData?.body,
+                  }}
+                />
               </div>
             </main>
           </section>

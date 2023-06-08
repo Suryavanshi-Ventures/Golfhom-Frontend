@@ -19,19 +19,19 @@
 
   {
     "id": 7,
-    "image": "/images/SanFrancisco.webp",
-    "name": "San Francisco",
+    "image": "/images/hawaii_citi.webp",
+    "name": "Hawaii",
     "next": "/images/vector/forwardArrow.svg",
-    "lat": 37.773972,
-    "lng": -122.431297
+    "lat": 19.741755,
+    "lng": -155.844437
   },
 
   {
     "id": 8,
-    "image": "/images/NewYork.webp",
-    "name": "New York",
-    "next": "/images/vector/forwardArrow.svg",
-    "lat": 40.73061,
-    "lng": -73.935242
+    "image": "/images/san_francisco_citi.webp",
+    "name": "South Carolina",
+    "next": "/images/vector/san_francisco_citi.webp",
+    "lat": 33.836082,
+    "lng": -81.163727
   }
 ]

@@ -273,8 +273,11 @@
 .countryName {
   font-family: var(--font-amiri);
   position: relative;
-  left: 30px;
-  bottom: 56px;
+  left: 0px;
+  padding: 10px 15px;
+  background: linear-gradient(45deg, black, #0000004d);
+  bottom: 32px;
+  border-radius: 0px 0px 16px 16px;
   color: var(--white-font-color);
 }
 

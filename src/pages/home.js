@@ -379,7 +379,8 @@ const Home = () => {
       <Container>
         <div className={HomeCss.golfCourses}>
           <h2 className={HomeCss.main_golfHeading}>
-            Find Great Vacation Rentals near Florida & Arizona{" "}
+            Find Great Vacation Rentals near Florida, Arizona, Hawaii & South
+            Carolina
           </h2>
           <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
