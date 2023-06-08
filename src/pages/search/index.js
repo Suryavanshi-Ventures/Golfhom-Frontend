@@ -69,6 +69,7 @@ const Index = () => {
   const [InputValue, setInputValue] = useState(
     param.location_name ? param.location_name : ""
   );
+  console.log(InputValue, 'input value');
 
   const onLoad = (autocomplete) => {
     setSearchResult(autocomplete);
@@ -85,12 +86,9 @@ const Index = () => {
       const name = place.name;
       const status = place.business_status;
       const formattedAddress = place.formatted_address;
-      console.log(`Name: ${name}`);
-      console.log(`Business Status: ${status}`);
-      console.log(`Formatted Address: ${formattedAddress}`);
-      setInputValue({
-        search_input: formattedAddress,
-      });
+      // console.log(`Name: ${name}`);
+      // console.log(`Business Status: ${status}`);
+      // console.log(`Formatted Address: ${formattedAddress}`);
     } else {
       message.error("Please enter text");
     }
@@ -371,6 +369,7 @@ const Index = () => {
                             className={SearchIndexCss.inner_input_box}
                             size="large"
                             value={InputValue}
+                            // value={param.location_name}
                             onChange={OnSearchInputChange}
                             name="search_input"
                             allowClear
