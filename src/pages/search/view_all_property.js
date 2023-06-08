@@ -130,9 +130,7 @@ const ViewAllProperty = () => {
             Find Great Vacation Rentals near Florida, Arizona, Hawaii & South
             Carolina
           </h2>
-
           <h2 className={ViewAllPropertyCss.golfCourse}> Golf Courses!</h2>
-
           <p className={ViewAllPropertyCss.para}>
             Florida, Arizona, Hawaii, South Carolina - All renowned for their
             beautiful surroundings, outdoor lifestyles, & of course for having
@@ -143,7 +141,6 @@ const ViewAllProperty = () => {
             locate and book their next luxury golf vacation rental. Book with us
             today!
           </p>
-
           <p className={ViewAllPropertyCss.para}>
             Golfhōm is transforming how golfers locate and book their next
             luxury golf vacation rental. Book with us today!

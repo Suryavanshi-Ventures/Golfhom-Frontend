@@ -270,7 +270,7 @@
 }
 
 .countryName {
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   position: relative;
   left: 0px;
   padding: 10px 15px;
@@ -278,6 +278,7 @@
   bottom: 32px;
   border-radius: 0px 0px 16px 16px;
   color: var(--white-font-color);
+  font-size: 20px;
 }
 
 .viewallBtnParent {
