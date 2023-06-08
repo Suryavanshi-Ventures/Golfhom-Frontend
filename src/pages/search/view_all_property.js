@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { React, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -133,12 +134,14 @@ const ViewAllProperty = () => {
           <h2 className={ViewAllPropertyCss.golfCourse}> Golf Courses!</h2>
 
           <p className={ViewAllPropertyCss.para}>
-            Arizona and Florida are renowned for their beautiful surroundings,
-            outdoor lifestyles, & of course for having some of the world’s best
-            golf courses! Golfhōm has a growing selection of golf
-            course-vicinity vacation rentals that deliver the comforts of home,
-            luxe amenities, and access to plenty of Arizona and Florida
-            attractions!{" "}
+            Florida, Arizona, Hawaii, South Carolina - All renowned for their
+            beautiful surroundings, outdoor lifestyles, & of course for having
+            some of the world's best golf courses. Golfhōm has a growing
+            selection of golf course-vicinity vacation rentals that deliver the
+            comforts and conveniences of home, luxe amenities, and access to
+            plenty of local attractions. Golfhōm is transforming how golfers
+            locate and book their next luxury golf vacation rental. Book with us
+            today!
           </p>
 
           <p className={ViewAllPropertyCss.para}>
@@ -307,8 +310,8 @@ const ViewAllProperty = () => {
               </>
             )}
 
-            <h2 className={ViewAllPropertyCss.heading}>South Carolina</h2>
             {/* South Carolina */}
+            <h2 className={ViewAllPropertyCss.heading}>South Carolina</h2>
             {IsLoaderVisible ? (
               <>
                 <div className={ViewAllPropertyCss.loader_main_div}>
