@@ -107,14 +107,14 @@ const ViewBlog = () => {
         {BlogData?.body ? (
           <section className={BlogCss.view_blog_middle_text_section}>
             <main className={BlogCss.view_blog_middle_main_div}>
-              <pre className={BlogCss.view_blog_middle_text_para}>
+              <div className={BlogCss.view_blog_middle_text_para}>
                 {/* {BlogData?.body ? BlogData?.body : <Skeleton active />} */}
                 <p
                   dangerouslySetInnerHTML={{
                     __html: BlogData?.body,
                   }}
                 />
-              </pre>
+              </div>
             </main>
           </section>
         ) : (
