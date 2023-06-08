@@ -39,16 +39,14 @@ const Index = () => {
   const [PaginationState, setPagination] = useState(1);
   const [Parentindex, setParentindex] = useState([]);
   const [isVisible, setIsVisible] = useState(true);
-  const [SortBy, setSortBy] = useState("price");
+  const [SortBy, setSortBy] = useState("createdAt");
   const [SortByParam, setSortByParam] = useState("");
   const [SearchOptions, setSearchOptions] = useState([]);
   const [searchResult, setSearchResult] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [Available, setAvailable] = useState(false);
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [UpdateSortByText, setUpdateSortByText] = useState(
-    "Price (High to Low)"
-  );
+  const [UpdateSortByText, setUpdateSortByText] = useState("Date New to Old");
   const [TotalDataCount, setTotalDataCount] = useState();
   const param = Router.query;
   const [IsLoaderVisible, setIsLoaderVisible] = useState(true);
@@ -117,7 +115,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => { };
+    return () => {};
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -136,8 +134,10 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -152,7 +152,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     param.from,
     param.guest,
@@ -192,9 +192,12 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${
+          "to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -495,7 +498,7 @@ const Index = () => {
               <div className={SearchIndexCss.orlandParent}>
                 <div className={SearchIndexCss.sortSection}>
                   <h5 className={SearchIndexCss.rental}>
-                    {LengthOfProperty} Rentals
+                    {TotalDataCount} Rentals
                   </h5>
 
                   <div className={SearchIndexCss.sortdiv}>
@@ -619,7 +622,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -628,7 +632,8 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}
@@ -644,7 +649,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -665,7 +671,8 @@ const Index = () => {
                             <h5
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}

@@ -47,9 +47,9 @@
 }
 
 .carouselHeading {
-  font-family: var(--font-amiri);
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 1.1rem;
   margin-top: 24px;
   color: var(--black-color);
   text-decoration: none !important;

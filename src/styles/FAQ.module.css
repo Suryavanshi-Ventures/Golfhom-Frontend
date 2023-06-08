@@ -16,6 +16,8 @@
 }
 
 .heading_question {
+  font-family: var(--font-poppins);
+  font-weight: 600;
   margin-bottom: 4rem;
 }
 
@@ -27,11 +29,6 @@
 .paragraph {
   font-family: var(--font-poppins);
   font-size: 0.8rem;
-}
-
-.heading_question {
-  font-family: var(--font-amiri);
-  font-weight: 600;
 }
 
 .faqRow {

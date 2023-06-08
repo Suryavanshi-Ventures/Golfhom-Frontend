@@ -13,6 +13,7 @@ import GolfBeginners from "../../public/images/golfBeginners.webp";
 import Bleav from "../../public/images/bleav.webp";
 import WhiteNext from "../../public/images/vector/whiteNext.svg";
 import Head from "next/head";
+import Link from "next/link";
 
 const BlogsAndPodcasts = () => {
   return (
@@ -23,6 +24,7 @@ const BlogsAndPodcasts = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {/*   --------------------------   TOP IMAGE SECTION       ------------------------    */}
 
       <div className={PodcastCss.topImageParent}>
@@ -45,21 +47,26 @@ const BlogsAndPodcasts = () => {
               fill
               className={PodcastCss.imageChild}
             ></Image>
-
-            <div className={PodcastCss.textImg}>
-              <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
-              <div className={PodcastCss.readNext}>
-                <p className={PodcastCss.read}>Read more</p>
-                <div className={PodcastCss.nextparent}>
-                  <Image
-                    src={WhiteNext}
-                    alt="WhiteNext"
-                    fill
-                    className={PodcastCss.whitenext}
-                  />
+            <Link
+              href="https://art19.com/shows/bleav-in-betting-chicago"
+              target="_blank"
+              className={PodcastCss.textImg_link}
+            >
+              <div className={PodcastCss.textImg}>
+                <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
+                <div className={PodcastCss.readNext}>
+                  <p className={PodcastCss.read}>Read more</p>
+                  <div className={PodcastCss.nextparent}>
+                    <Image
+                      src={WhiteNext}
+                      alt="WhiteNext"
+                      fill
+                      className={PodcastCss.whitenext}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className={PodcastCss.imageParent}>
@@ -70,20 +77,27 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <div className={PodcastCss.textImg}>
-              <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
-              <div className={PodcastCss.readNext}>
-                <p className={PodcastCss.read}>Read more</p>
-                <div className={PodcastCss.nextparent}>
-                  <Image
-                    src={WhiteNext}
-                    alt="WhiteNext"
-                    fill
-                    className={PodcastCss.whitenext}
-                  />
+            <Link
+              href="https://golfhom.com/blog"
+              target="_blank"
+              className={PodcastCss.textImg_link}
+            >
+              {" "}
+              <div className={PodcastCss.textImg}>
+                <h4 className={PodcastCss.title}>Golfhom Official Blog</h4>
+                <div className={PodcastCss.readNext}>
+                  <p className={PodcastCss.read}>Read more</p>
+                  <div className={PodcastCss.nextparent}>
+                    <Image
+                      src={WhiteNext}
+                      alt="Golfhom Official Blog"
+                      fill
+                      className={PodcastCss.whitenext}
+                    />
+                  </div>
                 </div>
-              </div>
-            </div>
+              </div>{" "}
+            </Link>
           </div>
 
           <div className={PodcastCss.imageParent}>
@@ -94,20 +108,26 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <div className={PodcastCss.textImg}>
-              <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
-              <div className={PodcastCss.readNext}>
-                <p className={PodcastCss.read}>Read more</p>
-                <div className={PodcastCss.nextparent}>
-                  <Image
-                    src={WhiteNext}
-                    alt="WhiteNext"
-                    fill
-                    className={PodcastCss.whitenext}
-                  />
+            <Link
+              href="https://www.shipsticks.com/blog/"
+              target="_blank"
+              className={PodcastCss.textImg_link}
+            >
+              <div className={PodcastCss.textImg}>
+                <h4 className={PodcastCss.title}>Ship Sticks</h4>
+                <div className={PodcastCss.readNext}>
+                  <p className={PodcastCss.read}>Read more</p>
+                  <div className={PodcastCss.nextparent}>
+                    <Image
+                      src={WhiteNext}
+                      alt="WhiteNext"
+                      fill
+                      className={PodcastCss.whitenext}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className={PodcastCss.imageParent}>
@@ -118,20 +138,26 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <div className={PodcastCss.textImg}>
-              <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
-              <div className={PodcastCss.readNext}>
-                <p className={PodcastCss.read}>Read more</p>
-                <div className={PodcastCss.nextparent}>
-                  <Image
-                    src={WhiteNext}
-                    alt="WhiteNext"
-                    fill
-                    className={PodcastCss.whitenext}
-                  />
+            <Link
+              href="https://podcasts.apple.com/us/podcast/all-sorts-of-bs/id1538666278"
+              target="_blank"
+              className={PodcastCss.textImg_link}
+            >
+              <div className={PodcastCss.textImg}>
+                <h4 className={PodcastCss.title}>All Sorts of BS Podcast</h4>
+                <div className={PodcastCss.readNext}>
+                  <p className={PodcastCss.read}>Read more</p>
+                  <div className={PodcastCss.nextparent}>
+                    <Image
+                      src={WhiteNext}
+                      alt="WhiteNext"
+                      fill
+                      className={PodcastCss.whitenext}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className={PodcastCss.imageParent}>
@@ -142,20 +168,26 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <div className={PodcastCss.textImg}>
-              <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
-              <div className={PodcastCss.readNext}>
-                <p className={PodcastCss.read}>Read more</p>
-                <div className={PodcastCss.nextparent}>
-                  <Image
-                    src={WhiteNext}
-                    alt="WhiteNext"
-                    fill
-                    className={PodcastCss.whitenext}
-                  />
+            <Link
+              href="https://thegolfwire.com/"
+              target="_blank"
+              className={PodcastCss.textImg_link}
+            >
+              <div className={PodcastCss.textImg}>
+                <h4 className={PodcastCss.title}>The Golf Wire</h4>
+                <div className={PodcastCss.readNext}>
+                  <p className={PodcastCss.read}>Read more</p>
+                  <div className={PodcastCss.nextparent}>
+                    <Image
+                      src={WhiteNext}
+                      alt="WhiteNext"
+                      fill
+                      className={PodcastCss.whitenext}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className={PodcastCss.imageParent}>
@@ -166,20 +198,26 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <div className={PodcastCss.textImg}>
-              <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
-              <div className={PodcastCss.readNext}>
-                <p className={PodcastCss.read}>Read more</p>
-                <div className={PodcastCss.nextparent}>
-                  <Image
-                    src={WhiteNext}
-                    alt="WhiteNext"
-                    fill
-                    className={PodcastCss.whitenext}
-                  />
+            <Link
+              href=" https://art19.com/shows/bleav-in-bears"
+              target="_blank"
+              className={PodcastCss.textImg_link}
+            >
+              <div className={PodcastCss.textImg}>
+                <h4 className={PodcastCss.title}>Bleav in Bears</h4>
+                <div className={PodcastCss.readNext}>
+                  <p className={PodcastCss.read}>Read more</p>
+                  <div className={PodcastCss.nextparent}>
+                    <Image
+                      src={WhiteNext}
+                      alt="WhiteNext"
+                      fill
+                      className={PodcastCss.whitenext}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className={PodcastCss.imageParent}>
@@ -189,21 +227,26 @@ const BlogsAndPodcasts = () => {
               fill
               className={PodcastCss.imageChild}
             ></Image>
-
-            <div className={PodcastCss.textImg}>
-              <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
-              <div className={PodcastCss.readNext}>
-                <p className={PodcastCss.read}>Read more</p>
-                <div className={PodcastCss.nextparent}>
-                  <Image
-                    src={WhiteNext}
-                    alt="WhiteNext"
-                    fill
-                    className={PodcastCss.whitenext}
-                  />
+            <Link
+              href="https://golf-for-beginners.blogspot.com/"
+              target="_blank"
+              className={PodcastCss.textImg_link}
+            >
+              <div className={PodcastCss.textImg}>
+                <h4 className={PodcastCss.title}> Golf For Beginners</h4>
+                <div className={PodcastCss.readNext}>
+                  <p className={PodcastCss.read}>Read more</p>
+                  <div className={PodcastCss.nextparent}>
+                    <Image
+                      src={WhiteNext}
+                      alt="WhiteNext"
+                      fill
+                      className={PodcastCss.whitenext}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </Row>
       </Container>

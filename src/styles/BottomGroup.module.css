@@ -37,7 +37,7 @@
 
 .grouptalkTitle {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0px;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
 }

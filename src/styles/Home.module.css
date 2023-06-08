@@ -151,10 +151,8 @@
 .destination {
   color: var(--dark-grey-color);
   margin-bottom: 0px;
-  /* margin-left: 0.7rem; */
-  font-family: var(--font-amiri);
-  font-size: 19px;
-  /* margin-bottom: 10px; */
+  font-family: var(--font-poppins);
+  font-weight: 400;
 }
 
 .guest {
@@ -274,8 +272,11 @@
 .countryName {
   font-family: var(--font-amiri);
   position: relative;
-  left: 30px;
-  bottom: 56px;
+  left: 0px;
+  padding: 10px 15px;
+  background: linear-gradient(45deg, black, #0000004d);
+  bottom: 32px;
+  border-radius: 0px 0px 16px 16px;
   color: var(--white-font-color);
 }
 
@@ -400,25 +401,19 @@
 }
 
 .Title {
-  line-height: 3.3pc;
+  margin-bottom: 66px;
   font-family: var(--font-poppins);
 }
 
-.searchPara {
-  line-height: 2.4pc;
-  font-weight: 300;
-  letter-spacing: 0.4px;
-  font-family: var(--font-amiri);
-}
-
 .search_by_golf_input_container_headings {
-  font-family: var(--font-amiri);
-  font-size: 20px;
+  font-family: var(--font-poppins);
+  margin-bottom: 24px;
 }
 
 .search_by_golf_input_container_subheadings {
-  font-family: var(--font-amiri);
-  font-size: 14px;
+  font-family: var(--font-poppins);
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 .searchPart {
   display: flex;

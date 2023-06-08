@@ -23,9 +23,9 @@ const bottomGroup = () => {
 
           <div className={BottomGroupCss.newBtn}>
             <div md={8}>
-              <h4 className={BottomGroupCss.grouptalkTitle}>
+              <h5 className={BottomGroupCss.grouptalkTitle}>
                 THE NEW VACATION-RENTAL VALHALLA FOR GOLFERS
-              </h4>
+              </h5>
             </div>
           </div>
         </div>

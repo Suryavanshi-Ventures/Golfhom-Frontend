@@ -152,9 +152,9 @@ const CarouselMap = () => {
           </Carousel>
 
           <Link href="/search/view_property" style={{ textDecoration: "none" }}>
-            <h4 className={CarouselMapCss.carouselHeading}>
+            <h5 className={CarouselMapCss.carouselHeading}>
               Hotel Empire Moscow Sokoliki
-            </h4>
+            </h5>
           </Link>
           <p className={CarouselMapCss.discribeOfCard}>
             Saddlebrook Resort - Saddlebrook & 1 more

@@ -375,17 +375,13 @@ const Home = () => {
       <Container>
         <div className={HomeCss.golfCourses}>
           <h3 className={HomeCss.main_golfHeading}>
-            Find Great Vacation Rentals near Florida & Arizona{" "}
+            Find Great Vacation Rentals near Florida, Arizona, Hawaii & South
+            Carolina
           </h3>
-          <h2 className={HomeCss.golfHeading}>Golf Courses!</h2>
+          <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
           <br />
           <p className={HomeCss.para}>
-            Arizona and Florida are renowned for their beautiful surroundings,
-            outdoor lifestyles, & of course for having some of the world’s best
-            golf courses! Golfhōm has a growing selection of golf
-            course-vicinity vacation rentals that deliver the comforts of home,
-            luxe amenities, and access to plenty of Arizona and Florida
-            attractions!
+            Florida, Arizona, Hawaii, South Carolina - All renowned for their beautiful surroundings, outdoor lifestyles, & of course for having some of the world's best golf courses. Golfhōm has a growing selection of golf course-vicinity vacation rentals that deliver the comforts and conveniences of home, luxe amenities, and access to plenty of local attractions.
           </p>
 
           <Row>
@@ -429,14 +425,9 @@ const Home = () => {
               <div className={HomeCss.content}>
                 <h3 className={HomeCss.Title}>
                   Search the World Over by Course
-                  <br />
                   (38,000+ in our database) or Tournament
                 </h3>
 
-                <p className={HomeCss.searchPara}>
-                  *We're downloading more great Golfhōms each day from our
-                  valued channel partners!
-                </p>
 
                 <div className={HomeCss.search_by_golf_containers}>
                   <Row className={HomeCss.search_by_golf_row}>
@@ -444,13 +435,13 @@ const Home = () => {
                       <div
                         className={HomeCss.search_by_golf_input_main_container}
                       >
-                        <h3
+                        <h5
                           className={
                             HomeCss.search_by_golf_input_container_headings
                           }
                         >
                           Search by golf course
-                        </h3>
+                        </h5>
                         <p
                           className={
                             HomeCss.search_by_golf_input_container_subheadings
@@ -496,13 +487,13 @@ const Home = () => {
                       <div
                         className={HomeCss.search_by_golf_input_main_container}
                       >
-                        <h3
+                        <h5
                           className={
                             HomeCss.search_by_golf_input_container_headings
                           }
                         >
                           Search by Tournaments
-                        </h3>
+                        </h5>
                         <p
                           className={
                             HomeCss.search_by_golf_input_container_subheadings

@@ -86,7 +86,7 @@ const Index = () => {
           <Row>
             <Col md={4}>
               <h4 className={DashboardCss.welcome}>Listings</h4>
-              <h4 className={DashboardCss.fromP}>0</h4>
+              <h5 className={DashboardCss.fromP}>0</h5>
               <p className={DashboardCss.addManWal}>Add new</p>
             </Col>
 
