@@ -4,14 +4,11 @@ import HeaderCss from "../src/styles/Header.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import { Button, Checkbox, Input, Form, message } from "antd";
 import Image from "next/image";
-import HeadPhoneIcon from "../public/headphones.svg";
 import UserIcon from "../public/user icon.svg";
 import Logo from "../public/logo.svg";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Link from "next/link";
-import { DownOutlined, ContactsFilled } from "@ant-design/icons";
 import { Dropdown, Space, Modal } from "antd";
-import { UilAlignJustify } from "@iconscout/react-unicons";
 import axios from "axios";
 import GolfHomMobileMenuLogo from "../public/images/GOLFHOM-Logo-mobile-menu.webp";
 import MobileMenuHomeLogo from "../public/images/vector/home.svg";
@@ -23,9 +20,15 @@ import InvoiceIconMobileMenu from "../public/images/vector/invoice_loggedin.png"
 import MessageIconMobileMenu from "../public/images/vector/messages_loggedin.png";
 import LogoutIconMobileMenu from "../public/images/vector/logout_loggedin.png";
 import { AuthContext } from "@/context/auth_context";
-import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  MailOutlined,
+  LockOutlined,
+  MenuOutlined,
+  ContactsFilled,
+  DownOutlined,
+} from "@ant-design/icons";
 import Register from "../public/images/vector/registerToRent.svg";
-import Login from "../public/images/vector/log&signup.svg";
 import Blog from "../public/images/vector/Blog.svg";
 import About from "../public/images/vector/About.svg";
 
@@ -1011,8 +1014,8 @@ const Header = ({ name, ...props }) => {
                     {/*//*  Off Canvas Btn  */}
                     <Col xs={"auto"} className={`${HeaderCss.off_canvas_col} `}>
                       {/* MOBILE HAMBURGER MENU BTN */}
-                      <UilAlignJustify
-                        size="40"
+                      <MenuOutlined
+                        style={{ fontSize: "25px" }}
                         onClick={HamburgerMenuMobileBtn}
                       />
                     </Col>
