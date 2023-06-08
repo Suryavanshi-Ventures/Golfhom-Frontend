@@ -74,30 +74,30 @@ const Index = () => {
 
         <Container className={DashboardCss.introParent}>
           <Row>
-            <h2 className={DashboardCss.welcome}>
+            <h3 className={DashboardCss.welcome}>
               Welcome back,{" "}
               {UserName
                 ? UserName.charAt(0).toUpperCase() + UserName.slice(1)
                 : "Anyonums "}
-            </h2>
+            </h3>
           </Row>
           <hr />
 
           <Row>
             <Col md={4}>
-              <h2 className={DashboardCss.welcome}>Listings</h2>
+              <h4 className={DashboardCss.welcome}>Listings</h4>
               <h4 className={DashboardCss.fromP}>0</h4>
               <p className={DashboardCss.addManWal}>Add new</p>
             </Col>
 
             <Col md={4}>
-              <h2 className={DashboardCss.welcome}>Reservations</h2>
+              <h4 className={DashboardCss.welcome}>Reservations</h4>
               <h4 className={DashboardCss.fromP}>0</h4>
               <p className={DashboardCss.addManWal}>Mange</p>
             </Col>
 
             <Col md={4}>
-              <h2 className={DashboardCss.welcome}>Earnings</h2>
+              <h4 className={DashboardCss.welcome}>Earnings</h4>
               <h4 className={DashboardCss.fromP}>From $0</h4>
               <p className={DashboardCss.addManWal}>Wallet</p>
             </Col>
@@ -105,7 +105,7 @@ const Index = () => {
         </Container>
 
         <Container>
-          <h3 className={DashboardCss.reservation}>My Reservations</h3>
+          <h4 className={DashboardCss.reservation}>My Reservations</h4>
 
           {BookingData.length === 0 ? (
             <div className={DashboardCss.loader_main_div}>

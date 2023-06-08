@@ -46,8 +46,7 @@ const Home = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${
-            process.env.NEXT_PUBLIC_API_URL
+          `${process.env.NEXT_PUBLIC_API_URL
           }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
         );
         if (GetPropertyDataRes.status === 200) {
@@ -152,20 +151,17 @@ const Home = () => {
           UrlParamsGeoData?.latitude
         )}&longitude=${encodeURIComponent(
           UrlParamsGeoData?.longitude
-        )}&location_name=${
-          UrlParamsGeoData?.location_name
+        )}&location_name=${UrlParamsGeoData?.location_name
         }&nights=${NightsCounter}&guest=${encodeURIComponent(
           adult + child
         )}&adults=${encodeURIComponent(adult)}&childs=${encodeURIComponent(
-          adult
-        )}&from=${
-          UrlParamsDateRange[0]
-            ? UrlParamsDateRange[0]
-            : moment().format("MM-DD-YYYY")
-        }&to=${
-          UrlParamsDateRange[1]
-            ? UrlParamsDateRange[1]
-            : moment().format("MM-DD-YYYY")
+          child
+        )}&from=${UrlParamsDateRange[0]
+          ? UrlParamsDateRange[0]
+          : moment().format("MM-DD-YYYY")
+        }&to=${UrlParamsDateRange[1]
+          ? UrlParamsDateRange[1]
+          : moment().format("MM-DD-YYYY")
         }&limit=10`
       );
     }
@@ -378,10 +374,10 @@ const Home = () => {
 
       <Container>
         <div className={HomeCss.golfCourses}>
-          <h2 className={HomeCss.main_golfHeading}>
+          <h3 className={HomeCss.main_golfHeading}>
             Find Great Vacation Rentals near Florida & Arizona{" "}
-          </h2>
-          <h1 className={HomeCss.golfHeading}>Golf Courses!</h1>
+          </h3>
+          <h2 className={HomeCss.golfHeading}>Golf Courses!</h2>
           <br />
           <p className={HomeCss.para}>
             Arizona and Florida are renowned for their beautiful surroundings,
@@ -592,9 +588,9 @@ const Home = () => {
           <Row className={HomeCss.arrivalContainer}>
             <Col xl={4} lg={4} className={HomeCss.arrivalContainer_child}>
               <div className={HomeCss.paraHeading}>
-                <h2 className={HomeCss.hottest_new_arrival__heading}>
+                <h3 className={HomeCss.hottest_new_arrival__heading}>
                   Golfhōm Hottest New Arrivals
-                </h2>
+                </h3>
                 <p className={HomeCss.subHeading}>
                   Experience the Coolest Golfhōms on the Planet: Step into a
                   world of luxury and innovation, where impeccable design meets
@@ -715,7 +711,7 @@ const Home = () => {
 
       <div div className={HomeCss.cardBg}>
         <Container>
-          <h2 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h2>
+          <h3 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h3>
           <Row>
             {AllPropertyData.map((data, i) => {
               return (
@@ -806,9 +802,9 @@ const Home = () => {
       {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
       <Container className={HomeCss.ads}>
-        <h2 className={HomeCss.adsTitle}>
+        <h3 className={HomeCss.adsTitle}>
           Golfing and Traveling, Both Better with Friends
-        </h2>
+        </h3>
 
         <Advertise ads={ads} />
       </Container>
@@ -816,7 +812,7 @@ const Home = () => {
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
       <Container className={HomeCss.videoContain}>
-        <h2 className={HomeCss.golf_training_heading}>Jake Hutt Golf Raps</h2>
+        <h3 className={HomeCss.golf_training_heading}>Jake Hutt Golf Raps</h3>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
             Explore the infinite whys and hows of the golf swing with our
@@ -840,9 +836,9 @@ const Home = () => {
       <Container className={HomeCss.staffCard}>
         <Row>
           <Col md={8} className={HomeCss.staffCard_title_main_container}>
-            <h2 className={HomeCss.staffCard_title}>
+            <h3 className={HomeCss.staffCard_title}>
               From the Golfhōm Staff and Guest Writers
-            </h2>
+            </h3>
           </Col>
 
           <Col md={4} className={HomeCss.viewallBtnParent}>

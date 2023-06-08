@@ -31,9 +31,9 @@ const Reservation = () => {
         {/*     -------------------------     TEXT AREA      ----------------------------    */}
 
         <Container>
-          <h2 className={ReservationCss.reservation}>Reservations</h2>
+          <h3 className={ReservationCss.reservation}>Reservations</h3>
 
-          <h3 className={ReservationCss.manage}>Manage</h3>
+          <h4 className={ReservationCss.manage}>Manage</h4>
 
           <Table responsive className={ReservationCss.bodyRow}>
             <thead className={ReservationCss.heading}>

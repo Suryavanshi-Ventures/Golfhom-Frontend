@@ -14,7 +14,7 @@
 /* -------------------------    TEXT SECTION    -------------------------------  */
 
 .term {
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   font-weight: 600;
   margin-top: 44px;
 }

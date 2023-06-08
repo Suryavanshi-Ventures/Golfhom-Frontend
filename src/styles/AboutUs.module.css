@@ -11,19 +11,17 @@
 
 /* VACATION SECTION */
 .about_us_vacation_center_main_heading {
-  font-size: 37px;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   margin: 4rem 0;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .about_us_vacation_center_cols_div {
   margin-bottom: 2rem;
 }
 .about_us_vacation_center_cols_headings {
-  font-size: 25px;
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 550;
   margin-bottom: 4rem;
 }
 
@@ -45,9 +43,8 @@
 }
 
 .about_golfhom_heading {
-  font-family: var(--font-amiri);
-  font-size: 37px;
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
   margin-bottom: 2rem;
 }
 .about_golfhom_para {
@@ -66,8 +63,8 @@
 
 /* STAFF REVIEW SECTION */
 .staffCard_title {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 
 .parentOf_img_textCard {

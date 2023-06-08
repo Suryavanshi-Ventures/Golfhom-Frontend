@@ -9,9 +9,9 @@ const TabContentOverview = (PropData) => {
   return (
     <>
       <main className={ViewPropertyCss.tabOverviewSection}>
-        <h1 className={ViewPropertyCss.tabOverviewPropHeading}>
+        <h3 className={ViewPropertyCss.tabOverviewPropHeading}>
           {PropData.data?.name ? PropData.data?.name : "N/A"}
-        </h1>
+        </h3>
         <p className={ViewPropertyCss.tabOverviewPropSmallSubheading}>
           Golf Course Vicinity:{" "}
           {PropData.golfCourseName ? PropData.golfCourseName : "N/A"}
@@ -89,9 +89,9 @@ const TabContentOverview = (PropData) => {
         <Row className={ViewPropertyCss.about_section_row}>
           <Col md={"auto"} className={ViewPropertyCss.about_section_cols}>
             <div className={ViewPropertyCss.about_section_container}>
-              <h1 className={ViewPropertyCss.about_section_main_heading}>
+              <h4 className={ViewPropertyCss.about_section_main_heading}>
                 Description
-              </h1>
+              </h4>
               <pre className={ViewPropertyCss.about_section_para}>
                 {PropData.data?.description?.replace(/\*|BR|BA|#|/g, "")}
               </pre>

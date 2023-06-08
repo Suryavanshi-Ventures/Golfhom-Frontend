@@ -22,9 +22,9 @@ const Privacy = () => {
 
       {/*------------------------ PRIVACY POLICY TEXT CONATINER------------------------ */}
       <Container>
-        <h2 className={PrivacyPolicyCss.privacyTitle}>
+        <h3 className={PrivacyPolicyCss.privacyTitle}>
           GOLFHOM.COM PRIVACY POLICY
-        </h2>
+        </h3>
 
         <p className={PrivacyPolicyCss.paraA}>
           This Privacy Policy describes how your personal information is

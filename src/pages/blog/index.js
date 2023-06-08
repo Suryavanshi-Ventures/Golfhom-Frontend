@@ -63,9 +63,9 @@ const Index = ({ cards }) => {
       {/* NINE CARDS CONTAINER */}
 
       <Container className={BlogCss.cardsParent}>
-        <h2 className={BlogCss.cardsTitle}>
+        <h3 className={BlogCss.cardsTitle}>
           From the Golfhōm Staff and Guest Writers
-        </h2>
+        </h3>
         <Row>
           {BlogData?.map((item, index) => {
             return (

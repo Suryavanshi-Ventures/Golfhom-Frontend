@@ -8,14 +8,14 @@
 
   
   .reservation {
-    font-family: var(--font-amiri);
-    font-weight: 700;
+    font-family: var(--font-poppins);
+    font-weight: 600;
     margin-top: 42px;
     margin-bottom: 20px;
   }
 
   .manage {
-    font-family: var(--font-amiri);
+    font-family: var(--font-poppins);
     font-weight: 600;
     margin: 30px 0px;
   }

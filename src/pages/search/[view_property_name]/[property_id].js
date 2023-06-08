@@ -62,13 +62,6 @@ const ViewProperty = () => {
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
-    // if (Params.adults || Params.childs) {
-    //   // setAdult(Params.adults);
-    //   // setChild(Params.childs);
-    //   parseInt(Params.adults);
-    //   parseInt(Params.childs);
-    // }
-
     if (Params.adults || Params.childs) {
       setAdult(parseInt(Params.adults));
       setChild(parseInt(Params.childs));

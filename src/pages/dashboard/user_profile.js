@@ -21,14 +21,14 @@ const UserProfile = () => {
         <main className={UserProfieCss.user_profile_main_section}>
           <Container>
             {/* PROFILE PAGE MAIN HEADING */}
-            <h4 className={UserProfieCss.user_profile_page_heading}>Profile</h4>
+            <h3 className={UserProfieCss.user_profile_page_heading}>Profile</h3>
 
             <section className={UserProfieCss.user_profile_page_info_section}>
               {/* PROFILE SECTION */}
               <div className={UserProfieCss.user_profile_photo_container}>
-                <h5 className={UserProfieCss.user_profile_page_section_heading}>
+                <h4 className={UserProfieCss.user_profile_page_section_heading}>
                   Photo
-                </h5>
+                </h4>
                 <div className={UserProfieCss.user_profile_page_pic_container}>
                   <Image
                     src={UserImg}

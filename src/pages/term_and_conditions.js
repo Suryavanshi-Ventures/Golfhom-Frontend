@@ -29,7 +29,7 @@ const TermAndConditions = () => {
       {/* -------------------------    TEXT SECTION    -------------------------------  */}
 
       <Container>
-        <h2 className={TermConditionsCss.term}>Term and Condition</h2>
+        <h3 className={TermConditionsCss.term}>Term and Condition</h3>
 
         <p className={TermConditionsCss.update}>Last updated April 23, 2021</p>
 

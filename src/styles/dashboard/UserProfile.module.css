@@ -1,8 +1,7 @@
 .user_profile_page_heading {
   margin: 2rem 0;
-  font-size: 35px;
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 
 .user_profile_page_info_section {
@@ -10,9 +9,8 @@
 }
 
 .user_profile_page_section_heading {
-  font-size: 30px;
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 
 .user_profile_page_pic_container {

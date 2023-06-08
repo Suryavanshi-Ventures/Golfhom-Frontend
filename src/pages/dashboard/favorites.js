@@ -34,9 +34,9 @@ const Favorites = () => {
         {/*     -------------------------     TEXT AREA      ----------------------------    */}
 
         <Container>
-          <h2 className={FavoritesCss.reservation}>Reservations</h2>
+          <h3 className={FavoritesCss.reservation}>Reservations</h3>
 
-          <h3 className={FavoritesCss.manage}>Manage</h3>
+          <h4 className={FavoritesCss.manage}>Manage</h4>
 
           <Table responsive className={FavoritesCss.bodyRow}>
             <thead className={FavoritesCss.heading}>

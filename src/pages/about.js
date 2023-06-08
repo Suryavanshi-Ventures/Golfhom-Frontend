@@ -34,9 +34,9 @@ const About = () => {
         </div>
 
         <Container>
-          <h4 className={AboutUsCss.about_us_vacation_center_main_heading}>
+          <h3 className={AboutUsCss.about_us_vacation_center_main_heading}>
             Nirvana for the Golf Vacation Renter!
-          </h4>
+          </h3>
           {/* VACATION CENTER SECTION */}
           <Row>
             <Col md={4}>
@@ -88,9 +88,9 @@ const About = () => {
         <section className={AboutUsCss.about_golfhom_section}>
           <Container>
             <div className={AboutUsCss.about_golfhom_main_container}>
-              <h4 className={AboutUsCss.about_golfhom_heading}>
+              <h3 className={AboutUsCss.about_golfhom_heading}>
                 About Golfhom.com
-              </h4>
+              </h3>
               <p className={AboutUsCss.about_golfhom_para}>
                 Welcome to Golfhōm, your new haven for discovering the perfect
                 golf vacation rental. Say goodbye to the days of tirelessly
@@ -164,9 +164,9 @@ const About = () => {
         <Container>
           <section>
             <div className={AboutUsCss.viewText}>
-              <h2 className={AboutUsCss.staffCard_title}>
+              <h3 className={AboutUsCss.staffCard_title}>
                 From the Golfhōm Staff and Guest Writers
-              </h2>
+              </h3>
 
               <Link href="/blog" className={AboutUsCss.linkUnderline}>
                 <div className={AboutUsCss.viewallBtnParent}>

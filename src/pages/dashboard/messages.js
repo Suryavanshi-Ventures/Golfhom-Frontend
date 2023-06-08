@@ -38,12 +38,12 @@ const Messages = () => {
         {/*     -------------------------     TEXT AREA      ----------------------------    */}
 
         <Container>
-          <h2 className={MessageCss.messages}>Messages</h2>
+          <h3 className={MessageCss.messages}>Messages</h3>
           <div className={MessageCss.formSort}>
-            <h3 className={MessageCss.form}>Form</h3>
+            <h4 className={MessageCss.form}>Form</h4>
 
             <div className={MessageCss.sortDown}>
-              <h3 className={MessageCss.form}>Sort</h3>
+              <h4 className={MessageCss.form}>Sort</h4>
               <select
                 id="my-dropdown"
                 value={selectedOption}

@@ -80,9 +80,9 @@ const Invoice = () => {
         {/*     -------------------------     TEXT AREA      ----------------------------    */}
 
         <Container>
-          <h2 className={InvoiceCss.invoices}>Invoices</h2>
+          <h3 className={InvoiceCss.invoices}>Invoices</h3>
 
-          <h3 className={InvoiceCss.manage}>Manage</h3>
+          <h4 className={InvoiceCss.manage}>Manage</h4>
         </Container>
 
         <section className={InvoiceCss.backgroundLight}>

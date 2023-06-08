@@ -86,9 +86,9 @@ const Index = () => {
       const name = place.name;
       const status = place.business_status;
       const formattedAddress = place.formatted_address;
-      // console.log(`Name: ${name}`);
-      // console.log(`Business Status: ${status}`);
-      // console.log(`Formatted Address: ${formattedAddress}`);
+      console.log(`Name: ${name}`);
+      console.log(`Business Status: ${status}`);
+      console.log(`Formatted Address: ${formattedAddress}`);
     } else {
       message.error("Please enter text");
     }
@@ -485,9 +485,9 @@ const Index = () => {
       <section className={SearchIndexCss.search_main_section}>
         <Container>
           <Row>
-            <h4 className={SearchIndexCss.orlandoHead}>
+            <h3 className={SearchIndexCss.orlandoHead}>
               {param.location_name ? param.location_name : ""}
-            </h4>
+            </h3>
             {/*    ----------------      CARD MAP SECTION      -------------------   */}
             <Col md={8}>
               <hr />

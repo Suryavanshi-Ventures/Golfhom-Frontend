@@ -44,9 +44,8 @@
 
 /* ABOUT SECTION STARTED HERE */
 .about_section_main_heading {
-  font-family: var(--font-amiri);
-  font-weight: 700;
-  font-size: 30px;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 .about_section_para {
   font-family: var(--font-poppins);
@@ -726,8 +725,8 @@
 /* TAB OVERVIEW SECTION */
 
 .tabOverviewPropHeading {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 .tabOverviewPropSmallSubheading {
   font-family: var(--font-poppins);

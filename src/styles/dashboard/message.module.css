@@ -12,8 +12,8 @@
 
   
    .messages {
-    font-family: var(--font-amiri);
-    font-weight: 700;
+    font-family: var(--font-poppins);
+    font-weight: 600;
     margin-top: 42px;
     margin-bottom: 20px;
   }
@@ -28,8 +28,8 @@
   }
 
   .form {
-    font-family: var(--font-amiri);
-    font-weight: 700;
+    font-family: var(--font-poppins);
+    font-weight: 600;
     padding-top: 4px;
   }
 
