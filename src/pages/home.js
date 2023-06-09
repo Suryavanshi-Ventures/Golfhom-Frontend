@@ -186,6 +186,10 @@ const Home = () => {
       {/* ---------------------------------          NAVBAR SECTION               -------------------------------    */}
 
       <div className={HomeCss.search_bar_img_div}>
+        <div className={HomeCss.overlay}></div>
+        <video src="/videos/home_video.mp4" autoPlay loop muted className={HomeCss.videoPlay}>
+          <source src="/videos/home_video.mp4" type="video/mp4" />
+        </video>
         <div className={HomeCss.search_bar_main_container}>
           <div className={HomeCss.search_bar_container}>
             <Row className={HomeCss.searchBar}>

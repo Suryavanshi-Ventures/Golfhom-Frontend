@@ -1,11 +1,24 @@
 /*    ------------------------------------   NAVBAR SECTION  --------------------------------   */
 
 .search_bar_img_div {
-  background-image: url("/images/golfBoy.webp");
   height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.videoPlay {
+  width: 100%;
+  height: 100vh !important;
+  border-radius: 0px !important;
+  object-fit: cover;
 }
 
 .inner_icon_container {
@@ -14,6 +27,9 @@
 }
 
 .search_bar_main_container {
+  position: absolute;
+  width: 100%;
+  top: 0;
   display: flex;
   justify-content: center;
   padding-top: 30rem;
