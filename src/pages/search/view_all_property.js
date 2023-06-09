@@ -12,6 +12,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import PropNotFoundImg from "../../../public/images/vector/golf-hole.png";
 import Loader from "../../../common components/loader";
+import Carousel from "react-bootstrap/Carousel";
+import Dot from "../../../public/images/vector/dot.svg";
 
 const ViewAllProperty = () => {
   const RouterRef = useRouter();
@@ -175,31 +177,100 @@ const ViewAllProperty = () => {
             ) : (
               <>
                 {" "}
+                {/* SILDER CARDS START */}
                 {AllPropertyDataFlorida.map((Data, Index) => {
                   return (
-                    <span
-                      onClick={(e) => {
-                        RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
-                        });
-                      }}
-                      key={Index}
-                      className={ViewAllPropertyCss.columnsA}
-                    >
-                      <Image
-                        fill
-                        src={Data.imageUrl}
-                        className={ViewAllPropertyCss.card_image}
-                        alt="Florida"
-                      ></Image>
-                      <h4 className={ViewAllPropertyCss.countryName}>
-                        {Data.name}
-                      </h4>
-                    </span>
+                    <>
+                      <Col
+                        md={4}
+                        key={Data.id}
+                        className={ViewAllPropertyCss.carouselBlock}
+                      >
+                        <Image
+                          onClick={(e) => {
+                            RouterRef.push(
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
+                              }`
+                            );
+                          }}
+                          src={Data.imageUrl}
+                          alt={`image`}
+                          fill
+                          className={ViewAllPropertyCss.carouselImage}
+                        ></Image>
+
+                        <div
+                          onClick={(e) => {
+                            RouterRef.push(
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
+                              }`
+                            );
+                          }}
+                          className={ViewAllPropertyCss.image_container}
+                        >
+                          <p
+                            className={
+                              ViewAllPropertyCss.price_of_property_text_from
+                            }
+                          >
+                            From $
+                            <span
+                              className={
+                                ViewAllPropertyCss.price_of_property_text
+                              }
+                            >
+                              {Data.price >= 0.5
+                                ? Math.ceil(Data.price)
+                                : Math.floor(Data.price)}
+                              /Night
+                            </span>
+                          </p>
+
+                          <h4
+                            onClick={(e) => {
+                              RouterRef.push(
+                                `/search/${encodeURIComponent(Data.name)}/${
+                                  Data.id
+                                }`
+                              );
+                            }}
+                            className={ViewAllPropertyCss.carouselHeading}
+                          >
+                            {Data.name}
+                          </h4>
+                        </div>
+                        <p className={ViewAllPropertyCss.discribeOfCard}>
+                          {Data.golfCourseName}
+                        </p>
+
+                        <div
+                          onClick={(e) => {
+                            RouterRef.push(
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
+                              }`
+                            );
+                          }}
+                          className={ViewAllPropertyCss.image_container}
+                        >
+                          <span className={ViewAllPropertyCss.discribeOfCard}>
+                            {Data.bedrooms ? Data.bedrooms : 1} Bed Rooms
+                          </span>
+                          <Image
+                            src={Dot}
+                            alt="Dot"
+                            className={ViewAllPropertyCss.dot}
+                          ></Image>
+                          <span className={ViewAllPropertyCss.discribeOfCard}>
+                            {Data.accomodation} Guests Villa
+                          </span>
+                        </div>
+                      </Col>
+                    </>
                   );
-                })}{" "}
+                })}
               </>
             )}
 
@@ -229,27 +300,93 @@ const ViewAllProperty = () => {
                 {" "}
                 {AllPropertyDataArizona.map((Data, Index) => {
                   return (
-                    <span
-                      onClick={(e) => {
-                        RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
-                        });
-                      }}
-                      key={Index}
-                      className={ViewAllPropertyCss.columnsA}
+                    <Col
+                      md={4}
+                      key={Data.id}
+                      className={ViewAllPropertyCss.carouselBlock}
                     >
                       <Image
-                        fill
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
                         src={Data.imageUrl}
-                        className={ViewAllPropertyCss.card_image}
-                        alt="Florida"
+                        alt={`image`}
+                        fill
+                        className={ViewAllPropertyCss.carouselImage}
                       ></Image>
-                      <h4 className={ViewAllPropertyCss.countryName}>
-                        {Data.name}
-                      </h4>
-                    </span>
+
+                      <div
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
+                        className={ViewAllPropertyCss.image_container}
+                      >
+                        <p
+                          className={
+                            ViewAllPropertyCss.price_of_property_text_from
+                          }
+                        >
+                          From $
+                          <span
+                            className={
+                              ViewAllPropertyCss.price_of_property_text
+                            }
+                          >
+                            {Data.price >= 0.5
+                              ? Math.ceil(Data.price)
+                              : Math.floor(Data.price)}
+                            /Night
+                          </span>
+                        </p>
+
+                        <h4
+                          onClick={(e) => {
+                            RouterRef.push(
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
+                              }`
+                            );
+                          }}
+                          className={ViewAllPropertyCss.carouselHeading}
+                        >
+                          {Data.name}
+                        </h4>
+                      </div>
+                      <p className={ViewAllPropertyCss.discribeOfCard}>
+                        {Data.golfCourseName}
+                      </p>
+
+                      <div
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
+                        className={ViewAllPropertyCss.image_container}
+                      >
+                        <span className={ViewAllPropertyCss.discribeOfCard}>
+                          {Data.bedrooms ? Data.bedrooms : 1} Bed Rooms
+                        </span>
+                        <Image
+                          src={Dot}
+                          alt="Dot"
+                          className={ViewAllPropertyCss.dot}
+                        ></Image>
+                        <span className={ViewAllPropertyCss.discribeOfCard}>
+                          {Data.accomodation} Guests Villa
+                        </span>
+                      </div>
+                    </Col>
                   );
                 })}{" "}
               </>
@@ -281,29 +418,95 @@ const ViewAllProperty = () => {
                 {" "}
                 {AllPropertyDataHawaii.map((Data, Index) => {
                   return (
-                    <span
-                      onClick={(e) => {
-                        RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
-                        });
-                      }}
-                      key={Index}
-                      className={ViewAllPropertyCss.columnsA}
+                    <Col
+                      md={4}
+                      key={Data.id}
+                      className={ViewAllPropertyCss.carouselBlock}
                     >
                       <Image
-                        fill
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
                         src={Data.imageUrl}
-                        className={ViewAllPropertyCss.card_image}
-                        alt="Florida"
+                        alt={`image`}
+                        fill
+                        className={ViewAllPropertyCss.carouselImage}
                       ></Image>
-                      <h4 className={ViewAllPropertyCss.countryName}>
-                        {Data.name}
-                      </h4>
-                    </span>
+
+                      <div
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
+                        className={ViewAllPropertyCss.image_container}
+                      >
+                        <p
+                          className={
+                            ViewAllPropertyCss.price_of_property_text_from
+                          }
+                        >
+                          From $
+                          <span
+                            className={
+                              ViewAllPropertyCss.price_of_property_text
+                            }
+                          >
+                            {Data.price >= 0.5
+                              ? Math.ceil(Data.price)
+                              : Math.floor(Data.price)}
+                            /Night
+                          </span>
+                        </p>
+
+                        <h4
+                          onClick={(e) => {
+                            RouterRef.push(
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
+                              }`
+                            );
+                          }}
+                          className={ViewAllPropertyCss.carouselHeading}
+                        >
+                          {Data.name}
+                        </h4>
+                      </div>
+                      <p className={ViewAllPropertyCss.discribeOfCard}>
+                        {Data.golfCourseName}
+                      </p>
+
+                      <div
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
+                        className={ViewAllPropertyCss.image_container}
+                      >
+                        <span className={ViewAllPropertyCss.discribeOfCard}>
+                          {Data.bedrooms ? Data.bedrooms : 1} Bed Rooms
+                        </span>
+                        <Image
+                          src={Dot}
+                          alt="Dot"
+                          className={ViewAllPropertyCss.dot}
+                        ></Image>
+                        <span className={ViewAllPropertyCss.discribeOfCard}>
+                          {Data.accomodation} Guests Villa
+                        </span>
+                      </div>
+                    </Col>
                   );
-                })}{" "}
+                })}
               </>
             )}
 
@@ -334,27 +537,93 @@ const ViewAllProperty = () => {
                 {" "}
                 {AllPropertyDataSouthCarolina.map((Data, Index) => {
                   return (
-                    <span
-                      onClick={(e) => {
-                        RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
-                        });
-                      }}
-                      key={Index}
-                      className={ViewAllPropertyCss.columnsA}
+                    <Col
+                      md={4}
+                      key={Data.id}
+                      className={ViewAllPropertyCss.carouselBlock}
                     >
                       <Image
-                        fill
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
                         src={Data.imageUrl}
-                        className={ViewAllPropertyCss.card_image}
-                        alt="Florida"
+                        alt={`image`}
+                        fill
+                        className={ViewAllPropertyCss.carouselImage}
                       ></Image>
-                      <h4 className={ViewAllPropertyCss.countryName}>
-                        {Data.name}
-                      </h4>
-                    </span>
+
+                      <div
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
+                        className={ViewAllPropertyCss.image_container}
+                      >
+                        <p
+                          className={
+                            ViewAllPropertyCss.price_of_property_text_from
+                          }
+                        >
+                          From $
+                          <span
+                            className={
+                              ViewAllPropertyCss.price_of_property_text
+                            }
+                          >
+                            {Data.price >= 0.5
+                              ? Math.ceil(Data.price)
+                              : Math.floor(Data.price)}
+                            /Night
+                          </span>
+                        </p>
+
+                        <h4
+                          onClick={(e) => {
+                            RouterRef.push(
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
+                              }`
+                            );
+                          }}
+                          className={ViewAllPropertyCss.carouselHeading}
+                        >
+                          {Data.name}
+                        </h4>
+                      </div>
+                      <p className={ViewAllPropertyCss.discribeOfCard}>
+                        {Data.golfCourseName}
+                      </p>
+
+                      <div
+                        onClick={(e) => {
+                          RouterRef.push(
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
+                            }`
+                          );
+                        }}
+                        className={ViewAllPropertyCss.image_container}
+                      >
+                        <span className={ViewAllPropertyCss.discribeOfCard}>
+                          {Data.bedrooms ? Data.bedrooms : 1} Bed Rooms
+                        </span>
+                        <Image
+                          src={Dot}
+                          alt="Dot"
+                          className={ViewAllPropertyCss.dot}
+                        ></Image>
+                        <span className={ViewAllPropertyCss.discribeOfCard}>
+                          {Data.accomodation} Guests Villa
+                        </span>
+                      </div>
+                    </Col>
                   );
                 })}{" "}
               </>

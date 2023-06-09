@@ -49,8 +49,8 @@
 .carouselHeading {
   font-family: var(--font-poppins);
   font-weight: 500;
-  font-size: 1.1rem;
-  margin-top: 24px;
+  font-size: 1rem;
+  margin: 10px 0;
   color: var(--black-color);
   text-decoration: none !important;
 }
@@ -67,6 +67,16 @@
   margin-top: 10px;
   font-size: 17px;
   font-family: var(--font-poppins);
+}
+
+.price_of_property_text_from {
+  font-family: var(--font-poppins);
+  margin: 10px 0;
+  font-weight: 500;
+  font-size: 17px;
+}
+.price_of_property_text {
+  color: var(--btn-background);
 }
 
 .mapParent {
