@@ -29,10 +29,10 @@
 .search_bar_main_container {
   position: absolute;
   width: 100%;
-  top: 0;
+  top: 500px;
   display: flex;
   justify-content: center;
-  padding-top: 30rem;
+  /* padding-top: 30rem; */
   padding-left: 8rem;
   padding-right: 8rem;
 }
@@ -906,8 +906,9 @@
     max-width: 360px;
   }
   .search_bar_main_container {
-    padding-top: 1rem;
+    /* padding-top: 8rem; */
     padding-left: 3rem;
+    top: 155px;
     padding-right: 3rem;
   }
   .inner_main_container {
@@ -932,6 +933,9 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+  }
+  .videoPlay {
+    height: 65vh !important;
   }
 }
 
