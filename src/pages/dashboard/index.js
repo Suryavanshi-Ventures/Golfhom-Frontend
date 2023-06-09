@@ -243,9 +243,9 @@ const Index = () => {
         {/* ------------------------------        GOLFING AND TRAVELING     ------------------------  */}
 
         <Container className={DashboardCss.ads}>
-          <h2 className={DashboardCss.adsTitle}>
+          <h3 className={DashboardCss.adsTitle}>
             Golfing and Traveling, Both Better with Friends
-          </h2>
+          </h3>
 
           <Advertise ads={ads} />
         </Container>

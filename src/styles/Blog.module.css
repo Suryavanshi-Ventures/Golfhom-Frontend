@@ -31,8 +31,8 @@
 }
 
 .view_blog_title {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 
 .view_blog_category_container_main {
@@ -75,10 +75,9 @@
 }
 
 .view_blog_img_division_heading {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
   margin-bottom: 1.5rem;
-  font-size: 32px;
 }
 
 .view_blog_middle_text_para {

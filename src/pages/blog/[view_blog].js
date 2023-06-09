@@ -31,7 +31,7 @@ const ViewBlog = () => {
     };
     GetBlogsById();
 
-    return () => {};
+    return () => { };
   }, [UrlParams]);
 
   return (
@@ -53,13 +53,13 @@ const ViewBlog = () => {
               <Skeleton.Input size="small" active={true} />
             )}
           </div>
-          <h3 className={BlogCss.view_blog_title}>
+          <h4 className={BlogCss.view_blog_title}>
             {BlogData?.title ? (
               BlogData?.title
             ) : (
               <Skeleton.Input active={true} />
             )}
-          </h3>
+          </h4>
 
           <div className={BlogCss.view_blog_category_container_main}>
             <Row className={BlogCss.view_blog_category_rows}>

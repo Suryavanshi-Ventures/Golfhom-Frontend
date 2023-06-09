@@ -6,20 +6,20 @@
      /*     -------------------------     TEXT AREA      ----------------------------    */
 
      .addListing {
-        font-family: var(--font-amiri);
+        font-family: var(--font-poppins);
         font-weight: 700;
         margin-top: 42px;
         margin-bottom: 20px;
       }
     
       .info {
-        font-family: var(--font-amiri);
+        font-family: var(--font-poppins);
         font-weight: 600;
         margin: 40px 0px 30px;
       }
 
       .title {
-        font-family: var(--font-amiri);
+        font-family: var(--font-poppins);
         font-weight: 600;
         margin: 20px 0px;
       }
@@ -33,17 +33,17 @@
       }
       
       .weekly {
-        font-weight: 600;
+        font-weight: 500;
         line-height: 26px;
         margin-bottom: 20px;
-        font-family: var(--font-amiri);
+        font-family: var(--font-poppins);
       }
 
       .name, .price, .type {
         font-weight: 600;
         line-height: 26px;
         margin-bottom: 20px;
-        font-family: var(--font-amiri);
+        font-family: var(--font-poppins);
         color: var(--light-font-color);
       }
 

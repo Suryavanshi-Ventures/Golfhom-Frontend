@@ -119,9 +119,9 @@
 
 .details {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 20px;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
 }
 
 .tickParent {

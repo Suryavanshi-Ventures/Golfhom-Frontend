@@ -17,8 +17,8 @@
 }
 
 .golfheading {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 
 .para {
@@ -42,9 +42,9 @@
 .registerTitle {
   background: var(--btn-background-secondary);
   color: var(--white-font-color);
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   padding: 30px 16px;
-  font-weight: 590;
+  font-weight: 500;
 }
 
 .registerContent {
@@ -107,7 +107,7 @@
 
 .agreeOptionA {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   margin: 16px 0px;
   font-weight: var(--font-poppins);
 }
@@ -121,7 +121,7 @@
 
 .agreeOptionB {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-weight: var(--font-poppins);
   margin: 16px 0px 0px;
 }
@@ -156,8 +156,8 @@
 }
 
 .threeColumnTitle {
-  font-family: var(--font-amiri);
-  font-weight: 600;
+  font-family: var(--font-poppins);
+  font-weight: 500;
 }
 
 .threeColumnPara {
@@ -174,7 +174,7 @@
 
 .hostTitle {
   margin-bottom: 30px;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   font-weight: 600;
 }
 
@@ -186,8 +186,8 @@
 }
 
 .textTitle {
-  font-family: var(--font-amiri);
-  font-weight: 600;
+  font-family: var(--font-poppins);
+  font-weight: 500;
 }
 
 .paragraph {
@@ -236,7 +236,7 @@
 
 .earnMoney {
   font-weight: 600;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
 }
 
 .imageParent {
@@ -275,7 +275,7 @@
   justify-content: center;
   color: white;
   border-radius: 100%;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 18px;
   border: none;
   width: 24px;
@@ -306,8 +306,8 @@
 }
 
 .listHomeTitle {
-  font-family: var(--font-amiri);
-  font-weight: 600;
+  font-family: var(--font-poppins);
+  font-weight: 500;
   margin-bottom: 30px;
 }
 

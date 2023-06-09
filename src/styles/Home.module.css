@@ -179,10 +179,6 @@
   justify-content: space-between;
   margin-top: 14px;
 }
-.ageName {
-  font-family: var(--font-amiri);
-  font-weight: 700;
-}
 
 .increaseAdult {
   background: var(--white-font-color);
@@ -228,8 +224,8 @@
   color: var(--white-background);
 }
 .ageName {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 
 /*     ----------------------------------  SWIPER CONTAINER  -----------------------------  */
@@ -930,6 +926,7 @@
 
   .searchBar {
     gap: 0px;
+    padding-right: 20px;
   }
 
   .inner_input_containerNight {

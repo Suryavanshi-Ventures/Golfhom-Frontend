@@ -86,9 +86,9 @@
   margin-bottom: 1rem;
 }
 .contact_us_thanks_heading {
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 2rem;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
 }
 .contact_us_thanks_para {
   font-family: var(--font-poppins);
@@ -97,7 +97,7 @@
 
 .contact_us_thanks_freq_ask_para {
   color: red;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   font-size: 20px;
 }
 

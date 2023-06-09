@@ -69,9 +69,9 @@ const Register_to_host = () => {
 
         <div className={RegisterToHost.registerParent}>
           <Col md={6} className={RegisterToHost.columnA}>
-            <h2 className={RegisterToHost.golfheading}>
+            <h3 className={RegisterToHost.golfheading}>
               Become a Golfhōm Host!
-            </h2>
+            </h3>
             <p className={RegisterToHost.para}>
               Host golf travelers, monetize your property.
             </p>
@@ -155,9 +155,9 @@ const Register_to_host = () => {
       <Container>
         <Row>
           <Col md={4} className={RegisterToHost.textColumn}>
-            <h3 className={RegisterToHost.threeColumnTitle}>
+            <h4 className={RegisterToHost.threeColumnTitle}>
               Why Choose Golfhōm?
-            </h3>
+            </h4>
             <p className={RegisterToHost.threeColumnPara}>
               Golfers love their sport, and many love to travel as well. Those
               that love both are tired of stumbling around on other vacation
@@ -168,9 +168,9 @@ const Register_to_host = () => {
           </Col>
 
           <Col md={4} className={RegisterToHost.textColumn}>
-            <h3 className={RegisterToHost.threeColumnTitle}>
+            <h4 className={RegisterToHost.threeColumnTitle}>
               Booking Made Easy.
-            </h3>
+            </h4>
             <p className={RegisterToHost.threeColumnPara}>
               Travelers can search for their next Golfhōm by any of the world's
               38,000+ golf courses, as well as by major tournament. Easy to
@@ -180,9 +180,9 @@ const Register_to_host = () => {
           </Col>
 
           <Col md={4} className={RegisterToHost.textColumn}>
-            <h3 className={RegisterToHost.threeColumnTitle}>
+            <h4 className={RegisterToHost.threeColumnTitle}>
               Market to Your Key Clientele.
-            </h3>
+            </h4>
             <p className={RegisterToHost.threeColumnPara}>
               If you own a vacation rental property in the vicinity of a golf
               course, golf-travelers are a key market for you. Golfers are
@@ -196,13 +196,13 @@ const Register_to_host = () => {
       {/* ---------------------------        TEXT IN SIDE OF IMAGE CONTAINER         ----------------------------- */}
 
       <Container className={RegisterToHost.textImageParent}>
-        <h2 className={RegisterToHost.hostTitle}>How To Host</h2>
+        <h3 className={RegisterToHost.hostTitle}>How To Host</h3>
 
         <Row className={RegisterToHost.rowContentA}>
           <Col md={6} className={RegisterToHost.textParentA}>
-            <h3 className={RegisterToHost.textTitle}>
+            <h4 className={RegisterToHost.textTitle}>
               1. List Your Home or Condo
-            </h3>
+            </h4>
             <p className={RegisterToHost.paragraph}>
               Complete our simple listing loop, tell us which course(s) the home
               is within 2 miles of, and we’ll promote your property to
@@ -231,10 +231,10 @@ const Register_to_host = () => {
           </Col>
 
           <Col md={6} className={RegisterToHost.textParentB}>
-            <h3 className={RegisterToHost.textTitle}>
+            <h4 className={RegisterToHost.textTitle}>
               {" "}
               2. Welcome Your Guests
-            </h3>
+            </h4>
             <p className={RegisterToHost.paragraph}>
               Once our golf travelers have located and booked your home, be sure
               to deliver a clean and reliable accommodation. For safety and
@@ -246,7 +246,7 @@ const Register_to_host = () => {
 
         <Row className={RegisterToHost.rowContentA}>
           <Col md={6} className={RegisterToHost.textParentC}>
-            <h3 className={RegisterToHost.textTitle}>3. Earn Money</h3>
+            <h4 className={RegisterToHost.textTitle}>3. Earn Money</h4>
             <p className={RegisterToHost.paragraph}>
               Golfhōm pays out to hosts approximately 48 hours after the
               check-in date if no complaints have been registered. You set the
@@ -270,9 +270,9 @@ const Register_to_host = () => {
       <Container>
         <Row className={RegisterToHost.faqRow}>
           <Col md={6} className={RegisterToHost.textParentD}>
-            <h2 className={RegisterToHost.textTitle}>
+            <h3 className={RegisterToHost.textTitle}>
               Frequently Asked Questions
-            </h2>
+            </h3>
             <p className={RegisterToHost.paragraph}>
               Our team has provided answers below to some frequently asked questions. Please feel free to reach out to our help team if further information is needed, and thanks for booking with Golfhōm!
             </p>
@@ -408,9 +408,9 @@ const Register_to_host = () => {
       <Container>
         <Row className={RegisterToHost.goliveRow}>
           <Col md={6} className={RegisterToHost.textParentE}>
-            <h2 className={RegisterToHost.listHomeTitle}>
+            <h4 className={RegisterToHost.listHomeTitle}>
               List Your Home or Condo Today! Go Live on Golfhōm Now
-            </h2>
+            </h4>
             <Button className={RegisterToHost.goliveBtn}>
               Go Live on Golfhom now
             </Button>

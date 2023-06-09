@@ -6,8 +6,8 @@
 
 /* OVERVIEW TAB SECTION */
 .tab_overview_prop_heading {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-h3);
+  font-weight: 600;
   font-size: 30px;
   margin: 2rem 0;
 }
@@ -45,7 +45,7 @@
 /* ABOUT SECTION STARTED HERE */
 .about_section_main_heading {
   font-family: var(--font-poppins);
-  font-weight: 600;
+  font-weight: 500;
 }
 .about_section_para {
   font-family: var(--font-poppins);
@@ -62,8 +62,8 @@
 }
 .feature_section_heading {
   margin-bottom: 2rem;
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-h3);
+  font-weight: 600;
   font-size: 25px;
 }
 
@@ -226,7 +226,7 @@
   color: var(--light-font-color);
   border: none;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 6px 24px;
 }
 
@@ -318,8 +318,8 @@
 }
 
 .total_charges_text {
-  font-family: var(--font-amiri);
-  font-weight: 600;
+  font-family: var(--font-h3);
+  font-weight: 500;
 }
 
 .total_charges {
@@ -328,8 +328,8 @@
 }
 
 .total_price_text {
-  font-family: var(--font-amiri);
-  font-weight: 600;
+  font-family: var(--font-h3);
+  font-weight: 500;
   margin-bottom: 10px;
 }
 .total_price_charges_text {
@@ -364,7 +364,7 @@
   padding: 12px 50px;
   font-size: 1.1rem;
   height: auto;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .check:hover {
@@ -386,7 +386,7 @@
   border: 1px solid black;
   padding: 12px 56px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   height: auto;
   margin-top: 15px;
   margin-bottom: 22px;
@@ -406,8 +406,8 @@
 }
 
 .register {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-h3);
+  font-weight: 600;
   color: var(--btn-background-secondary);
   text-decoration: underline;
 }
@@ -499,7 +499,7 @@
   background: var(--white-font-color);
   color: var(--btn-background-secondary);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   font-family: var(--font-poppins);
   text-align: center;
   border-radius: 10px;
@@ -532,8 +532,8 @@
 }
 
 .ageName {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-h3);
+  font-weight: 600;
 }
 
 .increaseAdult {
@@ -659,9 +659,9 @@
 
 .things_to_know_section_heading {
   padding: 0;
-  font-family: var(--font-amiri);
+  font-family: var(--font-h3);
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .things_to_know_price_icon_container {
   display: flex;
@@ -697,9 +697,9 @@
 
 .details {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 20px;
-  font-family: var(--font-amiri);
+  font-family: var(--font-h3);
 }
 
 .tickParent {
@@ -726,7 +726,7 @@
 
 .tabOverviewPropHeading {
   font-family: var(--font-poppins);
-  font-weight: 600;
+  font-weight: 500;
 }
 .tabOverviewPropSmallSubheading {
   font-family: var(--font-poppins);

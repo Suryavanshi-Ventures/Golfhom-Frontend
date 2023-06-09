@@ -312,11 +312,11 @@
 
 .register,
 .register:hover {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
   color: var(--btn-background-secondary);
   text-decoration: underline;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
 .contactFill {
@@ -324,19 +324,18 @@
 }
 
 .donthaveAcc {
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
   color: var(--black-color);
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 600;
   margin: 0px 8px 26px 0px;
 }
 
 /* --------------          REGISTER BLOCK        ---------------   */
 
 .headerReg {
-  font-family: var(--font-amiri);
-  font-weight: 600;
-  font-size: 1.4rem;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .dont_link_parent {
@@ -473,9 +472,9 @@
 /* ----------------        FORGOT SECTION BLOCK          ---------------- */
 
 .headerForgot {
-  font-family: var(--font-amiri);
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-family: var(--font-poppins);
+  font-size: 1.4rem;
+  font-weight: 500;
   display: flex;
   align-content: center;
 }

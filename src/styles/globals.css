@@ -74,9 +74,9 @@
   background-color: var(--btn-background-secondary) !important;
   padding: 10px;
   color: var(--white-font-color) !important;
-  font-family: var(--font-amiri) !important;
-  font-weight: 600 !important;
-  font-size: 1.2rem !important;
+  font-family: var(--font-poppins) !important;
+  font-weight: 500 !important;
+  font-size: 1.1rem !important;
 }
 
 .ant-modal-header {
@@ -321,5 +321,4 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 2px !important;
   height: 45px !important;
   border: 1px solid var(--btn-background-secondary) !important;
-
 }

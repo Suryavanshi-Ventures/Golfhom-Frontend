@@ -6,7 +6,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import ProtectedRoute from "../../../common components/protected_route";
-import { Checkbox, Dropdown, Input, Space, Typography } from "antd";
+import { Checkbox, Dropdown, Input, Select, Space, Typography } from "antd";
 import { CaretDownOutlined } from '@ant-design/icons';
 // import ReactQuill from 'react-quill';
 // import 'react-quill/dist/quill.snow.css';
@@ -42,9 +42,9 @@ const Addlisting = () => {
 
         <Container>
           <Col md={9}>
-            <h2 className={AddListingCss.addListing}>Add Listing</h2>
+            <h3 className={AddListingCss.addListing}>Add Listing</h3>
 
-            <h3 className={AddListingCss.info}>Information</h3>
+            <h4 className={AddListingCss.info}>Information</h4>
 
             <hr />
 
@@ -74,39 +74,37 @@ const Addlisting = () => {
 
             <Row>
               <Col md={3}>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        key: "1",
-                        label: "Florida",
-                      },
-                      {
-                        key: "2",
-                        label: "Arizona",
-                      },
-                      {
-                        key: "3",
-                        label: "Sanfrancisco",
-                      },
-                    ],
-                    selectable: true,
-                    defaultSelectedKeys: ["3"],
-                  }}
+                <Select
+                  defaultValue="Location"
+                  options={[
+                    {
+                      value: "Florida",
+                      label: "Florida",
+                    },
+                    {
+                      value: "Arizona",
+                      label: "Arizona",
+                    },
+                    {
+                      value: "Sanfrancisco",
+                      label: "Sanfrancisco",
+                    },
+                  ]}
                   trigger={["click"]}
-                  value={selectedOption}
-                  onChange={handleOptionChange}
-                  className={AddListingCss.colA}
+                  // className={AddListingCss.colA}
+                  size="large"
                 >
-                  <span onClick={(e) => e.preventDefault()}>
+                  <Select.Option
+                    onClick={(e) => e.preventDefault()}
+                  >
                     <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
-                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
-                        Location
-                        <CaretDownOutlined />
-                      </Space>
+                      <Space
+                        className={AddListingCss.search_by_golf_input_search_by_tourni}
+                      >Reservation Fee
+                        <CaretDownOutlined /></Space>
                     </Typography.Link>
-                  </span>
-                </Dropdown>
+                  </Select.Option>
+                </Select>
               </Col>
 
               <Col md={5}></Col>
@@ -123,39 +121,37 @@ const Addlisting = () => {
             <Row className={AddListingCss.listingbed}>
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Type of listing*</h4>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        key: "4",
-                        label: "Florida",
-                      },
-                      {
-                        key: "5",
-                        label: "Arizona",
-                      },
-                      {
-                        key: "6",
-                        label: "Sanfrancisco",
-                      },
-                    ],
-                    selectable: true,
-                    defaultSelectedKeys: ["5"],
-                  }}
+                <Select
+                  defaultValue="Location"
+                  options={[
+                    {
+                      value: "Florida",
+                      label: "Florida",
+                    },
+                    {
+                      value: "Arizona",
+                      label: "Arizona",
+                    },
+                    {
+                      value: "Sanfrancisco",
+                      label: "Sanfrancisco",
+                    },
+                  ]}
                   trigger={["click"]}
-                  value={selectedOption}
-                  onChange={handleOptionChange}
-                  className={AddListingCss.colA}
+                  // className={AddListingCss.colA}
+                  size="large"
                 >
-                  <span onClick={(e) => e.preventDefault()}>
+                  <Select.Option
+                    onClick={(e) => e.preventDefault()}
+                  >
                     <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
-                      <Space className={AddListingCss.search_by_golf_input_search_by_tourni}>
-                        Select listing Type
-                        <CaretDownOutlined />
-                      </Space>
+                      <Space
+                        className={AddListingCss.search_by_golf_input_search_by_tourni}
+                      >  Select listing Type
+                        <CaretDownOutlined /></Space>
                     </Typography.Link>
-                  </span>
-                </Dropdown>
+                  </Select.Option>
+                </Select>
               </Col>
 
               <Col md={6} className={AddListingCss.inputBox}>

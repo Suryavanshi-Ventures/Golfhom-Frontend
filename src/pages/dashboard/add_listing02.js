@@ -34,9 +34,9 @@ const Addlisting02 = () => {
 
         <Container>
           <Col md={10}>
-            <h2 className={AddListing02Css.addListing}>Add Listing</h2>
+            <h3 className={AddListing02Css.addListing}>Add Listing</h3>
 
-            <h3 className={AddListing02Css.info}>Media</h3>
+            <h4 className={AddListing02Css.info}>Media</h4>
 
             <hr />
 
@@ -75,7 +75,7 @@ const Addlisting02 = () => {
             </Row>
 
             <Row>
-              <h3 className={AddListing02Css.info}>Video URL</h3>
+              <h4 className={AddListing02Css.info}>Video URL</h4>
 
               <Row>
                 <Input

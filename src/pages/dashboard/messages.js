@@ -7,13 +7,9 @@ import Laugh from "../../../public/images/laugh.png";
 import { Container } from "react-bootstrap";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
+import { Select, Space, Typography } from "antd";
 
 const Messages = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
 
   return (
     <>
@@ -44,16 +40,32 @@ const Messages = () => {
 
             <div className={MessageCss.sortDown}>
               <h4 className={MessageCss.form}>Sort</h4>
-              <select
-                id="my-dropdown"
-                value={selectedOption}
-                onChange={handleOptionChange}
+              <Select
+                defaultValue="Asc"
+                options={[
+                  {
+                    value: "900",
+                    label: "900",
+                  },
+                  {
+                    value: "1000",
+                    label: "1000",
+                  },
+                ]}
+                trigger={["click"]}
                 className={MessageCss.asc}
+                size="large"
               >
-                <option value="number">Asc</option>
-                <option value="number">900</option>
-                <option value="number">1000</option>
-              </select>
+                <Select.Option
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Typography.Link>
+                    <Space
+                    >Asc
+                    </Space>
+                  </Typography.Link>
+                </Select.Option>
+              </Select>
             </div>
           </div>
 

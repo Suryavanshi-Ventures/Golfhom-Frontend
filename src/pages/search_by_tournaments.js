@@ -3,7 +3,7 @@ import SearchByTourCss from "../styles/SearchByTournament.module.css";
 import Search from "../../public/images/search.png";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
-import { Dropdown, Pagination, Button, Space } from "antd";
+import { Pagination, Button, Space, Select, Typography } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import BottomSection from "../../common components/bottomGroup";
 import CarouselImages from "../../common components/carouselMap";
@@ -14,27 +14,6 @@ const SearchByTournaments = () => {
     console.log("Page: ", pageNumber);
   };
 
-  // DROPDOWN CONTENT
-
-  const handleMenuClick = (e) => {
-    console.log("click", e);
-  };
-
-  const items = [
-    {
-      label: "1st menu item",
-      key: "1",
-    },
-    {
-      label: "2nd menu item",
-      key: "2",
-    },
-  ];
-
-  const menuProps = {
-    items,
-    onClick: handleMenuClick,
-  };
   return (
     <>
       <Head>
@@ -59,26 +38,46 @@ const SearchByTournaments = () => {
       <Container>
         <Row>
           <Col md={4} className={SearchByTourCss.textArea}>
-            <h2 className={SearchByTourCss.searchTitle}>
+            <h3 className={SearchByTourCss.searchTitle}>
               Search by Tournaments
-            </h2>
+            </h3>
             <p className={SearchByTourCss.checkOut}>
               Check out our growing list of tour-spot rentals
             </p>
 
-            <Dropdown menu={menuProps}>
-              <Button
-                size="large"
-                className={SearchByTourCss.edit_room_dropdown_btn}
+            <Select
+              defaultValue="The Tradition at Quinta"
+              options={[
+                {
+                  value: "Any",
+                  label: "Any",
+                },
+                {
+                  value: "Reservation Fee",
+                  label: "Reservation Fee",
+                },
+                {
+                  value: "Upgrade to Featured",
+                  label: "Upgrade to Featured",
+                },
+              ]}
+              trigger={["click"]}
+              className={SearchByTourCss.edit_room_dropdown_btn}
+              size="large"
+            >
+              <Select.Option
+                onClick={(e) => e.preventDefault()}
               >
-                <Space className={SearchByTourCss.edit_room_dropdown_btn_space}>
-                  The Tradition at Quinta
-                  <DownOutlined
-                    className={SearchByTourCss.edit_room_dropdown_icon}
-                  />
-                </Space>
-              </Button>
-            </Dropdown>
+                <Typography.Link>
+                  <Space
+                    className={SearchByTourCss.edit_room_dropdown_btn_space}
+                  > The Tradition at Quinta
+                    <DownOutlined
+                      className={SearchByTourCss.edit_room_dropdown_icon}
+                    /></Space>
+                </Typography.Link>
+              </Select.Option>
+            </Select>
 
             <Button className={SearchByTourCss.search}>Search</Button>
           </Col>
@@ -90,9 +89,9 @@ const SearchByTournaments = () => {
       <section className={SearchByTourCss.search_main_section}>
         <Container>
           <Row>
-            <h4 className={SearchByTourCss.orlandoHead}>
+            <h5 className={SearchByTourCss.orlandoHead}>
               The Tradition at Quinta
-            </h4>
+            </h5>
 
             {/*    ----------------      CARD MAP SECTION      -------------------   */}
             <Col md={8}>
@@ -104,18 +103,33 @@ const SearchByTournaments = () => {
 
                   <div className={SearchByTourCss.sortdiv}>
                     <p className={SearchByTourCss.sort}>Sort By:</p>
-
-                    <Dropdown
-                      menu={menuProps}
+                    <Select
+                      defaultValue="Default order"
+                      options={[
+                        {
+                          value: "Low to High",
+                          label: "Low to High",
+                        },
+                        {
+                          value: "High to Low",
+                          label: "High to Low",
+                        },
+                      ]}
+                      trigger={["click"]}
                       className={SearchByTourCss.default}
+                      size="large"
                     >
-                      <Button size="large">
-                        <Space>
-                          Default order
-                          <DownOutlined />
-                        </Space>
-                      </Button>
-                    </Dropdown>
+                      <Select.Option
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <Typography.Link>
+                          <Space
+                          // className={InvoiceCss.search_by_golf_input_search_by_tourni}
+                          > Default order
+                            <DownOutlined /></Space>
+                        </Typography.Link>
+                      </Select.Option>
+                    </Select>
                   </div>
                 </div>
                 {/* ------------------- CAROUSEL IMAGES STARTS  -----------------------  */}

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
 import Nextimg from "../../../public/images/vector/next.svg";
 import Head from "next/head";
-import { Dropdown, Space, Typography, DatePicker } from "antd";
+import { Space, Typography, DatePicker, Select } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
 import Link from "next/link";
@@ -20,43 +20,6 @@ const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY', 'DD-MM-YYYY', 'DD-MM-YY'];
 const dateFormat = 'MMMM D,YYYY';
 
 const Invoice = () => {
-
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  const items = [
-    {
-      label: "Any",
-      key: "1",
-    },
-    {
-      label: "Reservation Fee",
-      key: "2",
-    },
-    {
-      label: "Upgrade to Featured",
-      key: "3",
-    },
-  ];
-
-  const item = [
-    {
-      label: "Any",
-      key: "4",
-    },
-    {
-      label: "Paid",
-      key: "5",
-    },
-    {
-      label: "Not Paid",
-      key: "6",
-    },
-  ];
-
   return (
     <>
       <ProtectedRoute>
@@ -112,68 +75,71 @@ const Invoice = () => {
                   </td>
 
                   <td>
-                    <Dropdown
-                      menu={{
-                        items,
-                        selectable: true,
-                        defaultSelectedKeys: ["2"],
-                      }}
+                    <Select
+                      defaultValue=" Marmot Ridge Golf Course"
+                      options={[
+                        {
+                          value: "Any",
+                          label: "Any",
+                        },
+                        {
+                          value: "Reservation Fee",
+                          label: "Reservation Fee",
+                        },
+                        {
+                          value: "Upgrade to Featured",
+                          label: "Upgrade to Featured",
+                        },
+                      ]}
                       trigger={["click"]}
-                      id="my-dropdown"
-                      value={selectedOption}
-                      onChange={handleOptionChange}
-                      className={InvoiceCss.colA}
-                      prefix={<DownOutlined />}
+                      // className={InvoiceCss.colB}
+                      size="large"
                     >
-                      <span onClick={(e) => e.preventDefault()}>
+                      <Select.Option
+                        onClick={(e) => e.preventDefault()}
+                      >
                         <Typography.Link>
                           <Space
-                            className={
-                              InvoiceCss.search_by_golf_input_search_by_tourni
-                            }
-                          >
-                            Reservation Fee
-                            <DownOutlined />
-                          </Space>
+                            className={InvoiceCss.search_by_golf_input_search_by_tourni}
+                          >Reservation Fee
+                            <DownOutlined /></Space>
                         </Typography.Link>
-                      </span>
-                    </Dropdown>
+                      </Select.Option>
+                    </Select>
                   </td>
 
                   <td>
-                    <Dropdown
-                      menu={{
-                        items: [
-                          {
-                            key: "4",
-                            label: "Any",
-                          },
-                          {
-                            key: "5",
-                            label: "Paid",
-                          },
-                          {
-                            key: "6",
-                            label: "NotPaid",
-                          },
-                        ],
-                        selectable: true,
-                        defaultSelectedKeys: ["5"],
-                      }}
+                    <Select
+                      defaultValue=" Marmot Ridge Golf Course"
+                      options={[
+                        {
+                          value: "Any",
+                          label: "Any",
+                        },
+                        {
+                          value: "Paid",
+                          label: "Paid",
+                        },
+                        {
+                          value: "Not Paid",
+                          label: "Not Paid",
+                        },
+                      ]}
                       trigger={["click"]}
-                      value={selectedOption}
-                      onChange={handleOptionChange}
-                      className={InvoiceCss.colB}
+                      // className={InvoiceCss.colB}
+                      size="large"
                     >
-                      <span onClick={(e) => e.preventDefault()}>
-                        <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
-                          <Space className={InvoiceCss.search_by_golf_input_search_by_tourni}>
-                            Paid
-                            <DownOutlined />
-                          </Space>
+                      <Select.Option
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <Typography.Link>
+                          <Space
+                            className={InvoiceCss.search_by_golf_input_search_by_tourni}
+                          >Paid
+                            <DownOutlined /></Space>
                         </Typography.Link>
-                      </span>
-                    </Dropdown>
+                      </Select.Option>
+                    </Select>
                   </td>
                 </tr>
               </tbody>

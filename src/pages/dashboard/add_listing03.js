@@ -104,9 +104,9 @@ const Addlisting03 = () => {
 
                 <Container>
                     <Col md={10}>
-                        <h2 className={AddListing03Css.addListing}>Add Listing</h2>
+                        <h3 className={AddListing03Css.addListing}>Add Listing</h3>
 
-                        <h3 className={AddListing03Css.info}>Features</h3>
+                        <h4 className={AddListing03Css.info}>Features</h4>
 
                         <hr />
                     </Col>

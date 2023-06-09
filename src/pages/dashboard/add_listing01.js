@@ -5,7 +5,7 @@ import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
-import { Button, Dropdown, Input, Space, Typography } from "antd";
+import { Button, Dropdown, Input, Select, Space, Typography } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 import { CaretDownOutlined } from "@ant-design/icons";
 
@@ -40,16 +40,16 @@ const Addlisting01 = () => {
 
                 <Container>
                     <Col md={10}>
-                        <h2 className={AddListing01Css.addListing}>Add Listing</h2>
+                        <h3 className={AddListing01Css.addListing}>Add Listing</h3>
 
-                        <h3 className={AddListing01Css.info}>Pricing</h3>
+                        <h4 className={AddListing01Css.info}>Pricing</h4>
 
                         <hr />
 
 
                         <Row>
                             <Col md={7}>
-                                <h4 className={AddListing01Css.title}>Nightly*</h4>
+                                <h5 className={AddListing01Css.title}>Nightly*</h5>
 
                                 <Input
                                     type="text"
@@ -61,7 +61,7 @@ const Addlisting01 = () => {
 
                         <Row>
                             <Col md={12} className={AddListing01Css.colParent}>
-                                <h4 className={AddListing01Css.title}>Nightly*</h4>
+                                <h5 className={AddListing01Css.title}>Nightly*</h5>
 
                                 <Input
                                     type="text"
@@ -74,8 +74,8 @@ const Addlisting01 = () => {
 
                         <Row>
                             <Col md={12} className={AddListing01Css.colParent}>
-                                <h4 className={AddListing01Css.title}>Long-term pricing</h4>
-                                <h5 className={AddListing01Css.weekly}>Weekly - 7+ nights</h5>
+                                <h5 className={AddListing01Css.title}>Long-term pricing</h5>
+                                <p className={AddListing01Css.weekly}>Weekly - 7+ nights</p>
 
                                 <Input
                                     type="text"
@@ -87,56 +87,53 @@ const Addlisting01 = () => {
                         <hr />
 
                         <Row>
-                            <h3 className={AddListing01Css.info}>Setup Extra Services Price</h3>
+                            <h4 className={AddListing01Css.info}>Setup Extra Services Price</h4>
 
                             <Row className={AddListing01Css.twoinputDropdown}>
                                 <Col md={4}>
-                                    <h5 className={AddListing01Css.name}>Name</h5>
+                                    <p className={AddListing01Css.name}>Name</p>
                                     <Input type="text" placeholder="Enter Service name" className={AddListing01Css.listing} />
                                 </Col>
 
                                 <Col md={4}>
-                                    <h5 className={AddListing01Css.price}>Price</h5>
+                                    <p className={AddListing01Css.price}>Price</p>
                                     <Input type="text" placeholder="Enter price - only digits" className={AddListing01Css.listing} />
 
                                 </Col>
 
                                 <Col md={4}>
-                                    <h5 className={AddListing01Css.type}>Type</h5>
-
-                                    <Dropdown
-                                        menu={{
-                                            items: [
-                                                {
-                                                    key: "1",
-                                                    label: "Action",
-                                                },
-                                                {
-                                                    key: "2",
-                                                    label: "Another action",
-                                                },
-                                                {
-                                                    key: "3",
-                                                    label: "Something else",
-                                                },
-                                            ],
-                                            selectable: true,
-                                            defaultSelectedKeys: ["3"],
-                                        }}
+                                    <p className={AddListing01Css.type}>Type</p>
+                                    <Select
+                                        defaultValue="Location"
+                                        options={[
+                                            {
+                                                value: "Action",
+                                                label: "Action",
+                                            },
+                                            {
+                                                value: "Another action",
+                                                label: "Another action",
+                                            },
+                                            {
+                                                value: "Something else",
+                                                label: "Something else",
+                                            },
+                                        ]}
                                         trigger={["click"]}
-                                        value={selectedOption}
-                                        onChange={handleOptionChange}
-                                        className={AddListing01Css.colA}
+                                        // className={AddListing01Css.colA}
+                                        size="large"
                                     >
-                                        <span onClick={(e) => e.preventDefault()}>
+                                        <Select.Option
+                                            onClick={(e) => e.preventDefault()}
+                                        >
                                             <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
-                                                <Space className={AddListing01Css.search_by_golf_input_search_by_tourni}>
-                                                    Single free
-                                                    <CaretDownOutlined />
-                                                </Space>
+                                                <Space
+                                                    className={AddListing01Css.search_by_golf_input_search_by_tourni}
+                                                > Single free
+                                                    <CaretDownOutlined /></Space>
                                             </Typography.Link>
-                                        </span>
-                                    </Dropdown>
+                                        </Select.Option>
+                                    </Select>
                                 </Col>
 
                                 <div className={AddListing01Css.btnparent}>
@@ -151,11 +148,11 @@ const Addlisting01 = () => {
                         <hr />
 
                         <Row>
-                            <h3 className={AddListing01Css.info}>Additional costs</h3>
+                            <h4 className={AddListing01Css.info}>Additional costs</h4>
 
                             <Row>
                                 <Col md={4}>
-                                    <h5 className={AddListing01Css.name}>Cleaning fee</h5>
+                                    <p className={AddListing01Css.name}>Cleaning fee</p>
                                     <Input type="text" placeholder="Enter the Unit price for a single day" className={AddListing01Css.listing} />
                                 </Col>
 

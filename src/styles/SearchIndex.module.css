@@ -4,12 +4,13 @@
 
 .edit_details_container_cols {
   margin-bottom: 1.5rem;
+  padding: 0px 12px;
 }
 
 .edit_details_btn_parent_container {
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 .edit_details_btn_child_container {
   display: flex;
@@ -21,14 +22,17 @@
   font-family: var(--font-poppins);
 }
 
-.edit_details_date_picker {
+.edit_details_date_picker, .inner_input_box {
   width: 100%;
+  border-color: var(--btn-background);
+}
+.edit_details_date_picker:hover, .inner_input_box:hover {
+  border-color: var(--btn-background) !important;
 }
 
 .edit_details_btn {
   padding: 0.6rem 3rem !important;
   height: auto !important;
-  border-radius: 0 !important;
   color: var(--btn-background);
   border-color: var(--btn-background);
 }
@@ -75,16 +79,25 @@
   align-items: center;
 }
 
-.searching,
-.searching:hover {
+.searching {
   width: 100%;
   background-color: var(--btn-background);
   color: var(--white-font-color) !important;
   border: none;
-  height: 50px;
+  /* height: 50px; */
   font-size: 1rem;
   font-weight: 600;
-  /* width: 100px; */
+  padding: 0.6rem 2.8rem !important;
+  height: auto !important;
+}
+
+.search_div {
+  padding-left: 61px;
+}
+
+.searching:hover {
+  background-color: var(--black-btn-color);
+  border: none;
 }
 
 /*    ----------------      CARD MAP SECTION      -------------------   */
@@ -198,8 +211,9 @@
 
 .course_choice_parent {
   padding-right: 0px;
+  padding-left: 0px;
   margin-right: 0px;
-  padding-left: 18px;
+  display: flex;
 }
 
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
@@ -232,9 +246,9 @@
 
 .details {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 20px;
-  font-family: var(--font-amiri);
+  font-family: var(--font-poppins);
 }
 
 .tickParent {

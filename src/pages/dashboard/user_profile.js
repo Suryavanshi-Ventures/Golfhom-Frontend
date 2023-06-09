@@ -63,7 +63,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="User Name"
                     />
                   </div>
 
@@ -81,7 +81,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="First Name"
                     />
                   </div>
 
@@ -99,7 +99,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Native Language"
                     />
                   </div>
                 </Col>
@@ -118,7 +118,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Display Name"
                     />
                   </div>
 
@@ -136,7 +136,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Last Name"
                     />
                   </div>
 
@@ -154,7 +154,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Other Language"
                     />
                   </div>
                 </Col>
@@ -208,7 +208,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Address"
                     />
                   </div>
 
@@ -226,7 +226,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="City"
                     />
                   </div>
 
@@ -244,7 +244,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Code"
                     />
                   </div>
 
@@ -262,7 +262,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Country"
                     />
                   </div>
                 </Col>
@@ -281,7 +281,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Apartment Number"
                     />
                   </div>
 
@@ -299,7 +299,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="State"
                     />
                   </div>
 
@@ -317,7 +317,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Neighborhood"
                     />
                   </div>
                 </Col>
@@ -358,7 +358,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Contact Name"
                     />
                   </div>
 
@@ -376,7 +376,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Email"
                     />
                   </div>
                 </Col>
@@ -395,7 +395,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Relationship"
                     />
                   </div>
 
@@ -413,7 +413,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Phone"
                     />
                   </div>
                 </Col>
@@ -454,7 +454,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Facebook"
                     />
                   </div>
 
@@ -472,7 +472,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Linkedin"
                     />
                   </div>
 
@@ -490,7 +490,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Instagram"
                     />
                   </div>
 
@@ -508,7 +508,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Youtube"
                     />
                   </div>
 
@@ -526,7 +526,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Airbnb"
                     />
                   </div>
                 </Col>
@@ -545,7 +545,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Twitter"
                     />
                   </div>
 
@@ -563,7 +563,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Google Plus"
                     />
                   </div>
 
@@ -581,7 +581,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder=" Pinterest"
                     />
                   </div>
 
@@ -599,7 +599,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder=" Vimeo"
                     />
                   </div>
 
@@ -617,7 +617,7 @@ const UserProfile = () => {
                     </label>
                     <Input
                       className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Basic usage"
+                      placeholder="Trip Advisor"
                     />
                   </div>
                 </Col>

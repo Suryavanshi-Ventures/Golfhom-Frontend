@@ -50,14 +50,14 @@ const AddListing04 = () => {
         </div>
 
         <Container>
-          <h2 className={AddListing05Css.addListing}>Add Listing</h2>
+          <h3 className={AddListing05Css.addListing}>Add Listing</h3>
 
-          <h3 className={AddListing05Css.info}>Terms & rules</h3>
+          <h4 className={AddListing05Css.info}>Terms & rules</h4>
 
           <hr />
           <Row>
             <Col md={10}>
-              <h4 className={AddListing05Css.title}>Cancellation Policy*</h4>
+              <h5 className={AddListing05Css.title}>Cancellation Policy*</h5>
               <div className={AddListing05Css.checkbox_div}>
                 <Checkbox className={AddListing05Css.checkbox}>
                   RELAXED (14/7): Cancellations up to 14 days prior to check-in
@@ -95,9 +95,9 @@ const AddListing04 = () => {
               </div>
               <Row>
                 <Col md={6}>
-                  <h4 className={AddListing05Css.title}>
+                  <h5 className={AddListing05Css.title}>
                     Minimum Nights of a Booking*
-                  </h4>
+                  </h5>
 
                   <Input
                     type="number"
@@ -107,9 +107,9 @@ const AddListing04 = () => {
                 </Col>
 
                 <Col md={6}>
-                  <h4 className={AddListing05Css.title}>
+                  <h5 className={AddListing05Css.title}>
                     Maximum Nights of a Booking*
-                  </h4>
+                  </h5>
 
                   <Input
                     type="number"
@@ -121,7 +121,7 @@ const AddListing04 = () => {
 
               <Row>
                 <Col md={6}>
-                  <h4 className={AddListing05Css.title}>Check-in After*</h4>
+                  <h5 className={AddListing05Css.title}>Check-in After*</h5>
 
                   <Select
                     style={{ minWidth: "100%" }}
@@ -145,7 +145,7 @@ const AddListing04 = () => {
                 </Col>
 
                 <Col md={6}>
-                  <h4 className={AddListing05Css.title}>Check-out Before*</h4>
+                  <h5 className={AddListing05Css.title}>Check-out Before*</h5>
                   <Select
                     style={{ minWidth: "100%" }}
                     className={AddListing05Css.select_input_checkin}
@@ -329,9 +329,9 @@ const AddListing04 = () => {
 
               <Row>
                 <Col md={12}>
-                  <h4 className={AddListing05Css.title}>
+                  <h5 className={AddListing05Css.title}>
                     Additional rules and information (Optional)
-                  </h4>
+                  </h5>
                   <TextArea
                     className={AddListing05Css.text_area}
                     rows={4}

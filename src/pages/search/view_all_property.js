@@ -126,11 +126,11 @@ const ViewAllProperty = () => {
 
       <section className={ViewAllPropertyCss.textContainer}>
         <Container>
-          <h2 className={ViewAllPropertyCss.heading}>
+          <h3 className={ViewAllPropertyCss.heading}>
             Find Great Vacation Rentals near Florida, Arizona, Hawaii & South
             Carolina
-          </h2>
-          <h2 className={ViewAllPropertyCss.golfCourse}> Golf Courses!</h2>
+          </h3>
+          <h3 className={ViewAllPropertyCss.golfCourse}> Golf Courses!</h3>
           <p className={ViewAllPropertyCss.para}>
             Florida, Arizona, Hawaii, South Carolina - All renowned for their
             beautiful surroundings, outdoor lifestyles, & of course for having
@@ -152,7 +152,7 @@ const ViewAllProperty = () => {
         <Container>
           <Row className={ViewAllPropertyCss.columnParent}>
             {/* FLORDIA */}
-            <h2 className={ViewAllPropertyCss.heading}>Florida</h2>
+            <h3 className={ViewAllPropertyCss.heading}>Florida</h3>
             {IsLoaderVisible ? (
               <>
                 <div className={ViewAllPropertyCss.loader_main_div}>
@@ -180,9 +180,8 @@ const ViewAllProperty = () => {
                     <span
                       onClick={(e) => {
                         RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            }`,
                         });
                       }}
                       key={Index}
@@ -204,7 +203,7 @@ const ViewAllProperty = () => {
             )}
 
             {/* Arizona */}
-            <h2 className={ViewAllPropertyCss.heading}>Arizona</h2>
+            <h3 className={ViewAllPropertyCss.heading}>Arizona</h3>
             {IsLoaderVisible ? (
               <>
                 <div className={ViewAllPropertyCss.loader_main_div}>
@@ -232,9 +231,8 @@ const ViewAllProperty = () => {
                     <span
                       onClick={(e) => {
                         RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            }`,
                         });
                       }}
                       key={Index}
@@ -256,7 +254,7 @@ const ViewAllProperty = () => {
             )}
 
             {/* Hawaii */}
-            <h2 className={ViewAllPropertyCss.heading}>Hawaii</h2>
+            <h3 className={ViewAllPropertyCss.heading}>Hawaii</h3>
             {IsLoaderVisible ? (
               <>
                 <div className={ViewAllPropertyCss.loader_main_div}>
@@ -284,9 +282,8 @@ const ViewAllProperty = () => {
                     <span
                       onClick={(e) => {
                         RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            }`,
                         });
                       }}
                       key={Index}
@@ -308,7 +305,7 @@ const ViewAllProperty = () => {
             )}
 
             {/* South Carolina */}
-            <h2 className={ViewAllPropertyCss.heading}>South Carolina</h2>
+            <h3 className={ViewAllPropertyCss.heading}>South Carolina</h3>
             {IsLoaderVisible ? (
               <>
                 <div className={ViewAllPropertyCss.loader_main_div}>
@@ -337,9 +334,8 @@ const ViewAllProperty = () => {
                     <span
                       onClick={(e) => {
                         RouterRef.push({
-                          pathname: `/search/${encodeURIComponent(Data.name)}/${
-                            Data.id
-                          }`,
+                          pathname: `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            }`,
                         });
                       }}
                       key={Index}

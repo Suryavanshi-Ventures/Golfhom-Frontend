@@ -31,9 +31,9 @@ const AddListing04 = () => {
         <Container>
           <Row>
             <Col md={10}>
-              <h2 className={AddListing04Css.addListing}>Add Listing</h2>
+              <h3 className={AddListing04Css.addListing}>Add Listing</h3>
 
-              <h3 className={AddListing04Css.info}>Location</h3>
+              <h4 className={AddListing04Css.info}>Location</h4>
 
               <hr />
             </Col>
@@ -45,7 +45,7 @@ const AddListing04 = () => {
 
               <Row>
                 <Col md={6}>
-                  <h4 className={AddListing04Css.title}>Address*</h4>
+                  <h5 className={AddListing04Css.title}>Address*</h5>
 
                   <Input
                     type="text"
@@ -55,7 +55,7 @@ const AddListing04 = () => {
                 </Col>
 
                 <Col md={6}>
-                  <h4 className={AddListing04Css.title}>City</h4>
+                  <h5 className={AddListing04Css.title}>City</h5>
 
                   <Input
                     type="text"
@@ -67,7 +67,7 @@ const AddListing04 = () => {
 
               <Row>
                 <Col md={6}>
-                  <h4 className={AddListing04Css.title}>State</h4>
+                  <h5 className={AddListing04Css.title}>State</h5>
 
                   <Input
                     type="text"
@@ -77,7 +77,7 @@ const AddListing04 = () => {
                 </Col>
 
                 <Col md={6}>
-                  <h4 className={AddListing04Css.title}>Zip Code</h4>
+                  <h5 className={AddListing04Css.title}>Zip Code</h5>
 
                   <Input
                     type="text"
@@ -89,7 +89,7 @@ const AddListing04 = () => {
 
               <Row>
                 <Col md={6}>
-                  <h4 className={AddListing04Css.title}>Country</h4>
+                  <h5 className={AddListing04Css.title}>Country</h5>
 
                   <Input
                     type="text"

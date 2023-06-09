@@ -19,7 +19,7 @@ const Income = () => {
 
         <main className={IncomeCss.income_main_section}>
           <Container>
-            <h4 className={IncomeCss.income_page_heading}>Income</h4>
+            <h3 className={IncomeCss.income_page_heading}>Income</h3>
 
             <section className={IncomeCss.income_page_cards_section}>
               <Row className={IncomeCss.income_page_cards_rows}>

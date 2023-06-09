@@ -6,15 +6,15 @@
 /*     -------------------------     TEXT AREA      ----------------------------    */
 
 .addListing {
-  font-family: var(--font-amiri);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
   margin-top: 42px;
   margin-bottom: 20px;
 }
 
 .info {
-  font-family: var(--font-amiri);
-  font-weight: 600;
+  font-family: var(--font-poppins);
+  font-weight: 500;
   margin: 40px 0px 30px;
 }
 
@@ -80,12 +80,6 @@
 .addbtn:hover {
   background-color: var(--black-btn-color);
   border: 1px solid var(--black-btn-color);
-}
-
-.title {
-  font-family: var(--font-amiri);
-  font-weight: 600;
-  margin: 20px 0px;
 }
 
 .listing {

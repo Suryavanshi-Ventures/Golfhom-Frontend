@@ -10,9 +10,11 @@ import {
   Button,
   Dropdown,
   Space,
+  Select,
   Skeleton,
   DatePicker,
   Pagination,
+  Typography,
 } from "antd";
 import { DownOutlined, CaretDownOutlined } from "@ant-design/icons";
 import Image from "next/image";
@@ -115,7 +117,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => {};
+    return () => { };
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -134,10 +136,8 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -152,7 +152,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     param.from,
     param.guest,
@@ -192,12 +192,9 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-          "latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-          "from=" + param.from
-        }&${
-          "to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+        }&${"to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -239,41 +236,41 @@ const Index = () => {
       <>
         {/* EDIT DROP DETAIL SECTION */}
 
-        <Row className={SearchIndexCss.course_choice_parent}>
+        <div className={SearchIndexCss.course_choice_parent}>
           <Col md={3} className={SearchIndexCss.edit_details_container_cols}>
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>
                 Golf Course Choice
               </p>
               <div className={SearchIndexCss.edit_details_inputs_container}>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        label: "Orlando",
-                        key: "1",
-                      },
-                      {
-                        label: "Portugal",
-                        key: "2",
-                      },
-                    ],
-                  }}
+                <Select
+                  defaultValue="Florida USA"
+                  options={[
+                    {
+                      value: "Orlando",
+                      label: "Orlando",
+                    },
+                    {
+                      value: "Portugal",
+                      label: "Portugal",
+                    },
+                  ]}
+                  trigger={["click"]}
+                  className={SearchIndexCss.edit_room_dropdown_btn}
+                  size="large"
                 >
-                  <Button
-                    size="large"
-                    className={SearchIndexCss.edit_room_dropdown_btn}
+                  <Select.Option
+                    onClick={(e) => e.preventDefault()}
                   >
-                    <Space
-                      className={SearchIndexCss.edit_room_dropdown_btn_space}
-                    >
-                      Florida USA
-                      <DownOutlined
-                        className={SearchIndexCss.edit_room_dropdown_icon}
-                      />
-                    </Space>
-                  </Button>
-                </Dropdown>
+                    <Typography.Link>
+                      <Space
+                        className={SearchIndexCss.edit_room_dropdown_btn_space}
+                      >Florida USA    <DownOutlined
+                          className={SearchIndexCss.edit_room_dropdown_icon}
+                        /></Space>
+                    </Typography.Link>
+                  </Select.Option>
+                </Select>
               </div>
             </div>
           </Col>
@@ -282,34 +279,35 @@ const Index = () => {
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
               <div className={SearchIndexCss.edit_details_inputs_container}>
-                <Dropdown
-                  menu={{
-                    items: [
-                      {
-                        label: "Arizona",
-                        key: "1",
-                      },
-                      {
-                        label: "New York",
-                        key: "2",
-                      },
-                    ],
-                  }}
+                <Select
+                  defaultValue=" Marmot Ridge Golf Course"
+                  options={[
+                    {
+                      value: "Arizona",
+                      label: "Arizona",
+                    },
+                    {
+                      value: "New York",
+                      label: "New York",
+                    },
+                  ]}
+                  trigger={["click"]}
+                  className={SearchIndexCss.edit_room_dropdown_btn}
+                  size="large"
                 >
-                  <Button
-                    size="large"
-                    className={SearchIndexCss.edit_room_dropdown_btn}
+                  <Select.Option
+                    onClick={(e) => e.preventDefault()}
                   >
-                    <Space
-                      className={SearchIndexCss.edit_room_dropdown_btn_space}
-                    >
-                      Marmot Ridge Golf Course
-                      <DownOutlined
-                        className={SearchIndexCss.edit_room_dropdown_icon}
-                      />
-                    </Space>
-                  </Button>
-                </Dropdown>
+                    <Typography.Link>
+                      <Space
+                        className={SearchIndexCss.edit_room_dropdown_btn_space}
+                      >Marmot Ridge Golf Course
+                        <DownOutlined
+                          className={SearchIndexCss.edit_room_dropdown_icon}
+                        /></Space>
+                    </Typography.Link>
+                  </Select.Option>
+                </Select>
               </div>
             </div>
           </Col>
@@ -322,16 +320,16 @@ const Index = () => {
               <Checkbox>Golf Course Community</Checkbox>
             </Col>
 
-            <Col md={3} sm={5}>
+            <div className={SearchIndexCss.search_div}>
               <Button
                 onClick={() => setShowHidden(true)}
                 className={SearchIndexCss.searching}
               >
                 Search
               </Button>
-            </Col>
+            </div>
           </Col>
-        </Row>
+        </div>
       </>
     );
   };
@@ -406,21 +404,14 @@ const Index = () => {
                     <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
-                      {/* <RangePicker
-                        size="large"
-                        disabledDate={(current) => {
-                          return current && current < moment().startOf("day");
-                        }}
-                        onChange={OnChangeDateRange}
-                        className={SearchIndexCss.edit_details_date_picker}
-                      /> */}
-
                       <RangePicker
                         defaultValue={[
                           dayjs(DateInputValues[0]),
                           dayjs(DateInputValues[1]),
                         ]}
+                        size="large"
                         onChange={OnChangeDateInput}
+                        className={SearchIndexCss.edit_details_date_picker}
                         disabledDate={(current) => {
                           return current && current < dayjs().startOf("day");
                         }}
@@ -622,8 +613,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -632,8 +622,7 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}
@@ -649,8 +638,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -671,8 +659,7 @@ const Index = () => {
                             <h5
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}

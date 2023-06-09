@@ -31,24 +31,24 @@ const MyReservation = () => {
 
         <Container className={MyReservationCss.parent}>
           <Col md={8} className={MyReservationCss.columnA}>
-            <h2 className={MyReservationCss.reservation}>My Reservations</h2>
+            <h3 className={MyReservationCss.reservation}>My Reservations</h3>
 
-            <h3 className={MyReservationCss.manage}>Reservation #66303</h3>
+            <h4 className={MyReservationCss.manage}>Reservation #66303</h4>
 
             <hr className={MyReservationCss.horizontal} />
 
             <Row className={MyReservationCss.title}>
               <Col md={3}>
-                <h4>Date:</h4>
+                <h5>Date:</h5>
               </Col>
               <Col md={6} className={MyReservationCss.formName}>
-                <h4>
+                <h5>
                   From:{" "}
                   <span className={MyReservationCss.name}>
                     {" "}
                     AkashSuryavanshi
                   </span>
-                </h4>
+                </h5>
               </Col>
             </Row>
 
@@ -66,7 +66,7 @@ const MyReservation = () => {
 
             <Row>
               <Col md={3} className={MyReservationCss.title}>
-                <h4>Stay Details</h4>
+                <h5>Stay Details</h5>
               </Col>
               <Col md={3} className={MyReservationCss.data}>
                 <p>Check In: 04-29-2023</p>
@@ -99,7 +99,7 @@ const MyReservation = () => {
 
           <Col md={4} className={MyReservationCss.columnB}>
             <div className={MyReservationCss.payBtn}>
-              <h4 className={MyReservationCss.payment}>Payment</h4>
+              <h5 className={MyReservationCss.payment}>Payment</h5>
               <Button className={MyReservationCss.subtn}>Submitted</Button>
             </div>
 
@@ -107,7 +107,7 @@ const MyReservation = () => {
 
             <Row className={MyReservationCss.pricing}>
               <Col md={8}>
-                <h4 className={MyReservationCss.total}>Total</h4>
+                <h5 className={MyReservationCss.total}>Total</h5>
                 <p className={MyReservationCss.tax}>Includes taxes and fees</p>
               </Col>
 
