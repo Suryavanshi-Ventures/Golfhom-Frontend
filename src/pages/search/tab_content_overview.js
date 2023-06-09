@@ -2,7 +2,8 @@ import ViewPropertyCss from "../../styles/ViewProperty.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import ViewPropBedIcon from "../../../public/images/vector/bed.svg";
 import ViewPropBathroomIcon from "../../../public/images/vector/bathroom_icon.svg";
-
+import { Input } from "antd";
+const { TextArea } = Input;
 import Image from "next/image";
 
 const TabContentOverview = (PropData) => {
@@ -87,14 +88,20 @@ const TabContentOverview = (PropData) => {
 
         {/* ABOUT SECTION START HERE */}
         <Row className={ViewPropertyCss.about_section_row}>
-          <Col md={"auto"} className={ViewPropertyCss.about_section_cols}>
+          <Col className={ViewPropertyCss.about_section_cols}>
             <div className={ViewPropertyCss.about_section_container}>
               <h4 className={ViewPropertyCss.about_section_main_heading}>
                 Description
               </h4>
-              <pre className={ViewPropertyCss.about_section_para}>
-                {PropData.data?.description?.replace(/\*|BR|BA|#|/g, "")}
-              </pre>
+              <TextArea
+                value={PropData.data?.description?.replace(/\*|BR|BA|#|/g, "")}
+                placeholder="Controlled autosize"
+                className={ViewPropertyCss.about_section_para}
+                autoSize={{
+                  minRows: 3,
+                  maxRows: 5,
+                }}
+              />
             </div>
           </Col>
         </Row>

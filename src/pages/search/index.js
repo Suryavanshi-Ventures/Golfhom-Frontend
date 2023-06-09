@@ -22,7 +22,6 @@ import BottomSection from "../../../common components/bottomGroup";
 import CarasoulMapCss from "../../styles/CarouselMap.module.css";
 import Dot from "../../../public/images/vector/dot.svg";
 import PropNotFoundImg from "../../../public/images/vector/golf-hole.png";
-
 import Map from "../../../common components/map";
 import Loader from "../../../common components/loader";
 import axios from "axios";
@@ -69,7 +68,7 @@ const Index = () => {
   const [InputValue, setInputValue] = useState(
     param.location_name ? param.location_name : ""
   );
-  console.log(InputValue, 'input value');
+  console.log(InputValue, "input value");
 
   const onLoad = (autocomplete) => {
     setSearchResult(autocomplete);
@@ -619,6 +618,24 @@ const Index = () => {
                             }}
                             className={CarasoulMapCss.image_container}
                           >
+                            <p
+                              className={
+                                CarasoulMapCss.price_of_property_text_from
+                              }
+                            >
+                              From $
+                              <span
+                                className={
+                                  CarasoulMapCss.price_of_property_text
+                                }
+                              >
+                                {data.price >= 0.5
+                                  ? Math.ceil(data.price)
+                                  : Math.floor(data.price)}
+                                /Night
+                              </span>
+                            </p>
+
                             <h4
                               onClick={(e) => {
                                 Router.push(
@@ -645,7 +662,7 @@ const Index = () => {
                             className={CarasoulMapCss.image_container}
                           >
                             <span className={CarasoulMapCss.discribeOfCard}>
-                              {data.bedrooms} Bed Rooms
+                              {data.bedrooms ? data.bedrooms : 1} Bed Rooms
                             </span>
                             <Image
                               src={Dot}
@@ -655,22 +672,6 @@ const Index = () => {
                             <span className={CarasoulMapCss.discribeOfCard}>
                               {data.accomodation} Guests Villa
                             </span>
-
-                            <h5
-                              onClick={(e) => {
-                                Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
-                                  }`
-                                );
-                              }}
-                              className={CarasoulMapCss.price_of_property}
-                            >
-                              <sup>From</sup> $
-                              {data.price >= 0.5
-                                ? Math.ceil(data.price)
-                                : Math.floor(data.price)}
-                              /Night
-                            </h5>
                           </div>
                         </Col>
                       ))}
