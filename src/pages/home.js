@@ -9,8 +9,17 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import ads from "../pages/json/ads.json";
 import Advertise from "../advertise";
 import Image from "next/image";
-import { Input, Space, Typography, message } from "antd";
-import { Button, DatePicker, Skeleton, Select } from "antd";
+import {
+  Input,
+  Space,
+  Typography,
+  message,
+  Button,
+  DatePicker,
+  Skeleton,
+  Select,
+} from "antd";
+
 const { RangePicker } = DatePicker;
 import Video from "../video";
 import video from "../pages/json/video.json";
