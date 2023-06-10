@@ -1,6 +1,5 @@
-import { React, useEffect, useState, useContext } from "react";
+import { React, useEffect, useState, useContext, Suspense } from "react";
 import FAQBannerImg from "../../../public/images/faq_banner_img.png";
-import BottomSection from "../../../common components/bottomGroup";
 import ProtectedRoute from "../../../common components/protected_route";
 import Image from "next/image";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
@@ -13,7 +12,13 @@ import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
 import Loader from "../../../common components/loader";
 import moment from "moment";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const Index = () => {
   const ContextUserDetails = useContext(AuthContext);
   const [UserName, SetUserName] = useState("");
@@ -171,70 +176,6 @@ const Index = () => {
                     </tr>
                   );
                 })}
-
-                {/* <tr className={DashboardCss.tableRow}>
-              <td className={DashboardCss.imgChild}>
-                <Image
-                  src={Profile}
-                  alt="Profile"
-                  fill
-                  className={DashboardCss.imageChild}
-                ></Image>
-              </td>
-
-              <td>#66612</td>
-              <td>
-                <Button className={DashboardCss.Completed}>Completed</Button>
-              </td>
-              <td>April 6, 20237:38 am</td>
-              <td>
-                <span className={DashboardCss.oldTown}>
-                  {" "}
-                  Old Town’s Farm to Table{" "}
-                </span>
-                6826 E 5th St, Scottsdale, Arizona, United States
-              </td>
-              <td>05-16-2023 Stay</td>
-              <td>05-20-2023 Stay</td>
-              <td>5 Stay</td>
-              <td>No</td>
-              <td className={DashboardCss.dollar}>From $6,386.06</td>
-              <td>
-                <Button className={DashboardCss.detailBtn}>Details</Button>
-              </td>
-            </tr>
-
-            <tr className={DashboardCss.tableRow}>
-              <td className={DashboardCss.imgChild}>
-                <Image
-                  src={Profile}
-                  alt="Profile"
-                  fill
-                  className={DashboardCss.imageChild}
-                ></Image>
-              </td>
-
-              <td>#66629</td>
-              <td>
-                <Button className={DashboardCss.expired}>Expired</Button>
-              </td>
-              <td>April 6, 20237:38 am</td>
-              <td>
-                <span className={DashboardCss.oldTown}>
-                  {" "}
-                  Old Town’s Farm to Table{" "}
-                </span>
-                6826 E 5th St, Scottsdale, Arizona, United States
-              </td>
-              <td>05-16-2023 Stay</td>
-              <td>05-20-2023 Stay</td>
-              <td>5 Stay</td>
-              <td>Yes</td>
-              <td className={DashboardCss.dollar}>From $6,386.06</td>
-              <td>
-                <Button className={DashboardCss.detailBtn}>Details</Button>
-              </td>
-            </tr> */}
               </tbody>
             </Table>
           )}

@@ -1,14 +1,19 @@
-import React from "react";
+import { React, Suspense } from "react";
 import SearchByTourCss from "../styles/SearchByTournament.module.css";
 import Search from "../../public/images/search.png";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import { Pagination, Button, Space, Select, Typography } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import BottomSection from "../../common components/bottomGroup";
 import CarouselImages from "../../common components/carouselMap";
 import Head from "next/head";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const SearchByTournaments = () => {
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
@@ -65,16 +70,17 @@ const SearchByTournaments = () => {
               className={SearchByTourCss.edit_room_dropdown_btn}
               size="large"
             >
-              <Select.Option
-                onClick={(e) => e.preventDefault()}
-              >
+              <Select.Option onClick={(e) => e.preventDefault()}>
                 <Typography.Link>
                   <Space
                     className={SearchByTourCss.edit_room_dropdown_btn_space}
-                  > The Tradition at Quinta
+                  >
+                    {" "}
+                    The Tradition at Quinta
                     <DownOutlined
                       className={SearchByTourCss.edit_room_dropdown_icon}
-                    /></Space>
+                    />
+                  </Space>
                 </Typography.Link>
               </Select.Option>
             </Select>
@@ -119,14 +125,15 @@ const SearchByTournaments = () => {
                       className={SearchByTourCss.default}
                       size="large"
                     >
-                      <Select.Option
-                        onClick={(e) => e.preventDefault()}
-                      >
+                      <Select.Option onClick={(e) => e.preventDefault()}>
                         <Typography.Link>
                           <Space
                           // className={InvoiceCss.search_by_golf_input_search_by_tourni}
-                          > Default order
-                            <DownOutlined /></Space>
+                          >
+                            {" "}
+                            Default order
+                            <DownOutlined />
+                          </Space>
                         </Typography.Link>
                       </Select.Option>
                     </Select>

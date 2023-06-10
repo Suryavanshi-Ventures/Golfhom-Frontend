@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import BlogCss from "../../styles/Blog.module.css";
 import ViewAllProps from "../../../public/images/viewAllProps.png";
 import Image from "next/image";
-import BottomSection from "../../../common components/bottomGroup";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { Pagination } from "antd";
-import blogs from "../json/blogs.json";
-import Link from "next/link";
+import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
-import Loader from "../../../common components/loader";
 import { useRouter } from "next/router";
-import { Skeleton } from "antd";
-
-const Index = ({ cards }) => {
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
+const Index = () => {
   const Router = useRouter();
   const [BlogData, setBlogData] = useState([{}]);
   const onChange = (pageNumber) => {
@@ -153,17 +153,6 @@ const Index = ({ cards }) => {
       </Container>
 
       {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
-      {/* <Container className={BlogCss.pagination_container}>
-        <Pagination
-          colorText="#FF0000"
-          showQuickJumper={false}
-          showSizeChanger={false}
-          defaultCurrent={1}
-          total={500}
-          onChange={onChange}
-          className={BlogCss.pagination}
-        />
-      </Container> */}
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 

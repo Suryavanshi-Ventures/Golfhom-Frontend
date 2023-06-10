@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import FAQBannerImg from "../../../public/images/faq_banner_img.png";
-import BottomSection from "../../../common components/bottomGroup";
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
 import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
@@ -10,14 +9,17 @@ import { Space, Typography, DatePicker, Select } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
 import Link from "next/link";
-import moment from 'moment';
-import 'moment/locale/en-gb';
-
-moment.locale('en-gb');
-
-const { RangePicker } = DatePicker;
-const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY', 'DD-MM-YYYY', 'DD-MM-YY'];
-const dateFormat = 'MMMM D,YYYY';
+import moment from "moment";
+import "moment/locale/en-gb";
+moment.locale("en-gb");
+import dynamic from "next/dynamic";
+const dateFormat = "MMMM D,YYYY";
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 
 const Invoice = () => {
   return (
@@ -64,13 +66,25 @@ const Invoice = () => {
                 <tr className={InvoiceCss.tableRow}>
                   <td>
                     <div className={InvoiceCss.dateParent}>
-                      <DatePicker placeholder="Start date" showToday={false} format={dateFormat} size="large" className={InvoiceCss.inner_input_date_picker} />
+                      <DatePicker
+                        placeholder="Start date"
+                        showToday={false}
+                        format={dateFormat}
+                        size="large"
+                        className={InvoiceCss.inner_input_date_picker}
+                      />
                     </div>
                   </td>
 
                   <td>
                     <div className={InvoiceCss.dateParent}>
-                      <DatePicker placeholder="End date" showToday={false} format={dateFormat} size="large" className={InvoiceCss.inner_input_date_picker} />
+                      <DatePicker
+                        placeholder="End date"
+                        showToday={false}
+                        format={dateFormat}
+                        size="large"
+                        className={InvoiceCss.inner_input_date_picker}
+                      />
                     </div>
                   </td>
 
@@ -95,14 +109,16 @@ const Invoice = () => {
                       // className={InvoiceCss.colB}
                       size="large"
                     >
-                      <Select.Option
-                        onClick={(e) => e.preventDefault()}
-                      >
+                      <Select.Option onClick={(e) => e.preventDefault()}>
                         <Typography.Link>
                           <Space
-                            className={InvoiceCss.search_by_golf_input_search_by_tourni}
-                          >Reservation Fee
-                            <DownOutlined /></Space>
+                            className={
+                              InvoiceCss.search_by_golf_input_search_by_tourni
+                            }
+                          >
+                            Reservation Fee
+                            <DownOutlined />
+                          </Space>
                         </Typography.Link>
                       </Select.Option>
                     </Select>
@@ -129,14 +145,16 @@ const Invoice = () => {
                       // className={InvoiceCss.colB}
                       size="large"
                     >
-                      <Select.Option
-                        onClick={(e) => e.preventDefault()}
-                      >
+                      <Select.Option onClick={(e) => e.preventDefault()}>
                         <Typography.Link>
                           <Space
-                            className={InvoiceCss.search_by_golf_input_search_by_tourni}
-                          >Paid
-                            <DownOutlined /></Space>
+                            className={
+                              InvoiceCss.search_by_golf_input_search_by_tourni
+                            }
+                          >
+                            Paid
+                            <DownOutlined />
+                          </Space>
                         </Typography.Link>
                       </Select.Option>
                     </Select>

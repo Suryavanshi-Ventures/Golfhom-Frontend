@@ -1,4 +1,4 @@
-import { useState, React, useEffect, useContext } from "react";
+import { useState, React, useEffect, useContext, Suspense } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Dropdown } from "react-bootstrap";
@@ -22,7 +22,6 @@ import FeatureTickIcon from "../../../../public/images/vector/feature_tick.svg";
 import PriceSquareIcon from "../../../../public/images/vector/price_square_icon.svg";
 import RulesCrossIcon from "../../../../public/images/vector/rules_cross_icon.svg";
 import Calendar from "../../../../public/images/vector/calendar.svg";
-import BottomSection from "../../../../common components/bottomGroup";
 import Blacktick from "../../../../public/images/vector/blackTick.svg";
 import Map from "../../../../common components/map";
 import axios from "axios";
@@ -39,7 +38,13 @@ import { useRef } from "react";
 const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const ViewProperty = () => {
   const router = useRouter();
   const ContextUserDetails = useContext(AuthContext);
@@ -395,7 +400,7 @@ const ViewProperty = () => {
               ></Image>
             </div>
             <div className={ViewPropertyCss.view_prop_all_image_container}>
-              <p>asfasf</p>
+              {/* <p>asfasf</p> */}
             </div>
           </div>
         </div>

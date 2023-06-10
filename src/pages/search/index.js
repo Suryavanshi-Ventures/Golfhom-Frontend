@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState, useEffect, React } from "react";
+import { useState, useEffect, React, Suspense } from "react";
 import Head from "next/head";
 import { Container, Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
@@ -18,7 +18,6 @@ import {
 } from "antd";
 import { DownOutlined, CaretDownOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import BottomSection from "../../../common components/bottomGroup";
 import CarasoulMapCss from "../../styles/CarouselMap.module.css";
 import Dot from "../../../public/images/vector/dot.svg";
 import PropNotFoundImg from "../../../public/images/vector/golf-hole.png";
@@ -31,7 +30,13 @@ import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import dayjs from "dayjs";
 const { RangePicker } = DatePicker;
 const placesLibrary = ["places"];
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const Index = () => {
   const Router = useRouter();
   const [showHidden, setShowHidden] = useState(false);
@@ -116,7 +121,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => { };
+    return () => {};
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -135,8 +140,10 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -151,7 +158,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     param.from,
     param.guest,
@@ -191,9 +198,12 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${
+          "to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -258,15 +268,16 @@ const Index = () => {
                   className={SearchIndexCss.edit_room_dropdown_btn}
                   size="large"
                 >
-                  <Select.Option
-                    onClick={(e) => e.preventDefault()}
-                  >
+                  <Select.Option onClick={(e) => e.preventDefault()}>
                     <Typography.Link>
                       <Space
                         className={SearchIndexCss.edit_room_dropdown_btn_space}
-                      >Florida USA    <DownOutlined
+                      >
+                        Florida USA{" "}
+                        <DownOutlined
                           className={SearchIndexCss.edit_room_dropdown_icon}
-                        /></Space>
+                        />
+                      </Space>
                     </Typography.Link>
                   </Select.Option>
                 </Select>
@@ -294,16 +305,16 @@ const Index = () => {
                   className={SearchIndexCss.edit_room_dropdown_btn}
                   size="large"
                 >
-                  <Select.Option
-                    onClick={(e) => e.preventDefault()}
-                  >
+                  <Select.Option onClick={(e) => e.preventDefault()}>
                     <Typography.Link>
                       <Space
                         className={SearchIndexCss.edit_room_dropdown_btn_space}
-                      >Marmot Ridge Golf Course
+                      >
+                        Marmot Ridge Golf Course
                         <DownOutlined
                           className={SearchIndexCss.edit_room_dropdown_icon}
-                        /></Space>
+                        />
+                      </Space>
                     </Typography.Link>
                   </Select.Option>
                 </Select>
@@ -612,7 +623,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -639,7 +651,8 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}
@@ -655,7 +668,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}

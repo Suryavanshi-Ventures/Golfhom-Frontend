@@ -1,12 +1,17 @@
 import Image from "next/image";
-import React from "react";
+import { React, Suspense } from "react";
 import TermConditions from "../../public/images/termConditions.png";
 import TermConditionsCss from "../styles/TermConditions.module.css";
 import { Button, Col, Container } from "react-bootstrap";
-import BottomSection from "../../common components/bottomGroup";
 import Head from "next/head";
 import Link from "next/link";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const TermAndConditions = () => {
   return (
     <>
@@ -115,8 +120,10 @@ const TermAndConditions = () => {
 
         <p className={TermConditionsCss.para}>
           We respect your privacy and believe in protecting it. Please{" "}
-          <Link href="/privacy" className={TermConditionsCss.redWords}>CLICK HERE </Link> to
-          review our current Privacy Policy.
+          <Link href="/privacy" className={TermConditionsCss.redWords}>
+            CLICK HERE{" "}
+          </Link>{" "}
+          to review our current Privacy Policy.
         </p>
 
         <p className={TermConditionsCss.para}>
@@ -141,7 +148,10 @@ const TermAndConditions = () => {
           will freeze or terminate, when appropriate, any property listing or
           user account if copyright infringement is suspected. Please feel free
           to{" "}
-          <Link href="/contact_us" className={TermConditionsCss.redWords}> CONTACT US HERE</Link>{" "}
+          <Link href="/contact_us" className={TermConditionsCss.redWords}>
+            {" "}
+            CONTACT US HERE
+          </Link>{" "}
           immediately if you believe a copyright violation exists on the
           Website.
         </p>

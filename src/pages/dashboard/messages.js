@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from "react";
-import BottomSection from "../../../common components/bottomGroup";
+import React, { useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import MessageCss from "../../styles/dashboard/message.module.css";
 import Image from "next/image";
 import Laugh from "../../../public/images/laugh.png";
@@ -8,9 +8,13 @@ import { Container } from "react-bootstrap";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
 import { Select, Space, Typography } from "antd";
-
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const Messages = () => {
-
   return (
     <>
       <ProtectedRoute>
@@ -56,13 +60,9 @@ const Messages = () => {
                 className={MessageCss.asc}
                 size="large"
               >
-                <Select.Option
-                  onClick={(e) => e.preventDefault()}
-                >
+                <Select.Option onClick={(e) => e.preventDefault()}>
                   <Typography.Link>
-                    <Space
-                    >Asc
-                    </Space>
+                    <Space>Asc</Space>
                   </Typography.Link>
                 </Select.Option>
               </Select>

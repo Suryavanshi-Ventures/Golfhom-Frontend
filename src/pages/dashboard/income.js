@@ -3,9 +3,14 @@ import Head from "next/head";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import IncomeCss from "../../styles/dashboard/Income.module.css";
 import Link from "next/link";
-import BottomSection from "../../../common components/bottomGroup";
 import ProtectedRoute from "../../../common components/protected_route";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const Income = () => {
   return (
     <>

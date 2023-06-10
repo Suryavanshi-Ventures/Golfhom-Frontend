@@ -1,13 +1,18 @@
-import React from "react";
+import { React, Suspense } from "react";
 import FAQBannerImg from "../../../public/images/faq_banner_img.png";
-import BottomSection from "../../../common components/bottomGroup";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";
 import { Button, Container, Table } from "react-bootstrap";
 import Profile from "../../../public/images/vector/profile.svg";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const Reservation = () => {
   return (
     <>

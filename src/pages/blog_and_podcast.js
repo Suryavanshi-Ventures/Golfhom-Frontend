@@ -1,8 +1,7 @@
-import React from "react";
+import { React, Suspense } from "react";
 import PodcastCss from "../styles/BlogsAndPodcasts.module.css";
 import TopImage from "../../public/images/topImage.png";
 import Image from "next/image";
-import BottomSection from "../../common components/bottomGroup";
 import { Col, Container, Row } from "react-bootstrap";
 import OfficialBlog from "../../public/images/officialBlog.webp";
 import ShipsSticks from "../../public/images/shipStickks.svg";
@@ -14,7 +13,13 @@ import Bleav from "../../public/images/bleav.webp";
 import WhiteNext from "../../public/images/vector/whiteNext.svg";
 import Head from "next/head";
 import Link from "next/link";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const BlogsAndPodcasts = () => {
   return (
     <>

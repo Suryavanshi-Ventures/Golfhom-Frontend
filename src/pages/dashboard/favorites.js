@@ -1,15 +1,20 @@
-import React from "react";
+import { React, Suspense } from "react";
+import dynamic from "next/dynamic";
 import FAQBannerImg from "../../../public/images/faq_banner_img.png";
-import BottomSection from "../../../common components/bottomGroup";
 import FavoritesCss from "../../styles/dashboard/Favorites.module.css";
 import Image from "next/image";
-import { Button, Container, Table } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import Delete from "../../../public/images/vector/delete.svg";
 import Nextimg from "../../../public/images/vector/next.svg";
 import golfhom from "../../../public/images/vector/golfhom.svg";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
-
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const Favorites = () => {
   return (
     <>

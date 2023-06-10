@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import { React, Suspense } from "react";
 import Head from "next/head";
 import { Button, Space } from "antd";
 import Link from "next/link";
@@ -9,8 +9,13 @@ import BannerImg from "../../public/images/about_banner_img.png";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import Review from "../review";
 import review from "../pages/json/review.json";
-import BottomSection from "../../common components/bottomGroup";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const About = () => {
   return (
     <>

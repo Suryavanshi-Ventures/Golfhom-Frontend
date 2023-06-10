@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import FAQBannerImg from "../../../public/images/faq_banner_img.png";
-import BottomSection from "../../../common components/bottomGroup";
 import AddListingCss from "../../styles/dashboard/AddListing.module.css";
 import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import ProtectedRoute from "../../../common components/protected_route";
 import { Checkbox, Dropdown, Input, Select, Space, Typography } from "antd";
-import { CaretDownOutlined } from '@ant-design/icons';
-// import ReactQuill from 'react-quill';
-// import 'react-quill/dist/quill.snow.css';
-
+import { CaretDownOutlined } from "@ant-design/icons";
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const Addlisting = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -49,13 +52,25 @@ const Addlisting = () => {
             <hr />
 
             <Row className={AddListingCss.parentCheckbox}>
-              <Col md={3}><Checkbox>Golf Course Front</Checkbox></Col>
+              <Col md={3}>
+                <Checkbox>Golf Course Front</Checkbox>
+              </Col>
 
-              <Col md={3}> <Checkbox>Golf Course Community</Checkbox></Col>
+              <Col md={3}>
+                {" "}
+                <Checkbox>Golf Course Community</Checkbox>
+              </Col>
 
-              <Col md={3}><Checkbox>Golf Course Vicinity</Checkbox></Col>
+              <Col md={3}>
+                <Checkbox>Golf Course Vicinity</Checkbox>
+              </Col>
 
-              <Col md={3}> <p className={AddListingCss.checkapply}>Please check all that applies</p></Col>
+              <Col md={3}>
+                {" "}
+                <p className={AddListingCss.checkapply}>
+                  Please check all that applies
+                </p>
+              </Col>
             </Row>
 
             <Row>
@@ -70,7 +85,11 @@ const Addlisting = () => {
               </Col>
             </Row>
 
-            <p className={AddListingCss.para}>Vicinity Golf Course(s) - Please highlight all courses within 1 mile of the listing* (Hold command button down if selecting multiple courses)</p>
+            <p className={AddListingCss.para}>
+              Vicinity Golf Course(s) - Please highlight all courses within 1
+              mile of the listing* (Hold command button down if selecting
+              multiple courses)
+            </p>
 
             <Row>
               <Col md={3}>
@@ -94,14 +113,19 @@ const Addlisting = () => {
                   // className={AddListingCss.colA}
                   size="large"
                 >
-                  <Select.Option
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                  <Select.Option onClick={(e) => e.preventDefault()}>
+                    <Typography.Link
+                      href="https://www.google.com/"
+                      onClick={(e) => e.preventDefault()}
+                    >
                       <Space
-                        className={AddListingCss.search_by_golf_input_search_by_tourni}
-                      >Reservation Fee
-                        <CaretDownOutlined /></Space>
+                        className={
+                          AddListingCss.search_by_golf_input_search_by_tourni
+                        }
+                      >
+                        Reservation Fee
+                        <CaretDownOutlined />
+                      </Space>
                     </Typography.Link>
                   </Select.Option>
                 </Select>
@@ -141,30 +165,44 @@ const Addlisting = () => {
                   // className={AddListingCss.colA}
                   size="large"
                 >
-                  <Select.Option
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <Typography.Link href="https://www.google.com/" onClick={(e) => e.preventDefault()}>
+                  <Select.Option onClick={(e) => e.preventDefault()}>
+                    <Typography.Link
+                      href="https://www.google.com/"
+                      onClick={(e) => e.preventDefault()}
+                    >
                       <Space
-                        className={AddListingCss.search_by_golf_input_search_by_tourni}
-                      >  Select listing Type
-                        <CaretDownOutlined /></Space>
+                        className={
+                          AddListingCss.search_by_golf_input_search_by_tourni
+                        }
+                      >
+                        {" "}
+                        Select listing Type
+                        <CaretDownOutlined />
+                      </Space>
                     </Typography.Link>
                   </Select.Option>
                 </Select>
               </Col>
 
               <Col md={6} className={AddListingCss.inputBox}>
-                <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
+                <h4 className={AddListingCss.subheading}>
+                  Number of bedrooms*
+                </h4>
                 <div>
-                  <Input type="number" placeholder="Enter number of bedrooms" className={AddListingCss.colA} />
+                  <Input
+                    type="number"
+                    placeholder="Enter number of bedrooms"
+                    className={AddListingCss.colA}
+                  />
                 </div>
               </Col>
             </Row>
 
             <Row className={AddListingCss.listingbed}>
               <Col md={6} className={AddListingCss.inputBox}>
-                <h4 className={AddListingCss.subheading}>Number of bedrooms*</h4>
+                <h4 className={AddListingCss.subheading}>
+                  Number of bedrooms*
+                </h4>
                 <Input
                   type="number"
                   placeholder=" Enter number of bedrooms"
@@ -174,14 +212,24 @@ const Addlisting = () => {
 
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Number of beds*</h4>
-                <Input type="number" placeholder="Enter number of bed" className={AddListingCss.colA} />
+                <Input
+                  type="number"
+                  placeholder="Enter number of bed"
+                  className={AddListingCss.colA}
+                />
               </Col>
             </Row>
 
             <Row>
               <Col md={12}>
-                <h4 className={AddListingCss.subheading}>Max number or overnight guests*</h4>
-                <Input type="text" placeholder="Numbers of guests" className={AddListingCss.listingA} />
+                <h4 className={AddListingCss.subheading}>
+                  Max number or overnight guests*
+                </h4>
+                <Input
+                  type="text"
+                  placeholder="Numbers of guests"
+                  className={AddListingCss.listingA}
+                />
               </Col>
             </Row>
 
@@ -189,7 +237,6 @@ const Addlisting = () => {
               <button className={AddListingCss.savebtn}>Save as Draft</button>
               <button className={AddListingCss.continuebtn}>Continue</button>
             </div>
-
           </Col>
 
           <Col md={3}></Col>

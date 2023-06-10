@@ -1,12 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useState } from "react";
+import { React, useState, Suspense } from "react";
 import Head from "next/head";
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import Image from "next/image";
 import FAQCss from "../styles/FAQ.module.css";
 import FAQBannerImg from "../../public/images/faq_banner_img.png";
-import BottomSection from "../../common components/bottomGroup";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const FAQ = () => {
   const [showA, setShowA] = useState(false);
   const [showB, setShowB] = useState(false);
@@ -18,7 +23,6 @@ const FAQ = () => {
   const [showH, setShowH] = useState(false);
   const [showI, setShowI] = useState(false);
   const [showJ, setShowJ] = useState(false);
-
 
   const toggleButtonA = () => {
     setShowA(!showA);
@@ -85,7 +89,10 @@ const FAQ = () => {
               <Col md={6} className={FAQCss.textParentD}>
                 <h3 className={FAQCss.textTitle}>Frequently Asked Questions</h3>
                 <p className={FAQCss.paragraph}>
-                  Our team has provided answers below to some frequently asked questions. Please feel free to reach out to our help team if further information is needed, and thanks for booking with Golfhōm!
+                  Our team has provided answers below to some frequently asked
+                  questions. Please feel free to reach out to our help team if
+                  further information is needed, and thanks for booking with
+                  Golfhōm!
                 </p>
               </Col>
 
@@ -108,7 +115,9 @@ const FAQ = () => {
                     {showA && (
                       <div>
                         <p className={FAQCss.faqPara}>
-                          You can find information on a property’s amenities on the home’s profile page.  Reach out to the host for more specific information.
+                          You can find information on a property’s amenities on
+                          the home’s profile page. Reach out to the host for
+                          more specific information.
                         </p>
                       </div>
                     )}
@@ -119,7 +128,8 @@ const FAQ = () => {
                   <div>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        I can't find my rental confirmation email. What Should I do?
+                        I can't find my rental confirmation email. What Should I
+                        do?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonB}>
                         {showB ? "-" : "+"}
@@ -128,7 +138,10 @@ const FAQ = () => {
                     {showB && (
                       <div>
                         <p>
-                          Please be sure to check your email inbox, junk, and spam folders. If you still can’t find your confirmation, refer to your Golfhōm admin area, or feel free to reach out to our help team.
+                          Please be sure to check your email inbox, junk, and
+                          spam folders. If you still can’t find your
+                          confirmation, refer to your Golfhōm admin area, or
+                          feel free to reach out to our help team.
                         </p>
                       </div>
                     )}
@@ -139,7 +152,8 @@ const FAQ = () => {
                   <div>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        I'll be arriving outside check-in hours. Can I still check in?
+                        I'll be arriving outside check-in hours. Can I still
+                        check in?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonC}>
                         {showC ? "-" : "+"}
@@ -148,7 +162,10 @@ const FAQ = () => {
                     {showC && (
                       <div>
                         <p>
-                          This depends on the individual host, who will do their best to meet your needs.  We recommend dealing with arrival time issues as early in the process as possible.
+                          This depends on the individual host, who will do their
+                          best to meet your needs. We recommend dealing with
+                          arrival time issues as early in the process as
+                          possible.
                         </p>
                       </div>
                     )}
@@ -159,7 +176,8 @@ const FAQ = () => {
                   <div>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        I'd like to check out after the stated check-out time, is that possible?
+                        I'd like to check out after the stated check-out time,
+                        is that possible?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonD}>
                         {showD ? "-" : "+"}
@@ -168,7 +186,10 @@ const FAQ = () => {
                     {showD && (
                       <div>
                         <p>
-                          A late check-out can only be arranged with the host, and is not guaranteed.  Reach out to see what can be arranged, and keep in mind that availability and proper cleaning time have to be accounted for.
+                          A late check-out can only be arranged with the host,
+                          and is not guaranteed. Reach out to see what can be
+                          arranged, and keep in mind that availability and
+                          proper cleaning time have to be accounted for.
                         </p>
                       </div>
                     )}
@@ -188,7 +209,9 @@ const FAQ = () => {
                     {showE && (
                       <div>
                         <p>
-                          Pet policies should be clearly stated on the home’s profile page.  Reach out to the Host for any needed clarification, or to see if a variance can be made.
+                          Pet policies should be clearly stated on the home’s
+                          profile page. Reach out to the Host for any needed
+                          clarification, or to see if a variance can be made.
                         </p>
                       </div>
                     )}
@@ -208,7 +231,10 @@ const FAQ = () => {
                     {showF && (
                       <div>
                         <p>
-                          Major credit cards and Paypal are acceptable payment methods for properties listed on Golfhōm.com.  You will have your choice of payment methods at the tome of booking.
+                          Major credit cards and Paypal are acceptable payment
+                          methods for properties listed on Golfhōm.com. You will
+                          have your choice of payment methods at the tome of
+                          booking.
                         </p>
                       </div>
                     )}
@@ -232,7 +258,10 @@ const FAQ = () => {
                     {showG && (
                       <div>
                         <p className={FAQCss.faqPara}>
-                          Yes, cancellations happen.   Any cancellation fees are determined by the property’s stated cancellation policy, which you can find on the home’s profile page and in your reservation.
+                          Yes, cancellations happen. Any cancellation fees are
+                          determined by the property’s stated cancellation
+                          policy, which you can find on the home’s profile page
+                          and in your reservation.
                         </p>
                       </div>
                     )}
@@ -252,7 +281,11 @@ const FAQ = () => {
                     {showH && (
                       <div>
                         <p className={FAQCss.faqPara}>
-                          After you cancel a booking, you should get an email confirming said cancellation.  Make sure to check your inbox and spam/junk mail folders.  If you don’t receive an email within 24 hours, feel free to reach out to our help team.
+                          After you cancel a booking, you should get an email
+                          confirming said cancellation. Make sure to check your
+                          inbox and spam/junk mail folders. If you don’t receive
+                          an email within 24 hours, feel free to reach out to
+                          our help team.
                         </p>
                       </div>
                     )}
@@ -263,7 +296,8 @@ const FAQ = () => {
                   <div>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        Where can I find my chosen property's cancellation policy?
+                        Where can I find my chosen property's cancellation
+                        policy?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonI}>
                         {showI ? "-" : "+"}
@@ -272,7 +306,9 @@ const FAQ = () => {
                     {showI && (
                       <div>
                         <p className={FAQCss.faqPara}>
-                          This information is available in your booking confirmation, as well as on the property’s Golfhōm profile page.
+                          This information is available in your booking
+                          confirmation, as well as on the property’s Golfhōm
+                          profile page.
                         </p>
                       </div>
                     )}
@@ -283,7 +319,8 @@ const FAQ = () => {
                   <div>
                     <div className={FAQCss.headingSign}>
                       <p className={FAQCss.faqTitle}>
-                        What is the current policy for cancellations relative to coronavirus?
+                        What is the current policy for cancellations relative to
+                        coronavirus?
                       </p>
                       <Button className={FAQCss.sign} onClick={toggleButtonJ}>
                         {showJ ? "-" : "+"}
@@ -292,7 +329,11 @@ const FAQ = () => {
                     {showJ && (
                       <div>
                         <p className={FAQCss.faqPara}>
-                          The up-to-date cancellation policy was viewable on the property’s profile page when you made the booking on our platform, and can also be viewed in your reservation.  Please reach out to the host to see if arrangements can be made under special circumstances.
+                          The up-to-date cancellation policy was viewable on the
+                          property’s profile page when you made the booking on
+                          our platform, and can also be viewed in your
+                          reservation. Please reach out to the host to see if
+                          arrangements can be made under special circumstances.
                         </p>
                       </div>
                     )}

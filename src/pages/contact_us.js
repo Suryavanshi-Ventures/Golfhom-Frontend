@@ -1,15 +1,19 @@
-import { React, useState, useEffect } from "react";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { React, useState, useEffect, Suspense } from "react";
+import { Container, Col } from "react-bootstrap";
 import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";
 import ContactUsBannerImage from "../../public/images/contact_us_banner_img.png";
 import Image from "next/image";
 import { Button, Input, Form, message } from "antd";
 const { TextArea } = Input;
-import ManThumbsUpImg from "../../public/images/contact_us_thumbs_up_man.png";
-import BottomSection from "../../common components/bottomGroup";
 import axios from "axios";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const ContactUs = () => {
   const [form] = Form.useForm();
   const [Loading, setLoading] = useState(false);

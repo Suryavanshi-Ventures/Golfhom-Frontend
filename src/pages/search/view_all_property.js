@@ -1,12 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, Suspense } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import ViewAllPropertyCss from "../../styles/ViewAllProperty.module.css";
 import Image from "next/image";
 import ViewAllProps from "../../../public/images/viewAllProps.png";
-import BottomSection from "../../../common components/bottomGroup";
 import { Pagination } from "antd";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -14,7 +13,13 @@ import PropNotFoundImg from "../../../public/images/vector/golf-hole.png";
 import Loader from "../../../common components/loader";
 import Carousel from "react-bootstrap/Carousel";
 import Dot from "../../../public/images/vector/dot.svg";
-
+import dynamic from "next/dynamic";
+const BottomSection = dynamic(
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
 const ViewAllProperty = () => {
   const RouterRef = useRouter();
   const [AllPropertyDataFlorida, setAllPropertyDataFlorida] = useState([{}]);
@@ -189,7 +194,8 @@ const ViewAllProperty = () => {
                         <Image
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
                               }`
                             );
                           }}
@@ -202,7 +208,8 @@ const ViewAllProperty = () => {
                         <div
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
                               }`
                             );
                           }}
@@ -229,7 +236,8 @@ const ViewAllProperty = () => {
                           <h4
                             onClick={(e) => {
                               RouterRef.push(
-                                `/search/${encodeURIComponent(Data.name)}/${Data.id
+                                `/search/${encodeURIComponent(Data.name)}/${
+                                  Data.id
                                 }`
                               );
                             }}
@@ -245,7 +253,8 @@ const ViewAllProperty = () => {
                         <div
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
                               }`
                             );
                           }}
@@ -304,7 +313,8 @@ const ViewAllProperty = () => {
                       <Image
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -317,7 +327,8 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -344,7 +355,8 @@ const ViewAllProperty = () => {
                         <h4
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
                               }`
                             );
                           }}
@@ -360,7 +372,8 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -418,7 +431,8 @@ const ViewAllProperty = () => {
                       <Image
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -431,7 +445,8 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -458,7 +473,8 @@ const ViewAllProperty = () => {
                         <h4
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
                               }`
                             );
                           }}
@@ -474,7 +490,8 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -533,7 +550,8 @@ const ViewAllProperty = () => {
                       <Image
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -546,7 +564,8 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
@@ -573,7 +592,8 @@ const ViewAllProperty = () => {
                         <h4
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${
+                                Data.id
                               }`
                             );
                           }}
@@ -589,7 +609,8 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${
+                              Data.id
                             }`
                           );
                         }}
