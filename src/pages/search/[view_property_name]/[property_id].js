@@ -1139,49 +1139,41 @@ const ViewProperty = () => {
         </Container>
 
         {/* FEATURE SECTION STARTS HERE */}
-        {SpecificPropAPIData?.data?.externalPropertyType === "Nextpax" ? (
-          ""
-        ) : (
-          <>
-            <section className={ViewPropertyCss.feature_section}>
-              <Container>
-                <h5 className={ViewPropertyCss.feature_section_heading}>
-                  Features
-                </h5>
-                <Row>
-                  {SpecificPropAPIData.data?.amenities?.map((data, index) => {
-                    return (
-                      <Col key={index} md={4}>
-                        <div
-                          className={
-                            ViewPropertyCss.feature_section_div_container
-                          }
-                        >
-                          <div
-                            className={
-                              ViewPropertyCss.feature_section_tick_icon_container
-                            }
-                          >
-                            <NextImage
-                              width={24}
-                              height={24}
-                              src={FeatureTickIcon}
-                              alt="features of golfhom"
-                            ></NextImage>
-                          </div>
+        <section className={ViewPropertyCss.feature_section}>
+          <Container>
+            <h5 className={ViewPropertyCss.feature_section_heading}>
+              Features
+            </h5>
+            <Row>
+              {SpecificPropAPIData.data?.amenities?.map((data, index) => {
+                return (
+                  <Col key={index} md={4}>
+                    <div
+                      className={ViewPropertyCss.feature_section_div_container}
+                    >
+                      <div
+                        className={
+                          ViewPropertyCss.feature_section_tick_icon_container
+                        }
+                      >
+                        <NextImage
+                          width={24}
+                          height={24}
+                          src={FeatureTickIcon}
+                          alt="features of golfhom"
+                        ></NextImage>
+                      </div>
 
-                          <p className={ViewPropertyCss.feature_section_text}>
-                            {data}
-                          </p>
-                        </div>
-                      </Col>
-                    );
-                  })}
-                </Row>
-              </Container>
-            </section>
-          </>
-        )}
+                      <p className={ViewPropertyCss.feature_section_text}>
+                        {data}
+                      </p>
+                    </div>
+                  </Col>
+                );
+              })}
+            </Row>
+          </Container>
+        </section>
 
         {/* MAP SECTION STARTS HERE */}
         <section className={ViewPropertyCss.map_section}>
