@@ -6,7 +6,8 @@
     "dev": "next dev && open http://localhost:3000",
     "build": "next build",
     "start": "next start -p 3030",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.18.1",
@@ -33,6 +34,8 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.4.4",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
     "style-loader": "^3.3.2"
   }
