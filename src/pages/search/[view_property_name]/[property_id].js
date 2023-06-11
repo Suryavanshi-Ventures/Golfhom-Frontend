@@ -83,79 +83,82 @@ const ViewProperty = () => {
         );
         if (SpecificPropData.status === 200) {
           SetSpecificPropAPIData(SpecificPropData.data);
+
+          //* THIS WILL RUN ONLY WHEN PARAMS FROM AND TO IS NOT EMPTY
+          if (Params.from || Params.to) {
+            //* IF THE EXTERNAL PROPERTY TYPE IS NEXTPAX THAN CALLING NEXTPAX AVAILABILITY API
+            if (SpecificPropData.data.data.externalPropertyType === "Nextpax") {
+              console.log("NEXTPAX PROPERTY");
+              const CheckAvail = async () => {
+                try {
+                  const CheckAvailRes = await axios.get(
+                    `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id}&from=${Params.from}&to=${Params.to}`
+                  );
+                  if (CheckAvailRes.status === 200) {
+                    const DaysDiffCount = moment(Params.to, "MM-DD-YYYY").diff(
+                      moment(Params.from, "MM-DD-YYYY"),
+                      "days"
+                    );
+                    const DayDiffCountNextpaxAPI =
+                      CheckAvailRes?.data?.data?.data[0]?.availability?.length -
+                      1;
+                    if (DayDiffCountNextpaxAPI === DaysDiffCount) {
+                      console.log(
+                        CheckAvailRes?.data?.data?.data[0]?.availability
+                          ?.length - 1,
+                        "nextpax/availability length",
+                        DaysDiffCount,
+                        "MOMENT DAY COUNT"
+                      );
+                      setAvailable(true);
+                      setNotAvailable(false);
+                    } else if (DayDiffCountNextpaxAPI === undefined) {
+                      setAvailable(false);
+                      setNotAvailable(true);
+                    }
+                    // setAvailabilityCalender(CheckAvailRes.data.data.calender);
+                    // if (CheckAvailRes.data?.data?.available) {
+                    //   setAvailable(true);
+                    //   setNotAvailable(false);
+                    // } else if (CheckAvailRes.data?.data?.available != true) {
+                    //   setAvailable(false);
+                    //   setNotAvailable(true);
+                    // }
+                  }
+                } catch (error) {
+                  console.log(error, "ERROR CheckAvailability");
+                }
+              };
+              CheckAvail();
+            } else {
+              //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
+              const CheckAvail = async () => {
+                try {
+                  const CheckAvailRes = await axios.get(
+                    `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${Params.property_id}?from=${Params.from}&to=${Params.to}`
+                  );
+                  if (CheckAvailRes.status === 200) {
+                    setAvailabilityCalender(CheckAvailRes.data.data.calender);
+                    if (CheckAvailRes.data?.data?.available) {
+                      setAvailable(true);
+                      setNotAvailable(false);
+                    } else if (CheckAvailRes.data?.data?.available != true) {
+                      setAvailable(false);
+                      setNotAvailable(true);
+                    }
+                  }
+                } catch (error) {
+                  console.log(error, "ERROR CheckAvailability");
+                }
+              };
+              CheckAvail();
+            }
+          }
         }
       } catch (error) {
         console.log(error, "ERR");
       }
     };
-
-    //* THIS WILL RUN ONLY WHEN PARAMS FROM AND TO IS NOT EMPTY
-    if (Params.from || Params.to) {
-      if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
-        console.log("NEXT PAX PROPERTY");
-        const CheckAvail = async () => {
-          try {
-            const CheckAvailRes = await axios.get(
-              `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id}&from=${Params.from}&to=${Params.to}`
-            );
-            if (CheckAvailRes.status === 200) {
-              const DaysDiffCount = moment(Params.to, "MM-DD-YYYY").diff(
-                moment(Params.from, "MM-DD-YYYY"),
-                "days"
-              );
-              const DayDiffCountNextpaxAPI =
-                CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1;
-              if (DayDiffCountNextpaxAPI === DaysDiffCount) {
-                console.log(
-                  CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1,
-                  "nextpax/availability length",
-                  DaysDiffCount,
-                  "MOMENT DAY COUNT"
-                );
-                setAvailable(true);
-                setNotAvailable(false);
-              } else if (DayDiffCountNextpaxAPI === undefined) {
-                setAvailable(false);
-                setNotAvailable(true);
-              }
-              // setAvailabilityCalender(CheckAvailRes.data.data.calender);
-              // if (CheckAvailRes.data?.data?.available) {
-              //   setAvailable(true);
-              //   setNotAvailable(false);
-              // } else if (CheckAvailRes.data?.data?.available != true) {
-              //   setAvailable(false);
-              //   setNotAvailable(true);
-              // }
-            }
-          } catch (error) {
-            console.log(error, "ERROR CheckAvailability");
-          }
-        };
-        CheckAvail();
-      } else {
-        console.log("RENTAL PROPERTY");
-        const CheckAvail = async () => {
-          try {
-            const CheckAvailRes = await axios.get(
-              `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${Params.property_id}?from=${Params.from}&to=${Params.to}`
-            );
-            if (CheckAvailRes.status === 200) {
-              setAvailabilityCalender(CheckAvailRes.data.data.calender);
-              if (CheckAvailRes.data?.data?.available) {
-                setAvailable(true);
-                setNotAvailable(false);
-              } else if (CheckAvailRes.data?.data?.available != true) {
-                setAvailable(false);
-                setNotAvailable(true);
-              }
-            }
-          } catch (error) {
-            console.log(error, "ERROR CheckAvailability");
-          }
-        };
-        CheckAvail();
-      }
-    }
 
     GetPropertyById();
     return () => {
@@ -193,7 +196,7 @@ const ViewProperty = () => {
     }
     if (Params.from || Params.to) {
       form.setFieldsValue({
-        date_picker: [dayjs(Params.from), dayjs(Params.to)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
+        date_picker: [dayjs(Params.from), dayjs(Params.to)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE IF PARAM DATE ARE AVAILABLE
       });
     }
 
@@ -311,40 +314,65 @@ const ViewProperty = () => {
 
   const OnChangeDateInput = (date, DateValue) => {
     if (DateValue[0] || DateValue[1]) {
-      SetBookingDate([DateValue[0], DateValue[1]]);
-      const CheckAvail = async () => {
-        try {
-          const CheckAvailRes = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id}&from=${DateValue[0]}&to=${DateValue[1]}`
-          );
-          if (CheckAvailRes.status === 200) {
-            const DaysDiffCount = moment(DateValue[1], "MM-DD-YYYY").diff(
-              moment(DateValue[0], "MM-DD-YYYY"),
-              "days"
+      console.log(SpecificPropAPIData.data?.externalPropertyType);
+      if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
+        const CheckAvail = async () => {
+          try {
+            const CheckAvailRes = await axios.get(
+              `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id}&from=${DateValue[0]}&to=${DateValue[1]}`
             );
-            const DayDiffCountNextpaxAPI =
-              CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1;
-            if (DayDiffCountNextpaxAPI === DaysDiffCount) {
-              console.log(
-                CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1,
-                "nextpax/availability length",
-                DaysDiffCount,
-                "MOMENT DAY COUNT"
+            if (CheckAvailRes.status === 200) {
+              console.log("ON DATE CHANGE INTPUT NEXTPAX");
+              const DaysDiffCount = moment(DateValue[1], "MM-DD-YYYY").diff(
+                moment(DateValue[0], "MM-DD-YYYY"),
+                "days"
               );
-              setAvailable(true);
-              setNotAvailable(false);
-            } else if (DayDiffCountNextpaxAPI === undefined) {
-              setAvailable(false);
-              setNotAvailable(true);
+              const DayDiffCountNextpaxAPI =
+                CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1;
+              if (DayDiffCountNextpaxAPI === DaysDiffCount) {
+                console.log(
+                  CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1,
+                  "nextpax/availability length",
+                  DaysDiffCount,
+                  "MOMENT DAY COUNT"
+                );
+                setAvailable(true);
+                setNotAvailable(false);
+              } else if (DayDiffCountNextpaxAPI === undefined) {
+                setAvailable(false);
+                setNotAvailable(true);
+              }
             }
+          } catch (error) {
+            console.log(error, "ERROR CheckAvailability");
           }
-        } catch (error) {
-          console.log(error, "ERROR CheckAvailability");
-          setAvailable(false);
-          setNotAvailable(true);
-        }
-      };
-      CheckAvail();
+        };
+        CheckAvail();
+      } else {
+        console.log("ON DATE CHANGE INTPUT RENTAL");
+        SetBookingDate([DateValue[0], DateValue[1]]);
+        //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
+        const CheckAvail = async () => {
+          try {
+            const CheckAvailRes = await axios.get(
+              `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${Params.property_id}?from=${DateValue[0]}&to=${DateValue[1]}`
+            );
+            if (CheckAvailRes.status === 200) {
+              setAvailabilityCalender(CheckAvailRes.data.data.calender);
+              if (CheckAvailRes.data?.data?.available) {
+                setAvailable(true);
+                setNotAvailable(false);
+              } else if (CheckAvailRes.data?.data?.available != true) {
+                setAvailable(false);
+                setNotAvailable(true);
+              }
+            }
+          } catch (error) {
+            console.log(error, "ERROR CheckAvailability");
+          }
+        };
+        CheckAvail();
+      }
     }
   };
 
