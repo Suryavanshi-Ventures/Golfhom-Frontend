@@ -1,11 +1,10 @@
 import React, { useState, Suspense } from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import AddListingCss from "../../styles/dashboard/AddListing.module.css";
 import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import ProtectedRoute from "../../../common components/protected_route";
-import { Checkbox, Dropdown, Input, Select, Space, Typography } from "antd";
+import { Checkbox, Input, Select, Space, Typography } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import dynamic from "next/dynamic";
 const BottomSection = dynamic(
@@ -36,7 +35,7 @@ const Addlisting = () => {
           <Image
             fill
             className={AddListingCss.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>

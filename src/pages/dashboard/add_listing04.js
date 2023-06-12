@@ -1,5 +1,4 @@
 import React from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import AddListing04Css from "../../styles/dashboard/AddListing04.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
@@ -23,7 +22,7 @@ const AddListing04 = () => {
           <Image
             fill
             className={AddListing04Css.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>
@@ -41,8 +40,6 @@ const AddListing04 = () => {
 
           <Row>
             <Col md={10}>
-
-
               <Row>
                 <Col md={6}>
                   <h5 className={AddListing04Css.title}>Address*</h5>

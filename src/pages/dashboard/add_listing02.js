@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import AddListing02Css from "../../styles/dashboard/AddListing02.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
@@ -25,7 +24,7 @@ const Addlisting02 = () => {
           <Image
             fill
             className={AddListing02Css.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>
@@ -59,7 +58,6 @@ const Addlisting02 = () => {
               </p>
 
               <div className={AddListing02Css.cloudParent}>
-
                 <Button className={AddListing02Css.select}>
                   <div className={AddListing02Css.cloudImg}>
                     <Image

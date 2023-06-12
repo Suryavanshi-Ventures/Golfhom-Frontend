@@ -1,6 +1,5 @@
 import React from "react";
 import MyReservationCss from "../../styles/dashboard/MyReservation.module.css";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import Image from "next/image";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import Head from "next/head";
@@ -27,7 +26,7 @@ const MyReservation = () => {
           <Image
             fill
             className={MyReservationCss.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>
