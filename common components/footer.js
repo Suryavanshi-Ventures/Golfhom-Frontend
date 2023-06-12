@@ -4,12 +4,8 @@ import Link from "next/link";
 import { Container, Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import { Button, Input, message, Form } from "antd";
-import FooterLogo from "../public/footer logo.svg";
 import { MailOutlined } from "@ant-design/icons";
-import LinkedinIcon from "../public/linkedin.svg";
-import FacebookIcon from "../public/facebook.svg";
-import InstaIcon from "../public/insta.svg";
-import TwittereIcon from "../public/twitter.svg";
+
 import axios from "axios";
 
 const Footer = () => {
@@ -42,7 +38,12 @@ const Footer = () => {
             <Col md={4} className={FooterCss.footer_cols}>
               <div className={FooterCss.footer_divs}>
                 <div className={FooterCss.footer_logo_container}>
-                  <Image src={FooterLogo} alt="golfhom logo" />
+                  <Image
+                    src="https://golf-hom-latest-assets.s3.amazonaws.com/footer+logo.svg"
+                    width={100}
+                    height={100}
+                    alt="golfhom logo"
+                  />
                 </div>
                 <p className={FooterCss.footer_desc_p}>
                   Stay and play at luxe golf homes, villas and condos worldwide.
@@ -173,60 +174,64 @@ const Footer = () => {
 
               <Col md={6} className={FooterCss.copyright_section_col_icon}>
                 <div className={FooterCss.icons_container}>
-                  <span className={FooterCss.icons_spans}>
+                  <div className={FooterCss.icons_spans}>
                     <Link
                       href="https://www.linkedin.com/company/golfh%C5%8Dm/"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
                       <Image
-                        src={LinkedinIcon}
+                        src="https://golf-hom-latest-assets.s3.amazonaws.com/linkedin.svg"
                         className={FooterCss.social_icons}
                         alt="Linkedin"
+                        fill
                       />
                     </Link>
-                  </span>
+                  </div>
 
-                  <span className={FooterCss.icons_spans}>
+                  <div className={FooterCss.icons_spans}>
                     <Link
                       href="https://www.facebook.com/golfhom1/"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
                       <Image
-                        src={FacebookIcon}
+                        src="https://golf-hom-latest-assets.s3.amazonaws.com/facebook.svg"
                         className={FooterCss.social_icons}
                         alt="Facebook"
+                        fill
                       />
                     </Link>
-                  </span>
+                  </div>
 
-                  <span className={FooterCss.icons_spans}>
+                  <div className={FooterCss.icons_spans}>
                     <Link
                       href="https://www.instagram.com/golfhom/"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
                       <Image
-                        src={InstaIcon}
+                        src="https://golf-hom-latest-assets.s3.amazonaws.com/insta.svg"
                         className={FooterCss.social_icons}
                         alt="Instagram"
+                        fill
                       />
                     </Link>
-                  </span>
-                  <span className={FooterCss.icons_spans}>
+                  </div>
+                  <div className={FooterCss.icons_spans}>
                     <Link
                       href="https://twitter.com/golfhom?s=20"
                       target="_blank"
                       className={FooterCss.icons_a}
                     >
                       <Image
-                        src={TwittereIcon}
+                        src="https://golf-hom-latest-assets.s3.amazonaws.com/twitter.svg"
                         className={FooterCss.social_icons}
                         alt="Twitter"
+                        fill
                       />
                     </Link>
-                  </span>
+                  </div>
                 </div>
               </Col>
             </Row>

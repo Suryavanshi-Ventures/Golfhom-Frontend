@@ -1,6 +1,5 @@
 import { React, Suspense } from "react";
 import dynamic from "next/dynamic";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import FavoritesCss from "../../styles/dashboard/Favorites.module.css";
 import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
@@ -31,7 +30,7 @@ const Favorites = () => {
           <Image
             fill
             className={FavoritesCss.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>

@@ -1,5 +1,4 @@
 import React, { useState, Suspense } from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
 import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
@@ -8,7 +7,6 @@ import Head from "next/head";
 import { Space, Typography, DatePicker, Select } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
-import Link from "next/link";
 import moment from "moment";
 import "moment/locale/en-gb";
 moment.locale("en-gb");
@@ -37,7 +35,7 @@ const Invoice = () => {
           <Image
             fill
             className={InvoiceCss.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>

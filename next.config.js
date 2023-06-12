@@ -12,6 +12,34 @@ const nextConfig = {
     ],
     minimumCacheTTL: 0,
   },
+  // Adding security policies:
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "DENY",
+          },
+
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          {
+            key: "Permissions-Policy",
+            value:
+              "camera=(); battery=(self); geolocation=(); microphone=('https://golfhom.com')",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
+          },
+        ],
+      },
+    ];
+  },
 };
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",

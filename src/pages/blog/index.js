@@ -2,7 +2,6 @@ import React, { useEffect, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import BlogCss from "../../styles/Blog.module.css";
-import ViewAllProps from "../../../public/images/viewAllProps.png";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
@@ -53,7 +52,7 @@ const Index = () => {
       {/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */}
       <section className={BlogCss.headImage}>
         <Image
-          src={ViewAllProps}
+          src="https://golf-hom-latest-assets.s3.amazonaws.com/images/viewAllProps.png"
           alt="View All Property Image"
           fill
           className={BlogCss.imageChild}

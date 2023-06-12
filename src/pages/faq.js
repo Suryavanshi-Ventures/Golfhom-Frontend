@@ -4,7 +4,6 @@ import Head from "next/head";
 import { Container, Col, Row, Card, Button } from "react-bootstrap";
 import Image from "next/image";
 import FAQCss from "../styles/FAQ.module.css";
-import FAQBannerImg from "../../public/images/faq_banner_img.png";
 import dynamic from "next/dynamic";
 const BottomSection = dynamic(
   () => import("../../common components/bottomGroup"),
@@ -79,7 +78,7 @@ const FAQ = () => {
           <Image
             fill
             className={FAQCss.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>

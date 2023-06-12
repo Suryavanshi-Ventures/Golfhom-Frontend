@@ -24,7 +24,7 @@ const TermAndConditions = () => {
       {/* -----------------------    TOP IMAGE SECTION OF TERM AND CONDITIONS     ---------------------------- */}
       <div className={TermConditionsCss.topImage}>
         <Image
-          src={TermConditions}
+          src="https://golf-hom-latest-assets.s3.amazonaws.com/images/termConditions.png"
           alt="TermConditions"
           fill
           className={TermConditionsCss.imageSelf}

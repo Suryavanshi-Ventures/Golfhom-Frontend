@@ -2,7 +2,6 @@ import { React, useState, useEffect, Suspense } from "react";
 import { Container, Col } from "react-bootstrap";
 import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";
-import ContactUsBannerImage from "../../public/images/contact_us_banner_img.png";
 import Image from "next/image";
 import { Button, Input, Form, message } from "antd";
 const { TextArea } = Input;
@@ -60,7 +59,7 @@ const ContactUs = () => {
           <Image
             fill
             className={ContactUsCss.contact_us_bannerimg}
-            src={ContactUsBannerImage}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/contact_us_banner_img.png"
             alt="Banner image contact us"
             priority
           ></Image>
