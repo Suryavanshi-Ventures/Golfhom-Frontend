@@ -13,7 +13,7 @@ const Video = ({ videos }) => {
       spaceBetween={30}
       slidesPerView={3}
       pagination={{ clickable: true }}
-      onSlideChange={() => {}}
+      onSlideChange={() => { }}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -49,7 +49,7 @@ const Video = ({ videos }) => {
         <SwiperSlide key={video.id} className={HomeCss.parentVideo}>
           <Card className={HomeCss.videoData}>
             <iframe
-              className={HomeCss.videoPlay}
+              className={HomeCss.videoPlay_in_card}
               layout="fill"
               src={video.link}
               title="YouTube video player"

@@ -17,8 +17,15 @@
 .videoPlay {
   width: 100%;
   height: 100vh !important;
-  border-radius: 0px !important;
   object-fit: cover;
+  border-radius: 0px !important;
+}
+
+.videoPlay_in_card {
+  border-radius: 16px !important;
+  object-fit: cover;
+  width: 100%;
+  height: 40vh;
 }
 
 .inner_icon_container {

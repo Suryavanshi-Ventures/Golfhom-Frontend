@@ -26,6 +26,7 @@
 .inner_input_box {
   width: 100%;
   border-color: var(--btn-background);
+  border-radius: 2px !important;
 }
 .edit_details_date_picker:hover,
 .inner_input_box:hover {
@@ -37,6 +38,7 @@
   height: auto !important;
   color: var(--btn-background);
   border-color: var(--btn-background);
+  border-radius: 2px !important;
 }
 
 .edit_details_btn:hover {
@@ -69,7 +71,7 @@
 .twoCheckbox {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
   align-content: flex-end;
   font-family: var(--font-poppins);
   font-weight: 400;
@@ -86,7 +88,7 @@
   background-color: var(--btn-background);
   color: var(--white-font-color) !important;
   border: none;
-  /* height: 50px; */
+  border-radius: 2px !important;
   font-size: 1rem;
   font-weight: 600;
   padding: 0.6rem 2.8rem !important;
@@ -94,7 +96,7 @@
 }
 
 .search_div {
-  padding-left: 61px;
+  /* padding-left: 61px; */
 }
 
 .searching:hover {
@@ -216,6 +218,7 @@
   padding-left: 0px;
   margin-right: 0px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
@@ -272,6 +275,11 @@
     flex-direction: column;
   }
 
+  .edit_details_btn_parent_container {
+    display: flex;
+    justify-content: center;
+  }
+
   .mapParent {
     order: -1;
   }
@@ -288,7 +296,9 @@
   }
 
   .twoCheckbox {
-    justify-content: flex-start !important;
+    justify-content: center;
+    padding: 0px 12px;
+    width: 100%;
   }
 
   .searching {

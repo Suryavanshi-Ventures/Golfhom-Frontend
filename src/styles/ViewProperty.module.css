@@ -153,7 +153,8 @@
 .backgroundWhite {
   background: var(--white-font-color);
   position: relative;
-  bottom: 95px;
+  bottom: 0px;
+  top: 45px;
   height: fit-content;
   padding: 0;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
@@ -783,6 +784,28 @@
   color: var(--light-font-color);
 }
 
+.viewGallery {
+  background-color: var(--white-font-color);
+  padding: 6px 16px;
+  position: absolute;
+  z-index: 3;
+  bottom: 24px;
+  right: 24px;
+  border: 1px solid var(--light-grey);
+  border-radius: 2px;
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.showAllPhoto {
+  text-decoration: none;
+  color: var(--light-font-color);
+  margin-left: 8px;
+}
+
 @media only screen and (max-width: 768px) {
   .carasoul_section_inner_div {
     display: flex !important;
@@ -791,7 +814,8 @@
     justify-content: flex-start;
   }
   .backgroundWhite {
-    position: initial;
+    /* position: initial; */
+    margin-bottom: 30px;
   }
   .view_prop_bannerimg_container {
     max-width: 85vw;

@@ -49,6 +49,7 @@ const Index = () => {
   const [SortByParam, setSortByParam] = useState("");
   const [SearchOptions, setSearchOptions] = useState([]);
   const [searchResult, setSearchResult] = useState("");
+  const [golfCourse, setGolfCourse] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [Available, setAvailable] = useState(false);
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
@@ -73,15 +74,29 @@ const Index = () => {
   const [InputValue, setInputValue] = useState(
     param.location_name ? param.location_name : ""
   );
+
+  const [golfInputValue, setGolfInputValue] = useState(
+    param.location_name ? param.location_name : ""
+  );
+
   console.log(InputValue, "input value");
 
   const onLoad = (autocomplete) => {
     setSearchResult(autocomplete);
   };
 
+  const onGolfLoad = (autocomplete) => {
+    setGolfCourse(autocomplete);
+  };
+
   const OnSearchInputChange = (event) => {
     console.log(event.target.value);
     setInputValue(event.target.value);
+  };
+
+  const OnGolfCourseChange = (event) => {
+    console.log(event.target.value);
+    setGolfInputValue(event.target.value);
   };
 
   const onPlaceChanged = () => {
@@ -93,6 +108,21 @@ const Index = () => {
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
+    } else {
+      message.error("Please enter text");
+    }
+  };
+
+  const onGolfCourseChanged = () => {
+    if (searchResult != null) {
+      const place = searchResult.getPlace();
+      const name = place.name;
+      const status = place.business_status;
+      const formattedAddress = place.formatted_address;
+      console.log(`Name: ${name}`);
+      console.log(`Business Status: ${status}`);
+      console.log(`Formatted Address: ${formattedAddress}`);
+      // setGolfInputValue(formattedAddress);
     } else {
       message.error("Please enter text");
     }
@@ -121,7 +151,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => {};
+    return () => { };
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -132,18 +162,19 @@ const Index = () => {
     console.log(DateValue, "DATEEE VALUE");
   };
 
+  const [isEditable, setIsEditable] = useState(false);
+
   const EditBtn = () => {
     setShowHidden(!showHidden);
-    setIsVisible(true);
+    setIsEditable(prevIsEditable => !prevIsEditable);
   };
+
 
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -158,7 +189,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     param.from,
     param.guest,
@@ -198,12 +229,9 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-          "latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-          "from=" + param.from
-        }&${
-          "to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+        }&${"to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -246,46 +274,39 @@ const Index = () => {
         {/* EDIT DROP DETAIL SECTION */}
 
         <div className={SearchIndexCss.course_choice_parent}>
-          <Col md={3} className={SearchIndexCss.edit_details_container_cols}>
+          <Col md={3} sm={6} xs={12} className={SearchIndexCss.edit_details_container_cols}>
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>
                 Golf Course Choice
               </p>
               <div className={SearchIndexCss.edit_details_inputs_container}>
-                <Select
-                  defaultValue="Florida USA"
-                  options={[
-                    {
-                      value: "Orlando",
-                      label: "Orlando",
-                    },
-                    {
-                      value: "Portugal",
-                      label: "Portugal",
-                    },
-                  ]}
-                  trigger={["click"]}
-                  className={SearchIndexCss.edit_room_dropdown_btn}
-                  size="large"
-                >
-                  <Select.Option onClick={(e) => e.preventDefault()}>
-                    <Typography.Link>
-                      <Space
-                        className={SearchIndexCss.edit_room_dropdown_btn_space}
-                      >
-                        Florida USA{" "}
-                        <DownOutlined
-                          className={SearchIndexCss.edit_room_dropdown_icon}
-                        />
-                      </Space>
-                    </Typography.Link>
-                  </Select.Option>
-                </Select>
+                {isLoaded ? (
+                  <Autocomplete
+                    onGolfCourseChanged={onGolfCourseChanged}
+                    onGolfLoad={onGolfLoad}
+                  >
+                    <Input
+                      className={SearchIndexCss.inner_input_box}
+                      size="large"
+                      value={golfInputValue}
+                      // value={param.location_name}
+                      onChange={OnGolfCourseChange}
+                      name="search_input"
+                      allowClear
+                    />
+                  </Autocomplete>
+                ) : (
+                  <Skeleton.Input
+                    active={true}
+                    size={"mid"}
+                    className={SearchIndexCss.input_skeleton}
+                  />
+                )}
               </div>
             </div>
           </Col>
 
-          <Col md={3} className={SearchIndexCss.edit_details_container_cols}>
+          <Col md={3} sm={6} xs={12} className={SearchIndexCss.edit_details_container_cols}>
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
               <div className={SearchIndexCss.edit_details_inputs_container}>
@@ -323,10 +344,10 @@ const Index = () => {
           </Col>
 
           <Col md={6} className={SearchIndexCss.twoCheckbox}>
-            <Col md={3} sm={6} className={SearchIndexCss.front}>
+            <Col md={3} sm={6} xs={6} className={SearchIndexCss.front}>
               <Checkbox>Golf Course Front</Checkbox>
             </Col>
-            <Col md={4} sm={6} className={SearchIndexCss.front}>
+            <Col md={4} sm={6} xs={6} className={SearchIndexCss.front}>
               <Checkbox>Golf Course Community</Checkbox>
             </Col>
 
@@ -384,6 +405,7 @@ const Index = () => {
                             onChange={OnSearchInputChange}
                             name="search_input"
                             allowClear
+                            disabled={!isEditable}
                           />
                         </Autocomplete>
                       ) : (
@@ -426,6 +448,7 @@ const Index = () => {
                           return current && current < dayjs().startOf("day");
                         }}
                         format={"MM-DD-YYYY"}
+                        disabled={!isEditable}
                       />
                     </div>
                   </div>
@@ -447,6 +470,7 @@ const Index = () => {
                         onChange={(e) =>
                           onChangeGuest(parseInt(e.target.value))
                         }
+                        disabled={!isEditable}
                       />
                     </div>
                   </div>
@@ -623,8 +647,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -651,8 +674,7 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}
@@ -668,8 +690,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
