@@ -1,12 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { React, Suspense } from "react";
 import Head from "next/head";
-import { Button, Space } from "antd";
+import { Button } from "antd";
 import Link from "next/link";
 import AboutUsCss from "../styles/AboutUs.module.css";
 import Image from "next/image";
-import BannerImg from "../../public/images/about_banner_img.png";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import Review from "../review";
 import review from "../pages/json/review.json";
 import dynamic from "next/dynamic";
@@ -30,7 +29,7 @@ const About = () => {
         {/* BANNER IMAGE SECTION */}
         <div className={AboutUsCss.about_us_section_banner_container}>
           <Image
-            src={BannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/about_banner_img.png"
             fill
             className={AboutUsCss.about_us_section_banner_img}
             alt="About Banner Image"

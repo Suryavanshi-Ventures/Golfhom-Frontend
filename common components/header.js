@@ -26,7 +26,6 @@ import {
   LockOutlined,
   MenuOutlined,
   ContactsFilled,
-  DownOutlined,
 } from "@ant-design/icons";
 import Register from "../public/images/vector/registerToRent.svg";
 import Blog from "../public/images/vector/Blog.svg";
@@ -53,7 +52,7 @@ const Header = ({ name, ...props }) => {
       );
     }
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails]);
 
   // console.log(ContextUserDetails, "CONTAXT USER DETAILS");
@@ -157,7 +156,7 @@ const Header = ({ name, ...props }) => {
     try {
       // LOGIN FIELDS VALUES
       const LoginEmail = form2.getFieldValue("email_login");
-      const LoginPassword = form2.getFieldValue("password_login");
+      const LoginPassword = form2.getFieldValue("password");
       const RememberMe = form2.getFieldValue("remember_me");
 
       //! LOGIN API CALL
@@ -395,7 +394,7 @@ const Header = ({ name, ...props }) => {
 
                 {/* PASSWORD */}
                 <Form.Item
-                  name="password_login"
+                  name="password"
                   label="Password"
                   className={HeaderCss.form_items_login}
                   rules={[
@@ -920,8 +919,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Terms & Conditions")
-                          ),
+                              new Error("Should accept Terms & Conditions")
+                            ),
                     },
                   ]}
                 >
@@ -942,8 +941,8 @@ const Header = ({ name, ...props }) => {
                         value
                           ? Promise.resolve()
                           : Promise.reject(
-                            new Error("Should accept Privacy & Policy")
-                          ),
+                              new Error("Should accept Privacy & Policy")
+                            ),
                     },
                   ]}
                 >
@@ -1247,7 +1246,7 @@ const Header = ({ name, ...props }) => {
                             >
                               {UserName
                                 ? UserName.charAt(0).toUpperCase() +
-                                UserName.slice(1)
+                                  UserName.slice(1)
                                 : "Anyonums "}
                               <Image
                                 width={20}

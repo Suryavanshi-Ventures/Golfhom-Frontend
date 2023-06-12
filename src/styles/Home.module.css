@@ -397,7 +397,7 @@
 }
 
 .searchSection {
-  background-image: url(../../public/images/shot.webp);
+  background-image: url("https://golf-hom-latest-assets.s3.amazonaws.com/images/shot.webp");
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 500px;
@@ -547,7 +547,7 @@
 
 .midImgTitle {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/pool.webp);
+    url("https://golf-hom-latest-assets.s3.amazonaws.com/images/pool.webp");
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
@@ -573,7 +573,7 @@
 
 .madridImg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/madrid.webp);
+    url("https://golf-hom-latest-assets.s3.amazonaws.com/images/madrid.webp");
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -591,7 +591,7 @@
 
 .resortImg {
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(/images/gaintwheel.webp);
+    url("https://golf-hom-latest-assets.s3.amazonaws.com/images/gaintwheel.webp");
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;

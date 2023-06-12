@@ -1,5 +1,4 @@
 import { React, useEffect, useState, useContext, Suspense } from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import ProtectedRoute from "../../../common components/protected_route";
 import Image from "next/image";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
@@ -70,7 +69,7 @@ const Index = () => {
           <Image
             fill
             className={DashboardCss.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>

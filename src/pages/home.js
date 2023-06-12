@@ -207,7 +207,7 @@ const Home = () => {
       <div className={HomeCss.search_bar_img_div}>
         <div className={HomeCss.overlay}></div>
         <video
-          src="/videos/home_video.mp4"
+          src="https://golf-hom-latest-assets.s3.amazonaws.com/videos/home_video.mp4"
           autoPlay
           loop
           muted
@@ -672,24 +672,22 @@ const Home = () => {
               </h6>
             </Col>
 
-            <Col
-              onClick={(e) => {
-                e.preventDefault();
-                Router.push({
-                  pathname: `search`,
-                  query: {
-                    longitude: SpainMadridLongitude,
-                    latitude: SpainMadridLatitude,
-                    location_name: "The Madrid EDITION",
-                  },
-                });
-              }}
-              xl={4}
-              lg={4}
-              className={HomeCss.twoImgContainer}
-            >
+            <Col xl={4} lg={4} className={HomeCss.twoImgContainer}>
               <div>
-                <h6 className={HomeCss.madridImg}>
+                <h6
+                  onClick={(e) => {
+                    e.preventDefault();
+                    Router.push({
+                      pathname: `search`,
+                      query: {
+                        longitude: SpainMadridLongitude,
+                        latitude: SpainMadridLatitude,
+                        location_name: "The Madrid EDITION, Spain",
+                      },
+                    });
+                  }}
+                  className={HomeCss.madridImg}
+                >
                   <span
                     onClick={(e) => {
                       e.preventDefault();
@@ -698,17 +696,30 @@ const Home = () => {
                         query: {
                           longitude: SpainMadridLongitude,
                           latitude: SpainMadridLatitude,
-                          location_name: "The Madrid EDITION",
+                          location_name: "The Madrid EDITION, Spain",
                         },
                       });
                     }}
                   >
-                    The Madrid EDITION{" "}
+                    The Madrid EDITION, Spain{" "}
                   </span>
                 </h6>
               </div>
               <div>
-                <h6 className={HomeCss.resortImg}>
+                <h6
+                  onClick={(e) => {
+                    e.preventDefault();
+                    Router.push({
+                      pathname: `search`,
+                      query: {
+                        longitude: AnaheimLongitude,
+                        latitude: AnaheimLatitude,
+                        location_name: "The Westin Anaheim Resort, USA",
+                      },
+                    });
+                  }}
+                  className={HomeCss.resortImg}
+                >
                   <span
                     onClick={(e) => {
                       e.preventDefault();
@@ -717,12 +728,12 @@ const Home = () => {
                         query: {
                           longitude: AnaheimLongitude,
                           latitude: AnaheimLatitude,
-                          location_name: "The Westin Anaheim Resort",
+                          location_name: "The Westin Anaheim Resort, USA",
                         },
                       });
                     }}
                   >
-                    The Westin Anaheim Resort{" "}
+                    The Westin Anaheim Resort, USA{" "}
                   </span>
                 </h6>
               </div>

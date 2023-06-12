@@ -1,16 +1,7 @@
 import { React, Suspense } from "react";
 import PodcastCss from "../styles/BlogsAndPodcasts.module.css";
-import TopImage from "../../public/images/topImage.png";
 import Image from "next/image";
-import { Col, Container, Row } from "react-bootstrap";
-import OfficialBlog from "../../public/images/officialBlog.webp";
-import ShipsSticks from "../../public/images/shipStickks.svg";
-import Allbf from "../../public/images/allBf.webp";
-import golfWire from "../../public/images/golfWire.webp";
-import Bears from "../../public/images/bears.webp";
-import GolfBeginners from "../../public/images/golfBeginners.webp";
-import Bleav from "../../public/images/bleav.webp";
-import WhiteNext from "../../public/images/vector/whiteNext.svg";
+import { Container, Row } from "react-bootstrap";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -34,7 +25,7 @@ const BlogsAndPodcasts = () => {
 
       <div className={PodcastCss.topImageParent}>
         <Image
-          src={TopImage}
+          src="https://golf-hom-latest-assets.s3.amazonaws.com/images/topImage.png"
           fill
           className={PodcastCss.topImage}
           alt="Banner Image"
@@ -47,8 +38,8 @@ const BlogsAndPodcasts = () => {
         <Row className={PodcastCss.mainRow}>
           <div className={PodcastCss.imageParent}>
             <Image
-              src={Bleav}
-              alt=" Bleav"
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/bleav.webp"
+              alt="Bleav"
               fill
               className={PodcastCss.imageChild}
             ></Image>
@@ -63,7 +54,7 @@ const BlogsAndPodcasts = () => {
                   <p className={PodcastCss.read}>Read more</p>
                   <div className={PodcastCss.nextparent}>
                     <Image
-                      src={WhiteNext}
+                      src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
                       className={PodcastCss.whitenext}
@@ -76,7 +67,7 @@ const BlogsAndPodcasts = () => {
 
           <div className={PodcastCss.imageParent}>
             <Image
-              src={OfficialBlog}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/officialBlog.webp"
               alt="OfficialBlog"
               fill
               className={PodcastCss.imageChild}
@@ -94,7 +85,7 @@ const BlogsAndPodcasts = () => {
                   <p className={PodcastCss.read}>Read more</p>
                   <div className={PodcastCss.nextparent}>
                     <Image
-                      src={WhiteNext}
+                      src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="Golfhom Official Blog"
                       fill
                       className={PodcastCss.whitenext}
@@ -107,7 +98,7 @@ const BlogsAndPodcasts = () => {
 
           <div className={PodcastCss.imageParent}>
             <Image
-              src={ShipsSticks}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/shipStickks.svg"
               alt="ShipsSticks"
               fill
               className={PodcastCss.imageChild}
@@ -124,7 +115,7 @@ const BlogsAndPodcasts = () => {
                   <p className={PodcastCss.read}>Read more</p>
                   <div className={PodcastCss.nextparent}>
                     <Image
-                      src={WhiteNext}
+                      src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
                       className={PodcastCss.whitenext}
@@ -137,7 +128,7 @@ const BlogsAndPodcasts = () => {
 
           <div className={PodcastCss.imageParent}>
             <Image
-              src={Allbf}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/allBf.webp"
               alt="Allbf"
               fill
               className={PodcastCss.imageChild}
@@ -154,7 +145,7 @@ const BlogsAndPodcasts = () => {
                   <p className={PodcastCss.read}>Read more</p>
                   <div className={PodcastCss.nextparent}>
                     <Image
-                      src={WhiteNext}
+                      src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
                       className={PodcastCss.whitenext}
@@ -167,7 +158,7 @@ const BlogsAndPodcasts = () => {
 
           <div className={PodcastCss.imageParent}>
             <Image
-              src={golfWire}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/golfWire.webp"
               alt="golfWire"
               fill
               className={PodcastCss.imageChild}
@@ -184,7 +175,7 @@ const BlogsAndPodcasts = () => {
                   <p className={PodcastCss.read}>Read more</p>
                   <div className={PodcastCss.nextparent}>
                     <Image
-                      src={WhiteNext}
+                      src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
                       className={PodcastCss.whitenext}
@@ -197,14 +188,14 @@ const BlogsAndPodcasts = () => {
 
           <div className={PodcastCss.imageParent}>
             <Image
-              src={Bears}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/bears.webp"
               alt="Bears"
               fill
               className={PodcastCss.imageChild}
             ></Image>
 
             <Link
-              href=" https://art19.com/shows/bleav-in-bears"
+              href="https://art19.com/shows/bleav-in-bears"
               target="_blank"
               className={PodcastCss.textImg_link}
             >
@@ -214,7 +205,7 @@ const BlogsAndPodcasts = () => {
                   <p className={PodcastCss.read}>Read more</p>
                   <div className={PodcastCss.nextparent}>
                     <Image
-                      src={WhiteNext}
+                      src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
                       className={PodcastCss.whitenext}
@@ -227,7 +218,7 @@ const BlogsAndPodcasts = () => {
 
           <div className={PodcastCss.imageParent}>
             <Image
-              src={GolfBeginners}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/golfBeginners.webp"
               alt="GolfBeginners"
               fill
               className={PodcastCss.imageChild}
@@ -243,7 +234,7 @@ const BlogsAndPodcasts = () => {
                   <p className={PodcastCss.read}>Read more</p>
                   <div className={PodcastCss.nextparent}>
                     <Image
-                      src={WhiteNext}
+                      src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
                       className={PodcastCss.whitenext}

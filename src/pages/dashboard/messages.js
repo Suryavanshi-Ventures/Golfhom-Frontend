@@ -3,7 +3,6 @@ import React, { useState, Suspense } from "react";
 import dynamic from "next/dynamic";
 import MessageCss from "../../styles/dashboard/message.module.css";
 import Image from "next/image";
-import Laugh from "../../../public/images/laugh.png";
 import { Container } from "react-bootstrap";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
@@ -30,7 +29,7 @@ const Messages = () => {
           <Image
             fill
             className={MessageCss.laughimg}
-            src={Laugh}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/laugh.png"
             alt="Laugh"
           ></Image>
         </div>

@@ -12,7 +12,7 @@ const Slider = ({ slides }) => {
       spaceBetween={50}
       slidesPerView={3}
       pagination={{ clickable: true }}
-      onSlideChange={() => { }}
+      onSlideChange={() => {}}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -61,7 +61,7 @@ const Slider = ({ slides }) => {
             <div className={HomeCss.image_Parent}>
               <Image
                 className={HomeCss.sliderImage}
-                src={slide.image}
+                src={slide.src}
                 alt={slide.name}
                 fill
               ></Image>

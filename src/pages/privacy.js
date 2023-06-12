@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { React, Suspense } from "react";
-import Privacyimg from "../../public/images/privacy.png";
 import PrivacyPolicyCss from "../styles/PrivacyPolicy.module.css";
 import { Container } from "react-bootstrap";
 import Link from "next/link";
@@ -17,7 +16,7 @@ const Privacy = () => {
       {/*------------------------ PRIVACY POLICY TOP IMAGE------------------------ */}
       <div className={PrivacyPolicyCss.topImage}>
         <Image
-          src={Privacyimg}
+          src="https://golf-hom-latest-assets.s3.amazonaws.com/images/privacy.png"
           alt="Privacy"
           fill
           priority

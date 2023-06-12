@@ -1,14 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, Suspense } from "react";
 import RegisterToHost from "../styles/RegisterToHost.module.css";
-import targetBall from "../../public/images/targetBall.png";
 import Image from "next/image";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { Checkbox, Input } from "antd";
-import condoView from "../../public/images/condoView.png";
-import Lunch from "../../public/images/lunch.svg";
-import earnMoney from "../../public/images/earnMoney.webp";
-import Beach from "../../public/images/beach.webp";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -63,7 +58,7 @@ const Register_to_host = () => {
 
         <div className={RegisterToHost.targetBall}>
           <Image
-            src={targetBall}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/targetBall.png"
             alt="Target Ball"
             fill
             className={RegisterToHost.imgTargetBall}
@@ -217,7 +212,7 @@ const Register_to_host = () => {
 
           <Col md={6} className={RegisterToHost.imageParent}>
             <Image
-              src={condoView}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/condoView.png"
               alt="condoView"
               fill
               className={RegisterToHost.condoImage}
@@ -228,7 +223,7 @@ const Register_to_host = () => {
         <Row className={RegisterToHost.rowContentA}>
           <Col md={6} className={RegisterToHost.imageParent}>
             <Image
-              src={Lunch}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/lunch.svg"
               alt="condoView"
               fill
               className={RegisterToHost.lunchImage}
@@ -261,7 +256,7 @@ const Register_to_host = () => {
 
           <Col md={6} className={RegisterToHost.imageParent}>
             <Image
-              src={earnMoney}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/earnMoney.webp"
               alt="condoView"
               fill
               className={RegisterToHost.earnMoney}
@@ -441,7 +436,7 @@ const Register_to_host = () => {
           </Col>
           <Col md={6} className={RegisterToHost.imageParent}>
             <Image
-              src={Beach}
+              src="https://golf-hom-latest-assets.s3.amazonaws.com/images/beach.webp"
               alt="Beach"
               fill
               className={RegisterToHost.beach}

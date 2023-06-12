@@ -82,7 +82,6 @@ const ViewProperty = () => {
         );
         if (SpecificPropData.status === 200) {
           SetSpecificPropAPIData(SpecificPropData.data);
-
           //* THIS WILL RUN ONLY WHEN PARAMS FROM AND TO IS NOT EMPTY
           if (Params.from || Params.to) {
             //* IF THE EXTERNAL PROPERTY TYPE IS NEXTPAX THAN CALLING NEXTPAX AVAILABILITY API

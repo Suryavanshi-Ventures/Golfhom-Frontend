@@ -1,5 +1,4 @@
 import { React, Suspense } from "react";
-import FAQBannerImg from "../../../public/images/faq_banner_img.png";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";
 import { Button, Container, Table } from "react-bootstrap";
@@ -28,7 +27,7 @@ const Reservation = () => {
           <Image
             fill
             className={ReservationCss.banner_img}
-            src={FAQBannerImg}
+            src="https://golf-hom-latest-assets.s3.amazonaws.com/images/faq_banner_img.png"
             alt="faq golfhom banner image"
           ></Image>
         </div>

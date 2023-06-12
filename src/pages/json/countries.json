@@ -1,8 +1,8 @@
 [
   {
     "id": 5,
-    "image": "/images/Florida.webp",
-    "name": "Florida",
+    "src": "https://golf-hom-latest-assets.s3.amazonaws.com/images/Florida.webp",
+    "name": "Florida, USA",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 27.994402,
     "lng": -81.760254
@@ -10,8 +10,8 @@
 
   {
     "id": 6,
-    "image": "/images/Arizona.webp",
-    "name": "Arizona",
+    "src": "https://golf-hom-latest-assets.s3.amazonaws.com/images/Arizona.webp",
+    "name": "Arizona, USA",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 34.048927,
     "lng": -111.093735
@@ -19,8 +19,8 @@
 
   {
     "id": 7,
-    "image": "/images/hawaii_citi.webp",
-    "name": "Hawaii",
+    "src": "https://golf-hom-latest-assets.s3.amazonaws.com/images/hawaii_citi.webp",
+    "name": "Hawaii, USA",
     "next": "/images/vector/forwardArrow.svg",
     "lat": 19.741755,
     "lng": -155.844437
@@ -28,8 +28,8 @@
 
   {
     "id": 8,
-    "image": "/images/san_francisco_citi.webp",
-    "name": "South Carolina",
+    "src": "https://golf-hom-latest-assets.s3.amazonaws.com/images/san_francisco_citi.webp",
+    "name": "South Carolina, USA",
     "next": "/images/vector/san_francisco_citi.webp",
     "lat": 33.836082,
     "lng": -81.163727
