@@ -1,34 +1,11 @@
-.below_banner_main_section {
-  margin: 4rem;
-}
-
-.faq_freq_ques_cols {
-  margin-bottom: 1rem;
-}
-
 /* Frequently Asked Questions */
 
 .banner_img {
   position: relative !important;
 }
-.heading_question_main_div {
-  margin-bottom: 4rem;
-}
 
-.heading_question {
-  font-family: var(--font-poppins);
-  font-weight: 600;
-  margin-bottom: 4rem;
-}
-
-.textTitle {
-  font-family: var(--font-poppins);
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-.paragraph {
-  font-family: var(--font-poppins);
-  font-size: 0.8rem;
+.below_banner_main_section {
+  margin: 4rem;
 }
 
 .faqRow {
@@ -38,10 +15,32 @@
   flex-wrap: wrap;
 }
 
+.textTitle {
+  font-family: var(--font-poppins);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.paragraph {
+  font-family: var(--font-poppins);
+  font-size: 0.9rem;
+}
+
+.heading_question {
+  font-family: var(--font-poppins);
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
 .headingSign {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.faqTitle {
+  font-family: var(--font-poppins);
+  font-weight: 600;
 }
 
 .sign {
@@ -59,17 +58,11 @@
   padding-bottom: 7px;
 }
 
-.sign:hover {
+.sign:hover, .sign:active {
   border: none;
-  background-color: var(--btn-background-secondary);
+  background-color: var(--btn-background-secondary) !important;
 }
 
-.faqTitle {
-  font-family: var(--font-poppins);
-  font-weight: 600;
-}
-
-.faqPara {
-  font-family: var(--font-poppins);
-  font-weight: 400;
+.heading_question_main_div {
+  margin-top: 3rem;
 }

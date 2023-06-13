@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useState, Suspense } from "react";
+import { React, useState } from "react";
 import Head from "next/head";
-import { Container, Col, Row, Card, Button } from "react-bootstrap";
+import { Container, Col, Row, Button } from "react-bootstrap";
 import Image from "next/image";
 import FAQCss from "../styles/FAQ.module.css";
 import dynamic from "next/dynamic";
@@ -74,7 +74,7 @@ const FAQ = () => {
 
       <main>
         {/* BANNER IMAGE FAQ */}
-        <div className={FAQCss.banner_img_container}>
+        <div>
           <Image
             fill
             className={FAQCss.banner_img}
@@ -85,7 +85,7 @@ const FAQ = () => {
         <section className={FAQCss.below_banner_main_section}>
           <Container>
             <Row className={FAQCss.faqRow}>
-              <Col md={6} className={FAQCss.textParentD}>
+              <Col md={6}>
                 <h3 className={FAQCss.textTitle}>Frequently Asked Questions</h3>
                 <p className={FAQCss.paragraph}>
                   Our team has provided answers below to some frequently asked
@@ -98,7 +98,7 @@ const FAQ = () => {
               <Col md={6}>
                 {/* BOOKING FAQ QUESTIONS */}
 
-                <main className={FAQCss.heading_question_main_div}>
+                <main>
                   <div>
                     <h3 className={FAQCss.heading_question}>
                       Booking Questions
@@ -113,7 +113,7 @@ const FAQ = () => {
                     </div>
                     {showA && (
                       <div>
-                        <p className={FAQCss.faqPara}>
+                        <p className={FAQCss.paragraph}>
                           You can find information on a property’s amenities on
                           the home’s profile page. Reach out to the host for
                           more specific information.
@@ -136,7 +136,7 @@ const FAQ = () => {
                     </div>
                     {showB && (
                       <div>
-                        <p>
+                        <p className={FAQCss.paragraph}>
                           Please be sure to check your email inbox, junk, and
                           spam folders. If you still can’t find your
                           confirmation, refer to your Golfhōm admin area, or
@@ -160,7 +160,7 @@ const FAQ = () => {
                     </div>
                     {showC && (
                       <div>
-                        <p>
+                        <p className={FAQCss.paragraph}>
                           This depends on the individual host, who will do their
                           best to meet your needs. We recommend dealing with
                           arrival time issues as early in the process as
@@ -184,7 +184,7 @@ const FAQ = () => {
                     </div>
                     {showD && (
                       <div>
-                        <p>
+                        <p className={FAQCss.paragraph}>
                           A late check-out can only be arranged with the host,
                           and is not guaranteed. Reach out to see what can be
                           arranged, and keep in mind that availability and
@@ -207,7 +207,7 @@ const FAQ = () => {
                     </div>
                     {showE && (
                       <div>
-                        <p>
+                        <p className={FAQCss.paragraph}>
                           Pet policies should be clearly stated on the home’s
                           profile page. Reach out to the Host for any needed
                           clarification, or to see if a variance can be made.
@@ -229,7 +229,7 @@ const FAQ = () => {
                     </div>
                     {showF && (
                       <div>
-                        <p>
+                        <p className={FAQCss.paragraph}>
                           Major credit cards and Paypal are acceptable payment
                           methods for properties listed on Golfhōm.com. You will
                           have your choice of payment methods at the tome of
@@ -238,6 +238,7 @@ const FAQ = () => {
                       </div>
                     )}
                   </div>
+                  <hr />
                 </main>
 
                 {/* CANCELATION SECTION */}
@@ -256,7 +257,7 @@ const FAQ = () => {
                     </div>
                     {showG && (
                       <div>
-                        <p className={FAQCss.faqPara}>
+                        <p className={FAQCss.paragraph}>
                           Yes, cancellations happen. Any cancellation fees are
                           determined by the property’s stated cancellation
                           policy, which you can find on the home’s profile page
@@ -279,7 +280,7 @@ const FAQ = () => {
                     </div>
                     {showH && (
                       <div>
-                        <p className={FAQCss.faqPara}>
+                        <p className={FAQCss.paragraph}>
                           After you cancel a booking, you should get an email
                           confirming said cancellation. Make sure to check your
                           inbox and spam/junk mail folders. If you don’t receive
@@ -304,7 +305,7 @@ const FAQ = () => {
                     </div>
                     {showI && (
                       <div>
-                        <p className={FAQCss.faqPara}>
+                        <p className={FAQCss.paragraph}>
                           This information is available in your booking
                           confirmation, as well as on the property’s Golfhōm
                           profile page.
@@ -327,7 +328,7 @@ const FAQ = () => {
                     </div>
                     {showJ && (
                       <div>
-                        <p className={FAQCss.faqPara}>
+                        <p className={FAQCss.paragraph}>
                           The up-to-date cancellation policy was viewable on the
                           property’s profile page when you made the booking on
                           our platform, and can also be viewed in your
@@ -337,6 +338,7 @@ const FAQ = () => {
                       </div>
                     )}
                   </div>
+                  <hr />
                 </main>
               </Col>
             </Row>

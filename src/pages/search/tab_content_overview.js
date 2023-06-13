@@ -28,21 +28,24 @@ const TabContentOverview = (PropData) => {
               <div className={ViewPropertyCss.amenities_details_img_container}>
                 <Image
                   src={ViewPropBedIcon}
-                  height={50}
-                  width={50}
+                  height={24}
+                  width={24}
                   className={ViewPropertyCss.amenities_imgs}
                   alt="Golfhom amenities"
                 ></Image>
               </div>
-              <h1 className={ViewPropertyCss.amenities_details_main_heading}>
-                Accommodation
-              </h1>
-              <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data?.accomodation
-                  ? PropData.data?.accomodation
-                  : "N/A"}{" "}
-                Guests
-              </p>
+
+              <div className={ViewPropertyCss.heading_para}>
+                <h5 className={ViewPropertyCss.amenities_details_main_heading}>
+                  Accommodation
+                </h5>
+                <p className={ViewPropertyCss.amenities_details_main_subheading}>
+                  {PropData.data?.accomodation
+                    ? PropData.data?.accomodation
+                    : "N/A"}{" "}
+                  Guests
+                </p>
+              </div>
             </div>
           </Col>
           <Col md={"auto"} className={ViewPropertyCss.amenities_details_cols}>
@@ -50,19 +53,22 @@ const TabContentOverview = (PropData) => {
               <div className={ViewPropertyCss.amenities_details_img_container}>
                 <Image
                   src={ViewPropBedIcon}
-                  height={50}
-                  width={50}
+                  height={24}
+                  width={24}
                   className={ViewPropertyCss.amenities_imgs}
                   alt="Golfhom amenities"
                 ></Image>
               </div>
-              <h1 className={ViewPropertyCss.amenities_details_main_heading}>
-                Bedrooms
-              </h1>
-              <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data?.bedrooms ? PropData.data?.bedrooms : 1} Bedrooms
-                / {PropData.data?.beds ? PropData.data?.beds : 1} Beds
-              </p>
+
+              <div className={ViewPropertyCss.heading_para}>
+                <h5 className={ViewPropertyCss.amenities_details_main_heading}>
+                  Bedrooms
+                </h5>
+                <p className={ViewPropertyCss.amenities_details_main_subheading}>
+                  {PropData.data?.bedrooms ? PropData.data?.bedrooms : 1} Bedrooms
+                  / {PropData.data?.beds ? PropData.data?.beds : 1} Beds
+                </p>
+              </div>
             </div>
           </Col>
           <Col md={"auto"} className={ViewPropertyCss.amenities_details_cols}>
@@ -70,18 +76,21 @@ const TabContentOverview = (PropData) => {
               <div className={ViewPropertyCss.amenities_details_img_container}>
                 <Image
                   src={ViewPropBathroomIcon}
-                  height={50}
-                  width={50}
+                  height={24}
+                  width={24}
                   className={ViewPropertyCss.amenities_imgs}
                   alt="Golfhom amenities"
                 ></Image>
               </div>
-              <h1 className={ViewPropertyCss.amenities_details_main_heading}>
-                Bathrooms
-              </h1>
-              <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                {PropData.data?.bathrooms ? PropData.data?.bathrooms : "1"} Full
-              </p>
+
+              <div className={ViewPropertyCss.heading_para}>
+                <h5 className={ViewPropertyCss.amenities_details_main_heading}>
+                  Bathrooms
+                </h5>
+                <p className={ViewPropertyCss.amenities_details_main_subheading}>
+                  {PropData.data?.bathrooms ? PropData.data?.bathrooms : "1"} Full
+                </p>
+              </div>
             </div>
           </Col>
         </Row>

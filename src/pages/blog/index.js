@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import BlogCss from "../../styles/Blog.module.css";
@@ -50,7 +50,7 @@ const Index = () => {
       </Head>
 
       {/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */}
-      <section className={BlogCss.headImage}>
+      <section>
         <Image
           src="https://golf-hom-latest-assets.s3.amazonaws.com/images/viewAllProps.png"
           alt="View All Property Image"
@@ -116,7 +116,6 @@ const Index = () => {
                         alt="Contact Image"
                         width={20}
                         height={15}
-                        className={BlogCss.contact}
                       ></Image>{" "}
                       <span className={BlogCss.byAdmin}>
                         {item.createdBy ? item.createdBy : "N/A"}
@@ -144,14 +143,8 @@ const Index = () => {
               </Col>
             );
           })}
-
-          {/* <div className={BlogCss.skeliton_image_div}>
-            <Skeleton.Image active={true} />
-          </div> */}
         </Row>
       </Container>
-
-      {/*  -----------------     PAGINATION CONTAINER     -----------------   */}
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 

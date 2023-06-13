@@ -20,23 +20,23 @@
   font-family: var(--font-poppins);
 }
 
-.paraA, .paraB, .paraC, .paraD, .paraE, .paraI, .paraJ, .paraK, .paraL, .paraM, .paraN, .paraO, .paraP, .paraQ, .paraR, .paraS, .paraT, .paraU, .paraV, .paraW, .paraX {
-    color: var(--light-font-color);
-    font-family: var(--font-poppins);
-    font-weight: 400;
-    margin: 30px 0px;
-    font-size: 0.8rem;
+.para, .paraA {
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  margin: 30px 0px;
+  font-size: 0.8rem;
 }
 
 .paraCom {
-    color: var(--light-font-color);
-    font-family: var(--font-poppins);
-    font-weight: 400;
-    font-size: 0.8rem;
-    margin-bottom: 8px;
+  color: var(--light-font-color);
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
 }
 
-.paraX {
+.paraA {
   margin-bottom: 100px;
 }
 
@@ -46,16 +46,16 @@
   margin: 18px 0px;
 }
 
-.smallHeading {
+.subHeading {
   font-family: var(--font-poppins);
 }
 
 .contact {
-    text-decoration: underline;
-    color: var(--btn-background-secondary);
+  text-decoration: underline;
+  color: var(--btn-background-secondary);
 }
 
 .contact:hover {
-    color: var(--black-btn-color);
+  color: var(--black-btn-color);
 }
   

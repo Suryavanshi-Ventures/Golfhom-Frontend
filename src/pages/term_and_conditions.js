@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { React, Suspense } from "react";
-import TermConditions from "../../public/images/termConditions.png";
+import { React } from "react";
 import TermConditionsCss from "../styles/TermConditions.module.css";
-import { Button, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -34,7 +33,7 @@ const TermAndConditions = () => {
       {/* -------------------------    TEXT SECTION    -------------------------------  */}
 
       <Container>
-        <h3 className={TermConditionsCss.term}>Term and Condition</h3>
+        <h3 className={TermConditionsCss.title}>Term and Condition</h3>
 
         <p className={TermConditionsCss.update}>Last updated April 23, 2021</p>
 
@@ -46,7 +45,7 @@ const TermAndConditions = () => {
           utilizing Website, a mobile application or subdomain of Website, or
           any other site operated by or affiliated with us, on which these Terms
           and Conditions are posted, referenced by link or otherwise,{" "}
-          <b className={TermConditionsCss.bold}>
+          <b>
             you acknowledge and agree that you are subject to the following
             Terms and Conditions{" "}
           </b>{" "}
@@ -120,7 +119,7 @@ const TermAndConditions = () => {
 
         <p className={TermConditionsCss.para}>
           We respect your privacy and believe in protecting it. Please{" "}
-          <Link href="/privacy" className={TermConditionsCss.redWords}>
+          <Link href="/privacy" className={TermConditionsCss.linkWord}>
             CLICK HERE{" "}
           </Link>{" "}
           to review our current Privacy Policy.
@@ -141,14 +140,14 @@ const TermAndConditions = () => {
           4) Copyright Infringement Prohibited Hereon: DMCA Policy
         </h5>
 
-        <p className={TermConditionsCss.paraL}>
+        <p className={TermConditionsCss.paraA}>
           Website does not permit, and will not be a party to, users violating
           or infringing upon any 3rd party’s copyrights. We greatly respect the
           intellectual property rights of other individuals and entities. We
           will freeze or terminate, when appropriate, any property listing or
           user account if copyright infringement is suspected. Please feel free
           to{" "}
-          <Link href="/contact_us" className={TermConditionsCss.redWords}>
+          <Link href="/contact_us" className={TermConditionsCss.linkWord}>
             {" "}
             CONTACT US HERE
           </Link>{" "}

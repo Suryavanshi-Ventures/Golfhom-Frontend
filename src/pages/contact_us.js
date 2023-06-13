@@ -1,4 +1,4 @@
-import { React, useState, useEffect, Suspense } from "react";
+import { React, useState } from "react";
 import { Container, Col } from "react-bootstrap";
 import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";
@@ -53,7 +53,7 @@ const ContactUs = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={ContactUsCss.contact_us_main_section}>
+      <main>
         {/* BANNER IMAGE SECTION */}
         <div className={ContactUsCss.contact_us_bannerimg_container}>
           <Image
@@ -130,7 +130,7 @@ const ContactUs = () => {
 
                 <TextArea
                   placeholder="Please write something here..."
-                  className={ContactUsCss.input_textarea}
+                  className={ContactUsCss.contact_us_input}
                   rows={4}
                 />
               </Form.Item>

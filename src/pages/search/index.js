@@ -49,6 +49,7 @@ const Index = () => {
   const [SortByParam, setSortByParam] = useState("");
   const [SearchOptions, setSearchOptions] = useState([]);
   const [searchResult, setSearchResult] = useState("");
+  const [searchGolfResult, setSearchGolfResult] = useState("");
   const [golfCourse, setGolfCourse] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [Available, setAvailable] = useState(false);
@@ -99,7 +100,7 @@ const Index = () => {
     setGolfInputValue(event.target.value);
   };
 
-  const onPlaceChanged = () => {
+  const onPlaceChanged = (a) => {
     if (searchResult != null) {
       const place = searchResult.getPlace();
       const name = place.name;
@@ -108,21 +109,23 @@ const Index = () => {
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
+      setInputValue(formattedAddress);
     } else {
       message.error("Please enter text");
     }
   };
 
+
   const onGolfCourseChanged = () => {
-    if (searchResult != null) {
-      const place = searchResult.getPlace();
+    if (searchGolfResult != null) {
+      const place = searchGolfResult.getPlace();
       const name = place.name;
       const status = place.business_status;
       const formattedAddress = place.formatted_address;
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
-      // setGolfInputValue(formattedAddress);
+      setGolfInputValue(formattedAddress);
     } else {
       message.error("Please enter text");
     }
@@ -291,7 +294,7 @@ const Index = () => {
                       value={golfInputValue}
                       // value={param.location_name}
                       onChange={OnGolfCourseChange}
-                      name="search_input"
+                      // name="search_input"
                       allowClear
                     />
                   </Autocomplete>
@@ -403,7 +406,7 @@ const Index = () => {
                             value={InputValue}
                             // value={param.location_name}
                             onChange={OnSearchInputChange}
-                            name="search_input"
+                            // name="search_input"
                             allowClear
                             disabled={!isEditable}
                           />

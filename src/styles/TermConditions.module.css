@@ -13,7 +13,7 @@
 
 /* -------------------------    TEXT SECTION    -------------------------------  */
 
-.term {
+.title {
   font-family: var(--font-poppins);
   font-weight: 600;
   margin-top: 44px;
@@ -26,7 +26,7 @@
   font-size: 0.8rem;
 }
 
-.para, .paraL {
+.para, .paraA {
     font-family: var(--font-poppins);
     color: var(--light-font-color);
     font-weight: 400;
@@ -34,20 +34,16 @@
     margin-bottom: 40px;
 }
 
-.paraL {
+.paraA {
   margin-bottom: 100px;
 }
 
-.bold {
-  color: var(--black-btn-color);
-}
-
-.redWords {
+.linkWord {
   color: var(--btn-background-secondary);
   text-decoration: underline;
 }
 
-.redWords:hover {
+.linkWord:hover {
     color: var(--black-btn-color);
 }
 

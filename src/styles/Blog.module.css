@@ -230,76 +230,7 @@
   top: 6px;
 }
 
-/*  -----------------     PAGINATION CONTAINER     -----------------   */
-
-.pagination_container {
-  padding: 86px 0px;
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.pagination {
-}
-
 /*    ---------------------------------         MEDIA QUERY        ---------------------------------             */
-@media only screen and (max-width: 768px) {
-  .cardTextParent {
-    /* flex-shrink: 2;
-    top: 240px !important;
-    width: 60% !important; */
-  }
-
-  .bookmark_text {
-    /* font-size: 0.8rem; */
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  /* .cardTextParent {
-    top: 155px;
-  } */
-}
-
-@media only screen and (max-width: 1200px) {
-  /* .cardTextParent {
-    top: 114px;
-    font-size: 10px;
-    width: 82%;
-  } */
-}
-
-@media only screen and (max-width: 1000px) {
-  /* .cardTextParent {
-    top: 114px;
-    font-size: 10px;
-    width: 86%;
-  }
-
-  .card_title {
-    font-size: 0.8rem;
-    margin-bottom: 4px;
-  }
-
-  .bookmark_text {
-    font-size: 0.64rem;
-  }
-
-  .learnbtn_text {
-    font-size: 0.9rem;
-  }
-
-  .contact {
-    height: 13px;
-  }
-
-  .learnbtn {
-    margin-top: 2px;
-  } */
-}
-
-@media only screen and (max-width: 992px) {
-}
 
 @media only screen and (max-width: 576px) {
   .cardsParent {

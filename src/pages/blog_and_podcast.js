@@ -1,4 +1,4 @@
-import { React, Suspense } from "react";
+import { React } from "react";
 import PodcastCss from "../styles/BlogsAndPodcasts.module.css";
 import Image from "next/image";
 import { Container, Row } from "react-bootstrap";
@@ -23,7 +23,7 @@ const BlogsAndPodcasts = () => {
 
       {/*   --------------------------   TOP IMAGE SECTION       ------------------------    */}
 
-      <div className={PodcastCss.topImageParent}>
+      <div>
         <Image
           src="https://golf-hom-latest-assets.s3.amazonaws.com/images/topImage.png"
           fill
@@ -34,9 +34,9 @@ const BlogsAndPodcasts = () => {
 
       {/*   ---------------------------         PODCAST MID CONTAINER           -----------------------    */}
 
-      <Container className={PodcastCss.imageGrand}>
+      <Container className={PodcastCss.img_container}>
         <Row className={PodcastCss.mainRow}>
-          <div className={PodcastCss.imageParent}>
+          <div className={PodcastCss.img_Parent}>
             <Image
               src="https://golf-hom-latest-assets.s3.amazonaws.com/images/bleav.webp"
               alt="Bleav"
@@ -46,18 +46,17 @@ const BlogsAndPodcasts = () => {
             <Link
               href="https://art19.com/shows/bleav-in-betting-chicago"
               target="_blank"
-              className={PodcastCss.textImg_link}
             >
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>Bleav in Betting chicgo</h4>
                 <div className={PodcastCss.readNext}>
                   <p className={PodcastCss.read}>Read more</p>
-                  <div className={PodcastCss.nextparent}>
+                  <div className={PodcastCss.nextArrow}>
                     <Image
                       src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
-                      className={PodcastCss.whitenext}
+                      className={PodcastCss.arrow}
                     />
                   </div>
                 </div>
@@ -65,7 +64,7 @@ const BlogsAndPodcasts = () => {
             </Link>
           </div>
 
-          <div className={PodcastCss.imageParent}>
+          <div className={PodcastCss.img_Parent}>
             <Image
               src="https://golf-hom-latest-assets.s3.amazonaws.com/images/officialBlog.webp"
               alt="OfficialBlog"
@@ -76,19 +75,18 @@ const BlogsAndPodcasts = () => {
             <Link
               href="https://golfhom.com/blog"
               target="_blank"
-              className={PodcastCss.textImg_link}
             >
               {" "}
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>Golfhom Official Blog</h4>
                 <div className={PodcastCss.readNext}>
                   <p className={PodcastCss.read}>Read more</p>
-                  <div className={PodcastCss.nextparent}>
+                  <div className={PodcastCss.nextArrow}>
                     <Image
                       src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="Golfhom Official Blog"
                       fill
-                      className={PodcastCss.whitenext}
+                      className={PodcastCss.arrow}
                     />
                   </div>
                 </div>
@@ -96,7 +94,7 @@ const BlogsAndPodcasts = () => {
             </Link>
           </div>
 
-          <div className={PodcastCss.imageParent}>
+          <div className={PodcastCss.img_Parent}>
             <Image
               src="https://golf-hom-latest-assets.s3.amazonaws.com/images/shipStickks.svg"
               alt="ShipsSticks"
@@ -107,18 +105,17 @@ const BlogsAndPodcasts = () => {
             <Link
               href="https://www.shipsticks.com/blog/"
               target="_blank"
-              className={PodcastCss.textImg_link}
             >
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>Ship Sticks</h4>
                 <div className={PodcastCss.readNext}>
                   <p className={PodcastCss.read}>Read more</p>
-                  <div className={PodcastCss.nextparent}>
+                  <div className={PodcastCss.nextArrow}>
                     <Image
                       src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
-                      className={PodcastCss.whitenext}
+                      className={PodcastCss.arrow}
                     />
                   </div>
                 </div>
@@ -126,7 +123,7 @@ const BlogsAndPodcasts = () => {
             </Link>
           </div>
 
-          <div className={PodcastCss.imageParent}>
+          <div className={PodcastCss.img_Parent}>
             <Image
               src="https://golf-hom-latest-assets.s3.amazonaws.com/images/allBf.webp"
               alt="Allbf"
@@ -137,18 +134,17 @@ const BlogsAndPodcasts = () => {
             <Link
               href="https://podcasts.apple.com/us/podcast/all-sorts-of-bs/id1538666278"
               target="_blank"
-              className={PodcastCss.textImg_link}
             >
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>All Sorts of BS Podcast</h4>
                 <div className={PodcastCss.readNext}>
                   <p className={PodcastCss.read}>Read more</p>
-                  <div className={PodcastCss.nextparent}>
+                  <div className={PodcastCss.nextArrow}>
                     <Image
                       src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
-                      className={PodcastCss.whitenext}
+                      className={PodcastCss.arrow}
                     />
                   </div>
                 </div>
@@ -156,7 +152,7 @@ const BlogsAndPodcasts = () => {
             </Link>
           </div>
 
-          <div className={PodcastCss.imageParent}>
+          <div className={PodcastCss.img_Parent}>
             <Image
               src="https://golf-hom-latest-assets.s3.amazonaws.com/images/golfWire.webp"
               alt="golfWire"
@@ -167,18 +163,17 @@ const BlogsAndPodcasts = () => {
             <Link
               href="https://thegolfwire.com/"
               target="_blank"
-              className={PodcastCss.textImg_link}
             >
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>The Golf Wire</h4>
                 <div className={PodcastCss.readNext}>
                   <p className={PodcastCss.read}>Read more</p>
-                  <div className={PodcastCss.nextparent}>
+                  <div className={PodcastCss.nextArrow}>
                     <Image
                       src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
-                      className={PodcastCss.whitenext}
+                      className={PodcastCss.arrow}
                     />
                   </div>
                 </div>
@@ -186,7 +181,7 @@ const BlogsAndPodcasts = () => {
             </Link>
           </div>
 
-          <div className={PodcastCss.imageParent}>
+          <div className={PodcastCss.img_Parent}>
             <Image
               src="https://golf-hom-latest-assets.s3.amazonaws.com/images/bears.webp"
               alt="Bears"
@@ -197,18 +192,17 @@ const BlogsAndPodcasts = () => {
             <Link
               href="https://art19.com/shows/bleav-in-bears"
               target="_blank"
-              className={PodcastCss.textImg_link}
             >
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>Bleav in Bears</h4>
                 <div className={PodcastCss.readNext}>
                   <p className={PodcastCss.read}>Read more</p>
-                  <div className={PodcastCss.nextparent}>
+                  <div className={PodcastCss.nextArrow}>
                     <Image
                       src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
-                      className={PodcastCss.whitenext}
+                      className={PodcastCss.arrow}
                     />
                   </div>
                 </div>
@@ -216,7 +210,7 @@ const BlogsAndPodcasts = () => {
             </Link>
           </div>
 
-          <div className={PodcastCss.imageParent}>
+          <div className={PodcastCss.img_Parent}>
             <Image
               src="https://golf-hom-latest-assets.s3.amazonaws.com/images/golfBeginners.webp"
               alt="GolfBeginners"
@@ -226,18 +220,17 @@ const BlogsAndPodcasts = () => {
             <Link
               href="https://golf-for-beginners.blogspot.com/"
               target="_blank"
-              className={PodcastCss.textImg_link}
             >
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}> Golf For Beginners</h4>
                 <div className={PodcastCss.readNext}>
                   <p className={PodcastCss.read}>Read more</p>
-                  <div className={PodcastCss.nextparent}>
+                  <div className={PodcastCss.nextArrow}>
                     <Image
                       src="https://golf-hom-latest-assets.s3.amazonaws.com/images/vector/whiteNext.svg"
                       alt="WhiteNext"
                       fill
-                      className={PodcastCss.whitenext}
+                      className={PodcastCss.arrow}
                     />
                   </div>
                 </div>

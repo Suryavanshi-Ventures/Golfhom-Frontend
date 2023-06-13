@@ -24,24 +24,28 @@
   font-weight: 500;
 }
 .amenities_details_row {
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   margin: 3rem 0;
   border-bottom: 1px solid var(--light-font-color);
 }
 
+.heading_para {
+  margin-left: 16px;
+}
+
 .amenities_details_container {
-  text-align: center;
+  display: flex;
 }
 
 .amenities_details_main_heading {
   font-family: var(--font-poppins);
-  font-size: 20px;
-  color: var(--light-font-color);
 }
 
 .amenities_details_main_subheading {
   font-family: var(--font-poppins);
-  font-weight: 500;
+  font-weight: 400;
+  color: var(--light-font-color);
 }
 
 /* ABOUT SECTION STARTED HERE */
@@ -115,7 +119,7 @@
 .feature_section_div_container {
   display: flex;
   align-items: center;
-  margin: 1.5rem 0;
+  margin: 0.8rem 0;
 }
 
 .feature_section_tick_icon_container {
@@ -152,12 +156,15 @@
 
 .backgroundWhite {
   background: var(--white-font-color);
-  position: relative;
   bottom: 0px;
   top: 45px;
   height: fit-content;
-  padding: 0;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  border-radius: 12px;
+  border: 1px solid rgb(221, 221, 221);
+  position: sticky;
+  margin-top: 45px;
 }
 .inner_input_date_picker_form_item {
   margin-bottom: 0;
@@ -699,7 +706,7 @@
 }
 
 .things_to_know_section_cols {
-  margin: 1rem 0;
+  margin: 0.4rem 0;
   padding: 0;
 }
 
@@ -814,7 +821,7 @@
     justify-content: flex-start;
   }
   .backgroundWhite {
-    /* position: initial; */
+    position: relative !important;
     margin-bottom: 30px;
   }
   .view_prop_bannerimg_container {
