@@ -2,7 +2,7 @@
 
 .checkout_payment_nextpax_heading {
   font-family: var(--font-poppins);
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
   color: var(--btn-background-secondary);
 }
 .checkout_payment_nextpax_section {
@@ -50,12 +50,15 @@
 
 .checkout_payment_nextpax_payment_pay_btn {
   background-color: var(--success-green);
-  height: 35px;
-  width: 70px;
+
   color: var(--white-btn-font-color);
   border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 6px 40px;
+  height: auto;
 }
 .checkout_payment_nextpax_payment_pay_btn:hover {
-  background-color: var(--black-btn-color);
+  background-color: var(--btn-background-secondary);
   color: var(--white-btn-font-color) !important;
 }
