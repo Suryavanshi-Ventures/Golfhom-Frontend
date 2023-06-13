@@ -1,0 +1,61 @@
+/** CHECKOUT SECTION NEXTPAX */
+
+.checkout_payment_nextpax_heading {
+  font-family: var(--font-poppins);
+  margin-bottom: 1.5rem;
+  color: var(--btn-background-secondary);
+}
+.checkout_payment_nextpax_section {
+  padding: 0px 20px;
+}
+.checkout_payment_nextpax_payment_row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout_payment_nextpax_payment_input_div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.checkout_payment_nextpax_payment_text {
+  margin-bottom: 7px;
+  font-family: var(--font-poppins);
+}
+.checkout_payment_nextpax_payment_form_inputs {
+  border-radius: 6px;
+  border-color: var(--btn-background-secondary);
+  font-family: var(--font-poppins);
+}
+
+.checkout_payment_nextpax_card_year {
+  max-width: 150px;
+  margin-right: 10px;
+}
+
+.checkout_payment_nextpax_card_month {
+  max-width: 150px;
+  margin-left: 10px;
+}
+.checkout_payment_nextpax_cvc_div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout_payment_nextpax_payment_pay_btn_div {
+  display: flex;
+  justify-content: center;
+}
+
+.checkout_payment_nextpax_payment_pay_btn {
+  background-color: var(--success-green);
+  height: 35px;
+  width: 70px;
+  color: var(--white-btn-font-color);
+  border: none;
+}
+.checkout_payment_nextpax_payment_pay_btn:hover {
+  background-color: var(--black-btn-color);
+  color: var(--white-btn-font-color) !important;
+}

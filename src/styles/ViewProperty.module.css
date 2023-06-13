@@ -775,6 +775,25 @@
   padding: 0px 20px;
 }
 
+/** CHECKOUT SECTION NEXTPAX */
+.checkout_payment_nextpax_payment_row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout_payment_nextpax_payment_input_div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.checkout_payment_nextpax_payment_text {
+  margin-bottom: 0;
+}
+.checkout_payment_nextpax_payment_form_inputs {
+  max-width: 60% !important;
+}
+
 /* TAB OVERVIEW SECTION */
 
 .tabOverviewPropHeading {
@@ -805,6 +824,12 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  transition-duration: 0.3s;
+}
+.viewGallery:hover {
+  transition-duration: 0.3s;
+
+  background-color: #d5d5d5;
 }
 
 .showAllPhoto {

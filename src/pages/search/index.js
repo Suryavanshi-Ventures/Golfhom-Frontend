@@ -154,7 +154,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => { };
+    return () => {};
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -169,15 +169,16 @@ const Index = () => {
 
   const EditBtn = () => {
     setShowHidden(!showHidden);
-    setIsEditable(prevIsEditable => !prevIsEditable);
+    setIsEditable((prevIsEditable) => !prevIsEditable);
   };
-
 
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -192,7 +193,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     param.from,
     param.guest,
@@ -232,9 +233,12 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${
+          "to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -277,7 +281,12 @@ const Index = () => {
         {/* EDIT DROP DETAIL SECTION */}
 
         <div className={SearchIndexCss.course_choice_parent}>
-          <Col md={3} sm={6} xs={12} className={SearchIndexCss.edit_details_container_cols}>
+          <Col
+            md={3}
+            sm={6}
+            xs={12}
+            className={SearchIndexCss.edit_details_container_cols}
+          >
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>
                 Golf Course Choice
@@ -309,7 +318,12 @@ const Index = () => {
             </div>
           </Col>
 
-          <Col md={3} sm={6} xs={12} className={SearchIndexCss.edit_details_container_cols}>
+          <Col
+            md={3}
+            sm={6}
+            xs={12}
+            className={SearchIndexCss.edit_details_container_cols}
+          >
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
               <div className={SearchIndexCss.edit_details_inputs_container}>
@@ -650,7 +664,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -677,7 +692,8 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}
@@ -693,7 +709,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
