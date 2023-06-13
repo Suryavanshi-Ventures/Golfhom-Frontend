@@ -15,7 +15,7 @@ import {
   Button,
   DatePicker,
   Form,
-  Select,
+  Tooltip,
 } from "antd";
 import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
@@ -183,11 +183,11 @@ const ViewProperty = () => {
   useEffect(() => {
     if (AvailabilityCalender != undefined) {
       const LengthOfAvailDate = AvailabilityCalender?.length - 1;
-      const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
-        "MM-DD-YYYY"
-      );
+      const StartDate = dayjs(
+        AvailabilityCalender[0]?._attributes?.Date
+      ).format("MM-DD-YYYY");
       const LastDate = dayjs(
-        AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
+        AvailabilityCalender[LengthOfAvailDate]?._attributes?.Date
       ).format("MM-DD-YYYY");
       if (Available) {
         SetBookingDate([StartDate, LastDate]); //SETTING BOOKING DATE TO CREATE PAYMENT INTENT METHOD
@@ -200,10 +200,11 @@ const ViewProperty = () => {
         date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
       });
     }
-    if (Params.from || Params.to) {
-      form.setFieldsValue({
-        date_picker: [dayjs(Params.from), dayjs(Params.to)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE IF PARAM DATE ARE AVAILABLE
-      });
+    // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE IF PARAM DATE ARE AVAILABLE
+    if (!Params.from || !Params.to) {
+      // form.setFieldsValue({
+      //   date_picker: [dayjs(Params.from), dayjs(Params.to)],
+      // });
     }
 
     return () => {};
@@ -339,13 +340,8 @@ const ViewProperty = () => {
               );
               const DayDiffCountNextpaxAPI =
                 CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1;
+
               if (DayDiffCountNextpaxAPI === DaysDiffCount) {
-                console.log(
-                  CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1,
-                  "nextpax/availability length",
-                  DaysDiffCount,
-                  "MOMENT DAY COUNT"
-                );
                 setAvailable(true);
                 setNotAvailable(false);
               } else if (DayDiffCountNextpaxAPI === undefined) {
@@ -359,9 +355,9 @@ const ViewProperty = () => {
         };
         CheckAvail();
       } else {
+        //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
         console.log("ON DATE CHANGE INTPUT RENTAL");
         SetBookingDate([DateValue[0], DateValue[1]]);
-        //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
         const CheckAvail = async () => {
           try {
             const CheckAvailRes = await axios.get(

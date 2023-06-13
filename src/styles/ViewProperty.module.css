@@ -448,6 +448,7 @@
 .contact:hover {
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color) !important;
+  border: 1px solid var(--btn-background-secondary) !important;
 }
 
 /* --------------          REGISTER BLOCK        ---------------   */
