@@ -17,6 +17,8 @@ const PaymentForm = (props) => {
     console.log("Success:", values);
     setIsLoading(true);
     try {
+      const Token =
+        localStorage.getItem("token") || sessionStorage.getItem("token");
       const CreateBookingRes = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/createBooking`,
         {
@@ -39,22 +41,44 @@ const PaymentForm = (props) => {
             stateProv: values.payment_card_state,
             dateOfBirth: values.payment_card_dob,
           },
-        }
+        },
+        { headers: { Authorization: `Bearer ${Token}` } }
       );
       if (CreateBookingRes.status === 201) {
         setIsLoading(false);
-      } else if (CreateBookingRes.status === 401) {
+      } else {
         setIsLoading(false);
-        message.error("Login in order to book hotels!");
       }
     } catch (error) {
+      if (error.response.status === 401) {
+        message.error("Please login to book hotels!");
+        setIsLoading(false);
+      } else {
+        message.error(error.response.data.message);
+      }
       console.log("ERROR: IN CREATE BOOKING API", error);
-      message.error(error.response.statusText);
       setIsLoading(false);
     }
   };
 
   const OnClickPayFaild = (errorInfo) => {
+    if (
+      errorInfo.values.payment_card_city ||
+      errorInfo.values.payment_card_country_code ||
+      errorInfo.values.payment_card_cvc_code ||
+      errorInfo.values.payment_card_dob ||
+      errorInfo.values.payment_card_exp_month ||
+      errorInfo.values.payment_card_exp_year ||
+      errorInfo.values.payment_card_holder_name ||
+      errorInfo.values.payment_card_house_number ||
+      errorInfo.values.payment_card_number ||
+      errorInfo.values.payment_card_state ||
+      errorInfo.values.payment_card_street_address ||
+      errorInfo.values.payment_card_type ||
+      errorInfo.values.payment_card_zip_code == undefined
+    ) {
+      message.error("Please fill all the required fields!");
+    }
     console.log("Failed:", errorInfo);
     setIsLoading(false);
   };
