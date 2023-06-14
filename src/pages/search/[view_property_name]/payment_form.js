@@ -19,6 +19,7 @@ const PaymentForm = (props) => {
     try {
       const Token =
         localStorage.getItem("token") || sessionStorage.getItem("token");
+      console.log(Token);
       const CreateBookingRes = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/createBooking`,
         {
