@@ -68,6 +68,8 @@ const ViewProperty = () => {
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
   const [adult, setAdult] = useState(1);
   const [child, setChild] = useState(1);
+  const [infant, setInfant] = useState(1);
+  const [pet, setPet] = useState(1);
   const [form] = Form.useForm();
 
   const [PropertyType, setPropertyType] = useState("");
@@ -247,6 +249,33 @@ const ViewProperty = () => {
       setChild(0);
     }
   };
+
+  const incInfant = () => {
+    setInfant(infant + 1);
+  };
+
+  const decInfant = () => {
+    if (infant > 0) {
+      setInfant(infant - 1);
+    } else {
+      message.error("Sorry number of infant can not be less than 0");
+      setInfant(0);
+    }
+  };
+
+  const incPet = () => {
+    setPet(pet + 1);
+  };
+
+  const decPet = () => {
+    if (pet > 0) {
+      setPet(pet - 1);
+    } else {
+      message.error("Sorry number of pet can not be less than 0");
+      setPet(0);
+    }
+  };
+
 
   {
     /* -----------      CONTACT THE HOST SECTION        -----------------*/
@@ -584,7 +613,7 @@ const ViewProperty = () => {
                   className={ViewPropertyCss.guest}
                   id="dropdown-basic"
                 >
-                  {adult + child} Guests
+                  {adult + child + infant + pet} Guests
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu className={ViewPropertyCss.adultChild}>
@@ -643,6 +672,68 @@ const ViewProperty = () => {
                         <div
                           className={ViewPropertyCss.increasebtn}
                           onClick={incChild}
+                        >
+                          +
+                        </div>
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.increase}>
+                    <div>
+                      <Dropdown.Item href="#/action-2">
+                        {" "}
+                        <span className={ViewPropertyCss.ageName}>
+                          {infant} Infant
+                        </span>
+                      </Dropdown.Item>
+                    </div>
+
+                    <div className={ViewPropertyCss.geust_incri_btns_div}>
+                      <Button className={ViewPropertyCss.increaseAdult}>
+                        <div
+                          className={ViewPropertyCss.decreasebtn}
+                          onClick={decInfant}
+                        >
+                          -
+                        </div>
+                        <div className={ViewPropertyCss.guest_count_div}>
+                          {infant}
+                        </div>
+                        <div
+                          className={ViewPropertyCss.increasebtn}
+                          onClick={incInfant}
+                        >
+                          +
+                        </div>
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className={ViewPropertyCss.increase}>
+                    <div>
+                      <Dropdown.Item href="#/action-2">
+                        {" "}
+                        <span className={ViewPropertyCss.ageName}>
+                          {pet} Pet
+                        </span>
+                      </Dropdown.Item>
+                    </div>
+
+                    <div className={ViewPropertyCss.geust_incri_btns_div}>
+                      <Button className={ViewPropertyCss.increaseAdult}>
+                        <div
+                          className={ViewPropertyCss.decreasebtn}
+                          onClick={decPet}
+                        >
+                          -
+                        </div>
+                        <div className={ViewPropertyCss.guest_count_div}>
+                          {pet}
+                        </div>
+                        <div
+                          className={ViewPropertyCss.increasebtn}
+                          onClick={incPet}
                         >
                           +
                         </div>
