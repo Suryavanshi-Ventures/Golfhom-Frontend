@@ -1115,7 +1115,7 @@ const ViewProperty = () => {
                 </Button>
               </div>
 
-              <p className={ViewPropertyCss.message}>You won't be charged yet</p>
+              {/* <p className={ViewPropertyCss.message}>You won't be charged yet</p>
 
               <div className={ViewPropertyCss.final_pricing}>
                 <div>
@@ -1134,7 +1134,7 @@ const ViewProperty = () => {
               <div className={ViewPropertyCss.total}>
                 <p>Total before taxes</p>
                 <p>$2,482</p>
-              </div>
+              </div> */}
 
 
               <div className={ViewPropertyCss.contactParent}>
