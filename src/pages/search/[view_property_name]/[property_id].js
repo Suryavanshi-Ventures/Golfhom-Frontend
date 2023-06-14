@@ -1121,7 +1121,7 @@ const ViewProperty = () => {
                 <div>
                   <p>$400 * 5 nights</p>
                   <p>Cleaning fee</p>
-                  <p>Airbnb service fee</p>
+                  <p>Service fee</p>
                 </div>
                 <div>
                   <p>$2,000</p>
