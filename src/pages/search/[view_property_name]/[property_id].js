@@ -206,12 +206,6 @@ const ViewProperty = () => {
         date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
       });
     }
-    // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE IF PARAM DATE ARE AVAILABLE
-    if (!Params.from || !Params.to) {
-      // form.setFieldsValue({
-      //   date_picker: [dayjs(Params.from), dayjs(Params.to)],
-      // });
-    }
 
     return () => { };
   }, [Available, AvailabilityCalender]);
@@ -336,6 +330,8 @@ const ViewProperty = () => {
       if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
         const CheckAvail = async () => {
           try {
+            const Token =
+              localStorage.getItem("token") || sessionStorage.getItem("token");
             const CheckAvailRes = await axios.post(
               `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/finalAvailability`,
               {
@@ -343,27 +339,22 @@ const ViewProperty = () => {
                 to: DateValue[1],
                 guest: Params.guests ? Params.guests : adult + child,
                 id: Params.property_id,
-              }
+              },
+              { headers: { Authorization: `Bearer ${Token}` } }
             );
-            if (CheckAvailRes.status === 200) {
-              console.log("ON DATE CHANGE INTPUT NEXTPAX");
-              const DaysDiffCount = moment(DateValue[1], "MM-DD-YYYY").diff(
-                moment(DateValue[0], "MM-DD-YYYY"),
-                "days"
-              );
-              const DayDiffCountNextpaxAPI =
-                CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1;
-
-              if (DayDiffCountNextpaxAPI === DaysDiffCount) {
+            if (CheckAvailRes.status === 201) {
+              if (CheckAvailRes.data.data.available) {
                 setAvailable(true);
                 setNotAvailable(false);
-              } else if (DayDiffCountNextpaxAPI === undefined) {
+              } else {
                 setAvailable(false);
                 setNotAvailable(true);
               }
             }
           } catch (error) {
             console.log(error, "ERROR CheckAvailability");
+            setAvailable(false);
+            setNotAvailable(true);
           }
         };
         CheckAvail();
@@ -394,6 +385,44 @@ const ViewProperty = () => {
         CheckAvail();
       }
     }
+  };
+
+  // Array of dates to be enabled
+  const AvailableDates = ["06-14-2023", "06-15-2023"];
+
+  // Callback function to customize date rendering
+  const dateRenderer = (current) => {
+    const formattedDate = current.format("MM-DD-YYYY");
+
+    let dateStyles = {};
+
+    // Check if the date is disabled
+    if (!AvailableDates.includes(formattedDate)) {
+      dateStyles = {
+        textDecoration: "line-through",
+      };
+    } else {
+      dateStyles = {
+        backgroundColor: "green",
+        color: "white",
+        margin: "2px",
+      };
+    }
+
+    // Render the date normally
+    return <div style={dateStyles}>{current.date()}</div>;
+  };
+
+  // Callback function to disable dates
+  const disabledDate = (current) => {
+    const formattedDate = current.format("MM-DD-YYYY");
+    const currentDate = moment().format("MM-DD-YYYY");
+
+    // Check if the date is disabled or not available
+    return (
+      !AvailableDates.includes(formattedDate) ||
+      current.isBefore(currentDate, "day")
+    );
   };
 
   return (
@@ -538,11 +567,10 @@ const ViewProperty = () => {
                     >
                       <RangePicker
                         className={ViewPropertyCss.inner_input_date_picker}
-                        format={"MM-DD-YYYY"}
                         onChange={OnChangeDateInput}
-                        disabledDate={(current) => {
-                          return current && current < dayjs().startOf("day");
-                        }}
+                        format={"MM-DD-YYYY"}
+                        disabledDate={disabledDate}
+                        cellRender={dateRenderer}
                       />
                     </Form.Item>
                   </Form>
