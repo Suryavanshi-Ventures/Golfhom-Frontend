@@ -61,10 +61,19 @@
   min-height: 500px !important;
   max-height: 500px !important;
   border: none;
+  cursor: default;
 }
 
 .about_section_para:hover {
-  border: none;
+  border: none !important;
+}
+.about_section_para:focus {
+  box-shadow: none !important;
+  border: none !important;
+}
+.about_section_para:focus-visible {
+  box-shadow: none !important;
+  border: none !important;
 }
 
 /* MAIN BANNER IMAGE SECTION  */
@@ -448,6 +457,7 @@
 .contact:hover {
   background-color: var(--btn-background-secondary);
   color: var(--white-font-color) !important;
+  border: 1px solid var(--btn-background-secondary) !important;
 }
 
 /* --------------          REGISTER BLOCK        ---------------   */
@@ -758,7 +768,6 @@
 .tickParent {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .tick_with_blackbg {

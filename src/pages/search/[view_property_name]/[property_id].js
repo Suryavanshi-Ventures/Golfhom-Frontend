@@ -15,7 +15,6 @@ import {
   Button,
   DatePicker,
   Form,
-  Select,
 } from "antd";
 import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
@@ -96,16 +95,25 @@ const ViewProperty = () => {
         );
         if (SpecificPropData.status === 200) {
           SetSpecificPropAPIData(SpecificPropData.data);
+
+          if (SpecificPropData.data.data.externalPropertyType === "Nextpax") {
+            setPropertyType("Nextpax");
+          } else {
+            setPropertyType("Rental");
+          }
+
           //* THIS WILL RUN ONLY WHEN PARAMS FROM AND TO IS NOT EMPTY
           if (Params.from || Params.to) {
             //* IF THE EXTERNAL PROPERTY TYPE IS NEXTPAX THAN CALLING NEXTPAX AVAILABILITY API
             if (SpecificPropData.data.data.externalPropertyType === "Nextpax") {
-              setPropertyType("Nextpax");
-              console.log("NEXTPAX PROPERTY");
+              console.log(
+                SpecificPropData.data.data.externalPropertyType,
+                "SAFFFFFFFFFFFFFFF"
+              );
               const CheckAvail = async () => {
                 try {
                   const CheckAvailRes = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id}&from=${Params.from}&to=${Params.to}`
+                    `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/finalAvailability?id=${Params.property_id}&from=${Params.from}&to=${Params.to}`
                   );
                   if (CheckAvailRes.status === 200) {
                     const DaysDiffCount = moment(Params.to, "MM-DD-YYYY").diff(
@@ -136,7 +144,6 @@ const ViewProperty = () => {
               };
               CheckAvail();
             } else {
-              setPropertyType("Rental");
               //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
               const CheckAvail = async () => {
                 try {
@@ -183,11 +190,11 @@ const ViewProperty = () => {
   useEffect(() => {
     if (AvailabilityCalender != undefined) {
       const LengthOfAvailDate = AvailabilityCalender?.length - 1;
-      const StartDate = dayjs(AvailabilityCalender[0]._attributes?.Date).format(
-        "MM-DD-YYYY"
-      );
+      const StartDate = dayjs(
+        AvailabilityCalender[0]?._attributes?.Date
+      ).format("MM-DD-YYYY");
       const LastDate = dayjs(
-        AvailabilityCalender[LengthOfAvailDate]._attributes?.Date
+        AvailabilityCalender[LengthOfAvailDate]?._attributes?.Date
       ).format("MM-DD-YYYY");
       if (Available) {
         SetBookingDate([StartDate, LastDate]); //SETTING BOOKING DATE TO CREATE PAYMENT INTENT METHOD
@@ -200,10 +207,11 @@ const ViewProperty = () => {
         date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
       });
     }
-    if (Params.from || Params.to) {
-      form.setFieldsValue({
-        date_picker: [dayjs(Params.from), dayjs(Params.to)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE IF PARAM DATE ARE AVAILABLE
-      });
+    // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE IF PARAM DATE ARE AVAILABLE
+    if (!Params.from || !Params.to) {
+      // form.setFieldsValue({
+      //   date_picker: [dayjs(Params.from), dayjs(Params.to)],
+      // });
     }
 
     return () => {};
@@ -264,6 +272,7 @@ const ViewProperty = () => {
   };
 
   const test = () => {
+    console.log("TEST FUNCTION");
     setShowNextpaxPropertyPaymentPortal(true);
   };
 
@@ -328,8 +337,14 @@ const ViewProperty = () => {
       if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
         const CheckAvail = async () => {
           try {
-            const CheckAvailRes = await axios.get(
-              `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id}&from=${DateValue[0]}&to=${DateValue[1]}`
+            const CheckAvailRes = await axios.post(
+              `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/finalAvailability`,
+              {
+                from: DateValue[0],
+                to: DateValue[1],
+                guest: Params.guests ? Params.guests : adult + child,
+                id: Params.property_id,
+              }
             );
             if (CheckAvailRes.status === 200) {
               console.log("ON DATE CHANGE INTPUT NEXTPAX");
@@ -339,13 +354,8 @@ const ViewProperty = () => {
               );
               const DayDiffCountNextpaxAPI =
                 CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1;
+
               if (DayDiffCountNextpaxAPI === DaysDiffCount) {
-                console.log(
-                  CheckAvailRes?.data?.data?.data[0]?.availability?.length - 1,
-                  "nextpax/availability length",
-                  DaysDiffCount,
-                  "MOMENT DAY COUNT"
-                );
                 setAvailable(true);
                 setNotAvailable(false);
               } else if (DayDiffCountNextpaxAPI === undefined) {
@@ -359,9 +369,10 @@ const ViewProperty = () => {
         };
         CheckAvail();
       } else {
-        console.log("ON DATE CHANGE INTPUT RENTAL");
-        SetBookingDate([DateValue[0], DateValue[1]]);
         //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
+        console.log("ON DATE CHANGE INTPUT RENTAL");
+
+        SetBookingDate([DateValue[0], DateValue[1]]);
         const CheckAvail = async () => {
           try {
             const CheckAvailRes = await axios.get(
@@ -1350,7 +1361,10 @@ const ViewProperty = () => {
                           <span
                             className={ViewPropertyCss.things_to_know_info_span}
                           >
-                            ${SpecificPropAPIData.data?.price}
+                            $
+                            {SpecificPropAPIData.data?.price >= 0.5
+                              ? Math.ceil(SpecificPropAPIData.data?.price)
+                              : Math.floor(SpecificPropAPIData.data?.price)}
                           </span>
                         </p>
                       </div>
@@ -1457,11 +1471,13 @@ const ViewProperty = () => {
                         <p
                           className={ViewPropertyCss.things_to_know_price_text}
                         >
-                          Maximum Nights Of A Booking:
+                          Maximum Nights Of A Booking:{" "}
                           <span
                             className={ViewPropertyCss.things_to_know_info_span}
                           >
-                            {SpecificPropAPIData.data?.maxNightsOfBooking}
+                            {SpecificPropAPIData.data?.maxNightsOfBooking
+                              ? SpecificPropAPIData.data?.maxNightsOfBooking
+                              : 1}
                           </span>
                         </p>
                       </div>
