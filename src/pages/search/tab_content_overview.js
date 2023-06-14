@@ -1,5 +1,5 @@
 import ViewPropertyCss from "../../styles/ViewProperty.module.css";
-import { Container, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import ViewPropBedIcon from "../../../public/images/vector/bed.svg";
 import ViewPropBathroomIcon from "../../../public/images/vector/bathroom_icon.svg";
 import { Input } from "antd";
@@ -110,6 +110,7 @@ const TabContentOverview = (PropData) => {
                   minRows: 3,
                   maxRows: 5,
                 }}
+                readOnly
               />
             </div>
           </Col>

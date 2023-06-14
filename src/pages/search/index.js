@@ -11,6 +11,8 @@ import {
   Dropdown,
   Space,
   Select,
+  Form,
+  message,
   Skeleton,
   DatePicker,
   Pagination,
@@ -154,7 +156,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => {};
+    return () => { };
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -175,10 +177,8 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -193,7 +193,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     param.from,
     param.guest,
@@ -203,6 +203,37 @@ const Index = () => {
     SortBy,
     SortByParam,
   ]);
+
+  // FOR ADULT BUTTON INCREMENT AND DECREMENT
+  const [adult, setAdult] = useState(0);
+  // FOR CHILD BUTTON INCREMENT AND DECREMENT
+  const [child, setChild] = useState(0);
+
+  const incAdult = () => {
+    setAdult(adult + 1);
+  };
+
+  const decAdult = () => {
+    if (adult > 0) {
+      setAdult(adult - 1);
+    } else {
+      message.error("Sorry number of adults can not be less than 0");
+      setAdult(0);
+    }
+  };
+
+  const incChild = () => {
+    setChild(child + 1);
+  };
+
+  const decChild = () => {
+    if (child > 0) {
+      setChild(child - 1);
+    } else {
+      message.error("Sorry number of children can not be less than 0");
+      setChild(0);
+    }
+  };
 
   //! DEBUGG THIS
   // useEffect(() => {
@@ -233,12 +264,9 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-          "latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-          "from=" + param.from
-        }&${
-          "to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+        }&${"to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -397,6 +425,8 @@ const Index = () => {
           <Container>
             <div className={SearchIndexCss.edit_details_main_container}>
               <Row className={SearchIndexCss.edit_details_container_row}>
+                {/* <Form>
+                  <Form.Item> */}
                 <Col
                   md={3}
                   className={SearchIndexCss.edit_details_container_cols}
@@ -435,7 +465,9 @@ const Index = () => {
                     </div>
                   </div>
                 </Col>
+                {/* </Form.Item>
 
+                  <Form.Item> */}
                 <Col
                   md={3}
                   className={SearchIndexCss.edit_details_container_cols}
@@ -470,13 +502,16 @@ const Index = () => {
                     </div>
                   </div>
                 </Col>
+                {/* </Form.Item>
+
+                  <Form.Item> */}
                 <Col
                   md={3}
                   className={SearchIndexCss.edit_details_container_cols}
                 >
                   <div className={SearchIndexCss.edit_details_divs}>
-                    <p className={SearchIndexCss.edit_details_titles}>Guests</p>
-                    <div
+                    <p className={SearchIndexCss.edit_details_titles}>{adult + child} Guests</p>
+                    {/* <div
                       className={SearchIndexCss.edit_details_inputs_container}
                     >
                       <Input
@@ -489,9 +524,50 @@ const Index = () => {
                         }
                         disabled={!isEditable}
                       />
+                    </div> */}
+                    <div className={SearchIndexCss.inner_input_guest_selector}>
+                      <div className={SearchIndexCss.geust_incri_btns_div}>
+                        <p className={SearchIndexCss.geust_incri_btns_p}>Adult</p>
+                        <Button className={SearchIndexCss.increaseAdult}>
+                          <div
+                            className={SearchIndexCss.decreasebtn}
+                            onClick={decAdult}
+                          >
+                            -
+                          </div>
+                          <div className={SearchIndexCss.guest_count_div}>{adult}</div>
+                          <div
+                            className={SearchIndexCss.increasebtn}
+                            onClick={incAdult}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
+
+                      <div className={SearchIndexCss.geust_incri_btns_div}>
+                        <p className={SearchIndexCss.geust_incri_btns_p}>Children</p>
+                        <Button className={SearchIndexCss.increaseAdult}>
+                          <div
+                            className={SearchIndexCss.decreasebtn}
+                            onClick={decChild}
+                          >
+                            -
+                          </div>
+                          <div className={SearchIndexCss.guest_count_div}>{child}</div>
+                          <div
+                            className={SearchIndexCss.increasebtn}
+                            onClick={incChild}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </Col>
+                {/* </Form.Item> */}
+
                 <Col
                   md={3}
                   className={SearchIndexCss.edit_details_container_cols}
@@ -517,6 +593,7 @@ const Index = () => {
                   </div>
                 </Col>
                 {showHidden && <HiddenModal />}
+                {/* </Form> */}
               </Row>
             </div>
           </Container>
@@ -664,8 +741,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}
@@ -692,8 +768,7 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
+                                  `search/${encodeURIComponent(data.name)}/${data.id
                                   }`
                                 );
                               }}
@@ -709,8 +784,7 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
+                                `search/${encodeURIComponent(data.name)}/${data.id
                                 }`
                               );
                             }}

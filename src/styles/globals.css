@@ -4,12 +4,8 @@
 /** IMPORT POPPINS FONT **/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
 
-/** IMPORT AMIRI FONT **/
-@import url("https://fonts.cdnfonts.com/css/amiri");
-
 :root {
   --font-poppins: "Poppins", sans-serif;
-  --font-amiri: "Amiri";
   --light-font-color: #636363;
   --light-grey: #f1f1f1;
   --black-btn-color: black;

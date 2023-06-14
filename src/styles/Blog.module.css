@@ -1,21 +1,17 @@
-/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */
-.headImage {
+/* BANNER IMAGE  */
+.imageChild, .columnParent {
+  position: relative !important;
+  cursor: pointer;
 }
 
-/* BANNER IMAGE  */
+/* VIEW BLOG STYLE */
+
 .view_blog_banner_img {
   position: relative !important;
   max-height: 400px;
   object-fit: cover;
   border-radius: 16px;
 }
-
-.imageChild {
-  position: relative !important;
-  cursor: pointer;
-}
-
-/* VIEW BLOG STYLE */
 
 .view_blog_date {
   font-family: var(--font-poppins);
@@ -26,7 +22,6 @@
 .view_blog_posted_date {
   font-family: var(--font-poppins);
   font-size: 14px;
-  /* margin: 30px 0; */
   color: var(--border-light-grey);
 }
 
@@ -133,12 +128,6 @@
   font-weight: 600;
 }
 
-.cardChild {
-}
-
-.columnParent {
-  position: relative !important;
-}
 .image_skeleton_div {
   height: 300px;
 }
@@ -186,7 +175,6 @@
 
 .contact_div {
   margin-bottom: 3px;
-  /* position: relative; */
   right: 4px;
 }
 
@@ -197,7 +185,6 @@
 }
 
 .bookmarkDiv {
-  /* position: relative; */
   right: 1px;
   white-space: nowrap;
   overflow: hidden;
