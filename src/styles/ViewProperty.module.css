@@ -191,7 +191,6 @@
 
 .inner_input_date_picker:hover {
   border-color: var(--black-color);
-
   border-inline-end-width: 1px;
 }
 .inner_input_date_picker:focus {
@@ -199,18 +198,33 @@
   border-inline-end-width: 1px;
 }
 
+.message {
+  text-align: center;
+  font-size: 16px;
+}
+
+.final_pricing {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
 .totalParent {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 14px 24px 0px 24px;
+  padding: 14px 0px;
 }
 
 .totalPrice {
   display: flex;
   align-items: center;
-
   justify-content: space-between;
 }
 
@@ -218,16 +232,29 @@
   margin-bottom: 0px;
 }
 
-.totalTitle {
-  display: flex;
-  justify-content: center;
+.night_price {
+  margin-left: 6px;
+  color: var(--light-font-color);
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .amount {
   align-self: center;
   display: flex;
   justify-content: center;
-  margin: 0px 16px;
+}
+
+.review_parent {
+  display: flex;
+  gap: 6px;
+  padding-top: 6px;
+  align-items: center;
+}
+
+.review_number {
+  color: var(--light-font-color);
+  text-decoration: underline;
 }
 
 .bookParent {
@@ -591,7 +618,11 @@
 }
 .adultChild {
   width: 100%;
-  padding: 18px;
+  padding: 0px 18px 18px;
+}
+
+.dropdown_parent:active {
+background-color: var(--white-background) !important;
 }
 
 .ageName {
