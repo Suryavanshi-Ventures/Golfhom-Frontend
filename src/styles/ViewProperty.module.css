@@ -631,7 +631,7 @@
 }
 
 .dropdown_parent:active {
-background-color: var(--white-background) !important;
+  background-color: var(--white-background) !important;
 }
 
 .ageName {
@@ -877,7 +877,6 @@ background-color: var(--white-background) !important;
 }
 .viewGallery:hover {
   transition-duration: 0.3s;
-
   background-color: #d5d5d5;
 }
 
@@ -885,6 +884,7 @@ background-color: var(--white-background) !important;
   text-decoration: none;
   color: var(--light-font-color);
   margin-left: 8px;
+  scroll-behavior: smooth !important;
 }
 
 @media only screen and (max-width: 768px) {

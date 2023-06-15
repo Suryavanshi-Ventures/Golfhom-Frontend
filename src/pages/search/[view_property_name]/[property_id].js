@@ -78,18 +78,13 @@ const ViewProperty = () => {
   const [infant, setInfant] = useState(0);
   const [pet, setPet] = useState(0);
   const [form] = Form.useForm();
-
+  const [SaveDateInState, setSaveDateInState] = useState([]);
   const [PropertyType, setPropertyType] = useState("");
   const [
     ShowNextpaxPropertyPaymentPortal,
     setShowNextpaxPropertyPaymentPortal,
   ] = useState(false);
-
-  const ElemRef = useRef(null);
-
-  const dateformter = (date) => {
-    return moment(date).format("YYYY-MM-DD");
-  };
+  const [AvailDate, setAvailDate] = useState([]);
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -224,8 +219,8 @@ const ViewProperty = () => {
     return () => {};
   }, [Available, AvailabilityCalender]);
 
-  const onTabChange = (key) => {
-    console.log(key);
+  const DateFormater = (date) => {
+    return moment(date).format("YYYY-MM-DD");
   };
 
   const items = [
@@ -363,11 +358,10 @@ const ViewProperty = () => {
   };
 
   console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
-  const [saveddates, setsaveddata] = useState([]);
 
   const OnChangeDateInput = (date, DateValue) => {
-    const initialdate = dateformter(DateValue[0]);
-    const finaldate = dateformter(DateValue[1]);
+    const initialdate = DateFormater(DateValue[0]);
+    const finaldate = DateFormater(DateValue[1]);
     let newdatesarray = [];
     let i = initialdate;
     while (i !== finaldate) {
@@ -378,7 +372,7 @@ const ViewProperty = () => {
     newdatesarray.push(finaldate);
     let iserror = false;
     newdatesarray.map((i) => {
-      if (!avidates.includes(i)) iserror = true;
+      if (!AvailDate.includes(i)) iserror = true;
     });
 
     if (iserror) {
@@ -448,22 +442,22 @@ const ViewProperty = () => {
     }
   };
 
-  const [avidates, setavidates] = useState([]);
-
-  const fetchavalibledate = async (
+  const FetchAvailableDate = async (
     date1 = moment().startOf("month").format("MM-DD-YYYY"),
     date2 = moment().endOf("month").add(1, "month").format("MM-DD-YYYY")
   ) => {
     const data = await axios({
       method: "GET",
-      url: `https://backend.golfhom.com/v1/nextpax/availability?id=3334&from=${moment(
-        date1
-      ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
+      url: `${
+        process.env.NEXT_PUBLIC_API_URL
+      }/v1/nextpax/availability?id=3334&from=${moment(date1).format(
+        "MM-DD-YYYY"
+      )}&to=${moment(date2).format("MM-DD-YYYY")}`,
     }).then((res) => {
       const data = res.data?.data?.data?.[0]
         ? res.data?.data?.data?.[0]?.availability?.map((i) => i.date)
         : [];
-      setavidates(data);
+      setAvailDate(data);
     });
   };
   useEffect(() => {}, []);
@@ -471,7 +465,7 @@ const ViewProperty = () => {
   // Callback function to disable dates
   const disabledDate = (current) => {
     const formattedDate = current.format("YYYY-MM-DD");
-    return !avidates.includes(formattedDate);
+    return !AvailDate.includes(formattedDate);
   };
 
   return (
@@ -539,9 +533,9 @@ const ViewProperty = () => {
                   height={14}
                   className={ViewPropertyCss.iconEye}
                 />
-                <Link href="#gallery" className={ViewPropertyCss.showAllPhoto}>
+                <a href="#gallery" className={ViewPropertyCss.showAllPhoto}>
                   Show all photos
-                </Link>
+                </a>
               </div>
             </div>
             <div className={ViewPropertyCss.view_prop_image_div_5}>
@@ -566,7 +560,7 @@ const ViewProperty = () => {
         <Container>
           <Row className={ViewPropertyCss.parentRow}>
             <Col md={8}>
-              <Tabs defaultActiveKey="1" items={items} onChange={onTabChange} />
+              <Tabs defaultActiveKey="1" items={items} />
             </Col>
 
             {/*  ------------    Total price box    ----------   */}
@@ -635,13 +629,13 @@ const ViewProperty = () => {
                         onOpenChange={(res) => {
                           if (res) {
                             const date1 =
-                              saveddates[0] ||
+                              SaveDateInState[0] ||
                               moment().startOf("month").subtract(2, "M");
                             const date2 =
-                              saveddates[1] ||
+                              SaveDateInState[1] ||
                               moment().endOf("month").add(2, "M");
 
-                            fetchavalibledate(date1, date2);
+                            FetchAvailableDate(date1, date2);
                           }
                         }}
                         onPanelChange={(current) => {
@@ -657,8 +651,8 @@ const ViewProperty = () => {
                           )
                             .add(2, "M")
                             .format("MM-DD-YYYY");
-                          setsaveddata([date1, date2]);
-                          fetchavalibledate(date1, date2);
+                          setSaveDateInState([date1, date2]);
+                          FetchAvailableDate(date1, date2);
                         }}
 
                         // onPanelChange={handlePanelChange}
@@ -1324,7 +1318,7 @@ const ViewProperty = () => {
 
         {/* GALLERY SECTION STARTS HERE */}
         <Container className={ViewPropertyCss.carasoul_section} id="gallery">
-          <section ref={ElemRef}>
+          <section>
             <div className={ViewPropertyCss.carasoul_section_inner_div}>
               <Image.PreviewGroup
                 preview={{
