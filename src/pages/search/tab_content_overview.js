@@ -11,7 +11,12 @@ const TabContentOverview = (PropData) => {
     <>
       <main className={ViewPropertyCss.tabOverviewSection}>
         <h3 className={ViewPropertyCss.tabOverviewPropHeading}>
-          {PropData.data?.name ? PropData.data?.name : "N/A"}
+          {PropData.data?.name ? PropData.data?.name : "N/A"}{" "}
+          {`(${
+            PropData?.data?.externalPropertyType
+              ? PropData?.data?.externalPropertyType
+              : "N/A"
+          })`}
         </h3>
         <p className={ViewPropertyCss.tabOverviewPropSmallSubheading}>
           Golf Course Vicinity:{" "}
@@ -39,7 +44,9 @@ const TabContentOverview = (PropData) => {
                 <h5 className={ViewPropertyCss.amenities_details_main_heading}>
                   Accommodation
                 </h5>
-                <p className={ViewPropertyCss.amenities_details_main_subheading}>
+                <p
+                  className={ViewPropertyCss.amenities_details_main_subheading}
+                >
                   {PropData.data?.accomodation
                     ? PropData.data?.accomodation
                     : "N/A"}{" "}
@@ -64,9 +71,12 @@ const TabContentOverview = (PropData) => {
                 <h5 className={ViewPropertyCss.amenities_details_main_heading}>
                   Bedrooms
                 </h5>
-                <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                  {PropData.data?.bedrooms ? PropData.data?.bedrooms : 1} Bedrooms
-                  / {PropData.data?.beds ? PropData.data?.beds : 1} Beds
+                <p
+                  className={ViewPropertyCss.amenities_details_main_subheading}
+                >
+                  {PropData.data?.bedrooms ? PropData.data?.bedrooms : 1}{" "}
+                  Bedrooms / {PropData.data?.beds ? PropData.data?.beds : 1}{" "}
+                  Beds
                 </p>
               </div>
             </div>
@@ -87,8 +97,11 @@ const TabContentOverview = (PropData) => {
                 <h5 className={ViewPropertyCss.amenities_details_main_heading}>
                   Bathrooms
                 </h5>
-                <p className={ViewPropertyCss.amenities_details_main_subheading}>
-                  {PropData.data?.bathrooms ? PropData.data?.bathrooms : "1"} Full
+                <p
+                  className={ViewPropertyCss.amenities_details_main_subheading}
+                >
+                  {PropData.data?.bathrooms ? PropData.data?.bathrooms : "1"}{" "}
+                  Full
                 </p>
               </div>
             </div>
