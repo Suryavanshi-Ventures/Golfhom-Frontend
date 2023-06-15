@@ -36,7 +36,7 @@ const StaticPriceBreakDown = (props) => {
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <p className={StaticPriceBreakDownCss.total_price}>
             $
-            {props.data.breakdown.discount
+            {props?.data?.breakdown?.discount
               ? props?.data?.breakdown?.discount
               : 0}
           </p>
@@ -52,8 +52,8 @@ const StaticPriceBreakDown = (props) => {
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <p className={StaticPriceBreakDownCss.total_price}>
             $
-            {props.data.breakdown.charges.itemized[0].value
-              ? props?.data?.breakdown?.charges.itemized[0].value
+            {props?.data?.breakdown?.charges?.itemized[0]?.value
+              ? props?.data?.breakdown?.charges?.itemized[0]?.value
               : 0}
           </p>
         </div>
@@ -68,7 +68,7 @@ const StaticPriceBreakDown = (props) => {
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <p className={StaticPriceBreakDownCss.total_price}>
             $
-            {props.data.breakdown.requiredSecurityDeposit
+            {props?.data?.breakdown?.requiredSecurityDeposit
               ? props?.data?.breakdown?.requiredSecurityDeposit
               : 0}
           </p>
@@ -84,7 +84,7 @@ const StaticPriceBreakDown = (props) => {
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <p className={StaticPriceBreakDownCss.total_price}>
             $
-            {props.data.breakdown.taxes.total
+            {props?.data?.breakdown?.taxes?.total
               ? props?.data?.breakdown?.taxes?.total
               : 0}
           </p>
