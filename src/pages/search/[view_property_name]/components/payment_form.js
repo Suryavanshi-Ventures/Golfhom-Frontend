@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Input, Button, Form, message, DatePicker } from "antd";
 import dayjs from "dayjs";
-import PaymentFormCss from "../../../styles/PaymentForm.module.css";
+import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
 import { Col, Row } from "react-bootstrap";
 const { TextArea } = Input;
