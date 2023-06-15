@@ -1,6 +1,6 @@
 /* BANNER IMAGE */
 
-  .banner_img {
+  .banner_img, .golfhom, .imgChildA, .imgChildB {
     position: relative !important;
   }
 
@@ -53,19 +53,7 @@
       width: 10%;
     }
   
-    .bed {
-      width: 10%;
-    }
-  
-    .bath {
-      width: 10%;
-    }
-  
-    .guest {
-      width: 10%;
-    }
-
-    .action {
+    .bed, .guest, .bath, .action {
       width: 10%;
     }
 
@@ -85,25 +73,12 @@
     font-weight: 500;
   }
 
-  .golfhom {
-    position: relative !important;
-  }
-
-  .golfhom:hover {
-
-  }
-
   .form {
     color: var(--btn-background-secondary);
     font-weight: 600;
   }
 
-  .imgChildA {
-    position: relative !important;  
-  }
-
     .imgChildB {
-      position: relative !important;  
       padding-top: 10px;
     }
 

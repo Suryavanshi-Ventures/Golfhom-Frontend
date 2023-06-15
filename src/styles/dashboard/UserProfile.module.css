@@ -17,6 +17,14 @@
   margin-top: 1.5rem;
 }
 
+.user_profile_page_pic {
+  border-radius: 100%;
+}
+
+.user_profile_page_rows {
+  justify-content: space-between;
+}
+
 .user_profile_page_info_input_div {
   margin-bottom: 2rem;
 }
@@ -30,12 +38,10 @@
 .user_profile_page_info_input {
   height: 45px;
   border-color: var(--light-font-color);
+  max-width: 650px;
 }
 
-.user_profile_page_info_input:focus {
-  border-color: var(--btn-background-secondary) !important;
-}
-.user_profile_page_info_input:hover {
+.user_profile_page_info_input:focus, .user_profile_page_info_input:hover {
   border-color: var(--btn-background-secondary) !important;
 }
 
@@ -44,16 +50,4 @@
   width: 100px;
   height: 40px;
   font-weight: 700;
-}
-
-.user_profile_page_pic {
-  border-radius: 100%;
-}
-
-.user_profile_page_rows {
-  justify-content: space-between;
-}
-
-.user_profile_page_info_input {
-  max-width: 650px;
 }

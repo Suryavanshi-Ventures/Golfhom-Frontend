@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, Suspense } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 import MessageCss from "../../styles/dashboard/message.module.css";
 import Image from "next/image";
@@ -25,10 +25,10 @@ const Messages = () => {
         </Head>
 
         {/* ---------------------------       BANNER IMAGE SECTION      --------------------------  */}
-        <div className={MessageCss.laughContainer}>
+        <div>
           <Image
             fill
-            className={MessageCss.laughimg}
+            className={MessageCss.img_laugh}
             src="https://golf-hom-latest-assets.s3.amazonaws.com/images/laugh.png"
             alt="Laugh"
           ></Image>

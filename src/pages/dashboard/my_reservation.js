@@ -1,7 +1,7 @@
 import React from "react";
 import MyReservationCss from "../../styles/dashboard/MyReservation.module.css";
 import Image from "next/image";
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
 import dynamic from "next/dynamic";
@@ -21,8 +21,10 @@ const MyReservation = () => {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
         {/*   -------------------------     BANNER IMAGE   -------------------------------   */}
-        <div className={MyReservationCss.banner_img_container}>
+
+        <div>
           <Image
             fill
             className={MyReservationCss.banner_img}

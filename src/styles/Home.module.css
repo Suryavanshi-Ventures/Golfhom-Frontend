@@ -284,7 +284,7 @@
 }
 
 .parentImage {
-  min-width: 332px;
+  /* min-width: 332px; */
   padding-bottom: 34px;
 }
 
@@ -294,7 +294,7 @@
   left: 0px;
   padding: 10px 15px;
   background: linear-gradient(45deg, black, #0000004d);
-  bottom: 32px;
+  bottom: 17px;
   border-radius: 0px 0px 16px 16px;
   color: var(--white-font-color);
   font-size: 20px;
@@ -502,7 +502,7 @@
 }
 
 .image_Parent {
-  height: 320px;
+  height: 280px;
 }
 
 .arrivalContainer {

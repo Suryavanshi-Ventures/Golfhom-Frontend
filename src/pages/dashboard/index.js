@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useContext, Suspense } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import ProtectedRoute from "../../../common components/protected_route";
 import Image from "next/image";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
@@ -65,7 +65,7 @@ const Index = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         {/*   -------------------------     BANNER IMAGE   -------------------------------   */}
-        <div className={DashboardCss.banner_img_container}>
+        <div>
           <Image
             fill
             className={DashboardCss.banner_img}
@@ -78,7 +78,7 @@ const Index = () => {
 
         <Container className={DashboardCss.introParent}>
           <Row>
-            <h3 className={DashboardCss.welcome}>
+            <h3 className={DashboardCss.title_words}>
               Welcome back,{" "}
               {UserName
                 ? UserName.charAt(0).toUpperCase() + UserName.slice(1)
@@ -89,21 +89,21 @@ const Index = () => {
 
           <Row>
             <Col md={4}>
-              <h4 className={DashboardCss.welcome}>Listings</h4>
-              <h5 className={DashboardCss.fromP}>0</h5>
-              <p className={DashboardCss.addManWal}>Add new</p>
+              <h4 className={DashboardCss.title_words}>Listings</h4>
+              <h5 className={DashboardCss.price}>0</h5>
+              <p className={DashboardCss.subHeading}>Add new</p>
             </Col>
 
             <Col md={4}>
-              <h4 className={DashboardCss.welcome}>Reservations</h4>
-              <h4 className={DashboardCss.fromP}>0</h4>
-              <p className={DashboardCss.addManWal}>Mange</p>
+              <h4 className={DashboardCss.title_words}>Reservations</h4>
+              <h4 className={DashboardCss.price}>0</h4>
+              <p className={DashboardCss.subHeading}>Mange</p>
             </Col>
 
             <Col md={4}>
-              <h4 className={DashboardCss.welcome}>Earnings</h4>
-              <h4 className={DashboardCss.fromP}>From $0</h4>
-              <p className={DashboardCss.addManWal}>Wallet</p>
+              <h4 className={DashboardCss.title_words}>Earnings</h4>
+              <h4 className={DashboardCss.price}>From $0</h4>
+              <p className={DashboardCss.subHeading}>Wallet</p>
             </Col>
           </Row>
         </Container>

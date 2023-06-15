@@ -206,9 +206,9 @@ const Index = () => {
   ]);
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
-  const [adult, setAdult] = useState(1);
+  const [adult, setAdult] = useState(0);
   // FOR CHILD BUTTON INCREMENT AND DECREMENT
-  const [child, setChild] = useState(1);
+  const [child, setChild] = useState(0);
   const [infant, setInfant] = useState(0);
   const [pet, setPet] = useState(0);
 
@@ -217,7 +217,6 @@ const Index = () => {
       setAdult(parseInt(param.adults));
       setChild(parseInt(param.childs));
     } else {
-      message.error("Please enter guests");
     }
   })
 

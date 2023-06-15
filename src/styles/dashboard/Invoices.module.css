@@ -1,16 +1,12 @@
 /* BANNER IMAGE */
   
-  .banner_img {
+  .banner_img, .imgChild {
     position: relative !important;
   }
   
       /*     -------------------------     TEXT AREA      ----------------------------    */
 
-      .inner_input_date_picker:hover {
-        border-color: var(--btn-background);
-        border-inline-end-width: 1px;
-      }
-      .inner_input_date_picker:focus {
+      .inner_input_date_picker:hover, .inner_input_date_picker:focus {
         border-color: var(--btn-background);
         border-inline-end-width: 1px;
       }
@@ -36,7 +32,6 @@
         background-color: var(--header-background-color);
         margin: 50px 0px;
       }
-
       
     .heading {
       height: 50px;
@@ -50,8 +45,7 @@
       font-size: 0.9rem;
       border-bottom: 1px solid var(--header-background-color);
       height: 80px;
-      vertical-align: middle;
-    
+      vertical-align: middle; 
     }
 
     .start, .type, .end, .price {
@@ -59,18 +53,6 @@
       font-family: var(--font-poppins);
       font-weight: 400;
       color: var(--black-color);
-    }
-
-    .colA, .colB {
-      width: 100%;
-      height: auto;
-      padding: 8px 14px;
-      border: 1px solid var(--dark-grey-font);
-      border-radius: 4px;
-      font-family: var(--font-poppins);
-      font-weight: 400;
-      color: var(--dark-grey-font);
-      background-color: var(--white-btn-font-color);
     }
 
     .search_by_golf_input_search_by_tourni {
@@ -86,10 +68,6 @@
       width: 22px;
       height: auto;
       margin-left: 20px;
-    }
-
-    .imgChild {
-      position: relative !important;
     }
 
     .headingB {
@@ -112,11 +90,7 @@
     padding-left: 20px !important;
   }
 
-  .date {
-    width: 12%;
-  }
-
-  .bilfor {
+  .date, .bilfor, .status, .pay {
     width: 12%;
   }
 
@@ -124,18 +98,6 @@
     width: 14%;
   }
 
-  .status {
-    width: 12%;
-  } 
-
-.pay {
-  width: 12%;
-}
-
-.total {
-  width: 8%;
-}
-
-.action {
+.total, .action {
   width: 8%;
 }

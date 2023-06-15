@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React from "react";
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
 import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
@@ -31,7 +31,7 @@ const Invoice = () => {
         </Head>
 
         {/*  -------------------------         BANNER IMAGE FAQ         ------------------------------*/}
-        <div className={InvoiceCss.banner_img_container}>
+        <div>
           <Image
             fill
             className={InvoiceCss.banner_img}
@@ -104,7 +104,6 @@ const Invoice = () => {
                         },
                       ]}
                       trigger={["click"]}
-                      // className={InvoiceCss.colB}
                       size="large"
                     >
                       <Select.Option onClick={(e) => e.preventDefault()}>
@@ -140,7 +139,6 @@ const Invoice = () => {
                         },
                       ]}
                       trigger={["click"]}
-                      // className={InvoiceCss.colB}
                       size="large"
                     >
                       <Select.Option onClick={(e) => e.preventDefault()}>

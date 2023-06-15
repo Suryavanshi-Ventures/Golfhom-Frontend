@@ -1,12 +1,11 @@
 /* BANNER IMAGE  */
 
-  .banner_img {
+  .banner_img, .imageChild {
     position: relative !important;
   }
 
   /*     -------------------------     TEXT AREA      ----------------------------    */
 
-  
   .reservation {
     font-family: var(--font-poppins);
     font-weight: 600;
@@ -34,48 +33,20 @@
     height: 40px;
   }
 
-  .imageChild {
-    position: relative !important;
-  }
-
   .blank {
     width: 6%;
   }
 
-  .id {
+  .id, .date, .guest, .pet, .subtotal {
     width: 8%;
   }
 
-  .status {
+  .status, .checkin, .checkout {
     width: 10%;
-  }
-
-  .date {
-    width: 8%;
   }
 
   .address {
     width: 16%;
-  }
-
-  .checkin {
-    width: 10%;
-  }
-
-  .checkout {
-    width: 10%;
-  }
-
-  .guest {
-    width: 8%;
-  }
-
-  .pet {
-    width: 8%;
-  }
-
-  .subtotal {
-    width: 8%;
   }
 
   .action {
@@ -116,20 +87,12 @@
     border-radius: 4px;
   }
 
-  .detailBtn:hover {
-    
-  }
-
   .under {
     color: var(--white-font-color);
     background: #ECA600 !important;
     border-radius: 20px;
     padding: 4px 7px !important;
     border: none;
-  }
-
-  .under:hover {
-
   }
 
   .Completed {

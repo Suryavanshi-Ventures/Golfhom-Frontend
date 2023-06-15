@@ -1,6 +1,6 @@
 import React from "react";
 import UserProfieCss from "../../styles/dashboard/UserProfile.module.css";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import Head from "next/head";
 import UserImg from "../../../public/images/user_img.webp";
 import Image from "next/image";
@@ -18,625 +18,624 @@ const UserProfile = () => {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className={UserProfieCss.user_profile_main_section}>
-          <Container>
-            {/* PROFILE PAGE MAIN HEADING */}
-            <h3 className={UserProfieCss.user_profile_page_heading}>Profile</h3>
 
-            <section className={UserProfieCss.user_profile_page_info_section}>
-              {/* PROFILE SECTION */}
-              <div className={UserProfieCss.user_profile_photo_container}>
-                <h4 className={UserProfieCss.user_profile_page_section_heading}>
-                  Photo
-                </h4>
-                <div className={UserProfieCss.user_profile_page_pic_container}>
-                  <Image
-                    src={UserImg}
-                    height={160}
-                    width={160}
-                    className={UserProfieCss.user_profile_page_pic}
-                    alt="Profile pic"
-                  ></Image>
-                </div>
+        <Container>
+          {/* PROFILE PAGE MAIN HEADING */}
+          <h3 className={UserProfieCss.user_profile_page_heading}>Profile</h3>
+
+          <section className={UserProfieCss.user_profile_page_info_section}>
+            {/* PROFILE SECTION */}
+            <div>
+              <h4 className={UserProfieCss.user_profile_page_section_heading}>
+                Photo
+              </h4>
+              <div className={UserProfieCss.user_profile_page_pic_container}>
+                <Image
+                  src={UserImg}
+                  height={160}
+                  width={160}
+                  className={UserProfieCss.user_profile_page_pic}
+                  alt="Profile pic"
+                ></Image>
               </div>
-            </section>
+            </div>
+          </section>
 
-            {/* INFORMATION SECTION */}
-            <section className={UserProfieCss.user_profile_page_info_section}>
-              <h5 className={UserProfieCss.user_profile_page_section_heading}>
-                Information
-              </h5>
-              <hr className={UserProfieCss.user_profile_page_hr} />
-              <Row className={UserProfieCss.user_profile_page_rows}>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      User Name
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="User Name"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      First Name
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="First Name"
-                    />
-                  </div>
-
-                  {/* DIV 3 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Native Language
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Native Language"
-                    />
-                  </div>
-                </Col>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Display Name Publicly as
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Display Name"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Last Name
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Last Name"
-                    />
-                  </div>
-
-                  {/* DIV 3 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Other Language
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Other Language"
-                    />
-                  </div>
-                </Col>
-                {/* INPUT TEXT AREA */}
-                <div className={UserProfieCss.user_profile_page_info_input_div}>
+          {/* INFORMATION SECTION */}
+          <section className={UserProfieCss.user_profile_page_info_section}>
+            <h5 className={UserProfieCss.user_profile_page_section_heading}>
+              Information
+            </h5>
+            <hr />
+            <Row className={UserProfieCss.user_profile_page_rows}>
+              <Col md={5}>
+                {/* DIV 1 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
                   <label
-                    className={UserProfieCss.user_profile_page_info_input_label}
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
                     htmlFor=""
                   >
-                    Bio
+                    User Name
                   </label>
-                  <TextArea
-                    rows={4}
+                  <Input
                     className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="User Name"
                   />
                 </div>
 
-                {/* SAVE BTN CONTAINER */}
+                {/* DIV 2 */}
                 <div
-                  className={UserProfieCss.user_profile_page_save_btn_container}
+                  className={UserProfieCss.user_profile_page_info_input_div}
                 >
-                  <Button
-                    className={UserProfieCss.user_profile_page_save_btn}
-                    type="primary"
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
                   >
-                    Save
-                  </Button>
+                    First Name
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="First Name"
+                  />
                 </div>
-              </Row>
-            </section>
 
-            {/* ADDRESS SECTION */}
-            <section className={UserProfieCss.user_profile_page_info_section}>
-              <h5 className={UserProfieCss.user_profile_page_section_heading}>
-                Address
-              </h5>
-              <hr className={UserProfieCss.user_profile_page_hr} />
-              <Row className={UserProfieCss.user_profile_page_rows}>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Street Address
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Address"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      City
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="City"
-                    />
-                  </div>
-
-                  {/* DIV 3 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Zip Code
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Code"
-                    />
-                  </div>
-
-                  {/* DIV 4 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Country
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Country"
-                    />
-                  </div>
-                </Col>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Apt, Suite
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Apartment Number"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      State
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="State"
-                    />
-                  </div>
-
-                  {/* DIV 3 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Neighborhood
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Neighborhood"
-                    />
-                  </div>
-                </Col>
-
-                {/* SAVE BTN CONTAINER */}
+                {/* DIV 3 */}
                 <div
-                  className={UserProfieCss.user_profile_page_save_btn_container}
+                  className={UserProfieCss.user_profile_page_info_input_div}
                 >
-                  <Button
-                    className={UserProfieCss.user_profile_page_save_btn}
-                    type="primary"
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
                   >
-                    Save
-                  </Button>
+                    Native Language
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Native Language"
+                  />
                 </div>
-              </Row>
-            </section>
-
-            {/* PHONE SECTION */}
-            <section className={UserProfieCss.user_profile_page_info_section}>
-              <h5 className={UserProfieCss.user_profile_page_section_heading}>
-                Phone
-              </h5>
-              <hr className={UserProfieCss.user_profile_page_hr} />
-              <Row className={UserProfieCss.user_profile_page_rows}>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Contact Name
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Contact Name"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Email
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Email"
-                    />
-                  </div>
-                </Col>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Relationship
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Relationship"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Phone
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Phone"
-                    />
-                  </div>
-                </Col>
-
-                {/* SAVE BTN CONTAINER */}
+              </Col>
+              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                {/* DIV 1 */}
                 <div
-                  className={UserProfieCss.user_profile_page_save_btn_container}
+                  className={UserProfieCss.user_profile_page_info_input_div}
                 >
-                  <Button
-                    className={UserProfieCss.user_profile_page_save_btn}
-                    type="primary"
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
                   >
-                    Save
-                  </Button>
+                    Display Name Publicly as
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Display Name"
+                  />
                 </div>
-              </Row>
-            </section>
 
-            {/* SOCIAL MEDIA */}
-            <section className={UserProfieCss.user_profile_page_info_section}>
-              <h5 className={UserProfieCss.user_profile_page_section_heading}>
-                Social Media
-              </h5>
-              <hr className={UserProfieCss.user_profile_page_hr} />
-              <Row className={UserProfieCss.user_profile_page_rows}>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Facebook URL
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Facebook"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Linkedin URL
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Linkedin"
-                    />
-                  </div>
-
-                  {/* DIV 3 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Instagram URL
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Instagram"
-                    />
-                  </div>
-
-                  {/* DIV 4 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Youtube Url
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Youtube"
-                    />
-                  </div>
-
-                  {/* DIV 5 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Airbnb Url
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Airbnb"
-                    />
-                  </div>
-                </Col>
-                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                  {/* DIV 1 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Twitter URL
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Twitter"
-                    />
-                  </div>
-
-                  {/* DIV 2 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Google Plus Url
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Google Plus"
-                    />
-                  </div>
-
-                  {/* DIV 3 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Pinterest Url
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder=" Pinterest"
-                    />
-                  </div>
-
-                  {/* DIV 4 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Vimeo Url
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder=" Vimeo"
-                    />
-                  </div>
-
-                  {/* DIV 5 */}
-                  <div
-                    className={UserProfieCss.user_profile_page_info_input_div}
-                  >
-                    <label
-                      className={
-                        UserProfieCss.user_profile_page_info_input_label
-                      }
-                      htmlFor=""
-                    >
-                      Trip Advisor Url
-                    </label>
-                    <Input
-                      className={UserProfieCss.user_profile_page_info_input}
-                      placeholder="Trip Advisor"
-                    />
-                  </div>
-                </Col>
-
-                {/* SAVE BTN CONTAINER */}
+                {/* DIV 2 */}
                 <div
-                  className={UserProfieCss.user_profile_page_save_btn_container}
+                  className={UserProfieCss.user_profile_page_info_input_div}
                 >
-                  <Button
-                    className={UserProfieCss.user_profile_page_save_btn}
-                    type="primary"
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
                   >
-                    Save
-                  </Button>
+                    Last Name
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Last Name"
+                  />
                 </div>
-              </Row>
-            </section>
-          </Container>
-        </main>
+
+                {/* DIV 3 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Other Language
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Other Language"
+                  />
+                </div>
+              </Col>
+              {/* INPUT TEXT AREA */}
+              <div className={UserProfieCss.user_profile_page_info_input_div}>
+                <label
+                  className={UserProfieCss.user_profile_page_info_input_label}
+                  htmlFor=""
+                >
+                  Bio
+                </label>
+                <TextArea
+                  rows={4}
+                  className={UserProfieCss.user_profile_page_info_input}
+                />
+              </div>
+
+              {/* SAVE BTN CONTAINER */}
+              <div
+                className={UserProfieCss.user_profile_page_save_btn_container}
+              >
+                <Button
+                  className={UserProfieCss.user_profile_page_save_btn}
+                  type="primary"
+                >
+                  Save
+                </Button>
+              </div>
+            </Row>
+          </section>
+
+          {/* ADDRESS SECTION */}
+          <section className={UserProfieCss.user_profile_page_info_section}>
+            <h5 className={UserProfieCss.user_profile_page_section_heading}>
+              Address
+            </h5>
+            <hr className={UserProfieCss.user_profile_page_hr} />
+            <Row className={UserProfieCss.user_profile_page_rows}>
+              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                {/* DIV 1 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Street Address
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Address"
+                  />
+                </div>
+
+                {/* DIV 2 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    City
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="City"
+                  />
+                </div>
+
+                {/* DIV 3 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Zip Code
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Code"
+                  />
+                </div>
+
+                {/* DIV 4 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Country
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Country"
+                  />
+                </div>
+              </Col>
+              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                {/* DIV 1 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Apt, Suite
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Apartment Number"
+                  />
+                </div>
+
+                {/* DIV 2 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    State
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="State"
+                  />
+                </div>
+
+                {/* DIV 3 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Neighborhood
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Neighborhood"
+                  />
+                </div>
+              </Col>
+
+              {/* SAVE BTN CONTAINER */}
+              <div
+                className={UserProfieCss.user_profile_page_save_btn_container}
+              >
+                <Button
+                  className={UserProfieCss.user_profile_page_save_btn}
+                  type="primary"
+                >
+                  Save
+                </Button>
+              </div>
+            </Row>
+          </section>
+
+          {/* PHONE SECTION */}
+          <section className={UserProfieCss.user_profile_page_info_section}>
+            <h5 className={UserProfieCss.user_profile_page_section_heading}>
+              Phone
+            </h5>
+            <hr className={UserProfieCss.user_profile_page_hr} />
+            <Row className={UserProfieCss.user_profile_page_rows}>
+              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                {/* DIV 1 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Contact Name
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Contact Name"
+                  />
+                </div>
+
+                {/* DIV 2 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Email
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Email"
+                  />
+                </div>
+              </Col>
+              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                {/* DIV 1 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Relationship
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Relationship"
+                  />
+                </div>
+
+                {/* DIV 2 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Phone
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Phone"
+                  />
+                </div>
+              </Col>
+
+              {/* SAVE BTN CONTAINER */}
+              <div
+                className={UserProfieCss.user_profile_page_save_btn_container}
+              >
+                <Button
+                  className={UserProfieCss.user_profile_page_save_btn}
+                  type="primary"
+                >
+                  Save
+                </Button>
+              </div>
+            </Row>
+          </section>
+
+          {/* SOCIAL MEDIA */}
+          <section className={UserProfieCss.user_profile_page_info_section}>
+            <h5 className={UserProfieCss.user_profile_page_section_heading}>
+              Social Media
+            </h5>
+            <hr className={UserProfieCss.user_profile_page_hr} />
+            <Row className={UserProfieCss.user_profile_page_rows}>
+              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                {/* DIV 1 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Facebook URL
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Facebook"
+                  />
+                </div>
+
+                {/* DIV 2 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Linkedin URL
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Linkedin"
+                  />
+                </div>
+
+                {/* DIV 3 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Instagram URL
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Instagram"
+                  />
+                </div>
+
+                {/* DIV 4 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Youtube Url
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Youtube"
+                  />
+                </div>
+
+                {/* DIV 5 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Airbnb Url
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Airbnb"
+                  />
+                </div>
+              </Col>
+              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                {/* DIV 1 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Twitter URL
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Twitter"
+                  />
+                </div>
+
+                {/* DIV 2 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Google Plus Url
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Google Plus"
+                  />
+                </div>
+
+                {/* DIV 3 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Pinterest Url
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder=" Pinterest"
+                  />
+                </div>
+
+                {/* DIV 4 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Vimeo Url
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder=" Vimeo"
+                  />
+                </div>
+
+                {/* DIV 5 */}
+                <div
+                  className={UserProfieCss.user_profile_page_info_input_div}
+                >
+                  <label
+                    className={
+                      UserProfieCss.user_profile_page_info_input_label
+                    }
+                    htmlFor=""
+                  >
+                    Trip Advisor Url
+                  </label>
+                  <Input
+                    className={UserProfieCss.user_profile_page_info_input}
+                    placeholder="Trip Advisor"
+                  />
+                </div>
+              </Col>
+
+              {/* SAVE BTN CONTAINER */}
+              <div
+                className={UserProfieCss.user_profile_page_save_btn_container}
+              >
+                <Button
+                  className={UserProfieCss.user_profile_page_save_btn}
+                  type="primary"
+                >
+                  Save
+                </Button>
+              </div>
+            </Row>
+          </section>
+        </Container>
       </ProtectedRoute>
     </>
   );

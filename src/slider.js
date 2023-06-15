@@ -8,11 +8,11 @@ import Link from "next/link";
 const Slider = ({ slides }) => {
   return (
     <Swiper
-      modules={[Navigation, Pagination, A11y]}
+      // modules={[Navigation, Pagination, A11y]}
       spaceBetween={50}
-      slidesPerView={3}
-      pagination={{ clickable: true }}
-      onSlideChange={() => {}}
+      slidesPerView={4}
+      // pagination={{ clickable: true }}
+      onSlideChange={() => { }}
       breakpoints={{
         0: {
           slidesPerView: 1,
@@ -27,7 +27,7 @@ const Slider = ({ slides }) => {
           spaceBetween: 40,
         },
         540: {
-          slidesPerView: 1,
+          slidesPerView: 2,
           spaceBetween: 40,
         },
         768: {
@@ -39,11 +39,11 @@ const Slider = ({ slides }) => {
           spaceBetween: 40,
         },
         1024: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 40,
         },
         1280: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           spaceBetween: 40,
         },
       }}

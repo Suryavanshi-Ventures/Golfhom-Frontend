@@ -1,4 +1,4 @@
-import { React, Suspense } from "react";
+import { React } from "react";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";
 import { Button, Container, Table } from "react-bootstrap";
@@ -22,8 +22,9 @@ const Reservation = () => {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
         {/*   -------------------------     BANNER IMAGE   -------------------------------   */}
-        <div className={ReservationCss.banner_img_container}>
+        <div>
           <Image
             fill
             className={ReservationCss.banner_img}

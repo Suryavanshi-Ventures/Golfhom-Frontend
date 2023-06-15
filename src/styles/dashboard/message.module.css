@@ -1,10 +1,6 @@
 /* ---------------------------       BANNER IMAGE SECTION      --------------------------  */
 
-.laughContainer {
-
-}
-
-.laughimg {
+.img_laugh {
   position: relative !important;
 }
 
@@ -42,14 +38,11 @@
   .asc {
     padding: 4px 8px;
     margin: 4px 10px;
-    /* border: 1px solid var(--light-font-color); */
     border-radius: 4px;
     color: var(--dark-grey-color);
-    font-family: var(--font-poppins);
-    font-weight: 400;
   }
 
-  .para {
+  .para, .asc {
     font-family: var(--font-poppins);
     font-weight: 400;
   }
