@@ -1,7 +1,9 @@
 import React from "react";
 import StaticPriceBreakDownCss from "../../../../styles/StaticPriceBreakDownCss.module.css";
 
-const StaticPriceBreakDown = () => {
+const StaticPriceBreakDown = (props) => {
+  console.log(props.data.breakdown.total, "FROM STATIC BREAKDOWN PAGE");
+
   return (
     <>
       <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
@@ -88,10 +90,11 @@ const StaticPriceBreakDown = () => {
           </h5>
         </div>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_charges}>$ 0</p>
+          <p className={StaticPriceBreakDownCss.total_charges}>
+            ${props?.data?.breakdown?.total}
+          </p>
         </div>
       </div>
-      <hr />
     </>
   );
 };

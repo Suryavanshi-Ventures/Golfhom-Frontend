@@ -6,6 +6,10 @@
   border-radius: 10px;
 }
 
+.custom-datepicker .ant-picker-cell-disabled .ant-picker-cell-inner {
+  color: red;
+}
+
 /* OVERVIEW TAB SECTION */
 .tab_overview_prop_heading {
   font-family: var(--font-h3);
