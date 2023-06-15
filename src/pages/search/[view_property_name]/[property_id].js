@@ -80,7 +80,13 @@ const ViewProperty = () => {
 
   const ElemRef = useRef(null);
 
+  const dateformter = (date) => {
+    return moment(date).format("YYYY-MM-DD")
+  }
+
+
   useEffect(() => {
+
     const UrlParamId = window.location.pathname.split("/")[3];
 
     if (Params.adults || Params.childs) {
@@ -197,16 +203,16 @@ const ViewProperty = () => {
       const LastDate = dayjs(
         AvailabilityCalender[LengthOfAvailDate]?._attributes?.Date
       ).format("MM-DD-YYYY");
-      if (Available) {
-        SetBookingDate([StartDate, LastDate]); //SETTING BOOKING DATE TO CREATE PAYMENT INTENT METHOD
-        form.setFieldsValue({
-          date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
-        });
-      }
+      // if (Available) {
+      //   SetBookingDate([StartDate, LastDate]); //SETTING BOOKING DATE TO CREATE PAYMENT INTENT METHOD
+      //   form.setFieldsValue({
+      //     date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
+      //   });
+      // }
 
-      form.setFieldsValue({
-        date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
-      });
+      // form.setFieldsValue({
+      //   date_picker: [dayjs(StartDate), dayjs(LastDate)], // SETTING URL PARAM DATES TO DATE PICKER ON LOAD OF PAGE
+      // });
     }
 
     return () => { };
@@ -352,8 +358,31 @@ const ViewProperty = () => {
   };
 
   console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
+  const [saveddates, setsaveddata] = useState([])
 
   const OnChangeDateInput = (date, DateValue) => {
+
+    const initialdate = dateformter(DateValue[0])
+    const finaldate = dateformter(DateValue[1])
+    let newdatesarray = []
+    let i = initialdate
+    while (i !== finaldate) {
+      newdatesarray.push(i)
+      const newdate = moment(i).add(1, 'days').format("YYYY-MM-DD")
+      i = newdate
+    }
+    newdatesarray.push(finaldate)
+    let iserror = false
+    newdatesarray.map((i) => {
+      if (!avidates.includes(i)) iserror = true
+    })
+
+    if (iserror) {
+      message.error("Invaild Date Range Selected")
+      return
+    }
+
+
     if (DateValue[0] || DateValue[1]) {
       console.log(SpecificPropAPIData.data?.externalPropertyType);
       if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
@@ -416,43 +445,37 @@ const ViewProperty = () => {
     }
   };
 
-  // Array of dates to be enabled
-  const AvailableDates = ["06-14-2023", "06-15-2023"];
+  const [avidates, setavidates] = useState([])
 
-  // Callback function to customize date rendering
-  const dateRenderer = (current) => {
-    const formattedDate = current.format("MM-DD-YYYY");
+  const fetchavalibledate = async (date1 = moment().startOf('month').format('MM-DD-YYYY'),
+    date2 = moment().endOf('month').add(1, 'month').format('MM-DD-YYYY')) => {
 
-    let dateStyles = {};
+    const data = await axios({
+      method: "GET",
+      url: `https://backend.golfhom.com/v1/nextpax/availability?id=3334&from=${moment(date1).format('MM-DD-YYYY')}&to=${moment(date2).format('MM-DD-YYYY')}`
+    }).then((res) => {
+      const data = res.data?.data?.data?.[0] ? res.data?.data?.data?.[0]?.availability?.map((i) => i.date) : []
+      setavidates(data)
 
-    // Check if the date is disabled
-    if (!AvailableDates.includes(formattedDate)) {
-      dateStyles = {
-        textDecoration: "line-through",
-      };
-    } else {
-      dateStyles = {
-        backgroundColor: "green",
-        color: "white",
-        margin: "2px",
-      };
-    }
+    })
+  }
+  useEffect(() => {
 
-    // Render the date normally
-    return <div style={dateStyles}>{current.date()}</div>;
-  };
+
+
+  }, [])
+
 
   // Callback function to disable dates
   const disabledDate = (current) => {
-    const formattedDate = current.format("MM-DD-YYYY");
-    const currentDate = moment().format("MM-DD-YYYY");
+    const formattedDate = current.format("YYYY-MM-DD");
+    return !avidates.includes(formattedDate)
 
-    // Check if the date is disabled or not available
-    return (
-      !AvailableDates.includes(formattedDate) ||
-      current.isBefore(currentDate, "day")
-    );
   };
+
+
+
+
 
   return (
     <>
@@ -598,8 +621,28 @@ const ViewProperty = () => {
                         className={ViewPropertyCss.inner_input_date_picker}
                         onChange={OnChangeDateInput}
                         format={"MM-DD-YYYY"}
+
                         disabledDate={disabledDate}
-                        cellRender={dateRenderer}
+                        onOpenChange={(res) => {
+                          if (res) {
+                            const date1 = saveddates[0] || moment().startOf('month').subtract(2, 'M')
+                            const date2 = saveddates[1] || moment().endOf('month').add(2, 'M')
+
+                            fetchavalibledate(date1, date2)
+                          }
+                        }}
+                        onPanelChange={(current) => {
+                          const currentdata = current[0] || current[1]
+
+                          const date1 = moment(new Date(currentdata.year(), currentdata.month(), 1)).subtract(2, 'M').format('MM-DD-YYYY')
+                          const date2 = moment(new Date(currentdata.year(), currentdata.month(), 1)).add(2, 'M').format('MM-DD-YYYY')
+                          setsaveddata([date1, date2])
+                          fetchavalibledate(date1, date2)
+
+                        }}
+
+                      // onPanelChange={handlePanelChange}
+
                       />
                     </Form.Item>
                   </Form>
