@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Input, Button, Form, message, DatePicker } from "antd";
+import { Input, Button, Form, message, DatePicker, InputNumber } from "antd";
 import dayjs from "dayjs";
 import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
@@ -253,7 +253,7 @@ const PaymentForm = (props) => {
                 PaymentFormCss.checkout_payment_nextpax_payment_input_div
               }
             >
-              <Input
+              <InputNumber
                 placeholder="**5 CVC"
                 className={
                   PaymentFormCss.checkout_payment_nextpax_payment_form_inputs

@@ -87,7 +87,7 @@ const ViewProperty = () => {
   const [AvailDate, setAvailDate] = useState([]);
   const [NextPaxFinalAvailPriceBreakDown, setNextPaxFinalAvailPriceBreakDown] =
     useState({});
-
+  const [NightsCounter, setNightsCounter] = useState(0);
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
@@ -358,6 +358,10 @@ const ViewProperty = () => {
 
   const OnChangeDateInput = (date, DateValue) => {
     if (DateValue[0] || DateValue[1]) {
+      const StartDate = moment(DateValue[0]); // Replace with your start date
+      const EndDate = moment(DateValue[1]); // Replace with your end date
+      setNightsCounter(EndDate.diff(StartDate, "days") || 0);
+
       SetBookingDate([DateValue[0], DateValue[1]]);
       console.log(SpecificPropAPIData.data?.externalPropertyType);
       if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
@@ -588,7 +592,7 @@ const ViewProperty = () => {
                   </div>
                 </div>
 
-                <div className={ViewPropertyCss.review_parent}>
+                {/* <div className={ViewPropertyCss.review_parent}>
                   <NextImage
                     src="/images/vector/star-s-fill.svg"
                     alt="star"
@@ -605,7 +609,7 @@ const ViewProperty = () => {
                   <span className={ViewPropertyCss.review_number}>
                     47 reviews
                   </span>
-                </div>
+                </div> */}
               </div>
               <hr className={ViewPropertyCss.horizonaline} />
               {Available ? (
@@ -1258,7 +1262,13 @@ const ViewProperty = () => {
                   <div className={ViewPropertyCss.total_price_main_div}>
                     <div className={ViewPropertyCss.total_price_text_div}>
                       <h5 className={ViewPropertyCss.total_price_text}>
-                        Total
+                        $
+                        {`${
+                          SpecificPropAPIData.data?.price >= 0.5
+                            ? Math.ceil(SpecificPropAPIData.data?.price)
+                            : Math.floor(SpecificPropAPIData.data?.price)
+                        }
+                         X ${NightsCounter} night`}
                       </h5>
                       <p className={ViewPropertyCss.total_price_inc_tax_text}>
                         Includes taxes and fees
@@ -1270,8 +1280,12 @@ const ViewProperty = () => {
                         <strong>
                           $
                           {SpecificPropAPIData.data?.price >= 0.5
-                            ? Math.ceil(SpecificPropAPIData.data?.price)
-                            : Math.floor(SpecificPropAPIData.data?.price)}
+                            ? Math.ceil(
+                                SpecificPropAPIData.data?.price * NightsCounter
+                              )
+                            : Math.floor(
+                                SpecificPropAPIData.data?.price * NightsCounter
+                              )}
                         </strong>{" "}
                       </p>
                       <p
@@ -1301,7 +1315,7 @@ const ViewProperty = () => {
                       propertyId: SpecificPropAPIData.data?.id,
                       from: BookingDate[0],
                       to: BookingDate[1],
-                      total_guests: Params.guests,
+                      total_guests: Params.guests || adult + child + infant,
                     }}
                   />
                 </>

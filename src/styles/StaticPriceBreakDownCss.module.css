@@ -18,4 +18,5 @@
 .total_charges {
   font-family: var(--font-poppins);
   font-weight: 500;
+  margin-bottom: 0;
 }
