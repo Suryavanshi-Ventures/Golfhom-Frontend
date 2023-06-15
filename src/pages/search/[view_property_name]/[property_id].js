@@ -68,8 +68,8 @@ const ViewProperty = () => {
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
   const [adult, setAdult] = useState(1);
   const [child, setChild] = useState(1);
-  const [infant, setInfant] = useState(1);
-  const [pet, setPet] = useState(1);
+  const [infant, setInfant] = useState(0);
+  const [pet, setPet] = useState(0);
   const [form] = Form.useForm();
 
   const [PropertyType, setPropertyType] = useState("");
@@ -681,7 +681,7 @@ const ViewProperty = () => {
 
                   <div className={ViewPropertyCss.increase}>
                     <div>
-                      <Dropdown.Item href="#/action-2">
+                      <Dropdown.Item href="#/action-3">
                         {" "}
                         <span className={ViewPropertyCss.ageName}>
                           {infant} Infant
@@ -712,7 +712,7 @@ const ViewProperty = () => {
 
                   <div className={ViewPropertyCss.increase}>
                     <div>
-                      <Dropdown.Item href="#/action-2">
+                      <Dropdown.Item href="#/action-4">
                         {" "}
                         <span className={ViewPropertyCss.ageName}>
                           {pet} Pet

@@ -409,7 +409,7 @@
 }
 .search_by_golf_inputs {
   flex-direction: row-reverse;
-  height: 45px;
+  height: 40px;
   border-radius: 2px;
   margin-bottom: 2rem;
   font-family: var(--font-poppins);

@@ -4,6 +4,7 @@ import Head from "next/head";
 import { Container, Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
+import { Dropdown as ReactDropdown } from "react-bootstrap";
 import {
   Checkbox,
   Input,
@@ -205,9 +206,46 @@ const Index = () => {
   ]);
 
   // FOR ADULT BUTTON INCREMENT AND DECREMENT
-  const [adult, setAdult] = useState(0);
+  const [adult, setAdult] = useState(1);
   // FOR CHILD BUTTON INCREMENT AND DECREMENT
-  const [child, setChild] = useState(0);
+  const [child, setChild] = useState(1);
+  const [infant, setInfant] = useState(0);
+  const [pet, setPet] = useState(0);
+
+  useEffect(() => {
+    if (param.adults || param.childs) {
+      setAdult(parseInt(param.adults));
+      setChild(parseInt(param.childs));
+    } else {
+      message.error("Please enter guests");
+    }
+  })
+
+  const incInfant = () => {
+    setInfant(infant + 1);
+  };
+
+  const decInfant = () => {
+    if (infant > 0) {
+      setInfant(infant - 1);
+    } else {
+      message.error("Sorry number of infant can not be less than 0");
+      setInfant(0);
+    }
+  };
+
+  const incPet = () => {
+    setPet(pet + 1);
+  };
+
+  const decPet = () => {
+    if (pet > 0) {
+      setPet(pet - 1);
+    } else {
+      message.error("Sorry number of pet can not be less than 0");
+      setPet(0);
+    }
+  };
 
   const incAdult = () => {
     setAdult(adult + 1);
@@ -510,60 +548,146 @@ const Index = () => {
                   className={SearchIndexCss.edit_details_container_cols}
                 >
                   <div className={SearchIndexCss.edit_details_divs}>
-                    <p className={SearchIndexCss.edit_details_titles}>{adult + child} Guests</p>
-                    {/* <div
-                      className={SearchIndexCss.edit_details_inputs_container}
-                    >
-                      <Input
-                        type="number"
+                    <p className={SearchIndexCss.edit_details_titles}>{adult + child + infant + pet} Guests</p>
+                    <ReactDropdown
+                      className={SearchIndexCss.edit_details_inputs_container}>
+                      <ReactDropdown.Toggle
                         className={SearchIndexCss.inner_input_box}
-                        size="large"
-                        value={guest}
+                        id="dropdown-basic"
+                        disabled={!isEditable}
                         onChange={(e) =>
                           onChangeGuest(parseInt(e.target.value))
                         }
-                        disabled={!isEditable}
-                      />
-                    </div> */}
-                    <div className={SearchIndexCss.inner_input_guest_selector}>
-                      <div className={SearchIndexCss.geust_incri_btns_div}>
-                        <p className={SearchIndexCss.geust_incri_btns_p}>Adult</p>
-                        <Button className={SearchIndexCss.increaseAdult}>
-                          <div
-                            className={SearchIndexCss.decreasebtn}
-                            onClick={decAdult}
-                          >
-                            -
+                      // value={guest}
+                      >
+                        Please select guests
+                      </ReactDropdown.Toggle>
+                      <ReactDropdown.Menu className={SearchIndexCss.adultChild}>
+                        <div className={SearchIndexCss.increase}>
+                          <div>
+                            <ReactDropdown.Item href="#/action-1">
+                              {" "}
+                              <span className={SearchIndexCss.ageName}>
+                                {adult} Adults
+                              </span>
+                            </ReactDropdown.Item>
                           </div>
-                          <div className={SearchIndexCss.guest_count_div}>{adult}</div>
-                          <div
-                            className={SearchIndexCss.increasebtn}
-                            onClick={incAdult}
-                          >
-                            +
-                          </div>
-                        </Button>
-                      </div>
 
-                      <div className={SearchIndexCss.geust_incri_btns_div}>
-                        <p className={SearchIndexCss.geust_incri_btns_p}>Children</p>
-                        <Button className={SearchIndexCss.increaseAdult}>
-                          <div
-                            className={SearchIndexCss.decreasebtn}
-                            onClick={decChild}
-                          >
-                            -
+                          <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <Button className={SearchIndexCss.increaseAdult}>
+                              <div
+                                className={SearchIndexCss.decreasebtn}
+                                onClick={decAdult}
+                              >
+                                -
+                              </div>
+                              <div className={SearchIndexCss.guest_count_div}>
+                                {adult}
+                              </div>
+                              <div
+                                className={SearchIndexCss.increasebtn}
+                                onClick={incAdult}
+                              >
+                                +
+                              </div>
+                            </Button>
                           </div>
-                          <div className={SearchIndexCss.guest_count_div}>{child}</div>
-                          <div
-                            className={SearchIndexCss.increasebtn}
-                            onClick={incChild}
-                          >
-                            +
+                        </div>
+
+                        <div className={SearchIndexCss.increase}>
+                          <div>
+                            <ReactDropdown.Item href="#/action-2">
+                              {" "}
+                              <span className={SearchIndexCss.ageName}>
+                                {child} Children
+                              </span>
+                            </ReactDropdown.Item>
                           </div>
-                        </Button>
-                      </div>
-                    </div>
+
+                          <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <Button className={SearchIndexCss.increaseAdult}>
+                              <div
+                                className={SearchIndexCss.decreasebtn}
+                                onClick={decChild}
+                              >
+                                -
+                              </div>
+                              <div className={SearchIndexCss.guest_count_div}>
+                                {child}
+                              </div>
+                              <div
+                                className={SearchIndexCss.increasebtn}
+                                onClick={incChild}
+                              >
+                                +
+                              </div>
+                            </Button>
+                          </div>
+                        </div>
+
+                        <div className={SearchIndexCss.increase}>
+                          <div>
+                            <ReactDropdown.Item href="#/action-3">
+                              {" "}
+                              <span className={SearchIndexCss.ageName}>
+                                {infant} Infant
+                              </span>
+                            </ReactDropdown.Item>
+                          </div>
+
+                          <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <Button className={SearchIndexCss.increaseAdult}>
+                              <div
+                                className={SearchIndexCss.decreasebtn}
+                                onClick={decInfant}
+                              >
+                                -
+                              </div>
+                              <div className={SearchIndexCss.guest_count_div}>
+                                {infant}
+                              </div>
+                              <div
+                                className={SearchIndexCss.increasebtn}
+                                onClick={incInfant}
+                              >
+                                +
+                              </div>
+                            </Button>
+                          </div>
+                        </div>
+
+                        <div className={SearchIndexCss.increase}>
+                          <div>
+                            <ReactDropdown.Item href="#/action-4">
+                              {" "}
+                              <span className={SearchIndexCss.ageName}>
+                                {pet} Pet
+                              </span>
+                            </ReactDropdown.Item>
+                          </div>
+
+                          <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <Button className={SearchIndexCss.increaseAdult}>
+                              <div
+                                className={SearchIndexCss.decreasebtn}
+                                onClick={decPet}
+                              >
+                                -
+                              </div>
+                              <div className={SearchIndexCss.guest_count_div}>
+                                {pet}
+                              </div>
+                              <div
+                                className={SearchIndexCss.increasebtn}
+                                onClick={incPet}
+                              >
+                                +
+                              </div>
+                            </Button>
+                          </div>
+                        </div>
+                      </ReactDropdown.Menu>
+                    </ReactDropdown>
                   </div>
                 </Col>
                 {/* </Form.Item> */}
