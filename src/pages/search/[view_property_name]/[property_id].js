@@ -78,18 +78,15 @@ const ViewProperty = () => {
   const [infant, setInfant] = useState(0);
   const [pet, setPet] = useState(0);
   const [form] = Form.useForm();
-
+  const [SaveDateInState, setSaveDateInState] = useState([]);
   const [PropertyType, setPropertyType] = useState("");
   const [
     ShowNextpaxPropertyPaymentPortal,
     setShowNextpaxPropertyPaymentPortal,
   ] = useState(false);
-
-  const ElemRef = useRef(null);
-
-  const dateformter = (date) => {
-    return moment(date).format("YYYY-MM-DD");
-  };
+  const [AvailDate, setAvailDate] = useState([]);
+  const [NextPaxFinalAvailPriceBreakDown, setNextPaxFinalAvailPriceBreakDown] =
+    useState({});
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -224,8 +221,8 @@ const ViewProperty = () => {
     return () => {};
   }, [Available, AvailabilityCalender]);
 
-  const onTabChange = (key) => {
-    console.log(key);
+  const DateFormater = (date) => {
+    return moment(date).format("YYYY-MM-DD");
   };
 
   const items = [
@@ -341,11 +338,6 @@ const ViewProperty = () => {
           SpecificPropAPIData?.price?.Pull_GetPropertyAvbPrice_RS
             ?.PropertyPrices?.PropertyPrice
         ) {
-          console.log(
-            SpecificPropAPIData?.price?.Pull_GetPropertyAvbPrice_RS
-              ?.PropertyPrices?.PropertyPrice[0],
-            "FROM VIEW PRO IF"
-          );
           setShowTotalPaymentText(true);
         } else {
           console.log(SpecificPropAPIData?.price, "FROM VIEW PRO ELSE");
@@ -363,32 +355,31 @@ const ViewProperty = () => {
   };
 
   console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
-  const [saveddates, setsaveddata] = useState([]);
 
   const OnChangeDateInput = (date, DateValue) => {
-    const initialdate = dateformter(DateValue[0]);
-    const finaldate = dateformter(DateValue[1]);
-    let newdatesarray = [];
-    let i = initialdate;
-    while (i !== finaldate) {
-      newdatesarray.push(i);
-      const newdate = moment(i).add(1, "days").format("YYYY-MM-DD");
-      i = newdate;
-    }
-    newdatesarray.push(finaldate);
-    let iserror = false;
-    newdatesarray.map((i) => {
-      if (!avidates.includes(i)) iserror = true;
-    });
-
-    if (iserror) {
-      message.error("Invaild Date Range Selected");
-      return;
-    }
-
     if (DateValue[0] || DateValue[1]) {
+      SetBookingDate([DateValue[0], DateValue[1]]);
       console.log(SpecificPropAPIData.data?.externalPropertyType);
       if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
+        const initialdate = DateFormater(DateValue[0]);
+        const finaldate = DateFormater(DateValue[1]);
+        let newdatesarray = [];
+        let i = initialdate;
+        while (i !== finaldate) {
+          newdatesarray.push(i);
+          const newdate = moment(i).add(1, "days").format("YYYY-MM-DD");
+          i = newdate;
+        }
+        newdatesarray.push(finaldate);
+        let iserror = false;
+        newdatesarray.map((i) => {
+          if (!AvailDate.includes(i)) iserror = true;
+        });
+
+        if (iserror) {
+          message.error("Invaild Date Range Selected");
+          return;
+        }
         const CheckAvail = async () => {
           try {
             const Token =
@@ -396,34 +387,43 @@ const ViewProperty = () => {
             const CheckAvailRes = await axios.post(
               `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/finalAvailability`,
               {
+                id: Params.property_id,
                 from: DateValue[0],
                 to: DateValue[1],
-                guest: Params.guests ? Params.guests : adult + child,
-                id: Params.property_id,
+                guest: Params.guests ? Params.guests : adult + child + infant,
+                adult: adult,
+                children: child,
+                babies: infant,
+                pets: 0,
               },
               { headers: { Authorization: `Bearer ${Token}` } }
             );
             if (CheckAvailRes.status === 201) {
               if (CheckAvailRes.data.data.available) {
+                setNextPaxFinalAvailPriceBreakDown(CheckAvailRes.data.data);
                 setAvailable(true);
                 setNotAvailable(false);
+                setShowTotalPaymentTextStatic(true);
               } else {
                 setAvailable(false);
                 setNotAvailable(true);
+                setShowTotalPaymentTextStatic(false);
+                setShowOtherDetailsStatic(false);
               }
             }
           } catch (error) {
+            if (error.response.status === 401) {
+              message.error(
+                `${error.response.data.message}, Please login to book hotels!`
+              );
+            }
             console.log(error, "ERROR CheckAvailability");
-            setAvailable(false);
-            setNotAvailable(true);
           }
         };
         CheckAvail();
       } else {
         //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
         console.log("ON DATE CHANGE INTPUT RENTAL");
-
-        SetBookingDate([DateValue[0], DateValue[1]]);
         const CheckAvail = async () => {
           try {
             const CheckAvailRes = await axios.get(
@@ -448,31 +448,35 @@ const ViewProperty = () => {
     }
   };
 
-  const [avidates, setavidates] = useState([]);
-
-  const fetchavalibledate = async (
+  //! AVAILABLE CHECK FOR NEXTPAX
+  const FetchAvailableDateNextPax = async (
     date1 = moment().startOf("month").format("MM-DD-YYYY"),
     date2 = moment().endOf("month").add(1, "month").format("MM-DD-YYYY")
   ) => {
     const data = await axios({
       method: "GET",
-      url: `https://backend.golfhom.com/v1/nextpax/availability?id=3334&from=${moment(
-        date1
-      ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${
+        Params.property_id
+      }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
+        "MM-DD-YYYY"
+      )}`,
     }).then((res) => {
-      const data = res.data?.data?.data?.[0]
-        ? res.data?.data?.data?.[0]?.availability?.map((i) => i.date)
-        : [];
-      setavidates(data);
+      if (res.status === 200) {
+        const data = res.data?.data?.data?.[0]
+          ? res.data?.data?.data?.[0]?.availability?.map((i) => i.date)
+          : [];
+        data.splice(0, 10);
+        setAvailDate(data);
+      }
     });
   };
-  useEffect(() => {}, []);
 
-  // Callback function to disable dates
-  const disabledDate = (current) => {
-    const formattedDate = current.format("YYYY-MM-DD");
-    return !avidates.includes(formattedDate);
-  };
+  // // Callback function to disable dates
+  // const disabledDate = (current) => {
+  //   const formattedDate = current.format("YYYY-MM-DD");
+
+  //   return !AvailDate.includes(formattedDate);
+  // };
 
   return (
     <>
@@ -539,9 +543,9 @@ const ViewProperty = () => {
                   height={14}
                   className={ViewPropertyCss.iconEye}
                 />
-                <Link href="#gallery" className={ViewPropertyCss.showAllPhoto}>
+                <a href="#gallery" className={ViewPropertyCss.showAllPhoto}>
                   Show all photos
-                </Link>
+                </a>
               </div>
             </div>
             <div className={ViewPropertyCss.view_prop_image_div_5}>
@@ -566,7 +570,7 @@ const ViewProperty = () => {
         <Container>
           <Row className={ViewPropertyCss.parentRow}>
             <Col md={8}>
-              <Tabs defaultActiveKey="1" items={items} onChange={onTabChange} />
+              <Tabs defaultActiveKey="1" items={items} />
             </Col>
 
             {/*  ------------    Total price box    ----------   */}
@@ -631,17 +635,21 @@ const ViewProperty = () => {
                         className={ViewPropertyCss.inner_input_date_picker}
                         onChange={OnChangeDateInput}
                         format={"MM-DD-YYYY"}
-                        disabledDate={disabledDate}
+                        disabledDate={(current) => {
+                          const formattedDate = current.format("YYYY-MM-DD");
+                          return !AvailDate.includes(formattedDate);
+                        }}
                         onOpenChange={(res) => {
                           if (res) {
                             const date1 =
-                              saveddates[0] ||
+                              SaveDateInState[0] ||
                               moment().startOf("month").subtract(2, "M");
                             const date2 =
-                              saveddates[1] ||
+                              SaveDateInState[1] ||
                               moment().endOf("month").add(2, "M");
-
-                            fetchavalibledate(date1, date2);
+                            PropertyType === "Nextpax"
+                              ? FetchAvailableDateNextPax(date1, date2)
+                              : null;
                           }
                         }}
                         onPanelChange={(current) => {
@@ -657,11 +665,9 @@ const ViewProperty = () => {
                           )
                             .add(2, "M")
                             .format("MM-DD-YYYY");
-                          setsaveddata([date1, date2]);
-                          fetchavalibledate(date1, date2);
+                          setSaveDateInState([date1, date2]);
+                          FetchAvailableDateNextPax(date1, date2);
                         }}
-
-                        // onPanelChange={handlePanelChange}
                       />
                     </Form.Item>
                   </Form>
@@ -805,16 +811,6 @@ const ViewProperty = () => {
                 </Dropdown.Menu>
               </Dropdown>
               <hr />
-
-              {/* STATIC TOTAL CHARGES DIV */}
-
-              {ShowOtherDetailsStatic ? (
-                <>
-                  <StaticPriceBreakDown />
-                </>
-              ) : (
-                ""
-              )}
 
               {/* TOTAL CHARGES */}
               {ShowOtherDetails ? (
@@ -1059,42 +1055,6 @@ const ViewProperty = () => {
                 ""
               )}
 
-              {/* STATIC TOTAL DIV */}
-
-              {ShowTotalPaymentTextStatic ? (
-                <div className={ViewPropertyCss.total_price_main_div}>
-                  <div className={ViewPropertyCss.total_price_text_div}>
-                    <h5 className={ViewPropertyCss.total_price_text}>Total</h5>
-                    <p className={ViewPropertyCss.total_price_inc_tax_text}>
-                      Includes taxes and fees
-                    </p>
-                  </div>
-                  <div className={ViewPropertyCss.total_price_text_div}>
-                    <p className={ViewPropertyCss.total_price}>
-                      {" "}
-                      <strong>
-                        $
-                        {SpecificPropAPIData.data?.price >= 0.5
-                          ? Math.ceil(SpecificPropAPIData.data?.price)
-                          : Math.floor(SpecificPropAPIData.data?.price)}
-                      </strong>{" "}
-                    </p>
-                    <p
-                      onClick={() => {
-                        ShowOtherDetailsStatic
-                          ? setShowOtherDetailsStatic(false)
-                          : setShowOtherDetailsStatic(true);
-                      }}
-                      className={ViewPropertyCss.total_price_view_details}
-                    >
-                      {ShowOtherDetailsStatic ? "Hide" : "View"} details
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                ""
-              )}
-
               {/* TOTAL AMOUNT */}
               {ShowTotalPaymentText &&
               SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
@@ -1279,6 +1239,58 @@ const ViewProperty = () => {
                 </Space>
               </div>
 
+              {/* STATIC TOTAL CHARGES DIV */}
+              {ShowOtherDetailsStatic ? (
+                <>
+                  <StaticPriceBreakDown
+                    data={NextPaxFinalAvailPriceBreakDown}
+                  />
+                </>
+              ) : (
+                ""
+              )}
+
+              {/* STATIC TOTAL DIV */}
+              {ShowTotalPaymentTextStatic ? (
+                <>
+                  <hr />
+
+                  <div className={ViewPropertyCss.total_price_main_div}>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <h5 className={ViewPropertyCss.total_price_text}>
+                        Total
+                      </h5>
+                      <p className={ViewPropertyCss.total_price_inc_tax_text}>
+                        Includes taxes and fees
+                      </p>
+                    </div>
+                    <div className={ViewPropertyCss.total_price_text_div}>
+                      <p className={ViewPropertyCss.total_price}>
+                        {" "}
+                        <strong>
+                          $
+                          {SpecificPropAPIData.data?.price >= 0.5
+                            ? Math.ceil(SpecificPropAPIData.data?.price)
+                            : Math.floor(SpecificPropAPIData.data?.price)}
+                        </strong>{" "}
+                      </p>
+                      <p
+                        onClick={() => {
+                          ShowOtherDetailsStatic
+                            ? setShowOtherDetailsStatic(false)
+                            : setShowOtherDetailsStatic(true);
+                        }}
+                        className={ViewPropertyCss.total_price_view_details}
+                      >
+                        {ShowOtherDetailsStatic ? "Hide" : "View"} details
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ""
+              )}
+
               {/* NEXTPAX API PAYMENT PORTAL */}
               {PropertyType === "Nextpax" &&
               ShowNextpaxPropertyPaymentPortal ? (
@@ -1324,7 +1336,7 @@ const ViewProperty = () => {
 
         {/* GALLERY SECTION STARTS HERE */}
         <Container className={ViewPropertyCss.carasoul_section} id="gallery">
-          <section ref={ElemRef}>
+          <section>
             <div className={ViewPropertyCss.carasoul_section_inner_div}>
               <Image.PreviewGroup
                 preview={{

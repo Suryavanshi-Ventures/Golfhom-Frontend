@@ -1,61 +1,34 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import StaticPriceBreakDownCss from "../../../../styles/StaticPriceBreakDownCss.module.css";
+import moment from "moment";
 
-const StaticPriceBreakDown = () => {
+const StaticPriceBreakDown = (props) => {
+  const [NightsCounter, setNightsCounter] = useState(0);
+
+  useEffect(() => {
+    const startDate = moment(props?.data?.arrivalDate); // Replace with your start date
+    const endDate = moment(props?.data?.departureDate); // Replace with your end date
+    setNightsCounter(endDate.diff(startDate, "days") || 0);
+
+    return () => {};
+  }, [props?.data?.arrivalDate, props?.data?.departureDate]);
+
+  console.log(props?.data?.arrivalDate, "FROM STATIC BREAKDOWN PAGE");
   return (
     <>
       <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Additional Fee
+            Discount
           </h5>
         </div>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>$ 0</p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Cleaning
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>$ 0</p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Deposit
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>$ 0</p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Extra Person Price
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>$ 0</p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Fees
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>$ 0</p>
+          <p className={StaticPriceBreakDownCss.total_price}>
+            $
+            {props.data.breakdown.discount
+              ? props?.data?.breakdown?.discount
+              : 0}
+          </p>
         </div>
       </div>
 
@@ -66,7 +39,12 @@ const StaticPriceBreakDown = () => {
           </h5>
         </div>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>$ 0</p>
+          <p className={StaticPriceBreakDownCss.total_price}>
+            $
+            {props.data.breakdown.requiredSecurityDeposit
+              ? props?.data?.breakdown?.requiredSecurityDeposit
+              : 0}
+          </p>
         </div>
       </div>
 
@@ -77,7 +55,12 @@ const StaticPriceBreakDown = () => {
           </h5>
         </div>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>$ 0</p>
+          <p className={StaticPriceBreakDownCss.total_price}>
+            $
+            {props.data.breakdown.taxes.total
+              ? props?.data?.breakdown?.taxes?.total
+              : 0}
+          </p>
         </div>
       </div>
 
@@ -88,10 +71,11 @@ const StaticPriceBreakDown = () => {
           </h5>
         </div>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_charges}>$ 0</p>
+          <p className={StaticPriceBreakDownCss.total_charges}>
+            ${props?.data?.breakdown?.total}
+          </p>
         </div>
       </div>
-      <hr />
     </>
   );
 };
