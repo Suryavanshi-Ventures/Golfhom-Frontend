@@ -26,7 +26,7 @@ const Addlisting01 = () => {
         </Head>
 
         {/*  -------------------------         BANNER IMAGE FAQ         ------------------------------*/}
-        <div className={AddListing01Css.banner_img_container}>
+        <div>
           <Image
             fill
             className={AddListing01Css.banner_img}
@@ -127,7 +127,6 @@ const Addlisting01 = () => {
                       },
                     ]}
                     trigger={["click"]}
-                    // className={AddListing01Css.colA}
                     size="large"
                   >
                     <Select.Option onClick={(e) => e.preventDefault()}>

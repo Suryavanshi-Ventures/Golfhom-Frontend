@@ -39,7 +39,7 @@ const AddListing04 = () => {
         </Head>
 
         {/*  -------------------------         BANNER IMAGE FAQ         ------------------------------*/}
-        <div className={AddListing05Css.banner_img_container}>
+        <div>
           <Image
             fill
             className={AddListing05Css.banner_img}

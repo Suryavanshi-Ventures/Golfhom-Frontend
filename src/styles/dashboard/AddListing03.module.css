@@ -4,20 +4,17 @@
   position: relative !important;
 }
 /*     -------------------------     TEXT AREA      ----------------------------    */
-
 .addListing {
   font-family: var(--font-poppins);
   font-weight: 600;
   margin-top: 42px;
   margin-bottom: 20px;
 }
-
 .info {
   font-family: var(--font-poppins);
   font-weight: 500;
   margin: 40px 0px 30px;
 }
-
 .checkWord {
   font-family: var(--font-poppins);
   font-weight: 400;
@@ -26,19 +23,16 @@
   font-size: 0.9rem;
   margin-bottom: 10px;
 }
-
 .tickbox {
   width: 22px;
   height: 22px;
 }
-
 .twobtn {
   display: flex;
   justify-content: flex-start;
   margin: 30px 0px;
   gap: 20px;
 }
-
 .savebtn {
   font-family: var(--font-poppins);
   font-weight: 600;
@@ -48,20 +42,17 @@
   border: 1px solid #999494;
   height: auto;
 }
-
 .savebtn:hover {
   background: var(--btn-background-secondary) !important;
   border: 1px solid var(--btn-background-secondary) !important;
   color: var(--white-font-color) !important;
   font-weight: 500;
 }
-
 .addbtnparent {
   display: flex;
   justify-content: flex-end;
   margin: 30px 0px;
 }
-
 .addbtn {
   font-family: var(--font-poppins);
   font-weight: 580;
@@ -76,12 +67,7 @@
   border: 1px solid var(--btn-background-secondary);
   height: auto;
 }
-
 .addbtn:hover {
   background-color: var(--black-btn-color);
   border: 1px solid var(--black-btn-color);
-}
-
-.listing {
-  padding: 10px 12px;
 }

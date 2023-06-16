@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import AddListingCss from "../../styles/dashboard/AddListing.module.css";
 import Head from "next/head";
 import Image from "next/image";
@@ -31,7 +31,7 @@ const Addlisting = () => {
         </Head>
 
         {/*  -------------------------         BANNER IMAGE FAQ         ------------------------------*/}
-        <div className={AddListingCss.banner_img_container}>
+        <div>
           <Image
             fill
             className={AddListingCss.banner_img}
@@ -66,7 +66,7 @@ const Addlisting = () => {
 
               <Col md={3}>
                 {" "}
-                <p className={AddListingCss.checkapply}>
+                <p>
                   Please check all that applies
                 </p>
               </Col>
@@ -109,7 +109,6 @@ const Addlisting = () => {
                     },
                   ]}
                   trigger={["click"]}
-                  // className={AddListingCss.colA}
                   size="large"
                 >
                   <Select.Option onClick={(e) => e.preventDefault()}>
@@ -133,14 +132,6 @@ const Addlisting = () => {
               <Col md={5}></Col>
             </Row>
 
-            {/* <Row>
-            <ReactQuill
-              theme="snow"
-              value={value}
-              onChange={() => setValue(e.target.value)}
-            />
-          </Row> */}
-
             <Row className={AddListingCss.listingbed}>
               <Col md={6} className={AddListingCss.inputBox}>
                 <h4 className={AddListingCss.subheading}>Type of listing*</h4>
@@ -161,7 +152,6 @@ const Addlisting = () => {
                     },
                   ]}
                   trigger={["click"]}
-                  // className={AddListingCss.colA}
                   size="large"
                 >
                   <Select.Option onClick={(e) => e.preventDefault()}>

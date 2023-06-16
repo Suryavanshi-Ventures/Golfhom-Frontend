@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import IncomeCss from "../../styles/dashboard/Income.module.css";
 import Link from "next/link";
 import ProtectedRoute from "../../../common components/protected_route";
@@ -22,12 +22,12 @@ const Income = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={IncomeCss.income_main_section}>
+        <main>
           <Container>
             <h3 className={IncomeCss.income_page_heading}>Income</h3>
 
-            <section className={IncomeCss.income_page_cards_section}>
-              <Row className={IncomeCss.income_page_cards_rows}>
+            <section>
+              <Row>
                 <Col md={4} className={IncomeCss.income_page_cards_cols}>
                   <div className={IncomeCss.income_page_cards_container}>
                     <div className={IncomeCss.income_page_cards_text_container}>
@@ -37,16 +37,15 @@ const Income = () => {
                       <p className={IncomeCss.income_page_cards_subheading}>
                         Total Earnings
                       </p>
-                      <p className={IncomeCss.income_page_cards_desc}>
+                      <p>
                         Excluding the service fee, the host fee and the security
                         deposit
                       </p>
                     </div>
 
-                    <div className={IncomeCss.income_page_cards_btn_container}>
+                    <div>
                       <Link
                         href="/"
-                        className={IncomeCss.income_page_cards_links}
                       >
                         <Button
                           className={IncomeCss.income_page_cards_btn}
@@ -67,7 +66,7 @@ const Income = () => {
                       <p className={IncomeCss.income_page_cards_subheading}>
                         Available Balance
                       </p>
-                      <p className={IncomeCss.income_page_cards_desc}>
+                      <p>
                         Gofhom.com will normally remit rental income to the host
                         as directed approximately 2 business days after the
                         agreed upon check-in date (if no complaints have been
@@ -75,10 +74,9 @@ const Income = () => {
                       </p>
                     </div>
 
-                    <div className={IncomeCss.income_page_cards_btn_container}>
+                    <div>
                       <Link
                         href="/"
-                        className={IncomeCss.income_page_cards_links}
                       >
                         <Button
                           className={IncomeCss.income_page_cards_btn}
@@ -99,16 +97,15 @@ const Income = () => {
                       <p className={IncomeCss.income_page_cards_subheading}>
                         Total reservations
                       </p>
-                      <p className={IncomeCss.income_page_cards_desc}>
+                      <p>
                         Represents the total number of paid reservations you
                         have received
                       </p>
                     </div>
 
-                    <div className={IncomeCss.income_page_cards_btn_container}>
+                    <div>
                       <Link
                         href="/"
-                        className={IncomeCss.income_page_cards_links}
                       >
                         <Button
                           className={IncomeCss.income_page_cards_btn}

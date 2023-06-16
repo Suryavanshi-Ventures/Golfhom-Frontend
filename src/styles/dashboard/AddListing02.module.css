@@ -1,34 +1,29 @@
 /* BANNER IMAGE */
   
-.banner_img {
+.banner_img, .mount {
     position: relative !important;
   }
      /*     -------------------------     TEXT AREA      ----------------------------    */
-
      .addListing {
         font-family: var(--font-poppins);
         font-weight: 600;
         margin-top: 42px;
         margin-bottom: 20px;
       }
-    
       .info {
         font-family: var(--font-poppins);
         font-weight: 500;
         margin: 40px 0px 30px;
       }
-
       .listing {
         padding: 10px 12px;
       }    
-
       .twobtn {
         display: flex;
         justify-content: flex-start;
         margin: 30px 0px;
         gap: 20px;
       }
-
       .savebtn {
         font-family: var(--font-poppins);
         font-weight: 600;
@@ -37,21 +32,18 @@
         background: var(--white-font-color);
         border: 1px solid #999494;
         height: auto;
-      }
-    
+      }  
       .savebtn:hover {
         background: var(--btn-background-secondary) !important;
         border: 1px solid var(--btn-background-secondary) !important;
         color: var(--white-font-color) !important;
         font-weight: 500;
       }
-
       .addbtnparent {
         display: flex;
         justify-content: flex-end;
         margin: 30px 0px;
       }
-
       .addbtn {
         font-family: var(--font-poppins);
         font-weight: 580;
@@ -66,12 +58,10 @@
         border: 1px solid var(--btn-background-secondary);
         height: auto;
       }
-
       .addbtn:hover, .select:hover {
         background-color: var(--black-btn-color);
         border: 1px solid var(--black-btn-color);
       }
-
       .imgParent {
         border: 2px dashed var(--border-light-grey);
         display: flex;
@@ -79,7 +69,6 @@
         padding: 24px 28px 38px;
         margin: 36px 0px;
       }
-
       .imageParent {
         max-width: 100px;
         display: flex;
@@ -93,19 +82,13 @@
                     0 -5px 10px 5px rgba(200, 200, 200, 0.5), /* bottom */
                     5px 0 10px 5px rgba(200, 200, 200, 0.5); /* right */
       }
-
       .cloudImg {
-        max-width: 26px;
+        max-width: 26px; 
         display: flex;
         position: relative;
         justify-content: center;
         right: 10px;
       }
-
-      .mount {
-        position: relative !important;
-      }
-
       .para {
         font-family: var(--font-poppins);
         font-weight: 400;
@@ -113,7 +96,6 @@
         text-align: center;
         font-size: 0.9rem;
       }
-
       .mini {
         font-family: var(--font-poppins);
         font-weight: 400;
@@ -121,7 +103,6 @@
         text-align: center;
         font-size: 0.9rem;
       }
-
       .cloudParent {
         display: flex;
         position: relative;
@@ -129,7 +110,6 @@
         right: 14px;
         margin: 18px 0px;
       }
-
       .select {
         font-family: var(--font-poppins);
         font-weight: 580;

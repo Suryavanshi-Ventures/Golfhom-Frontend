@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AddListing02Css from "../../styles/dashboard/AddListing02.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";
@@ -20,7 +20,7 @@ const Addlisting02 = () => {
         </Head>
 
         {/*  -------------------------         BANNER IMAGE FAQ         ------------------------------*/}
-        <div className={AddListing02Css.banner_img_container}>
+        <div>
           <Image
             fill
             className={AddListing02Css.banner_img}

@@ -3,42 +3,34 @@
 .banner_img {
     position: relative !important;
   }
-  
    /*     -------------------------     TEXT AREA      ----------------------------    */
-
    .addListing {
     font-family: var(--font-poppins);
     font-weight: 700;
     margin-top: 42px;
     margin-bottom: 20px;
   }
-
   .info {
     font-family: var(--font-poppins);
     font-weight: 600;
     margin: 30px 0px;
   }
-
   .parentCheckbox {
     font-family: var(--font-poppins);
     font-weight: 400;
     margin: 24px 0px;
   }
-
   .title {
     font-family: var(--font-poppins);
     font-weight: 600;
     margin: 20px 0px;
   }
-
   .listing {
     padding: 10px 12px;
   }
-
   .inputBox {
     margin-bottom: 20px;
   }
-
   .listingA {
     padding: 10px 12px;
     margin-bottom: 50px;
@@ -47,23 +39,16 @@
   .listingbed {
     padding: 16px 0px;
   }
-
-  .headingInput {
-    padding: 30px 0px;
- }
-
   .subheading {
     font-family: var(--font-poppins);
     font-weight: 600;
     margin-bottom: 20px;
   }
-
   .twobtn {
     display: flex;
     justify-content: space-between;
     margin-bottom: 80px;
   }
-
   .savebtn {
     font-family: var(--font-poppins);
     font-weight: 600;
@@ -73,14 +58,12 @@
     border: 1px solid #999494;
     height: auto;
   }
-
   .savebtn:hover {
     background: var(--btn-background-secondary) !important;
     border: 1px solid var(--btn-background-secondary) !important;
     color: var(--white-font-color);
     font-weight: 500;
   }
-
   .continuebtn {
     font-family: var(--font-poppins);
     font-weight: 500;
@@ -94,29 +77,16 @@
     border-radius: 5px;
     border: 1px solid var(--btn-background-secondary);
   }
-
   .continuebtn:hover {
     background-color: var(--black-btn-color);
     border: 1px solid var(--black-btn-color);
   }
-
-  .top_down_arrow {
-    display: flex;
-    flex-direction: column;
-    background-color: #DFDFDF;
-    padding: 5px 4px;
-    border-radius: 0px 4px 4px 0px;
-    position: relative;
-    left: 24px;
-  }
-
   .para {
     font-size: 0.9rem;
     font-family: var(--font-poppins);
     font-weight: 400;
     margin: 30px 0px 20px;
   }
-
   .colA {
     width: 100%;
     height: auto;
@@ -128,11 +98,9 @@
     color: var(--dark-grey-font);
     background-color: var(--white-btn-font-color);
   }
-
   .colA:hover {
     border: 1px solid var(--btn-background-secondary);
   }
-
   .search_by_golf_input_search_by_tourni {
     height: auto;
     border-radius: 4px;
@@ -140,21 +108,4 @@
     justify-content: space-between;
     color: var(--dark-grey-font);
     padding: 10px 0px;
-  }
-
-  .number_parent {
-    position: relative;
-  }
-
-  .number_parent:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    background-image: url('/path/to/arrow-image.png');
-    background-repeat: no-repeat;
-    background-position: center;
   }
