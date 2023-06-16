@@ -8,10 +8,12 @@ const { TextArea } = Input;
 
 const PaymentForm = (props) => {
   console.log(props, " PaymentForm");
-  const DynamicYear = dayjs().format("YY");
-  const DynamicMonth = dayjs().format("M");
   const [IsLoading, setIsLoading] = useState(false);
   const [form2] = Form.useForm();
+  // const DynamicYear = dayjs().format("YY");
+  // const DynamicMonth = dayjs().format("M");
+  const DynamicYear = 16;
+  const DynamicMonth = 2;
 
   const OnClickPay = async (values) => {
     console.log("Success:", values);
@@ -44,8 +46,12 @@ const PaymentForm = (props) => {
         },
         { headers: { Authorization: `Bearer ${Token}` } }
       );
-      if (CreateBookingRes.status === 201) {
+      if (
+        CreateBookingRes.status === 201 &&
+        CreateBookingRes.data.data.bookingNumber
+      ) {
         setIsLoading(false);
+        message.success("Booking Confirmed!");
       } else {
         setIsLoading(false);
       }
@@ -112,7 +118,7 @@ const PaymentForm = (props) => {
                 },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
-                    if (value.length >= 16) {
+                    if (value.length > 16) {
                       return Promise.reject(
                         new Error("Card number can not be more than 16 digit!")
                       );
@@ -129,7 +135,7 @@ const PaymentForm = (props) => {
               >
                 <Input
                   type="number"
-                  placeholder="Ex 4242 4242 4242 4242"
+                  placeholder="Ex 4111 1111 1111 1111"
                   className={
                     PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
                   }
@@ -282,7 +288,7 @@ const PaymentForm = (props) => {
                 }
               >
                 <Input
-                  placeholder="Ex Scott Prestine"
+                  placeholder="Ex John Doe"
                   className={
                     PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
                   }
@@ -317,7 +323,7 @@ const PaymentForm = (props) => {
                     }
                   >
                     <Input
-                      placeholder="Ex nl"
+                      placeholder="Ex US"
                       className={
                         PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
                       }
