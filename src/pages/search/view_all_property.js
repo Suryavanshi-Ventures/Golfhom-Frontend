@@ -194,12 +194,11 @@ const ViewAllProperty = () => {
                         <Image
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${
-                                Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${Data.id
                               }`
                             );
                           }}
-                          src={Data.imageUrl}
+                          src={Data.imageUrl ? Data.imageUrl : '/images/noImageFound.png'}
                           alt={`image`}
                           fill
                           className={ViewAllPropertyCss.carouselImage}
@@ -208,8 +207,7 @@ const ViewAllProperty = () => {
                         <div
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${
-                                Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${Data.id
                               }`
                             );
                           }}
@@ -228,7 +226,11 @@ const ViewAllProperty = () => {
                             >
                               {Data.price >= 0.5
                                 ? Math.ceil(Data.price)
-                                : Math.floor(Data.price)}
+                                : Math.floor(Data.price)
+                                  ? Data.price >= 0.5
+                                    ? Math.ceil(Data.price)
+                                    : Math.floor(Data.price)
+                                  : 0}
                               /Night
                             </span>
                           </p>
@@ -236,25 +238,23 @@ const ViewAllProperty = () => {
                           <h4
                             onClick={(e) => {
                               RouterRef.push(
-                                `/search/${encodeURIComponent(Data.name)}/${
-                                  Data.id
+                                `/search/${encodeURIComponent(Data.name)}/${Data.id
                                 }`
                               );
                             }}
                             className={ViewAllPropertyCss.carouselHeading}
                           >
-                            {Data.name}
+                            {Data.name ? Data.name : "N/A"}
                           </h4>
                         </div>
                         <p className={ViewAllPropertyCss.discribeOfCard}>
-                          {Data.golfCourseName}
+                          {Data.golfCourseName ? Data.golfCourseName : "N/A"}
                         </p>
 
                         <div
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${
-                                Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${Data.id
                               }`
                             );
                           }}
@@ -269,7 +269,7 @@ const ViewAllProperty = () => {
                             className={ViewAllPropertyCss.dot}
                           ></Image>
                           <span className={ViewAllPropertyCss.discribeOfCard}>
-                            {Data.accomodation} Guests Villa
+                            {Data.accomodation ? Data.accomodation : 1} Guests Villa
                           </span>
                         </div>
                       </Col>
@@ -313,8 +313,7 @@ const ViewAllProperty = () => {
                       <Image
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -327,8 +326,7 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -355,8 +353,7 @@ const ViewAllProperty = () => {
                         <h4
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${
-                                Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${Data.id
                               }`
                             );
                           }}
@@ -372,8 +369,7 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -431,8 +427,7 @@ const ViewAllProperty = () => {
                       <Image
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -445,8 +440,7 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -473,8 +467,7 @@ const ViewAllProperty = () => {
                         <h4
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${
-                                Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${Data.id
                               }`
                             );
                           }}
@@ -490,8 +483,7 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -550,8 +542,7 @@ const ViewAllProperty = () => {
                       <Image
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -564,8 +555,7 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
@@ -592,8 +582,7 @@ const ViewAllProperty = () => {
                         <h4
                           onClick={(e) => {
                             RouterRef.push(
-                              `/search/${encodeURIComponent(Data.name)}/${
-                                Data.id
+                              `/search/${encodeURIComponent(Data.name)}/${Data.id
                               }`
                             );
                           }}
@@ -609,8 +598,7 @@ const ViewAllProperty = () => {
                       <div
                         onClick={(e) => {
                           RouterRef.push(
-                            `/search/${encodeURIComponent(Data.name)}/${
-                              Data.id
+                            `/search/${encodeURIComponent(Data.name)}/${Data.id
                             }`
                           );
                         }}
