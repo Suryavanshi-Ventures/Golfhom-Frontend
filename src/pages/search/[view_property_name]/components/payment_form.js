@@ -40,7 +40,6 @@ const PaymentForm = (props) => {
             street: values.payment_card_street_address,
             place: values.payment_card_city,
             stateProv: values.payment_card_state,
-            dateOfBirth: values.payment_card_dob,
           },
         },
         { headers: { Authorization: `Bearer ${Token}` } }
@@ -67,7 +66,6 @@ const PaymentForm = (props) => {
       errorInfo.values.payment_card_city ||
       errorInfo.values.payment_card_country_code ||
       errorInfo.values.payment_card_cvc_code ||
-      errorInfo.values.payment_card_dob ||
       errorInfo.values.payment_card_exp_month ||
       errorInfo.values.payment_card_exp_year ||
       errorInfo.values.payment_card_holder_name ||
@@ -85,463 +83,427 @@ const PaymentForm = (props) => {
   };
 
   return (
-    <section className={PaymentFormCss.checkout_payment_nextpax_section}>
-      {" "}
-      <div className={PaymentFormCss.checkout_payment_nextpax_main_div}>
-        <h4 className={PaymentFormCss.checkout_payment_nextpax_heading}>
-          Payment details
-        </h4>
-        <Form
-          name="payment_form_nextpax"
-          form={form2}
-          onFinish={OnClickPay}
-          onFinishFailed={OnClickPayFaild}
-          autoComplete="off"
-          layout="vertical"
-        >
-          <Form.Item
-            className={
-              PaymentFormCss.checkout_payment_nextpax_payment_form_items
-            }
-            label="Card Number"
-            required={true}
-            name="payment_card_number"
-            rules={[
-              {
-                required: true,
-                message: "This Field Is Required!",
-              },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (value.length >= 16) {
-                    return Promise.reject(
-                      new Error("Card number can not be more than 16 digit!")
-                    );
-                  }
-                  return Promise.resolve();
-                },
-              }),
-            ]}
-          >
-            <div
-              className={
-                PaymentFormCss.checkout_payment_nextpax_payment_input_div
-              }
-            >
-              <Input
-                type="number"
-                placeholder="Ex 4242 4242 4242 4242"
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                }
-              />
-            </div>
-          </Form.Item>
-
-          <div className={PaymentFormCss.checkout_payment_nextpax_cvc_div}>
-            <Form.Item
-              className={
-                PaymentFormCss.checkout_payment_nextpax_payment_form_items
-              }
-              name="payment_card_exp_year"
-              required={true}
-              label="Card Exp Year"
-              rules={[
-                {
-                  required: true,
-                  message: "This Field Is Required!",
-                },
-              ]}
-            >
-              <div
-                className={`${PaymentFormCss.checkout_payment_nextpax_payment_input_div} ${PaymentFormCss.checkout_payment_nextpax_card_year}`}
-              >
-                <DatePicker
-                  onChange={(date) =>
-                    form2.setFieldsValue({
-                      payment_card_exp_year: dayjs(date).format("YY"),
-                    })
-                  }
-                  format={"YY"}
-                  placeholder={`${DynamicYear}`}
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                  }
-                  picker="year"
-                />
-              </div>
-            </Form.Item>
-
-            <Form.Item
-              className={
-                PaymentFormCss.checkout_payment_nextpax_payment_form_items
-              }
-              name="payment_card_exp_month"
-              required={true}
-              label="Card Exp Month"
-              rules={[
-                {
-                  required: true,
-                  message: "This Field Is Required!",
-                },
-              ]}
-            >
-              <div
-                className={`${PaymentFormCss.checkout_payment_nextpax_payment_input_div} ${PaymentFormCss.checkout_payment_nextpax_card_month}`}
-              >
-                <DatePicker
-                  format={"M"}
-                  onChange={(date) =>
-                    form2.setFieldsValue({
-                      payment_card_exp_month: dayjs(date).format("M"),
-                    })
-                  }
-                  placeholder={`${DynamicMonth}`}
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                  }
-                  picker="month"
-                />
-              </div>
-            </Form.Item>
-          </div>
-
-          <Form.Item
-            className={
-              PaymentFormCss.checkout_payment_nextpax_payment_form_items
-            }
-            name="payment_card_type"
-            required={true}
-            label="Card Type"
-            rules={[
-              {
-                required: true,
-                message: "This Field Is Required!",
-              },
-            ]}
-          >
-            <div
-              className={
-                PaymentFormCss.checkout_payment_nextpax_payment_input_div
-              }
-            >
-              <Input
-                placeholder="VISA, MASTER"
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                }
-              />
-            </div>
-          </Form.Item>
-
-          <Form.Item
-            className={
-              PaymentFormCss.checkout_payment_nextpax_payment_form_items
-            }
-            name="payment_card_cvc_code"
-            required={true}
-            label="CVC Code"
-            rules={[
-              {
-                required: true,
-                message: "This Field Is Required!",
-              },
-            ]}
-          >
-            <div
-              className={
-                PaymentFormCss.checkout_payment_nextpax_payment_input_div
-              }
-            >
-              <InputNumber
-                placeholder="**5 CVC"
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                }
-              />
-            </div>
-          </Form.Item>
-
-          <Form.Item
-            className={
-              PaymentFormCss.checkout_payment_nextpax_payment_form_items
-            }
-            name="payment_card_holder_name"
-            required={true}
-            label="Card Holder Name"
-            rules={[
-              {
-                required: true,
-
-                message: "Please input your username!",
-              },
-            ]}
-          >
-            <div
-              className={
-                PaymentFormCss.checkout_payment_nextpax_payment_input_div
-              }
-            >
-              <Input
-                placeholder="Ex Scott Prestine"
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                }
-              />
-            </div>
-          </Form.Item>
-
+    <>
+      <hr />
+      <section className={PaymentFormCss.checkout_payment_nextpax_section}>
+        <div className={PaymentFormCss.checkout_payment_nextpax_main_div}>
           <h4 className={PaymentFormCss.checkout_payment_nextpax_heading}>
-            Billing details
+            Payment details
           </h4>
+          <Form
+            name="payment_form_nextpax"
+            form={form2}
+            onFinish={OnClickPay}
+            onFinishFailed={OnClickPayFaild}
+            autoComplete="off"
+            layout="vertical"
+          >
+            <Form.Item
+              className={
+                PaymentFormCss.checkout_payment_nextpax_payment_form_items
+              }
+              label="Card Number"
+              required={true}
+              name="payment_card_number"
+              rules={[
+                {
+                  required: true,
+                  message: "This Field Is Required!",
+                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (value.length >= 16) {
+                      return Promise.reject(
+                        new Error("Card number can not be more than 16 digit!")
+                      );
+                    }
+                    return Promise.resolve();
+                  },
+                }),
+              ]}
+            >
+              <div
+                className={
+                  PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                }
+              >
+                <Input
+                  type="number"
+                  placeholder="Ex 4242 4242 4242 4242"
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                  }
+                />
+              </div>
+            </Form.Item>
 
-          <Row>
-            {/* COUNTRY CODE */}
-            <Col md={6} sm={12}>
+            <div className={PaymentFormCss.checkout_payment_nextpax_cvc_div}>
               <Form.Item
                 className={
                   PaymentFormCss.checkout_payment_nextpax_payment_form_items
                 }
-                name="payment_card_country_code"
+                name="payment_card_exp_year"
                 required={true}
-                label="Country"
+                label="Card Exp Year"
                 rules={[
                   {
                     required: true,
-                    message: "Please enter your country!",
+                    message: "This Field Is Required!",
                   },
                 ]}
               >
                 <div
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_input_div
-                  }
-                >
-                  <Input
-                    placeholder="Ex nl"
-                    className={
-                      PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                    }
-                  />
-                </div>
-              </Form.Item>
-            </Col>
-
-            {/* STATE  */}
-            <Col md={6} sm={12}>
-              <Form.Item
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_items
-                }
-                name="payment_card_state"
-                label="State"
-                rules={[
-                  {
-                    message: "Please enter your state!",
-                  },
-                ]}
-              >
-                <div
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_input_div
-                  }
-                >
-                  <Input
-                    placeholder="Ex Flevoland"
-                    className={
-                      PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                    }
-                  />
-                </div>
-              </Form.Item>
-            </Col>
-
-            {/* CITY  */}
-            <Col md={6} sm={12}>
-              <Form.Item
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_items
-                }
-                name="payment_card_city"
-                required={true}
-                label="City"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your city!",
-                  },
-                ]}
-              >
-                <div
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_input_div
-                  }
-                >
-                  <Input
-                    placeholder="Ex Almere"
-                    className={
-                      PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                    }
-                  />
-                </div>
-              </Form.Item>
-            </Col>
-
-            {/* ZIP  CODE */}
-            <Col md={6} sm={12}>
-              <Form.Item
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_items
-                }
-                name="payment_card_zip_code"
-                required={true}
-                label="Zip Code"
-                rules={[
-                  {
-                    required: true,
-
-                    message: "Please enter your zip code!",
-                  },
-                ]}
-              >
-                <div
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_input_div
-                  }
-                >
-                  <Input
-                    placeholder="Ex 1314 CH"
-                    className={
-                      PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                    }
-                  />
-                </div>
-              </Form.Item>
-            </Col>
-
-            {/* HOUSE NUMBER */}
-            <Col md={6} sm={12}>
-              <Form.Item
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_items
-                }
-                name="payment_card_house_number"
-                required={true}
-                label="House Number"
-                rules={[
-                  {
-                    required: true,
-
-                    message: "Please enter your house number!",
-                  },
-                ]}
-              >
-                <div
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_input_div
-                  }
-                >
-                  <Input
-                    placeholder="Ex 1314 CH"
-                    className={
-                      PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
-                    }
-                  />
-                </div>
-              </Form.Item>
-            </Col>
-
-            {/* DOB  */}
-            <Col md={6} sm={12}>
-              <Form.Item
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_form_items
-                }
-                name="payment_card_dob"
-                required={true}
-                label="D.O.B"
-                rules={[
-                  {
-                    required: true,
-
-                    message: "Please enter your date of birth!",
-                  },
-                ]}
-              >
-                <div
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_input_div
-                  }
+                  className={`${PaymentFormCss.checkout_payment_nextpax_payment_input_div} ${PaymentFormCss.checkout_payment_nextpax_card_year}`}
                 >
                   <DatePicker
                     onChange={(date) =>
                       form2.setFieldsValue({
-                        payment_card_dob: dayjs(date).format("YYYY-MM-DD"),
+                        payment_card_exp_year: dayjs(date).format("YY"),
                       })
                     }
-                    format={"YYYY-MM-DD"}
-                    placeholder="Ex 1980-01-01"
+                    format={"YY"}
+                    placeholder={`${DynamicYear}`}
                     className={
                       PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
                     }
+                    picker="year"
                   />
                 </div>
               </Form.Item>
-            </Col>
 
-            {/* STREET ADDRESS */}
-            <Col md={12} sm={12}>
               <Form.Item
                 className={
                   PaymentFormCss.checkout_payment_nextpax_payment_form_items
                 }
-                name="payment_card_street_address"
+                name="payment_card_exp_month"
                 required={true}
-                label="Street Address"
+                label="Card Exp Month"
                 rules={[
                   {
                     required: true,
-                    message: "Please enter your street address!",
+                    message: "This Field Is Required!",
                   },
                 ]}
               >
                 <div
-                  className={
-                    PaymentFormCss.checkout_payment_nextpax_payment_input_div
-                  }
+                  className={`${PaymentFormCss.checkout_payment_nextpax_payment_input_div} ${PaymentFormCss.checkout_payment_nextpax_card_month}`}
                 >
-                  <TextArea
+                  <DatePicker
+                    format={"M"}
+                    onChange={(date) =>
+                      form2.setFieldsValue({
+                        payment_card_exp_month: dayjs(date).format("M"),
+                      })
+                    }
+                    placeholder={`${DynamicMonth}`}
                     className={
                       PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
                     }
-                    placeholder="Ex PJ Oudweg"
-                    autoSize
+                    picker="month"
                   />
                 </div>
               </Form.Item>
-            </Col>
-          </Row>
-
-          <Form.Item>
-            <div
-              className={
-                PaymentFormCss.checkout_payment_nextpax_payment_pay_btn_div
-              }
-            >
-              <Button
-                loading={IsLoading}
-                className={
-                  PaymentFormCss.checkout_payment_nextpax_payment_pay_btn
-                }
-                htmlType="submit"
-              >
-                Pay
-              </Button>
             </div>
-          </Form.Item>
-        </Form>
-      </div>
-    </section>
+
+            <Form.Item
+              className={
+                PaymentFormCss.checkout_payment_nextpax_payment_form_items
+              }
+              name="payment_card_type"
+              required={true}
+              label="Card Type"
+              rules={[
+                {
+                  required: true,
+                  message: "This Field Is Required!",
+                },
+              ]}
+            >
+              <div
+                className={
+                  PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                }
+              >
+                <Input
+                  placeholder="VISA, MASTER"
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                  }
+                />
+              </div>
+            </Form.Item>
+
+            <Form.Item
+              className={
+                PaymentFormCss.checkout_payment_nextpax_payment_form_items
+              }
+              name="payment_card_cvc_code"
+              required={true}
+              label="CVC Code"
+              rules={[
+                {
+                  required: true,
+                  message: "This Field Is Required!",
+                },
+              ]}
+            >
+              <div
+                className={
+                  PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                }
+              >
+                <InputNumber
+                  placeholder="**5 CVC"
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                  }
+                />
+              </div>
+            </Form.Item>
+
+            <Form.Item
+              className={
+                PaymentFormCss.checkout_payment_nextpax_payment_form_items
+              }
+              name="payment_card_holder_name"
+              required={true}
+              label="Card Holder Name"
+              rules={[
+                {
+                  required: true,
+
+                  message: "Please input your username!",
+                },
+              ]}
+            >
+              <div
+                className={
+                  PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                }
+              >
+                <Input
+                  placeholder="Ex Scott Prestine"
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                  }
+                />
+              </div>
+            </Form.Item>
+
+            <h4 className={PaymentFormCss.checkout_payment_nextpax_heading}>
+              Billing details
+            </h4>
+
+            <Row>
+              {/* COUNTRY CODE */}
+              <Col md={6} sm={12}>
+                <Form.Item
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_items
+                  }
+                  name="payment_card_country_code"
+                  required={true}
+                  label="Country"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please enter your country!",
+                    },
+                  ]}
+                >
+                  <div
+                    className={
+                      PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                    }
+                  >
+                    <Input
+                      placeholder="Ex nl"
+                      className={
+                        PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                      }
+                    />
+                  </div>
+                </Form.Item>
+              </Col>
+
+              {/* STATE  */}
+              <Col md={6} sm={12}>
+                <Form.Item
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_items
+                  }
+                  name="payment_card_state"
+                  label="State"
+                  rules={[
+                    {
+                      message: "Please enter your state!",
+                    },
+                  ]}
+                >
+                  <div
+                    className={
+                      PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                    }
+                  >
+                    <Input
+                      placeholder="Ex Flevoland"
+                      className={
+                        PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                      }
+                    />
+                  </div>
+                </Form.Item>
+              </Col>
+
+              {/* CITY  */}
+              <Col md={6} sm={12}>
+                <Form.Item
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_items
+                  }
+                  name="payment_card_city"
+                  required={true}
+                  label="City"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please enter your city!",
+                    },
+                  ]}
+                >
+                  <div
+                    className={
+                      PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                    }
+                  >
+                    <Input
+                      placeholder="Ex Almere"
+                      className={
+                        PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                      }
+                    />
+                  </div>
+                </Form.Item>
+              </Col>
+
+              {/* ZIP  CODE */}
+              <Col md={6} sm={12}>
+                <Form.Item
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_items
+                  }
+                  name="payment_card_zip_code"
+                  required={true}
+                  label="Zip Code"
+                  rules={[
+                    {
+                      required: true,
+
+                      message: "Please enter your zip code!",
+                    },
+                  ]}
+                >
+                  <div
+                    className={
+                      PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                    }
+                  >
+                    <Input
+                      placeholder="Ex 1314 CH"
+                      className={
+                        PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                      }
+                    />
+                  </div>
+                </Form.Item>
+              </Col>
+
+              {/* HOUSE NUMBER */}
+              <Col md={6} sm={12}>
+                <Form.Item
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_items
+                  }
+                  name="payment_card_house_number"
+                  required={true}
+                  label="House Number"
+                  rules={[
+                    {
+                      required: true,
+
+                      message: "Please enter your house number!",
+                    },
+                  ]}
+                >
+                  <div
+                    className={
+                      PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                    }
+                  >
+                    <Input
+                      placeholder="Ex 1314 CH"
+                      className={
+                        PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                      }
+                    />
+                  </div>
+                </Form.Item>
+              </Col>
+
+              {/* STREET ADDRESS */}
+              <Col md={12} sm={12}>
+                <Form.Item
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_form_items
+                  }
+                  name="payment_card_street_address"
+                  required={true}
+                  label="Street Address"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please enter your street address!",
+                    },
+                  ]}
+                >
+                  <div
+                    className={
+                      PaymentFormCss.checkout_payment_nextpax_payment_input_div
+                    }
+                  >
+                    <TextArea
+                      className={
+                        PaymentFormCss.checkout_payment_nextpax_payment_form_inputs
+                      }
+                      placeholder="Ex PJ Oudweg"
+                      autoSize
+                    />
+                  </div>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Form.Item>
+              <div
+                className={
+                  PaymentFormCss.checkout_payment_nextpax_payment_pay_btn_div
+                }
+              >
+                <Button
+                  loading={IsLoading}
+                  className={
+                    PaymentFormCss.checkout_payment_nextpax_payment_pay_btn
+                  }
+                  htmlType="submit"
+                >
+                  Pay
+                </Button>
+              </div>
+            </Form.Item>
+          </Form>
+        </div>
+      </section>
+    </>
   );
 };
 
