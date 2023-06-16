@@ -2,30 +2,19 @@
 import { React, useState, useEffect, Suspense } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import HomeCss from "../styles/Home.module.css";
-import Slider from "../slider";
-import slides from "../pages/json/countries.json";
+import HomeCss from "../../styles/Home.module.css";
+import Slider from "../../slider";
+import slides from "../../pages/json/countries.json";
 import { Container, Col, Row, Card } from "react-bootstrap";
-import ads from "../pages/json/ads.json";
-import Advertise from "../advertise";
+import ads from "../../pages/json/ads.json";
+import Advertise from "../../advertise";
 import Image from "next/image";
-import {
-  Input,
-  Space,
-  Typography,
-  message,
-  Button,
-  DatePicker,
-  Skeleton,
-  Select,
-} from "antd";
-
+import { Input, message, Button, DatePicker, Skeleton } from "antd";
 const { RangePicker } = DatePicker;
-import Video from "../video";
-import video from "../pages/json/video.json";
-import Review from "../review";
-import review from "../pages/json/review.json";
-import { SearchOutlined } from "@ant-design/icons";
+import Video from "../../video";
+import video from "../../pages/json/video.json";
+import Review from "../../review";
+import review from "../../pages/json/review.json";
 import Link from "next/link";
 import axios from "axios";
 import moment from "moment";
@@ -33,7 +22,13 @@ import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import { useRouter } from "next/router";
 const placesLibrary = ["places"];
 const BottomSection = dynamic(
-  () => import("../../common components/bottomGroup"),
+  () => import("../../../common components/bottomGroup"),
+  {
+    suspense: true,
+  }
+);
+const SearchByGolfCourse = dynamic(
+  () => import("../../pages/home/components/SearchByGolfCourse"),
   {
     suspense: true,
   }
@@ -58,7 +53,8 @@ const Home = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL
+          `${
+            process.env.NEXT_PUBLIC_API_URL
           }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
         );
         if (GetPropertyDataRes.status === 200) {
@@ -163,17 +159,20 @@ const Home = () => {
           UrlParamsGeoData?.latitude
         )}&longitude=${encodeURIComponent(
           UrlParamsGeoData?.longitude
-        )}&location_name=${UrlParamsGeoData?.location_name
+        )}&location_name=${
+          UrlParamsGeoData?.location_name
         }&nights=${NightsCounter}&guest=${encodeURIComponent(
           adult + child
         )}&adults=${encodeURIComponent(adult)}&childs=${encodeURIComponent(
           child
-        )}&from=${UrlParamsDateRange[0]
-          ? UrlParamsDateRange[0]
-          : moment().format("MM-DD-YYYY")
-        }&to=${UrlParamsDateRange[1]
-          ? UrlParamsDateRange[1]
-          : moment().format("MM-DD-YYYY")
+        )}&from=${
+          UrlParamsDateRange[0]
+            ? UrlParamsDateRange[0]
+            : moment().format("MM-DD-YYYY")
+        }&to=${
+          UrlParamsDateRange[1]
+            ? UrlParamsDateRange[1]
+            : moment().format("MM-DD-YYYY")
         }&limit=10`
       );
     }
@@ -442,299 +441,11 @@ const Home = () => {
         <Slider slides={slides} />
       </Container>
 
-      {/* ---------------------------              SEARCH CONTAINER              ----------------------    */}
+      {/* SEARCH BY GOLF COURSE  */}
+      <SearchByGolfCourse />
+      {/* SEARCH BY GOLF COURSE  */}
 
-      <main className={HomeCss.search_by_golf_course_Section}>
-        <Container>
-          <main className={HomeCss.searchSection}>
-            <div className={HomeCss.searchSection_overlay}>
-              <div className={HomeCss.content}>
-                <h3 className={HomeCss.Title}>
-                  Search the World Over by Course (38,000+ in our database) or
-                  Tournament
-                </h3>
-
-                <div className={HomeCss.search_by_golf_containers}>
-                  <Row className={HomeCss.search_by_golf_row}>
-                    <Col md={6} className={HomeCss.search_by_golf_cols}>
-                      <div
-                        className={HomeCss.search_by_golf_input_main_container}
-                      >
-                        <h5
-                          className={
-                            HomeCss.search_by_golf_input_container_headings
-                          }
-                        >
-                          Search by golf course
-                        </h5>
-                        <p
-                          className={
-                            HomeCss.search_by_golf_input_container_subheadings
-                          }
-                        >
-                          Choose from thousands world-wide
-                        </p>
-
-                        <div
-                          className={
-                            HomeCss.search_by_golf_input_parent_container
-                          }
-                        >
-                          <div
-                            className={HomeCss.search_by_golf_input_container}
-                          >
-                            <Input
-                              placeholder="Enter Location"
-                              prefix={<SearchOutlined />}
-                              className={HomeCss.search_by_golf_inputs}
-                            />
-                          </div>
-                          <div
-                            className={HomeCss.search_by_golf_input_container}
-                          >
-                            <Input
-                              placeholder="Golf Course"
-                              prefix={<SearchOutlined />}
-                              className={HomeCss.search_by_golf_inputs}
-                            />
-                          </div>
-                        </div>
-
-                        <div className={HomeCss.search_by_golf_btn_container}>
-                          <Button className={HomeCss.search_by_golf_btn}>
-                            SEARCH
-                          </Button>
-                        </div>
-                      </div>
-                    </Col>
-
-                    <Col md={6} className={HomeCss.search_by_golf_cols}>
-                      <div
-                        className={HomeCss.search_by_golf_input_main_container}
-                      >
-                        <h5
-                          className={
-                            HomeCss.search_by_golf_input_container_headings
-                          }
-                        >
-                          Search by Tournaments
-                        </h5>
-                        <p
-                          className={
-                            HomeCss.search_by_golf_input_container_subheadings
-                          }
-                        >
-                          Check out our growing list of tour-spot rentals
-                        </p>
-
-                        <div
-                          className={
-                            HomeCss.search_by_golf_input_parent_container
-                          }
-                        >
-                          <div
-                            className={
-                              HomeCss.search_by_golf_input_container_select
-                            }
-                          >
-                            <Select
-                              defaultValue=" Please select tournament"
-                              options={[
-                                {
-                                  value: "PGA Championship",
-                                  label: "PGA Championship",
-                                },
-                                {
-                                  value: "The Master",
-                                  label: "The Master",
-                                },
-                                {
-                                  value: "The open championship",
-                                  label: "The open championship",
-                                },
-                                {
-                                  value: "The Tradition at Quinta",
-                                  label: "The Tradition at Quinta",
-                                },
-                                {
-                                  value: "US Open",
-                                  label: "US Open",
-                                },
-                              ]}
-                              trigger={["click"]}
-                              className={
-                                HomeCss.search_by_golf_input_container_tourniA
-                              }
-                              size="large"
-                            >
-                              <Select.Option
-                                onClick={(e) => e.preventDefault()}
-                              >
-                                <Typography.Link>
-                                  <Space
-                                    className={
-                                      HomeCss.search_by_golf_input_search_by_tourni
-                                    }
-                                  ></Space>
-                                </Typography.Link>
-                              </Select.Option>
-                            </Select>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={HomeCss.search_by_golf_btn_container}>
-                        <Link href="searchByTournaments">
-                          <Button className={HomeCss.search_by_golf_btn}>
-                            SEARCH
-                          </Button>
-                        </Link>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </div>
-            </div>
-          </main>
-        </Container>
-      </main>
-
-      {/* -------------------------------------    Golfhōm Hottest New Arrivals ---------------------------- */}
-      <main main className={HomeCss.hottest_new_arrival_section}>
-        <Container>
-          <Row className={HomeCss.arrivalContainer}>
-            <Col xl={4} lg={4} className={HomeCss.arrivalContainer_child}>
-              <div className={HomeCss.paraHeading}>
-                <h3 className={HomeCss.hottest_new_arrival__heading}>
-                  Golfhōm Hottest New Arrivals
-                </h3>
-                <p className={HomeCss.subHeading}>
-                  Experience the Coolest Golfhōms on the Planet: Step into a
-                  world of luxury and innovation, where impeccable design meets
-                  unrivaled performance.
-                </p>
-
-                <div className={HomeCss.explore_more_container}>
-                  {/* <h4 className={HomeCss.subHeading}>
-                    Explore More New Rentals{" "}
-                  </h4> */}
-                  {/* <div className={HomeCss.explore_more_arrow_container}>
-                    <Image
-                      src={BlackArrow}
-                      alt="BlackArrow"
-                      width={22}
-                      height={20}
-                    />
-                  </div> */}
-                </div>
-              </div>
-            </Col>
-
-            <Col
-              onClick={(e) => {
-                e.preventDefault();
-                Router.push({
-                  pathname: `search`,
-                  query: {
-                    longitude: LongitudeSaoPaul,
-                    latitude: LatitudeSaoPaul,
-                    location_name: "Sao Paulo, Brazil",
-                  },
-                });
-              }}
-              xl={4}
-              lg={4}
-              className={HomeCss.midImage}
-            >
-              <h6 className={HomeCss.midImgTitle}>
-                <span
-                  onClick={(e) => {
-                    e.preventDefault();
-                    Router.push({
-                      pathname: `search`,
-                      query: {
-                        longitude: LongitudeSaoPaul,
-                        latitude: LatitudeSaoPaul,
-                        location_name: "Sao Paulo, Brazil",
-                      },
-                    });
-                  }}
-                >
-                  Sao Paulo, Brazil{" "}
-                </span>
-              </h6>
-            </Col>
-
-            <Col xl={4} lg={4} className={HomeCss.twoImgContainer}>
-              <div>
-                <h6
-                  onClick={(e) => {
-                    e.preventDefault();
-                    Router.push({
-                      pathname: `search`,
-                      query: {
-                        longitude: SpainMadridLongitude,
-                        latitude: SpainMadridLatitude,
-                        location_name: "The Madrid EDITION, Spain",
-                      },
-                    });
-                  }}
-                  className={HomeCss.madridImg}
-                >
-                  <span
-                    onClick={(e) => {
-                      e.preventDefault();
-                      Router.push({
-                        pathname: `search`,
-                        query: {
-                          longitude: SpainMadridLongitude,
-                          latitude: SpainMadridLatitude,
-                          location_name: "The Madrid EDITION, Spain",
-                        },
-                      });
-                    }}
-                  >
-                    The Madrid EDITION, Spain{" "}
-                  </span>
-                </h6>
-              </div>
-              <div>
-                <h6
-                  onClick={(e) => {
-                    e.preventDefault();
-                    Router.push({
-                      pathname: `search`,
-                      query: {
-                        longitude: AnaheimLongitude,
-                        latitude: AnaheimLatitude,
-                        location_name: "The Westin Anaheim Resort, USA",
-                      },
-                    });
-                  }}
-                  className={HomeCss.resortImg}
-                >
-                  <span
-                    onClick={(e) => {
-                      e.preventDefault();
-                      Router.push({
-                        pathname: `search`,
-                        query: {
-                          longitude: AnaheimLongitude,
-                          latitude: AnaheimLatitude,
-                          location_name: "The Westin Anaheim Resort, USA",
-                        },
-                      });
-                    }}
-                  >
-                    The Westin Anaheim Resort, USA{" "}
-                  </span>
-                </h6>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </main>
-
-      {/* --------------------------------------    CARD SECTION   -----------------------------   */}
+      {/* --------------------------------------    RESERVE A FEATURED   -----------------------------   */}
 
       <div div className={HomeCss.cardBg}>
         <Container>

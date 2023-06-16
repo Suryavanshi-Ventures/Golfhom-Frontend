@@ -118,7 +118,6 @@ const Index = () => {
     }
   };
 
-
   const onGolfCourseChanged = () => {
     if (searchGolfResult != null) {
       const place = searchGolfResult.getPlace();
@@ -157,7 +156,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => { };
+    return () => {};
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -178,8 +177,10 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -194,7 +195,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     param.from,
     param.guest,
@@ -217,7 +218,7 @@ const Index = () => {
       setAdult(parseInt(param.adults));
       setChild(parseInt(param.childs));
     }
-  })
+  });
 
   const incInfant = () => {
     setInfant(infant + 1);
@@ -300,9 +301,12 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${
+          "to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -546,9 +550,12 @@ const Index = () => {
                   className={SearchIndexCss.edit_details_container_cols}
                 >
                   <div className={SearchIndexCss.edit_details_divs}>
-                    <p className={SearchIndexCss.edit_details_titles}>{adult + child + infant + pet} Guests</p>
+                    <p className={SearchIndexCss.edit_details_titles}>
+                      {adult + child + infant + pet} Guests
+                    </p>
                     <ReactDropdown
-                      className={SearchIndexCss.edit_details_inputs_container}>
+                      className={SearchIndexCss.edit_details_inputs_container}
+                    >
                       <ReactDropdown.Toggle
                         className={SearchIndexCss.inner_input_box}
                         id="dropdown-basic"
@@ -556,7 +563,7 @@ const Index = () => {
                         onChange={(e) =>
                           onChangeGuest(parseInt(e.target.value))
                         }
-                      // value={guest}
+                        // value={guest}
                       >
                         Please select guests
                       </ReactDropdown.Toggle>
@@ -863,7 +870,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}
@@ -874,12 +882,13 @@ const Index = () => {
                                 CarasoulMapCss.price_of_property_text_from
                               }
                             >
-                              From $
+                              From{" "}
                               <span
                                 className={
                                   CarasoulMapCss.price_of_property_text
                                 }
                               >
+                                $
                                 {data.price >= 0.5
                                   ? Math.ceil(data.price)
                                   : Math.floor(data.price)}
@@ -890,7 +899,8 @@ const Index = () => {
                             <h4
                               onClick={(e) => {
                                 Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${data.id
+                                  `search/${encodeURIComponent(data.name)}/${
+                                    data.id
                                   }`
                                 );
                               }}
@@ -906,7 +916,8 @@ const Index = () => {
                           <div
                             onClick={(e) => {
                               Router.push(
-                                `search/${encodeURIComponent(data.name)}/${data.id
+                                `search/${encodeURIComponent(data.name)}/${
+                                  data.id
                                 }`
                               );
                             }}

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Index from "./home";
+import Index from "./home/home";
 
 export default function Home() {
   return (
