@@ -936,3 +936,17 @@
     justify-content: center;
   }
 }
+
+.modalButton {
+  width: 100%;
+  background: #C2C2C2;
+  font-weight: 600;
+  font-size: 1.4rem;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.modalButton:hover {
+  background-color: var(--black-btn-color) !important;
+  border: none;
+}

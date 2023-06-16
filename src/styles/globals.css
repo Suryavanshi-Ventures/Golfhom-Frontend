@@ -65,6 +65,10 @@
   transform: translate(-50%, -50%); */
 }
 
+.ant-modal-footer {
+  padding: 0px 40px 10px;
+}
+
 .ant-modal-header,
 .ant-modal-title {
   background-color: var(--btn-background-secondary) !important;
