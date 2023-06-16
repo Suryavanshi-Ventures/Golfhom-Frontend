@@ -88,6 +88,9 @@ const ViewProperty = () => {
   const [NextPaxFinalAvailPriceBreakDown, setNextPaxFinalAvailPriceBreakDown] =
     useState({});
   const [NightsCounter, setNightsCounter] = useState(0);
+  const [StartingFromPrice, setStartingFromPrice] = useState(0);
+  const [IsReserveVisible, setIsReserveVisible] = useState(true);
+
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
@@ -107,6 +110,12 @@ const ViewProperty = () => {
           SetSpecificPropAPIData(SpecificPropData.data);
 
           if (SpecificPropData.data.data.externalPropertyType === "Nextpax") {
+            setStartingFromPrice(
+              SpecificPropData.data.data?.price >= 0.5
+                ? Math.ceil(SpecificPropData.data.data?.price)
+                : Math.floor(SpecificPropData.data.data?.price)
+            );
+
             setPropertyType("Nextpax");
           } else {
             setPropertyType("Rental");
@@ -116,10 +125,6 @@ const ViewProperty = () => {
           if (Params.from || Params.to) {
             //* IF THE EXTERNAL PROPERTY TYPE IS NEXTPAX THAN CALLING NEXTPAX AVAILABILITY API
             if (SpecificPropData.data.data.externalPropertyType === "Nextpax") {
-              console.log(
-                SpecificPropData.data.data.externalPropertyType,
-                "SAFFFFFFFFFFFFFFF"
-              );
               const CheckAvail = async () => {
                 try {
                   const CheckAvailRes = await axios.get(
@@ -361,7 +366,6 @@ const ViewProperty = () => {
       const StartDate = moment(DateValue[0]); // Replace with your start date
       const EndDate = moment(DateValue[1]); // Replace with your end date
       setNightsCounter(EndDate.diff(StartDate, "days") || 0);
-
       SetBookingDate([DateValue[0], DateValue[1]]);
       console.log(SpecificPropAPIData.data?.externalPropertyType);
       if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
@@ -405,6 +409,9 @@ const ViewProperty = () => {
             if (CheckAvailRes.status === 201) {
               if (CheckAvailRes.data.data.available) {
                 setNextPaxFinalAvailPriceBreakDown(CheckAvailRes.data.data);
+                setStartingFromPrice(CheckAvailRes?.data?.data?.breakdown?.adr);
+
+                console.log("FINAL AVAIL API DATA", CheckAvailRes.data.data);
                 setAvailable(true);
                 setNotAvailable(false);
                 setShowTotalPaymentTextStatic(true);
@@ -582,11 +589,11 @@ const ViewProperty = () => {
               <div className={ViewPropertyCss.totalParent}>
                 <div className={ViewPropertyCss.totalPrice}>
                   <div className={ViewPropertyCss.amount}>
+                    <p className={ViewPropertyCss.starting_from_text}>
+                      Starting From
+                    </p>
                     <h4 className={ViewPropertyCss.totalTitle_h5}>
-                      $
-                      {SpecificPropAPIData.data?.price >= 0.5
-                        ? Math.ceil(SpecificPropAPIData.data?.price)
-                        : Math.floor(SpecificPropAPIData.data?.price)}
+                      ${StartingFromPrice}
                       <span className={ViewPropertyCss.night_price}>night</span>
                     </h4>
                   </div>
@@ -1132,142 +1139,14 @@ const ViewProperty = () => {
                 ""
               )}
 
-              <div className={ViewPropertyCss.bookParent}>
-                <Button
-                  disabled={!Available}
-                  className={ViewPropertyCss.bookNow}
-                  onClick={
-                    PropertyType === "Rental" ? CreatePatymentIntent : test
-                  }
-                >
-                  Reserve
-                </Button>
-              </div>
-
-              {/* <p className={ViewPropertyCss.message}>You won't be charged yet</p>
-
-              <div className={ViewPropertyCss.final_pricing}>
-                <div>
-                  <p>$400 * 5 nights</p>
-                  <p>Cleaning fee</p>
-                  <p>Service fee</p>
-                </div>
-                <div>
-                  <p>$2,000</p>
-                  <p>$175</p>
-                  <p>$307</p>
-                </div>
-              </div>
-              <hr />
-
-              <div className={ViewPropertyCss.total}>
-                <p>Total before taxes</p>
-                <p>$2,482</p>
-              </div> */}
-
-              <div className={ViewPropertyCss.contactParent}>
-                {/* -----------      CONTACT TO HOST SECTION        -----------------*/}
-                <Modal
-                  title="Contact to host"
-                  footer={null}
-                  open={isModalOpen}
-                  onSignup={handleContact}
-                  onCancel={handleCancelContact}
-                  width={440}
-                  centered={true}
-                  className={ViewPropertyCss.headerReg}
-                >
-                  <Col className={ViewPropertyCss.inputParent}>
-                    <div>
-                      <Input
-                        className={ViewPropertyCss.inputA}
-                        type="text"
-                        placeholder="Name"
-                      />
-                    </div>
-
-                    <div>
-                      <Input
-                        className={ViewPropertyCss.inputB}
-                        type="email"
-                        placeholder="Email"
-                      />
-                    </div>
-
-                    <div>
-                      <Input
-                        className={ViewPropertyCss.inputC}
-                        type="tel"
-                        placeholder="Phone Number"
-                      />
-                    </div>
-
-                    <div className={ViewPropertyCss.inputDParent}>
-                      <TextArea
-                        className={ViewPropertyCss.inputD}
-                        type="address"
-                        placeholder="Message"
-                        rows="3"
-                        cols="50"
-                      />
-                    </div>
-                  </Col>
-
-                  <Row>
-                    <div className={ViewPropertyCss.agreeBox}>
-                      <Checkbox className={ViewPropertyCss.agreeOptionB}>
-                        I agree with your Privacy Policy
-                      </Checkbox>
-                    </div>
-                  </Row>
-
-                  <Link
-                    href="/"
-                    className={ViewPropertyCss.registerLink}
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <div className={ViewPropertyCss.registBtnParent}>
-                      <Button className={ViewPropertyCss.registerBtn}>
-                        Submit
-                      </Button>
-                    </div>
-                  </Link>
-                </Modal>
-                <Space>
-                  <Button
-                    className={ViewPropertyCss.contact}
-                    onClick={showContact}
-                  >
-                    Contact to host
-                  </Button>
-                </Space>
-              </div>
-
-              {/* STATIC TOTAL CHARGES DIV */}
-              {ShowOtherDetailsStatic ? (
-                <>
-                  <StaticPriceBreakDown
-                    data={NextPaxFinalAvailPriceBreakDown}
-                  />
-                </>
-              ) : (
-                ""
-              )}
-
               {/* STATIC TOTAL DIV */}
               {ShowTotalPaymentTextStatic ? (
                 <>
-                  <hr />
-
                   <div className={ViewPropertyCss.total_price_main_div}>
                     <div className={ViewPropertyCss.total_price_text_div}>
                       <h5 className={ViewPropertyCss.total_price_text}>
                         $
-                        {`${
-                          SpecificPropAPIData.data?.price >= 0.5
-                            ? Math.ceil(SpecificPropAPIData.data?.price)
-                            : Math.floor(SpecificPropAPIData.data?.price)
-                        }
+                        {`${StartingFromPrice}
                          X ${NightsCounter} night`}
                       </h5>
                       <p className={ViewPropertyCss.total_price_inc_tax_text}>
@@ -1278,14 +1157,7 @@ const ViewProperty = () => {
                       <p className={ViewPropertyCss.total_price}>
                         {" "}
                         <strong>
-                          $
-                          {SpecificPropAPIData.data?.price >= 0.5
-                            ? Math.ceil(
-                                SpecificPropAPIData.data?.price * NightsCounter
-                              )
-                            : Math.floor(
-                                SpecificPropAPIData.data?.price * NightsCounter
-                              )}
+                          ${StartingFromPrice * NightsCounter}
                         </strong>{" "}
                       </p>
                       <p
@@ -1305,11 +1177,21 @@ const ViewProperty = () => {
                 ""
               )}
 
+              {/* STATIC TOTAL CHARGES DIV */}
+              {ShowOtherDetailsStatic ? (
+                <>
+                  <StaticPriceBreakDown
+                    data={NextPaxFinalAvailPriceBreakDown}
+                  />
+                </>
+              ) : (
+                ""
+              )}
+
               {/* NEXTPAX API PAYMENT PORTAL */}
               {PropertyType === "Nextpax" &&
               ShowNextpaxPropertyPaymentPortal ? (
                 <>
-                  <hr />
                   <PaymentForm
                     data={{
                       propertyId: SpecificPropAPIData.data?.id,
@@ -1318,6 +1200,7 @@ const ViewProperty = () => {
                       total_guests: Params.guests || adult + child + infant,
                     }}
                   />
+                  <hr />
                 </>
               ) : (
                 <div className={ViewPropertyCss.checkout_payment_main_div}>
@@ -1343,6 +1226,102 @@ const ViewProperty = () => {
                     </Elements>
                   )}
                 </div>
+              )}
+
+              {IsReserveVisible ? (
+                <section>
+                  <div className={ViewPropertyCss.bookParent}>
+                    <Button
+                      disabled={!Available}
+                      className={ViewPropertyCss.bookNow}
+                      onClick={
+                        PropertyType === "Rental" ? CreatePatymentIntent : test
+                      }
+                    >
+                      Reserve
+                    </Button>
+                  </div>
+
+                  <div className={ViewPropertyCss.contactParent}>
+                    {/* -----------      CONTACT TO HOST SECTION        -----------------*/}
+                    <Modal
+                      title="Contact to host"
+                      footer={null}
+                      open={isModalOpen}
+                      onSignup={handleContact}
+                      onCancel={handleCancelContact}
+                      width={440}
+                      centered={true}
+                      className={ViewPropertyCss.headerReg}
+                    >
+                      <Col className={ViewPropertyCss.inputParent}>
+                        <div>
+                          <Input
+                            className={ViewPropertyCss.inputA}
+                            type="text"
+                            placeholder="Name"
+                          />
+                        </div>
+
+                        <div>
+                          <Input
+                            className={ViewPropertyCss.inputB}
+                            type="email"
+                            placeholder="Email"
+                          />
+                        </div>
+
+                        <div>
+                          <Input
+                            className={ViewPropertyCss.inputC}
+                            type="tel"
+                            placeholder="Phone Number"
+                          />
+                        </div>
+
+                        <div className={ViewPropertyCss.inputDParent}>
+                          <TextArea
+                            className={ViewPropertyCss.inputD}
+                            type="address"
+                            placeholder="Message"
+                            rows="3"
+                            cols="50"
+                          />
+                        </div>
+                      </Col>
+
+                      <Row>
+                        <div className={ViewPropertyCss.agreeBox}>
+                          <Checkbox className={ViewPropertyCss.agreeOptionB}>
+                            I agree with your Privacy Policy
+                          </Checkbox>
+                        </div>
+                      </Row>
+
+                      <Link
+                        href="/"
+                        className={ViewPropertyCss.registerLink}
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <div className={ViewPropertyCss.registBtnParent}>
+                          <Button className={ViewPropertyCss.registerBtn}>
+                            Submit
+                          </Button>
+                        </div>
+                      </Link>
+                    </Modal>
+                    <Space>
+                      <Button
+                        className={ViewPropertyCss.contact}
+                        onClick={showContact}
+                      >
+                        Contact to host
+                      </Button>
+                    </Space>
+                  </div>
+                </section>
+              ) : (
+                ""
               )}
             </Col>
           </Row>
@@ -2117,9 +2096,7 @@ const ViewProperty = () => {
             </Row>
           </Container>
         </section>
-
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
-
         <BottomSection />
       </main>
     </>

@@ -4,7 +4,6 @@ import moment from "moment";
 
 const StaticPriceBreakDown = (props) => {
   const [NightsCounter, setNightsCounter] = useState(0);
-
   useEffect(() => {
     const startDate = moment(props?.data?.arrivalDate); // Replace with your start date
     const endDate = moment(props?.data?.departureDate); // Replace with your end date
@@ -13,20 +12,8 @@ const StaticPriceBreakDown = (props) => {
     return () => {};
   }, [props?.data?.arrivalDate, props?.data?.departureDate]);
 
-  console.log(props?.data?.arrivalDate, "FROM STATIC BREAKDOWN PAGE");
   return (
     <>
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Total Nights
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>{NightsCounter}</p>
-        </div>
-      </div>
-
       <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
@@ -86,22 +73,6 @@ const StaticPriceBreakDown = (props) => {
             $
             {props?.data?.breakdown?.taxes?.total
               ? props?.data?.breakdown?.taxes?.total
-              : 0}
-          </p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Base Amount
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>
-            $
-            {props?.data?.breakdown?.rentOnly
-              ? props?.data?.breakdown?.rentOnly
               : 0}
           </p>
         </div>
