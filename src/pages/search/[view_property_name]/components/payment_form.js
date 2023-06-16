@@ -419,7 +419,7 @@ const PaymentForm = (props) => {
               </Col>
 
               {/* HOUSE NUMBER */}
-              <Col md={6} sm={12}>
+              <Col md={12} sm={12}>
                 <Form.Item
                   className={
                     PaymentFormCss.checkout_payment_nextpax_payment_form_items

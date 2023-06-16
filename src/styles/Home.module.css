@@ -334,106 +334,11 @@
 
 /* --------------------------------------- SEARCH CONTAINER ----------------------------------  */
 
-.search_by_golf_input_parent_container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.search_by_golf_cols {
-  margin-bottom: 2rem;
-}
-
-.search_by_golf_input_container {
-  width: 100%;
-  max-width: 250px;
-  font-family: var(--font-poppins);
-}
-
-.search_by_golf_input_container_select {
-  margin-bottom: 30px;
-  width: 100%;
-  font-family: var(--font-poppins);
-}
-
 .search_by_golf_input_container_tourni {
   width: 100%;
   font-family: var(--font-poppins);
 }
 
-.search_by_golf_input_search_by_tourni {
-  flex-direction: row-reverse;
-  height: 45px;
-  width: 100%;
-  border-radius: 2px !important;
-  margin-bottom: 2rem;
-  font-family: var(--font-poppins);
-  justify-content: space-between;
-  background-color: var(--white-btn-font-color);
-  color: var(--black-btn-color);
-  padding: 0px 14px;
-}
-
-.search_by_golf_btn {
-  height: auto;
-  background-color: var(--btn-background-secondary);
-  padding: 0.6rem 2rem;
-  border-radius: 4px;
-  font-weight: 500;
-  font-family: var(--font-poppins);
-  letter-spacing: 1px;
-  font-size: 15px;
-  color: var(--white-btn-font-color);
-  border: none;
-}
-.search_by_golf_btn:hover {
-  background-color: var(--black-btn-color);
-  color: var(--white-btn-font-color) !important;
-}
-
-.search_by_golf_course_Section {
-  margin: 5rem 0;
-}
-
-.searchSection {
-  background-image: url("https://golf-hom-latest-assets.s3.amazonaws.com/images/shot.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 500px;
-}
-
-.searchSection_overlay {
-  backdrop-filter: brightness(0.5);
-  padding: 5rem;
-}
-.search_by_golf_inputs {
-  flex-direction: row-reverse;
-  height: 40px;
-  border-radius: 2px;
-  margin-bottom: 2rem;
-  font-family: var(--font-poppins);
-  color: var(--black-btn-color);
-}
-
-.content {
-  color: var(--white-font-color);
-}
-
-.Title {
-  margin-bottom: 66px;
-  font-family: var(--font-poppins);
-}
-
-.search_by_golf_input_container_headings {
-  font-family: var(--font-poppins);
-  margin-bottom: 24px;
-}
-
-.search_by_golf_input_container_subheadings {
-  font-family: var(--font-poppins);
-  font-size: 15px;
-  margin-bottom: 20px;
-}
 .searchPart {
   display: flex;
   justify-content: space-evenly;
@@ -965,7 +870,8 @@
     gap: 8px;
   }
 
-  .videoPlay, .search_bar_img_div {
+  .videoPlay,
+  .search_bar_img_div {
     height: 80vh !important;
   }
 }
@@ -976,8 +882,8 @@
   }
 }
 
-@media only screen and  (max-width: 375px) {
+@media only screen and (max-width: 375px) {
   .search_bar_main_container {
     top: 108px !important;
   }
-} 
+}
