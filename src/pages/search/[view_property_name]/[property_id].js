@@ -118,6 +118,11 @@ const ViewProperty = () => {
 
             setPropertyType("Nextpax");
           } else {
+            setStartingFromPrice(
+              SpecificPropData.data.data?.price >= 0.5
+                ? Math.ceil(SpecificPropData.data.data?.price)
+                : Math.floor(SpecificPropData.data.data?.price)
+            );
             setPropertyType("Rental");
           }
 
