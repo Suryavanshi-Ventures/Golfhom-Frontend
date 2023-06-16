@@ -216,7 +216,6 @@ const Index = () => {
     if (param.adults || param.childs) {
       setAdult(parseInt(param.adults));
       setChild(parseInt(param.childs));
-    } else {
     }
   })
 
