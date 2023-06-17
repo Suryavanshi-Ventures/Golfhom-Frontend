@@ -5,7 +5,7 @@ import { React, useState } from "react";
 import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
 
-const NewPaymentForm = () => {
+const NewPaymentForm = (props) => {
   console.log(props, " PaymentForm");
   const [modal, contextHolder] = Modal.useModal();
   const [IsLoading, setIsLoading] = useState(false);
