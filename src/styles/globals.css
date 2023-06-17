@@ -52,17 +52,14 @@
 }
 
 /* ANT POPUP MODAL LIKE LOGIN */
-.ant-modal {
-  /* margin-top: 150px !important; */
+
+.ant-modal-confirm-body-wrapper {
+  padding: 15px !important;
 }
 
 /* ANT DESIGN TITLE */
 .ant-modal-content {
   padding: 0px !important;
-  /* position: fixed !important;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
 }
 
 .ant-modal-footer {

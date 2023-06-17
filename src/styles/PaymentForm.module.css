@@ -62,3 +62,17 @@
   background-color: var(--btn-background-secondary);
   color: var(--white-btn-font-color) !important;
 }
+
+/* BOOKING CONFIRM MODAL */
+.booking_confirm_text {
+  font-family: var(--font-poppins) !important;
+}
+
+.booking_confirm_text_value {
+  font-family: var(--font-poppins) !important;
+  font-weight: 500;
+}
+.booking_confirm_page_refresh_text {
+  font-family: var(--font-poppins) !important;
+  color: var(--btn-background-secondary);
+}

@@ -90,6 +90,7 @@ const StaticPriceBreakDown = (props) => {
           </p>
         </div>
       </div>
+      <hr />
     </>
   );
 };

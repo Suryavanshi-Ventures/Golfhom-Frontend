@@ -1,5 +1,13 @@
 import { React, useState } from "react";
-import { Input, Button, Form, message, DatePicker, InputNumber } from "antd";
+import {
+  Input,
+  Button,
+  Form,
+  message,
+  DatePicker,
+  InputNumber,
+  Modal,
+} from "antd";
 import dayjs from "dayjs";
 import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
@@ -8,12 +16,71 @@ const { TextArea } = Input;
 
 const PaymentForm = (props) => {
   console.log(props, " PaymentForm");
+  const [modal, contextHolder] = Modal.useModal();
   const [IsLoading, setIsLoading] = useState(false);
   const [form2] = Form.useForm();
   // const DynamicYear = dayjs().format("YY");
   // const DynamicMonth = dayjs().format("M");
   const DynamicYear = 16;
   const DynamicMonth = 2;
+
+  const countDown = (props) => {
+    let secondsToGo = 8;
+    const instance = modal.success({
+      title: "Booking Confirmed!",
+      content: (
+        <>
+          <p className={PaymentFormCss.booking_confirm_text}>
+            Booking ID:{" "}
+            <span className={PaymentFormCss.booking_confirm_text_value}>
+              {props?.id}
+            </span>
+          </p>
+          <p className={PaymentFormCss.booking_confirm_text}>
+            Booking Number:{" "}
+            <span className={PaymentFormCss.booking_confirm_text_value}>
+              {props?.bookingNumber}
+            </span>
+          </p>
+          <p className={PaymentFormCss.booking_confirm_text}>
+            The page will refresh in {secondsToGo} please do not refresh the
+            page.
+          </p>
+        </>
+      ),
+      footer: null,
+    });
+    const timer = setInterval(() => {
+      secondsToGo -= 1;
+      instance.update({
+        content: (
+          <>
+            <p className={PaymentFormCss.booking_confirm_text}>
+              Booking ID:{" "}
+              <span className={PaymentFormCss.booking_confirm_text_value}>
+                {props?.id}
+              </span>
+            </p>
+            <p className={PaymentFormCss.booking_confirm_text}>
+              Booking Number:{" "}
+              <span className={PaymentFormCss.booking_confirm_text_value}>
+                {props?.bookingNumber}
+              </span>
+            </p>
+            <p className={PaymentFormCss.booking_confirm_page_refresh_text}>
+              The page will automatically refresh in {secondsToGo} please do not
+              refresh the page.
+            </p>
+          </>
+        ),
+      });
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(timer);
+      // instance.destroy();
+      window.location.reload();
+    }, secondsToGo * 1000);
+  };
 
   const OnClickPay = async (values) => {
     console.log("Success:", values);
@@ -51,7 +118,8 @@ const PaymentForm = (props) => {
         CreateBookingRes.data.data.bookingNumber
       ) {
         setIsLoading(false);
-        message.success("Booking Confirmed!");
+        // message.success("Booking Confirmed!");
+        countDown(CreateBookingRes.data.data);
       } else {
         setIsLoading(false);
       }
@@ -61,6 +129,7 @@ const PaymentForm = (props) => {
         setIsLoading(false);
       } else {
         message.error(error.response.data.message);
+        countDown();
       }
       console.log("ERROR: IN CREATE BOOKING API", error);
       setIsLoading(false);
@@ -90,12 +159,12 @@ const PaymentForm = (props) => {
 
   return (
     <>
-      <hr />
       <section className={PaymentFormCss.checkout_payment_nextpax_section}>
         <div className={PaymentFormCss.checkout_payment_nextpax_main_div}>
           <h4 className={PaymentFormCss.checkout_payment_nextpax_heading}>
             Payment details
           </h4>
+
           <Form
             name="payment_form_nextpax"
             form={form2}
