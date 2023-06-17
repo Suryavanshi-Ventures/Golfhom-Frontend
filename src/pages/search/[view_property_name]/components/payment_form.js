@@ -164,7 +164,7 @@ const PaymentForm = (props) => {
           <h4 className={PaymentFormCss.checkout_payment_nextpax_heading}>
             Payment details
           </h4>
-
+          {contextHolder}
           <Form
             name="payment_form_nextpax"
             form={form2}
