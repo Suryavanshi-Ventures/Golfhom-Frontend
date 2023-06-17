@@ -523,6 +523,9 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 1.3rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .cardBg {
@@ -543,7 +546,7 @@
   cursor: pointer;
 }
 .cardImg {
-  min-height: 255px;
+  min-height: 300px;
 }
 
 .icon {

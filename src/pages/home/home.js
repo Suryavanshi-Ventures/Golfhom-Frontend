@@ -55,7 +55,7 @@ const Home = () => {
         const GetPropertyDataRes = await axios.get(
           `${
             process.env.NEXT_PUBLIC_API_URL
-          }/v1/property?limit=6&latitude=${34.098967}&longitude=${-118.246683}`
+          }/v1/property?limit=6&latitude=${52.3757}&longitude=${5.2171655}`
         );
         if (GetPropertyDataRes.status === 200) {
           setAllPropertyData(GetPropertyDataRes.data.data);
@@ -447,7 +447,8 @@ const Home = () => {
 
       {/* --------------------------------------    RESERVE A FEATURED   -----------------------------   */}
 
-      <div div className={HomeCss.cardBg}>
+      {/*//! ORIGINAL ONE  */}
+      {/* <div div className={HomeCss.cardBg}>
         <Container>
           <h3 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h3>
           <Row>
@@ -471,6 +472,101 @@ const Home = () => {
                     <Card.Body>
                       <Card.Title className={HomeCss.cardImgTitle}>
                         {data.name}
+                      </Card.Title>
+
+                      <div>
+                        <p className={HomeCss.saddle}>
+                          {" "}
+                          Saddlebrook Resort - Saddlebrook & 1 more
+                        </p>
+
+                        <div className={HomeCss.icon}>
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/bed.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              {data.bedrooms ? data.bedrooms : 1} Bed Rooms
+                            </span>
+                          </div>
+
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/bath-tub.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              {data.bathrooms ? data.bathrooms : 1} Baths
+                            </span>
+                          </div>
+
+                          <div className={HomeCss.iconImg}>
+                            <Image
+                              width={18}
+                              height={18}
+                              src="/images/vector/guest.svg"
+                              alt="iconImage"
+                            ></Image>
+                            <span className={HomeCss.iconImg_spans}>
+                              {data.accomodation ? data.accomodation : 1} Guests
+                              Villa
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className={HomeCss.parking}>
+                          <Image
+                            width={20}
+                            height={14}
+                            className={HomeCss.rightArrow}
+                            src="./images/vector/right_arrow.svg"
+                            alt="iconImage"
+                          ></Image>
+                        </div>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
+      </div> */}
+
+      {/*//! TEMPRORY NEXT PAX DATA  FOR DEMO */}
+      <div div className={HomeCss.cardBg}>
+        <Container>
+          <h3 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h3>
+          <Row>
+            {AllPropertyData.map((data, i) => {
+              return (
+                <Col md={5} lg={4} key={i}>
+                  <Card
+                    onClick={() => {
+                      Router.push(
+                        `search/${encodeURIComponent(data.name)}/${data.id}`
+                      );
+                    }}
+                    className={HomeCss.MainCard}
+                  >
+                    <Card.Img
+                      variant="top"
+                      className={HomeCss.cardImg}
+                      src={
+                        data.imageUrl
+                          ? data.imageUrl
+                          : "/images/noImageFound.png"
+                      }
+                      alt="Bed Image"
+                    />
+                    <Card.Body>
+                      <Card.Title className={HomeCss.cardImgTitle}>
+                        {`${data.name} (${data.externalPropertyType})`}
                       </Card.Title>
 
                       <div>
