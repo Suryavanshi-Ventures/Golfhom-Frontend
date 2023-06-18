@@ -1,4 +1,4 @@
-import { Form, Input, Select, message, Modal } from "antd";
+import { Form, Input, Button, message, Modal, DatePicker } from "antd";
 import { Col, Row } from "react-bootstrap";
 import NewPaymentCss from "../../../../styles/NewPayment.module.css";
 import { React, useState } from "react";
@@ -75,56 +75,56 @@ const NewPaymentForm = (props) => {
 
   const OnClickPay = async (values) => {
     console.log("Success:", values);
-    setIsLoading(true);
-    try {
-      const Token =
-        localStorage.getItem("token") || sessionStorage.getItem("token");
-      console.log(Token);
-      const CreateBookingRes = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/createBooking`,
-        {
-          id: props.data.propertyId,
-          from: props.data.from,
-          to: props.data.to,
-          guest: props.data.total_guests,
-          cardCVC: values.payment_card_cvc_code,
-          cardType: values.payment_card_type.toUpperCase(),
-          cardNumber: values.payment_card_number,
-          cardExpirationYear: values.payment_card_exp_year,
-          cardExpirationMonth: values.payment_card_exp_month,
-          cardHolderName: values.payment_card_holder_name,
-          mainBooker: {
-            countryCode: values.payment_card_country_code,
-            zipCode: values.payment_card_zip_code,
-            houseNumber: values.payment_card_house_number,
-            street: values.payment_card_street_address,
-            place: values.payment_card_city,
-            stateProv: values.payment_card_state,
-          },
-        },
-        { headers: { Authorization: `Bearer ${Token}` } }
-      );
-      // * SUCCESS API RESPONSE
-      if (
-        CreateBookingRes.status === 201 &&
-        CreateBookingRes.data.data.bookingNumber
-      ) {
-        setIsLoading(false);
-        countDown(CreateBookingRes.data.data); //* BOOKING CONFRIM MODAL METHOD
-      } else {
-        setIsLoading(false);
-      }
-    } catch (error) {
-      if (error.response.status === 401) {
-        message.error("Please login to book hotels!");
-        setIsLoading(false);
-      } else {
-        message.error(error.response.data.message);
-        countDown();
-      }
-      console.log("ERROR: IN CREATE BOOKING API", error);
-      setIsLoading(false);
-    }
+    // setIsLoading(true);
+    // try {
+    //   const Token =
+    //     localStorage.getItem("token") || sessionStorage.getItem("token");
+    //   console.log(Token);
+    //   const CreateBookingRes = await axios.post(
+    //     `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/createBooking`,
+    //     {
+    //       id: props.data.propertyId,
+    //       from: props.data.from,
+    //       to: props.data.to,
+    //       guest: props.data.total_guests,
+    //       cardCVC: values.payment_card_cvc_code,
+    //       cardType: values.payment_card_type.toUpperCase(),
+    //       cardNumber: values.payment_card_number,
+    //       cardExpirationYear: values.payment_card_exp_year,
+    //       cardExpirationMonth: values.payment_card_exp_month,
+    //       cardHolderName: values.payment_card_holder_name,
+    //       mainBooker: {
+    //         countryCode: values.payment_card_country_code,
+    //         zipCode: values.payment_card_zip_code,
+    //         houseNumber: values.payment_card_house_number,
+    //         street: values.payment_card_street_address,
+    //         place: values.payment_card_city,
+    //         stateProv: values.payment_card_state,
+    //       },
+    //     },
+    //     { headers: { Authorization: `Bearer ${Token}` } }
+    //   );
+    //   // * SUCCESS API RESPONSE
+    //   if (
+    //     CreateBookingRes.status === 201 &&
+    //     CreateBookingRes.data.data.bookingNumber
+    //   ) {
+    //     setIsLoading(false);
+    //     countDown(CreateBookingRes.data.data); //* BOOKING CONFRIM MODAL METHOD
+    //   } else {
+    //     setIsLoading(false);
+    //   }
+    // } catch (error) {
+    //   if (error.response.status === 401) {
+    //     message.error("Please login to book hotels!");
+    //     setIsLoading(false);
+    //   } else {
+    //     message.error(error.response.data.message);
+    //     countDown();
+    //   }
+    //   console.log("ERROR: IN CREATE BOOKING API", error);
+    //   setIsLoading(false);
+    // }
   };
 
   const OnClickPayFaild = (errorInfo) => {
@@ -153,20 +153,23 @@ const NewPaymentForm = (props) => {
       {/* BOOKING CONFIRM MODAL */}
       {contextHolder}
 
-      <Form className={NewPaymentCss.parentForm}>
+      <Form
+        name="payment_form_nextpax"
+        form={form2}
+        className={NewPaymentCss.parentForm}
+        onFinish={OnClickPay}
+      >
         {/* Card Holder Name */}
         <Col md={12}>
           <Form.Item
             label="Card Holder Name"
             className={NewPaymentCss.labelName}
+            name="payment_card_holder_name"
+            required={true}
             rules={[
               {
-                type: "text",
-                message: "Enter Card Holder Name",
-              },
-              {
                 required: true,
-                message: "Please Enter Card Holder Name",
+                message: "Please enter your username!",
               },
             ]}
             labelCol={{ span: 24 }}
@@ -184,15 +187,22 @@ const NewPaymentForm = (props) => {
           <Form.Item
             label="Card Number"
             className={NewPaymentCss.labelName}
+            name="payment_card_number"
             rules={[
               {
-                type: "text",
-                message: "Please enter Card Number",
-              },
-              {
                 required: true,
-                message: "Please enter your Card Number",
+                message: "Please enter your card number!",
               },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (value.length > 16) {
+                    return Promise.reject(
+                      new Error("Card number can not be more than 16 digit!")
+                    );
+                  }
+                  return Promise.resolve();
+                },
+              }),
             ]}
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
@@ -206,7 +216,7 @@ const NewPaymentForm = (props) => {
 
         <Row>
           {/* Exp. Date */}
-          <Col md={6}>
+          <Col md={4}>
             <Form.Item
               label="Exp. Date"
               className={NewPaymentCss.labelName}
@@ -223,15 +233,22 @@ const NewPaymentForm = (props) => {
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
-              <Input
-                placeholder="Expiry Date"
+              <DatePicker
+                onChange={(date) =>
+                  form2.setFieldsValue({
+                    payment_card_exp_year: dayjs(date).format("YY"),
+                  })
+                }
+                format={"YY"}
+                placeholder={`${DynamicYear}`}
                 className={NewPaymentCss.inputName}
+                picker="year"
               />
             </Form.Item>
           </Col>
 
           {/* CVC */}
-          <Col md={6}>
+          <Col md={4}>
             <Form.Item
               label="CVC"
               className={NewPaymentCss.labelName}
@@ -251,31 +268,30 @@ const NewPaymentForm = (props) => {
               <Input placeholder="CVC" className={NewPaymentCss.inputName} />
             </Form.Item>
           </Col>
+          {/* Card Type */}
+          <Col md={4}>
+            <Form.Item
+              label="Card Type"
+              className={NewPaymentCss.labelName}
+              rules={[
+                {
+                  type: "dropdown",
+                  message: "Card Type",
+                },
+                {
+                  required: true,
+                },
+              ]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+            >
+              <Input
+                placeholder="Select Card Type"
+                className={NewPaymentCss.inputName}
+              />
+            </Form.Item>
+          </Col>
         </Row>
-
-        {/* Card Type */}
-        <Col md={12}>
-          <Form.Item
-            label="Card Type"
-            className={NewPaymentCss.labelName}
-            rules={[
-              {
-                type: "dropdown",
-                message: "Card Type",
-              },
-              {
-                required: true,
-              },
-            ]}
-            labelCol={{ span: 24 }}
-            wrapperCol={{ span: 24 }}
-          >
-            <Input
-              placeholder="Select Card Type"
-              className={NewPaymentCss.inputName}
-            />
-          </Form.Item>
-        </Col>
 
         {/* Address Line */}
         <Col md={12}>
@@ -367,6 +383,24 @@ const NewPaymentForm = (props) => {
               <Input placeholder="" className={NewPaymentCss.inputName} />
             </Form.Item>
           </Col>
+
+          <Form.Item>
+            <div
+              className={
+                NewPaymentCss.checkout_payment_nextpax_payment_pay_btn_div
+              }
+            >
+              <Button
+                loading={IsLoading}
+                className={
+                  NewPaymentCss.checkout_payment_nextpax_payment_pay_btn
+                }
+                htmlType="submit"
+              >
+                Pay
+              </Button>
+            </div>
+          </Form.Item>
         </Row>
       </Form>
     </>

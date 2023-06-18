@@ -39,7 +39,6 @@ const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
 import dynamic from "next/dynamic";
-import NewPaymentForm from "./components/NewPaymentForm";
 
 const BottomSection = dynamic(
   () => import("../../../../common components/bottomGroup"),
@@ -50,7 +49,9 @@ const BottomSection = dynamic(
 const PaymentForm = dynamic(() => import("./components/payment_form"), {
   suspense: true,
 });
-
+const NewPaymentForm = dynamic(() => import("./components/NewPaymentForm"), {
+  suspense: true,
+});
 const StaticPriceBreakDown = dynamic(
   () => import("./components/StaticPriceBreakDown"),
   {
@@ -85,7 +86,9 @@ const ViewProperty = () => {
     ShowNextpaxPropertyPaymentPortal,
     setShowNextpaxPropertyPaymentPortal,
   ] = useState(false);
-  const [AvailDate, setAvailDate] = useState([]);
+  const [AvailDateNextpax, setAvailDateNextpax] = useState([]);
+  const [AvailDateRental, setAvailDateRental] = useState([]);
+
   const [NextPaxFinalAvailPriceBreakDown, setNextPaxFinalAvailPriceBreakDown] =
     useState({});
   const [NightsCounter, setNightsCounter] = useState(0);
@@ -377,6 +380,7 @@ const ViewProperty = () => {
       if (SpecificPropAPIData.data?.externalPropertyType === "Nextpax") {
         const initialdate = DateFormater(DateValue[0]);
         const finaldate = DateFormater(DateValue[1]);
+
         let newdatesarray = [];
         let i = initialdate;
         while (i !== finaldate) {
@@ -387,7 +391,7 @@ const ViewProperty = () => {
         newdatesarray.push(finaldate);
         let iserror = false;
         newdatesarray.map((i) => {
-          if (!AvailDate.includes(i)) iserror = true;
+          if (!AvailDateNextpax.includes(i)) iserror = true;
         });
 
         if (iserror) {
@@ -433,30 +437,31 @@ const ViewProperty = () => {
                 `${error.response.data.message}, Please login to book hotels!`
               );
             }
-            console.log(error, "ERROR CheckAvailability");
+            console.log(error, "ERROR CheckAvailability NEXTPAX");
           }
         };
         CheckAvail();
       } else {
-        //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
-        console.log("ON DATE CHANGE INTPUT RENTAL");
+        console.log("CALL RENTAL PRICING API NOW");
         const CheckAvail = async () => {
           try {
             const CheckAvailRes = await axios.get(
-              `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${Params.property_id}?from=${DateValue[0]}&to=${DateValue[1]}`
+              `${process.env.NEXT_PUBLIC_API_URL}/v1/rentalunited/price?id=${Params.property_id}&from=${DateValue[0]}&to=${DateValue[1]}`
             );
-            if (CheckAvailRes.status === 200) {
+            if (CheckAvailRes.status === 201) {
               setAvailabilityCalender(CheckAvailRes.data.data.calender);
-              if (CheckAvailRes.data?.data?.available) {
-                setAvailable(true);
-                setNotAvailable(false);
-              } else if (CheckAvailRes.data?.data?.available != true) {
-                setAvailable(false);
-                setNotAvailable(true);
-              }
+              setAvailable(true);
+              setNotAvailable(false);
+              setStartingFromPrice(CheckAvailRes?.data?.data?.avgPerNight);
+            } else {
+              setAvailable(false);
+              setNotAvailable(true);
             }
           } catch (error) {
-            console.log(error, "ERROR CheckAvailability");
+            setAvailable(false);
+            setNotAvailable(true);
+            message.error("Internal error, Something went wrong!");
+            console.log(error, "ERROR CheckAvailability RENTAL");
           }
         };
         CheckAvail();
@@ -464,35 +469,59 @@ const ViewProperty = () => {
     }
   };
 
-  //! AVAILABLE CHECK FOR NEXTPAX
-  const FetchAvailableDateNextPax = async (
+  //! API CALL AVAILABILITY CHECK
+  const FetchAvailableDate = async (
     date1 = moment().startOf("month").format("MM-DD-YYYY"),
     date2 = moment().endOf("month").add(1, "month").format("MM-DD-YYYY")
   ) => {
-    const data = await axios({
-      method: "GET",
-      url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${
-        Params.property_id
-      }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
-        "MM-DD-YYYY"
-      )}`,
-    }).then((res) => {
-      if (res.status === 200) {
-        const data = res.data?.data?.data?.[0]
-          ? res.data?.data?.data?.[0]?.availability?.map((i) => i.date)
-          : [];
-        data.splice(0, 10);
-        setAvailDate(data);
-      }
-    });
+    if (PropertyType === "Nextpax") {
+      console.log("NEXTPAX");
+      const data = await axios({
+        method: "GET",
+        url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${
+          Params.property_id
+        }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
+          "MM-DD-YYYY"
+        )}`,
+      }).then((res) => {
+        if (res.status === 200) {
+          const AvailDataNextpax = res.data?.data?.data?.[0]
+            ? res.data?.data?.data?.[0]?.availability?.map((i) => i.date)
+            : [];
+
+          AvailDataNextpax?.splice(0, 10);
+          setAvailDateNextpax(AvailDataNextpax);
+        }
+      });
+    } else if (PropertyType === "Rental") {
+      console.log("RENTAL");
+      const data = await axios({
+        method: "GET",
+        url: `${
+          process.env.NEXT_PUBLIC_API_URL
+        }/v1/rentalunited/availability?id=${Params.property_id}&from=${moment(
+          date1
+        ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
+      }).then((res) => {
+        if (res.status === 201) {
+          const data = res.data.data;
+
+          const AvailDateRental = data
+            .filter((Object) => Object.IsBlocked === "false")
+            .map((Object) => Object.Date);
+          //! FINAL WORKING
+          // let finaldata = data.filter((data, ind) => {
+          //   return data.IsBlocked === "false";
+          // });
+
+          // finaldata = finaldata.map((data, ind) => {
+          //   return data.Date;
+          // });
+          setAvailDateRental(AvailDateRental);
+        }
+      });
+    }
   };
-
-  // // Callback function to disable dates
-  // const disabledDate = (current) => {
-  //   const formattedDate = current.format("YYYY-MM-DD");
-
-  //   return !AvailDate.includes(formattedDate);
-  // };
 
   // New Payment modal
   const [newPayment, setNewPayment] = useState(false);
@@ -500,7 +529,7 @@ const ViewProperty = () => {
     setNewPayment(true);
   };
   const handlePay = () => {
-    setNewPayment(false);
+    // setNewPayment(false);
   };
   const handleCancel = () => {
     setNewPayment(false);
@@ -665,7 +694,11 @@ const ViewProperty = () => {
                         format={"MM-DD-YYYY"}
                         disabledDate={(current) => {
                           const formattedDate = current.format("YYYY-MM-DD");
-                          return !AvailDate.includes(formattedDate);
+                          if (PropertyType === "Nextpax") {
+                            return !AvailDateNextpax.includes(formattedDate);
+                          } else if (PropertyType === "Rental") {
+                            return !AvailDateRental.includes(formattedDate);
+                          }
                         }}
                         onOpenChange={(res) => {
                           if (res) {
@@ -675,9 +708,7 @@ const ViewProperty = () => {
                             const date2 =
                               SaveDateInState[1] ||
                               moment().endOf("month").add(2, "M");
-                            PropertyType === "Nextpax"
-                              ? FetchAvailableDateNextPax(date1, date2)
-                              : null;
+                            FetchAvailableDate(date1, date2);
                           }
                         }}
                         onPanelChange={(current) => {
@@ -694,7 +725,7 @@ const ViewProperty = () => {
                             .add(2, "M")
                             .format("MM-DD-YYYY");
                           setSaveDateInState([date1, date2]);
-                          FetchAvailableDateNextPax(date1, date2);
+                          FetchAvailableDate(date1, date2);
                         }}
                       />
                     </Form.Item>
@@ -1259,26 +1290,17 @@ const ViewProperty = () => {
                     </Button>
                   </div>
 
-                  {/* <Button
+                  <Button
                     className={ViewPropertyCss.bookNow}
                     onClick={paymentModal}
                   >
                     New Payment
-                  </Button> */}
+                  </Button>
                   <Modal
                     title="Payment Method"
                     open={newPayment}
                     onCancel={handleCancel}
-                    footer={[
-                      <Button
-                        key="submit"
-                        type="primary"
-                        onClick={handlePay}
-                        className={ViewPropertyCss.modalButton}
-                      >
-                        Pay
-                      </Button>,
-                    ]}
+                    footer={null}
                   >
                     <NewPaymentForm />
                   </Modal>

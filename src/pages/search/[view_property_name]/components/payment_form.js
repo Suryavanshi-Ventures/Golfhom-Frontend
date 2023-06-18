@@ -340,13 +340,12 @@ const PaymentForm = (props) => {
               className={
                 PaymentFormCss.checkout_payment_nextpax_payment_form_items
               }
+              label="Card Holder Name"
               name="payment_card_holder_name"
               required={true}
-              label="Card Holder Name"
               rules={[
                 {
                   required: true,
-
                   message: "Please input your username!",
                 },
               ]}
