@@ -153,7 +153,11 @@ const TabContentOverview = (PropData) => {
                 Description
               </h4>
               <TextArea
-                value={PropData.data?.description?.replace(/\*|BR|BA|#|/g, "")}
+                value={
+                  PropData.data?.description?.replace(/\*|BR|BA|#|/g, "")
+                    ? PropData.data?.description
+                    : "N/A"
+                }
                 placeholder="Controlled autosize"
                 className={ViewPropertyCss.about_section_para}
                 autoSize={{
