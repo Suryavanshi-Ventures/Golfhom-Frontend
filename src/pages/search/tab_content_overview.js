@@ -43,8 +43,10 @@ const TabContentOverview = (PropData) => {
               : "N/A"
           })`}
         </h3>
-        <p className={ViewPropertyCss.owner_name}>
-          Golf Course Vicinity:{" "}
+        <div className={ViewPropertyCss.host_name_div}>
+          <span className={ViewPropertyCss.owner_name}>
+            Golf Course Vicinity:{" "}
+          </span>{" "}
           <span className={ViewPropertyCss.owner_name_text}>
             <span className={ViewPropertyCss.more_golfcourse_name_text}>
               {GolfCourseData.map((data, index) =>
@@ -54,14 +56,14 @@ const TabContentOverview = (PropData) => {
                 .join(",  ")}
             </span>
           </span>
-        </p>
-        <p className={ViewPropertyCss.owner_name}>
-          Host:{" "}
+        </div>
+
+        <div className={ViewPropertyCss.host_name_div}>
+          <span className={ViewPropertyCss.owner_name}>Host: </span>
           <span className={ViewPropertyCss.owner_name_text}>
             {PropData?.data?.ownerName ? PropData?.data?.ownerName : "N/A"}
           </span>
-        </p>
-
+        </div>
         {/* PROP AMENITES DETAILS  */}
         <Row className={ViewPropertyCss.amenities_details_row}>
           <Col md={"auto"} className={ViewPropertyCss.amenities_details_cols}>
@@ -143,7 +145,6 @@ const TabContentOverview = (PropData) => {
             </div>
           </Col>
         </Row>
-
         {/* ABOUT SECTION START HERE */}
         <Row className={ViewPropertyCss.about_section_row}>
           <Col className={ViewPropertyCss.about_section_cols}>

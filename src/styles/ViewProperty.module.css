@@ -876,10 +876,13 @@
   color: var(--light-font-color);
 }
 
+.host_name_div {
+  margin: 20px 0;
+}
+
 .owner_name {
   font-family: var(--font-poppins);
-  font-weight: 500;
-
+  font-weight: 600;
   color: var(--black-color);
 }
 
