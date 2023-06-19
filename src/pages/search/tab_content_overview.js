@@ -5,8 +5,33 @@ import ViewPropBathroomIcon from "../../../public/images/vector/bathroom_icon.sv
 import { Input } from "antd";
 const { TextArea } = Input;
 import Image from "next/image";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const TabContentOverview = (PropData) => {
+  const [GolfCourseData, setGolfCourseData] = useState([{}]);
+
+  useEffect(() => {
+    const GetGolfCourseByLatLong = async () => {
+      try {
+        const GetGolfCourseRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?&latitude=${PropData.data.latitude}&longitude=${PropData.data.longitude}`
+        );
+        if (GetGolfCourseRes.status === 200) {
+          setGolfCourseData(GetGolfCourseRes.data.data);
+          console.log(GetGolfCourseRes.data.data.splice(0, 5));
+        }
+      } catch (error) {
+        console.log("ERROR: GETTING GOLFCOURSE", error);
+      }
+    };
+    GetGolfCourseByLatLong();
+
+    return () => {
+      GetGolfCourseByLatLong();
+    };
+  }, [PropData?.data?.latitude, PropData?.data?.longitude]);
+
   return (
     <>
       <main className={ViewPropertyCss.tabOverviewSection}>
@@ -18,14 +43,27 @@ const TabContentOverview = (PropData) => {
               : "N/A"
           })`}
         </h3>
-        <p className={ViewPropertyCss.tabOverviewPropSmallSubheading}>
-          Golf Course Vicinity:{" "}
-          {PropData.golfCourseName ? PropData.golfCourseName : "N/A"}
-        </p>
-        <p className={ViewPropertyCss.tabOverviewPropSubheading}>
-          {PropData && PropData.description ? PropData.description : "N/A"}
-        </p>
+        <div className={ViewPropertyCss.host_name_div}>
+          <span className={ViewPropertyCss.owner_name}>
+            Golf Course Vicinity:{" "}
+          </span>{" "}
+          <span className={ViewPropertyCss.owner_name_text}>
+            <span className={ViewPropertyCss.more_golfcourse_name_text}>
+              {GolfCourseData.map((data, index) =>
+                data.club_name ? data.club_name : "N/A"
+              )
+                .splice(0, 5)
+                .join(",  ")}
+            </span>
+          </span>
+        </div>
 
+        <div className={ViewPropertyCss.host_name_div}>
+          <span className={ViewPropertyCss.owner_name}>Host: </span>
+          <span className={ViewPropertyCss.owner_name_text}>
+            {PropData?.data?.ownerName ? PropData?.data?.ownerName : "N/A"}
+          </span>
+        </div>
         {/* PROP AMENITES DETAILS  */}
         <Row className={ViewPropertyCss.amenities_details_row}>
           <Col md={"auto"} className={ViewPropertyCss.amenities_details_cols}>
@@ -107,7 +145,6 @@ const TabContentOverview = (PropData) => {
             </div>
           </Col>
         </Row>
-
         {/* ABOUT SECTION START HERE */}
         <Row className={ViewPropertyCss.about_section_row}>
           <Col className={ViewPropertyCss.about_section_cols}>

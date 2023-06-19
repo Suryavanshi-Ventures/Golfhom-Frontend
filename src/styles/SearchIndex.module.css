@@ -40,10 +40,11 @@
   color: var(--black-btn-color) !important;
 }
 
-.inner_input_box:active, .inner_input_box:focus  {
+.inner_input_box:active,
+.inner_input_box:focus {
   background-color: var(--white-background) !important;
   color: var(--black-btn-color) !important;
-   border-color: var(--btn-background) !important;
+  border-color: var(--btn-background) !important;
 }
 
 .edit_details_btn {
@@ -127,10 +128,15 @@
   display: flex;
 }
 
-.orlandoHead {
-  padding: 32px 14px;
+.location_name {
+  /* padding: 32px 14px; */
+  margin-top: 15px;
   font-family: var(--font-poppins);
   font-weight: 600;
+}
+.golfcourse_name {
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
 }
 
 .mainOrland {
@@ -247,20 +253,20 @@
   gap: 10px; */
 }
 
-  .adultChild {
-    width: 100%;
-    padding: 0px 18px 18px;
-  }
+.adultChild {
+  width: 100%;
+  padding: 0px 18px 18px;
+}
 
-  .increase {
-    flex-wrap: wrap;
-    width: 100%;
-    display: flex;
-    align-items: baseline;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 14px;
-  }
+.increase {
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 14px;
+}
 
 .geust_incri_btns_p {
   margin-bottom: 5px;

@@ -207,9 +207,10 @@
 }
 
 /* ANT DESIGN INPUT */
-
 .ant-input {
   border: 1px solid var(--dark-grey-font);
+  font-family: var(--font-poppins);
+  font-size: 14px !important;
 }
 
 .ant-input-suffix {
@@ -231,7 +232,6 @@
 }
 
 /* FOR INPUT NUMBER OF ANT DESGIN */
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
@@ -289,6 +289,11 @@ input[type="number"]::-webkit-outer-spin-button {
 .ant-select-single {
   width: 100% !important;
 }
+:where(.css-w8mnev).ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-search-input {
+  height: 100% !important;
+}
 
 /* DATE PICKER IN VIEW PROPERTY PAGE */
 .rmdp-range {
@@ -317,11 +322,21 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 100%;
 }
 
-/* Ant Design Selector  */
+/* ANTD SELECTOR  */
 .ant-select-selector {
   border-radius: 2px !important;
   height: 100% !important;
   border: 1px solid var(--btn-background-secondary) !important;
+  align-items: center;
+}
+
+:where(.css-dev-only-do-not-override-w8mnev).ant-select-single:not(
+    .ant-select-customize-input
+  )
+  .ant-select-selector
+  .ant-select-selection-search-input {
+  height: 100% !important;
+  font-family: var(--font-poppins);
 }
 
 /* ANT IMAGE */
