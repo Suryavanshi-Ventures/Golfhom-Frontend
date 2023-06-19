@@ -1298,6 +1298,7 @@ const ViewProperty = () => {
                     open={newPayment}
                     onCancel={handleCancel}
                     footer={null}
+                    centered={true}
                   >
                     <NewPaymentForm />
                   </Modal>

@@ -4,6 +4,7 @@ import NewPaymentCss from "../../../../styles/NewPayment.module.css";
 import { React, useState } from "react";
 import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
+import dayjs from "dayjs";
 const NewPaymentForm = (props) => {
   console.log(props, " PaymentForm");
   const [modal, contextHolder] = Modal.useModal();
@@ -143,6 +144,10 @@ const NewPaymentForm = (props) => {
     console.log("Failed:", errorInfo);
     setIsLoading(false);
   };
+
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+  };
   return (
     <>
       {/* BOOKING CONFIRM MODAL */}
@@ -208,9 +213,9 @@ const NewPaymentForm = (props) => {
         </Col>
         <Row>
           {/* Exp. Date */}
-          <Col md={4}>
+          <Col md={6}>
             <Form.Item
-              label="Exp. Date"
+              label="Exp. Year"
               className={NewPaymentCss.labelName}
               rules={[
                 {
@@ -238,29 +243,43 @@ const NewPaymentForm = (props) => {
               />
             </Form.Item>
           </Col>
-          {/* CVC */}
-          <Col md={4}>
+
+          <Col md={6}>
             <Form.Item
-              label="CVC"
               className={NewPaymentCss.labelName}
+              name="payment_card_exp_month"
+              required={true}
+              label="Card Exp Month"
               rules={[
                 {
-                  type: "password",
-                  message: "***",
-                },
-                {
                   required: true,
-                  message: "Please enter CVC",
+                  message: "This Field Is Required!",
                 },
               ]}
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
-              <Input placeholder="CVC" className={NewPaymentCss.inputName} />
+              <DatePicker
+                format={"M"}
+                onChange={(date) => {
+                  console.log("date", dayjs(date).format("M"));
+                  form2.setFieldsValue({
+                    payment_card_exp_month: dayjs(date).format("M"),
+                  })
+                }
+                }
+                // onChange={onChange}
+                placeholder={`${DynamicMonth}`}
+                className={NewPaymentCss.inputName}
+                picker="month"
+              />
             </Form.Item>
           </Col>
+        </Row>
+
+        <Row>
           {/* Card Type */}
-          <Col md={4}>
+          <Col md={6}>
             <Form.Item
               label="Card Type"
               className={NewPaymentCss.labelName}
@@ -282,7 +301,30 @@ const NewPaymentForm = (props) => {
               />
             </Form.Item>
           </Col>
+
+          {/* CVC */}
+          <Col md={6}>
+            <Form.Item
+              label="CVC"
+              className={NewPaymentCss.labelName}
+              rules={[
+                {
+                  type: "password",
+                  message: "***",
+                },
+                {
+                  required: true,
+                  message: "Please enter CVC",
+                },
+              ]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+            >
+              <Input placeholder="CVC" className={NewPaymentCss.inputName} />
+            </Form.Item>
+          </Col>
         </Row>
+
         {/* Address Line */}
         <Col md={12}>
           <Form.Item
