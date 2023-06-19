@@ -289,6 +289,11 @@ input[type="number"]::-webkit-outer-spin-button {
 .ant-select-single {
   width: 100% !important;
 }
+:where(.css-w8mnev).ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-search-input {
+  height: 100% !important;
+}
 
 /* DATE PICKER IN VIEW PROPERTY PAGE */
 .rmdp-range {
