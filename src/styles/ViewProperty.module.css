@@ -875,6 +875,22 @@
   font-family: var(--font-poppins);
   color: var(--light-font-color);
 }
+.owner_name {
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+}
+
+.golfcourse_name_text {
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--light-font-color);
+}
+
+.more_golfcourse_text {
+  font-family: var(--font-poppins);
+  color: var(--black-color);
+  font-weight: 500;
+}
 
 .viewGallery {
   background-color: var(--white-font-color);
@@ -945,7 +961,7 @@
 
 .modalButton {
   width: 100%;
-  background: #C2C2C2;
+  background: #c2c2c2;
   font-weight: 600;
   font-size: 1.4rem;
   height: 50px;
