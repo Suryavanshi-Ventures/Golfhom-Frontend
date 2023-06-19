@@ -1,11 +1,111 @@
-import React from "react";
+import { React, useState } from "react";
 import SearchByGolfCourseCss from "../style/SearchByGolfCourse.module.css";
-import { Input, Space, Typography, Button, Select } from "antd";
+import {
+  Input,
+  Space,
+  Typography,
+  Button,
+  Select,
+  Skeleton,
+  message,
+} from "antd";
 import { Container, Col, Row } from "react-bootstrap";
 import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import { Autocomplete, useLoadScript } from "@react-google-maps/api";
+const placesLibrary = ["places"];
+import axios from "axios";
+import { AutoComplete as AntdAutoComplete } from "antd";
+import { useRouter } from "next/router";
 
 const SearchByGolfCourse = () => {
+  const RouterRef = useRouter();
+  const [GoogleGeoData, setGoogleGeoData] = useState({
+    latitude: "",
+    longitude: "",
+    location_name: "",
+    golfcourse_name: "",
+  });
+  const [InputValue, setInputValue] = useState({
+    search_input: "",
+  });
+  const [searchResult, setSearchResult] = useState("");
+  const [AllGolfCourseData, setAllGolfCourseData] = useState([{}]);
+  const [SelectedGolfCourse, setSelectedGolfCourse] = useState({});
+
+  //* GOOGLE SEARCH API FUNCTIONS
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`,
+    libraries: placesLibrary,
+  });
+
+  const onLoad = (autocomplete) => {
+    setSearchResult(autocomplete);
+  };
+
+  const GetGolfCourse = async (place) => {
+    const Latitude = place.geometry?.location.lat();
+    const Longitude = place.geometry?.location.lng();
+
+    try {
+      const GolfCourseRes = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?&latitude=${Latitude}&longitude=${Longitude}`
+      );
+
+      if (GolfCourseRes.status === 200) {
+        console.log(GolfCourseRes.data.data);
+        setAllGolfCourseData(GolfCourseRes.data.data);
+      }
+    } catch (error) {
+      console.log(error, "ERROR IN GOLF COURSE API");
+    }
+  };
+
+  const onPlaceChanged = () => {
+    if (searchResult != null) {
+      const place = searchResult.getPlace();
+      const name = place.name;
+      const status = place.business_status;
+      const formattedAddress = place.formatted_address;
+      setGoogleGeoData({
+        latitude: place.geometry?.location.lat(),
+        longitude: place.geometry?.location.lng(),
+        location_name: formattedAddress,
+      });
+      console.log(`Name: ${name}`);
+      console.log(`Business Status: ${status}`);
+      console.log(`Formatted Address: ${formattedAddress}`);
+      GetGolfCourse(place);
+      setInputValue({
+        search_input: formattedAddress,
+      });
+    } else {
+      message.error("Please enter text");
+    }
+  };
+  const OnSearchInputChange = (event) => {
+    console.log(event.target.value);
+    setInputValue(event.target.value);
+  };
+  //! GOOGLE SEARCH API FUNCTIONS END
+
+  const SearchByGolfCourse = () => {
+    if (GoogleGeoData?.location_name === "") {
+      message.error("Please enter any location!");
+      return;
+    } else {
+      RouterRef.push(
+        `/search?latitude=${encodeURIComponent(
+          GoogleGeoData?.latitude
+        )}&longitude=${encodeURIComponent(
+          GoogleGeoData?.longitude
+        )}&location_name=${GoogleGeoData?.location_name}&golfcourse_name=${
+          SelectedGolfCourse?.club_name
+        }&limit=10`
+      );
+    }
+  };
+
   return (
     <>
       <main className={SearchByGolfCourseCss.search_by_golf_course_Section}>
@@ -56,25 +156,58 @@ const SearchByGolfCourse = () => {
                               SearchByGolfCourseCss.search_by_golf_input_container
                             }
                           >
-                            <Input
-                              placeholder="Enter Location"
-                              prefix={<SearchOutlined />}
-                              className={
-                                SearchByGolfCourseCss.search_by_golf_inputs
-                              }
-                            />
+                            {isLoaded ? (
+                              <Autocomplete
+                                onPlaceChanged={onPlaceChanged}
+                                onLoad={onLoad}
+                              >
+                                <Input
+                                  className={
+                                    SearchByGolfCourseCss.search_by_golf_inputs
+                                  }
+                                  prefix={<SearchOutlined />}
+                                  size="large"
+                                  value={InputValue.search_input}
+                                  onChange={OnSearchInputChange}
+                                  name="search_input"
+                                  placeholder="Enter Location"
+                                />
+                              </Autocomplete>
+                            ) : (
+                              <Skeleton.Input active={true} size={"mid"} />
+                            )}
                           </div>
                           <div
                             className={
                               SearchByGolfCourseCss.search_by_golf_input_container
                             }
                           >
-                            <Input
-                              placeholder="Golf Course"
-                              prefix={<SearchOutlined />}
+                            <AntdAutoComplete
+                              dataSource={AllGolfCourseData.map(
+                                (item) => item.club_name
+                              )}
+                              onSelect={(value, option) => {
+                                const selectedData = AllGolfCourseData.find(
+                                  (item) => item.club_name === value
+                                );
+                                if (selectedData) {
+                                  setSelectedGolfCourse(selectedData); //* SETTING SELECTED GOLF COURSE OBJ
+
+                                  console.log(
+                                    selectedData,
+                                    "SELECTED GOLF OBJ"
+                                  );
+                                }
+                              }}
+                              filterOption={(inputValue, option) =>
+                                option.value
+                                  .toUpperCase()
+                                  .indexOf(inputValue.toUpperCase()) !== -1
+                              }
                               className={
                                 SearchByGolfCourseCss.search_by_golf_inputs
                               }
+                              placeholder="Golf Course"
                             />
                           </div>
                         </div>
@@ -85,6 +218,7 @@ const SearchByGolfCourse = () => {
                           }
                         >
                           <Button
+                            onClick={SearchByGolfCourse}
                             className={SearchByGolfCourseCss.search_by_golf_btn}
                           >
                             SEARCH

@@ -713,16 +713,17 @@ const Index = () => {
         </main>
       </section>
 
-      {/* -----------------------           HEAD IMAGE SECTION             ---------------------  */}
-
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
       <section className={SearchIndexCss.search_main_section}>
         <Container>
           <Row>
-            <h3 className={SearchIndexCss.orlandoHead}>
+            <h3 className={SearchIndexCss.location_name}>
               {param.location_name ? param.location_name : ""}
             </h3>
+            <p className={SearchIndexCss.golfcourse_name}>
+              {param.golfcourse_name ? param.golfcourse_name : ""}
+            </p>
             {/*    ----------------      CARD MAP SECTION      -------------------   */}
             <Col md={8}>
               <hr />
