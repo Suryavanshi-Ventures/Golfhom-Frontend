@@ -1,10 +1,16 @@
-import { Form, Input, Button, message, Modal, DatePicker } from "antd";
+import { Form, Input, Button, message, Modal, DatePicker, Select } from "antd";
 import { Col, Row } from "react-bootstrap";
 import NewPaymentCss from "../../../../styles/NewPayment.module.css";
 import { React, useState } from "react";
 import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
 import dayjs from "dayjs";
+import { validate, cardholderName, cvv, postalCode } from "card-validator";
+import moment from "moment";
+import { cardNumber } from "card-validator/dist/card-number";
+
+
+const { Option } = Select;
 const NewPaymentForm = (props) => {
   console.log(props, " PaymentForm");
   const [modal, contextHolder] = Modal.useModal();
@@ -148,6 +154,38 @@ const NewPaymentForm = (props) => {
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+
+  // VALIDATION CARD NUMBER
+  const [cardNumber, setCardNumber] = useState("");
+
+  const handleCardNumberChange = (e) => {
+    const { value } = e.target;
+    const digitsOnly = value.replace(/\D/g, "");
+    const formattedValue = digitsOnly
+      .substr(0, 16)
+      .replace(/(\d{4})(?=\d)/g, "$1 ");
+    setCardNumber(formattedValue);
+  };
+
+  const validateCardNumber = (value) => {
+    if (!value) {
+      return Promise.reject("");
+    }
+    if (value.replace(/\D/g, "").length < 16) {
+      return Promise.reject("Card number must be at least 16 digits");
+    }
+    return Promise.resolve();
+  };
+
+  // FOR YEAR
+  const currentYear = moment().year();
+  const startYear = currentYear;
+  const endYear = currentYear + 20;
+
+  // FOR MONTH
+  const currentMonth = moment().month();
+  const endOfMonth = moment().endOf("month");
+
   return (
     <>
       {/* BOOKING CONFIRM MODAL */}
@@ -170,37 +208,43 @@ const NewPaymentForm = (props) => {
                 required: true,
                 message: "Please enter your username!",
               },
+              ({ getFieldValue }) => ({
+                validator: async (_, value) => {
+                  if (!value || cardholderName(value).isValid) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error("Please enter a valid card holder name."));
+                },
+              }),
+              {
+                isPotentiallyValid: true,
+                isValid: true
+              },
             ]}
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
+
           >
             <Input
               placeholder="Enter Card Holder Name"
               className={NewPaymentCss.inputName}
+              onKeyUp={(e) => {
+                e.target.value = e.target.value.replace(/[0-9]/g, "");
+              }}
             />
           </Form.Item>
         </Col>
+
         {/* Card Number */}
         <Col md={12}>
           <Form.Item
             label="Card Number"
+            name="card_number"
             className={NewPaymentCss.labelName}
-            name="payment_card_number"
             rules={[
-              {
-                required: true,
-                message: "Please enter your card number!",
-              },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (value.length > 16) {
-                    return Promise.reject(
-                      new Error("Card number can not be more than 16 digit!")
-                    );
-                  }
-                  return Promise.resolve();
-                },
-              }),
+              { required: true, message: "Enter card number" },
+              { validator: (_, value) => validateCardNumber(value) },
+              { whitespace: true },
             ]}
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
@@ -208,6 +252,10 @@ const NewPaymentForm = (props) => {
             <Input
               placeholder="**** **** **** ****"
               className={NewPaymentCss.inputName}
+              minLength="16"
+              maxLength="16"
+              value={cardNumber}
+              onChange={handleCardNumberChange}
             />
           </Form.Item>
         </Col>
@@ -216,17 +264,25 @@ const NewPaymentForm = (props) => {
           <Col md={6}>
             <Form.Item
               label="Exp. Year"
+              required={true}
               className={NewPaymentCss.labelName}
               rules={[
                 {
-                  type: "text",
-                  message: "Exp. Date",
-                },
-                {
+                  type: "object",
                   required: true,
-                  message: "Please enter Exp. Date",
+                  message: "Please select Exp. Date",
                 },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    const selectedYear = value?.year();
+                    if (selectedYear && selectedYear < currentYear) {
+                      return Promise.reject(new Error("Selected year is expired"));
+                    }
+                    return Promise.resolve();
+                  },
+                }),
               ]}
+
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
@@ -237,9 +293,13 @@ const NewPaymentForm = (props) => {
                   })
                 }
                 format={"YY"}
-                placeholder={`${DynamicYear}`}
+                placeholder={currentYear.toString()}
                 className={NewPaymentCss.inputName}
                 picker="year"
+                disabledDate={(current) =>
+                  current && (current.year() < startYear || current.year() > endYear)
+                }
+
               />
             </Form.Item>
           </Col>
@@ -255,6 +315,15 @@ const NewPaymentForm = (props) => {
                   required: true,
                   message: "This Field Is Required!",
                 },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    const selectedMonth = moment(value).month();
+                    if (selectedMonth && selectedMonth < currentMonth) {
+                      return Promise.reject(new Error("Selected month is in the past"));
+                    }
+                    return Promise.resolve();
+                  },
+                }),
               ]}
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
@@ -264,14 +333,17 @@ const NewPaymentForm = (props) => {
                 onChange={(date) => {
                   console.log("date", dayjs(date).format("M"));
                   form2.setFieldsValue({
-                    payment_card_exp_month: dayjs(date).format("M"),
+                    payment_card_exp_month: date,
                   })
                 }
                 }
                 // onChange={onChange}
-                placeholder={`${DynamicMonth}`}
+                placeholder={moment().format("M")}
                 className={NewPaymentCss.inputName}
                 picker="month"
+                disabledDate={(current) =>
+                  current && current.isBefore(endOfMonth, "day")
+                }
               />
             </Form.Item>
           </Col>
@@ -295,10 +367,14 @@ const NewPaymentForm = (props) => {
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
-              <Input
+              <Select
                 placeholder="Select Card Type"
                 className={NewPaymentCss.inputName}
-              />
+              >
+                <Option value="visa">Visa</Option>
+                <Option value="mastercard">Mastercard</Option>
+                <Option value="amex">American Express</Option>
+              </Select>
             </Form.Item>
           </Col>
 
@@ -306,21 +382,19 @@ const NewPaymentForm = (props) => {
           <Col md={6}>
             <Form.Item
               label="CVC"
+              name="cvc"
               className={NewPaymentCss.labelName}
               rules={[
-                {
-                  type: "password",
-                  message: "***",
-                },
-                {
-                  required: true,
-                  message: "Please enter CVC",
-                },
+                { required: true, message: "Enter CVC" },
+                { len: 3, message: "CVC must be exactly 3 characters" },
               ]}
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
-              <Input placeholder="CVC" className={NewPaymentCss.inputName} />
+              <Input placeholder="cvc" className={NewPaymentCss.inputName}
+                minlength="3"
+                maxlength="3"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -329,6 +403,7 @@ const NewPaymentForm = (props) => {
         <Col md={12}>
           <Form.Item
             label="Address Line"
+            name="payment_card_street_address"
             className={NewPaymentCss.labelName}
             rules={[
               {
@@ -337,19 +412,24 @@ const NewPaymentForm = (props) => {
               },
               {
                 required: true,
+                message: "Enter Address",
               },
             ]}
             labelCol={{ span: 24 }}
             wrapperCol={{ span: 24 }}
           >
-            <Input placeholder="" className={NewPaymentCss.inputName} />
+            <Input placeholder="Street Address"
+              className={NewPaymentCss.inputName}
+            />
           </Form.Item>
         </Col>
         <Row>
+
           {/*   City */}
           <Col md={4}>
             <Form.Item
               label="City"
+              required={true}
               className={NewPaymentCss.labelName}
               rules={[
                 {
@@ -369,10 +449,12 @@ const NewPaymentForm = (props) => {
               />
             </Form.Item>
           </Col>
+
           {/* State */}
           <Col md={4}>
             <Form.Item
               label="State"
+              required={true}
               className={NewPaymentCss.labelName}
               rules={[
                 {
@@ -381,6 +463,7 @@ const NewPaymentForm = (props) => {
                 },
                 {
                   required: true,
+                  message: "Enter State",
                 },
               ]}
               labelCol={{ span: 24 }}
@@ -392,10 +475,12 @@ const NewPaymentForm = (props) => {
               />
             </Form.Item>
           </Col>
+
           {/* Zip code */}
           <Col md={4}>
             <Form.Item
               label="Zip code"
+              name="payment_card_zip_code"
               className={NewPaymentCss.labelName}
               rules={[
                 {
@@ -404,14 +489,20 @@ const NewPaymentForm = (props) => {
                 },
                 {
                   required: true,
+                  message: "Enter Zip Code",
                 },
               ]}
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
-              <Input placeholder="" className={NewPaymentCss.inputName} />
+              <Input placeholder="Zip Code" className={NewPaymentCss.inputName}
+                minlength="6"
+                maxlength="6"
+              />
             </Form.Item>
           </Col>
+
+          {/* Pay Button */}
           <Form.Item>
             <div
               className={
