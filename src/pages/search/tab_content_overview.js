@@ -53,15 +53,6 @@ const TabContentOverview = (PropData) => {
                 .splice(0, 5)
                 .join(",  ")}
             </span>
-
-            {GolfCourseData.length > 5 ? (
-              <span className={ViewPropertyCss.more_golfcourse_text}>
-                {" "}
-                And Many More
-              </span>
-            ) : (
-              ""
-            )}
           </span>
         </p>
         <p className={ViewPropertyCss.owner_name}>
