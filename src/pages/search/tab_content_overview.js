@@ -43,9 +43,9 @@ const TabContentOverview = (PropData) => {
               : "N/A"
           })`}
         </h3>
-        <p className={ViewPropertyCss.tabOverviewPropSmallSubheading}>
+        <p className={ViewPropertyCss.owner_name}>
           Golf Course Vicinity:{" "}
-          <span className={ViewPropertyCss.owner_name}>
+          <span className={ViewPropertyCss.owner_name_text}>
             <span className={ViewPropertyCss.more_golfcourse_name_text}>
               {GolfCourseData.map((data, index) =>
                 data.club_name ? data.club_name : "N/A"
@@ -56,7 +56,10 @@ const TabContentOverview = (PropData) => {
           </span>
         </p>
         <p className={ViewPropertyCss.owner_name}>
-          Host: {PropData?.data?.ownerName ? PropData?.data?.ownerName : "N/A"}
+          Host:{" "}
+          <span className={ViewPropertyCss.owner_name_text}>
+            {PropData?.data?.ownerName ? PropData?.data?.ownerName : "N/A"}
+          </span>
         </p>
 
         {/* PROP AMENITES DETAILS  */}

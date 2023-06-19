@@ -875,7 +875,15 @@
   font-family: var(--font-poppins);
   color: var(--light-font-color);
 }
+
 .owner_name {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+
+  color: var(--black-color);
+}
+
+.owner_name_text {
   font-family: var(--font-poppins);
   color: var(--light-font-color);
 }
@@ -883,7 +891,7 @@
 .golfcourse_name_text {
   font-weight: 500;
   font-family: var(--font-poppins);
-  color: var(--light-font-color);
+  color: var(--black-btn-color);
 }
 
 .more_golfcourse_text {
