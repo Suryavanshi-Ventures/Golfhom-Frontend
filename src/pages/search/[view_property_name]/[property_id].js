@@ -318,6 +318,7 @@ const ViewProperty = () => {
   const test = () => {
     console.log("TEST FUNCTION");
     setShowNextpaxPropertyPaymentPortal(true);
+    setNewPayment(true);
   };
 
   const CreatePatymentIntent = async () => {
@@ -525,9 +526,7 @@ const ViewProperty = () => {
 
   // New Payment modal
   const [newPayment, setNewPayment] = useState(false);
-  const paymentModal = () => {
-    setNewPayment(true);
-  };
+
   const handlePay = () => {
     // setNewPayment(false);
   };
@@ -1240,15 +1239,15 @@ const ViewProperty = () => {
               {PropertyType === "Nextpax" &&
               ShowNextpaxPropertyPaymentPortal ? (
                 <>
-                  <PaymentForm
+                  {/* <PaymentForm
                     data={{
                       propertyId: SpecificPropAPIData.data?.id,
                       from: BookingDate[0],
                       to: BookingDate[1],
                       total_guests: Params.guests || adult + child + infant,
                     }}
-                  />
-                  <hr />
+                  /> */}
+                  {/* <hr /> */}
                 </>
               ) : (
                 <div className={ViewPropertyCss.checkout_payment_main_div}>
@@ -1290,20 +1289,25 @@ const ViewProperty = () => {
                     </Button>
                   </div>
 
-                  {/* <Button
-                    className={ViewPropertyCss.bookNow}
-                    onClick={paymentModal}
-                  >
-                    New Payment
-                  </Button> */}
                   <Modal
                     title="Payment Method"
                     open={newPayment}
                     onCancel={handleCancel}
                     footer={null}
                     centered={true}
+                    maskClosable={false} // Set maskClosable to false to disable closing on outside click
                   >
-                    <NewPaymentForm />
+                    <NewPaymentForm
+                      data={{
+                        propertyId: SpecificPropAPIData.data?.id,
+                        from: BookingDate[0],
+                        to: BookingDate[1],
+                        total_guests: Params.guests || adult + child + infant,
+                        children: child,
+                        babies: infant,
+                        pets: 0,
+                      }}
+                    />
                   </Modal>
 
                   <div className={ViewPropertyCss.contactParent}>
