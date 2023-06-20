@@ -496,31 +496,42 @@ const ViewProperty = () => {
       });
     } else if (PropertyType === "Rental") {
       console.log("RENTAL");
+      const Token =
+        localStorage.getItem("token") || sessionStorage.getItem("token");
       const data = await axios({
         method: "GET",
+        headers: { Authorization: `Bearer ${Token}` },
         url: `${
           process.env.NEXT_PUBLIC_API_URL
         }/v1/rentalunited/availability?id=${Params.property_id}&from=${moment(
           date1
         ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
-      }).then((res) => {
-        if (res.status === 201) {
-          const data = res.data.data;
+      })
+        .then((res) => {
+          if (res.status === 201) {
+            const data = res.data.data;
 
-          const AvailDateRental = data
-            .filter((Object) => Object.IsBlocked === "false")
-            .map((Object) => Object.Date);
-          //! FINAL WORKING
-          // let finaldata = data.filter((data, ind) => {
-          //   return data.IsBlocked === "false";
-          // });
+            const AvailDateRental = data
+              .filter((Object) => Object.IsBlocked === "false")
+              .map((Object) => Object.Date);
+            //! FINAL WORKING
+            // let finaldata = data.filter((data, ind) => {
+            //   return data.IsBlocked === "false";
+            // });
 
-          // finaldata = finaldata.map((data, ind) => {
-          //   return data.Date;
-          // });
-          setAvailDateRental(AvailDateRental);
-        }
-      });
+            // finaldata = finaldata.map((data, ind) => {
+            //   return data.Date;
+            // });
+            setAvailDateRental(AvailDateRental);
+          }
+        })
+        .catch((err) => {
+          if (err.response.status === 401) {
+            message.error(
+              `${err.response.statusText}, Please login to book hotels!`
+            );
+          }
+        });
     }
   };
 
