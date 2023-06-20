@@ -1,12 +1,12 @@
 .grand {
   display: flex;
   justify-content: center;
-  padding: 50px 0px;
+  margin-bottom: 20px;
 }
 
 .parentRow {
-  justify-content: center;
-  width: 70%;
+  justify-content: space-between;
+  width: 90%;
 }
 
 .gifParent {
@@ -25,19 +25,34 @@
   text-align: center;
 }
 
+.details_main_cols {
+  box-shadow: 0px 0px 8px 1px #bdbdbd;
+  padding: 25px;
+  border-radius: 7px;
+  margin-bottom: 25px;
+  height: fit-content;
+}
+
 .payment_discription {
   color: var(--light-font-color);
   font-family: var(--font-poppins);
   font-weight: 400;
   text-align: center;
-  margin: 8px 0px 30px;
+  margin: 8px 0px 45px;
 }
 
 .amount_master {
   color: var(--light-font-color);
   font-family: var(--font-poppins);
   font-weight: 400;
-  text-align: center;
+  font-size: 16px;
+}
+.details_text_value {
+  color: var(--black-color);
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 16px;
+  text-align: end;
 }
 
 .transaction {
@@ -47,10 +62,13 @@
   text-align: center;
 }
 
+.from_and_to_main_div {
+}
+
 .total_payed_transaction {
   display: flex;
   justify-content: space-between;
-  margin: 30px 0px;
+  margin: 25px 0px;
 }
 
 .go_to_dashboard_div {

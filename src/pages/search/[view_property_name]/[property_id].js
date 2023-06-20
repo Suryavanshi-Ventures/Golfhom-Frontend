@@ -31,7 +31,7 @@ import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement } from "@stripe/react-stripe-js";
 const { RangePicker } = DatePicker;
-import Checkout from "../../../checkout";
+import Checkout from "../../../PaymentFormStripeRental";
 import moment from "moment";
 import dayjs from "dayjs";
 const stripePromise = loadStripe(
@@ -1295,12 +1295,14 @@ const ViewProperty = () => {
                     <NewPaymentForm
                       data={{
                         propertyId: SpecificPropAPIData.data?.id,
+                        poperty_name: SpecificPropAPIData.data?.name,
                         from: BookingDate[0],
                         to: BookingDate[1],
                         total_guests: Params.guests || adult + child + infant,
                         children: child,
+                        adult: adult,
                         babies: infant,
-                        pets: 0,
+                        pets: pet,
                         total_amount: StartingFromPrice * NightsCounter,
                       }}
                     />
