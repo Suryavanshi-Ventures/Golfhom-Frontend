@@ -45,6 +45,21 @@ const StaticPriceBreakDown = (props) => {
           </p>
         </div>
       </div>
+      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
+        <div className={StaticPriceBreakDownCss.total_price_text_div}>
+          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
+            Bed linen
+          </h5>
+        </div>
+        <div className={StaticPriceBreakDownCss.total_price_text_div}>
+          <p className={StaticPriceBreakDownCss.total_price}>
+            $
+            {props?.data?.breakdown?.charges?.itemized[1]?.value
+              ? props?.data?.breakdown?.charges?.itemized[1]?.value
+              : 0}
+          </p>
+        </div>
+      </div>
 
       <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
