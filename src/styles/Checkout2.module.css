@@ -9,7 +9,8 @@
   width: 90%;
 }
 
-.gifParent {
+.gifParent,
+.grand {
   display: flex;
   justify-content: center;
 }
