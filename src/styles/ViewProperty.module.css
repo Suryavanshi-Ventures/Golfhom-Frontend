@@ -886,6 +886,10 @@
   color: var(--black-color);
 }
 
+.owner_name:hover {
+  color: var(--btn-background-secondary);
+}
+
 .owner_name_text {
   font-family: var(--font-poppins);
   color: var(--light-font-color);
@@ -916,6 +920,11 @@
 }
 .club_detail_member {
   font-weight: 400 !important;
+}
+
+.title_of_modal {
+  color: var(--black-btn-color);
+  font-weight: 500;
 }
 
 .club_detail, .club_detail_member {

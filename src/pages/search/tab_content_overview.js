@@ -86,19 +86,19 @@ const TabContentOverview = (PropData) => {
                 {golfCourseDataModal ? (
                   <Row className={ViewPropertyCss.modal_data_parent_div}>
                     <Col md={6}>
-                      <p className={ViewPropertyCss.club_detail}>Club Name: {golfCourseDataModal.club_name}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>Address: {golfCourseDataModal.address}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>City: {golfCourseDataModal.city}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>State: {golfCourseDataModal.state}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>Country: {golfCourseDataModal.country}</p>
+                      <p className={ViewPropertyCss.club_detail}><span className={ViewPropertyCss.title_of_modal}>Club Name: </span>{golfCourseDataModal.club_name}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Address: </span>{golfCourseDataModal.address}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>City:</span> {golfCourseDataModal.city}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>State: </span>{golfCourseDataModal.state}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Country: </span>{golfCourseDataModal.country}</p>
                     </Col>
 
                     <Col md={6}>
-                      <p className={ViewPropertyCss.club_detail_member}>Club Membership: {golfCourseDataModal.club_membership}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>Email: {golfCourseDataModal.email_address}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>Phone: {golfCourseDataModal.phone}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>Number of Hole: {golfCourseDataModal.number_of_holes}</p>
-                      <p className={ViewPropertyCss.club_detail_member}>Website: {golfCourseDataModal.website}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Club Membership: </span>{golfCourseDataModal.club_membership}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Email: </span>{golfCourseDataModal.email_address}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Phone: </span>{golfCourseDataModal.phone}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Number of Hole: </span> {golfCourseDataModal.number_of_holes}</p>
+                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Website: </span>{golfCourseDataModal.website}</p>
                     </Col>
                   </Row>
                 ) : null}
