@@ -1,17 +1,18 @@
-import { Form, Input, Button, message, Modal, DatePicker, Select } from "antd";
+import { Form, Input, Button, message, DatePicker, Select } from "antd";
 import { Col, Row } from "react-bootstrap";
 import NewPaymentCss from "../../../../styles/NewPayment.module.css";
 import { React, useState } from "react";
 import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
-import dayjs from "dayjs";
 import { validate, cardholderName, cvv, postalCode } from "card-validator";
-import moment from "moment";
 import { cardNumber } from "card-validator/dist/card-number";
+import { useRouter } from "next/router";
 
 const { Option } = Select;
 const NewPaymentForm = (props) => {
-  const [modal, contextHolder] = Modal.useModal();
+  console.log("PROPS OF NEW PAYMENT:", props);
+
+  const [messageApi, contextHolder] = message.useMessage();
   const [IsLoading, setIsLoading] = useState(false);
   const [FormRef] = Form.useForm();
   const [OnDateChange, setOnDateChange] = useState({
@@ -20,69 +21,34 @@ const NewPaymentForm = (props) => {
   });
   const DynamicYear = 16;
   const DynamicMonth = 2;
+  const RouterRef = useRouter();
+  const [CardType, setCardType] = useState("");
 
-  console.log("PROPS OF NEW PAYMENT:", props);
-
-  const countDown = (BookingData) => {
-    let secondsToGo = 8;
-    const instance = modal.success({
-      title: "Booking Confirmed!",
-      content: (
-        <>
-          <p className={PaymentFormCss.booking_confirm_text}>
-            Booking ID:{" "}
-            <span className={PaymentFormCss.booking_confirm_text_value}>
-              {BookingData?.id}
-            </span>
-          </p>
-          <p className={PaymentFormCss.booking_confirm_text}>
-            Booking Number:{" "}
-            <span className={PaymentFormCss.booking_confirm_text_value}>
-              {BookingData?.bookingNumber}
-            </span>
-          </p>
-          <p className={PaymentFormCss.booking_confirm_text}>
-            The page will refresh in {secondsToGo} please do not refresh the
-            page.
-          </p>
-        </>
-      ),
-      footer: null,
+  const LoadingPopUp = (BookingData) => {
+    messageApi.open({
+      type: "loading",
+      content: "Redirecting please wait...",
+      duration: 0,
     });
-    const timer = setInterval(() => {
-      secondsToGo -= 1;
-      instance.update({
-        content: (
-          <>
-            <p className={PaymentFormCss.booking_confirm_text}>
-              Booking ID:{" "}
-              <span className={PaymentFormCss.booking_confirm_text_value}>
-                {BookingData?.id}
-              </span>
-            </p>
-            <p className={PaymentFormCss.booking_confirm_text}>
-              Booking Number:{" "}
-              <span className={PaymentFormCss.booking_confirm_text_value}>
-                {BookingData?.bookingNumber}
-              </span>
-            </p>
-            <p className={PaymentFormCss.booking_confirm_page_refresh_text}>
-              The page will automatically refresh in {secondsToGo} please do not
-              refresh the page.
-            </p>
-          </>
-        ),
-      });
-    }, 1000);
+
+    console.log("BOOKING DATA IN LOADING", props);
     setTimeout(() => {
-      clearInterval(timer);
-      // instance.destroy();
-      window.location.reload();
-    }, secondsToGo * 1000);
+      messageApi.destroy;
+      RouterRef.push({
+        pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
+        query: {
+          transaction_id: BookingData?.data?.data?.id,
+          booking_number: BookingData?.data?.data?.bookingNumber,
+          payment_method: CardType,
+          payment_status: BookingData?.data.status,
+          payment_amount: props.total_amount,
+        },
+      });
+    }, 4000);
   };
+
   const OnClickPay = async (values) => {
     console.log("Success:", values);
-
     setIsLoading(true);
     try {
       const Token =
@@ -121,8 +87,9 @@ const NewPaymentForm = (props) => {
         CreateBookingRes.status === 201 &&
         CreateBookingRes.data.data.bookingNumber
       ) {
+        setCardType(values.payment_card_type);
         setIsLoading(false);
-        countDown(CreateBookingRes.data.data); //* BOOKING CONFRIM MODAL METHOD
+        LoadingPopUp(CreateBookingRes);
       } else {
         setIsLoading(false);
       }
@@ -131,32 +98,21 @@ const NewPaymentForm = (props) => {
         message.error("Please login to book hotels!");
         setIsLoading(false);
       } else {
-        message.error(error.response.data.message);
-        countDown();
         setIsLoading(false);
+        message.error(error.response.data.message);
+        if (error.response.data.message === "Property is not available") {
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+        }
       }
+
       console.log("ERROR: IN CREATE BOOKING API", error);
       setIsLoading(false);
     }
   };
 
   const OnClickPayFaild = (errorInfo) => {
-    if (
-      errorInfo.values.payment_card_city ||
-      errorInfo.values.payment_card_country_code ||
-      errorInfo.values.payment_card_cvc_code ||
-      errorInfo.values.payment_card_exp_month ||
-      errorInfo.values.payment_card_exp_year ||
-      errorInfo.values.payment_card_holder_name ||
-      errorInfo.values.payment_card_house_number ||
-      errorInfo.values.payment_card_number ||
-      errorInfo.values.payment_card_state ||
-      errorInfo.values.payment_card_street_address ||
-      errorInfo.values.payment_card_type ||
-      errorInfo.values.payment_card_zip_code == undefined
-    ) {
-      message.error("Please fill all the required fields!");
-    }
     console.log("Failed:", errorInfo);
     setIsLoading(false);
   };
@@ -164,7 +120,7 @@ const NewPaymentForm = (props) => {
   // VALIDATION CARD NUMBER
   const [cardNumber, setCardNumber] = useState("");
 
-  const handleCardNumberChange = (e) => {
+  const OnCardNumberChange = (e) => {
     const { value } = e.target;
     const digitsOnly = value.replace(/\D/g, "");
     const formattedValue = digitsOnly
@@ -173,7 +129,7 @@ const NewPaymentForm = (props) => {
     setCardNumber(formattedValue);
   };
 
-  const validateCardNumber = (value) => {
+  const ValidateCardNumber = (value) => {
     if (!value) {
       return Promise.reject("");
     }
@@ -182,15 +138,6 @@ const NewPaymentForm = (props) => {
     }
     return Promise.resolve();
   };
-
-  // FOR YEAR
-  const currentYear = moment().year();
-  const startYear = currentYear;
-  const endYear = currentYear + 20;
-
-  // FOR MONTH
-  const currentMonth = moment().month();
-  const endOfMonth = moment().endOf("month");
 
   return (
     <>
@@ -251,7 +198,7 @@ const NewPaymentForm = (props) => {
             className={NewPaymentCss.labelName}
             rules={[
               { required: true, message: "Please enter your Card Number!" },
-              { validator: (_, value) => validateCardNumber(value) },
+              { validator: (_, value) => ValidateCardNumber(value) },
               { whitespace: true },
             ]}
             labelCol={{ span: 24 }}
@@ -263,7 +210,7 @@ const NewPaymentForm = (props) => {
               minLength="16"
               maxLength="16"
               value={cardNumber}
-              onChange={handleCardNumberChange}
+              onChange={OnCardNumberChange}
             />
           </Form.Item>
         </Col>
@@ -407,8 +354,8 @@ const NewPaymentForm = (props) => {
               <Input
                 placeholder="CVC"
                 className={NewPaymentCss.inputName}
-                minlength="3"
-                maxlength="4"
+                minLength="3"
+                maxLength="4"
               />
             </Form.Item>
           </Col>
