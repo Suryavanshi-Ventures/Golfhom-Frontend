@@ -279,7 +279,6 @@
 }
 
 .parent_State {
-  
 }
 
 .parentImage {
@@ -296,6 +295,9 @@
   bottom: 17px;
   border-radius: 0px 0px 16px 16px;
   color: var(--white-font-color);
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
   font-size: 20px;
 }
 
