@@ -215,7 +215,11 @@ const Header = ({ name, ...props }) => {
       }
     } catch (err) {
       //* IF LOGIN FAILED
-      message.error("Something went wrong!");
+      if (err.response.data.message === "Password is incorrect") {
+        message.error(err.response.data.message);
+      } else {
+        message.error(err.response.data.message);
+      }
       setLoadings(false);
     }
   };

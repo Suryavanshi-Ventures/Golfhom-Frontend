@@ -49,7 +49,7 @@ const SearchByGolfCourse = () => {
 
     try {
       const GolfCourseRes = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?&latitude=${Latitude}&longitude=${Longitude}`
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${Latitude}&longitude=${Longitude}&distance=20`
       );
 
       if (GolfCourseRes.status === 200) {
@@ -226,8 +226,8 @@ const SearchByGolfCourse = () => {
                         </div>
                       </div>
                     </Col>
-
-                    <Col
+                    {/*//* SEARCH BY TOURNAMENT SECTION  */}
+                    {/* <Col
                       md={6}
                       className={SearchByGolfCourseCss.search_by_golf_cols}
                     >
@@ -319,7 +319,7 @@ const SearchByGolfCourse = () => {
                           </Button>
                         </Link>
                       </div>
-                    </Col>
+                    </Col> */}
                   </Row>
                 </div>
               </div>

@@ -15,7 +15,7 @@ const TabContentOverview = (PropData) => {
     const GetGolfCourseByLatLong = async () => {
       try {
         const GetGolfCourseRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?&latitude=${PropData.data.latitude}&longitude=${PropData.data.longitude}`
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${PropData?.data?.latitude}&longitude=${PropData?.data?.longitude}&distance=20`
         );
         if (GetGolfCourseRes.status === 200) {
           setGolfCourseData(GetGolfCourseRes.data.data);

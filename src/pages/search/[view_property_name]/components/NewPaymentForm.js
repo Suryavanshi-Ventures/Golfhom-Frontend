@@ -7,6 +7,7 @@ import axios from "axios";
 import { validate, cardholderName, cvv, postalCode } from "card-validator";
 import { cardNumber } from "card-validator/dist/card-number";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
 
 const { Option } = Select;
 const NewPaymentForm = (props) => {
@@ -31,7 +32,8 @@ const NewPaymentForm = (props) => {
       duration: 0,
     });
 
-    console.log("BOOKING DATA IN LOADING", props);
+    console.log(props.data.total_amount);
+
     setTimeout(() => {
       messageApi.destroy;
       RouterRef.push({
@@ -39,16 +41,24 @@ const NewPaymentForm = (props) => {
         query: {
           transaction_id: BookingData?.data?.data?.id,
           booking_number: BookingData?.data?.data?.bookingNumber,
+          hotel_name: props.data.poperty_name,
+          from_date: props.data.from,
+          to_date: props.data.to,
+          total_guests: props.data.total_guests,
+          adult: props.data.adult,
+          children: props.data.children,
+          babies: props.data.babies,
+          pets: props.data.pets,
           payment_method: CardType,
           payment_status: BookingData?.data.status,
-          payment_amount: props.total_amount,
+          payment_amount: props.data.total_amount,
         },
       });
     }, 4000);
   };
 
   const OnClickPay = async (values) => {
-    console.log("Success:", values);
+    console.log("Success:", dayjs(values.payment_card_exp_month).format("M"));
     setIsLoading(true);
     try {
       const Token =
@@ -67,8 +77,10 @@ const NewPaymentForm = (props) => {
           cardCVC: values.payment_card_cvc_code,
           cardType: values.payment_card_type.toUpperCase(),
           cardNumber: values.payment_card_number,
-          cardExpirationYear: "2016",
-          cardExpirationMonth: "2",
+          cardExpirationYear: dayjs(values.payment_card_exp_year).format(
+            "YYYY"
+          ),
+          cardExpirationMonth: dayjs(values.payment_card_exp_month).format("M"),
           cardHolderName: values.payment_card_holder_name,
           mainBooker: {
             countryCode: values.payment_card_country_code.toLowerCase(),
@@ -88,7 +100,6 @@ const NewPaymentForm = (props) => {
         CreateBookingRes.data.data.bookingNumber
       ) {
         setCardType(values.payment_card_type);
-        setIsLoading(false);
         LoadingPopUp(CreateBookingRes);
       } else {
         setIsLoading(false);
