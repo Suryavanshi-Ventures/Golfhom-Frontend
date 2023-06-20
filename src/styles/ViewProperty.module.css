@@ -891,6 +891,49 @@
   color: var(--light-font-color);
 }
 
+.list_bullet {
+  list-style-type: none;
+  padding-left: 1.5em;
+  margin-top: 10px;
+  color: var(--black-btn-color);
+  font-weight: 400;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.list_bullet li::before {
+  content: "\2022";
+  color: var(--btn-background-secondary);
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.modal_data_parent_div {
+  padding: 20px 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.club_detail_member {
+  font-weight: 400 !important;
+}
+
+.club_detail, .club_detail_member {
+  margin-bottom: 0.6rem;
+}
+
+.modal_ok_button {
+  background-color: var(--btn-background-secondary);
+  border: none;
+  color: var(--white-font-color);
+  font-weight: 400;
+}
+
+.modal_ok_button:hover {
+  color: var(--white-font-color) !important;
+  background-color: var(--black-btn-color);
+}
+
 .golfcourse_name_text {
   font-weight: 500;
   font-family: var(--font-poppins);

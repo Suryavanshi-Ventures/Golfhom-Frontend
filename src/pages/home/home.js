@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useState, useEffect, Suspense } from "react";
+import { React, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import HomeCss from "../../styles/Home.module.css";
@@ -217,7 +217,6 @@ const Home = () => {
                       <Col xs={"auto"}>
                         <div className={HomeCss.inner_icon_container}>
                           <Image
-                            className={HomeCss.location}
                             width={25}
                             height={25}
                             src="/images/vector/location.svg"
@@ -236,13 +235,7 @@ const Home = () => {
                       </Col>
                     </Row>
                   </div>
-                  <div className={HomeCss.inner_input}>
-                    {/* <Input
-                        className={HomeCss.inner_input_box}
-                        size="large"
-                        placeholder="Where you want to stay"
-                      /> */}
-
+                  <div>
                     {isLoaded ? (
                       <Autocomplete
                         onPlaceChanged={onPlaceChanged}

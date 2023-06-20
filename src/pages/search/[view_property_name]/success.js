@@ -6,7 +6,6 @@ import Checkout2Css from "../../../styles/Checkout2.module.css";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import moment from "moment";
-import { ArrowRightOutlined } from "@ant-design/icons";
 
 const Success = () => {
   const UrlParams = useRouter();
