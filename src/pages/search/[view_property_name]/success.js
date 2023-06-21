@@ -129,7 +129,8 @@ const Success = () => {
               <h5 className={Checkout2Css.amount_master}>Payment Method</h5>
               <h5 className={Checkout2Css.details_text_value}>
                 {UrlParams.query.payment_method
-                  ? UrlParams.query.payment_method
+                  ? UrlParams.query.payment_method.charAt(0).toUpperCase() +
+                    UrlParams.query.payment_method.slice(1)
                   : "N/A"}
               </h5>
             </div>

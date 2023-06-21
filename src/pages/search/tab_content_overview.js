@@ -49,16 +49,16 @@ const TabContentOverview = (PropData) => {
     setModalOpen(false);
   };
 
-
   return (
     <>
       <main className={ViewPropertyCss.tabOverviewSection}>
         <h3 className={ViewPropertyCss.tabOverviewPropHeading}>
           {PropData.data?.name ? PropData.data?.name : "N/A"}{" "}
-          {`(${PropData?.data?.externalPropertyType
-            ? PropData?.data?.externalPropertyType
-            : "N/A"
-            })`}
+          {`(${
+            PropData?.data?.externalPropertyType
+              ? PropData?.data?.externalPropertyType
+              : "N/A"
+          })`}
         </h3>
         <div className={ViewPropertyCss.host_name_div}>
           <span className={ViewPropertyCss.owner_name}>
@@ -68,17 +68,26 @@ const TabContentOverview = (PropData) => {
             <span className={ViewPropertyCss.more_golfcourse_name_text}>
               <ul className={ViewPropertyCss.list_bullet}>
                 {GolfCourseData.slice(0, 5).map((data, index) => (
-                  <li onClick={() => showModal(data)} key={index}>
-                    {data.club_name ? data.club_name : "N/A"}</li>
+                  <li
+                    className={ViewPropertyCss.list_bullet_lis}
+                    onClick={() => showModal(data)}
+                    key={index}
+                  >
+                    {data.club_name ? data.club_name : "N/A"}
+                  </li>
                 ))}
               </ul>
               <Modal
-                title=" "
                 open={modalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
+                centered
                 footer={[
-                  <Button key="submit" className={ViewPropertyCss.modal_ok_button} onClick={handleOk}>
+                  <Button
+                    key="submit"
+                    className={ViewPropertyCss.modal_ok_button}
+                    onClick={handleOk}
+                  >
                     OK
                   </Button>,
                 ]}
@@ -86,19 +95,69 @@ const TabContentOverview = (PropData) => {
                 {golfCourseDataModal ? (
                   <Row className={ViewPropertyCss.modal_data_parent_div}>
                     <Col md={6}>
-                      <p className={ViewPropertyCss.club_detail}><span className={ViewPropertyCss.title_of_modal}>Club Name: </span>{golfCourseDataModal.club_name}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Address: </span>{golfCourseDataModal.address}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>City:</span> {golfCourseDataModal.city}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>State: </span>{golfCourseDataModal.state}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Country: </span>{golfCourseDataModal.country}</p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Club Name:{" "}
+                        </span>
+                        {golfCourseDataModal.club_name}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Address:{" "}
+                        </span>
+                        {golfCourseDataModal.address}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          City:
+                        </span>{" "}
+                        {golfCourseDataModal.city}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          State:{" "}
+                        </span>
+                        {golfCourseDataModal.state}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Country:{" "}
+                        </span>
+                        {golfCourseDataModal.country}
+                      </p>
                     </Col>
 
                     <Col md={6}>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Club Membership: </span>{golfCourseDataModal.club_membership}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Email: </span>{golfCourseDataModal.email_address}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Phone: </span>{golfCourseDataModal.phone}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Number of Hole: </span> {golfCourseDataModal.number_of_holes}</p>
-                      <p className={ViewPropertyCss.club_detail_member}><span className={ViewPropertyCss.title_of_modal}>Website: </span>{golfCourseDataModal.website}</p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Club Membership:{" "}
+                        </span>
+                        {golfCourseDataModal.club_membership}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Email:{" "}
+                        </span>
+                        {golfCourseDataModal.email_address}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Phone:{" "}
+                        </span>
+                        {golfCourseDataModal.phone}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Number of Hole:{" "}
+                        </span>{" "}
+                        {golfCourseDataModal.number_of_holes}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
+                          Website:{" "}
+                        </span>
+                        {golfCourseDataModal.website}
+                      </p>
                     </Col>
                   </Row>
                 ) : null}

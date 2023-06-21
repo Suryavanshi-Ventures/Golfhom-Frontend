@@ -225,23 +225,6 @@ const Header = ({ name, ...props }) => {
   };
 
   {
-    /* -----------      REGISTER TO RENT SECTION  IN LARGE DEVICE      -----------------*/
-  }
-
-  const [registerToRentModalgDevice, setRegisterToRentModalgDevice] =
-    useState(false);
-  const registerToRentLgDevice = () => {
-    setRegisterToRentModalgDevice(true);
-    handleCancel();
-  };
-  const handleRegisterToRentLgDevice = () => {
-    setRegisterToRentModalgDevice(false);
-  };
-  const handleCancelRegisterToRentLgDevice = () => {
-    setRegisterToRentModalgDevice(false);
-  };
-
-  {
     /* -----------      FORGET PASSWORD SECTION IN LARGE DEVICE       -----------------*/
   }
 
@@ -257,48 +240,14 @@ const Header = ({ name, ...props }) => {
     setForgotModalLgDevice(false);
   };
 
-  // DROPDOWN CONTENT
-
-  const handleMenuClick = (e) => {
-    console.log("click", e);
-  };
-
   //!------------------------------------------------------------------
 
   const [ShowMobileMenu, setShowMobileMenu] = useState(false);
   const CloseOffCanvas = () => setShowMobileMenu(false);
   const HamburgerMenuMobileBtn = () => setShowMobileMenu(true);
 
-  {
-    /* -----------       MOBILE LOGIN SECTION        -----------------*/
-  }
-
-  const [loginOpenInMobile, setLoginOpenInMobile] = useState(false);
-
-  const showLoginModalMobile = () => {
-    setLoginOpenInMobile(true);
-  };
-  const handleLoginInMobile = () => {
-    setLoginOpenInMobile(false);
-  };
   const handleCancelMobile = () => {
     setLoginOpenInMobile(false);
-  };
-
-  {
-    /* -----------      REGISTER SECTION IN MOBILE       -----------------*/
-  }
-
-  const [registerInMobile, setRegisterInMobile] = useState(false);
-  const showRegisterInMobile = () => {
-    setRegisterInMobile(true);
-    handleCancelMobile();
-  };
-  const handleRegisterInMobile = () => {
-    setRegisterInMobile(false);
-  };
-  const handleCancelRegisterInMobile = () => {
-    setRegisterInMobile(false);
   };
 
   {
@@ -307,39 +256,12 @@ const Header = ({ name, ...props }) => {
 
   const [mobileRegisterToRentModal, setMobileRegisterToRentModal] =
     useState(false);
+
   const mobileRegistertoRent = () => {
     setMobileRegisterToRentModal(true);
     handleCancelMobile();
   };
-  const handleRegistertoRentInMobile = () => {
-    setMobileRegisterToRentModal(false);
-  };
-  const handleCancelRegistertoRentInMobile = () => {
-    setMobileRegisterToRentModal(false);
-  };
 
-  {
-    /* -----------      FORGET PASSWORD IN MOBILE SECTION        -----------------*/
-  }
-
-  const [forgetModalInMobile, setForgetModalInMobile] = useState(false);
-  const forgotInMobile = () => {
-    setForgetModalInMobile(true);
-    handleCancelMobile();
-  };
-  const handleForgotInMobile = () => {
-    setForgetModalInMobile(false);
-  };
-  const handleCancelForgotInMobile = () => {
-    setForgetModalInMobile(false);
-  };
-
-  // SELECTED OPTION FEATURE IS FOR REGISTER TO RENT DROPDOWN
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
   //!----------------------------------------------------------------
   const Logout = () => {
     sessionStorage.removeItem("token");
@@ -1263,40 +1185,7 @@ const Header = ({ name, ...props }) => {
                         </Dropdown>
                       </Col>
                     ) : (
-                      <>
-                        {/* <Col
-                          xs={"auto"}
-                          className={HeaderCss.top_header_Col_container}
-                        >
-                          <Link href="/register_to_host">
-                            <Button
-                              type="primary"
-                              className={HeaderCss.register_btn}
-                            >
-                              Register To Host
-                            </Button>
-                          </Link>
-                        </Col>
-                        <Col
-                          xs={"auto"}
-                          className={HeaderCss.top_header_Col_container}
-                        >
-                          <Link
-                            href="/"
-                            className={HeaderCss.top_header_a}
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            <Space>
-                              <Button
-                                className={HeaderCss.signUpBtn}
-                                onClick={loginLgDevice}
-                              >
-                                Log in & Sign up
-                              </Button>
-                            </Space>
-                          </Link>
-                        </Col> */}
-                      </>
+                      ""
                     )}
                   </Row>
                 </Col>

@@ -15,6 +15,12 @@
   border-radius: 16px;
   height: 235px !important;
   filter: brightness(0.8);
+  transition-duration: 0.3s;
+}
+
+.carouselImage:hover {
+  transform: scale(1.05);
+  transition-duration: 0.3s;
 }
 
 .heartParent {
@@ -53,6 +59,11 @@
   margin: 10px 0;
   color: var(--black-color);
   text-decoration: none !important;
+  transition-duration: 0.3s;
+}
+.carouselHeading:hover {
+  transition-duration: 0.3s;
+  color: var(--btn-background-secondary);
 }
 
 .discribeOfCard {

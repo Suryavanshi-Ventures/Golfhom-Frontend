@@ -43,9 +43,7 @@ const Home = () => {
     longitude: "",
     location_name: "",
   });
-  const [InputValue, setInputValue] = useState({
-    search_input: "",
-  });
+  const [InputValue, setInputValue] = useState("");
   const [AllPropertyData, setAllPropertyData] = useState([{}]);
   const [NightsCounter, setNightsCounter] = useState(0);
 
@@ -53,7 +51,8 @@ const Home = () => {
     const GetPropDataFunc = async () => {
       try {
         const GetPropertyDataRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL
+          `${
+            process.env.NEXT_PUBLIC_API_URL
           }/v1/property?limit=6&latitude=${52.3757}&longitude=${5.2171655}`
         );
         if (GetPropertyDataRes.status === 200) {
@@ -98,9 +97,7 @@ const Home = () => {
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
-      setInputValue({
-        search_input: formattedAddress,
-      });
+      setInputValue(formattedAddress);
     } else {
       message.error("Please enter text");
     }
@@ -158,17 +155,20 @@ const Home = () => {
           UrlParamsGeoData?.latitude
         )}&longitude=${encodeURIComponent(
           UrlParamsGeoData?.longitude
-        )}&location_name=${UrlParamsGeoData?.location_name
+        )}&location_name=${
+          UrlParamsGeoData?.location_name
         }&nights=${NightsCounter}&guest=${encodeURIComponent(
           adult + child
         )}&adults=${encodeURIComponent(adult)}&childs=${encodeURIComponent(
           child
-        )}&from=${UrlParamsDateRange[0]
-          ? UrlParamsDateRange[0]
-          : moment().format("MM-DD-YYYY")
-        }&to=${UrlParamsDateRange[1]
-          ? UrlParamsDateRange[1]
-          : moment().format("MM-DD-YYYY")
+        )}&from=${
+          UrlParamsDateRange[0]
+            ? UrlParamsDateRange[0]
+            : moment().format("MM-DD-YYYY")
+        }&to=${
+          UrlParamsDateRange[1]
+            ? UrlParamsDateRange[1]
+            : moment().format("MM-DD-YYYY")
         }&limit=10`
       );
     }
@@ -244,7 +244,7 @@ const Home = () => {
                         <Input
                           className={HomeCss.inner_input_box}
                           size="large"
-                          value={InputValue.search_input}
+                          value={InputValue}
                           onChange={OnSearchInputChange}
                           name="search_input"
                           placeholder="Where you want to stay"
@@ -436,7 +436,7 @@ const Home = () => {
 
       {/* --------------------------------------    RESERVE A FEATURED   -----------------------------   */}
 
-      {/*//! ORIGINAL ONE  */}
+      {/*//!ORIGINAL  DATA */}
       {/* <div div className={HomeCss.cardBg}>
         <Container>
           <h3 className={HomeCss.cardHeading}>Reserve a Featured Golfhōm</h3>

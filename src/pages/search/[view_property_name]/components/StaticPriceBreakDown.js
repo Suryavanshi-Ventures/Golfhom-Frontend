@@ -14,7 +14,7 @@ const StaticPriceBreakDown = (props) => {
 
   return (
     <>
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
+      {/* <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
             Discount
@@ -45,6 +45,7 @@ const StaticPriceBreakDown = (props) => {
           </p>
         </div>
       </div>
+
       <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
         <div className={StaticPriceBreakDownCss.total_price_text_div}>
           <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
@@ -104,7 +105,97 @@ const StaticPriceBreakDown = (props) => {
             ${props?.data?.breakdown?.total ? props?.data?.breakdown?.total : 0}
           </p>
         </div>
+      </div> */}
+      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
+        <div className={StaticPriceBreakDownCss.total_price_text_div}>
+          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
+            Security Deposit
+          </h5>
+        </div>
+        <div className={StaticPriceBreakDownCss.total_price_text_div}>
+          <p className={StaticPriceBreakDownCss.total_price}>
+            $
+            {props?.data?.breakdown?.requiredSecurityDeposit
+              ? props?.data?.breakdown?.requiredSecurityDeposit
+              : 0}
+          </p>
+        </div>
       </div>
+
+      {/* REQUIRED CHARGES */}
+
+      {props?.data?.charges.required.map((Data, Index) => {
+        return (
+          <>
+            {Data.itemPrice === 0 ? (
+              ""
+            ) : (
+              <div
+                className={StaticPriceBreakDownCss.total_price_charge_main_div}
+              >
+                <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                  <h5
+                    className={StaticPriceBreakDownCss.total_price_charges_text}
+                  >
+                    {Data?.name === "FIN"
+                      ? "Cleaning Fee"
+                      : Data?.name === "BED"
+                      ? "Bed linen"
+                      : Data?.name}
+                  </h5>
+                </div>
+                <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                  <p className={StaticPriceBreakDownCss.total_price}>
+                    ${Data?.itemPrice ? Data?.itemPrice : 0}
+                  </p>
+                </div>
+              </div>
+            )}
+          </>
+        );
+      })}
+
+      {/* REQUIRED TAXES */}
+      {props?.data?.requiredTaxes.map((Data, Index) => {
+        return (
+          <>
+            {Data?.amountFlat === 0 ? (
+              ""
+            ) : (
+              <div
+                className={StaticPriceBreakDownCss.total_price_charge_main_div}
+              >
+                <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                  <h5
+                    className={StaticPriceBreakDownCss.total_price_charges_text}
+                  >
+                    {Data?.name ? Data?.name : "N/A"}
+                  </h5>
+                </div>
+                <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                  <p className={StaticPriceBreakDownCss.total_price}>
+                    ${Data?.amountFlat ? Data?.amountFlat : 0}
+                  </p>
+                </div>
+              </div>
+            )}
+          </>
+        );
+      })}
+
+      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
+        <div className={StaticPriceBreakDownCss.total_price_text_div}>
+          <h5 className={StaticPriceBreakDownCss.total_charges_text}>
+            Total Charges
+          </h5>
+        </div>
+        <div className={StaticPriceBreakDownCss.total_price_text_div}>
+          <p className={StaticPriceBreakDownCss.total_charges}>
+            ${props?.data?.breakdown?.total ? props?.data?.breakdown?.total : 0}
+          </p>
+        </div>
+      </div>
+
       <hr />
     </>
   );

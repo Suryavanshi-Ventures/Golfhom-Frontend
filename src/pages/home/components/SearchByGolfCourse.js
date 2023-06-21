@@ -26,9 +26,7 @@ const SearchByGolfCourse = () => {
     location_name: "",
     golfcourse_name: "",
   });
-  const [InputValue, setInputValue] = useState({
-    search_input: "",
-  });
+  const [InputValue, setInputValue] = useState("");
   const [searchResult, setSearchResult] = useState("");
   const [AllGolfCourseData, setAllGolfCourseData] = useState([{}]);
   const [SelectedGolfCourse, setSelectedGolfCourse] = useState({});
@@ -76,9 +74,7 @@ const SearchByGolfCourse = () => {
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
       GetGolfCourse(place);
-      setInputValue({
-        search_input: formattedAddress,
-      });
+      setInputValue(formattedAddress);
     } else {
       message.error("Please enter text");
     }
@@ -114,8 +110,7 @@ const SearchByGolfCourse = () => {
             <div className={SearchByGolfCourseCss.searchSection_overlay}>
               <div className={SearchByGolfCourseCss.content}>
                 <h3 className={SearchByGolfCourseCss.Title}>
-                  Search the World Over by Course (38,000+ in our database) or
-                  Tournament
+                  Search the World Over by Course (38,000+ in our database)
                 </h3>
 
                 <div
@@ -167,7 +162,7 @@ const SearchByGolfCourse = () => {
                                   }
                                   prefix={<SearchOutlined />}
                                   size="large"
-                                  value={InputValue.search_input}
+                                  value={InputValue}
                                   onChange={OnSearchInputChange}
                                   name="search_input"
                                   placeholder="Enter Location"

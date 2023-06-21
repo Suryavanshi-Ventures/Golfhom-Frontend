@@ -819,7 +819,9 @@ const Index = () => {
                               return (
                                 <Carousel.Item
                                   key={ind}
-                                  style={{ position: "relative" }}
+                                  style={{
+                                    position: "relative",
+                                  }}
                                   className={CarasoulMapCss.imageGap}
                                 >
                                   <div
@@ -838,10 +840,16 @@ const Index = () => {
                                         },
                                       });
                                     }}
-                                    style={{ position: "relative" }}
+                                    style={{
+                                      position: "relative",
+                                    }}
                                   >
                                     <Image
-                                      src={element}
+                                      src={
+                                        element
+                                          ? element
+                                          : "/images/noImageFound.png"
+                                      }
                                       alt={`image ${data.id}`}
                                       fill
                                       className={CarasoulMapCss.carouselImage}
