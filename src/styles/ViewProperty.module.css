@@ -973,9 +973,9 @@
 .club_detail,
 .club_detail_member {
   margin-bottom: 0.6rem;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap; */
 }
 
 .modal_ok_button {

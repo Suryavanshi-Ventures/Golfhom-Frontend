@@ -178,7 +178,7 @@ const TabContentOverview = (PropData) => {
                           Website:{" "}
                         </span>
                         <Link
-                          href={golfCourseDataModal.website}
+                          href={`https://${golfCourseDataModal.website}`}
                           target="_blank"
                         >
                           {golfCourseDataModal.website}
