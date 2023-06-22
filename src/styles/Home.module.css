@@ -605,7 +605,7 @@
 /* ------------------------------        GOLFING AND TRAVELING     ----------------------------------  */
 
 .ads {
-  padding: 60px 40px;
+  padding: 40px;
 }
 
 .adsTitle {
@@ -867,6 +867,9 @@
   }
   .videoPlay {
     height: 65vh !important;
+  }
+  .para {
+    margin-bottom: 1rem !important;
   }
 }
 

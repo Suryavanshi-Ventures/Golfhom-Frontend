@@ -1872,7 +1872,7 @@ const ViewProperty = () => {
                     </Col>
                   </div>
 
-                  {/* Availability SECTION
+                  {/*//! Availability SECTION
                   <div className={ViewPropertyCss.things_to_know_section_rows}>
                     <Col md={12}>
                       <div

@@ -1,5 +1,5 @@
 .edit_details_main_section {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .edit_details_container_cols {
@@ -226,6 +226,8 @@
 
 .mapParent > div {
   border: 1px solid var(--btn-background);
+  position: sticky !important;
+  top: 20vh !important;
 }
 
 .map {

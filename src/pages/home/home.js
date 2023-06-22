@@ -398,10 +398,9 @@ const Home = () => {
             plenty of local attractions.
           </p>
 
-          <Row>
+          <Row style={{ alignItems: "center" }}>
             <Col md={9}>
-              <p className={HomeCss.para}>
-                {" "}
+              <p className={HomeCss.para} style={{ marginBottom: 0 }}>
                 Golfhōm is transforming how golfers locate and book their next
                 luxury golf vacation rental. Book with us today!
               </p>

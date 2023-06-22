@@ -7,6 +7,7 @@ const { TextArea } = Input;
 import Image from "next/image";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const TabContentOverview = (PropData) => {
   const [GolfCourseData, setGolfCourseData] = useState([{}]);
@@ -15,7 +16,7 @@ const TabContentOverview = (PropData) => {
     const GetGolfCourseByLatLong = async () => {
       try {
         const GetGolfCourseRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${PropData?.data?.latitude}&longitude=${PropData?.data?.longitude}&distance=20`
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${PropData?.data?.latitude}&longitude=${PropData?.data?.longitude}&distance=8`
         );
         if (GetGolfCourseRes.status === 200) {
           setGolfCourseData(GetGolfCourseRes.data.data);
@@ -82,6 +83,7 @@ const TabContentOverview = (PropData) => {
                 onOk={handleOk}
                 onCancel={handleCancel}
                 centered
+                width={700}
                 footer={[
                   <Button
                     key="submit"
@@ -93,13 +95,32 @@ const TabContentOverview = (PropData) => {
                 ]}
               >
                 {golfCourseDataModal ? (
-                  <Row className={ViewPropertyCss.modal_data_parent_div}>
-                    <Col md={6}>
+                  <Row
+                    style={{ justifyContent: "space-between" }}
+                    className={ViewPropertyCss.modal_data_parent_div}
+                  >
+                    <div
+                      className={ViewPropertyCss.modal_golf_course_banner_div}
+                    >
+                      <Image
+                        className={ViewPropertyCss.modal_golf_course_banner_img}
+                        fill
+                        alt="Golf Course"
+                        src="https://golf-hom-latest-assets.s3.amazonaws.com/images/golf_course_banner_image.webp"
+                      ></Image>
+                    </div>
+                    <h5 className={ViewPropertyCss.club_name_heading}>
+                      <span className={ViewPropertyCss.title_of_modal}>
+                        Club Name:{" "}
+                      </span>
+                      {golfCourseDataModal.club_name}
+                    </h5>
+                    <Col md={5} sm={6}>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>
-                          Club Name:{" "}
+                          Postal Code:{" "}
                         </span>
-                        {golfCourseDataModal.club_name}
+                        {golfCourseDataModal.postal_code}
                       </p>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>
@@ -127,13 +148,7 @@ const TabContentOverview = (PropData) => {
                       </p>
                     </Col>
 
-                    <Col md={6}>
-                      <p className={ViewPropertyCss.club_detail_member}>
-                        <span className={ViewPropertyCss.title_of_modal}>
-                          Club Membership:{" "}
-                        </span>
-                        {golfCourseDataModal.club_membership}
-                      </p>
+                    <Col md={5} sm={6}>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>
                           Email:{" "}
@@ -154,9 +169,20 @@ const TabContentOverview = (PropData) => {
                       </p>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>
+                          Club Membership:{" "}
+                        </span>
+                        {golfCourseDataModal.club_membership}
+                      </p>
+                      <p className={ViewPropertyCss.club_detail_member}>
+                        <span className={ViewPropertyCss.title_of_modal}>
                           Website:{" "}
                         </span>
-                        {golfCourseDataModal.website}
+                        <Link
+                          href={golfCourseDataModal.website}
+                          target="_blank"
+                        >
+                          {golfCourseDataModal.website}
+                        </Link>
                       </p>
                     </Col>
                   </Row>

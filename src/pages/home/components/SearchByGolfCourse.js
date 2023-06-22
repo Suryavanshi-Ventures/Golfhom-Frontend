@@ -11,12 +11,12 @@ import {
 } from "antd";
 import { Container, Col, Row } from "react-bootstrap";
 import { SearchOutlined } from "@ant-design/icons";
-import Link from "next/link";
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 const placesLibrary = ["places"];
 import axios from "axios";
 import { AutoComplete as AntdAutoComplete } from "antd";
 import { useRouter } from "next/router";
+const { Option } = Select;
 
 const SearchByGolfCourse = () => {
   const RouterRef = useRouter();
@@ -30,6 +30,7 @@ const SearchByGolfCourse = () => {
   const [searchResult, setSearchResult] = useState("");
   const [AllGolfCourseData, setAllGolfCourseData] = useState([{}]);
   const [SelectedGolfCourse, setSelectedGolfCourse] = useState({});
+  const [IsDisableGolfCourse, setIsDisableGolfCourse] = useState(true);
 
   //* GOOGLE SEARCH API FUNCTIONS
   const { isLoaded } = useLoadScript({
@@ -44,10 +45,11 @@ const SearchByGolfCourse = () => {
   const GetGolfCourse = async (place) => {
     const Latitude = place.geometry?.location.lat();
     const Longitude = place.geometry?.location.lng();
+    console.log("SELECTED LAT", Latitude, "SELECTED LNG", Longitude);
 
     try {
       const GolfCourseRes = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${Latitude}&longitude=${Longitude}&distance=20`
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${Latitude}&longitude=${Longitude}&distance=8`
       );
 
       if (GolfCourseRes.status === 200) {
@@ -73,6 +75,9 @@ const SearchByGolfCourse = () => {
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
+      console.log(place);
+
+      name ? setIsDisableGolfCourse(false) : setIsDisableGolfCourse(true);
       GetGolfCourse(place);
       setInputValue(formattedAddress);
     } else {
@@ -81,6 +86,10 @@ const SearchByGolfCourse = () => {
   };
   const OnSearchInputChange = (event) => {
     console.log(event.target.value);
+    if (event.target.value === "") {
+      setSelectedGolfCourse("");
+      setIsDisableGolfCourse(true);
+    }
     setInputValue(event.target.value);
   };
   //! GOOGLE SEARCH API FUNCTIONS END
@@ -177,10 +186,11 @@ const SearchByGolfCourse = () => {
                               SearchByGolfCourseCss.search_by_golf_input_container
                             }
                           >
-                            <AntdAutoComplete
+                            {/* <AntdAutoComplete
                               dataSource={AllGolfCourseData.map(
                                 (item) => item.club_name
                               )}
+                              disabled={IsDisableGolfCourse}
                               onSelect={(value, option) => {
                                 const selectedData = AllGolfCourseData.find(
                                   (item) => item.club_name === value
@@ -203,6 +213,39 @@ const SearchByGolfCourse = () => {
                                 SearchByGolfCourseCss.search_by_golf_inputs
                               }
                               placeholder="Golf Course"
+                            /> */}
+                            <Select
+                              showSearch
+                              className={
+                                SearchByGolfCourseCss.search_by_golf_inputs
+                              }
+                              onSelect={(value, option) => {
+                                const selectedData = AllGolfCourseData.find(
+                                  (item) => item.club_name === value
+                                );
+                                if (selectedData) {
+                                  setSelectedGolfCourse(selectedData); //* SETTING SELECTED GOLF COURSE OBJ
+
+                                  console.log(
+                                    selectedData,
+                                    "SELECTED GOLF OBJ"
+                                  );
+                                }
+                              }}
+                              disabled={IsDisableGolfCourse}
+                              placeholder="Golf Course"
+                              optionFilterProp="clubs name"
+                              filterOption={(input, option) =>
+                                (option?.label ?? "")
+                                  .toLowerCase()
+                                  .includes(input.toLowerCase())
+                              }
+                              options={AllGolfCourseData.map((item, index) => {
+                                return {
+                                  value: item.club_name,
+                                  label: item.club_name,
+                                };
+                              })}
                             />
                           </div>
                         </div>

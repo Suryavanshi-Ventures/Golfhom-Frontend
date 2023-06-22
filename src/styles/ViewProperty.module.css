@@ -125,18 +125,23 @@
 
 .view_prop_image_div_1 div:first-child {
   width: 100%;
+  text-align: center;
 }
 .view_prop_image_div_2 div:first-child {
   width: 100%;
+  text-align: center;
 }
 .view_prop_image_div_3 div:first-child {
   width: 100%;
+  text-align: center;
 }
 .view_prop_image_div_4 div:first-child {
   width: 100%;
+  text-align: center;
 }
 .view_prop_image_div_5 div:first-child {
   width: 100%;
+  text-align: center;
 }
 
 /* FEATURE SECTION STARTED HERE */
@@ -442,9 +447,6 @@
   justify-content: space-between;
   align-items: center;
   height: 40px;
-}
-.total_price_text_div {
-  /* height: 100%; */
 }
 
 .total_charges_text {
@@ -939,6 +941,26 @@
   font-size: 0.9rem;
   font-weight: 500;
 }
+.modal_golf_course_banner_div {
+  /* margin-bottom: 15px; */
+  padding: 0;
+  height: 215px !important;
+}
+
+.modal_golf_course_banner_img {
+  position: relative !important;
+  border-radius: 8px;
+  object-position: bottom;
+  object-fit: cover;
+}
+
+.club_name_heading {
+  text-align: center;
+  font-weight: 400 !important;
+  margin: 15px 0;
+  margin-bottom: 25px;
+}
+
 .club_detail_member {
   font-weight: 400 !important;
 }
@@ -951,6 +973,9 @@
 .club_detail,
 .club_detail_member {
   margin-bottom: 0.6rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .modal_ok_button {
