@@ -51,6 +51,7 @@ const ForgotPassword = () => {
             Please enter your username or email address. You will receive a link
             to create a new password via email.
           </h5>
+
           {/* FORGOT EMAIL */}
           <Form.Item
             label="Email"

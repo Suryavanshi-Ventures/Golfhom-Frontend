@@ -40,7 +40,7 @@ const Checkout = (props) => {
     email: "rajuvlker@gmail.com",
     address: "fasfasfafaf",
   });
-  const cardElement = elements.getElement(CardElement);
+  const cardElement = elements?.getElement(CardElement);
 
   const BookingHotelDone = async () => {
     setIsLoading(true);

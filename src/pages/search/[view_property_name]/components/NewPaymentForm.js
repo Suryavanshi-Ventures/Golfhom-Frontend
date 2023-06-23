@@ -173,7 +173,7 @@ const NewPaymentForm = (props) => {
 
         <Elements
           stripe={stripePromise}
-          options={{ clientSecret: props.data.paymentIntent.client_secret }}
+          options={{ clientSecret: props?.data?.paymentIntent?.client_secret }}
         >
           {/* <CardElement id="card-element" options={{}} /> */}
           <Checkout />
