@@ -8,8 +8,11 @@ import Image from "next/image";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const TabContentOverview = (PropData) => {
+  const RouterRef = useRouter();
+  const { golfcourse_name } = RouterRef.query;
   const [GolfCourseData, setGolfCourseData] = useState([{}]);
 
   useEffect(() => {
@@ -19,8 +22,22 @@ const TabContentOverview = (PropData) => {
           `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${PropData?.data?.latitude}&longitude=${PropData?.data?.longitude}&distance=8`
         );
         if (GetGolfCourseRes.status === 200) {
-          setGolfCourseData(GetGolfCourseRes.data.data);
-          console.log(GetGolfCourseRes.data.data.splice(0, 5));
+          //* Execute only when the URL "golfcourse_name" parameter exist
+          if (golfcourse_name) {
+            //* Filter out the url parameter golf course name from all the golf course name
+            const FilterObj = GetGolfCourseRes.data.data.find(
+              (item) => item.club_name === golfcourse_name
+            );
+            const newArray = [
+              FilterObj,
+              ...GetGolfCourseRes.data.data.filter(
+                (item) => item.club_name !== golfcourse_name
+              ),
+            ];
+            //! END
+          }
+          console.log("test", GetGolfCourseRes.data.data);
+          setGolfCourseData(GetGolfCourseRes.data.data.slice(0, 5));
         }
       } catch (error) {
         console.log("ERROR: GETTING GOLFCOURSE", error);
@@ -34,6 +51,7 @@ const TabContentOverview = (PropData) => {
   }, [PropData?.data?.latitude, PropData?.data?.longitude]);
 
   // DATA MODAL
+  console.log(GolfCourseData, "SFAFF");
 
   const [modalOpen, setModalOpen] = useState(false);
   const [golfCourseDataModal, setGolfCourseDataModal] = useState(null);
@@ -68,15 +86,23 @@ const TabContentOverview = (PropData) => {
           <span className={ViewPropertyCss.owner_name_text}>
             <span className={ViewPropertyCss.more_golfcourse_name_text}>
               <ul className={ViewPropertyCss.list_bullet}>
-                {GolfCourseData.slice(0, 5).map((data, index) => (
-                  <li
-                    className={ViewPropertyCss.list_bullet_lis}
-                    onClick={() => showModal(data)}
-                    key={index}
-                  >
-                    {data.club_name ? data.club_name : "N/A"}
-                  </li>
-                ))}
+                {GolfCourseData.length === 0 ? (
+                  <>
+                    <li className={ViewPropertyCss.list_bullet_lis}>N/A</li>
+                  </>
+                ) : (
+                  <>
+                    {GolfCourseData.map((data, index) => (
+                      <li
+                        className={ViewPropertyCss.list_bullet_lis}
+                        onClick={() => showModal(data)}
+                        key={index}
+                      >
+                        {data.club_name ? data.club_name : "N/A"}
+                      </li>
+                    ))}
+                  </>
+                )}
               </ul>
               <Modal
                 open={modalOpen}
@@ -178,10 +204,16 @@ const TabContentOverview = (PropData) => {
                           Website:{" "}
                         </span>
                         <Link
-                          href={`https://${golfCourseDataModal.website}`}
+                          href={
+                            golfCourseDataModal.website.includes("https://")
+                              ? golfCourseDataModal.website
+                              : `https://${golfCourseDataModal.website}`
+                          }
                           target="_blank"
                         >
-                          {golfCourseDataModal.website}
+                          {golfCourseDataModal.website.includes("https://")
+                            ? golfCourseDataModal.website
+                            : `https://${golfCourseDataModal.website}`}
                         </Link>
                       </p>
                     </Col>

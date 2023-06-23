@@ -30,6 +30,11 @@ import {
 import Register from "../public/images/vector/registerToRent.svg";
 import Blog from "../public/images/vector/Blog.svg";
 import About from "../public/images/vector/About.svg";
+import dynamic from "next/dynamic";
+
+const ForgotPassword = dynamic(() => import("./ForgotPassword"), {
+  suspense: true,
+});
 
 const Header = ({ name, ...props }) => {
   const [IsLoggedIn, SetIsLoggedIn] = useState(false);
@@ -900,22 +905,11 @@ const Header = ({ name, ...props }) => {
             open={forgotModalLgDevice}
             onSignup={handleForgotLgDevice}
             onCancel={handleCancelForgotLgDevice}
-            width={800}
+            width={600}
             centered={true} // Enable centering
             className={HeaderCss.headerForgot}
           >
-            <h5 className={HeaderCss.forgotHeading}>
-              Please enter your username or email address. You will receive a
-              link to create a new password via email.
-            </h5>
-            <Input
-              type="email"
-              placeholder="Enter your user name or email"
-              className={HeaderCss.forgotInput}
-            ></Input>
-            <div className={HeaderCss.forgotBtn}>
-              <Button className={HeaderCss.registBtn}>Send</Button>
-            </div>
+            <ForgotPassword />
           </Modal>
 
           {/* PROFILE DROPDOWN IN LARGE DEVICE */}

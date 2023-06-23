@@ -49,7 +49,7 @@ const SearchByGolfCourse = () => {
 
     try {
       const GolfCourseRes = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${Latitude}&longitude=${Longitude}&distance=8`
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/golfcourse?latitude=${Latitude}&longitude=${Longitude}`
       );
 
       if (GolfCourseRes.status === 200) {
@@ -101,9 +101,9 @@ const SearchByGolfCourse = () => {
     } else {
       RouterRef.push(
         `/search?latitude=${encodeURIComponent(
-          GoogleGeoData?.latitude
+          Number(SelectedGolfCourse?.latitude)
         )}&longitude=${encodeURIComponent(
-          GoogleGeoData?.longitude
+          Number(SelectedGolfCourse?.longitude)
         )}&location_name=${GoogleGeoData?.location_name}&golfcourse_name=${
           SelectedGolfCourse?.club_name
         }&limit=10`

@@ -837,6 +837,8 @@ const Index = () => {
                                           guests: param.guest,
                                           adults: param.adults,
                                           childs: param.childs,
+                                          golfcourse_name:
+                                            param.golfcourse_name,
                                         },
                                       });
                                     }}
@@ -862,11 +864,19 @@ const Index = () => {
 
                           <div
                             onClick={(e) => {
-                              Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
-                                }`
-                              );
+                              Router.push({
+                                pathname: `search/${encodeURIComponent(
+                                  data.name
+                                )}/${data.id}`,
+                                query: {
+                                  from: param.from,
+                                  to: param.to,
+                                  guests: param.guest,
+                                  adults: param.adults,
+                                  childs: param.childs,
+                                  golfcourse_name: param.golfcourse_name,
+                                },
+                              });
                             }}
                             className={CarasoulMapCss.image_container}
                           >
@@ -891,11 +901,19 @@ const Index = () => {
 
                             <h4
                               onClick={(e) => {
-                                Router.push(
-                                  `search/${encodeURIComponent(data.name)}/${
-                                    data.id
-                                  }`
-                                );
+                                Router.push({
+                                  pathname: `search/${encodeURIComponent(
+                                    data.name
+                                  )}/${data.id}`,
+                                  query: {
+                                    from: param.from,
+                                    to: param.to,
+                                    guests: param.guest,
+                                    adults: param.adults,
+                                    childs: param.childs,
+                                    golfcourse_name: param.golfcourse_name,
+                                  },
+                                });
                               }}
                               className={CarasoulMapCss.carouselHeading}
                             >
@@ -908,11 +926,19 @@ const Index = () => {
 
                           <div
                             onClick={(e) => {
-                              Router.push(
-                                `search/${encodeURIComponent(data.name)}/${
-                                  data.id
-                                }`
-                              );
+                              Router.push({
+                                pathname: `search/${encodeURIComponent(
+                                  data.name
+                                )}/${data.id}`,
+                                query: {
+                                  from: param.from,
+                                  to: param.to,
+                                  guests: param.guest,
+                                  adults: param.adults,
+                                  childs: param.childs,
+                                  golfcourse_name: param.golfcourse_name,
+                                },
+                              });
                             }}
                             className={CarasoulMapCss.image_container}
                           >
