@@ -20,7 +20,7 @@ const Slider = ({ slides }) => {
                 className={HomeCss.sliderImage}
                 src={slide.src}
                 alt={slide.name}
-                layout="fill"
+                fill
               />
             </div>
           </Link>
