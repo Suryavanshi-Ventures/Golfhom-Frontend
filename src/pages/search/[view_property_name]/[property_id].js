@@ -96,8 +96,8 @@ const ViewProperty = () => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
     if (Params.adults || Params.childs) {
-      setAdult(parseInt(Params.adults));
-      setChild(parseInt(Params.childs));
+      setAdult(Number(Params.adults));
+      setChild(Number(Params.childs));
     }
 
     const GetPropertyById = async () => {
