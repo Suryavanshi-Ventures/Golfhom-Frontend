@@ -1,6 +1,6 @@
 import { Form, Input, Button, message, DatePicker, Select } from "antd";
 import { Col, Row } from "react-bootstrap";
-import NewPaymentCss from "../../../../styles/NewPayment.module.css";
+import NewPaymentCss from "./style/NewPayment.module.css";
 import { React, useState, useEffect } from "react";
 import PaymentFormCss from "../../../../styles/PaymentForm.module.css";
 import axios from "axios";
@@ -15,7 +15,7 @@ const stripePromise = loadStripe(
 );
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 const { Option } = Select;
-import Checkout from "../../../../PaymentFormStripeRental";
+import Checkout from "../../../../Checkout";
 
 const NewPaymentForm = (props) => {
   console.log("PROPS OF NEW PAYMENT:", props);
@@ -43,24 +43,24 @@ const NewPaymentForm = (props) => {
 
     setTimeout(() => {
       messageApi.destroy;
-      RouterRef.push({
-        pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
-        query: {
-          transaction_id: BookingData?.data?.data?.id,
-          booking_number: BookingData?.data?.data?.bookingNumber,
-          hotel_name: props.data.poperty_name,
-          from_date: props.data.from,
-          to_date: props.data.to,
-          total_guests: props.data.total_guests,
-          adult: props.data.adult,
-          children: props.data.children,
-          babies: props.data.babies,
-          pets: props.data.pets,
-          payment_method: CardType,
-          payment_status: BookingData?.data.status,
-          payment_amount: props.data.total_amount,
-        },
-      });
+      // RouterRef.push({
+      //   pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
+      //   query: {
+      //     transaction_id: BookingData?.data?.data?.id,
+      //     booking_number: BookingData?.data?.data?.bookingNumber,
+      //     hotel_name: props.data.poperty_name,
+      //     from_date: props.data.from,
+      //     to_date: props.data.to,
+      //     total_guests: props.data.total_guests,
+      //     adult: props.data.adult,
+      //     children: props.data.children,
+      //     babies: props.data.babies,
+      //     pets: props.data.pets,
+      //     payment_method: CardType,
+      //     payment_status: BookingData?.data.status,
+      //     payment_amount: props.data.total_amount,
+      //   },
+      // });
     }, 4000);
   };
 
@@ -137,50 +137,21 @@ const NewPaymentForm = (props) => {
     // }
   };
 
-  const OnClickPayFaild = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-    setIsLoading(false);
-  };
-
-  // VALIDATION CARD NUMBER
-  const [cardNumber, setCardNumber] = useState("");
-
-  const OnCardNumberChange = (e) => {
-    const { value } = e.target;
-    const digitsOnly = value.replace(/\D/g, "");
-    const formattedValue = digitsOnly
-      .substr(0, 16)
-      .replace(/(\d{4})(?=\d)/g, "$1 ");
-    setCardNumber(formattedValue);
-  };
-
-  const ValidateCardNumber = (value) => {
-    if (!value) {
-      return Promise.reject("");
-    }
-    if (value.replace(/\D/g, "").length < 16) {
-      return Promise.reject("Card number must be at least 16 digits");
-    }
-    return Promise.resolve();
-  };
-
   return (
     <>
       {/* BOOKING CONFIRM MODAL */}
       {contextHolder}
       <section style={{ padding: "20px" }}>
-        <h4>Billing Details</h4>
-
         <Elements
           stripe={stripePromise}
           options={{ clientSecret: props?.data?.paymentIntent?.client_secret }}
         >
           {/* <CardElement id="card-element" options={{}} /> */}
-          <Checkout />
+          <Checkout data={props} />
           {/* <PaymentElement /> */}
         </Elements>
       </section>
-
+      {/* 
       <Form
         name="payment_form_nextpax"
         form={FormRef}
@@ -356,7 +327,7 @@ const NewPaymentForm = (props) => {
             </Button>
           </div>
         </Form.Item>
-      </Form>
+      </Form> */}
     </>
   );
 };

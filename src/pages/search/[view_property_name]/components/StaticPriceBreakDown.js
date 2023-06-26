@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import StaticPriceBreakDownCss from "../../../../styles/StaticPriceBreakDownCss.module.css";
+import StaticPriceBreakDownCss from "./style/StaticPriceBreakDownCss.module.css";
 import moment from "moment";
 
 const StaticPriceBreakDown = (props) => {

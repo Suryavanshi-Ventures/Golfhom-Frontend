@@ -348,6 +348,9 @@ const Home = () => {
                     </Row>
                     <div className={HomeCss.inner_input_date_picker}>
                       <RangePicker
+                        style={{
+                          borderColor: "var(--btn-background-secondary)",
+                        }}
                         size="large"
                         format={"MM-DD-YYYY"}
                         disabledDate={(current) => {
