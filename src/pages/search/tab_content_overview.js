@@ -131,7 +131,7 @@ const TabContentOverview = (PropData) => {
                         className={ViewPropertyCss.modal_golf_course_banner_img}
                         fill
                         alt="Golf Course"
-                        src="https://golf-hom-latest-assets.s3.amazonaws.com/images/golf_course_banner_image.webp"
+                        src="/images/GolfhomCourseIndex.webp"
                       ></Image>
                     </div>
                     <h5 className={ViewPropertyCss.club_name_heading}>
