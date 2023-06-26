@@ -31,7 +31,7 @@ import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement } from "@stripe/react-stripe-js";
 const { RangePicker } = DatePicker;
-import Checkout from "../../../PaymentFormStripeRental";
+import Checkout from "../../../Checkout";
 import moment from "moment";
 const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
