@@ -182,7 +182,7 @@ const TabContentOverview = (PropData) => {
                       </p>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>
-                          Putting Green:{" "}
+                          Practice Green:{" "}
                         </span>
                         {golfCourseDataModal.putting_green}
                       </p>
