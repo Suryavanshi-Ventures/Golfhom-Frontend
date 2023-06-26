@@ -156,7 +156,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => {};
+    return () => { };
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -177,10 +177,8 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -195,7 +193,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     param.from,
     param.guest,
@@ -285,12 +283,9 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-          "latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-          "from=" + param.from
-        }&${
-          "to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+        }&${"to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -332,7 +327,7 @@ const Index = () => {
       <>
         {/* EDIT DROP DETAIL SECTION */}
 
-        <div className={SearchIndexCss.course_choice_parent}>
+        <Form className={SearchIndexCss.course_choice_parent}>
           <Col
             md={3}
             sm={6}
@@ -343,7 +338,7 @@ const Index = () => {
               <p className={SearchIndexCss.edit_details_titles}>
                 Golf Course Choice
               </p>
-              <div className={SearchIndexCss.edit_details_inputs_container}>
+              <Form.Item className={SearchIndexCss.edit_details_inputs_container}>
                 {isLoaded ? (
                   <Autocomplete
                     onGolfCourseChanged={onGolfCourseChanged}
@@ -355,7 +350,7 @@ const Index = () => {
                       value={golfInputValue}
                       // value={param.location_name}
                       onChange={OnGolfCourseChange}
-                      // name="search_input"
+                      name="search_input"
                       allowClear
                     />
                   </Autocomplete>
@@ -366,7 +361,7 @@ const Index = () => {
                     className={SearchIndexCss.input_skeleton}
                   />
                 )}
-              </div>
+              </Form.Item>
             </div>
           </Col>
 
@@ -378,7 +373,7 @@ const Index = () => {
           >
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
-              <div className={SearchIndexCss.edit_details_inputs_container}>
+              <Form.Item className={SearchIndexCss.edit_details_inputs_container}>
                 <Select
                   defaultValue=" Marmot Ridge Golf Course"
                   options={[
@@ -408,7 +403,7 @@ const Index = () => {
                     </Typography.Link>
                   </Select.Option>
                 </Select>
-              </div>
+              </Form.Item>
             </div>
           </Col>
 
@@ -420,16 +415,16 @@ const Index = () => {
               <Checkbox>Golf Course Community</Checkbox>
             </Col>
 
-            <div className={SearchIndexCss.search_div}>
+            <Form.Item className={SearchIndexCss.search_div}>
               <Button
                 onClick={() => setShowHidden(true)}
                 className={SearchIndexCss.searching}
               >
                 Search
               </Button>
-            </div>
+            </Form.Item>
           </Col>
-        </div>
+        </Form>
       </>
     );
   };
@@ -449,264 +444,260 @@ const Index = () => {
           <Container>
             <div className={SearchIndexCss.edit_details_main_container}>
               <Row className={SearchIndexCss.edit_details_container_row}>
-                {/* <Form>
-                  <Form.Item> */}
-                <Col
-                  md={3}
-                  className={SearchIndexCss.edit_details_container_cols}
+                <Form
+                  className={SearchIndexCss.form_container}
                 >
-                  <div className={SearchIndexCss.edit_details_divs}>
-                    <p className={SearchIndexCss.edit_details_titles}>
-                      Destination
-                    </p>
+                  <Col
+                    md={3}
+                    className={SearchIndexCss.edit_details_container_cols}
+                  >
+                    <Form.Item className={SearchIndexCss.edit_details_divs}>
+                      <p className={SearchIndexCss.edit_details_titles}>
+                        Destination
+                      </p>
 
-                    <div
-                      className={SearchIndexCss.edit_details_inputs_container}
-                    >
-                      {isLoaded ? (
-                        <Autocomplete
-                          onPlaceChanged={onPlaceChanged}
-                          onLoad={onLoad}
-                        >
-                          <Input
-                            className={SearchIndexCss.inner_input_box}
-                            size="large"
-                            value={InputValue}
-                            // value={param.location_name}
-                            onChange={OnSearchInputChange}
-                            // name="search_input"
-                            allowClear
-                            disabled={!isEditable}
-                          />
-                        </Autocomplete>
-                      ) : (
-                        <Skeleton.Input
-                          active={true}
-                          size={"mid"}
-                          className={SearchIndexCss.input_skeleton}
-                        />
-                      )}
-                    </div>
-                  </div>
-                </Col>
-                {/* </Form.Item>
-
-                  <Form.Item> */}
-                <Col
-                  md={3}
-                  className={SearchIndexCss.edit_details_container_cols}
-                >
-                  <div className={SearchIndexCss.edit_details_divs}>
-                    <p className={SearchIndexCss.edit_details_titles}>
-                      {(() => {
-                        const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
-                        const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
-                        return endDate.diff(startDate, "days") || 0;
-                      })()}{" "}
-                      Nights
-                    </p>
-
-                    <div
-                      className={SearchIndexCss.edit_details_inputs_container}
-                    >
-                      <RangePicker
-                        defaultValue={[
-                          dayjs(DateInputValues[0]),
-                          dayjs(DateInputValues[1]),
-                        ]}
-                        size="large"
-                        onChange={OnChangeDateInput}
-                        className={SearchIndexCss.edit_details_date_picker}
-                        disabledDate={(current) => {
-                          return current && current < dayjs().startOf("day");
-                        }}
-                        format={"MM-DD-YYYY"}
-                        disabled={!isEditable}
-                      />
-                    </div>
-                  </div>
-                </Col>
-                {/* </Form.Item>
-
-                  <Form.Item> */}
-                <Col
-                  md={3}
-                  className={SearchIndexCss.edit_details_container_cols}
-                >
-                  <div className={SearchIndexCss.edit_details_divs}>
-                    <p className={SearchIndexCss.edit_details_titles}>
-                      {adult + child + infant + pet} Guests
-                    </p>
-                    <ReactDropdown
-                      className={SearchIndexCss.edit_details_inputs_container}
-                    >
-                      <ReactDropdown.Toggle
-                        className={SearchIndexCss.inner_input_box}
-                        id="dropdown-basic"
-                        disabled={!isEditable}
-                        onChange={(e) =>
-                          onChangeGuest(parseInt(e.target.value))
-                        }
-                        // value={guest}
+                      <div
+                        className={SearchIndexCss.edit_details_inputs_container}
                       >
-                        Please select guests
-                      </ReactDropdown.Toggle>
-                      <ReactDropdown.Menu className={SearchIndexCss.adultChild}>
-                        <div className={SearchIndexCss.increase}>
-                          <div>
-                            <ReactDropdown.Item href="#/action-1">
-                              {" "}
-                              <span className={SearchIndexCss.ageName}>
-                                {adult} Adults
-                              </span>
-                            </ReactDropdown.Item>
+                        {isLoaded ? (
+                          <Autocomplete
+                            onPlaceChanged={onPlaceChanged}
+                            onLoad={onLoad}
+                          >
+                            <Input
+                              className={SearchIndexCss.inner_input_box}
+                              size="large"
+                              value={InputValue}
+                              // value={param.location_name}
+                              onChange={OnSearchInputChange}
+                              // name="search_input"
+                              allowClear
+                              disabled={!isEditable}
+                            />
+                          </Autocomplete>
+                        ) : (
+                          <Skeleton.Input
+                            active={true}
+                            size={"mid"}
+                            className={SearchIndexCss.input_skeleton}
+                          />
+                        )}
+                      </div>
+                    </Form.Item>
+                  </Col>
+
+                  <Col
+                    md={3}
+                    className={SearchIndexCss.edit_details_container_cols}
+                  >
+                    <Form.Item className={SearchIndexCss.edit_details_divs}>
+                      <p className={SearchIndexCss.edit_details_titles}>
+                        {(() => {
+                          const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
+                          const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
+                          return endDate.diff(startDate, "days") || 0;
+                        })()}{" "}
+                        Nights
+                      </p>
+
+                      <div
+                        className={SearchIndexCss.edit_details_inputs_container}
+                      >
+                        <RangePicker
+                          defaultValue={[
+                            dayjs(DateInputValues[0]),
+                            dayjs(DateInputValues[1]),
+                          ]}
+                          size="large"
+                          onChange={OnChangeDateInput}
+                          className={SearchIndexCss.edit_details_date_picker}
+                          disabledDate={(current) => {
+                            return current && current < dayjs().startOf("day");
+                          }}
+                          format={"MM-DD-YYYY"}
+                          disabled={!isEditable}
+                        />
+                      </div>
+                    </Form.Item>
+                  </Col>
+
+                  <Col
+                    md={3}
+                    className={SearchIndexCss.edit_details_container_cols}
+                  >
+                    <Form.Item className={SearchIndexCss.edit_details_divs}>
+                      <p className={SearchIndexCss.edit_details_titles}>
+                        {adult + child + infant + pet} Guests
+                      </p>
+                      <ReactDropdown
+                        className={SearchIndexCss.edit_details_inputs_container}
+                      >
+                        <ReactDropdown.Toggle
+                          className={SearchIndexCss.inner_input_box}
+                          id="dropdown-basic"
+                          disabled={!isEditable}
+                          onChange={(e) =>
+                            onChangeGuest(parseInt(e.target.value))
+                          }
+                        // value={guest}
+                        >
+                          Please select guests
+                        </ReactDropdown.Toggle>
+                        <ReactDropdown.Menu className={SearchIndexCss.adultChild}>
+                          <div className={SearchIndexCss.increase}>
+                            <div>
+                              <ReactDropdown.Item href="#/action-1">
+                                {" "}
+                                <span className={SearchIndexCss.ageName}>
+                                  {adult} Adults
+                                </span>
+                              </ReactDropdown.Item>
+                            </div>
+
+                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                              <Button className={SearchIndexCss.increaseAdult}>
+                                <div
+                                  className={SearchIndexCss.decreasebtn}
+                                  onClick={decAdult}
+                                >
+                                  -
+                                </div>
+                                <div className={SearchIndexCss.guest_count_div}>
+                                  {adult}
+                                </div>
+                                <div
+                                  className={SearchIndexCss.increasebtn}
+                                  onClick={incAdult}
+                                >
+                                  +
+                                </div>
+                              </Button>
+                            </div>
                           </div>
 
-                          <div className={SearchIndexCss.geust_incri_btns_div}>
-                            <Button className={SearchIndexCss.increaseAdult}>
-                              <div
-                                className={SearchIndexCss.decreasebtn}
-                                onClick={decAdult}
-                              >
-                                -
-                              </div>
-                              <div className={SearchIndexCss.guest_count_div}>
-                                {adult}
-                              </div>
-                              <div
-                                className={SearchIndexCss.increasebtn}
-                                onClick={incAdult}
-                              >
-                                +
-                              </div>
-                            </Button>
-                          </div>
-                        </div>
+                          <div className={SearchIndexCss.increase}>
+                            <div>
+                              <ReactDropdown.Item href="#/action-2">
+                                {" "}
+                                <span className={SearchIndexCss.ageName}>
+                                  {child} Children
+                                </span>
+                              </ReactDropdown.Item>
+                            </div>
 
-                        <div className={SearchIndexCss.increase}>
-                          <div>
-                            <ReactDropdown.Item href="#/action-2">
-                              {" "}
-                              <span className={SearchIndexCss.ageName}>
-                                {child} Children
-                              </span>
-                            </ReactDropdown.Item>
-                          </div>
-
-                          <div className={SearchIndexCss.geust_incri_btns_div}>
-                            <Button className={SearchIndexCss.increaseAdult}>
-                              <div
-                                className={SearchIndexCss.decreasebtn}
-                                onClick={decChild}
-                              >
-                                -
-                              </div>
-                              <div className={SearchIndexCss.guest_count_div}>
-                                {child}
-                              </div>
-                              <div
-                                className={SearchIndexCss.increasebtn}
-                                onClick={incChild}
-                              >
-                                +
-                              </div>
-                            </Button>
-                          </div>
-                        </div>
-
-                        <div className={SearchIndexCss.increase}>
-                          <div>
-                            <ReactDropdown.Item href="#/action-3">
-                              {" "}
-                              <span className={SearchIndexCss.ageName}>
-                                {infant} Infant
-                              </span>
-                            </ReactDropdown.Item>
+                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                              <Button className={SearchIndexCss.increaseAdult}>
+                                <div
+                                  className={SearchIndexCss.decreasebtn}
+                                  onClick={decChild}
+                                >
+                                  -
+                                </div>
+                                <div className={SearchIndexCss.guest_count_div}>
+                                  {child}
+                                </div>
+                                <div
+                                  className={SearchIndexCss.increasebtn}
+                                  onClick={incChild}
+                                >
+                                  +
+                                </div>
+                              </Button>
+                            </div>
                           </div>
 
-                          <div className={SearchIndexCss.geust_incri_btns_div}>
-                            <Button className={SearchIndexCss.increaseAdult}>
-                              <div
-                                className={SearchIndexCss.decreasebtn}
-                                onClick={decInfant}
-                              >
-                                -
-                              </div>
-                              <div className={SearchIndexCss.guest_count_div}>
-                                {infant}
-                              </div>
-                              <div
-                                className={SearchIndexCss.increasebtn}
-                                onClick={incInfant}
-                              >
-                                +
-                              </div>
-                            </Button>
-                          </div>
-                        </div>
+                          <div className={SearchIndexCss.increase}>
+                            <div>
+                              <ReactDropdown.Item href="#/action-3">
+                                {" "}
+                                <span className={SearchIndexCss.ageName}>
+                                  {infant} Infant
+                                </span>
+                              </ReactDropdown.Item>
+                            </div>
 
-                        <div className={SearchIndexCss.increase}>
-                          <div>
-                            <ReactDropdown.Item href="#/action-4">
-                              {" "}
-                              <span className={SearchIndexCss.ageName}>
-                                {pet} Pet
-                              </span>
-                            </ReactDropdown.Item>
+                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                              <Button className={SearchIndexCss.increaseAdult}>
+                                <div
+                                  className={SearchIndexCss.decreasebtn}
+                                  onClick={decInfant}
+                                >
+                                  -
+                                </div>
+                                <div className={SearchIndexCss.guest_count_div}>
+                                  {infant}
+                                </div>
+                                <div
+                                  className={SearchIndexCss.increasebtn}
+                                  onClick={incInfant}
+                                >
+                                  +
+                                </div>
+                              </Button>
+                            </div>
                           </div>
 
-                          <div className={SearchIndexCss.geust_incri_btns_div}>
-                            <Button className={SearchIndexCss.increaseAdult}>
-                              <div
-                                className={SearchIndexCss.decreasebtn}
-                                onClick={decPet}
-                              >
-                                -
-                              </div>
-                              <div className={SearchIndexCss.guest_count_div}>
-                                {pet}
-                              </div>
-                              <div
-                                className={SearchIndexCss.increasebtn}
-                                onClick={incPet}
-                              >
-                                +
-                              </div>
-                            </Button>
-                          </div>
-                        </div>
-                      </ReactDropdown.Menu>
-                    </ReactDropdown>
-                  </div>
-                </Col>
-                {/* </Form.Item> */}
+                          <div className={SearchIndexCss.increase}>
+                            <div>
+                              <ReactDropdown.Item href="#/action-4">
+                                {" "}
+                                <span className={SearchIndexCss.ageName}>
+                                  {pet} Pet
+                                </span>
+                              </ReactDropdown.Item>
+                            </div>
 
-                <Col
-                  md={3}
-                  className={SearchIndexCss.edit_details_container_cols}
-                >
-                  <div
-                    className={SearchIndexCss.edit_details_btn_parent_container}
+                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                              <Button className={SearchIndexCss.increaseAdult}>
+                                <div
+                                  className={SearchIndexCss.decreasebtn}
+                                  onClick={decPet}
+                                >
+                                  -
+                                </div>
+                                <div className={SearchIndexCss.guest_count_div}>
+                                  {pet}
+                                </div>
+                                <div
+                                  className={SearchIndexCss.increasebtn}
+                                  onClick={incPet}
+                                >
+                                  +
+                                </div>
+                              </Button>
+                            </div>
+                          </div>
+                        </ReactDropdown.Menu>
+                      </ReactDropdown>
+                    </Form.Item>
+                  </Col>
+
+                  <Col
+                    md={3}
+                    className={SearchIndexCss.edit_details_container_cols}
                   >
                     <div
-                      className={
-                        SearchIndexCss.edit_details_btn_child_container
-                      }
+                      className={SearchIndexCss.edit_details_btn_parent_container}
                     >
-                      {isVisible && (
-                        <Button
-                          size="large"
-                          className={SearchIndexCss.edit_details_btn}
-                          onClick={EditBtn}
-                        >
-                          {showHidden ? "Close" : "Edit"}
-                        </Button>
-                      )}
+                      <Form.Item
+                        className={
+                          SearchIndexCss.edit_details_btn_child_container
+                        }
+                      >
+                        {isVisible && (
+                          <Button
+                            size="large"
+                            className={SearchIndexCss.edit_details_btn}
+                            onClick={EditBtn}
+                          >
+                            {showHidden ? "Close" : "Edit"}
+                          </Button>
+                        )}
+                      </Form.Item>
                     </div>
-                  </div>
-                </Col>
+                  </Col>
+                </Form>
                 {showHidden && <HiddenModal />}
-                {/* </Form> */}
               </Row>
             </div>
           </Container>

@@ -73,11 +73,10 @@ const TabContentOverview = (PropData) => {
       <main className={ViewPropertyCss.tabOverviewSection}>
         <h3 className={ViewPropertyCss.tabOverviewPropHeading}>
           {PropData.data?.name ? PropData.data?.name : "N/A"}{" "}
-          {`(${
-            PropData?.data?.externalPropertyType
-              ? PropData?.data?.externalPropertyType
-              : "N/A"
-          })`}
+          {`(${PropData?.data?.externalPropertyType
+            ? PropData?.data?.externalPropertyType
+            : "N/A"
+            })`}
         </h3>
         <div className={ViewPropertyCss.host_name_div}>
           <span className={ViewPropertyCss.owner_name}>
@@ -177,15 +176,15 @@ const TabContentOverview = (PropData) => {
                     <Col md={5} sm={6}>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>
-                          Email:{" "}
+                          Driving Range:{" "}
                         </span>
-                        {golfCourseDataModal.email_address}
+                        {golfCourseDataModal.driving_range}
                       </p>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>
-                          Phone:{" "}
+                          Putting Green:{" "}
                         </span>
-                        {golfCourseDataModal.phone}
+                        {golfCourseDataModal.putting_green}
                       </p>
                       <p className={ViewPropertyCss.club_detail_member}>
                         <span className={ViewPropertyCss.title_of_modal}>

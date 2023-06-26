@@ -100,7 +100,7 @@
 
 .view_prop_image_div_1 {
   grid-area: 1 / 1 / 3 / 3;
-  max-height: 540px;
+  max-height: 540px !important;
 }
 
 .view_prop_image_div_2 {

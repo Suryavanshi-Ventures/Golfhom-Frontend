@@ -22,6 +22,14 @@
   font-family: var(--font-poppins);
 }
 
+.edit_details_container_row_form {
+  display: flex !important;
+}
+
+.form_container {
+  display: flex;
+}
+
 .edit_details_date_picker,
 .inner_input_box {
   width: 100%;
@@ -117,6 +125,12 @@
   background-color: var(--black-btn-color);
   border: none;
 }
+
+.form_container {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+                  
 
 /*    ----------------      CARD MAP SECTION      -------------------   */
 
