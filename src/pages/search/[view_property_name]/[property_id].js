@@ -91,6 +91,7 @@ const ViewProperty = () => {
   const [StartingFromPrice, setStartingFromPrice] = useState(0);
   const [IsReserveVisible, setIsReserveVisible] = useState(true);
   const [PaymentIntentObjNextpax, setPaymentIntentObjNextpax] = useState({});
+  const [PaymentIntentObjRental, setPaymentIntentObjRental] = useState({});
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -287,6 +288,8 @@ const ViewProperty = () => {
   };
 
   const CreatePatymentIntent = async () => {
+    setNewPayment(true);
+
     if (BookingDate.length === 0) {
       message.error("Please select the check-in & check-out date");
       return;
@@ -307,7 +310,6 @@ const ViewProperty = () => {
     );
     PaymentRes.then((response) => {
       if (response.status === 200) {
-        message.info("Please fill the details and click on pay!");
         console.log("RESPONSE PAYMENT INTENT", response.data?.paymentIntent);
         setPaymentIntentObject({
           ClientSecret: response.data?.paymentIntent.client_secret,
@@ -424,7 +426,8 @@ const ViewProperty = () => {
               setAvailable(true);
               setNotAvailable(false);
               setStartingFromPrice(CheckAvailRes?.data?.data?.avgPerNight);
-              setNewPayment(true);
+
+              setPaymentIntentObjRental(CheckAvailRes.data?.paymentIntent);
             } else {
               setAvailable(false);
               setNotAvailable(true);
@@ -432,8 +435,15 @@ const ViewProperty = () => {
           } catch (error) {
             setAvailable(false);
             setNotAvailable(true);
-            message.error("Internal error, Something went wrong!");
-            console.log(error, "ERROR CheckAvailability RENTAL");
+            if (
+              error.response.data.message ===
+              "Property is not available for a given dates - Minimum stay criteria not met!"
+            ) {
+              message.error(error.response.data.message);
+            } else {
+              message.error("Internal error, Something went wrong!");
+              console.log(error, "ERROR CheckAvailability RENTAL");
+            }
           }
         };
         CheckAvail();
@@ -1282,7 +1292,11 @@ const ViewProperty = () => {
                         babies: infant,
                         pets: pet,
                         total_amount: StartingFromPrice * NightsCounter,
-                        paymentIntent: PaymentIntentObjNextpax,
+                        property_type: PropertyType,
+                        paymentIntent:
+                          PropertyType === "Nextpax"
+                            ? PaymentIntentObjNextpax
+                            : PaymentIntentObjRental,
                       }}
                     />
                   </Modal>

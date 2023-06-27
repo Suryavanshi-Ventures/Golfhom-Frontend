@@ -52,9 +52,12 @@ const Checkout = (props) => {
         try {
           const Token =
             localStorage.getItem("token") || sessionStorage.getItem("token");
-          console.log(Token);
           const CreateBookingRes = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/createBooking`,
+            `${process.env.NEXT_PUBLIC_API_URL}${
+              props.data.data.property_type === "Rental"
+                ? "/v1/rentalunited/createBooking"
+                : "/v1/nextpax/createBooking"
+            }`,
             {
               id: props.data.data.propertyId,
               from: props.data.data.from,
@@ -77,10 +80,8 @@ const Checkout = (props) => {
             { headers: { Authorization: `Bearer ${Token}` } }
           );
           // * SUCCESS API RESPONSE
-          if (
-            CreateBookingRes.status === 201 &&
-            CreateBookingRes.data.data.bookingNumber
-          ) {
+          if (CreateBookingRes.status === 201) {
+            console.log(CreateBookingRes.data, "BOOKING SUCCESS RES");
             message.success(CreateBookingRes.data.data);
             // RouterRef.push({
             //   pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
