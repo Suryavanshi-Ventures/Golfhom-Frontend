@@ -36,7 +36,6 @@ const TabContentOverview = (PropData) => {
             ];
             //! END
           }
-          console.log("test", GetGolfCourseRes.data.data);
           setGolfCourseData(GetGolfCourseRes.data.data.slice(0, 5));
         }
       } catch (error) {
@@ -51,14 +50,12 @@ const TabContentOverview = (PropData) => {
   }, [PropData?.data?.latitude, PropData?.data?.longitude]);
 
   // DATA MODAL
-  console.log(GolfCourseData, "SFAFF");
 
   const [modalOpen, setModalOpen] = useState(false);
   const [golfCourseDataModal, setGolfCourseDataModal] = useState(null);
 
   const showModal = (data) => {
     setGolfCourseDataModal(data);
-    console.log("props", data);
     setModalOpen(true);
   };
   const handleOk = () => {
@@ -73,10 +70,11 @@ const TabContentOverview = (PropData) => {
       <main className={ViewPropertyCss.tabOverviewSection}>
         <h3 className={ViewPropertyCss.tabOverviewPropHeading}>
           {PropData.data?.name ? PropData.data?.name : "N/A"}{" "}
-          {`(${PropData?.data?.externalPropertyType
-            ? PropData?.data?.externalPropertyType
-            : "N/A"
-            })`}
+          {`(${
+            PropData?.data?.externalPropertyType
+              ? PropData?.data?.externalPropertyType
+              : "N/A"
+          })`}
         </h3>
         <div className={ViewPropertyCss.host_name_div}>
           <span className={ViewPropertyCss.owner_name}>

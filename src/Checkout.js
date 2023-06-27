@@ -20,7 +20,8 @@ const Checkout = (props) => {
   const elements = useElements();
   const [FormRef] = Form.useForm();
 
-  console.log("PROPS DATA CHECKOUT PAGE", props.data.data);
+  console.log("PROPS DATA CHECKOUT PAGE", props);
+
   const [IsLoading, setIsLoading] = useState(false);
 
   const BookingHotelDone = async (values) => {
