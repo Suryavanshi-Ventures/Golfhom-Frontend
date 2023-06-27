@@ -146,8 +146,8 @@ const Success = () => {
               <h5 className={Checkout2Css.amount_master}>Total Amount</h5>
               <h5 className={Checkout2Css.details_text_value}>
                 $
-                {UrlParams.query.payment_amount
-                  ? UrlParams.query.payment_amount
+                {UrlParams?.query?.payment_amount
+                  ? UrlParams?.query?.payment_amount
                   : 0}
               </h5>
             </div>

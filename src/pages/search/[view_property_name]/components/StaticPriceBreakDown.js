@@ -241,8 +241,8 @@ const StaticPriceBreakDown = (props) => {
             <div className={StaticPriceBreakDownCss.total_price_text_div}>
               <p className={StaticPriceBreakDownCss.total_price}>
                 $
-                {props?.data.RentalpaxPriceBreakDown?.perday[0].Extra
-                  ? props?.data.RentalpaxPriceBreakDown?.perday[0].Extra
+                {props?.data?.RentalpaxPriceBreakDown?.perday[0].Extra
+                  ? props?.data?.RentalpaxPriceBreakDown?.perday[0].Extra
                   : 0}
               </p>
             </div>
