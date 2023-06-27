@@ -3,7 +3,7 @@ import StaticPriceBreakDownCss from "./style/StaticPriceBreakDownCss.module.css"
 import moment from "moment";
 
 const StaticPriceBreakDown = (props) => {
-  console.log(props, "STATIC PRICE BREAK DOWN");
+  console.log(props, "STATIC PRICE BREAK DOWN COMPONENT");
 
   const [NightsCounter, setNightsCounter] = useState(0);
   useEffect(() => {
@@ -140,6 +140,7 @@ const StaticPriceBreakDown = (props) => {
                     ""
                   ) : (
                     <div
+                      key={Index}
                       className={
                         StaticPriceBreakDownCss.total_price_charge_main_div
                       }
@@ -182,6 +183,7 @@ const StaticPriceBreakDown = (props) => {
                     ""
                   ) : (
                     <div
+                      key={Index}
                       className={
                         StaticPriceBreakDownCss.total_price_charge_main_div
                       }
@@ -249,7 +251,6 @@ const StaticPriceBreakDown = (props) => {
           </div>
 
           {/* REQUIRED CHARGES */}
-
           {props?.RentalpaxPriceBreakDown?.data?.charges?.required.map(
             (Data, Index) => {
               return (
@@ -258,6 +259,7 @@ const StaticPriceBreakDown = (props) => {
                     ""
                   ) : (
                     <div
+                      key={Index}
                       className={
                         StaticPriceBreakDownCss.total_price_charge_main_div
                       }

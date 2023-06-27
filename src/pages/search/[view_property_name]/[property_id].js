@@ -37,6 +37,7 @@ const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
 import dynamic from "next/dynamic";
+import { useFormState } from "react-hook-form";
 
 const BottomSection = dynamic(
   () => import("../../../../common components/bottomGroup"),
@@ -84,7 +85,6 @@ const ViewProperty = () => {
   ] = useState(false);
   const [AvailDateNextpax, setAvailDateNextpax] = useState([]);
   const [AvailDateRental, setAvailDateRental] = useState([]);
-
   const [NextPaxFinalAvailPriceBreakDown, setNextPaxFinalAvailPriceBreakDown] =
     useState({});
   const [RentalFinalAvailPriceBreakDown, setRentalFinalAvailPriceBreakDown] =
@@ -94,6 +94,8 @@ const ViewProperty = () => {
   const [IsReserveVisible, setIsReserveVisible] = useState(true);
   const [PaymentIntentObjNextpax, setPaymentIntentObjNextpax] = useState({});
   const [PaymentIntentObjRental, setPaymentIntentObjRental] = useState({});
+  const [TotalChargesNextpax, setTotalChargesNextpax] = useState(0);
+  const [TotalChargesRental, setTotalChargesRental] = useState(0);
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -389,6 +391,9 @@ const ViewProperty = () => {
             if (CheckAvailRes.status === 201) {
               if (CheckAvailRes.data.data.available) {
                 setNextPaxFinalAvailPriceBreakDown(CheckAvailRes.data.data);
+                setTotalChargesNextpax(
+                  CheckAvailRes.data?.data?.breakdown?.total
+                );
                 setStartingFromPrice(CheckAvailRes?.data?.data?.breakdown?.adr);
                 setAvailable(true);
                 setNotAvailable(false);
@@ -427,24 +432,30 @@ const ViewProperty = () => {
               setAvailable(true);
               setNotAvailable(false);
               setStartingFromPrice(CheckAvailRes?.data?.data?.avgPerNight);
+              setTotalChargesRental(CheckAvailRes?.data?.data?.total);
               setPaymentIntentObjRental(CheckAvailRes.data?.paymentIntent);
               setRentalFinalAvailPriceBreakDown(CheckAvailRes?.data?.data);
               setShowTotalPaymentTextStatic(true);
             } else {
               setAvailable(false);
               setNotAvailable(true);
+              setShowTotalPaymentTextStatic(false);
             }
           } catch (error) {
             setAvailable(false);
             setNotAvailable(true);
+            setShowTotalPaymentTextStatic(false);
+
             if (
               error.response.data.message ===
               "Property is not available for a given dates - Minimum stay criteria not met!"
             ) {
               message.error(error.response.data.message);
+              setShowTotalPaymentTextStatic(false);
             } else {
               message.error("Internal error, Something went wrong!");
               console.log(error, "ERROR CheckAvailability RENTAL");
+              setShowTotalPaymentTextStatic(false);
             }
           }
         };
@@ -1297,7 +1308,8 @@ const ViewProperty = () => {
                         adult: adult,
                         babies: infant,
                         pets: pet,
-                        total_amount: StartingFromPrice * NightsCounter,
+                        total_charges_nextpax: TotalChargesNextpax,
+                        total_charges_rental: TotalChargesRental,
                         property_type: PropertyType,
                         paymentIntent:
                           PropertyType === "Nextpax"

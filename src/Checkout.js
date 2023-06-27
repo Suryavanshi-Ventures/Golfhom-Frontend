@@ -120,7 +120,7 @@ const Checkout = (props) => {
                       pets: props.data.data.pets,
                       payment_method: "Card",
                       payment_status: CreateBookingRes.data.status,
-                      payment_amount: props.data.data.total_amount,
+                      payment_amount: props.data.data.total_charges_rental,
                     },
                   });
                 }, secondsToGo * 1000);
@@ -129,11 +129,11 @@ const Checkout = (props) => {
               countDown();
             } else if (props.data.data.property_type === "Nextpax") {
               console.log(
-                CreateBookingRes.data.data.ReservationID,
+                CreateBookingRes.data.data,
                 "BOOKING SUCCESS NEXTPAX"
               );
 
-              const countDown = (BookingData) => {
+              const countDown = () => {
                 let secondsToGo = 7;
                 const instance = modal.success({
                   title: "Booking Confirmed!",
@@ -152,23 +152,25 @@ const Checkout = (props) => {
                   RouterRef.push({
                     pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
                     query: {
-                      transaction_id: BookingData?.data?.data?.id,
-                      booking_number: BookingData?.data?.data?.bookingNumber,
-                      hotel_name: props.data.poperty_name,
-                      from_date: props.data.from,
-                      to_date: props.data.to,
-                      total_guests: props.data.total_guests,
-                      adult: props.data.adult,
-                      children: props.data.children,
-                      babies: props.data.babies,
-                      pets: props.data.pets,
-                      payment_method: "CardType",
-                      payment_status: BookingData?.data.status,
-                      payment_amount: props.data.total_amount,
+                      transaction_id: CreateBookingRes?.data?.data?.id,
+                      booking_number:
+                        CreateBookingRes?.data?.data?.bookingNumber,
+                      hotel_name: props.data.data.poperty_name,
+                      from_date: props.data.data.from,
+                      to_date: props.data.data.to,
+                      total_guests: props.data.data.total_guests,
+                      adult: props.data.data.adult,
+                      children: props.data.data.children,
+                      babies: props.data.data.babies,
+                      pets: props.data.data.pets,
+                      payment_method: "Card",
+                      payment_status: CreateBookingRes?.data.status,
+                      payment_amount: props.data.data.total_charges_nextpax,
                     },
                   });
                 }, secondsToGo * 1000);
               };
+              countDown();
             }
           } else {
             setIsLoading(false);
