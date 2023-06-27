@@ -12,20 +12,19 @@ import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { Col, Row } from "react-bootstrap";
-import { Form, Input, Button, message, DatePicker, Select } from "antd";
+import { Form, Input, Button, message, DatePicker, Select, Modal } from "antd";
 
 const Checkout = (props) => {
   const RouterRef = useRouter();
   const stripe = useStripe();
   const elements = useElements();
   const [FormRef] = Form.useForm();
-
-  console.log("PROPS DATA CHECKOUT PAGE", props);
-
   const [IsLoading, setIsLoading] = useState(false);
+  const [modal, contextHolder] = Modal.useModal();
+  console.log("CHECKOUT PAGE", props);
 
   const BookingHotelDone = async (values) => {
-    // setIsLoading(true);
+    setIsLoading(true);
     try {
       if (!stripe || !elements) {
         setIsLoading(false);
@@ -54,7 +53,7 @@ const Checkout = (props) => {
             localStorage.getItem("token") || sessionStorage.getItem("token");
           const CreateBookingRes = await axios.post(
             `${process.env.NEXT_PUBLIC_API_URL}${
-              props.data.data.property_type === "Rental"
+              props?.data?.data?.property_type === "Rental"
                 ? "/v1/rentalunited/createBooking"
                 : "/v1/nextpax/createBooking"
             }`,
@@ -80,27 +79,97 @@ const Checkout = (props) => {
             { headers: { Authorization: `Bearer ${Token}` } }
           );
           // * SUCCESS API RESPONSE
+
           if (CreateBookingRes.status === 201) {
-            console.log(CreateBookingRes.data, "BOOKING SUCCESS RES");
-            message.success(CreateBookingRes.data.data);
-            // RouterRef.push({
-            //   pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
-            //   query: {
-            //     transaction_id: BookingData?.data?.data?.id,
-            //     booking_number: BookingData?.data?.data?.bookingNumber,
-            //     hotel_name: props.data.poperty_name,
-            //     from_date: props.data.from,
-            //     to_date: props.data.to,
-            //     total_guests: props.data.total_guests,
-            //     adult: props.data.adult,
-            //     children: props.data.children,
-            //     babies: props.data.babies,
-            //     pets: props.data.pets,
-            //     payment_method: CardType,
-            //     payment_status: BookingData?.data.status,
-            //     payment_amount: props.data.total_amount,
-            //   },
-            // });
+            if (props.data.data.property_type === "Rental") {
+              console.log(
+                CreateBookingRes.data.data.data,
+                "BOOKING SUCCESS RENTAL"
+              );
+
+              const countDown = () => {
+                let secondsToGo = 7;
+                const instance = modal.success({
+                  title: "Booking Confirmed!",
+                  content: `Please do not refresh the page, Redirecting in ${secondsToGo} second.`,
+                  centered: true,
+                  footer: null,
+                });
+                const timer = setInterval(() => {
+                  secondsToGo -= 1;
+                  instance.update({
+                    content: `Please do not refresh the page, Redirecting in ${secondsToGo} second.`,
+                  });
+                }, 1000);
+                setTimeout(() => {
+                  clearInterval(timer);
+                  RouterRef.push({
+                    pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
+                    query: {
+                      transaction_id:
+                        CreateBookingRes.data.data.data.ReservationID._text,
+                      booking_number:
+                        CreateBookingRes.data.data.data.ResponseID._text,
+                      hotel_name: props.data.data.poperty_name,
+                      from_date: props.data.data.from,
+                      to_date: props.data.data.to,
+                      total_guests: props.data.data.total_guests,
+                      adult: props.data.data.adult,
+                      children: props.data.data.children,
+                      babies: props.data.data.babies,
+                      pets: props.data.data.pets,
+                      payment_method: "Card",
+                      payment_status: CreateBookingRes.data.status,
+                      payment_amount: props.data.data.total_amount,
+                    },
+                  });
+                }, secondsToGo * 1000);
+              };
+
+              countDown();
+            } else if (props.data.data.property_type === "Nextpax") {
+              console.log(
+                CreateBookingRes.data.data.ReservationID,
+                "BOOKING SUCCESS NEXTPAX"
+              );
+
+              const countDown = (BookingData) => {
+                let secondsToGo = 7;
+                const instance = modal.success({
+                  title: "Booking Confirmed!",
+                  content: `Please do not refresh, Redirecting in ${secondsToGo} second.`,
+                  centered: true,
+                  footer: null,
+                });
+                const timer = setInterval(() => {
+                  secondsToGo -= 1;
+                  instance.update({
+                    content: `Please do not refresh, Redirecting in ${secondsToGo} second.`,
+                  });
+                }, 1000);
+                setTimeout(() => {
+                  clearInterval(timer);
+                  RouterRef.push({
+                    pathname: `${process.env.NEXT_PUBLIC_DOMAIN}/search/view_property/success`,
+                    query: {
+                      transaction_id: BookingData?.data?.data?.id,
+                      booking_number: BookingData?.data?.data?.bookingNumber,
+                      hotel_name: props.data.poperty_name,
+                      from_date: props.data.from,
+                      to_date: props.data.to,
+                      total_guests: props.data.total_guests,
+                      adult: props.data.adult,
+                      children: props.data.children,
+                      babies: props.data.babies,
+                      pets: props.data.pets,
+                      payment_method: "CardType",
+                      payment_status: BookingData?.data.status,
+                      payment_amount: props.data.total_amount,
+                    },
+                  });
+                }, secondsToGo * 1000);
+              };
+            }
           } else {
             setIsLoading(false);
           }
@@ -127,72 +196,6 @@ const Checkout = (props) => {
     }
   };
 
-  const OnClickPay = async (values) => {
-    console.log("Success:", dayjs(values.payment_card_exp_month).format("M"));
-    // setIsLoading(true);
-    // try {
-    //   const Token =
-    //     localStorage.getItem("token") || sessionStorage.getItem("token");
-    //   console.log(Token);
-    //   const CreateBookingRes = await axios.post(
-    //     `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/createBooking`,
-    //     {
-    //       id: props.data.propertyId,
-    //       from: props.data.from,
-    //       to: props.data.to,
-    //       guest: props.data.total_guests,
-    //       children: props.data.children,
-    //       babies: props.data.babies,
-    //       pets: 0,
-    //       cardCVC: values.payment_card_cvc_code,
-    //       cardType: values.payment_card_type.toUpperCase(),
-    //       cardNumber: values.payment_card_number,
-    //       cardExpirationYear: dayjs(values.payment_card_exp_year).format(
-    //         "YYYY"
-    //       ),
-    //       cardExpirationMonth: dayjs(values.payment_card_exp_month).format("M"),
-    //       cardHolderName: values.payment_card_holder_name,
-    //       mainBooker: {
-    //         countryCode: values.payment_card_country_code.toLowerCase(),
-    //         zipCode: values.payment_card_zip_code,
-    //         houseNumber: values.payment_card_house_number,
-    //         street: values.payment_card_street_address,
-    //         place: values.payment_card_city,
-    //         stateProv: values.payment_card_state,
-    //         houseNumber: values.payment_card_house_number,
-    //       },
-    //     },
-    //     { headers: { Authorization: `Bearer ${Token}` } }
-    //   );
-    //   // * SUCCESS API RESPONSE
-    //   if (
-    //     CreateBookingRes.status === 201 &&
-    //     CreateBookingRes.data.data.bookingNumber
-    //   ) {
-    //     setCardType(values.payment_card_type);
-    //     LoadingPopUp(CreateBookingRes);
-    //   } else {
-    //     setIsLoading(false);
-    //   }
-    // } catch (error) {
-    //   if (error.response.status === 401) {
-    //     message.error("Please login to book hotels!");
-    //     setIsLoading(false);
-    //   } else {
-    //     setIsLoading(false);
-    //     message.error(error.response.data.message);
-    //     if (error.response.data.message === "Property is not available") {
-    //       setTimeout(() => {
-    //         window.location.reload();
-    //       }, 3000);
-    //     }
-    //   }
-
-    //   console.log("ERROR: IN CREATE BOOKING API", error);
-    //   setIsLoading(false);
-    // }
-  };
-
   const OnClickPayFaild = (errorInfo) => {
     console.log("Failed:", errorInfo);
     setIsLoading(false);
@@ -200,6 +203,8 @@ const Checkout = (props) => {
 
   return (
     <>
+      {/* REDIRECT POP MODAL */}
+      {contextHolder}
       {/* PAYMENT ELEMENT STRIPE */}
       <PaymentElement />
       <hr />

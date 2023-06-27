@@ -87,6 +87,8 @@ const ViewProperty = () => {
 
   const [NextPaxFinalAvailPriceBreakDown, setNextPaxFinalAvailPriceBreakDown] =
     useState({});
+  const [RentalFinalAvailPriceBreakDown, setRentalFinalAvailPriceBreakDown] =
+    useState({});
   const [NightsCounter, setNightsCounter] = useState(0);
   const [StartingFromPrice, setStartingFromPrice] = useState(0);
   const [IsReserveVisible, setIsReserveVisible] = useState(true);
@@ -290,53 +292,53 @@ const ViewProperty = () => {
   const CreatePatymentIntent = async () => {
     setNewPayment(true);
 
-    if (BookingDate.length === 0) {
-      message.error("Please select the check-in & check-out date");
-      return;
-    }
+    // if (BookingDate.length === 0) {
+    //   message.error("Please select the check-in & check-out date");
+    //   return;
+    // }
 
-    const PaymentRes = axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
-      {
-        propertyId: SpecificPropAPIData.data?.id,
-        from: BookingDate[0],
-        to: BookingDate[1],
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${ContextUserDetails.UserState}`,
-        },
-      }
-    );
-    PaymentRes.then((response) => {
-      if (response.status === 200) {
-        console.log("RESPONSE PAYMENT INTENT", response.data?.paymentIntent);
-        setPaymentIntentObject({
-          ClientSecret: response.data?.paymentIntent.client_secret,
-          PaymentIntentId: response.data?.paymentIntent.id,
-        });
+    // const PaymentRes = axios.post(
+    //   `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
+    //   {
+    //     propertyId: SpecificPropAPIData.data?.id,
+    //     from: BookingDate[0],
+    //     to: BookingDate[1],
+    //   },
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${ContextUserDetails.UserState}`,
+    //     },
+    //   }
+    // );
+    // PaymentRes.then((response) => {
+    //   if (response.status === 200) {
+    //     console.log("RESPONSE PAYMENT INTENT", response.data?.paymentIntent);
+    //     setPaymentIntentObject({
+    //       ClientSecret: response.data?.paymentIntent.client_secret,
+    //       PaymentIntentId: response.data?.paymentIntent.id,
+    //     });
 
-        if (
-          SpecificPropAPIData?.price?.Pull_GetPropertyAvbPrice_RS
-            ?.PropertyPrices?.PropertyPrice
-        ) {
-          setShowTotalPaymentText(true);
-        } else {
-          console.log(SpecificPropAPIData?.price, "FROM VIEW PRO ELSE");
-          setShowTotalPaymentText(false);
-          setShowTotalPaymentTextStatic(true);
-        }
-      }
-    }).catch((err) => {
-      if (err.response.data?.message === "User not authorized") {
-        message.error("Please login to book hotels");
-        return;
-      }
-      message.error(err.response.data?.message);
-    });
+    //     if (
+    //       SpecificPropAPIData?.price?.Pull_GetPropertyAvbPrice_RS
+    //         ?.PropertyPrices?.PropertyPrice
+    //     ) {
+    //       setShowTotalPaymentText(true);
+    //     } else {
+    //       console.log(SpecificPropAPIData?.price, "FROM VIEW PRO ELSE");
+    //       setShowTotalPaymentText(false);
+    //       setShowTotalPaymentTextStatic(true);
+    //     }
+    //   }
+    // }).catch((err) => {
+    //   if (err.response.data?.message === "User not authorized") {
+    //     message.error("Please login to book hotels");
+    //     return;
+    //   }
+    //   message.error(err.response.data?.message);
+    // });
   };
 
-  console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
+  // console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
 
   const OnChangeDateInput = (date, DateValue) => {
     if (DateValue[0] || DateValue[1]) {
@@ -422,12 +424,12 @@ const ViewProperty = () => {
               { headers: { Authorization: `Bearer ${Token}` } }
             );
             if (CheckAvailRes.status === 201) {
-              setAvailabilityCalender(CheckAvailRes.data.data.calender);
               setAvailable(true);
               setNotAvailable(false);
               setStartingFromPrice(CheckAvailRes?.data?.data?.avgPerNight);
-
               setPaymentIntentObjRental(CheckAvailRes.data?.paymentIntent);
+              setRentalFinalAvailPriceBreakDown(CheckAvailRes?.data?.data);
+              setShowTotalPaymentTextStatic(true);
             } else {
               setAvailable(false);
               setNotAvailable(true);
@@ -1221,7 +1223,11 @@ const ViewProperty = () => {
               {ShowOtherDetailsStatic ? (
                 <>
                   <StaticPriceBreakDown
-                    data={NextPaxFinalAvailPriceBreakDown}
+                    data={{
+                      NextpaxPriceBreakDown: NextPaxFinalAvailPriceBreakDown,
+                      RentalpaxPriceBreakDown: RentalFinalAvailPriceBreakDown,
+                      property_type: PropertyType,
+                    }}
                   />
                 </>
               ) : (

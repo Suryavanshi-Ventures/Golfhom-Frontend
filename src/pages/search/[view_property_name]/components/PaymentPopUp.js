@@ -17,7 +17,7 @@ const { Option } = Select;
 import Checkout from "../../../../Checkout";
 
 const NewPaymentForm = (props) => {
-  console.log("PROPS OF NEW PAYMENT:", props);
+  console.log("NEWPAYMENT:", props);
 
   const [Options, setOptions] = useState(null);
   const [messageApi, contextHolder] = message.useMessage();
@@ -33,7 +33,6 @@ const NewPaymentForm = (props) => {
   const [CardType, setCardType] = useState("");
 
   const OnClickPay = async (values) => {
-    console.log("Success:", dayjs(values.payment_card_exp_month).format("M"));
     setIsLoading(true);
     // try {
     //   const Token =
