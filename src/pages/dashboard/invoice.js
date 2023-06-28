@@ -1,7 +1,7 @@
 import React from "react";
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
 import Image from "next/image";
-import { Container, Table } from "react-bootstrap";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import Nextimg from "../../../public/images/vector/next.svg";
 import Head from "next/head";
 import { Space, Typography, DatePicker, Select } from "antd";
@@ -50,114 +50,105 @@ const Invoice = () => {
 
         <section className={InvoiceCss.backgroundLight}>
           <Container>
-            <Table responsive>
-              <thead className={InvoiceCss.heading}>
-                <tr className={InvoiceCss.tableHead}>
-                  <th className={InvoiceCss.start}>Start date</th>
-                  <th className={InvoiceCss.end}>End date</th>
-                  <th className={InvoiceCss.type}>Type</th>
-                  <th className={InvoiceCss.price}>Price</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr className={InvoiceCss.tableRow}>
-                  <td>
-                    <div className={InvoiceCss.dateParent}>
-                      <DatePicker
-                        placeholder="Start date"
-                        showToday={false}
-                        format={dateFormat}
-                        size="large"
-                        className={InvoiceCss.inner_input_date_picker}
-                      />
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className={InvoiceCss.dateParent}>
-                      <DatePicker
-                        placeholder="End date"
-                        showToday={false}
-                        format={dateFormat}
-                        size="large"
-                        className={InvoiceCss.inner_input_date_picker}
-                      />
-                    </div>
-                  </td>
-
-                  <td>
-                    <Select
-                      defaultValue=" Marmot Ridge Golf Course"
-                      options={[
-                        {
-                          value: "Any",
-                          label: "Any",
-                        },
-                        {
-                          value: "Reservation Fee",
-                          label: "Reservation Fee",
-                        },
-                        {
-                          value: "Upgrade to Featured",
-                          label: "Upgrade to Featured",
-                        },
-                      ]}
-                      trigger={["click"]}
+            <div className={InvoiceCss.heading}>
+              <Row className={InvoiceCss.columnRow}>
+                <Col md={3} className={InvoiceCss.start}>Start date
+                  <Col md={4} sm={12} className={InvoiceCss.dateParent}>
+                    <DatePicker
+                      placeholder="Start date"
+                      showToday={false}
+                      format={dateFormat}
                       size="large"
-                    >
-                      <Select.Option onClick={(e) => e.preventDefault()}>
-                        <Typography.Link>
-                          <Space
-                            className={
-                              InvoiceCss.search_by_golf_input_search_by_tourni
-                            }
-                          >
-                            Reservation Fee
-                            <DownOutlined />
-                          </Space>
-                        </Typography.Link>
-                      </Select.Option>
-                    </Select>
-                  </td>
+                      className={InvoiceCss.inner_input_date_picker}
+                    />
+                  </Col>
+                </Col>
 
-                  <td>
-                    <Select
-                      defaultValue=" Marmot Ridge Golf Course"
-                      options={[
-                        {
-                          value: "Any",
-                          label: "Any",
-                        },
-                        {
-                          value: "Paid",
-                          label: "Paid",
-                        },
-                        {
-                          value: "Not Paid",
-                          label: "Not Paid",
-                        },
-                      ]}
-                      trigger={["click"]}
+                <Col md={3} className={InvoiceCss.end}>End date
+                  <Col md={4} sm={12} className={InvoiceCss.dateParent}>
+                    <DatePicker
+                      placeholder="End date"
+                      showToday={false}
+                      format={dateFormat}
                       size="large"
-                    >
-                      <Select.Option onClick={(e) => e.preventDefault()}>
-                        <Typography.Link>
-                          <Space
-                            className={
-                              InvoiceCss.search_by_golf_input_search_by_tourni
-                            }
-                          >
-                            Paid
-                            <DownOutlined />
-                          </Space>
-                        </Typography.Link>
-                      </Select.Option>
-                    </Select>
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
+                      className={InvoiceCss.inner_input_date_picker}
+                    />
+                  </Col>
+                </Col>
+
+                <Col md={3}>
+                  <Col className={InvoiceCss.type}>Type</Col>
+                  <Select
+                    defaultValue=" Marmot Ridge Golf Course"
+                    options={[
+                      {
+                        value: "Any",
+                        label: "Any",
+                      },
+                      {
+                        value: "Reservation Fee",
+                        label: "Reservation Fee",
+                      },
+                      {
+                        value: "Upgrade to Featured",
+                        label: "Upgrade to Featured",
+                      },
+                    ]}
+                    trigger={["click"]}
+                    size="large"
+                  >
+                    <Select.Option onClick={(e) => e.preventDefault()}>
+                      <Typography.Link>
+                        <Space
+                          className={
+                            InvoiceCss.search_by_golf_input_search_by_tourni
+                          }
+                        >
+                          Reservation Fee
+                          <DownOutlined />
+                        </Space>
+                      </Typography.Link>
+                    </Select.Option>
+                  </Select>
+                </Col>
+
+                <Col md={3}>
+                  <Col className={InvoiceCss.price}>Price</Col>
+                  <Select
+                    defaultValue=" Marmot Ridge Golf Course"
+                    options={[
+                      {
+                        value: "Any",
+                        label: "Any",
+                      },
+                      {
+                        value: "Paid",
+                        label: "Paid",
+                      },
+                      {
+                        value: "Not Paid",
+                        label: "Not Paid",
+                      },
+                    ]}
+                    trigger={["click"]}
+                    size="large"
+                  >
+                    <Select.Option onClick={(e) => e.preventDefault()}>
+                      <Typography.Link>
+                        <Space
+                          className={
+                            InvoiceCss.search_by_golf_input_search_by_tourni
+                          }
+                        >
+                          Paid
+                          <DownOutlined />
+                        </Space>
+                      </Typography.Link>
+                    </Select.Option>
+                  </Select>
+                </Col>
+              </Row>
+            </div>
           </Container>
         </section>
 
@@ -203,7 +194,7 @@ const Invoice = () => {
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
         <BottomSection />
-      </ProtectedRoute>
+      </ProtectedRoute >
     </>
   );
 };

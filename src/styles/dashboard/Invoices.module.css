@@ -1,44 +1,36 @@
 /* BANNER IMAGE */
-  
   .banner_img, .imgChild {
     position: relative !important;
   }
-  
       /*     -------------------------     TEXT AREA      ----------------------------    */
-
       .inner_input_date_picker:hover, .inner_input_date_picker:focus {
         border-color: var(--btn-background);
         border-inline-end-width: 1px;
       }
-
       .dateParent, .inner_input_date_picker {
-        width: 100%;
+        width: 100% !important;
+        margin-top: 10px;
       }
-  
       .invoices {
         font-family: var(--font-poppins);
         font-weight: 600;
         margin-top: 42px;
         margin-bottom: 20px;
       }
-    
       .manage {
         font-family: var(--font-poppins);
         font-weight: 600;
         margin: 30px 0px;
       }
-
       .backgroundLight {
         background-color: var(--header-background-color);
         margin: 50px 0px;
-      }
-      
+      }    
     .heading {
-      height: 50px;
+      height: 130px;
       border-bottom: 1px solid var(--header-background-color);
     }
-
-    .tableRow {
+    .tableRow, .columnRow {
       color: var(--light-font-color);
       font-family: var(--font-poppins);
       font-weight: 400;
@@ -47,14 +39,21 @@
       height: 80px;
       vertical-align: middle; 
     }
-
+    .columnRow {
+      display: flex;
+      flex-wrap: wrap;
+    }
     .start, .type, .end, .price {
       width: 25%;
       font-family: var(--font-poppins);
       font-weight: 400;
       color: var(--black-color);
+      vertical-align: middle;
+      font-family: var(--font-poppins);
+      font-weight: 400;
+      padding-top: 12px;
+      margin-bottom: 20px;
     }
-
     .search_by_golf_input_search_by_tourni {
       height: auto;
       border-radius: 4px;
@@ -63,13 +62,11 @@
       color: var(--dark-grey-font);
       padding: 10px;
     }
-
     .imageParent {
       width: 22px;
       height: auto;
       margin-left: 20px;
     }
-
     .headingB {
       background-color: var(--header-background-color);
       height: 100px;
@@ -77,12 +74,6 @@
 
     .tableB {
       margin-bottom: 80px;
-    }
-
-    .tableHead {
-      vertical-align: middle;
-      font-family: var(--font-poppins);
-      font-weight: 400;
     }
 
   .order {

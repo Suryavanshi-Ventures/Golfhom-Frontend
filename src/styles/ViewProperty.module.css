@@ -2,8 +2,9 @@
   position: relative !important;
   /* max-height: 500px; */
   height: inherit !important;
-  object-fit: cover;
+  object-fit: cover !important;
   border-radius: 10px;
+  max-width: fit-content;
 }
 
 .custom-datepicker .ant-picker-cell-disabled .ant-picker-cell-inner {

@@ -54,6 +54,10 @@
   font-weight: 500;
   font-size: 16px;
   text-align: end;
+  position: relative;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .transaction {
