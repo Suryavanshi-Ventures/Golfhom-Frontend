@@ -25,7 +25,8 @@
   display: flex;
   flex-wrap: wrap;
 }
-.edit_details_date_picker, .inner_input_box {
+.edit_details_date_picker,
+.inner_input_box {
   width: 100%;
   border-color: var(--btn-background) !important;
   border-radius: 2px !important;
@@ -34,12 +35,14 @@
   display: flex;
   justify-content: space-between;
 }
-.edit_details_date_picker:hover, .inner_input_box:hover {
+.edit_details_date_picker:hover,
+.inner_input_box:hover {
   border-color: var(--btn-background) !important;
   background-color: var(--white-background) !important;
   color: var(--black-btn-color) !important;
 }
-.inner_input_box:active, .inner_input_box:focus {
+.inner_input_box:active,
+.inner_input_box:focus {
   background-color: var(--white-background) !important;
   color: var(--black-btn-color) !important;
   border-color: var(--btn-background) !important;
@@ -199,6 +202,7 @@
   border: 1px solid var(--btn-background);
   position: sticky !important;
   top: 20vh !important;
+  border-radius: 8px;
 }
 .map {
   position: relative !important;
@@ -346,7 +350,8 @@
   }
 }
 @media only screen and (max-width: 992px) and (min-width: 768px) {
-  .increase, .applyParent {
+  .increase,
+  .applyParent {
     justify-content: center;
   }
 }

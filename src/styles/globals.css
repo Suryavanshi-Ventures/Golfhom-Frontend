@@ -389,3 +389,17 @@ input[type="number"]::-webkit-outer-spin-button {
   color: #fff;
   background: var(--btn-background);
 }
+
+/* ANTD TABS OVER VIEW */
+:where(.css-dev-only-do-not-override-w8mnev).ant-tabs
+  .ant-tabs-tab.ant-tabs-tab-active
+  .ant-tabs-tab-btn {
+  color: var(--black-color) !important;
+  font-family: "Poppins" !important;
+  text-shadow: 0 0 0.25px currentcolor;
+  font-size: 15px !important;
+}
+
+:where(.css-dev-only-do-not-override-w8mnev).ant-tabs .ant-tabs-ink-bar {
+  background: var(--btn-background-secondary) !important;
+}

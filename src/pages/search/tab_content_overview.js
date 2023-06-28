@@ -54,6 +54,7 @@ const TabContentOverview = (PropData) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [golfCourseDataModal, setGolfCourseDataModal] = useState(null);
 
+  console.log(golfCourseDataModal);
   const showModal = (data) => {
     setGolfCourseDataModal(data);
     setModalOpen(true);
@@ -204,13 +205,30 @@ const TabContentOverview = (PropData) => {
                           href={
                             golfCourseDataModal.website.includes("https://")
                               ? golfCourseDataModal.website
-                              : `https://${golfCourseDataModal.website}`
+                              : golfCourseDataModal.website.includes("http://")
+                              ? golfCourseDataModal.website
+                              : !golfCourseDataModal.website.includes(
+                                  "http://"
+                                ) ||
+                                !golfCourseDataModal.website.includes(
+                                  "https://"
+                                )
+                              ? `https://${golfCourseDataModal.website}`
+                              : ""
                           }
                           target="_blank"
                         >
+                          {/* `https://${golfCourseDataModal.website}` */}
                           {golfCourseDataModal.website.includes("https://")
                             ? golfCourseDataModal.website
-                            : `https://${golfCourseDataModal.website}`}
+                            : golfCourseDataModal.website.includes("http://")
+                            ? golfCourseDataModal.website
+                            : !golfCourseDataModal.website.includes(
+                                "http://"
+                              ) ||
+                              !golfCourseDataModal.website.includes("https://")
+                            ? `https://${golfCourseDataModal.website}`
+                            : ""}
                         </Link>
                       </p>
                     </Col>

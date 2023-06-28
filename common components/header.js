@@ -500,29 +500,29 @@ const Header = ({ name, ...props }) => {
                           ),
                           key: "3",
                         },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard/favorites"
-                            >
-                              {" "}
-                              <Image
-                                src={FavIconMobileMenu}
-                                alt="favorite icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Favorites
-                            </Link>
-                          ),
-                          key: "4",
-                        },
+                        // { //! FAVORITE COMPONENT LINK
+                        //   label: (
+                        //     <Link
+                        //       className={
+                        //         HeaderCss.top_header_menu_logggedin_link
+                        //       }
+                        //       href="/dashboard/favorites"
+                        //     >
+                        //       {" "}
+                        //       <Image
+                        //         src={FavIconMobileMenu}
+                        //         alt="favorite icon"
+                        //         width={18}
+                        //         height={18}
+                        //         className={
+                        //           HeaderCss.top_header_menu_logggedin_link_icons
+                        //         }
+                        //       ></Image>
+                        //       Favorites
+                        //     </Link>
+                        //   ),
+                        //   key: "4",
+                        // },
                         {
                           label: (
                             <Link
@@ -1055,29 +1055,29 @@ const Header = ({ name, ...props }) => {
                                 ),
                                 key: "3",
                               },
-                              {
-                                label: (
-                                  <Link
-                                    className={
-                                      HeaderCss.top_header_menu_logggedin_link
-                                    }
-                                    href="/dashboard/favorites"
-                                  >
-                                    {" "}
-                                    <Image
-                                      src={FavIconMobileMenu}
-                                      alt="favorite icon"
-                                      width={18}
-                                      height={18}
-                                      className={
-                                        HeaderCss.top_header_menu_logggedin_link_icons
-                                      }
-                                    ></Image>
-                                    Favorites
-                                  </Link>
-                                ),
-                                key: "4",
-                              },
+                              // { //! FAVORITE COMPONENT LINK
+                              //   label: (
+                              //     <Link
+                              //       className={
+                              //         HeaderCss.top_header_menu_logggedin_link
+                              //       }
+                              //       href="/dashboard/favorites"
+                              //     >
+                              //       {" "}
+                              //       <Image
+                              //         src={FavIconMobileMenu}
+                              //         alt="favorite icon"
+                              //         width={18}
+                              //         height={18}
+                              //         className={
+                              //           HeaderCss.top_header_menu_logggedin_link_icons
+                              //         }
+                              //       ></Image>
+                              //       Favorites
+                              //     </Link>
+                              //   ),
+                              //   key: "4",
+                              // },
                               {
                                 label: (
                                   <Link
