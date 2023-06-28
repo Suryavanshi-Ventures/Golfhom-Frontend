@@ -156,7 +156,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => { };
+    return () => {};
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -177,8 +177,10 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -193,7 +195,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     param.from,
     param.guest,
@@ -283,9 +285,12 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${
+          "to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -338,7 +343,9 @@ const Index = () => {
               <p className={SearchIndexCss.edit_details_titles}>
                 Golf Course Choice
               </p>
-              <Form.Item className={SearchIndexCss.edit_details_inputs_container}>
+              <Form.Item
+                className={SearchIndexCss.edit_details_inputs_container}
+              >
                 {isLoaded ? (
                   <Autocomplete
                     onGolfCourseChanged={onGolfCourseChanged}
@@ -373,7 +380,9 @@ const Index = () => {
           >
             <div className={SearchIndexCss.edit_details_divs}>
               <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
-              <Form.Item className={SearchIndexCss.edit_details_inputs_container}>
+              <Form.Item
+                className={SearchIndexCss.edit_details_inputs_container}
+              >
                 <Select
                   defaultValue=" Marmot Ridge Golf Course"
                   options={[
@@ -444,11 +453,11 @@ const Index = () => {
           <Container>
             <div className={SearchIndexCss.edit_details_main_container}>
               <Row className={SearchIndexCss.edit_details_container_row}>
-                <Form
-                  className={SearchIndexCss.form_container}
-                >
+                <Form className={SearchIndexCss.form_container}>
                   <Col
                     md={3}
+                    sm={12}
+                    xs={12}
                     className={SearchIndexCss.edit_details_container_cols}
                   >
                     <Form.Item className={SearchIndexCss.edit_details_divs}>
@@ -488,6 +497,8 @@ const Index = () => {
 
                   <Col
                     md={3}
+                    sm={12}
+                    xs={12}
                     className={SearchIndexCss.edit_details_container_cols}
                   >
                     <Form.Item className={SearchIndexCss.edit_details_divs}>
@@ -523,6 +534,8 @@ const Index = () => {
 
                   <Col
                     md={3}
+                    sm={12}
+                    xs={12}
                     className={SearchIndexCss.edit_details_container_cols}
                   >
                     <Form.Item className={SearchIndexCss.edit_details_divs}>
@@ -539,11 +552,13 @@ const Index = () => {
                           onChange={(e) =>
                             onChangeGuest(parseInt(e.target.value))
                           }
-                        // value={guest}
+                          // value={guest}
                         >
                           Please select guests
                         </ReactDropdown.Toggle>
-                        <ReactDropdown.Menu className={SearchIndexCss.adultChild}>
+                        <ReactDropdown.Menu
+                          className={SearchIndexCss.adultChild}
+                        >
                           <div className={SearchIndexCss.increase}>
                             <div>
                               <ReactDropdown.Item href="#/action-1">
@@ -554,7 +569,9 @@ const Index = () => {
                               </ReactDropdown.Item>
                             </div>
 
-                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <div
+                              className={SearchIndexCss.geust_incri_btns_div}
+                            >
                               <Button className={SearchIndexCss.increaseAdult}>
                                 <div
                                   className={SearchIndexCss.decreasebtn}
@@ -585,7 +602,9 @@ const Index = () => {
                               </ReactDropdown.Item>
                             </div>
 
-                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <div
+                              className={SearchIndexCss.geust_incri_btns_div}
+                            >
                               <Button className={SearchIndexCss.increaseAdult}>
                                 <div
                                   className={SearchIndexCss.decreasebtn}
@@ -616,7 +635,9 @@ const Index = () => {
                               </ReactDropdown.Item>
                             </div>
 
-                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <div
+                              className={SearchIndexCss.geust_incri_btns_div}
+                            >
                               <Button className={SearchIndexCss.increaseAdult}>
                                 <div
                                   className={SearchIndexCss.decreasebtn}
@@ -647,7 +668,9 @@ const Index = () => {
                               </ReactDropdown.Item>
                             </div>
 
-                            <div className={SearchIndexCss.geust_incri_btns_div}>
+                            <div
+                              className={SearchIndexCss.geust_incri_btns_div}
+                            >
                               <Button className={SearchIndexCss.increaseAdult}>
                                 <div
                                   className={SearchIndexCss.decreasebtn}
@@ -674,10 +697,14 @@ const Index = () => {
 
                   <Col
                     md={3}
+                    sm={12}
+                    xs={12}
                     className={SearchIndexCss.edit_details_container_cols}
                   >
                     <div
-                      className={SearchIndexCss.edit_details_btn_parent_container}
+                      className={
+                        SearchIndexCss.edit_details_btn_parent_container
+                      }
                     >
                       <Form.Item
                         className={

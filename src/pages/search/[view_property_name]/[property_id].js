@@ -37,6 +37,7 @@ const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
 import dynamic from "next/dynamic";
+import { useFormState } from "react-hook-form";
 
 const BottomSection = dynamic(
   () => import("../../../../common components/bottomGroup"),
@@ -44,7 +45,7 @@ const BottomSection = dynamic(
     suspense: true,
   }
 );
-const NewPaymentForm = dynamic(() => import("./components/NewPaymentForm"), {
+const PaymentPopUp = dynamic(() => import("./components/PaymentPopUp"), {
   suspense: true,
 });
 
@@ -84,13 +85,17 @@ const ViewProperty = () => {
   ] = useState(false);
   const [AvailDateNextpax, setAvailDateNextpax] = useState([]);
   const [AvailDateRental, setAvailDateRental] = useState([]);
-
   const [NextPaxFinalAvailPriceBreakDown, setNextPaxFinalAvailPriceBreakDown] =
+    useState({});
+  const [RentalFinalAvailPriceBreakDown, setRentalFinalAvailPriceBreakDown] =
     useState({});
   const [NightsCounter, setNightsCounter] = useState(0);
   const [StartingFromPrice, setStartingFromPrice] = useState(0);
   const [IsReserveVisible, setIsReserveVisible] = useState(true);
   const [PaymentIntentObjNextpax, setPaymentIntentObjNextpax] = useState({});
+  const [PaymentIntentObjRental, setPaymentIntentObjRental] = useState({});
+  const [TotalChargesNextpax, setTotalChargesNextpax] = useState(0);
+  const [TotalChargesRental, setTotalChargesRental] = useState(0);
 
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
@@ -103,7 +108,8 @@ const ViewProperty = () => {
     const GetPropertyById = async () => {
       try {
         const SpecificPropData = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${Params.property_id || UrlParamId
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
+            Params.property_id || UrlParamId
           }`
         );
         if (SpecificPropData.status === 200) {
@@ -196,7 +202,7 @@ const ViewProperty = () => {
     if (PaymentIntentObject != null) {
       setOptions(PaymentIntentObject);
     }
-    return () => { };
+    return () => {};
   }, [PaymentIntentObject]);
 
   const DateFormater = (date) => {
@@ -286,54 +292,55 @@ const ViewProperty = () => {
   };
 
   const CreatePatymentIntent = async () => {
-    if (BookingDate.length === 0) {
-      message.error("Please select the check-in & check-out date");
-      return;
-    }
+    setNewPayment(true);
 
-    const PaymentRes = axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
-      {
-        propertyId: SpecificPropAPIData.data?.id,
-        from: BookingDate[0],
-        to: BookingDate[1],
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${ContextUserDetails.UserState}`,
-        },
-      }
-    );
-    PaymentRes.then((response) => {
-      if (response.status === 200) {
-        message.info("Please fill the details and click on pay!");
-        console.log("RESPONSE PAYMENT INTENT", response.data?.paymentIntent);
-        setPaymentIntentObject({
-          ClientSecret: response.data?.paymentIntent.client_secret,
-          PaymentIntentId: response.data?.paymentIntent.id,
-        });
+    // if (BookingDate.length === 0) {
+    //   message.error("Please select the check-in & check-out date");
+    //   return;
+    // }
 
-        if (
-          SpecificPropAPIData?.price?.Pull_GetPropertyAvbPrice_RS
-            ?.PropertyPrices?.PropertyPrice
-        ) {
-          setShowTotalPaymentText(true);
-        } else {
-          console.log(SpecificPropAPIData?.price, "FROM VIEW PRO ELSE");
-          setShowTotalPaymentText(false);
-          setShowTotalPaymentTextStatic(true);
-        }
-      }
-    }).catch((err) => {
-      if (err.response.data?.message === "User not authorized") {
-        message.error("Please login to book hotels");
-        return;
-      }
-      message.error(err.response.data?.message);
-    });
+    // const PaymentRes = axios.post(
+    //   `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
+    //   {
+    //     propertyId: SpecificPropAPIData.data?.id,
+    //     from: BookingDate[0],
+    //     to: BookingDate[1],
+    //   },
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${ContextUserDetails.UserState}`,
+    //     },
+    //   }
+    // );
+    // PaymentRes.then((response) => {
+    //   if (response.status === 200) {
+    //     console.log("RESPONSE PAYMENT INTENT", response.data?.paymentIntent);
+    //     setPaymentIntentObject({
+    //       ClientSecret: response.data?.paymentIntent.client_secret,
+    //       PaymentIntentId: response.data?.paymentIntent.id,
+    //     });
+
+    //     if (
+    //       SpecificPropAPIData?.price?.Pull_GetPropertyAvbPrice_RS
+    //         ?.PropertyPrices?.PropertyPrice
+    //     ) {
+    //       setShowTotalPaymentText(true);
+    //     } else {
+    //       console.log(SpecificPropAPIData?.price, "FROM VIEW PRO ELSE");
+    //       setShowTotalPaymentText(false);
+    //       setShowTotalPaymentTextStatic(true);
+    //     }
+    //   }
+    // }).catch((err) => {
+    //   if (err.response.data?.message === "User not authorized") {
+    //     message.error("Please login to book hotels");
+    //     return;
+    //   }
+    //   message.error(err.response.data?.message);
+    // });
   };
 
-  console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
+  // console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
 
   const OnChangeDateInput = (date, DateValue) => {
     if (DateValue[0] || DateValue[1]) {
@@ -384,6 +391,9 @@ const ViewProperty = () => {
             if (CheckAvailRes.status === 201) {
               if (CheckAvailRes.data.data.available) {
                 setNextPaxFinalAvailPriceBreakDown(CheckAvailRes.data.data);
+                setTotalChargesNextpax(
+                  CheckAvailRes.data?.data?.breakdown?.total
+                );
                 setStartingFromPrice(CheckAvailRes?.data?.data?.breakdown?.adr);
                 setAvailable(true);
                 setNotAvailable(false);
@@ -410,24 +420,43 @@ const ViewProperty = () => {
       } else {
         console.log("CALL RENTAL PRICING API NOW");
         const CheckAvail = async () => {
+          const Token =
+            sessionStorage.getItem("token") || localStorage.getItem("token");
+
           try {
             const CheckAvailRes = await axios.get(
-              `${process.env.NEXT_PUBLIC_API_URL}/v1/rentalunited/price?id=${Params.property_id}&from=${DateValue[0]}&to=${DateValue[1]}`
+              `${process.env.NEXT_PUBLIC_API_URL}/v1/rentalunited/price?id=${Params.property_id}&from=${DateValue[0]}&to=${DateValue[1]}`,
+              { headers: { Authorization: `Bearer ${Token}` } }
             );
             if (CheckAvailRes.status === 201) {
-              setAvailabilityCalender(CheckAvailRes.data.data.calender);
               setAvailable(true);
               setNotAvailable(false);
               setStartingFromPrice(CheckAvailRes?.data?.data?.avgPerNight);
+              setTotalChargesRental(CheckAvailRes?.data?.data?.total);
+              setPaymentIntentObjRental(CheckAvailRes.data?.paymentIntent);
+              setRentalFinalAvailPriceBreakDown(CheckAvailRes?.data?.data);
+              setShowTotalPaymentTextStatic(true);
             } else {
               setAvailable(false);
               setNotAvailable(true);
+              setShowTotalPaymentTextStatic(false);
             }
           } catch (error) {
             setAvailable(false);
             setNotAvailable(true);
-            message.error("Internal error, Something went wrong!");
-            console.log(error, "ERROR CheckAvailability RENTAL");
+            setShowTotalPaymentTextStatic(false);
+
+            if (
+              error.response.data.message ===
+              "Property is not available for a given dates - Minimum stay criteria not met!"
+            ) {
+              message.error(error.response.data.message);
+              setShowTotalPaymentTextStatic(false);
+            } else {
+              message.error("Internal error, Something went wrong!");
+              console.log(error, "ERROR CheckAvailability RENTAL");
+              setShowTotalPaymentTextStatic(false);
+            }
           }
         };
         CheckAvail();
@@ -444,10 +473,11 @@ const ViewProperty = () => {
       console.log("NEXTPAX");
       const data = await axios({
         method: "GET",
-        url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id
-          }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
-            "MM-DD-YYYY"
-          )}`,
+        url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${
+          Params.property_id
+        }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
+          "MM-DD-YYYY"
+        )}`,
       }).then((res) => {
         if (res.status === 200) {
           const AvailDataNextpax = res.data?.data?.data?.[0]
@@ -465,10 +495,11 @@ const ViewProperty = () => {
       const data = await axios({
         method: "GET",
         headers: { Authorization: `Bearer ${Token}` },
-        url: `${process.env.NEXT_PUBLIC_API_URL
-          }/v1/rentalunited/availability?id=${Params.property_id}&from=${moment(
-            date1
-          ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
+        url: `${
+          process.env.NEXT_PUBLIC_API_URL
+        }/v1/rentalunited/availability?id=${Params.property_id}&from=${moment(
+          date1
+        ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
       })
         .then((res) => {
           if (res.status === 201) {
@@ -489,9 +520,9 @@ const ViewProperty = () => {
           }
         })
         .catch((err) => {
-          if (err.response.status === 401) {
+          if (err?.response?.status === 401) {
             message.error(
-              `${err.response.statusText}, Please login to book hotels!`
+              `${err?.response?.statusText}, Please login to book hotels!`
             );
           }
         });
@@ -861,19 +892,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .AdditionalFees
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.AdditionalFees >=
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.AdditionalFees >=
                             0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.AdditionalFees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.AdditionalFees
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.AdditionalFees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.AdditionalFees
+                              )
                           : 0}
                       </p>
                     </div>
@@ -891,18 +922,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Cleaning
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Cleaning >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Cleaning >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Cleaning
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Cleaning
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Cleaning
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Cleaning
+                              )
                           : 0}
                       </p>
                     </div>
@@ -920,18 +951,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Deposit
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Deposit >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Deposit >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Deposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Deposit
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Deposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Deposit
+                              )
                           : 0}
                       </p>
                     </div>
@@ -950,19 +981,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .ExtraPersonPrice
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.ExtraPersonPrice >=
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.ExtraPersonPrice >=
                             0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.ExtraPersonPrice
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.ExtraPersonPrice
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
+                              )
                           : 0}
                       </p>
                     </div>
@@ -980,18 +1011,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Fees
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Fees >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Fees >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Fees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Fees
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Fees
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Fees
+                              )
                           : 0}
                       </p>
                     </div>
@@ -1010,19 +1041,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .SecurityDeposit
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.SecurityDeposit >=
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.SecurityDeposit >=
                             0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.SecurityDeposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.SecurityDeposit
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.SecurityDeposit
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.SecurityDeposit
+                              )
                           : 0}
                       </p>
                     </div>
@@ -1040,18 +1071,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
                           ? SpecificPropAPIData.price
-                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                            .PropertyPrice[0]._attributes.Taxes >= 0.5
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._attributes.Taxes >= 0.5
                             ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Taxes
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Taxes
+                              )
                             : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._attributes.Taxes
-                            )
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._attributes.Taxes
+                              )
                           : 0}
                       </p>
                     </div>
@@ -1069,15 +1100,15 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._text >= 0.5
                           ? Math.ceil(
-                            SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._text
-                          )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text
+                            )
                           : Math.floor(
-                            SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._text
-                          )}
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text
+                            )}
                       </p>
                     </div>
                   </div>
@@ -1090,8 +1121,8 @@ const ViewProperty = () => {
 
               {/* TOTAL AMOUNT */}
               {ShowTotalPaymentText &&
-                SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                  ?.PropertyPrices?.PropertyPrice[0] ? (
+              SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                ?.PropertyPrices?.PropertyPrice[0] ? (
                 <>
                   {" "}
                   <div className={ViewPropertyCss.total_price_main_div}>
@@ -1110,37 +1141,37 @@ const ViewProperty = () => {
                           $
                           {SpecificPropAPIData.data?.price >= 0.5
                             ? Math.ceil(SpecificPropAPIData.data?.price) +
-                            Number(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text >= 0.5
-                                ? Math.ceil(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                                : Math.floor(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                            )
+                              Number(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._text >= 0.5
+                                  ? Math.ceil(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                                  : Math.floor(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                              )
                             : Math.floor(SpecificPropAPIData.data?.price) +
-                            Number(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text >= 0.5
-                                ? Math.ceil(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                                : Math.floor(
-                                  SpecificPropAPIData.price
-                                    ?.Pull_GetPropertyAvbPrice_RS
-                                    ?.PropertyPrices.PropertyPrice[0]._text
-                                )
-                            )}
+                              Number(
+                                SpecificPropAPIData.price
+                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                  .PropertyPrice[0]._text >= 0.5
+                                  ? Math.ceil(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                                  : Math.floor(
+                                      SpecificPropAPIData.price
+                                        ?.Pull_GetPropertyAvbPrice_RS
+                                        ?.PropertyPrices.PropertyPrice[0]._text
+                                    )
+                              )}
                         </strong>{" "}
                       </p>
                       <p
@@ -1203,7 +1234,11 @@ const ViewProperty = () => {
               {ShowOtherDetailsStatic ? (
                 <>
                   <StaticPriceBreakDown
-                    data={NextPaxFinalAvailPriceBreakDown}
+                    data={{
+                      NextpaxPriceBreakDown: NextPaxFinalAvailPriceBreakDown,
+                      RentalpaxPriceBreakDown: RentalFinalAvailPriceBreakDown,
+                      property_type: PropertyType,
+                    }}
                   />
                 </>
               ) : (
@@ -1212,12 +1247,12 @@ const ViewProperty = () => {
 
               {/* NEXTPAX API PAYMENT PORTAL */}
               {PropertyType === "Nextpax" &&
-                ShowNextpaxPropertyPaymentPortal ? (
+              ShowNextpaxPropertyPaymentPortal ? (
                 <>{/*//! OLD PAYMENT FORM WAS HERE */}</>
               ) : (
                 <div className={ViewPropertyCss.checkout_payment_main_div}>
                   {/* RENTAL API PAYMENT PORTAL */}
-                  {Options != null && (
+                  {/* {Options != null && (
                     <Elements
                       stripe={stripePromise}
                       options={{ clientSecret: Options.ClientSecret }}
@@ -1236,7 +1271,7 @@ const ViewProperty = () => {
                         ]}
                       />
                     </Elements>
-                  )}
+                  )} */}
                 </div>
               )}
 
@@ -1262,7 +1297,7 @@ const ViewProperty = () => {
                     centered={true}
                     maskClosable={false} // Set maskClosable to false to disable closing on outside click
                   >
-                    <NewPaymentForm
+                    <PaymentPopUp
                       data={{
                         propertyId: SpecificPropAPIData.data?.id,
                         poperty_name: SpecificPropAPIData.data?.name,
@@ -1273,8 +1308,13 @@ const ViewProperty = () => {
                         adult: adult,
                         babies: infant,
                         pets: pet,
-                        total_amount: StartingFromPrice * NightsCounter,
-                        paymentIntent: PaymentIntentObjNextpax,
+                        total_charges_nextpax: TotalChargesNextpax,
+                        total_charges_rental: TotalChargesRental,
+                        property_type: PropertyType,
+                        paymentIntent:
+                          PropertyType === "Nextpax"
+                            ? PaymentIntentObjNextpax
+                            : PaymentIntentObjRental,
                       }}
                     />
                   </Modal>
@@ -1863,7 +1903,7 @@ const ViewProperty = () => {
                             {SpecificPropAPIData.data
                               ?.additionalRulesInformation
                               ? SpecificPropAPIData.data
-                                ?.additionalRulesInformation
+                                  ?.additionalRulesInformation
                               : "N/A"}
                           </p>
                         </Row>

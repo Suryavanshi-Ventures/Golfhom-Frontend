@@ -23,8 +23,7 @@
 }
 .form_container {
   display: flex;
-  padding-right: 0px;
-  padding-left: 0px;
+  flex-wrap: wrap;
 }
 .edit_details_date_picker, .inner_input_box {
   width: 100%;
@@ -100,7 +99,13 @@
 .searching:hover {
   background-color: var(--black-btn-color);
   border: none;
-}  
+}
+
+.form_container {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
 /*    ----------------      CARD MAP SECTION      -------------------   */
 .search_main_section {
   background-color: rgb(249, 249, 249);
