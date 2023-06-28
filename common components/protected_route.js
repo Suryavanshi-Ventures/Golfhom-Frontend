@@ -10,15 +10,14 @@ const ProtectedRoute = ({ children }) => {
   const router = useRouter();
   useEffect(() => {
     //* check if user is authenticated
-    // const IsAuthenticated =
-    //   sessionStorage.getItem("token") || localStorage.getItem("token");
-    // const Token = IsAuthenticated;
-    console.log(ContextUserDetails, "CONTXT");
+    const IsAuthenticated =
+      sessionStorage.getItem("token") || localStorage.getItem("token");
+    const Token = IsAuthenticated;
 
     //! User Get Profile API Call
     const User = axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/profile`,
-      { headers: { Authorization: `Bearer ${ContextUserDetails.UserState}` } }
+      { headers: { Authorization: `Bearer ${Token}` } }
     );
     User.then((response) => {
       // console.log(response, "user authenticated");
@@ -26,18 +25,18 @@ const ProtectedRoute = ({ children }) => {
     }).catch((error) => {
       //* redirect to login page
       router.push("/");
-      if (!ContextUserDetails.UserState || error.response.status === 401) {
+      if (!IsAuthenticated || error.response.status === 401) {
         //* redirect to login page
         router.push("/");
-      } else {
-        // console.log(error, "user not authenticated");
-        sessionStorage.removeItem("token");
-        localStorage.removeItem("token");
-        ContextUserDetails.setUserState(null);
-        message.error(error.response.data.message);
       }
+      // console.log(error, "user not authenticated");
+      sessionStorage.removeItem("token");
+      localStorage.removeItem("token");
+      ContextUserDetails.setUserState(null);
+
+      message.error(error.response.data.message);
     });
-  }, [ContextUserDetails, children]);
+  }, []);
 
   return children;
 };

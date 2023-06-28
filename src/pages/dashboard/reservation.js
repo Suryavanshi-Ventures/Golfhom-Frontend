@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";
 import { Button, Container, Table } from "react-bootstrap";
@@ -6,13 +6,45 @@ import Profile from "../../../public/images/vector/profile.svg";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
 import dynamic from "next/dynamic";
+import axios from "axios";
+import { AuthContext } from "@/context/auth_context";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {
     suspense: true,
   }
 );
+
 const Reservation = () => {
+  const ContextUserDetails = useContext(AuthContext);
+  const [AllBookingData, setAllBookingData] = useState([{}]);
+
+  useEffect(() => {
+    const GetAllBookings = async () => {
+      try {
+        const GetAllBookingRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/getMyBooking?limit=10&page=1`,
+          {
+            headers: {
+              Authorization: `Bearer ${ContextUserDetails.UserState}`,
+            },
+          }
+        );
+
+        if (GetAllBookingRes.status === 200) {
+          setAllBookingData(GetAllBookingRes.data.data);
+          console.log(GetAllBookingRes.data.data, "MY BOOKING DATA");
+        }
+      } catch (error) {
+        console.log(error, "ERROR IN GET ALL BOOKINGS");
+      }
+    };
+    GetAllBookings();
+
+    return () => {};
+  }, [ContextUserDetails]);
+
   return (
     <>
       <ProtectedRoute>
@@ -53,7 +85,7 @@ const Reservation = () => {
                 <th className={ReservationCss.guest}>Guests</th>
                 <th className={ReservationCss.pet}>Pets</th>
                 <th className={ReservationCss.subtotal}>Subtotal</th>
-                <th className={ReservationCss.action}>Actions</th>
+                {/* <th className={ReservationCss.action}>Actions</th> */}
               </tr>
             </thead>
 
@@ -85,75 +117,9 @@ const Reservation = () => {
                 <td>5 Stay</td>
                 <td>Yes</td>
                 <td className={ReservationCss.form}>From $6,386.06</td>
-                <td>
+                {/* <td>
                   <Button className={ReservationCss.detailBtn}>Details</Button>
-                </td>
-              </tr>
-
-              <tr className={ReservationCss.tableRow}>
-                <td className={ReservationCss.imgChild}>
-                  <Image
-                    src={Profile}
-                    alt="Profile"
-                    fill
-                    className={ReservationCss.imageChild}
-                  ></Image>
-                </td>
-
-                <td>#66612</td>
-                <td>
-                  <Button className={ReservationCss.Completed}>
-                    Completed
-                  </Button>
-                </td>
-                <td>April 6, 20237:38 am</td>
-                <td>
-                  <span className={ReservationCss.oldTown}>
-                    {" "}
-                    Old Town’s Farm to Table{" "}
-                  </span>
-                  6826 E 5th St, Scottsdale, Arizona, United States
-                </td>
-                <td>05-16-2023 Stay</td>
-                <td>05-20-2023 Stay</td>
-                <td>5 Stay</td>
-                <td>No</td>
-                <td className={ReservationCss.dollar}>From $6,386.06</td>
-                <td>
-                  <Button className={ReservationCss.detailBtn}>Details</Button>
-                </td>
-              </tr>
-
-              <tr className={ReservationCss.tableRow}>
-                <td className={ReservationCss.imgChild}>
-                  <Image
-                    src={Profile}
-                    alt="Profile"
-                    fill
-                    className={ReservationCss.imageChild}
-                  ></Image>
-                </td>
-
-                <td>#66629</td>
-                <td>
-                  <Button className={ReservationCss.expired}>Expired</Button>
-                </td>
-                <td>April 6, 20237:38 am</td>
-                <td>
-                  <span className={ReservationCss.oldTown}>
-                    {" "}
-                    Old Town’s Farm to Table{" "}
-                  </span>
-                  6826 E 5th St, Scottsdale, Arizona, United States
-                </td>
-                <td>05-16-2023 Stay</td>
-                <td>05-20-2023 Stay</td>
-                <td>5 Stay</td>
-                <td>Yes</td>
-                <td className={ReservationCss.dollar}>From $6,386.06</td>
-                <td>
-                  <Button className={ReservationCss.detailBtn}>Details</Button>
-                </td>
+                </td> */}
               </tr>
             </tbody>
           </Table>
