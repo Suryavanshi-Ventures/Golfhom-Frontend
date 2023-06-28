@@ -243,14 +243,14 @@ const StaticPriceBreakDown = (props) => {
             <div className={StaticPriceBreakDownCss.total_price_text_div}>
               <p className={StaticPriceBreakDownCss.total_price}>
                 $
-                {props?.data?.RentalpaxPriceBreakDown?.perday[0]?.Extra
-                  ? props?.data?.RentalpaxPriceBreakDown?.perday[0]?.Extra
+                {props?.data?.RentalpaxPriceBreakDown?.perday?.Extra
+                  ? props?.data?.RentalpaxPriceBreakDown?.perday?.Extra
                   : 0}
               </p>
             </div>
           </div>
 
-          {/* REQUIRED CHARGES */}
+          {/* REQUIRED CHARGES
           {props?.RentalpaxPriceBreakDown?.data?.charges?.required.map(
             (Data, Index) => {
               return (
@@ -291,8 +291,7 @@ const StaticPriceBreakDown = (props) => {
                 </>
               );
             }
-          )}
-
+          )} */}
           <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
             <div className={StaticPriceBreakDownCss.total_price_text_div}>
               <h5 className={StaticPriceBreakDownCss.total_charges_text}>
@@ -308,7 +307,6 @@ const StaticPriceBreakDown = (props) => {
               </p>
             </div>
           </div>
-
           <hr />
         </section>
       )}

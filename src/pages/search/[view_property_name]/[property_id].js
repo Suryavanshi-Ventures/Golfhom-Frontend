@@ -37,7 +37,6 @@ const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
 import dynamic from "next/dynamic";
-import { useFormState } from "react-hook-form";
 
 const BottomSection = dynamic(
   () => import("../../../../common components/bottomGroup"),
@@ -55,6 +54,9 @@ const StaticPriceBreakDown = dynamic(
     suspense: true,
   }
 );
+const ContactToHost = dynamic(() => import("./components/ContactToHost"), {
+  suspense: true,
+});
 
 const ViewProperty = () => {
   const router = useRouter();
@@ -131,61 +133,6 @@ const ViewProperty = () => {
             );
             setPropertyType("Rental");
           }
-
-          //* THIS WILL RUN ONLY WHEN PARAMS FROM AND TO IS NOT EMPTY
-          // if (Params.from || Params.to) {
-          //   //* IF THE EXTERNAL PROPERTY TYPE IS NEXTPAX THAN CALLING NEXTPAX AVAILABILITY API
-          //   if (SpecificPropData.data.data.externalPropertyType === "Nextpax") {
-          //     const CheckAvail = async () => {
-          //       try {
-          //         const CheckAvailRes = await axios.get(
-          //           `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/finalAvailability?id=${Params.property_id}&from=${Params.from}&to=${Params.to}`
-          //         );
-          //         if (CheckAvailRes.status === 200) {
-          //           const DaysDiffCount = moment(Params.to, "MM-DD-YYYY").diff(
-          //             moment(Params.from, "MM-DD-YYYY"),
-          //             "days"
-          //           );
-          //           const DayDiffCountNextpaxAPI =
-          //             CheckAvailRes?.data?.data?.data[0]?.availability?.length -
-          //             1;
-          //           if (DayDiffCountNextpaxAPI === DaysDiffCount) {
-          //             setAvailable(true);
-          //             setNotAvailable(false);
-          //           } else if (DayDiffCountNextpaxAPI === undefined) {
-          //             setAvailable(false);
-          //             setNotAvailable(true);
-          //           }
-          //         }
-          //       } catch (error) {
-          //         console.log(error, "ERROR CheckAvailability");
-          //       }
-          //     };
-          //     CheckAvail();
-          //   } else {
-          //     //* IF THE EXTERNAL PROPERTY TYPE IS RENTAL THAN CALLING RENTAL AVAILABILITY API
-          //     const CheckAvail = async () => {
-          //       try {
-          //         const CheckAvailRes = await axios.get(
-          //           `${process.env.NEXT_PUBLIC_API_URL}/v1/property/checkAvailability/${Params.property_id}?from=${Params.from}&to=${Params.to}`
-          //         );
-          //         if (CheckAvailRes.status === 200) {
-          //           setAvailabilityCalender(CheckAvailRes.data.data.calender);
-          //           if (CheckAvailRes.data?.data?.available) {
-          //             setAvailable(true);
-          //             setNotAvailable(false);
-          //           } else if (CheckAvailRes.data?.data?.available != true) {
-          //             setAvailable(false);
-          //             setNotAvailable(true);
-          //           }
-          //         }
-          //       } catch (error) {
-          //         console.log(error, "ERROR CheckAvailability");
-          //       }
-          //     };
-          //     CheckAvail();
-          //   }
-          // }
         }
       } catch (error) {
         console.log(error, "ERR");
@@ -274,11 +221,12 @@ const ViewProperty = () => {
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const showContact = () => {
+
+  const OnclickShowContactToHost = () => {
     setIsModalOpen(true);
-    // handleCancel();
   };
-  const handleContact = () => {
+
+  const OnclickHideContactToHost = () => {
     setIsModalOpen(false);
   };
   const handleCancelContact = () => {
@@ -1325,72 +1273,19 @@ const ViewProperty = () => {
                       title="Contact to host"
                       footer={null}
                       open={isModalOpen}
-                      onSignup={handleContact}
+                      onSignup={OnclickHideContactToHost}
                       onCancel={handleCancelContact}
                       width={440}
                       centered={true}
-                      className={ViewPropertyCss.headerReg}
                     >
-                      <Col className={ViewPropertyCss.inputParent}>
-                        <div>
-                          <Input
-                            className={ViewPropertyCss.inputA}
-                            type="text"
-                            placeholder="Name"
-                          />
-                        </div>
-
-                        <div>
-                          <Input
-                            className={ViewPropertyCss.inputB}
-                            type="email"
-                            placeholder="Email"
-                          />
-                        </div>
-
-                        <div>
-                          <Input
-                            className={ViewPropertyCss.inputC}
-                            type="tel"
-                            placeholder="Phone Number"
-                          />
-                        </div>
-
-                        <div className={ViewPropertyCss.inputDParent}>
-                          <TextArea
-                            className={ViewPropertyCss.inputD}
-                            type="address"
-                            placeholder="Message"
-                            rows="3"
-                            cols="50"
-                          />
-                        </div>
-                      </Col>
-
-                      <Row>
-                        <div className={ViewPropertyCss.agreeBox}>
-                          <Checkbox className={ViewPropertyCss.agreeOptionB}>
-                            I agree with your Privacy Policy
-                          </Checkbox>
-                        </div>
-                      </Row>
-
-                      <Link
-                        href="/"
-                        className={ViewPropertyCss.registerLink}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <div className={ViewPropertyCss.registBtnParent}>
-                          <Button className={ViewPropertyCss.registerBtn}>
-                            Submit
-                          </Button>
-                        </div>
-                      </Link>
+                      <ContactToHost
+                        HideContactHostPopUp={OnclickHideContactToHost}
+                      />
                     </Modal>
                     <Space>
                       <Button
                         className={ViewPropertyCss.contact}
-                        onClick={showContact}
+                        onClick={OnclickShowContactToHost}
                       >
                         Contact to host
                       </Button>
