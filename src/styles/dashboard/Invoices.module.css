@@ -42,9 +42,9 @@
     .columnRow {
       display: flex;
       flex-wrap: wrap;
+      padding-top: 8px;
     }
     .start, .type, .end, .price {
-      width: 25%;
       font-family: var(--font-poppins);
       font-weight: 400;
       color: var(--black-color);
@@ -71,24 +71,27 @@
       background-color: var(--header-background-color);
       height: 100px;
     }
-
     .tableB {
       margin-bottom: 80px;
     }
-
   .order {
     width: 12%;
     padding-left: 20px !important;
   }
-
   .date, .bilfor, .status, .pay {
     width: 12%;
   }
-
   .biltyp {
     width: 14%;
   }
-
 .total, .action {
   width: 8%;
+}
+@media only screen and (max-width: 768px) {
+  .heading {
+    height: 460px;
+  }
+  .columnRow {
+    padding-top: 12px;
+  }
 }
