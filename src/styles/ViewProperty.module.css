@@ -534,12 +534,6 @@
 
 /* --------------          REGISTER BLOCK        ---------------   */
 
-.headerReg .ant-modal-title {
-  background: var(--btn-background-secondary) !important;
-  padding: 0% !important;
-  margin: 0% !important;
-}
-
 .register {
   font-family: var(--font-h3);
   font-weight: 600;
@@ -553,114 +547,6 @@
   flex-wrap: wrap;
 }
 
-.inputParent {
-  flex-wrap: wrap;
-  width: 100%;
-  padding: 20px;
-}
-
-.inputA {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px 8px 0px 0px;
-  border: 1px solid var(--light-font-color) !important;
-  color: var(--light-font-color);
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 0.9rem;
-}
-
-.inputB {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--light-font-color) !important;
-  border-top: none !important;
-  border-bottom: none !important;
-  border-radius: 0px;
-  color: var(--light-font-color);
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 0.9rem;
-}
-
-.inputC {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--light-font-color) !important;
-  border-bottom: none !important;
-  border-radius: 0px;
-  color: var(--light-font-color);
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 0.9rem;
-}
-
-.inputDParent {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-  margin-left: 0px !important;
-}
-
-.inputD {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--light-font-color) !important;
-  height: auto;
-  border-radius: 0px 0px 8px 8px;
-  color: var(--light-font-color);
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 0.9rem;
-}
-
-.agreeBox {
-  margin-top: 20px;
-}
-
-.agreeOptionB {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--black-color);
-  font-weight: var(--font-poppins);
-  margin-bottom: 14px;
-  padding: 0px 20px;
-}
-
-.registerBtn {
-  width: 100%;
-  background: var(--white-font-color);
-  color: var(--btn-background-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  font-family: var(--font-poppins);
-  text-align: center;
-  border-radius: 10px;
-  margin: 20px 0px;
-  padding: 3% 0%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--black-btn-color);
-}
-
-.registBtnParent {
-  margin: 10px 20px;
-  padding: 0px 0px 12px;
-}
-
-.registerLink {
-  text-decoration: none;
-}
-
-.registerBtn:hover {
-  background: var(--btn-background-secondary);
-  border: none !important;
-  letter-spacing: 0.6px;
-}
 .adultChild {
   width: 100%;
   padding: 0px 18px 18px;
