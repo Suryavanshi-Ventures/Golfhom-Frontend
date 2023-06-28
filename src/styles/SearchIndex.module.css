@@ -1,12 +1,10 @@
 .edit_details_main_section {
   margin: 2rem 0;
 }
-
 .edit_details_container_cols {
   margin-bottom: 1.5rem;
   padding: 0px 12px;
 }
-
 .edit_details_btn_parent_container {
   height: 100%;
   display: flex;
@@ -17,21 +15,18 @@
   flex-direction: column;
   justify-content: flex-end;
 }
-
 .edit_details_titles {
   font-family: var(--font-poppins);
 }
-
 .edit_details_container_row_form {
   display: flex !important;
 }
-
 .form_container {
   display: flex;
+  padding-right: 0px;
+  padding-left: 0px;
 }
-
-.edit_details_date_picker,
-.inner_input_box {
+.edit_details_date_picker, .inner_input_box {
   width: 100%;
   border-color: var(--btn-background) !important;
   border-radius: 2px !important;
@@ -40,21 +35,16 @@
   display: flex;
   justify-content: space-between;
 }
-
-.edit_details_date_picker:hover,
-.inner_input_box:hover {
+.edit_details_date_picker:hover, .inner_input_box:hover {
   border-color: var(--btn-background) !important;
   background-color: var(--white-background) !important;
   color: var(--black-btn-color) !important;
 }
-
-.inner_input_box:active,
-.inner_input_box:focus {
+.inner_input_box:active, .inner_input_box:focus {
   background-color: var(--white-background) !important;
   color: var(--black-btn-color) !important;
   border-color: var(--btn-background) !important;
 }
-
 .edit_details_btn {
   padding: 0.6rem 3rem !important;
   height: auto !important;
@@ -62,34 +52,27 @@
   border-color: var(--btn-background);
   border-radius: 2px !important;
 }
-
 .edit_details_btn:hover {
   color: var(--btn-background) !important;
   border-color: var(--btn-background) !important;
 }
-
 .edit_room_dropdown_btn {
   width: 100%;
 }
-
 .edit_room_dropdown_btn_space {
   width: 100%;
   justify-content: space-between;
 }
-
 .edit_room_dropdown_icon {
   display: flex;
 }
-
 /* EDIT DROP DETAIL SECTION */
-
 .twoDropdown {
   display: flex;
   gap: 26px;
   font-family: var(--font-poppins);
   font-weight: 400;
 }
-
 .twoCheckbox {
   display: flex;
   justify-content: space-around;
@@ -99,12 +82,10 @@
   font-weight: 400;
   margin-bottom: 1.5rem;
 }
-
 .front {
   display: flex;
   align-items: center;
 }
-
 .searching {
   width: 100%;
   background-color: var(--btn-background);
@@ -116,24 +97,11 @@
   padding: 0.6rem 2.8rem !important;
   height: auto !important;
 }
-
-.search_div {
-  /* padding-left: 61px; */
-}
-
 .searching:hover {
   background-color: var(--black-btn-color);
   border: none;
-}
-
-.form_container {
-  padding-right: 0px;
-  padding-left: 0px;
-}
-                  
-
+}  
 /*    ----------------      CARD MAP SECTION      -------------------   */
-
 .search_main_section {
   background-color: rgb(249, 249, 249);
 }
@@ -141,9 +109,7 @@
   flex-wrap: wrap;
   display: flex;
 }
-
 .location_name {
-  /* padding: 32px 14px; */
   margin-top: 15px;
   font-family: var(--font-poppins);
   font-weight: 600;
@@ -152,17 +118,14 @@
   font-family: var(--font-poppins);
   color: var(--light-font-color);
 }
-
 .mainOrland {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
 .horizontaLine {
   border-top: 2px solid rgb(225, 220, 220);
 }
-
 .sortSection {
   display: flex;
   justify-content: space-between;
@@ -170,46 +133,38 @@
   margin: 22px 0px;
   flex-wrap: wrap;
 }
-
 .asc_dsc_switch_div {
   display: flex;
   justify-content: flex-end;
 }
-
 .cardCol {
   height: auto;
   flex: 1;
   display: flex;
   flex-wrap: wrap;
 }
-
 .rental {
   font-family: var(--font-poppins);
   font-weight: 400;
   margin-bottom: 0;
 }
-
 .iconImg {
   display: flex;
   width: 38%;
 }
-
 .sort {
   align-self: center;
   margin-right: 10px;
   font-family: var(--font-poppins);
   margin-bottom: 0;
 }
-
 .sortdiv {
   display: flex;
 }
-
 .default {
   font-family: var(--font-poppins) !important;
   font-weight: 500;
 }
-
 .loader_main_div {
   display: flex;
   justify-content: center;
@@ -223,7 +178,6 @@
   height: 500px;
   justify-content: center;
 }
-
 .no_property_text {
   margin-top: 20px;
   font-family: var(--font-poppins);
@@ -232,22 +186,18 @@
   display: flex;
   flex-wrap: wrap;
 }
-
 .mapParent {
   flex: 1;
   position: relative;
 }
-
 .mapParent > div {
   border: 1px solid var(--btn-background);
   position: sticky !important;
   top: 20vh !important;
 }
-
 .map {
   position: relative !important;
 }
-
 .course_choice_parent {
   padding-right: 0px;
   padding-left: 0px;
@@ -255,25 +205,18 @@
   display: flex;
   flex-wrap: wrap;
 }
-
 .inner_input_guest_selector {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
 .geust_incri_btns_div {
   margin-top: 10px;
-  /* display: flex;
-  align-items: end;
-  gap: 10px; */
 }
-
 .adultChild {
   width: 100%;
   padding: 0px 18px 18px;
 }
-
 .increase {
   flex-wrap: wrap;
   width: 100%;
@@ -283,7 +226,6 @@
   justify-content: space-between;
   margin-top: 14px;
 }
-
 .geust_incri_btns_p {
   margin-bottom: 5px;
   font-family: var(--font-poppins);
@@ -292,7 +234,6 @@
   font-weight: 500;
   text-align: center;
 }
-
 .increaseAdult {
   background: var(--white-font-color);
   color: var(--btn-background-secondary);
@@ -305,7 +246,6 @@
   width: 95px;
   padding: 0;
 }
-
 .decreasebtn {
   font-size: 1.4rem;
   width: 35px;
@@ -318,7 +258,6 @@
   background-color: var(--btn-background);
   color: var(--white-background);
 }
-
 .increasebtn {
   transition-duration: 0.5s;
   width: 35px;
@@ -326,81 +265,62 @@
   align-self: center;
   height: 100%;
   font-size: 1.4rem;
-  /* margin-left: 20px; */
 }
 .increasebtn:hover {
   background-color: var(--btn-background);
   color: var(--white-background);
 }
-
 .ageName {
   font-family: var(--font-h3);
   font-weight: 600;
 }
-
 /*  -----------------     PAGINATION CONTAINER     -----------------   */
-
 .pagination_container {
   padding: 5rem 0;
   display: flex;
   justify-content: flex-start;
   width: 100%;
 }
-
-.pagination {
-}
-
 .buildings {
   position: relative;
 }
-
 .buildingImg {
   position: relative !important;
 }
-
 /* --------------------        DETAIL COLUMN CSS           --------------    */
-
 .detailParent {
   border: 1px solid #636363;
   border-radius: 16px;
   padding: 30px;
 }
-
 .details {
   font-size: 1.3rem;
   font-weight: 500;
   margin-bottom: 20px;
   font-family: var(--font-poppins);
 }
-
 .tickParent {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-
 .tick_with_blackbg {
   color: #111111;
 }
-
 .words {
   margin-left: 24px;
 }
-
 @media (max-width: 768px) {
   .cardMapParent {
     flex-direction: column;
   }
-
   .edit_details_btn_parent_container {
     display: flex;
     justify-content: center;
   }
-
   .mapParent {
     order: -1;
   }
-
   .heart {
     position: absolute;
     height: 22% !important;
@@ -411,21 +331,17 @@
     bottom: 0px;
     color: transparent;
   }
-
   .twoCheckbox {
     justify-content: center;
     padding: 0px 12px;
     width: 100%;
   }
-
   .searching {
     margin-top: 1.5rem;
   }
 }
-
 @media only screen and (max-width: 992px) and (min-width: 768px) {
-  .increase,
-  .applyParent {
+  .increase, .applyParent {
     justify-content: center;
   }
 }

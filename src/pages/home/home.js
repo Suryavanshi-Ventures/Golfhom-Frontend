@@ -206,7 +206,6 @@ const Home = () => {
           <div className={HomeCss.search_bar_container}>
             <Row className={HomeCss.searchBar}>
               <Col lg={3} md={4} className={HomeCss.search_cols_4}>
-                {/* <div className={HomeCss.inner_main_container}> */}
                 <div className={HomeCss.inner_input_container}>
                   <div className={HomeCss.image_destination}>
                     <Row>
@@ -632,7 +631,7 @@ const Home = () => {
 
       {/* ------------------------------           TRAINING VIDEOS          ---------------------------   */}
 
-      <Container className={HomeCss.videoContain}>
+      <Container>
         <h3 className={HomeCss.golf_training_heading}>Jake Hutt Golf Raps</h3>
         <div className={HomeCss.paraBtn}>
           <p className={HomeCss.paratext}>
@@ -654,7 +653,7 @@ const Home = () => {
 
       {/* ------------------------------          STAFF N WRITERS          ----------------------------- */}
 
-      <Container className={HomeCss.staffCard}>
+      <Container>
         <Row>
           <Col md={8} className={HomeCss.staffCard_title_main_container}>
             <h3 className={HomeCss.staffCard_title}>
