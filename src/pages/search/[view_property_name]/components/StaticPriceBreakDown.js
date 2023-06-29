@@ -1,14 +1,14 @@
 import { React, useState, useEffect } from "react";
 import StaticPriceBreakDownCss from "./style/StaticPriceBreakDownCss.module.css";
 import moment from "moment";
-
+import dayjs from "dayjs";
 const StaticPriceBreakDown = (props) => {
   console.log(props, "STATIC PRICE BREAK DOWN COMPONENT");
 
   const [NightsCounter, setNightsCounter] = useState(0);
   useEffect(() => {
-    const startDate = moment(props?.data?.arrivalDate); // Replace with your start date
-    const endDate = moment(props?.data?.departureDate); // Replace with your end date
+    const startDate = dayjs(props?.data?.arrivalDate); // Replace with your start date
+    const endDate = dayjs(props?.data?.departureDate); // Replace with your end date
     setNightsCounter(endDate.diff(startDate, "days") || 0);
 
     return () => {};
@@ -16,99 +16,6 @@ const StaticPriceBreakDown = (props) => {
 
   return (
     <>
-      {/* <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Discount
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>
-            $
-            {props?.data?.breakdown?.discount
-              ? props?.data?.breakdown?.discount
-              : 0}
-          </p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Cleaning Fee
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>
-            $
-            {props?.data?.breakdown?.charges?.itemized[0]?.value
-              ? props?.data?.breakdown?.charges?.itemized[0]?.value
-              : 0}
-          </p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Bed linen
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>
-            $
-            {props?.data?.breakdown?.charges?.itemized[1]?.value
-              ? props?.data?.breakdown?.charges?.itemized[1]?.value
-              : 0}
-          </p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Security Deposit
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>
-            $
-            {props?.data?.breakdown?.requiredSecurityDeposit
-              ? props?.data?.breakdown?.requiredSecurityDeposit
-              : 0}
-          </p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-            Taxes
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_price}>
-            $
-            {props?.data?.breakdown?.taxes?.total
-              ? props?.data?.breakdown?.taxes?.total
-              : 0}
-          </p>
-        </div>
-      </div>
-
-      <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <h5 className={StaticPriceBreakDownCss.total_charges_text}>
-            Total Charges
-          </h5>
-        </div>
-        <div className={StaticPriceBreakDownCss.total_price_text_div}>
-          <p className={StaticPriceBreakDownCss.total_charges}>
-            ${props?.data?.breakdown?.total ? props?.data?.breakdown?.total : 0}
-          </p>
-        </div>
-      </div> */}
-
       {props?.data?.property_type === "Nextpax" ? (
         //* SECTION FOR NEXTPAX PRICE BREAKDOWN
         <section>
@@ -131,7 +38,6 @@ const StaticPriceBreakDown = (props) => {
           </div>
 
           {/* REQUIRED CHARGES */}
-
           {props?.data?.NextpaxPriceBreakDown?.charges?.required.map(
             (Data, Index) => {
               return (
@@ -228,70 +134,78 @@ const StaticPriceBreakDown = (props) => {
               </p>
             </div>
           </div>
-
           <hr />
         </section>
       ) : (
         //* SECTION FOR RENTAL PRICE BREAKDOWN
         <section>
-          <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-            <div className={StaticPriceBreakDownCss.total_price_text_div}>
-              <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-                Extra
-              </h5>
-            </div>
-            <div className={StaticPriceBreakDownCss.total_price_text_div}>
-              <p className={StaticPriceBreakDownCss.total_price}>
-                $
-                {props?.data?.RentalpaxPriceBreakDown?.perday?.Extra
-                  ? props?.data?.RentalpaxPriceBreakDown?.perday?.Extra
-                  : 0}
-              </p>
-            </div>
-          </div>
-
-          {/* REQUIRED CHARGES
-          {props?.RentalpaxPriceBreakDown?.data?.charges?.required.map(
-            (Data, Index) => {
-              return (
-                <>
-                  {Data.itemPrice === 0 ? (
-                    ""
-                  ) : (
-                    <div
-                      key={Index}
-                      className={
-                        StaticPriceBreakDownCss.total_price_charge_main_div
-                      }
-                    >
+          {props?.data?.RentalpaxPriceBreakDown?.perday.length > 1 ? (
+            <>
+              {props?.data?.RentalpaxPriceBreakDown?.perday?.map(
+                (Data, Index) => {
+                  return (
+                    <>
                       <div
-                        className={StaticPriceBreakDownCss.total_price_text_div}
+                        className={
+                          StaticPriceBreakDownCss.total_price_charge_main_div
+                        }
                       >
-                        <h5
+                        <div
                           className={
-                            StaticPriceBreakDownCss.total_price_charges_text
+                            StaticPriceBreakDownCss.total_price_text_div
                           }
                         >
-                          {Data?.name === "FIN"
-                            ? "Cleaning Fee"
-                            : Data?.name === "BED"
-                            ? "Bed linen"
-                            : Data?.name}
-                        </h5>
+                          <h5
+                            className={
+                              StaticPriceBreakDownCss.total_price_charges_text
+                            }
+                          >
+                            Date ({dayjs(Data.DateFrom).format("MM-DD-YYYY")} To{" "}
+                            {dayjs(Data.DateTo).format("MM-DD-YYYY")})
+                          </h5>
+                        </div>
+                        <div
+                          className={
+                            StaticPriceBreakDownCss.total_price_text_div
+                          }
+                        >
+                          <p className={StaticPriceBreakDownCss.total_price}>
+                            ${Data.Price / 1}
+                          </p>
+                        </div>
                       </div>
-                      <div
-                        className={StaticPriceBreakDownCss.total_price_text_div}
-                      >
-                        <p className={StaticPriceBreakDownCss.total_price}>
-                          ${Data?.itemPrice ? Data?.itemPrice : 0}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </>
-              );
-            }
-          )} */}
+                    </>
+                  );
+                }
+              )}
+            </>
+          ) : (
+            <div
+              className={StaticPriceBreakDownCss.total_price_charge_main_div}
+            >
+              <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                <h5
+                  className={StaticPriceBreakDownCss.total_price_charges_text}
+                >
+                  Date (
+                  {dayjs(
+                    props?.data?.RentalpaxPriceBreakDown?.perday?.DateFrom
+                  ).format("MM-DD-YYYY")}{" "}
+                  To{" "}
+                  {dayjs(
+                    props?.data?.RentalpaxPriceBreakDown?.perday?.DateTo
+                  ).format("MM-DD-YYYY")}
+                  )
+                </h5>
+              </div>
+              <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                <p className={StaticPriceBreakDownCss.total_price}>
+                  ${props?.data?.RentalpaxPriceBreakDown?.perday?.Price / 1}
+                </p>
+              </div>
+            </div>
+          )}
+
           <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
             <div className={StaticPriceBreakDownCss.total_price_text_div}>
               <h5 className={StaticPriceBreakDownCss.total_charges_text}>
