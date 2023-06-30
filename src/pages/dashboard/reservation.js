@@ -8,6 +8,7 @@ import ProtectedRoute from "../../../common components/protected_route";
 import dynamic from "next/dynamic";
 import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
+import NoReservation from "../../../public/images/vector/golf-hole.png";
 
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
@@ -33,7 +34,7 @@ const Reservation = () => {
         );
 
         if (GetAllBookingRes.status === 200) {
-          setAllBookingData(GetAllBookingRes.data.data);
+          setAllBookingData([]);
           console.log(GetAllBookingRes.data.data, "MY BOOKING DATA");
         }
       } catch (error) {
@@ -71,7 +72,6 @@ const Reservation = () => {
           <h3 className={ReservationCss.reservation}>Reservations</h3>
 
           {/* <h4 className={ReservationCss.manage}>Manage</h4> */}
-
           <Table responsive className={ReservationCss.bodyRow}>
             <thead className={ReservationCss.heading}>
               <tr className={ReservationCss.tableHead}>
@@ -88,39 +88,63 @@ const Reservation = () => {
                 {/* <th className={ReservationCss.action}>Actions</th> */}
               </tr>
             </thead>
+            {AllBookingData.length === 0 ? (
+              <tbody>
+                <div className={ReservationCss.no_reservation_img_div}>
+                  <Image
+                    width={70}
+                    height={70}
+                    src={NoReservation}
+                    alt="No Reservation!"
+                    className={ReservationCss.no_reservation_img}
+                  ></Image>
+                  <p className={ReservationCss.no_reservation_text}>
+                    No Reservation!
+                  </p>
+                </div>
+              </tbody>
+            ) : (
+              ""
+            )}
 
             <tbody>
-              <tr className={ReservationCss.tableRow}>
-                <td className={ReservationCss.imgChild}>
-                  <Image
-                    src={Profile}
-                    alt="Profile"
-                    fill
-                    className={ReservationCss.imageChild}
-                  ></Image>
-                </td>
+              {AllBookingData ? (
+                <tr className={ReservationCss.tableRow}>
+                  <td className={ReservationCss.imgChild}>
+                    <Image
+                      src={Profile}
+                      alt="Profile"
+                      fill
+                      className={ReservationCss.imageChild}
+                    ></Image>
+                  </td>
 
-                <td>#66628</td>
-                <td>
-                  <Button className={ReservationCss.under}>Under Review</Button>
-                </td>
-                <td>April 6, 20237:38 am</td>
-                <td>
-                  <span className={ReservationCss.oldTown}>
-                    {" "}
-                    Old Town’s Farm to Table{" "}
-                  </span>
-                  6826 E 5th St, Scottsdale, Arizona, United States
-                </td>
-                <td>05-16-2023 Stay</td>
-                <td>05-20-2023 Stay</td>
-                <td>5 Stay</td>
-                <td>Yes</td>
-                <td className={ReservationCss.form}>From $6,386.06</td>
-                {/* <td>
-                  <Button className={ReservationCss.detailBtn}>Details</Button>
-                </td> */}
-              </tr>
+                  <td>#66628</td>
+                  <td>
+                    <Button className={ReservationCss.under}>
+                      Under Review
+                    </Button>
+                  </td>
+                  <td>April 6, 20237:38 am</td>
+                  <td>
+                    <span className={ReservationCss.oldTown}>
+                      {" "}
+                      Old Town’s Farm to Table{" "}
+                    </span>
+                    6826 E 5th St, Scottsdale, Arizona, United States
+                  </td>
+                  <td>05-16-2023 Stay</td>
+                  <td>05-20-2023 Stay</td>
+                  <td>5 Stay</td>
+                  <td>Yes</td>
+                  <td className={ReservationCss.form}>From $6,386.06</td>
+                  {/* <td>
+              <Button className={ReservationCss.detailBtn}>Details</Button>
+            </td> */}
+                </tr>
+              ) : (
+                ""
+              )}
             </tbody>
           </Table>
         </Container>

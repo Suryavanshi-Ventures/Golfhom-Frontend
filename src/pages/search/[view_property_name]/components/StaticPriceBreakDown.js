@@ -19,24 +19,6 @@ const StaticPriceBreakDown = (props) => {
       {props?.data?.property_type === "Nextpax" ? (
         //* SECTION FOR NEXTPAX PRICE BREAKDOWN
         <section>
-          <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
-            <div className={StaticPriceBreakDownCss.total_price_text_div}>
-              <h5 className={StaticPriceBreakDownCss.total_price_charges_text}>
-                Security Deposit
-              </h5>
-            </div>
-            <div className={StaticPriceBreakDownCss.total_price_text_div}>
-              <p className={StaticPriceBreakDownCss.total_price}>
-                $
-                {props?.NextpaxPriceBreakDown?.data?.breakdown
-                  ?.requiredSecurityDeposit
-                  ? props?.NextpaxPriceBreakDown?.data?.breakdown
-                      ?.requiredSecurityDeposit
-                  : 0}
-              </p>
-            </div>
-          </div>
-
           {/* REQUIRED CHARGES */}
           {props?.data?.NextpaxPriceBreakDown?.charges?.required.map(
             (Data, Index) => {
@@ -63,6 +45,8 @@ const StaticPriceBreakDown = (props) => {
                             ? "Cleaning Fee"
                             : Data?.name === "BED"
                             ? "Bed linen"
+                            : Data?.name === "DEP"
+                            ? "Security Deposit"
                             : Data?.name}
                         </h5>
                       </div>
@@ -118,7 +102,15 @@ const StaticPriceBreakDown = (props) => {
               );
             }
           )}
-
+          {/* IF THERE IS NO CHARGES */}
+          {props?.data?.NextpaxPriceBreakDown?.charges?.required.length === 0 &&
+          props?.data?.NextpaxPriceBreakDown?.requiredTaxes.length === 0 ? (
+            <p className={StaticPriceBreakDownCss.no_charges_text}>
+              No Required Charges.
+            </p>
+          ) : (
+            ""
+          )}
           <div className={StaticPriceBreakDownCss.total_price_charge_main_div}>
             <div className={StaticPriceBreakDownCss.total_price_text_div}>
               <h5 className={StaticPriceBreakDownCss.total_charges_text}>

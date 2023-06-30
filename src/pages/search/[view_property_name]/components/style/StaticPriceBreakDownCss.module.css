@@ -20,3 +20,10 @@
   font-weight: 500;
   margin-bottom: 0;
 }
+
+.no_charges_text {
+  font-family: var(--font-poppins);
+  text-align: center;
+  margin: 20px 0;
+  font-size: 14px;
+}
