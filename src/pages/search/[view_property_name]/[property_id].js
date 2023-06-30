@@ -340,22 +340,27 @@ const ViewProperty = () => {
               setAvailable(false);
               setNotAvailable(true);
               setShowTotalPaymentTextStatic(false);
+              setShowOtherDetailsStatic(false);
             }
           } catch (error) {
             setAvailable(false);
             setNotAvailable(true);
             setShowTotalPaymentTextStatic(false);
+            setShowOtherDetailsStatic(false);
 
             if (
               error.response.data.message ===
-              "Property is not available for a given dates - Minimum stay criteria not met!"
+                "Property is not available for a given dates - Minimum stay criteria not met!" ||
+              "Property is not available for a given dates - Error occured!"
             ) {
               message.error(error.response.data.message);
               setShowTotalPaymentTextStatic(false);
+              setShowOtherDetailsStatic(false);
             } else {
               message.error("Internal error, Something went wrong!");
               console.log(error, "ERROR CheckAvailability RENTAL");
               setShowTotalPaymentTextStatic(false);
+              setShowOtherDetailsStatic(false);
             }
           }
         };

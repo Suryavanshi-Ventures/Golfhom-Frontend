@@ -42,7 +42,7 @@ const Success = () => {
           <Col md={5} className={Checkout2Css.details_main_cols}>
             <h4 className={Checkout2Css.transaction}>Booking Details</h4>
             <div className={Checkout2Css.total_payed_transaction}>
-              <h5 className={Checkout2Css.amount_master}>Hotel Name</h5>
+              <h5 className={Checkout2Css.amount_master}>Property Name</h5>
               <h5 className={Checkout2Css.details_text_value}>
                 {UrlParams.query.hotel_name
                   ? UrlParams.query.hotel_name
@@ -116,7 +116,9 @@ const Success = () => {
             <hr />
 
             <div className={Checkout2Css.total_payed_transaction}>
-              <Col md={4} className={Checkout2Css.amount_master}>Booking Number</Col>
+              <Col md={4} className={Checkout2Css.amount_master}>
+                Booking Number
+              </Col>
               <Col md={5} className={Checkout2Css.details_text_value}>
                 {UrlParams.query.booking_number
                   ? UrlParams.query.booking_number
@@ -130,7 +132,7 @@ const Success = () => {
               <h5 className={Checkout2Css.details_text_value}>
                 {UrlParams.query.payment_method
                   ? UrlParams.query.payment_method.charAt(0).toUpperCase() +
-                  UrlParams.query.payment_method.slice(1)
+                    UrlParams.query.payment_method.slice(1)
                   : "N/A"}
               </h5>
             </div>
