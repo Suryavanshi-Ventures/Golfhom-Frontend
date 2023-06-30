@@ -69,7 +69,7 @@ const Footer = () => {
 
                   <li className={FooterCss.nav_link_li_blog}>
                     <Link href="/blog" className={FooterCss.nav_link_a}>
-                      Golfom Blog & Press
+                      Golfhom Blog & Press
                     </Link>
                   </li>
                   <li className={FooterCss.nav_link_li_blog}>

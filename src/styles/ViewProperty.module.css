@@ -894,8 +894,8 @@
   padding: 6px 16px;
   position: absolute;
   z-index: 3;
-  bottom: 24px;
-  right: 24px;
+  bottom: 13px;
+  right: 15px;
   border: 1px solid var(--light-grey);
   border-radius: 2px;
   font-family: var(--font-poppins);
