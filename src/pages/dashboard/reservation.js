@@ -42,7 +42,7 @@ const Reservation = () => {
     };
     GetAllBookings();
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails]);
 
   return (
