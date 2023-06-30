@@ -1,6 +1,5 @@
 import { useState, React, useEffect, useContext, Suspense } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { Container, Col, Row, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
 import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.png";
@@ -19,10 +18,7 @@ import {
 import NextImage from "next/image";
 import TabContentOverview from "../tab_content_overview";
 import FeatureTickIcon from "../../../../public/images/vector/feature_tick.svg";
-import PriceSquareIcon from "../../../../public/images/vector/price_square_icon.svg";
-import RulesCrossIcon from "../../../../public/images/vector/rules_cross_icon.svg";
 import Calendar from "../../../../public/images/vector/calendar.svg";
-import Blacktick from "../../../../public/images/vector/blackTick.svg";
 import Map from "../../../../common components/map";
 import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
@@ -37,6 +33,8 @@ const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
 import dynamic from "next/dynamic";
+import ThingsToKnow from "./components/ThingsToKnow";
+import FeatureSection from "./components/FeatureSection";
 
 const BottomSection = dynamic(
   () => import("../../../../common components/bottomGroup"),
@@ -110,8 +108,7 @@ const ViewProperty = () => {
     const GetPropertyById = async () => {
       try {
         const SpecificPropData = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${
-            Params.property_id || UrlParamId
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/property/${Params.property_id || UrlParamId
           }`
         );
         if (SpecificPropData.status === 200) {
@@ -149,7 +146,7 @@ const ViewProperty = () => {
     if (PaymentIntentObject != null) {
       setOptions(PaymentIntentObject);
     }
-    return () => {};
+    return () => { };
   }, [PaymentIntentObject]);
 
   const DateFormater = (date) => {
@@ -241,51 +238,6 @@ const ViewProperty = () => {
 
   const CreatePatymentIntent = async () => {
     setNewPayment(true);
-
-    // if (BookingDate.length === 0) {
-    //   message.error("Please select the check-in & check-out date");
-    //   return;
-    // }
-
-    // const PaymentRes = axios.post(
-    //   `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/paymentintent`,
-    //   {
-    //     propertyId: SpecificPropAPIData.data?.id,
-    //     from: BookingDate[0],
-    //     to: BookingDate[1],
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${ContextUserDetails.UserState}`,
-    //     },
-    //   }
-    // );
-    // PaymentRes.then((response) => {
-    //   if (response.status === 200) {
-    //     console.log("RESPONSE PAYMENT INTENT", response.data?.paymentIntent);
-    //     setPaymentIntentObject({
-    //       ClientSecret: response.data?.paymentIntent.client_secret,
-    //       PaymentIntentId: response.data?.paymentIntent.id,
-    //     });
-
-    //     if (
-    //       SpecificPropAPIData?.price?.Pull_GetPropertyAvbPrice_RS
-    //         ?.PropertyPrices?.PropertyPrice
-    //     ) {
-    //       setShowTotalPaymentText(true);
-    //     } else {
-    //       console.log(SpecificPropAPIData?.price, "FROM VIEW PRO ELSE");
-    //       setShowTotalPaymentText(false);
-    //       setShowTotalPaymentTextStatic(true);
-    //     }
-    //   }
-    // }).catch((err) => {
-    //   if (err.response.data?.message === "User not authorized") {
-    //     message.error("Please login to book hotels");
-    //     return;
-    //   }
-    //   message.error(err.response.data?.message);
-    // });
   };
 
   // console.log(SpecificPropAPIData.data, "SPECIFIC PROPERTY");
@@ -426,11 +378,10 @@ const ViewProperty = () => {
       console.log("NEXTPAX");
       const data = await axios({
         method: "GET",
-        url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${
-          Params.property_id
-        }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
-          "MM-DD-YYYY"
-        )}`,
+        url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${Params.property_id
+          }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
+            "MM-DD-YYYY"
+          )}`,
       }).then((res) => {
         if (res.status === 200) {
           const AvailDataNextpax = res.data?.data?.data?.[0]
@@ -448,11 +399,10 @@ const ViewProperty = () => {
       const data = await axios({
         method: "GET",
         headers: { Authorization: `Bearer ${Token}` },
-        url: `${
-          process.env.NEXT_PUBLIC_API_URL
-        }/v1/rentalunited/availability?id=${Params.property_id}&from=${moment(
-          date1
-        ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
+        url: `${process.env.NEXT_PUBLIC_API_URL
+          }/v1/rentalunited/availability?id=${Params.property_id}&from=${moment(
+            date1
+          ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
       })
         .then((res) => {
           if (res.status === 201) {
@@ -845,19 +795,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .AdditionalFees
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.AdditionalFees >=
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.AdditionalFees >=
                             0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.AdditionalFees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.AdditionalFees
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.AdditionalFees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.AdditionalFees
+                            )
                           : 0}
                       </p>
                     </div>
@@ -875,18 +825,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Cleaning
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Cleaning >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Cleaning >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Cleaning
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Cleaning
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Cleaning
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Cleaning
+                            )
                           : 0}
                       </p>
                     </div>
@@ -904,18 +854,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Deposit
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Deposit >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Deposit >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Deposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Deposit
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Deposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Deposit
+                            )
                           : 0}
                       </p>
                     </div>
@@ -934,19 +884,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .ExtraPersonPrice
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.ExtraPersonPrice >=
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.ExtraPersonPrice >=
                             0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.ExtraPersonPrice
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.ExtraPersonPrice
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.ExtraPersonPrice
+                            )
                           : 0}
                       </p>
                     </div>
@@ -964,18 +914,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Fees
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Fees >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Fees >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Fees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Fees
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Fees
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Fees
+                            )
                           : 0}
                       </p>
                     </div>
@@ -994,19 +944,19 @@ const ViewProperty = () => {
                           ?.PropertyPrices.PropertyPrice[0]._attributes
                           .SecurityDeposit
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.SecurityDeposit >=
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.SecurityDeposit >=
                             0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.SecurityDeposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.SecurityDeposit
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.SecurityDeposit
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.SecurityDeposit
+                            )
                           : 0}
                       </p>
                     </div>
@@ -1024,18 +974,18 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._attributes.Taxes
                           ? SpecificPropAPIData.price
-                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                              .PropertyPrice[0]._attributes.Taxes >= 0.5
+                            ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                            .PropertyPrice[0]._attributes.Taxes >= 0.5
                             ? Math.ceil(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Taxes
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Taxes
+                            )
                             : Math.floor(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._attributes.Taxes
-                              )
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._attributes.Taxes
+                            )
                           : 0}
                       </p>
                     </div>
@@ -1053,15 +1003,15 @@ const ViewProperty = () => {
                         {SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
                           ?.PropertyPrices.PropertyPrice[0]._text >= 0.5
                           ? Math.ceil(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text
-                            )
+                            SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._text
+                          )
                           : Math.floor(
-                              SpecificPropAPIData.price
-                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                .PropertyPrice[0]._text
-                            )}
+                            SpecificPropAPIData.price
+                              ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                              .PropertyPrice[0]._text
+                          )}
                       </p>
                     </div>
                   </div>
@@ -1074,8 +1024,8 @@ const ViewProperty = () => {
 
               {/* TOTAL AMOUNT */}
               {ShowTotalPaymentText &&
-              SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
-                ?.PropertyPrices?.PropertyPrice[0] ? (
+                SpecificPropAPIData.price?.Pull_GetPropertyAvbPrice_RS
+                  ?.PropertyPrices?.PropertyPrice[0] ? (
                 <>
                   {" "}
                   <div className={ViewPropertyCss.total_price_main_div}>
@@ -1094,37 +1044,37 @@ const ViewProperty = () => {
                           $
                           {SpecificPropAPIData.data?.price >= 0.5
                             ? Math.ceil(SpecificPropAPIData.data?.price) +
-                              Number(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._text >= 0.5
-                                  ? Math.ceil(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                                  : Math.floor(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                              )
+                            Number(
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text >= 0.5
+                                ? Math.ceil(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                                : Math.floor(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                            )
                             : Math.floor(SpecificPropAPIData.data?.price) +
-                              Number(
-                                SpecificPropAPIData.price
-                                  ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
-                                  .PropertyPrice[0]._text >= 0.5
-                                  ? Math.ceil(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                                  : Math.floor(
-                                      SpecificPropAPIData.price
-                                        ?.Pull_GetPropertyAvbPrice_RS
-                                        ?.PropertyPrices.PropertyPrice[0]._text
-                                    )
-                              )}
+                            Number(
+                              SpecificPropAPIData.price
+                                ?.Pull_GetPropertyAvbPrice_RS?.PropertyPrices
+                                .PropertyPrice[0]._text >= 0.5
+                                ? Math.ceil(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                                : Math.floor(
+                                  SpecificPropAPIData.price
+                                    ?.Pull_GetPropertyAvbPrice_RS
+                                    ?.PropertyPrices.PropertyPrice[0]._text
+                                )
+                            )}
                         </strong>{" "}
                       </p>
                       <p
@@ -1200,7 +1150,7 @@ const ViewProperty = () => {
 
               {/* NEXTPAX API PAYMENT PORTAL */}
               {PropertyType === "Nextpax" &&
-              ShowNextpaxPropertyPaymentPortal ? (
+                ShowNextpaxPropertyPaymentPortal ? (
                 <>{/*//! OLD PAYMENT FORM WAS HERE */}</>
               ) : (
                 <div className={ViewPropertyCss.checkout_payment_main_div}>
@@ -1341,34 +1291,7 @@ const ViewProperty = () => {
             <h5 className={ViewPropertyCss.feature_section_heading}>
               Features
             </h5>
-            <Row>
-              {SpecificPropAPIData.data?.amenities?.map((data, index) => {
-                return (
-                  <Col key={index} md={4}>
-                    <div
-                      className={ViewPropertyCss.feature_section_div_container}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.feature_section_tick_icon_container
-                        }
-                      >
-                        <NextImage
-                          width={24}
-                          height={24}
-                          src={FeatureTickIcon}
-                          alt="features of golfhom"
-                        ></NextImage>
-                      </div>
-
-                      <p className={ViewPropertyCss.feature_section_text}>
-                        {data}
-                      </p>
-                    </div>
-                  </Col>
-                );
-              })}
-            </Row>
+            <FeatureSection data={SpecificPropAPIData.data} />
           </Container>
         </section>
 
@@ -1409,668 +1332,7 @@ const ViewProperty = () => {
         {/* THINGS TO KNOW SECTION  */}
         <section className={ViewPropertyCss.things_to_know_section}>
           <Container>
-            <h5 className={ViewPropertyCss.feature_section_heading}>
-              Things to know
-            </h5>
-            {/* PRICE SECTION */}
-            <Row className={ViewPropertyCss.things_to_know_section_rows}>
-              <Col md={8}>
-                <div
-                  className={
-                    ViewPropertyCss.things_to_know_main_content_container
-                  }
-                >
-                  <Row>
-                    <h5
-                      className={ViewPropertyCss.things_to_know_section_heading}
-                    >
-                      Prices
-                    </h5>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <NextImage
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={PriceSquareIcon}
-                            width={15}
-                            height={15}
-                            alt="Prices"
-                          ></NextImage>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Night: From{" "}
-                          <span
-                            className={ViewPropertyCss.things_to_know_info_span}
-                          >
-                            $
-                            {SpecificPropAPIData.data?.price >= 0.5
-                              ? Math.ceil(SpecificPropAPIData.data?.price)
-                              : Math.floor(SpecificPropAPIData.data?.price)}
-                          </span>
-                        </p>
-                      </div>
-                    </Col>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <NextImage
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={PriceSquareIcon}
-                            width={15}
-                            height={15}
-                            alt="Prices"
-                          ></NextImage>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Allow Additional Guests:{" "}
-                          <span
-                            className={ViewPropertyCss.things_to_know_info_span}
-                          >
-                            Yes
-                          </span>
-                        </p>
-                      </div>
-                    </Col>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <NextImage
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={PriceSquareIcon}
-                            width={15}
-                            height={15}
-                            alt="Prices"
-                          ></NextImage>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Minimum Nights Of A Booking:{" "}
-                          <span
-                            className={ViewPropertyCss.things_to_know_info_span}
-                          >
-                            {SpecificPropAPIData.data?.minNightsOfBooking}
-                          </span>
-                        </p>
-                      </div>
-                    </Col>
-                    <Col
-                      className={ViewPropertyCss.things_to_know_section_cols}
-                      md={6}
-                    >
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_price_container
-                        }
-                      >
-                        <div
-                          className={
-                            ViewPropertyCss.things_to_know_price_icon_container
-                          }
-                        >
-                          <NextImage
-                            className={
-                              ViewPropertyCss.things_to_know_price_icon
-                            }
-                            src={PriceSquareIcon}
-                            width={15}
-                            height={15}
-                            alt="Prices"
-                          ></NextImage>
-                        </div>
-
-                        <p
-                          className={ViewPropertyCss.things_to_know_price_text}
-                        >
-                          Maximum Nights Of A Booking:{" "}
-                          <span
-                            className={ViewPropertyCss.things_to_know_info_span}
-                          >
-                            {SpecificPropAPIData.data?.maxNightsOfBooking
-                              ? SpecificPropAPIData.data?.maxNightsOfBooking
-                              : 1}
-                          </span>
-                        </p>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-
-                <div>
-                  {/* TERMS SECTION */}
-                  <div className={ViewPropertyCss.things_to_know_section_rows}>
-                    <Col md={8}>
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_main_content_container
-                        }
-                      >
-                        <Row>
-                          <h5
-                            className={
-                              ViewPropertyCss.things_to_know_section_heading
-                            }
-                          >
-                            Terms & rules
-                          </h5>
-                          <Col
-                            className={
-                              ViewPropertyCss.things_to_know_section_cols
-                            }
-                            md={6}
-                          >
-                            <div
-                              className={
-                                ViewPropertyCss.things_to_know_price_container
-                              }
-                            >
-                              <div
-                                className={
-                                  ViewPropertyCss.things_to_know_price_icon_container
-                                }
-                              >
-                                <NextImage
-                                  className={
-                                    ViewPropertyCss.things_to_know_price_icon
-                                  }
-                                  src={RulesCrossIcon}
-                                  width={15}
-                                  height={15}
-                                  alt="Prices"
-                                ></NextImage>
-                              </div>
-
-                              <p
-                                className={
-                                  ViewPropertyCss.things_to_know_price_text
-                                }
-                              >
-                                Smoking allowed
-                              </p>
-                            </div>
-                          </Col>
-                          <Col
-                            className={
-                              ViewPropertyCss.things_to_know_section_cols
-                            }
-                            md={6}
-                          >
-                            <div
-                              className={
-                                ViewPropertyCss.things_to_know_price_container
-                              }
-                            >
-                              <div
-                                className={
-                                  ViewPropertyCss.things_to_know_price_icon_container
-                                }
-                              >
-                                <NextImage
-                                  className={
-                                    ViewPropertyCss.things_to_know_price_icon
-                                  }
-                                  src={RulesCrossIcon}
-                                  width={15}
-                                  height={15}
-                                  alt="Prices"
-                                ></NextImage>
-                              </div>
-
-                              <p
-                                className={
-                                  ViewPropertyCss.things_to_know_price_text
-                                }
-                              >
-                                Pets allowed
-                              </p>
-                            </div>
-                          </Col>
-                          <Col
-                            className={
-                              ViewPropertyCss.things_to_know_section_cols
-                            }
-                            md={6}
-                          >
-                            <div
-                              className={
-                                ViewPropertyCss.things_to_know_price_container
-                              }
-                            >
-                              <div
-                                className={
-                                  ViewPropertyCss.things_to_know_price_icon_container
-                                }
-                              >
-                                <NextImage
-                                  className={
-                                    ViewPropertyCss.things_to_know_price_icon
-                                  }
-                                  src={RulesCrossIcon}
-                                  width={15}
-                                  height={15}
-                                  alt="Prices"
-                                ></NextImage>
-                              </div>
-
-                              <p
-                                className={
-                                  ViewPropertyCss.things_to_know_price_text
-                                }
-                              >
-                                Children allowed
-                              </p>
-                            </div>
-                          </Col>
-                          <Col
-                            className={
-                              ViewPropertyCss.things_to_know_section_cols
-                            }
-                            md={6}
-                          >
-                            <div
-                              className={
-                                ViewPropertyCss.things_to_know_price_container
-                              }
-                            >
-                              <div
-                                className={
-                                  ViewPropertyCss.things_to_know_price_icon_container
-                                }
-                              >
-                                <NextImage
-                                  className={
-                                    ViewPropertyCss.things_to_know_price_icon
-                                  }
-                                  src={FeatureTickIcon}
-                                  width={24}
-                                  height={24}
-                                  alt="Prices"
-                                ></NextImage>
-                              </div>
-
-                              <p
-                                className={
-                                  ViewPropertyCss.things_to_know_price_text
-                                }
-                              >
-                                Event allowed
-                              </p>
-                            </div>
-                          </Col>
-                        </Row>
-                      </div>
-                    </Col>
-                    <Col md={4}></Col>
-                  </div>
-
-                  {/* Cancellation  SECTION */}
-                  <div className={ViewPropertyCss.things_to_know_section_rows}>
-                    <Col md={8}>
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_main_content_container
-                        }
-                      >
-                        <Row>
-                          <h5
-                            className={
-                              ViewPropertyCss.things_to_know_section_heading
-                            }
-                          >
-                            Cancellation Policy
-                          </h5>
-                          <p
-                            className={
-                              ViewPropertyCss.things_to_know_privacy_text
-                            }
-                          >
-                            {SpecificPropAPIData.data?.cancellationPolicy
-                              ? SpecificPropAPIData.data?.cancellationPolicy
-                              : "N/A"}
-                          </p>
-                        </Row>
-                      </div>
-                    </Col>
-                  </div>
-
-                  {/* Additional rules information  SECTION */}
-                  <div className={ViewPropertyCss.things_to_know_section_rows}>
-                    <Col md={8}>
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_main_content_container
-                        }
-                      >
-                        <Row>
-                          <h5
-                            className={
-                              ViewPropertyCss.things_to_know_section_heading
-                            }
-                          >
-                            Additional rules information
-                          </h5>
-                          <p
-                            className={
-                              ViewPropertyCss.things_to_know_privacy_text
-                            }
-                          >
-                            {SpecificPropAPIData.data
-                              ?.additionalRulesInformation
-                              ? SpecificPropAPIData.data
-                                  ?.additionalRulesInformation
-                              : "N/A"}
-                          </p>
-                        </Row>
-                      </div>
-                    </Col>
-                  </div>
-
-                  {/*//! Availability SECTION
-                  <div className={ViewPropertyCss.things_to_know_section_rows}>
-                    <Col md={12}>
-                      <div
-                        className={
-                          ViewPropertyCss.things_to_know_main_content_container
-                        }
-                      >
-                        <Row>
-                          <h5
-                            className={
-                              ViewPropertyCss.things_to_know_section_heading
-                            }
-                          >
-                            Availability
-                          </h5>
-                          <Col
-                            className={
-                              ViewPropertyCss.things_to_know_section_cols
-                            }
-                            xs={"auto"}
-                          >
-                            <div
-                              className={
-                                ViewPropertyCss.things_to_know_price_container
-                              }
-                            >
-                              <div
-                                className={
-                                  ViewPropertyCss.things_to_know_price_icon_container
-                                }
-                              >
-                                <NextImage
-                                  className={
-                                    ViewPropertyCss.things_to_know_price_icon
-                                  }
-                                  src={Calendar}
-                                  width={30}
-                                  height={30}
-                                  alt="Prices"
-                                ></NextImage>
-                              </div>
-
-                              <p
-                                className={
-                                  ViewPropertyCss.things_to_know_price_text
-                                }
-                              >
-                                The minimum stay is 3 nights from
-                              </p>
-                            </div>
-                          </Col>
-                          <Col
-                            className={
-                              ViewPropertyCss.things_to_know_section_cols
-                            }
-                            md={6}
-                          >
-                            <div
-                              className={
-                                ViewPropertyCss.things_to_know_price_container
-                              }
-                            >
-                              <div
-                                className={
-                                  ViewPropertyCss.things_to_know_price_icon_container
-                                }
-                              >
-                                <NextImage
-                                  className={
-                                    ViewPropertyCss.things_to_know_price_icon
-                                  }
-                                  src={Calendar}
-                                  width={30}
-                                  height={30}
-                                  alt="Prices"
-                                ></NextImage>
-                              </div>
-
-                              <p
-                                className={
-                                  ViewPropertyCss.things_to_know_price_text
-                                }
-                              >
-                                The minimum stay is 3 nights from
-                              </p>
-                            </div>
-                          </Col>
-                        </Row>
-                      </div>
-                    </Col>
-                  </div> */}
-                </div>
-              </Col>
-
-              <Col md={4} className={ViewPropertyCss.detailParent}>
-                <div>
-                  <div className={ViewPropertyCss.details}>Details</div>
-                  <div className={ViewPropertyCss.tickParent}>
-                    <div
-                      className={ViewPropertyCss.tick_with_blackbg_container}
-                    >
-                      <NextImage
-                        className={ViewPropertyCss.tick_with_blackbg}
-                        src={Blacktick}
-                        width={24}
-                        height={24}
-                        alt="Prices"
-                      ></NextImage>
-                    </div>
-                    <p className={ViewPropertyCss.words}>
-                      ID: {SpecificPropAPIData.data?.id}
-                    </p>
-                  </div>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Rooms:{" "}
-                    {SpecificPropAPIData.data?.rooms
-                      ? SpecificPropAPIData.data?.rooms
-                      : 1}
-                  </p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Guests: {SpecificPropAPIData.data?.accomodation}
-                  </p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Check-in After:{" "}
-                    {moment(
-                      SpecificPropAPIData.data?.checkIn,
-                      "hh:mm A"
-                    ).format("hh:mm A")}
-                  </p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Check-out Before:{" "}
-                    {moment(
-                      SpecificPropAPIData.data?.checkOut,
-                      "hh:mm A"
-                    ).format("hh:mm A")}
-                  </p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Bedrooms:{" "}
-                    {SpecificPropAPIData.data?.bedrooms
-                      ? SpecificPropAPIData.data?.bedrooms
-                      : 1}
-                  </p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Beds:{" "}
-                    {SpecificPropAPIData.data?.beds
-                      ? SpecificPropAPIData.data?.beds
-                      : 1}
-                  </p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Payment Methods:{" "}
-                    {SpecificPropAPIData.data?.paymentMethods
-                      ? SpecificPropAPIData.data?.paymentMethods
-                      : "Card"}
-                  </p>
-                </div>
-
-                <div className={ViewPropertyCss.tickParent}>
-                  <div className={ViewPropertyCss.tick_with_blackbg_container}>
-                    <NextImage
-                      className={ViewPropertyCss.tick_with_blackbg}
-                      src={Blacktick}
-                      width={24}
-                      height={24}
-                      alt="Prices"
-                    ></NextImage>
-                  </div>
-                  <p className={ViewPropertyCss.words}>
-                    Bathrooms:{" "}
-                    {SpecificPropAPIData.data?.bathrooms
-                      ? SpecificPropAPIData.data?.bathrooms
-                      : 1}
-                  </p>
-                </div>
-              </Col>
-            </Row>
+            <ThingsToKnow data={SpecificPropAPIData.data} />
           </Container>
         </section>
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
