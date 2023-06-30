@@ -64,7 +64,7 @@ const StaticPriceBreakDown = (props) => {
             }
           )}
 
-          {/* REQUIRED TAXES */}
+          {/* REQUIRED TAXESs */}
           {props?.data?.NextpaxPriceBreakDown?.requiredTaxes.map(
             (Data, Index) => {
               return (
