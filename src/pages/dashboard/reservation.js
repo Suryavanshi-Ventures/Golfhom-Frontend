@@ -48,7 +48,7 @@ const Reservation = () => {
     };
     GetAllBookings();
 
-    return () => {};
+    return () => { };
   }, [ContextUserDetails, PaginationState]);
 
   const OnPaginationChange = (e) => {

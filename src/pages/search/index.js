@@ -90,7 +90,7 @@ const Index = () => {
   };
 
   const onGolfLoad = (autocomplete) => {
-    setGolfCourse(autocomplete);
+    setSearchGolfResult(autocomplete);
   };
 
   const OnSearchInputChange = (event) => {
@@ -132,7 +132,6 @@ const Index = () => {
       message.error("Please enter text");
     }
   };
-
   const [DateInputValues, setDateInputValues] = useState([
     dayjs(param.from).format("MM-DD-YYYY"),
     dayjs(param.to).format("MM-DD-YYYY"),
@@ -156,7 +155,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => {};
+    return () => { };
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -177,10 +176,8 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-        "latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-        "from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -195,7 +192,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => {};
+    return () => { };
   }, [
     param.from,
     param.guest,
@@ -285,12 +282,9 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
-          "latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
-          "from=" + param.from
-        }&${
-          "to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+        }&${"to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -325,117 +319,6 @@ const Index = () => {
       setSortByParam("&sortBy=DESC");
       setUpdateSortByText("Date New to Old");
     }
-  };
-
-  const HiddenModal = () => {
-    return (
-      <>
-        {/* EDIT DROP DETAIL SECTION */}
-
-        <Form className={SearchIndexCss.course_choice_parent}>
-          <Col
-            md={3}
-            sm={6}
-            xs={12}
-            className={SearchIndexCss.edit_details_container_cols}
-          >
-            <div className={SearchIndexCss.edit_details_divs}>
-              <p className={SearchIndexCss.edit_details_titles}>
-                Golf Course Choice
-              </p>
-              <Form.Item
-                className={SearchIndexCss.edit_details_inputs_container}
-              >
-                {isLoaded ? (
-                  <Autocomplete
-                    onGolfCourseChanged={onGolfCourseChanged}
-                    onGolfLoad={onGolfLoad}
-                  >
-                    <Input
-                      className={SearchIndexCss.inner_input_box}
-                      size="large"
-                      value={golfInputValue}
-                      // value={param.location_name}
-                      onChange={OnGolfCourseChange}
-                      name="search_input"
-                      allowClear
-                    />
-                  </Autocomplete>
-                ) : (
-                  <Skeleton.Input
-                    active={true}
-                    size={"mid"}
-                    className={SearchIndexCss.input_skeleton}
-                  />
-                )}
-              </Form.Item>
-            </div>
-          </Col>
-
-          <Col
-            md={3}
-            sm={6}
-            xs={12}
-            className={SearchIndexCss.edit_details_container_cols}
-          >
-            <div className={SearchIndexCss.edit_details_divs}>
-              <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
-              <Form.Item
-                className={SearchIndexCss.edit_details_inputs_container}
-              >
-                <Select
-                  defaultValue=" Marmot Ridge Golf Course"
-                  options={[
-                    {
-                      value: "Arizona",
-                      label: "Arizona",
-                    },
-                    {
-                      value: "New York",
-                      label: "New York",
-                    },
-                  ]}
-                  trigger={["click"]}
-                  className={SearchIndexCss.edit_room_dropdown_btn}
-                  size="large"
-                >
-                  <Select.Option onClick={(e) => e.preventDefault()}>
-                    <Typography.Link>
-                      <Space
-                        className={SearchIndexCss.edit_room_dropdown_btn_space}
-                      >
-                        Marmot Ridge Golf Course
-                        <DownOutlined
-                          className={SearchIndexCss.edit_room_dropdown_icon}
-                        />
-                      </Space>
-                    </Typography.Link>
-                  </Select.Option>
-                </Select>
-              </Form.Item>
-            </div>
-          </Col>
-
-          <Col md={6} className={SearchIndexCss.twoCheckbox}>
-            <Col md={3} sm={6} xs={6} className={SearchIndexCss.front}>
-              <Checkbox>Golf Course Front</Checkbox>
-            </Col>
-            <Col md={4} sm={6} xs={6} className={SearchIndexCss.front}>
-              <Checkbox>Golf Course Community</Checkbox>
-            </Col>
-
-            <Form.Item className={SearchIndexCss.search_div}>
-              <Button
-                onClick={() => setShowHidden(true)}
-                className={SearchIndexCss.searching}
-              >
-                Search
-              </Button>
-            </Form.Item>
-          </Col>
-        </Form>
-      </>
-    );
   };
 
   return (
@@ -477,9 +360,8 @@ const Index = () => {
                               className={SearchIndexCss.inner_input_box}
                               size="large"
                               value={InputValue}
-                              // value={param.location_name}
                               onChange={OnSearchInputChange}
-                              // name="search_input"
+                              name="search_input"
                               allowClear
                               disabled={!isEditable}
                             />
@@ -552,7 +434,7 @@ const Index = () => {
                           onChange={(e) =>
                             onChangeGuest(parseInt(e.target.value))
                           }
-                          // value={guest}
+                        // value={guest}
                         >
                           Please select guests
                         </ReactDropdown.Toggle>
@@ -724,7 +606,110 @@ const Index = () => {
                     </div>
                   </Col>
                 </Form>
-                {showHidden && <HiddenModal />}
+                {showHidden &&
+                  <Form className={SearchIndexCss.course_choice_parent}>
+                    <Col
+                      md={3}
+                      sm={6}
+                      xs={12}
+                      className={SearchIndexCss.edit_details_container_cols}
+                    >
+                      <div className={SearchIndexCss.edit_details_divs}>
+                        <p className={SearchIndexCss.edit_details_titles}>
+                          Golf Course Choice
+                        </p>
+                        <Form.Item
+                          className={SearchIndexCss.edit_details_inputs_container}
+                        >
+                          {isLoaded ? (
+                            <Autocomplete
+                              onPlaceChanged={onGolfCourseChanged}
+                              onLoad={onGolfLoad}
+                            >
+                              <Input
+                                className={SearchIndexCss.inner_input_box}
+                                size="large"
+                                value={golfInputValue}
+                                // value={param.location_name}
+                                onChange={OnGolfCourseChange}
+                                name="search_input"
+                                allowClear
+                              />
+                            </Autocomplete>
+                          ) : (
+                            <Skeleton.Input
+                              active={true}
+                              size={"mid"}
+                              className={SearchIndexCss.input_skeleton}
+                            />
+                          )}
+                        </Form.Item>
+                      </div>
+                    </Col>
+
+                    <Col
+                      md={3}
+                      sm={6}
+                      xs={12}
+                      className={SearchIndexCss.edit_details_container_cols}
+                    >
+                      <div className={SearchIndexCss.edit_details_divs}>
+                        <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
+                        <Form.Item
+                          className={SearchIndexCss.edit_details_inputs_container}
+                        >
+                          <Select
+                            defaultValue=" Marmot Ridge Golf Course"
+                            options={[
+                              {
+                                value: "Arizona",
+                                label: "Arizona",
+                              },
+                              {
+                                value: "New York",
+                                label: "New York",
+                              },
+                            ]}
+                            trigger={["click"]}
+                            className={SearchIndexCss.edit_room_dropdown_btn}
+                            size="large"
+                          >
+                            <Select.Option onClick={(e) => e.preventDefault()}>
+                              <Typography.Link>
+                                <Space
+                                  className={SearchIndexCss.edit_room_dropdown_btn_space}
+                                >
+                                  Marmot Ridge Golf Course
+                                  <DownOutlined
+                                    className={SearchIndexCss.edit_room_dropdown_icon}
+                                  />
+                                </Space>
+                              </Typography.Link>
+                            </Select.Option>
+                          </Select>
+                        </Form.Item>
+                      </div>
+                    </Col>
+
+                    <Col md={6} className={SearchIndexCss.twoCheckbox}>
+                      <Col md={3} sm={6} xs={6} className={SearchIndexCss.front}>
+                        <Checkbox>Golf Course Front</Checkbox>
+                      </Col>
+                      <Col md={4} sm={6} xs={6} className={SearchIndexCss.front}>
+                        <Checkbox>Golf Course Community</Checkbox>
+                      </Col>
+
+                      <Form.Item className={SearchIndexCss.search_div}>
+                        <Button
+                          onClick={() => setShowHidden(true)}
+                          className={SearchIndexCss.searching}
+                        >
+                          Search
+                        </Button>
+                      </Form.Item>
+                    </Col>
+                  </Form>
+                }
               </Row>
             </div>
           </Container>
