@@ -1,3 +1,7 @@
+.my_reservation_main_section {
+  margin-bottom: 120px;
+}
+
 /* BANNER IMAGE  */
 .banner_img,
 .imageChild {
@@ -16,6 +20,7 @@
   margin-top: 20px;
   font-family: var(--font-poppins);
 }
+
 /*     -------------------------     TEXT AREA      ----------------------------    */
 .reservation {
   font-family: var(--font-poppins);
@@ -33,12 +38,16 @@
   height: 90px;
 }
 .bodyRow {
-  margin-bottom: 120px;
+  text-align: center;
 }
+
+.reservation_table_td_others {
+  min-width: 80px;
+}
+
 .imgChild {
-  max-width: 10px;
-  height: 40px;
 }
+
 .blank {
   width: 6%;
 }
@@ -102,23 +111,41 @@
   border: none;
 }
 .Completed {
-  color: var(--white-font-color);
-  background: #0bb96f !important;
+  color: var(--success-green);
+  background: var(--white-font-color) !important;
   border-radius: 20px;
-  padding: 4px 16px !important;
+  font-weight: 600;
   border: none;
+  cursor: default;
 }
 .expired {
-  color: var(--white-font-color);
-  background: var(--light-font-color) !important;
+  color: red;
+  background: var(--white-font-color) !important;
   border-radius: 20px;
-  padding: 4px 20px !important;
+  font-weight: 600;
   border: none;
+  cursor: default;
 }
-.form {
+
+.table_date {
   color: var(--btn-background-secondary);
   font-weight: 600;
+  min-width: 70px;
 }
 .dollar {
   font-weight: 600;
+}
+
+/* PAGINATION  */
+.pagination_container {
+  padding: 3rem 0;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .reservation_table_td {
+    min-width: 150px;
+  }
 }
