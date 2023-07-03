@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import AddListing05Css from "../../styles/dashboard/AddListing05.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";

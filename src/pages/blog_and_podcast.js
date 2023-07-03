@@ -1,4 +1,3 @@
-import { React } from "react";
 import PodcastCss from "../styles/BlogsAndPodcasts.module.css";
 import Image from "next/image";
 import { Container, Row } from "react-bootstrap";
@@ -72,10 +71,7 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <Link
-              href="https://golfhom.com/blog"
-              target="_blank"
-            >
+            <Link href="https://golfhom.com/blog" target="_blank">
               {" "}
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>Golfhom Official Blog</h4>
@@ -102,10 +98,7 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <Link
-              href="https://www.shipsticks.com/blog/"
-              target="_blank"
-            >
+            <Link href="https://www.shipsticks.com/blog/" target="_blank">
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>Ship Sticks</h4>
                 <div className={PodcastCss.readNext}>
@@ -160,10 +153,7 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <Link
-              href="https://thegolfwire.com/"
-              target="_blank"
-            >
+            <Link href="https://thegolfwire.com/" target="_blank">
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>The Golf Wire</h4>
                 <div className={PodcastCss.readNext}>
@@ -189,10 +179,7 @@ const BlogsAndPodcasts = () => {
               className={PodcastCss.imageChild}
             ></Image>
 
-            <Link
-              href="https://art19.com/shows/bleav-in-bears"
-              target="_blank"
-            >
+            <Link href="https://art19.com/shows/bleav-in-bears" target="_blank">
               <div className={PodcastCss.textImg}>
                 <h4 className={PodcastCss.title}>Bleav in Bears</h4>
                 <div className={PodcastCss.readNext}>

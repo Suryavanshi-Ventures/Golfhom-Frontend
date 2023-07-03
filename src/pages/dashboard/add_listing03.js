@@ -1,4 +1,3 @@
-import React from "react";
 import AddListing03Css from "../../styles/dashboard/AddListing03.module.css";
 import ProtectedRoute from "../../../common components/protected_route";
 import Head from "next/head";

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { Container, Col } from "react-bootstrap";
 import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";

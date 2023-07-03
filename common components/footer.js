@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import FooterCss from "./../src/styles/Footer.module.css";
 import Link from "next/link";
 import { Container, Col, Row } from "react-bootstrap";

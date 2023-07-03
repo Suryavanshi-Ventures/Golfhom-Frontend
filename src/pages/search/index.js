@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState, useEffect, React, Suspense } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import { Container, Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
@@ -155,7 +155,7 @@ const Index = () => {
         dayjs(LastDate).format("MM-DD-YYYY"),
       ]);
     }
-    return () => { };
+    return () => {};
   }, [Available, AvailabilityCalender]);
 
   const OnChangeDateInput = (date, DateValue) => {
@@ -176,8 +176,10 @@ const Index = () => {
   //* THIS WILL CALL  FIRST COMPONENT LOAD
   useEffect(() => {
     const GetPropertyData = axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
+      `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+        "latitude=" + param.latitude
+      }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+        "from=" + param.from
       }&${"to=" + param.to}&limit=10&page=1&sort=${SortBy}${SortByParam}`
     );
     GetPropertyData.then((response) => {
@@ -192,7 +194,7 @@ const Index = () => {
       console.log(err, "ERR");
     });
 
-    return () => { };
+    return () => {};
   }, [
     param.from,
     param.guest,
@@ -282,9 +284,12 @@ const Index = () => {
   const OnPaginationChange = async (pageNumber) => {
     try {
       const GetPropertyData = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${"latitude=" + param.latitude
-        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${"from=" + param.from
-        }&${"to=" + param.to
+        `${process.env.NEXT_PUBLIC_API_URL}/v1/property?${
+          "latitude=" + param.latitude
+        }&${"longitude=" + param.longitude}&${"accomodation=" + param.guest}&${
+          "from=" + param.from
+        }&${
+          "to=" + param.to
         }&limit=10&page=${pageNumber}&sort=${SortBy}${SortByParam}`
       );
 
@@ -434,7 +439,7 @@ const Index = () => {
                           onChange={(e) =>
                             onChangeGuest(parseInt(e.target.value))
                           }
-                        // value={guest}
+                          // value={guest}
                         >
                           Please select guests
                         </ReactDropdown.Toggle>
@@ -606,7 +611,7 @@ const Index = () => {
                     </div>
                   </Col>
                 </Form>
-                {showHidden &&
+                {showHidden && (
                   <Form className={SearchIndexCss.course_choice_parent}>
                     <Col
                       md={3}
@@ -619,7 +624,9 @@ const Index = () => {
                           Golf Course Choice
                         </p>
                         <Form.Item
-                          className={SearchIndexCss.edit_details_inputs_container}
+                          className={
+                            SearchIndexCss.edit_details_inputs_container
+                          }
                         >
                           {isLoaded ? (
                             <Autocomplete
@@ -654,9 +661,13 @@ const Index = () => {
                       className={SearchIndexCss.edit_details_container_cols}
                     >
                       <div className={SearchIndexCss.edit_details_divs}>
-                        <p className={SearchIndexCss.edit_details_titles}>Golf Course</p>
+                        <p className={SearchIndexCss.edit_details_titles}>
+                          Golf Course
+                        </p>
                         <Form.Item
-                          className={SearchIndexCss.edit_details_inputs_container}
+                          className={
+                            SearchIndexCss.edit_details_inputs_container
+                          }
                         >
                           <Select
                             defaultValue=" Marmot Ridge Golf Course"
@@ -677,11 +688,15 @@ const Index = () => {
                             <Select.Option onClick={(e) => e.preventDefault()}>
                               <Typography.Link>
                                 <Space
-                                  className={SearchIndexCss.edit_room_dropdown_btn_space}
+                                  className={
+                                    SearchIndexCss.edit_room_dropdown_btn_space
+                                  }
                                 >
                                   Marmot Ridge Golf Course
                                   <DownOutlined
-                                    className={SearchIndexCss.edit_room_dropdown_icon}
+                                    className={
+                                      SearchIndexCss.edit_room_dropdown_icon
+                                    }
                                   />
                                 </Space>
                               </Typography.Link>
@@ -692,10 +707,20 @@ const Index = () => {
                     </Col>
 
                     <Col md={6} className={SearchIndexCss.twoCheckbox}>
-                      <Col md={3} sm={6} xs={6} className={SearchIndexCss.front}>
+                      <Col
+                        md={3}
+                        sm={6}
+                        xs={6}
+                        className={SearchIndexCss.front}
+                      >
                         <Checkbox>Golf Course Front</Checkbox>
                       </Col>
-                      <Col md={4} sm={6} xs={6} className={SearchIndexCss.front}>
+                      <Col
+                        md={4}
+                        sm={6}
+                        xs={6}
+                        className={SearchIndexCss.front}
+                      >
                         <Checkbox>Golf Course Community</Checkbox>
                       </Col>
 
@@ -709,7 +734,7 @@ const Index = () => {
                       </Form.Item>
                     </Col>
                   </Form>
-                }
+                )}
               </Row>
             </div>
           </Container>

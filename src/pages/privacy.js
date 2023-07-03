@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { React } from "react";
 import PrivacyPolicyCss from "../styles/PrivacyPolicy.module.css";
 import { Container } from "react-bootstrap";
 import Link from "next/link";

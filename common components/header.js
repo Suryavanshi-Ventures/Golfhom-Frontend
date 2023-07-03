@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import HeaderCss from "../src/styles/Header.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import { Button, Checkbox, Input, Form, message } from "antd";
@@ -1167,6 +1167,9 @@ const Header = ({ name, ...props }) => {
                         >
                           <Link
                             href="/"
+                            onClick={(e) => {
+                              e.preventDefault();
+                            }}
                             className={HeaderCss.top_header_logggedin_link}
                           >
                             <Space

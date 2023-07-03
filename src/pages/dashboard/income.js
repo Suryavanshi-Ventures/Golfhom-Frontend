@@ -1,4 +1,3 @@
-import React from "react";
 import Head from "next/head";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import IncomeCss from "../../styles/dashboard/Income.module.css";
@@ -44,9 +43,7 @@ const Income = () => {
                     </div>
 
                     <div>
-                      <Link
-                        href="/"
-                      >
+                      <Link href="/">
                         <Button
                           className={IncomeCss.income_page_cards_btn}
                           type="primary"
@@ -75,9 +72,7 @@ const Income = () => {
                     </div>
 
                     <div>
-                      <Link
-                        href="/"
-                      >
+                      <Link href="/">
                         <Button
                           className={IncomeCss.income_page_cards_btn}
                           type="primary"
@@ -104,9 +99,7 @@ const Income = () => {
                     </div>
 
                     <div>
-                      <Link
-                        href="/"
-                      >
+                      <Link href="/">
                         <Button
                           className={IncomeCss.income_page_cards_btn}
                           type="primary"

@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import BlogCss from "../../styles/Blog.module.css";
 import Image from "next/image";
 import CategoryIcon from "../../../public/images/vector/category_icon.svg";
@@ -37,7 +37,7 @@ const ViewBlog = () => {
     };
     GetBlogsById();
 
-    return () => { };
+    return () => {};
   }, [UrlParams]);
 
   return (

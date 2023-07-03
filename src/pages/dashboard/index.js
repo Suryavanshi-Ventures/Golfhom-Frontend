@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProtectedRoute from "../../../common components/protected_route";
 import Image from "next/image";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";

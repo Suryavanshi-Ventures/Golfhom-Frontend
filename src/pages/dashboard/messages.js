@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
 import dynamic from "next/dynamic";
 import MessageCss from "../../styles/dashboard/message.module.css";
 import Image from "next/image";

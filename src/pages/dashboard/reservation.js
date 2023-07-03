@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";
 import { Container, Table } from "react-bootstrap";
@@ -48,7 +48,7 @@ const Reservation = () => {
     };
     GetAllBookings();
 
-    return () => { };
+    return () => {};
   }, [ContextUserDetails, PaginationState]);
 
   const OnPaginationChange = (e) => {
