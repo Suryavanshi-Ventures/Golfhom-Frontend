@@ -1,5 +1,6 @@
 import BottomGroupCss from "../src/styles/BottomGroup.module.css";
 import Image from "next/image";
+import React from "react";
 
 const bottomGroup = () => {
   return (

@@ -1,4 +1,6 @@
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import React from "react";
+
 import StaticPriceBreakDownCss from "./style/StaticPriceBreakDownCss.module.css";
 import moment from "moment";
 import dayjs from "dayjs";

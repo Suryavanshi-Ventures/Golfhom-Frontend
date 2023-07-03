@@ -7,6 +7,8 @@ import Nextimg from "../../../public/images/vector/next.svg";
 import golfhom from "../../../public/images/vector/golfhom.svg";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {

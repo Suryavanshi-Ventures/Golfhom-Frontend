@@ -1,10 +1,12 @@
-import { React, Suspense } from "react";
+import { Suspense } from "react";
 import SearchByTourCss from "../styles/SearchByTournament.module.css";
 import Search from "../../public/images/search.png";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import { Pagination, Button, Space, Select, Typography } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import React from "react";
+
 import CarouselImages from "../../common components/carouselMap";
 import Head from "next/head";
 import dynamic from "next/dynamic";

@@ -1,5 +1,6 @@
 import { useState, React, useEffect, useContext, Suspense } from "react";
 import Head from "next/head";
+
 import { Container, Col, Row, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
 import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.png";

@@ -7,6 +7,8 @@ import Image from "next/image";
 import { Input, Button, Form, Modal } from "antd";
 const { TextArea } = Input;
 import ProtectedRoute from "../../../common components/protected_route";
+import React from "react";
+
 import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
 

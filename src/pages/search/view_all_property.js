@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useEffect, useState, Suspense } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Col, Row, Button } from "react-bootstrap";
@@ -14,6 +14,8 @@ import Loader from "../../../common components/loader";
 import Carousel from "react-bootstrap/Carousel";
 import Dot from "../../../public/images/vector/dot.svg";
 import dynamic from "next/dynamic";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {

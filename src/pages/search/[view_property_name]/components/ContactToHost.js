@@ -4,6 +4,7 @@ import { Col } from "react-bootstrap";
 import ContactUsCss from "../components/style/ContactToHost.module.css";
 import axios from "axios";
 const { TextArea } = Input;
+import React from "react";
 
 const ContactToHost = ({ HideContactHostPopUp }) => {
   //* IN FUNC PROPS CALLING POP CLOSE FUNCTION FROM VIEW PROPERTY PAGE

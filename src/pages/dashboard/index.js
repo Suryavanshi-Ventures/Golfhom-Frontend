@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 import dayjs from "dayjs";
 import Link from "next/link";
 import NoReservation from "../../../public/images/vector/golf-hole.png";
+import React from "react";
 
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),

@@ -6,6 +6,8 @@ import { Container } from "react-bootstrap";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
 import { Select, Space, Typography } from "antd";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {

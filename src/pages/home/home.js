@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import React from "react";
+
 import Head from "next/head";
 import HomeCss from "../../styles/Home.module.css";
 import Slider from "../../slider";

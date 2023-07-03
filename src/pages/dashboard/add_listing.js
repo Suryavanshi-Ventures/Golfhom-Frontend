@@ -7,6 +7,8 @@ import ProtectedRoute from "../../../common components/protected_route";
 import { Checkbox, Input, Select, Space, Typography } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import dynamic from "next/dynamic";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {

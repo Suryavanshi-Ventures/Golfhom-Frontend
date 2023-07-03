@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button, Input, Checkbox, Select, Space, Radio } from "antd";
 const { TextArea } = Input;
+import React from "react";
 
 const AddListing04 = () => {
   const [RadioSmoking, SetRadiovalueSmoking] = useState(1);

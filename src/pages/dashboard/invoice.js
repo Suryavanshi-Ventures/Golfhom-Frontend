@@ -8,6 +8,7 @@ import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
 import moment from "moment";
 import "moment/locale/en-gb";
+
 moment.locale("en-gb");
 import dynamic from "next/dynamic";
 const dateFormat = "MMMM D,YYYY";

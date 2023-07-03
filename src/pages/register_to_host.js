@@ -3,6 +3,7 @@ import { useState } from "react";
 import RegisterToHost from "../styles/RegisterToHost.module.css";
 import Image from "next/image";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import React from "react";
 import { Checkbox, Input } from "antd";
 import Head from "next/head";
 import Link from "next/link";

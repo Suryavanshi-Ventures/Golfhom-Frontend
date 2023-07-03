@@ -6,6 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button, Input } from "antd";
 import cloud from "../../../public/images/vector/cloud.svg";
 import mount from "../../../public/images/vector/mount.svg";
+import React from "react";
 
 const Addlisting02 = () => {
   return (

@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button, Input } from "antd";
+import React from "react";
 
 const Addlisting03 = () => {
   const beds = "2 single beds in the lounge";

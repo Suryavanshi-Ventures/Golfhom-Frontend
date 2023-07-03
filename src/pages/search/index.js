@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import { Container, Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
+import React from "react";
+
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import { Dropdown as ReactDropdown } from "react-bootstrap";
 import {

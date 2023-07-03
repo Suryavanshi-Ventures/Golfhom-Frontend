@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { React } from "react";
 import TermConditionsCss from "../styles/TermConditions.module.css";
 import { Container } from "react-bootstrap";
 import Head from "next/head";
 import Link from "next/link";
+import React from "react";
+
 import dynamic from "next/dynamic";
 const BottomSection = dynamic(
   () => import("../../common components/bottomGroup"),

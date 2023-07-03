@@ -4,6 +4,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
 import dynamic from "next/dynamic";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {

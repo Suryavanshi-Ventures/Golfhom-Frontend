@@ -4,6 +4,8 @@ import IncomeCss from "../../styles/dashboard/Income.module.css";
 import Link from "next/link";
 import ProtectedRoute from "../../../common components/protected_route";
 import dynamic from "next/dynamic";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {

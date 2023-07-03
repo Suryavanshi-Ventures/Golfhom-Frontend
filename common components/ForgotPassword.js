@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button, Input, Form, message } from "antd";
 import ForgotPasswordCss from "../src/styles/common component/ForgotPassword.module.css";
 import axios from "axios";
+import React from "react";
+
 const ForgotPassword = () => {
   const [IsLoading, setIsLoading] = useState(false);
   const [FormRef] = Form.useForm();

@@ -3,6 +3,8 @@ import { useState } from "react";
 import Head from "next/head";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import Image from "next/image";
+import React from "react";
+
 import FAQCss from "../styles/FAQ.module.css";
 import dynamic from "next/dynamic";
 const BottomSection = dynamic(

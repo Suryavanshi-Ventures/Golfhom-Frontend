@@ -2,6 +2,8 @@ import Image from "next/image";
 import PrivacyPolicyCss from "../styles/PrivacyPolicy.module.css";
 import { Container } from "react-bootstrap";
 import Link from "next/link";
+import React from "react";
+
 import dynamic from "next/dynamic";
 const BottomSection = dynamic(
   () => import("../../common components/bottomGroup"),

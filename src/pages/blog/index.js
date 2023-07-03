@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
 import { useRouter } from "next/router";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {

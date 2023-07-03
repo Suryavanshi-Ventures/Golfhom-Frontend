@@ -11,6 +11,8 @@ import { AuthContext } from "@/context/auth_context";
 import NoReservation from "../../../public/images/vector/golf-hole.png";
 import dayjs from "dayjs";
 import { Pagination } from "antd";
+import React from "react";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {
