@@ -1,4 +1,3 @@
-import React from "react";
 import MyReservationCss from "../../styles/dashboard/MyReservation.module.css";
 import Image from "next/image";
 import { Button, Col, Container, Row } from "react-bootstrap";

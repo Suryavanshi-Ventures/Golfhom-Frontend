@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AddListingCss from "../../styles/dashboard/AddListing.module.css";
 import Head from "next/head";
 import Image from "next/image";
@@ -66,9 +66,7 @@ const Addlisting = () => {
 
               <Col md={3}>
                 {" "}
-                <p>
-                  Please check all that applies
-                </p>
+                <p>Please check all that applies</p>
               </Col>
             </Row>
 

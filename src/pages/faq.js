@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import Image from "next/image";

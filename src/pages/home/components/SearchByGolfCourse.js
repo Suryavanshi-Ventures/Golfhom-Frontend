@@ -1,22 +1,12 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import SearchByGolfCourseCss from "../style/SearchByGolfCourse.module.css";
-import {
-  Input,
-  Space,
-  Typography,
-  Button,
-  Select,
-  Skeleton,
-  message,
-} from "antd";
+import { Input, Button, Select, Skeleton, message } from "antd";
 import { Container, Col, Row } from "react-bootstrap";
 import { SearchOutlined } from "@ant-design/icons";
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 const placesLibrary = ["places"];
 import axios from "axios";
-import { AutoComplete as AntdAutoComplete } from "antd";
 import { useRouter } from "next/router";
-const { Option } = Select;
 
 const SearchByGolfCourse = () => {
   const RouterRef = useRouter();

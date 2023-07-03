@@ -1,5 +1,5 @@
-import { React, useState } from "react";
-import { Button, Checkbox, Input, Form, message } from "antd";
+import { useState } from "react";
+import { Button, Input, Form, message } from "antd";
 import ForgotPasswordCss from "../src/styles/common component/ForgotPassword.module.css";
 import axios from "axios";
 const ForgotPassword = () => {

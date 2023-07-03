@@ -1,18 +1,13 @@
-import { React, useContext, useState } from "react";
 import {
-  Elements,
   useStripe,
   useElements,
-  CardElement,
   PaymentElement,
 } from "@stripe/react-stripe-js";
-import { AuthContext } from "@/context/auth_context";
 import CheckoutCss from "../src/styles/Checkout.module.css";
 import { useRouter } from "next/router";
-import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { Col, Row } from "react-bootstrap";
-import { Form, Input, Button, message, DatePicker, Select, Modal } from "antd";
+import { Form, Input, Button, message, Modal } from "antd";
 
 const Checkout = (props) => {
   const RouterRef = useRouter();

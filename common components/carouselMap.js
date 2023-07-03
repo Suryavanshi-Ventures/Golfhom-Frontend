@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CarouselMapCss from "../src/styles/CarouselMap.module.css";
 import { Carousel, Col, Row } from "react-bootstrap";
 import Link from "next/link";

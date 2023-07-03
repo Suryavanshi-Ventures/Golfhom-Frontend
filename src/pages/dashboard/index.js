@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProtectedRoute from "../../../common components/protected_route";
 import Image from "next/image";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
@@ -91,13 +91,6 @@ const Index = () => {
             <Col md={4}>
               <h4 className={DashboardCss.title_words}>Total Reservations</h4>
               <h4 className={DashboardCss.price}>{TotalDataCount}</h4>
-
-              <Link
-                className={DashboardCss.show_more_btn_a}
-                href={"dashboard/reservation"}
-              >
-                <p className={DashboardCss.subHeading}>Mange</p>
-              </Link>
             </Col>
           </Row>
         </Container>
@@ -105,7 +98,7 @@ const Index = () => {
         <Container>
           <h4 className={DashboardCss.reservation}>My Reservations</h4>
 
-          <Table responsive className={DashboardCss.bodyRow}>
+          <Table border={1} responsive className={DashboardCss.bodyRow}>
             <thead className={DashboardCss.heading}>
               <tr className={DashboardCss.tableHead}>
                 <th className={DashboardCss.blank}></th>
@@ -189,7 +182,9 @@ const Index = () => {
                       <td className={DashboardCss.reservation_table_td}>
                         {Data.guest}
                       </td>
-                      <td className={DashboardCss.reservation_table_td}>Yes</td>
+                      <td className={DashboardCss.reservation_table_td}>
+                        {Data.pets > 0 ? "Yes" : "No"}
+                      </td>
                       <td className={DashboardCss.table_date}>
                         ${Data.amount}
                       </td>

@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, Suspense } from "react";
+import { useState } from "react";
 import RegisterToHost from "../styles/RegisterToHost.module.css";
 import Image from "next/image";
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Checkbox, Input } from "antd";
 import Head from "next/head";
 import Link from "next/link";

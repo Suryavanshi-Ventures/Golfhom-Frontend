@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { React, Suspense } from "react";
 import Head from "next/head";
 import { Button } from "antd";
 import Link from "next/link";

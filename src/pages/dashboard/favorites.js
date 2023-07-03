@@ -1,4 +1,3 @@
-import { React } from "react";
 import dynamic from "next/dynamic";
 import FavoritesCss from "../../styles/dashboard/Favorites.module.css";
 import Image from "next/image";

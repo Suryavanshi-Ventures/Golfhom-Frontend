@@ -1,4 +1,3 @@
-import React from "react";
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
 import Image from "next/image";
 import { Col, Container, Row, Table } from "react-bootstrap";
@@ -52,7 +51,8 @@ const Invoice = () => {
           <Container>
             <div className={InvoiceCss.heading}>
               <Row className={InvoiceCss.columnRow}>
-                <Col md={3} className={InvoiceCss.start}>Start date
+                <Col md={3} className={InvoiceCss.start}>
+                  Start date
                   <Col md={4} sm={12} className={InvoiceCss.dateParent}>
                     <DatePicker
                       placeholder="Start date"
@@ -64,7 +64,8 @@ const Invoice = () => {
                   </Col>
                 </Col>
 
-                <Col md={3} className={InvoiceCss.end}>End date
+                <Col md={3} className={InvoiceCss.end}>
+                  End date
                   <Col md={4} sm={12} className={InvoiceCss.dateParent}>
                     <DatePicker
                       placeholder="End date"
@@ -194,7 +195,7 @@ const Invoice = () => {
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
         <BottomSection />
-      </ProtectedRoute >
+      </ProtectedRoute>
     </>
   );
 };
