@@ -90,7 +90,7 @@ const Reservation = () => {
             </thead>
             {AllBookingData.length === 0 ? (
               <tbody>
-                <div className={ReservationCss.no_reservation_img_div}>
+                {/* <div className={ReservationCss.no_reservation_img_div}>
                   <Image
                     width={70}
                     height={70}
@@ -101,7 +101,7 @@ const Reservation = () => {
                   <p className={ReservationCss.no_reservation_text}>
                     No Reservation!
                   </p>
-                </div>
+                </div> */}
               </tbody>
             ) : (
               ""
