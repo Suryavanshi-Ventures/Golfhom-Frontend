@@ -215,7 +215,7 @@ const Index = () => {
       setAdult(parseInt(param.adults));
       setChild(parseInt(param.childs));
     }
-  });
+  }, []);
 
   const incInfant = () => {
     setInfant(infant + 1);
