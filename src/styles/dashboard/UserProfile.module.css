@@ -5,7 +5,7 @@
 }
 
 .user_profile_page_info_section {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .user_profile_page_section_heading {
@@ -36,12 +36,14 @@
 }
 
 .user_profile_page_info_input {
-  height: 45px;
+  min-height: 45px;
   border-color: var(--light-font-color);
   max-width: 650px;
+  font-family: var(--font-poppins);
 }
 
-.user_profile_page_info_input:focus, .user_profile_page_info_input:hover {
+.user_profile_page_info_input:focus,
+.user_profile_page_info_input:hover {
   border-color: var(--btn-background-secondary) !important;
 }
 
@@ -50,4 +52,12 @@
   width: 100px;
   height: 40px;
   font-weight: 700;
+  margin-top: 15px;
+}
+.user_profile_page_save_btn:hover {
+  background-color: var(--black-btn-color) !important;
+}
+
+.user_profile_updated_popup_text {
+  font-family: var(--font-poppins);
 }

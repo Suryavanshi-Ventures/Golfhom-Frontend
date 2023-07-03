@@ -1,14 +1,122 @@
-import React from "react";
+import { useEffect, useState, useContext } from "react";
 import UserProfieCss from "../../styles/dashboard/UserProfile.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import Head from "next/head";
 import UserImg from "../../../public/images/user_img.webp";
 import Image from "next/image";
-import { Input, Button } from "antd";
+import { Input, Button, Form, Modal } from "antd";
 const { TextArea } = Input;
 import ProtectedRoute from "../../../common components/protected_route";
+import axios from "axios";
+import { AuthContext } from "@/context/auth_context";
 
 const UserProfile = () => {
+  const ContextUserDetails = useContext(AuthContext);
+  const [IsFormDisabled, setIsFormDisabled] = useState(true);
+  const [IsLoading, setIsLoading] = useState(false);
+  const [form] = Form.useForm();
+  const [modal, contextHolder] = Modal.useModal();
+
+  useEffect(() => {
+    const GetProfileData = async () => {
+      try {
+        //* check if user is authenticated
+        const Token =
+          sessionStorage.getItem("token") || localStorage.getItem("token");
+
+        const GetProfileDataRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/auth/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${Token}`,
+            },
+          }
+        );
+
+        if (GetProfileDataRes.status === 200) {
+          console.log(GetProfileDataRes.data.data, "PRIOFLEEE Daata");
+          setIsFormDisabled(false);
+          form.setFieldsValue({
+            username: GetProfileDataRes.data.data.user.username,
+            email: GetProfileDataRes.data.data.user.email,
+          });
+        }
+      } catch (error) {
+        console.log(error, "ERROR IN GET PROFILE DATA");
+      }
+    };
+    GetProfileData();
+
+    return () => {};
+  }, []);
+
+  const RefreshPopUp = () => {
+    let secondsToGo = 7;
+    const instance = modal.success({
+      title: "Profile updated successfully!",
+      content: (
+        <span className={UserProfieCss.user_profile_updated_popup_text}>
+          Please do not refresh the page, Redirecting in {secondsToGo} second.
+        </span>
+      ),
+      centered: true,
+      footer: null,
+    });
+    const timer = setInterval(() => {
+      secondsToGo -= 1;
+      instance.update({
+        content: (
+          <span className={UserProfieCss.user_profile_updated_popup_text}>
+            Please do not refresh the page, Redirecting in {secondsToGo} second.
+          </span>
+        ),
+      });
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(timer);
+      window.location.reload();
+    }, secondsToGo * 1000);
+  };
+
+  const OnSubmitSave = (values) => {
+    setIsLoading(true);
+    console.log("Success:", values);
+
+    const UpdateProfile = async () => {
+      try {
+        const UpdateProfileRes = await axios.patch(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/user/updateMe`,
+          { username: values.username },
+          {
+            headers: {
+              Authorization: `Bearer ${ContextUserDetails.UserState}`,
+            },
+          }
+        );
+
+        if (UpdateProfileRes.status === 200) {
+          console.log(UpdateProfileRes.data.data, "UPDATE PROFILE Daata");
+          setIsLoading(false);
+          if (localStorage.getItem("Uname")) {
+            localStorage.setItem("Uname", values.username);
+          } else if (sessionStorage.getItem("Uname")) {
+            sessionStorage.setItem("Uname", values.username);
+          }
+          RefreshPopUp();
+        }
+      } catch (error) {
+        console.log(error, "ERROR IN GET PROFILE DATA");
+        setIsLoading(false);
+      }
+    };
+    UpdateProfile();
+  };
+  const OnSubmitFailed = (errorInfo) => {
+    setIsLoading(false);
+
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <>
       <ProtectedRoute>
@@ -20,621 +128,303 @@ const UserProfile = () => {
         </Head>
 
         <Container>
+          {/* REDIRECT POP MODAL */}
+          {contextHolder}
           {/* PROFILE PAGE MAIN HEADING */}
           <h3 className={UserProfieCss.user_profile_page_heading}>Profile</h3>
-
-          <section className={UserProfieCss.user_profile_page_info_section}>
-            {/* PROFILE SECTION */}
-            <div>
-              <h4 className={UserProfieCss.user_profile_page_section_heading}>
-                Photo
-              </h4>
-              <div className={UserProfieCss.user_profile_page_pic_container}>
-                <Image
-                  src={UserImg}
-                  height={160}
-                  width={160}
-                  className={UserProfieCss.user_profile_page_pic}
-                  alt="Profile pic"
-                ></Image>
+          <Form
+            form={form}
+            disabled={IsFormDisabled}
+            name="user_profile_info"
+            onFinish={OnSubmitSave}
+            onFinishFailed={OnSubmitFailed}
+            autoComplete="off"
+          >
+            <section className={UserProfieCss.user_profile_page_info_section}>
+              {/* PROFILE SECTION */}
+              <div>
+                <h4 className={UserProfieCss.user_profile_page_section_heading}>
+                  Photo
+                </h4>
+                <div className={UserProfieCss.user_profile_page_pic_container}>
+                  <Image
+                    src={UserImg}
+                    height={160}
+                    width={160}
+                    className={UserProfieCss.user_profile_page_pic}
+                    alt="Profile pic"
+                  ></Image>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          {/* INFORMATION SECTION */}
-          <section className={UserProfieCss.user_profile_page_info_section}>
-            <h5 className={UserProfieCss.user_profile_page_section_heading}>
-              Information
-            </h5>
-            <hr />
-            <Row className={UserProfieCss.user_profile_page_rows}>
-              <Col md={5}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    User Name
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="User Name"
-                  />
-                </div>
+            {/* INFORMATION SECTION */}
+            <section className={UserProfieCss.user_profile_page_info_section}>
+              <h5 className={UserProfieCss.user_profile_page_section_heading}>
+                Information
+              </h5>
 
-                {/* DIV 2 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+              <hr />
+              <Row className={UserProfieCss.user_profile_page_rows}>
+                <Col md={5}>
+                  {/* DIV 1 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    First Name
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="First Name"
-                  />
-                </div>
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      User Name
+                    </label>
+                    <Form.Item
+                      name="username"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your username!",
+                        },
+                      ]}
+                    >
+                      <Input
+                        className={UserProfieCss.user_profile_page_info_input}
+                        placeholder="User Name"
+                      />
+                    </Form.Item>
+                  </div>
 
-                {/* DIV 3 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                  {/* DIV 2 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Native Language
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Native Language"
-                  />
-                </div>
-              </Col>
-              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      Last Name
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="Last Name"
+                    />
+                  </div>
+                </Col>
+                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                  {/* DIV 2 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Display Name Publicly as
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Display Name"
-                  />
-                </div>
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      First Name
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="First Name"
+                    />
+                  </div>
+                  {/* INPUT TEXT AREA */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
+                  >
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      Bio
+                    </label>
+                    <TextArea
+                      autoSize
+                      placeholder="Bio here..."
+                      className={UserProfieCss.user_profile_page_info_input}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </section>
 
-                {/* DIV 2 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+            {/* ADDRESS SECTION */}
+            <section className={UserProfieCss.user_profile_page_info_section}>
+              <h5 className={UserProfieCss.user_profile_page_section_heading}>
+                Address
+              </h5>
+              <hr className={UserProfieCss.user_profile_page_hr} />
+              <Row className={UserProfieCss.user_profile_page_rows}>
+                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                  {/* DIV 1 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Last Name
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Last Name"
-                  />
-                </div>
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      Street Address
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="Address"
+                    />
+                  </div>
 
-                {/* DIV 3 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                  {/* DIV 2 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Other Language
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Other Language"
-                  />
-                </div>
-              </Col>
-              {/* INPUT TEXT AREA */}
-              <div className={UserProfieCss.user_profile_page_info_input_div}>
-                <label
-                  className={UserProfieCss.user_profile_page_info_input_label}
-                  htmlFor=""
-                >
-                  Bio
-                </label>
-                <TextArea
-                  rows={4}
-                  className={UserProfieCss.user_profile_page_info_input}
-                />
-              </div>
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      State
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="State"
+                    />
+                  </div>
 
-              {/* SAVE BTN CONTAINER */}
-              <div
-                className={UserProfieCss.user_profile_page_save_btn_container}
-              >
-                <Button
-                  className={UserProfieCss.user_profile_page_save_btn}
-                  type="primary"
-                >
-                  Save
-                </Button>
-              </div>
-            </Row>
-          </section>
-
-          {/* ADDRESS SECTION */}
-          <section className={UserProfieCss.user_profile_page_info_section}>
-            <h5 className={UserProfieCss.user_profile_page_section_heading}>
-              Address
-            </h5>
-            <hr className={UserProfieCss.user_profile_page_hr} />
-            <Row className={UserProfieCss.user_profile_page_rows}>
-              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                  {/* DIV 4 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Street Address
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Address"
-                  />
-                </div>
-
-                {/* DIV 2 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      Country
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="Country"
+                    />
+                  </div>
+                </Col>
+                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                  {/* DIV 2 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    City
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="City"
-                  />
-                </div>
-
-                {/* DIV 3 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      City
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="City"
+                    />
+                  </div>
+                  {/* DIV 3 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Zip Code
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Code"
-                  />
-                </div>
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      Zip Code
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="Code"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </section>
 
-                {/* DIV 4 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+            {/* PHONE SECTION */}
+            <section className={UserProfieCss.user_profile_page_info_section}>
+              <h5 className={UserProfieCss.user_profile_page_section_heading}>
+                Contact
+              </h5>
+              <hr className={UserProfieCss.user_profile_page_hr} />
+              <Row className={UserProfieCss.user_profile_page_rows}>
+                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                  {/* DIV 2 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Country
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Country"
-                  />
-                </div>
-              </Col>
-              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      Email
+                    </label>
+                    <Form.Item
+                      name="email"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please enter your email!",
+                        },
+                      ]}
+                    >
+                      <Input
+                        className={UserProfieCss.user_profile_page_info_input}
+                        placeholder="Email"
+                      />
+                    </Form.Item>
+                  </div>
+                </Col>
+                <Col md={5} className={UserProfieCss.user_profile_page_cols}>
+                  {/* DIV 2 */}
+                  <div
+                    className={UserProfieCss.user_profile_page_info_input_div}
                   >
-                    Apt, Suite
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Apartment Number"
-                  />
-                </div>
-
-                {/* DIV 2 */}
+                    <label
+                      className={
+                        UserProfieCss.user_profile_page_info_input_label
+                      }
+                      htmlFor=""
+                    >
+                      Phone
+                    </label>
+                    <Input
+                      className={UserProfieCss.user_profile_page_info_input}
+                      placeholder="Phone"
+                    />
+                  </div>
+                </Col>
+                {/* SAVE BTN CONTAINER */}
                 <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
+                  className={UserProfieCss.user_profile_page_save_btn_container}
                 >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
+                  <Button
+                    loading={IsLoading}
+                    className={UserProfieCss.user_profile_page_save_btn}
+                    type="primary"
+                    htmlType="submit"
                   >
-                    State
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="State"
-                  />
+                    Save
+                  </Button>
                 </div>
-
-                {/* DIV 3 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Neighborhood
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Neighborhood"
-                  />
-                </div>
-              </Col>
-
-              {/* SAVE BTN CONTAINER */}
-              <div
-                className={UserProfieCss.user_profile_page_save_btn_container}
-              >
-                <Button
-                  className={UserProfieCss.user_profile_page_save_btn}
-                  type="primary"
-                >
-                  Save
-                </Button>
-              </div>
-            </Row>
-          </section>
-
-          {/* PHONE SECTION */}
-          <section className={UserProfieCss.user_profile_page_info_section}>
-            <h5 className={UserProfieCss.user_profile_page_section_heading}>
-              Phone
-            </h5>
-            <hr className={UserProfieCss.user_profile_page_hr} />
-            <Row className={UserProfieCss.user_profile_page_rows}>
-              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Contact Name
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Contact Name"
-                  />
-                </div>
-
-                {/* DIV 2 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Email
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Email"
-                  />
-                </div>
-              </Col>
-              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Relationship
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Relationship"
-                  />
-                </div>
-
-                {/* DIV 2 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Phone
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Phone"
-                  />
-                </div>
-              </Col>
-
-              {/* SAVE BTN CONTAINER */}
-              <div
-                className={UserProfieCss.user_profile_page_save_btn_container}
-              >
-                <Button
-                  className={UserProfieCss.user_profile_page_save_btn}
-                  type="primary"
-                >
-                  Save
-                </Button>
-              </div>
-            </Row>
-          </section>
-
-          {/* SOCIAL MEDIA */}
-          <section className={UserProfieCss.user_profile_page_info_section}>
-            <h5 className={UserProfieCss.user_profile_page_section_heading}>
-              Social Media
-            </h5>
-            <hr className={UserProfieCss.user_profile_page_hr} />
-            <Row className={UserProfieCss.user_profile_page_rows}>
-              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Facebook URL
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Facebook"
-                  />
-                </div>
-
-                {/* DIV 2 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Linkedin URL
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Linkedin"
-                  />
-                </div>
-
-                {/* DIV 3 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Instagram URL
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Instagram"
-                  />
-                </div>
-
-                {/* DIV 4 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Youtube Url
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Youtube"
-                  />
-                </div>
-
-                {/* DIV 5 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Airbnb Url
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Airbnb"
-                  />
-                </div>
-              </Col>
-              <Col md={5} className={UserProfieCss.user_profile_page_cols}>
-                {/* DIV 1 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Twitter URL
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Twitter"
-                  />
-                </div>
-
-                {/* DIV 2 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Google Plus Url
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Google Plus"
-                  />
-                </div>
-
-                {/* DIV 3 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Pinterest Url
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder=" Pinterest"
-                  />
-                </div>
-
-                {/* DIV 4 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Vimeo Url
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder=" Vimeo"
-                  />
-                </div>
-
-                {/* DIV 5 */}
-                <div
-                  className={UserProfieCss.user_profile_page_info_input_div}
-                >
-                  <label
-                    className={
-                      UserProfieCss.user_profile_page_info_input_label
-                    }
-                    htmlFor=""
-                  >
-                    Trip Advisor Url
-                  </label>
-                  <Input
-                    className={UserProfieCss.user_profile_page_info_input}
-                    placeholder="Trip Advisor"
-                  />
-                </div>
-              </Col>
-
-              {/* SAVE BTN CONTAINER */}
-              <div
-                className={UserProfieCss.user_profile_page_save_btn_container}
-              >
-                <Button
-                  className={UserProfieCss.user_profile_page_save_btn}
-                  type="primary"
-                >
-                  Save
-                </Button>
-              </div>
-            </Row>
-          </section>
+              </Row>
+            </section>
+          </Form>
         </Container>
       </ProtectedRoute>
     </>

@@ -9,11 +9,11 @@ import { MailOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 const Footer = () => {
-  const [form] = Form.useForm();
   const DateCC = new Date().getFullYear();
   const [Loading, setLoading] = useState(false);
 
   const SubmitSubscribe = async (FormValue) => {
+    setLoading(true);
     console.log(FormValue);
     const SubmitSubRes = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/subscribe`,
@@ -21,7 +21,6 @@ const Footer = () => {
         subscribeBy: FormValue.subscribe_email,
       }
     );
-    setLoading(true);
     if (SubmitSubRes.status === 201) {
       setLoading(false);
       message.success(

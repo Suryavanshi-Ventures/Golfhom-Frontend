@@ -84,7 +84,7 @@ const Reservation = () => {
 
             {/* <h4 className={ReservationCss.manage}>Manage</h4> */}
 
-            <Table responsive className={ReservationCss.bodyRow}>
+            <Table border={1} responsive className={ReservationCss.bodyRow}>
               <thead className={ReservationCss.heading}>
                 <tr className={ReservationCss.tableHead}>
                   <th className={ReservationCss.blank}>#</th>
@@ -174,7 +174,7 @@ const Reservation = () => {
                           {Data.guest}
                         </td>
                         <td className={ReservationCss.reservation_table_td}>
-                          Yes
+                          {Data.pets > 0 ? "Yes" : "No"}
                         </td>
                         <td className={ReservationCss.table_date}>
                           ${Data.amount}

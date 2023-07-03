@@ -31,6 +31,7 @@ import Register from "../public/images/vector/registerToRent.svg";
 import Blog from "../public/images/vector/Blog.svg";
 import About from "../public/images/vector/About.svg";
 import dynamic from "next/dynamic";
+import { DownOutlined } from "@ant-design/icons";
 
 const ForgotPassword = dynamic(() => import("./ForgotPassword"), {
   suspense: true,
@@ -605,20 +606,24 @@ const Header = ({ name, ...props }) => {
                   >
                     <Link
                       href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                      }}
                       className={HeaderCss.top_header_logggedin_link_mobile}
                     >
                       <Space
                         className={HeaderCss.top_header_logggedin_space_mobile}
                       >
-                        {UserName
-                          ? UserName.charAt(0).toUpperCase() + UserName.slice(1)
-                          : "Anyonums "}
                         <Image
                           width={20}
                           height={20}
                           src={ProfileIcon}
                           alt="profile icon"
                         ></Image>
+                        {UserName
+                          ? UserName.charAt(0).toUpperCase() + UserName.slice(1)
+                          : "Anyonums "}
+                        <DownOutlined />
                       </Space>
                     </Link>
                   </Dropdown>
@@ -683,7 +688,7 @@ const Header = ({ name, ...props }) => {
                   )}
 
                   {/* MOBILE REGISTER MODAL BTN */}
-                  <div className={HeaderCss.mobile_menu_div_container}>
+                  {/* <div className={HeaderCss.mobile_menu_div_container}>
                     <Image
                       src={Register}
                       alt="Register"
@@ -704,14 +709,14 @@ const Header = ({ name, ...props }) => {
                         </Button>
                       </Space>
                     </Link>
-                  </div>
-                  <div className={HeaderCss.mobile_menu_div_container}>
+                  </div> */}
+                  {/* <div className={HeaderCss.mobile_menu_div_container}>
                     <Link href="register_to_host">
                       <Button type="primary" className={HeaderCss.register_btn}>
                         Register To Host
                       </Button>
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </nav>
             </Offcanvas.Body>
@@ -754,7 +759,7 @@ const Header = ({ name, ...props }) => {
                   <Input
                     name="user_name"
                     prefix={<UserOutlined />}
-                    placeholder="Enter User name"
+                    placeholder="Enter User Name"
                     className={HeaderCss.inputA}
                   />
                 </Form.Item>
@@ -834,7 +839,7 @@ const Header = ({ name, ...props }) => {
                 >
                   <Input.Password
                     prefix={<LockOutlined />}
-                    placeholder="Repeat Password"
+                    placeholder="Confirm Password"
                     className={HeaderCss.inputD}
                   />
                 </Form.Item>
@@ -1196,7 +1201,7 @@ const Header = ({ name, ...props }) => {
                   >
                     <Row>
                       {/* LOGIN SIGNUP AFTER USER IS LOGGED IN */}
-                      <Col
+                      {/* <Col
                         xs={"auto"}
                         className={HeaderCss.top_header_Col_container}
                       >
@@ -1208,7 +1213,7 @@ const Header = ({ name, ...props }) => {
                             Register To Host
                           </Button>
                         </Link>
-                      </Col>
+                      </Col> */}
                       <Col
                         xs={"auto"}
                         className={HeaderCss.top_header_Col_container}
