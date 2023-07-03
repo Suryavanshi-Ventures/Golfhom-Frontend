@@ -20,6 +20,7 @@
   margin-top: 20px;
   font-family: var(--font-poppins);
 }
+
 /*     -------------------------     TEXT AREA      ----------------------------    */
 .reservation {
   font-family: var(--font-poppins);
@@ -37,7 +38,7 @@
   height: 90px;
 }
 .bodyRow {
-  /* margin-bottom: 120px; */
+  text-align: center;
 }
 
 .reservation_table_td_others {
@@ -137,7 +138,7 @@
 
 /* PAGINATION  */
 .pagination_container {
-  padding: 5rem 0;
+  padding: 3rem 0;
   display: flex;
   justify-content: flex-start;
   width: 100%;

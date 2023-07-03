@@ -546,29 +546,30 @@ const Header = ({ name, ...props }) => {
                           ),
                           key: "5",
                         },
-                        {
-                          label: (
-                            <Link
-                              className={
-                                HeaderCss.top_header_menu_logggedin_link
-                              }
-                              href="/dashboard/messages"
-                            >
-                              {" "}
-                              <Image
-                                src={MessageIconMobileMenu}
-                                alt="message icon"
-                                width={18}
-                                height={18}
-                                className={
-                                  HeaderCss.top_header_menu_logggedin_link_icons
-                                }
-                              ></Image>
-                              Message
-                            </Link>
-                          ),
-                          key: "6",
-                        },
+
+                        // {
+                        //   label: (
+                        //     <Link
+                        //       className={
+                        //         HeaderCss.top_header_menu_logggedin_link
+                        //       }
+                        //       href="/dashboard/messages"
+                        //     >
+                        //       {" "}
+                        //       <Image
+                        //         src={MessageIconMobileMenu}
+                        //         alt="message icon"
+                        //         width={18}
+                        //         height={18}
+                        //         className={
+                        //           HeaderCss.top_header_menu_logggedin_link_icons
+                        //         }
+                        //       ></Image>
+                        //       Message
+                        //     </Link>
+                        //   ),
+                        //   key: "6",
+                        // },
 
                         {
                           type: "divider",
@@ -1101,29 +1102,31 @@ const Header = ({ name, ...props }) => {
                                 ),
                                 key: "5",
                               },
-                              {
-                                label: (
-                                  <Link
-                                    className={
-                                      HeaderCss.top_header_menu_logggedin_link
-                                    }
-                                    href="/dashboard/messages"
-                                  >
-                                    {" "}
-                                    <Image
-                                      src={MessageIconMobileMenu}
-                                      alt="message icon"
-                                      width={18}
-                                      height={18}
-                                      className={
-                                        HeaderCss.top_header_menu_logggedin_link_icons
-                                      }
-                                    ></Image>
-                                    Message
-                                  </Link>
-                                ),
-                                key: "6",
-                              },
+
+                              // {
+
+                              //   label: (
+                              //     <Link
+                              //       className={
+                              //         HeaderCss.top_header_menu_logggedin_link
+                              //       }
+                              //       href="/dashboard/messages"
+                              //     >
+                              //       {" "}
+                              //       <Image
+                              //         src={MessageIconMobileMenu}
+                              //         alt="message icon"
+                              //         width={18}
+                              //         height={18}
+                              //         className={
+                              //           HeaderCss.top_header_menu_logggedin_link_icons
+                              //         }
+                              //       ></Image>
+                              //       Message
+                              //     </Link>
+                              //   ),
+                              //   key: "6",
+                              // },
 
                               {
                                 type: "divider",

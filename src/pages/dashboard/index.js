@@ -9,9 +9,11 @@ import ads from "../json/ads.json";
 import Head from "next/head";
 import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
-import Loader from "../../../common components/loader";
-import moment from "moment";
 import dynamic from "next/dynamic";
+import dayjs from "dayjs";
+import Link from "next/link";
+import NoReservation from "../../../public/images/vector/golf-hole.png";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {
@@ -21,7 +23,8 @@ const BottomSection = dynamic(
 const Index = () => {
   const ContextUserDetails = useContext(AuthContext);
   const [UserName, SetUserName] = useState("");
-  const [BookingData, setBookingData] = useState([{}]);
+  const [AllBookingData, setAllBookingData] = useState([{}]);
+  const [TotalDataCount, setTotalDataCount] = useState(0);
 
   useEffect(() => {
     if (!UserName) {
@@ -29,31 +32,28 @@ const Index = () => {
         sessionStorage.getItem("Uname") || localStorage.getItem("Uname")
       );
     }
-
-    const Token =
-      sessionStorage.getItem("token") || localStorage.getItem("token");
-
-    const GetBookingData = async () => {
+    console.log(ContextUserDetails.UserState, "CONTAXT DETAILS");
+    const GetAllBookings = async () => {
       try {
-        const BookingDataResponse = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/booking`,
+        const GetAllBookingRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/getMyBooking?limit=5`,
           {
             headers: {
-              Authorization: `Bearer ${Token}`,
+              Authorization: `Bearer ${ContextUserDetails.UserState}`,
             },
           }
         );
 
-        if (BookingDataResponse.status === 200) {
-          setBookingData(BookingDataResponse.data.data);
+        if (GetAllBookingRes.status === 200) {
+          setAllBookingData(GetAllBookingRes.data.data);
+          setTotalDataCount(GetAllBookingRes.data.count);
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.log(error, "ERROR IN GET ALL BOOKINGS");
       }
     };
-
-    GetBookingData();
-  }, [UserName]);
+    GetAllBookings();
+  }, [UserName, ContextUserDetails]);
 
   return (
     <>
@@ -87,23 +87,17 @@ const Index = () => {
           </Row>
           <hr />
 
-          <Row>
+          <Row style={{ justifyContent: "center" }}>
             <Col md={4}>
-              <h4 className={DashboardCss.title_words}>Listings</h4>
-              <h5 className={DashboardCss.price}>0</h5>
-              <p className={DashboardCss.subHeading}>Add new</p>
-            </Col>
+              <h4 className={DashboardCss.title_words}>Total Reservations</h4>
+              <h4 className={DashboardCss.price}>{TotalDataCount}</h4>
 
-            <Col md={4}>
-              <h4 className={DashboardCss.title_words}>Reservations</h4>
-              <h4 className={DashboardCss.price}>0</h4>
-              <p className={DashboardCss.subHeading}>Mange</p>
-            </Col>
-
-            <Col md={4}>
-              <h4 className={DashboardCss.title_words}>Earnings</h4>
-              <h4 className={DashboardCss.price}>From $0</h4>
-              <p className={DashboardCss.subHeading}>Wallet</p>
+              <Link
+                className={DashboardCss.show_more_btn_a}
+                href={"dashboard/reservation"}
+              >
+                <p className={DashboardCss.subHeading}>Mange</p>
+              </Link>
             </Col>
           </Row>
         </Container>
@@ -111,72 +105,117 @@ const Index = () => {
         <Container>
           <h4 className={DashboardCss.reservation}>My Reservations</h4>
 
-          {BookingData.length === 0 ? (
-            <div className={DashboardCss.loader_main_div}>
-              <Loader />
-            </div>
-          ) : (
-            <Table responsive className={DashboardCss.bodyRow}>
-              <thead className={DashboardCss.heading}>
-                <tr className={DashboardCss.tableHead}>
-                  <th className={DashboardCss.blank}></th>
-                  <th className={DashboardCss.id}>ID</th>
-                  <th className={DashboardCss.status}>Status</th>
-                  <th className={DashboardCss.date}>Date</th>
-                  <th className={DashboardCss.address}>Address</th>
-                  <th className={DashboardCss.checkin}>Check-in</th>
-                  <th className={DashboardCss.checkout}>Check-out</th>
-                  <th className={DashboardCss.guest}>Guests</th>
-                  <th className={DashboardCss.pet}>Pets</th>
-                  <th className={DashboardCss.subtotal}>Subtotal</th>
-                  <th className={DashboardCss.action}>Actions</th>
-                </tr>
-              </thead>
+          <Table responsive className={DashboardCss.bodyRow}>
+            <thead className={DashboardCss.heading}>
+              <tr className={DashboardCss.tableHead}>
+                <th className={DashboardCss.blank}></th>
+                <th className={DashboardCss.id}>ID</th>
+                <th className={DashboardCss.status}>Status</th>
+                <th className={DashboardCss.date}>Date</th>
+                <th className={DashboardCss.address}>Address</th>
+                <th className={DashboardCss.checkin}>Check-in</th>
+                <th className={DashboardCss.checkout}>Check-out</th>
+                <th className={DashboardCss.guest}>Guests</th>
+                <th className={DashboardCss.pet}>Pets</th>
+                <th className={DashboardCss.subtotal}>Subtotal</th>
+                {/* <th className={DashboardCss.action}>Actions</th> */}
+              </tr>
+            </thead>
 
+            {AllBookingData.length === 0 ? (
               <tbody>
-                {BookingData.map((data, index) => {
+                <tr>
+                  <td colSpan={11} style={{ textAlign: "center" }}>
+                    <Image
+                      width={70}
+                      height={70}
+                      src={NoReservation}
+                      alt="No Reservation!"
+                      className={DashboardCss.no_reservation_img}
+                    ></Image>
+                    <p className={DashboardCss.no_reservation_text}>
+                      No Reservation!
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            ) : (
+              <tbody>
+                {AllBookingData.map((Data, Index) => {
                   return (
-                    <tr key={index} className={DashboardCss.tableRow}>
-                      <td className={DashboardCss.imgChild}>
+                    <tr key={Index} className={DashboardCss.tableRow}>
+                      <td className={DashboardCss.reservation_table_td_others}>
                         <Image
                           src={Profile}
                           alt="Profile"
-                          fill
-                          className={DashboardCss.imageChild}
+                          width={30}
+                          height={30}
+                          // className={DashboardCss.imgChild}
                         ></Image>
                       </td>
 
-                      <td>#{data.id}</td>
-                      <td>
-                        <Button className={DashboardCss.under}>
-                          Under Review
-                        </Button>
+                      <td className={DashboardCss.reservation_table_td_others}>
+                        #{Data?.Property?.externalPropertyId}
                       </td>
-                      <td>{moment(data.createdAt).format("MM-DD-YYYY")}</td>
-                      <td>
+
+                      {Data.isCanceled === true ? (
+                        <td className={DashboardCss.reservation_table_td}>
+                          <span className={DashboardCss.expired}>Canceled</span>
+                        </td>
+                      ) : (
+                        <td className={DashboardCss.reservation_table_td}>
+                          <span className={DashboardCss.Completed}>
+                            Confirmed
+                          </span>
+                        </td>
+                      )}
+
+                      <td className={DashboardCss.reservation_table_td}>
+                        {dayjs(Data.createdAt).format("MM-DD-YYYY")}
+                      </td>
+                      <td className={DashboardCss.reservation_table_td}>
                         <span className={DashboardCss.oldTown}>
                           {" "}
                           Old Town’s Farm to Table{" "}
                         </span>
                         6826 E 5th St, Scottsdale, Arizona, United States
                       </td>
-                      <td>{moment(data.from).format("MM-DD-YYYY")} Stay</td>
-                      <td>{moment(data.to).format("MM-DD-YYYY")} Stay</td>
-                      <td>{data.guest} Stay</td>
-                      <td>Yes</td>
-                      <td className={DashboardCss.form}>
-                        From ${data.amount ? data.amount : "N/A"}
+                      <td className={DashboardCss.reservation_table_td}>
+                        {dayjs(Data.from).format("MM-DD-YYYY")}
                       </td>
-                      <td>
-                        <Button className={DashboardCss.detailBtn}>
-                          Details
-                        </Button>
+                      <td className={DashboardCss.reservation_table_td}>
+                        {dayjs(Data.to).format("MM-DD-YYYY")}
                       </td>
+                      <td className={DashboardCss.reservation_table_td}>
+                        {Data.guest}
+                      </td>
+                      <td className={DashboardCss.reservation_table_td}>Yes</td>
+                      <td className={DashboardCss.table_date}>
+                        ${Data.amount}
+                      </td>
+                      {/* <td>
+                          <Button className={DashboardCss.detailBtn}>Details</Button>
+                         </td> */}
                     </tr>
                   );
                 })}
               </tbody>
-            </Table>
+            )}
+          </Table>
+
+          {TotalDataCount > 5 ? (
+            <div className={DashboardCss.show_more_btn_div}>
+              <Link
+                className={DashboardCss.show_more_btn_a}
+                href={"dashboard/reservation"}
+              >
+                <Button className={DashboardCss.show_more_btn}>
+                  Show More
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            ""
           )}
         </Container>
 

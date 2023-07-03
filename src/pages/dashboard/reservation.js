@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useContext } from "react";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";
-import { Button, Container, Table } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import Profile from "../../../public/images/vector/profile.svg";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
@@ -25,10 +25,11 @@ const Reservation = () => {
   const [TotalDataCount, setTotalDataCount] = useState(0);
 
   useEffect(() => {
+    console.log(ContextUserDetails.UserState, "CONTAXT DETAILS");
     const GetAllBookings = async () => {
       try {
         const GetAllBookingRes = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/getMyBooking?&page=${PaginationState}`,
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/getMyBooking?limit=10&page=${PaginationState}`,
           {
             headers: {
               Authorization: `Bearer ${ContextUserDetails.UserState}`,
@@ -38,7 +39,7 @@ const Reservation = () => {
 
         if (GetAllBookingRes.status === 200) {
           setAllBookingData(GetAllBookingRes.data.data);
-          setTotalDataCount(GetAllBookingRes.data.data.length);
+          setTotalDataCount(GetAllBookingRes.data.count);
           console.log(GetAllBookingRes.data.data, "MY BOOKING DATA");
         }
       } catch (error) {
@@ -48,10 +49,11 @@ const Reservation = () => {
     GetAllBookings();
 
     return () => {};
-  }, [ContextUserDetails]);
+  }, [ContextUserDetails, PaginationState]);
 
   const OnPaginationChange = (e) => {
     console.log(e);
+    setPaginationState(e);
   };
 
   return (
@@ -81,10 +83,11 @@ const Reservation = () => {
             <h3 className={ReservationCss.reservation}>Reservations</h3>
 
             {/* <h4 className={ReservationCss.manage}>Manage</h4> */}
+
             <Table responsive className={ReservationCss.bodyRow}>
               <thead className={ReservationCss.heading}>
                 <tr className={ReservationCss.tableHead}>
-                  <th className={ReservationCss.blank}></th>
+                  <th className={ReservationCss.blank}>#</th>
                   <th className={ReservationCss.id}>ID</th>
                   <th className={ReservationCss.status}>Status</th>
                   <th className={ReservationCss.date}>Date</th>
