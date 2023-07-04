@@ -8,7 +8,6 @@ import { Container, Col, Row } from "react-bootstrap";
 import Review from "../review";
 import review from "../pages/json/review.json";
 import dynamic from "next/dynamic";
-import React from "react";
 
 const BottomSection = dynamic(
   () => import("../../common components/bottomGroup"),

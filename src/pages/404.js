@@ -2,7 +2,6 @@
 import ErrorPageStyle from "../styles/ErrorPageStyle.module.css";
 import Head from "next/head";
 import Link from "next/link";
-import React from "react";
 
 const ErrorPage = () => {
   return (

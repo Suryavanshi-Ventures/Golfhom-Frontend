@@ -5,7 +5,6 @@ const stripePromise = loadStripe(
   `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
 );
 import Checkout from "../../../../Checkout";
-import { React, useState } from "react";
 
 const PaymentPopUp = (props) => {
   console.log("PAYMENTPOP:", props);

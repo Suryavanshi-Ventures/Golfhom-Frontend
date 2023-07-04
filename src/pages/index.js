@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Index from "./home/home";
-import React from "react";
 
 export default function Home() {
   return (

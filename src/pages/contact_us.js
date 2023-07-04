@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Container, Col } from "react-bootstrap";
 import ContactUsCss from "../styles/ContactUs.module.css";
 import Head from "next/head";
-import React from "react";
-
 import Image from "next/image";
 import { Button, Input, Form, message } from "antd";
 const { TextArea } = Input;
