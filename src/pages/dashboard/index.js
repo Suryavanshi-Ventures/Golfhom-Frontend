@@ -103,7 +103,7 @@ const Index = () => {
             <thead className={DashboardCss.heading}>
               <tr className={DashboardCss.tableHead}>
                 <th className={DashboardCss.blank}></th>
-                <th className={DashboardCss.id}>ID</th>
+                <th className={DashboardCss.id}>Property ID</th>
                 <th className={DashboardCss.status}>Status</th>
                 <th className={DashboardCss.date}>Date</th>
                 <th className={DashboardCss.address}>Address</th>
@@ -142,8 +142,8 @@ const Index = () => {
                         <Image
                           src={Profile}
                           alt="Profile"
-                          width={30}
-                          height={30}
+                          width={25}
+                          height={25}
                           // className={DashboardCss.imgChild}
                         ></Image>
                       </td>
@@ -168,11 +168,15 @@ const Index = () => {
                         {dayjs(Data.createdAt).format("MM-DD-YYYY")}
                       </td>
                       <td className={DashboardCss.reservation_table_td}>
-                        <span className={DashboardCss.oldTown}>
-                          {" "}
-                          Old Town’s Farm to Table{" "}
-                        </span>
-                        6826 E 5th St, Scottsdale, Arizona, United States
+                        <Link
+                          className={DashboardCss.oldTown}
+                          href={`/search/${encodeURIComponent(
+                            Data?.Property?.name
+                          )}/${encodeURIComponent(Data?.Property?.id)}`}
+                          target="_blank"
+                        >
+                          {Data?.Property?.name}
+                        </Link>
                       </td>
                       <td className={DashboardCss.reservation_table_td}>
                         {dayjs(Data.from).format("MM-DD-YYYY")}

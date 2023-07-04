@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import ReservationCss from "../../styles/dashboard/Reservation.module.css";
 import Image from "next/image";
-import { Container, Table } from "react-bootstrap";
 import Profile from "../../../public/images/vector/profile.svg";
 import Head from "next/head";
 import ProtectedRoute from "../../../common components/protected_route";
@@ -12,6 +11,11 @@ import NoReservation from "../../../public/images/vector/golf-hole.png";
 import dayjs from "dayjs";
 import { Pagination } from "antd";
 import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Col, Container, Row, Table } from "react-bootstrap";
+import { DownOutlined } from "@ant-design/icons";
+import { Space, Typography, DatePicker, Select } from "antd";
 
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
@@ -25,9 +29,9 @@ const Reservation = () => {
   const [AllBookingData, setAllBookingData] = useState([{}]);
   const [PaginationState, setPaginationState] = useState(1);
   const [TotalDataCount, setTotalDataCount] = useState(0);
+  const RouterRef = useRouter();
 
   useEffect(() => {
-    console.log(ContextUserDetails.UserState, "CONTAXT DETAILS");
     const GetAllBookings = async () => {
       try {
         const GetAllBookingRes = await axios.get(
@@ -83,17 +87,82 @@ const Reservation = () => {
 
           <Container>
             <h3 className={ReservationCss.reservation}>Reservations</h3>
+            {/* DATE SECTION */}
+            <section className={ReservationCss.backgroundLight}>
+              <Container>
+                <div className={ReservationCss.heading}>
+                  <Row className={ReservationCss.columnRow}>
+                    <Col md={4} className={ReservationCss.start}>
+                      Start date
+                      <Col md={4} sm={12} className={ReservationCss.dateParent}>
+                        <DatePicker
+                          placeholder="Start date"
+                          showToday={false}
+                          format={"MM-DD-YYYY"}
+                          size="large"
+                          className={ReservationCss.inner_input_date_picker}
+                        />
+                      </Col>
+                    </Col>
 
+                    <Col md={4} className={ReservationCss.end}>
+                      End date
+                      <Col md={4} sm={12} className={ReservationCss.dateParent}>
+                        <DatePicker
+                          placeholder="End date"
+                          showToday={false}
+                          format={"MM-DD-YYYY"}
+                          size="large"
+                          className={ReservationCss.inner_input_date_picker}
+                        />
+                      </Col>
+                    </Col>
+
+                    <Col md={4}>
+                      <Col className={ReservationCss.price}>Price</Col>
+                      <Select
+                        defaultValue="Random"
+                        options={[
+                          {
+                            value: "ASC",
+                            label: "Low to High",
+                          },
+                          {
+                            value: "DESC",
+                            label: "High to Low",
+                          },
+                        ]}
+                        trigger={["click"]}
+                        size="large"
+                      >
+                        <Select.Option onClick={(e) => e.preventDefault()}>
+                          <Typography.Link>
+                            <Space
+                              className={
+                                ReservationCss.search_by_golf_input_search_by_tourni
+                              }
+                            >
+                              Paid
+                              <DownOutlined />
+                            </Space>
+                          </Typography.Link>
+                        </Select.Option>
+                      </Select>
+                    </Col>
+                  </Row>
+                </div>
+              </Container>
+            </section>
             {/* <h4 className={ReservationCss.manage}>Manage</h4> */}
 
             <Table border={1} responsive className={ReservationCss.bodyRow}>
-              <thead className={ReservationCss.heading}>
+              <thead className={ReservationCss.heading_table}>
                 <tr className={ReservationCss.tableHead}>
                   <th className={ReservationCss.blank}>#</th>
-                  <th className={ReservationCss.id}>ID</th>
+                  <th className={ReservationCss.id}>Property ID</th>
                   <th className={ReservationCss.status}>Status</th>
                   <th className={ReservationCss.date}>Date</th>
-                  <th className={ReservationCss.address}>Address</th>
+                  <th className={ReservationCss.address}>Property Name</th>
                   <th className={ReservationCss.checkin}>Check-in</th>
                   <th className={ReservationCss.checkout}>Check-out</th>
                   <th className={ReservationCss.guest}>Guests</th>
@@ -130,8 +199,8 @@ const Reservation = () => {
                           <Image
                             src={Profile}
                             alt="Profile"
-                            height={30}
-                            width={30}
+                            height={25}
+                            width={25}
                             className={ReservationCss.imgChild}
                           ></Image>
                         </td>
@@ -160,11 +229,15 @@ const Reservation = () => {
                           {dayjs(Data.createdAt).format("MM-DD-YYYY")}
                         </td>
                         <td className={ReservationCss.reservation_table_td}>
-                          <span className={ReservationCss.oldTown}>
-                            {" "}
-                            Old Town’s Farm to Table{" "}
-                          </span>
-                          6826 E 5th St, Scottsdale, Arizona, United States
+                          <Link
+                            className={ReservationCss.oldTown}
+                            href={`/search/${encodeURIComponent(
+                              Data?.Property?.name
+                            )}/${encodeURIComponent(Data?.Property?.id)}`}
+                            target="_blank"
+                          >
+                            {Data?.Property?.name}
+                          </Link>
                         </td>
                         <td className={ReservationCss.reservation_table_td}>
                           {dayjs(Data.from).format("MM-DD-YYYY")}

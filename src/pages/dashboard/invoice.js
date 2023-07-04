@@ -1,4 +1,5 @@
 import InvoiceCss from "../../styles/dashboard/Invoices.module.css";
+import { useContext, useState, useEffect } from "react";
 import Image from "next/image";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import Nextimg from "../../../public/images/vector/next.svg";
@@ -6,12 +7,14 @@ import Head from "next/head";
 import { Space, Typography, DatePicker, Select } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import ProtectedRoute from "../../../common components/protected_route";
-import moment from "moment";
-import "moment/locale/en-gb";
-
-moment.locale("en-gb");
 import dynamic from "next/dynamic";
-const dateFormat = "MMMM D,YYYY";
+import { AuthContext } from "@/context/auth_context";
+import axios from "axios";
+import dayjs from "dayjs";
+import { Pagination } from "antd";
+import Link from "next/link";
+import NoReservation from "../../../public/images/vector/golf-hole.png";
+
 const BottomSection = dynamic(
   () => import("../../../common components/bottomGroup"),
   {
@@ -20,6 +23,42 @@ const BottomSection = dynamic(
 );
 
 const Invoice = () => {
+  const ContextUserDetails = useContext(AuthContext);
+  const [AllInvoiceData, setAllInvoiceData] = useState([{}]);
+  const [PaginationState, setPaginationState] = useState(1);
+  const [TotalDataCount, setTotalDataCount] = useState(0);
+
+  useEffect(() => {
+    const GetAllInvoice = async () => {
+      try {
+        const GetAllInvoiceRes = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/v1/booking/getMyBooking?limit=10&page=${PaginationState}`,
+          {
+            headers: {
+              Authorization: `Bearer ${ContextUserDetails.UserState}`,
+            },
+          }
+        );
+
+        if (GetAllInvoiceRes.status === 200) {
+          setAllInvoiceData(GetAllInvoiceRes.data.data);
+          setTotalDataCount(GetAllInvoiceRes.data.count);
+          console.log(GetAllInvoiceRes.data.data, "MY BOOKING DATA");
+        }
+      } catch (error) {
+        console.log(error, "ERROR IN GET ALL BOOKINGS");
+      }
+    };
+    GetAllInvoice();
+
+    return () => {};
+  }, [ContextUserDetails, PaginationState]);
+
+  const OnPaginationChange = (e) => {
+    console.log(e);
+    setPaginationState(e);
+  };
+
   return (
     <>
       <ProtectedRoute>
@@ -48,88 +87,49 @@ const Invoice = () => {
           <h4 className={InvoiceCss.manage}>Manage</h4>
         </Container>
 
-        <section className={InvoiceCss.backgroundLight}>
-          <Container>
+        {/* DATE SECTION */}
+        <Container>
+          <section className={InvoiceCss.backgroundLight}>
             <div className={InvoiceCss.heading}>
               <Row className={InvoiceCss.columnRow}>
-                <Col md={3} className={InvoiceCss.start}>
+                <Col md={4} className={InvoiceCss.start}>
                   Start date
                   <Col md={4} sm={12} className={InvoiceCss.dateParent}>
                     <DatePicker
                       placeholder="Start date"
                       showToday={false}
-                      format={dateFormat}
+                      format={"MM-DD-YYYY"}
                       size="large"
                       className={InvoiceCss.inner_input_date_picker}
                     />
                   </Col>
                 </Col>
 
-                <Col md={3} className={InvoiceCss.end}>
+                <Col md={4} className={InvoiceCss.end}>
                   End date
                   <Col md={4} sm={12} className={InvoiceCss.dateParent}>
                     <DatePicker
                       placeholder="End date"
                       showToday={false}
-                      format={dateFormat}
+                      format={"MM-DD-YYYY"}
                       size="large"
                       className={InvoiceCss.inner_input_date_picker}
                     />
                   </Col>
                 </Col>
 
-                <Col md={3}>
-                  <Col className={InvoiceCss.type}>Type</Col>
-                  <Select
-                    defaultValue=" Marmot Ridge Golf Course"
-                    options={[
-                      {
-                        value: "Any",
-                        label: "Any",
-                      },
-                      {
-                        value: "Reservation Fee",
-                        label: "Reservation Fee",
-                      },
-                      {
-                        value: "Upgrade to Featured",
-                        label: "Upgrade to Featured",
-                      },
-                    ]}
-                    trigger={["click"]}
-                    size="large"
-                  >
-                    <Select.Option onClick={(e) => e.preventDefault()}>
-                      <Typography.Link>
-                        <Space
-                          className={
-                            InvoiceCss.search_by_golf_input_search_by_tourni
-                          }
-                        >
-                          Reservation Fee
-                          <DownOutlined />
-                        </Space>
-                      </Typography.Link>
-                    </Select.Option>
-                  </Select>
-                </Col>
-
-                <Col md={3}>
+                <Col md={4}>
                   <Col className={InvoiceCss.price}>Price</Col>
                   <Select
-                    defaultValue=" Marmot Ridge Golf Course"
+                    defaultValue="Random"
                     options={[
                       {
-                        value: "Any",
-                        label: "Any",
+                        value: "ASC",
+                        label: "Low to High",
                       },
                       {
-                        value: "Paid",
-                        label: "Paid",
-                      },
-                      {
-                        value: "Not Paid",
-                        label: "Not Paid",
+                        value: "DESC",
+                        label: "High to Low",
                       },
                     ]}
                     trigger={["click"]}
@@ -151,46 +151,102 @@ const Invoice = () => {
                 </Col>
               </Row>
             </div>
-          </Container>
-        </section>
+          </section>
+        </Container>
 
         <Container className={InvoiceCss.tableB}>
-          <Table responsive>
+          <Table border={1} responsive>
             <thead className={InvoiceCss.headingB}>
               <tr className={InvoiceCss.tableHead}>
-                <th className={InvoiceCss.order}>Order</th>
+                <th className={InvoiceCss.order}>Property ID</th>
                 <th className={InvoiceCss.date}>Date</th>
-                <th className={InvoiceCss.bilfor}>Billing for</th>
-                <th className={InvoiceCss.biltyp}>Billing Type</th>
-                <th className={InvoiceCss.status}>Status</th>
-                <th className={InvoiceCss.pay}>Payment Method</th>
+                <th className={InvoiceCss.bilfor}>Property Name</th>
+                <th className={InvoiceCss.date}>Check-In</th>
+                <th className={InvoiceCss.date}>Check-out</th>
                 <th className={InvoiceCss.total}>Total</th>
-                <th className={InvoiceCss.action}>Actions</th>
+                {/* <th className={InvoiceCss.action}>Actions</th> */}
               </tr>
             </thead>
 
-            <tbody className={InvoiceCss.tableRow}>
-              <tr className={InvoiceCss.tableHead}>
-                <td className={InvoiceCss.order}>#66628</td>
-                <td>April 12,2023</td>
-                <td>Hotel Empire Moscow Sokoliki</td>
-                <td>Reservation Fee</td>
-                <td>Paid</td>
-                <td>Online</td>
-                <td>From $6,386.06</td>
-                <td>
-                  <div className={InvoiceCss.imageParent}>
+            {AllInvoiceData.length === 0 ? (
+              <tbody>
+                <tr>
+                  <td colSpan={11} style={{ textAlign: "center" }}>
                     <Image
-                      src={Nextimg}
-                      alt="Next Image"
-                      fill
-                      className={InvoiceCss.imgChild}
-                    />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+                      width={70}
+                      height={70}
+                      src={NoReservation}
+                      alt="No Reservation!"
+                      className={InvoiceCss.no_reservation_img}
+                    ></Image>
+                    <p className={InvoiceCss.no_reservation_text}>
+                      No Invoices!
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            ) : (
+              <tbody className={InvoiceCss.tableRow}>
+                {AllInvoiceData.map((Data, Index) => {
+                  return (
+                    <tr key={Index} className={InvoiceCss.tableHead}>
+                      <td className={InvoiceCss.reservation_table_td}>
+                        #{Data?.Property?.externalPropertyId}
+                      </td>
+
+                      <td className={InvoiceCss.reservation_table_td}>
+                        {" "}
+                        {dayjs(Data.createdAt).format("MM-DD-YYYY")}
+                      </td>
+                      <td className={InvoiceCss.reservation_table_td}>
+                        <Link
+                          className={InvoiceCss.oldTown}
+                          href={`/search/${encodeURIComponent(
+                            Data?.Property?.name
+                          )}/${encodeURIComponent(Data?.Property?.id)}`}
+                          target="_blank"
+                        >
+                          {Data?.Property?.name}
+                        </Link>
+                      </td>
+                      <td className={InvoiceCss.reservation_table_td}>
+                        {dayjs(Data.from).format("MM-DD-YYYY")}
+                      </td>
+                      <td className={InvoiceCss.reservation_table_td}>
+                        {dayjs(Data.to).format("MM-DD-YYYY")}
+                      </td>
+
+                      <td className={InvoiceCss.reservation_table_td}>
+                        ${Data?.amount}
+                      </td>
+                      {/* <td>
+                      <div className={InvoiceCss.imageParent}>
+                        <Image
+                          src={Nextimg}
+                          alt="Next Image"
+                          fill
+                          className={InvoiceCss.imgChild}
+                        />
+                      </div>
+                    </td> */}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            )}
           </Table>
+          <div className={InvoiceCss.pagination_container}>
+            <Pagination
+              current={PaginationState}
+              colorText="#FF0000"
+              showQuickJumper={false}
+              showSizeChanger={false}
+              defaultCurrent={1}
+              total={TotalDataCount}
+              onChange={OnPaginationChange}
+              className={InvoiceCss.pagination}
+            />
+          </div>
         </Container>
 
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}

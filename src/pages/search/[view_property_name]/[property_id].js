@@ -5,8 +5,6 @@ import { Container, Col, Row, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
 import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.png";
 import {
-  Checkbox,
-  Input,
   Modal,
   Space,
   Tabs,
@@ -23,16 +21,9 @@ import Calendar from "../../../../public/images/vector/calendar.svg";
 import Map from "../../../../common components/map";
 import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
-const { TextArea } = Input;
 import { useRouter } from "next/router";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, PaymentElement } from "@stripe/react-stripe-js";
 const { RangePicker } = DatePicker;
-import Checkout from "../../../Checkout";
 import moment from "moment";
-const stripePromise = loadStripe(
-  `${process.env.NEXT_PUBLIC_STRIPE_TEST_PK_KEY}`
-);
 import dynamic from "next/dynamic";
 import ThingsToKnow from "./components/ThingsToKnow";
 import FeatureSection from "./components/FeatureSection";

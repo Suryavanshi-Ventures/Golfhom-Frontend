@@ -4,7 +4,6 @@ import Head from "next/head";
 import { Container, Col, Row } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 import React from "react";
-
 import SearchIndexCss from "../../styles/SearchIndex.module.css";
 import { Dropdown as ReactDropdown } from "react-bootstrap";
 import {
@@ -52,10 +51,8 @@ const Index = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [SortBy, setSortBy] = useState("createdAt");
   const [SortByParam, setSortByParam] = useState("");
-  const [SearchOptions, setSearchOptions] = useState([]);
   const [searchResult, setSearchResult] = useState("");
   const [searchGolfResult, setSearchGolfResult] = useState("");
-  const [golfCourse, setGolfCourse] = useState("");
   const [UrlParamsDateRange, setUrlParamsDateRange] = useState([]);
   const [Available, setAvailable] = useState(false);
   const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
@@ -84,8 +81,6 @@ const Index = () => {
   const [golfInputValue, setGolfInputValue] = useState(
     param.location_name ? param.location_name : ""
   );
-
-  console.log(InputValue, "input value");
 
   const onLoad = (autocomplete) => {
     setSearchResult(autocomplete);
@@ -139,8 +134,6 @@ const Index = () => {
     dayjs(param.to).format("MM-DD-YYYY"),
   ]);
 
-  console.log(DateInputValues, "DATES OF AVALABILITY");
-
   //* THIS USE EFFECT WILL SET THE URL PARAM DATES IN ANTD CALENDAR
   useEffect(() => {
     if (Available) {
@@ -190,7 +183,6 @@ const Index = () => {
         SetLengthOfProperty(response.data.data.length);
         setTotalDataCount(response.data.count);
         setIsLoaderVisible(false);
-        console.log(response.data, "API DATA PROPERTY ");
       }
     }).catch((err) => {
       console.log(err, "ERR");

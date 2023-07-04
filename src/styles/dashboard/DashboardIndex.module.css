@@ -78,14 +78,7 @@
   font-family: var(--font-poppins);
   vertical-align: middle;
 }
-.tableRow {
-  color: var(--light-font-color);
-  font-family: var(--font-poppins);
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--dark-grey-color);
-  height: 110px;
-  vertical-align: middle;
-}
+
 .oldTown {
   color: var(--btn-background-secondary);
   text-decoration: underline;
@@ -145,7 +138,7 @@
 .guest,
 .pet,
 .subtotal {
-  width: 8%;
+  width: 10%;
 }
 .address {
   width: 16%;
@@ -175,8 +168,8 @@
   font-family: var(--font-poppins);
   font-weight: 400;
   font-size: 0.9rem;
-  border-bottom: 1px solid var(--dark-grey-color);
-  height: 110px;
+  /* border-bottom: 1px solid var(--dark-grey-color); */
+  height: 70px;
   vertical-align: middle;
 }
 .oldTown {

@@ -9,7 +9,6 @@ import Blacktick from "../../../../../public/images/vector/blackTick.svg";
 import moment from "moment";
 
 const ThingsToKnow = (data) => {
-  console.log("data", data.data);
   return (
     <>
       <div>
