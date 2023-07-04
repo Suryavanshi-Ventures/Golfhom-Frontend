@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect, useContext } from "react";
-import React from "react";
-
 import HeaderCss from "../src/styles/Header.module.css";
 import { Container, Col, Row } from "react-bootstrap";
 import { Button, Checkbox, Input, Form, message } from "antd";

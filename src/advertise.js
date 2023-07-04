@@ -2,8 +2,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper";
 import HomeCss from "./styles/Home.module.css";
 import "swiper/swiper-bundle.min.css";
-import React from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 

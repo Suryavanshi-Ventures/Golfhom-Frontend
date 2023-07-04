@@ -106,7 +106,7 @@ const Index = () => {
                 <th className={DashboardCss.id}>Property ID</th>
                 <th className={DashboardCss.status}>Status</th>
                 <th className={DashboardCss.date}>Date</th>
-                <th className={DashboardCss.address}>Address</th>
+                <th className={DashboardCss.address}>Property Name</th>
                 <th className={DashboardCss.checkin}>Check-in</th>
                 <th className={DashboardCss.checkout}>Check-out</th>
                 <th className={DashboardCss.guest}>Guests</th>

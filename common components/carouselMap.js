@@ -6,7 +6,6 @@ import Image from "next/image";
 import HotelA from "../public/images/vector/dot.svg";
 import Heart from "../public/images/vector/dot.svg";
 import Dot from "../public/images/vector/dot.svg";
-import React from "react";
 
 // HERE
 const CarouselMap = () => {

@@ -6,9 +6,8 @@ import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React from "react";
 
-const Review = ({ reviews }) => {
+const Review = () => {
   const Router = useRouter();
   const [BlogData, setBlogData] = useState([{}]);
 

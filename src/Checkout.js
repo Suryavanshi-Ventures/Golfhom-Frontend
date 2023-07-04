@@ -3,8 +3,7 @@ import {
   useElements,
   PaymentElement,
 } from "@stripe/react-stripe-js";
-import { React, useState } from "react";
-
+import { useState } from "react";
 import CheckoutCss from "../src/styles/Checkout.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";

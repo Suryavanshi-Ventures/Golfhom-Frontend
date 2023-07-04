@@ -2,7 +2,6 @@ import { Row, Col } from "react-bootstrap";
 import HomeCss from "./styles/Home.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Slider = ({ slides }) => {
   return (

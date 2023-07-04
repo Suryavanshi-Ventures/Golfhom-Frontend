@@ -5,8 +5,6 @@ import { Container, Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import { Button, Input, message, Form } from "antd";
 import { MailOutlined } from "@ant-design/icons";
-import React from "react";
-
 import axios from "axios";
 
 const Footer = () => {
