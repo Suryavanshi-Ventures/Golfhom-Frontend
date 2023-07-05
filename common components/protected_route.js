@@ -3,7 +3,6 @@ import { useEffect, useContext } from "react";
 import axios from "axios";
 import { message } from "antd";
 import { AuthContext } from "@/context/auth_context";
-import React from "react";
 
 const ProtectedRoute = ({ children }) => {
   const ContextUserDetails = useContext(AuthContext);
