@@ -363,6 +363,19 @@ input[type="number"]::-webkit-outer-spin-button {
 .dropdown-toggle {
   padding-bottom: 8px !important;
 }
+
+/* DATE PICKER SELL IN VIEW PROPERTY PAGE */
+:where(.css-dev-only-do-not-override-14wwjjs).ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-selected
+  .ant-picker-cell-inner,
+:where(.css-dev-only-do-not-override-14wwjjs).ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-start
+  .ant-picker-cell-inner,
+:where(.css-dev-only-do-not-override-14wwjjs).ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-end
+  .ant-picker-cell-inner {
+  background: var(--btn-background-secondary) !important;
+}
 .ant-picker-dropdown
   .ant-picker-cell-in-view.ant-picker-cell-today
   .ant-picker-cell-inner::before {
@@ -461,7 +474,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* GOLF COURSE SEARCH INPUT */
-
 .ant-select-disabled:where(.css-14wwjjs).ant-select:not(
     .ant-select-customize-input
   )
