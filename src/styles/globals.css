@@ -429,6 +429,10 @@ input[type="number"]::-webkit-outer-spin-button {
   color: var(--black-btn-color) !important;
 }
 
+:where(.css-14wwjjs).ant-tabs .ant-tabs-ink-bar {
+  background: var(--btn-background-secondary) !important;
+}
+
 /** FOR LIVE  */
 :where(.css-w8mnev).ant-tabs
   .ant-tabs-tab.ant-tabs-tab-active
