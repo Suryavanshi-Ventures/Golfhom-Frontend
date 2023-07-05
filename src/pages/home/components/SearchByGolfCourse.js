@@ -208,7 +208,7 @@ const SearchByGolfCourse = () => {
                                   value: item.club_name,
                                   label: item.club_name,
                                 };
-                              })}
+                              }).sort((a, b) => a.label.localeCompare(b.label))}
                             />
                           </div>
                         </div>
