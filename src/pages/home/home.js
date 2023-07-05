@@ -192,10 +192,10 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Golfhom | Home</title>
+        <title>Discover Luxury Golf Vacation Rentals | Golfhom</title>
         <meta
           name="description"
-          content="Welcome to Golfhōm, your new haven for discovering the perfect golf vacation rental. Say goodbye to the days of tirelessly sorting through irrelevant results on generic vacation websites. Instead, allow yourself to dive into a platform meticulously curated for passionate golf enthusiasts."
+          content="Find the perfect golf vacation rentals near Florida, Arizona, Hawaii, and South Carolina. Explore our selection of luxe amenities and book your next golf getaway with Golfhom."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

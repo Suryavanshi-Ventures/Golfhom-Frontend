@@ -3,6 +3,8 @@ import PrivacyPolicyCss from "../styles/PrivacyPolicy.module.css";
 import { Container } from "react-bootstrap";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Head from "next/head";
+
 const BottomSection = dynamic(
   () => import("../../common components/bottomGroup"),
   {
@@ -12,6 +14,17 @@ const BottomSection = dynamic(
 const Privacy = () => {
   return (
     <>
+      <Head>
+        <title>
+          Golfhom Privacy Policy: Protecting Your Personal Information | Golfhom
+        </title>
+        <meta
+          name="description"
+          content="At Golfhom, we value your privacy. Read our Privacy Policy to understand how we collect, use, and protect your personal information. Learn about our commitment to security best practices and your rights regarding your data."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {/*------------------------ PRIVACY POLICY TOP IMAGE------------------------ */}
       <div className={PrivacyPolicyCss.topImage}>
         <Image

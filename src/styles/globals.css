@@ -423,6 +423,11 @@ input[type="number"]::-webkit-outer-spin-button {
   background: var(--btn-background);
   pointer-events: none;
 }
+:where(.css-14wwjjs).ant-tabs
+  .ant-tabs-tab.ant-tabs-tab-active
+  .ant-tabs-tab-btn {
+  color: var(--black-btn-color) !important;
+}
 
 /** FOR LIVE  */
 :where(.css-w8mnev).ant-tabs
