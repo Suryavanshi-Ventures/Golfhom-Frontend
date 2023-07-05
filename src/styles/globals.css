@@ -459,3 +459,19 @@ input[type="number"]::-webkit-outer-spin-button {
 :where(.css-dev-only-do-not-override-w8mnev).ant-tabs .ant-tabs-ink-bar {
   background: var(--btn-background-secondary) !important;
 }
+
+/* GOLF COURSE SEARCH INPUT */
+
+.ant-select-disabled:where(.css-14wwjjs).ant-select:not(
+    .ant-select-customize-input
+  )
+  .ant-select-selector {
+  background: #cdcaca !important;
+}
+
+.ant-select-disabled:where(
+    .css-dev-only-do-not-override-14wwjjs
+  ).ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  background: #cdcaca !important;
+}
