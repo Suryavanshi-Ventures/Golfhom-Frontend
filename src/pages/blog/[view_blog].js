@@ -9,7 +9,7 @@ import CategoryIcon from "../../../public/images/vector/category_icon.svg";
 import ViwBlogBannerImg from "../../../public/images/view_blog_banner_img.png";
 import { useRouter } from "next/router";
 import axios from "axios";
-import moment from "moment";
+import dayjs from "dayjs";
 import { Skeleton } from "antd";
 import React from "react";
 
@@ -56,7 +56,7 @@ const ViewBlog = () => {
         <section className={BlogCss.view_blog_banner_img_section}>
           <div className={BlogCss.view_blog_date}>
             {BlogData?.createdAt ? (
-              moment(BlogData?.createdAt).format("MMMM DD, YYYY")
+              dayjs(BlogData?.createdAt).format("MMMM DD, YYYY")
             ) : (
               <Skeleton.Input size="small" active={true} />
             )}

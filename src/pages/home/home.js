@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import React from "react";
-
 import Head from "next/head";
 import HomeCss from "../../styles/Home.module.css";
 import Slider from "../../slider";
@@ -11,7 +9,11 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import ads from "../../pages/json/ads.json";
 import Advertise from "../../advertise";
 import Image from "next/image";
-import { Input, message, Button, DatePicker, Skeleton } from "antd";
+import { Input } from "antd";
+import { message } from "antd";
+import { Button } from "antd";
+import { DatePicker } from "antd";
+import { Skeleton } from "antd";
 const { RangePicker } = DatePicker;
 import Video from "../../video";
 import video from "../../pages/json/video.json";
@@ -19,7 +21,7 @@ import Review from "../../review";
 import review from "../../pages/json/review.json";
 import Link from "next/link";
 import axios from "axios";
-import moment from "moment";
+import dayjs from "dayjs";
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
 import { useRouter } from "next/router";
 const placesLibrary = ["places"];
@@ -109,8 +111,8 @@ const Home = () => {
   // DROPDOWN FOR SEARCH
 
   const OnChangeDateRange = (LocationName, DateValue) => {
-    const startDate = moment(DateValue[0]); // Replace with your start date
-    const endDate = moment(DateValue[1]); // Replace with your end date
+    const startDate = dayjs(DateValue[0]); // Replace with your start date
+    const endDate = dayjs(DateValue[1]); // Replace with your end date
     setNightsCounter(endDate.diff(startDate, "days") || 0);
     setUrlParamsDateRange(DateValue);
     console.log("ON CHANGE DATE RANGE", setUrlParamsDateRange);
@@ -170,11 +172,11 @@ const Home = () => {
         )}&from=${
           UrlParamsDateRange[0]
             ? UrlParamsDateRange[0]
-            : moment().format("MM-DD-YYYY")
+            : dayjs().format("MM-DD-YYYY")
         }&to=${
           UrlParamsDateRange[1]
             ? UrlParamsDateRange[1]
-            : moment().format("MM-DD-YYYY")
+            : dayjs().format("MM-DD-YYYY")
         }&limit=10`
       );
     }
@@ -363,7 +365,7 @@ const Home = () => {
                         size="large"
                         format={"MM-DD-YYYY"}
                         disabledDate={(current) => {
-                          return current && current < moment().startOf("day");
+                          return current && current < dayjs().startOf("day");
                         }}
                         onChange={OnChangeDateRange}
                         className={HomeCss.inner_input_date_picker}

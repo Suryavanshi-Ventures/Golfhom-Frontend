@@ -8,7 +8,11 @@ import CheckoutCss from "../src/styles/Checkout.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { Col, Row } from "react-bootstrap";
-import { Form, Input, Button, message, Modal } from "antd";
+import { Input } from "antd";
+import { Button } from "antd";
+import { Form } from "antd";
+import { message } from "antd";
+import { Modal } from "antd";
 
 const Checkout = (props) => {
   const RouterRef = useRouter();

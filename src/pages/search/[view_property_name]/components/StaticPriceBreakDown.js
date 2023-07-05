@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-
 import StaticPriceBreakDownCss from "./style/StaticPriceBreakDownCss.module.css";
-import moment from "moment";
 import dayjs from "dayjs";
 const StaticPriceBreakDown = (props) => {
   console.log(props, "STATIC PRICE BREAK DOWN COMPONENT");
