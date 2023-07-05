@@ -19,7 +19,10 @@ const GoogleMaps = (PropertyData) => {
   });
 
   useEffect(() => {
-    return () => {};
+    return () => {
+      markers.pop();
+      center = {};
+    };
   }, []);
 
   const onLoad = useCallback(function callback(Val) {
@@ -31,69 +34,85 @@ const GoogleMaps = (PropertyData) => {
   }, []);
 
   if (PropertyData.data?.length === 1) {
-    console.log(PropertyData.data, "SINGLE LAT LONG");
-
-    if (markers.length >= 1) {
-      markers.splice(0, 1);
-    }
-    console.log(markers, "MARKERRRR SINGLE ");
-
+    //* THIS WILL RUN IF USER CLICK TO VIEW PROPERTY
+    console.log(PropertyData.data, "SINGLE DATA");
     markers = [
       {
         lat: Number(PropertyData.data[0]?.latitude),
         lng: Number(PropertyData.data[0]?.longitude),
       },
     ];
+
     center = {
       lat: Number(PropertyData.data[0]?.latitude),
       lng: Number(PropertyData.data[0]?.longitude),
     };
+  } else if (PropertyData.data.length > 1) {
+    console.log(PropertyData.data, "MULTIPLE DATA");
 
-    // const LangLats = PropertyData.data.forEach((element, index) => {
+    markers = [
+      {
+        lat: Number(PropertyData.data[0]?.latitude),
+        lng: Number(PropertyData.data[0]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[1]?.latitude),
+        lng: Number(PropertyData.data[1]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[2]?.latitude),
+        lng: Number(PropertyData.data[2]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[3]?.latitude),
+        lng: Number(PropertyData.data[3]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[4]?.latitude),
+        lng: Number(PropertyData.data[4]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[5]?.latitude),
+        lng: Number(PropertyData.data[5]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[6]?.latitude),
+        lng: Number(PropertyData.data[6]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[7]?.latitude),
+        lng: Number(PropertyData.data[7]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[8]?.latitude),
+        lng: Number(PropertyData.data[8]?.longitude),
+      },
+      {
+        lat: Number(PropertyData.data[9]?.latitude),
+        lng: Number(PropertyData.data[9]?.longitude),
+      },
+    ];
+
+    // PropertyData.data.forEach((element, index) => {
     //   markers.push({
     //     lat: Number(element?.latitude),
     //     lng: Number(element?.longitude),
     //   });
+    //   console.log(index, "INDDDD");
     // });
-    // // //* IF LAT LONG GOES MORE THAN 10 THAN REMOVING OLD LAT LONG FROM ARRA
-    // // if (markers.length > 10) {
-    // //   markers.splice(0, 10);
-    // // }
-    // console.log(markers, " MARKEEEEEEEEEEEEEEEEER");
-    // center = {
-    //   lat: Number(markers[0]?.lat),
-    //   lng: Number(markers[0]?.lng),
-    // };
-  } else {
-    console.log(PropertyData.data, "MULTIPLE DATA");
 
-    const LangLats = PropertyData.data.forEach((element, index) => {
-      markers.push({
-        lat: Number(element?.latitude),
-        lng: Number(element?.longitude),
-      });
-    });
-    // //* IF LAT LONG GOES MORE THAN 10 THAN REMOVING OLD LAT LONG FROM ARRA
-    if (markers.length > 10) {
-      markers.splice(0, 10);
-    }
+    // // //* IF LAT LONG GOES MORE THAN 10 THAN REMOVING OLD LAT LONG FROM ARRA
+    // if (markers.length > 10) {
+    //   markers.splice(0, 10);
+    // }
 
     center = {
-      lat: Number(markers[0]?.lat),
-      lng: Number(markers[0]?.lng),
+      lat: Number(PropertyData.data[0]?.latitude),
+      lng: Number(PropertyData.data[0]?.longitude),
     };
-    console.log(markers, "MULTIPLE LAT LONG");
+    console.log(markers, "MARKERRRR MULTIPLE ");
   }
-
-  // markers.push({
-  //   lat: Number(PropertyData.data[0]?.latitude),
-  //   lng: Number(PropertyData.data[0]?.longitude),
-  // });
-
-  // center = {
-  //   lat: Number(PropertyData.data[0]?.latitude),
-  //   lng: Number(PropertyData.data[0]?.longitude),
-  // };
+  console.log(markers, "MARKERRRRerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ");
 
   return isLoaded ? (
     <GoogleMap
@@ -109,6 +128,9 @@ const GoogleMaps = (PropertyData) => {
           icon="/images/vector/google_map_markers.svg"
           key={index}
           position={marker}
+          title={"marker.title"}
+          onClick={console.log("sffsf")}
+          info={"marker.info"}
         />
       ))}
     </GoogleMap>

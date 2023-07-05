@@ -177,34 +177,6 @@ const SearchByGolfCourse = () => {
                               SearchByGolfCourseCss.search_by_golf_input_container
                             }
                           >
-                            {/* <AntdAutoComplete
-                              dataSource={AllGolfCourseData.map(
-                                (item) => item.club_name
-                              )}
-                              disabled={IsDisableGolfCourse}
-                              onSelect={(value, option) => {
-                                const selectedData = AllGolfCourseData.find(
-                                  (item) => item.club_name === value
-                                );
-                                if (selectedData) {
-                                  setSelectedGolfCourse(selectedData); //* SETTING SELECTED GOLF COURSE OBJ
-
-                                  console.log(
-                                    selectedData,
-                                    "SELECTED GOLF OBJ"
-                                  );
-                                }
-                              }}
-                              filterOption={(inputValue, option) =>
-                                option.value
-                                  .toUpperCase()
-                                  .indexOf(inputValue.toUpperCase()) !== -1
-                              }
-                              className={
-                                SearchByGolfCourseCss.search_by_golf_inputs
-                              }
-                              placeholder="Golf Course"
-                            /> */}
                             <Select
                               showSearch
                               className={

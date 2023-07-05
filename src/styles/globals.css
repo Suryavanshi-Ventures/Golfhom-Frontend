@@ -389,6 +389,17 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 4px;
   content: "";
 }
+:where(.css-14wwjjs).ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-selected
+  .ant-picker-cell-inner,
+:where(.css-14wwjjs).ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-start
+  .ant-picker-cell-inner,
+:where(.css-14wwjjs).ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-end
+  .ant-picker-cell-inner {
+  background: var(--btn-background-secondary) !important;
+}
 
 /** FOR LIVE  */
 :where(.css-w8mnev).ant-picker-dropdown

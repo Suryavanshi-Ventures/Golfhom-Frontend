@@ -55,7 +55,6 @@ const TabContentOverview = (PropData) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [golfCourseDataModal, setGolfCourseDataModal] = useState(null);
 
-  console.log(golfCourseDataModal);
   const showModal = (data) => {
     setGolfCourseDataModal(data);
     setModalOpen(true);

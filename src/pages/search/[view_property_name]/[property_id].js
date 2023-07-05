@@ -583,7 +583,7 @@ const ViewProperty = () => {
                 ""
               )}
               <div className={ViewPropertyCss.inner_input_date_picker}>
-                <div>
+                <div style={{ width: "100%" }}>
                   <Form name="control-hooks" layout="horizontal" form={form}>
                     <Form.Item
                       name="date_picker"
@@ -592,6 +592,7 @@ const ViewProperty = () => {
                       }
                     >
                       <RangePicker
+                        placeholder={["Check-In", "Check-Out"]}
                         className={ViewPropertyCss.inner_input_date_picker}
                         onChange={OnChangeDateInput}
                         format={"MM-DD-YYYY"}
