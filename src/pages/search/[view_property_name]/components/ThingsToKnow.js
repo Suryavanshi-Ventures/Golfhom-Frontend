@@ -6,7 +6,7 @@ import PriceSquareIcon from "../../../../../public/images/vector/price_square_ic
 import RulesCrossIcon from "../../../../../public/images/vector/rules_cross_icon.svg";
 import FeatureTickIcon from "../../../../../public/images/vector/feature_tick.svg";
 import Blacktick from "../../../../../public/images/vector/blackTick.svg";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const ThingsToKnow = (data) => {
   return (
@@ -433,7 +433,7 @@ const ThingsToKnow = (data) => {
               </div>
               <p className={ViewPropertyCss.words}>
                 Check-in After:{" "}
-                {moment(data?.data?.checkIn, "hh:mm A").format("hh:mm A")}
+                {dayjs(data?.data?.checkIn, "hh:mm A").format("hh:mm A")}
               </p>
             </div>
 
@@ -449,7 +449,7 @@ const ThingsToKnow = (data) => {
               </div>
               <p className={ViewPropertyCss.words}>
                 Check-out Before:{" "}
-                {moment(data?.data?.checkOut, "hh:mm A").format("hh:mm A")}
+                {dayjs(data?.data?.checkOut, "hh:mm A").format("hh:mm A")}
               </p>
             </div>
 

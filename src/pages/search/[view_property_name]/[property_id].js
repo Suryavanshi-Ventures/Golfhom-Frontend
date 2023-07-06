@@ -23,7 +23,7 @@ import axios from "axios";
 import { AuthContext } from "@/context/auth_context";
 import { useRouter } from "next/router";
 const { RangePicker } = DatePicker;
-import moment from "moment";
+import dayjs from "dayjs";
 import dynamic from "next/dynamic";
 import ThingsToKnow from "./components/ThingsToKnow";
 import FeatureSection from "./components/FeatureSection";
@@ -143,7 +143,7 @@ const ViewProperty = () => {
   }, [PaymentIntentObject]);
 
   const DateFormater = (date) => {
-    return moment(date).format("YYYY-MM-DD");
+    return dayjs(date).format("YYYY-MM-DD");
   };
 
   const items = [
@@ -237,8 +237,8 @@ const ViewProperty = () => {
 
   const OnChangeDateInput = (date, DateValue) => {
     if (DateValue[0] || DateValue[1]) {
-      const StartDate = moment(DateValue[0]); // Replace with your start date
-      const EndDate = moment(DateValue[1]); // Replace with your end date
+      const StartDate = dayjs(DateValue[0]); // Replace with your start date
+      const EndDate = dayjs(DateValue[1]); // Replace with your end date
       setNightsCounter(EndDate.diff(StartDate, "days") || 0);
       SetBookingDate([DateValue[0], DateValue[1]]);
       console.log(SpecificPropAPIData.data?.externalPropertyType);
@@ -250,7 +250,7 @@ const ViewProperty = () => {
         let i = initialdate;
         while (i !== finaldate) {
           newdatesarray.push(i);
-          const newdate = moment(i).add(1, "days").format("YYYY-MM-DD");
+          const newdate = dayjs(i).add(1, "days").format("YYYY-MM-DD");
           i = newdate;
         }
         newdatesarray.push(finaldate);
@@ -364,8 +364,8 @@ const ViewProperty = () => {
 
   //! API CALL AVAILABILITY CHECK
   const FetchAvailableDate = async (
-    date1 = moment().startOf("month").format("MM-DD-YYYY"),
-    date2 = moment().endOf("month").add(1, "month").format("MM-DD-YYYY")
+    date1 = dayjs().startOf("month").format("MM-DD-YYYY"),
+    date2 = dayjs().endOf("month").add(1, "month").format("MM-DD-YYYY")
   ) => {
     if (PropertyType === "Nextpax") {
       console.log("NEXTPAX");
@@ -373,7 +373,7 @@ const ViewProperty = () => {
         method: "GET",
         url: `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/availability?id=${
           Params.property_id
-        }&from=${moment(date1).format("MM-DD-YYYY")}&to=${moment(date2).format(
+        }&from=${dayjs(date1).format("MM-DD-YYYY")}&to=${dayjs(date2).format(
           "MM-DD-YYYY"
         )}`,
       }).then((res) => {
@@ -395,9 +395,9 @@ const ViewProperty = () => {
         headers: { Authorization: `Bearer ${Token}` },
         url: `${
           process.env.NEXT_PUBLIC_API_URL
-        }/v1/rentalunited/availability?id=${Params.property_id}&from=${moment(
+        }/v1/rentalunited/availability?id=${Params.property_id}&from=${dayjs(
           date1
-        ).format("MM-DD-YYYY")}&to=${moment(date2).format("MM-DD-YYYY")}`,
+        ).format("MM-DD-YYYY")}&to=${dayjs(date2).format("MM-DD-YYYY")}`,
       })
         .then((res) => {
           if (res.status === 201) {
@@ -608,22 +608,22 @@ const ViewProperty = () => {
                           if (res) {
                             const date1 =
                               SaveDateInState[0] ||
-                              moment().startOf("month").subtract(2, "M");
+                              dayjs().startOf("month").subtract(2, "M");
                             const date2 =
                               SaveDateInState[1] ||
-                              moment().endOf("month").add(2, "M");
+                              dayjs().endOf("month").add(2, "M");
                             FetchAvailableDate(date1, date2);
                           }
                         }}
                         onPanelChange={(current) => {
                           const currentdata = current[0] || current[1];
 
-                          const date1 = moment(
+                          const date1 = dayjs(
                             new Date(currentdata.year(), currentdata.month(), 1)
                           )
                             .subtract(2, "M")
                             .format("MM-DD-YYYY");
-                          const date2 = moment(
+                          const date2 = dayjs(
                             new Date(currentdata.year(), currentdata.month(), 1)
                           )
                             .add(2, "M")

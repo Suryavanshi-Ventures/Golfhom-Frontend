@@ -5,7 +5,7 @@ import SuccessfullyGif from "../../../../public/images/vector/successfully-done.
 import Checkout2Css from "../../../styles/Checkout2.module.css";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const Success = () => {
   const UrlParams = useRouter();
@@ -140,7 +140,7 @@ const Success = () => {
             <div className={Checkout2Css.total_payed_transaction}>
               <h5 className={Checkout2Css.amount_master}>Transaction Date</h5>
               <h5 className={Checkout2Css.details_text_value}>
-                {moment().format("MM-DD-YYYY  hh:mm A")}
+                {dayjs().format("MM-DD-YYYY  hh:mm A")}
               </h5>
             </div>
             <hr />

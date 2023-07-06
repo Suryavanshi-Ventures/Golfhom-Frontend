@@ -28,10 +28,9 @@ import PropNotFoundImg from "../../../public/images/vector/golf-hole.png";
 import Map from "../../../common components/map";
 import Loader from "../../../common components/loader";
 import axios from "axios";
-import moment from "moment";
+import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { Autocomplete, useLoadScript } from "@react-google-maps/api";
-import dayjs from "dayjs";
 const { RangePicker } = DatePicker;
 const placesLibrary = ["places"];
 import dynamic from "next/dynamic";
@@ -385,8 +384,8 @@ const Index = () => {
                     <Form.Item className={SearchIndexCss.edit_details_divs}>
                       <p className={SearchIndexCss.edit_details_titles}>
                         {(() => {
-                          const startDate = moment(UrlParamsDateRange[0]); // Replace with your start date
-                          const endDate = moment(UrlParamsDateRange[1]); // Replace with your end date
+                          const startDate = dayjs(UrlParamsDateRange[0]); // Replace with your start date
+                          const endDate = dayjs(UrlParamsDateRange[1]); // Replace with your end date
                           return endDate.diff(startDate, "days") || 0;
                         })()}{" "}
                         Nights
