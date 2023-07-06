@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 import Head from "next/head";
 import { Button } from "antd";
 import Link from "next/link";

@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
+
 import { useState } from "react";
 import Head from "next/head";
 import { Container, Col, Row, Button } from "react-bootstrap";

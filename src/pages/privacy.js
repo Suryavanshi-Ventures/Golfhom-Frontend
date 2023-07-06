@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import PrivacyPolicyCss from "../styles/PrivacyPolicy.module.css";
 import { Container } from "react-bootstrap";

@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
+
 import ErrorPageStyle from "../styles/ErrorPageStyle.module.css";
 import Head from "next/head";
 import Link from "next/link";
