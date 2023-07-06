@@ -53,7 +53,7 @@ const ViewBlog = () => {
 
       {/* VIEW BLOG STARTED */}
       <Container>
-        <section className={BlogCss.view_blog_banner_img_section}>
+        <div className={BlogCss.view_blog_banner_img_section}>
           <div className={BlogCss.view_blog_date}>
             {BlogData?.createdAt ? (
               dayjs(BlogData?.createdAt).format("MMMM DD, YYYY")
@@ -108,13 +108,13 @@ const ViewBlog = () => {
               className={BlogCss.view_blog_banner_img}
             ></Image>
           </div>
-        </section>
+        </div>
 
         {/* MIDDLE TEXT CONTAINER SECTION */}
 
         {BlogData?.body ? (
-          <section className={BlogCss.view_blog_middle_text_section}>
-            <main className={BlogCss.view_blog_middle_main_div}>
+          <div className={BlogCss.view_blog_middle_text_section}>
+            <div className={BlogCss.view_blog_middle_main_div}>
               <div className={BlogCss.view_blog_middle_text_para}>
                 {/* {BlogData?.body ? BlogData?.body : <Skeleton active />} */}
                 <p
@@ -123,8 +123,8 @@ const ViewBlog = () => {
                   }}
                 />
               </div>
-            </main>
-          </section>
+            </div>
+          </div>
         ) : (
           <Skeleton active />
         )}

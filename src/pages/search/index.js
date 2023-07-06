@@ -329,8 +329,8 @@ const Index = () => {
       </Head>
 
       {/********** EDIT DETAILS SECTION  ***********/}
-      <section>
-        <main className={SearchIndexCss.edit_details_main_section}>
+      <div>
+        <div className={SearchIndexCss.edit_details_main_section}>
           <Container>
             <div className={SearchIndexCss.edit_details_main_container}>
               <Row className={SearchIndexCss.edit_details_container_row}>
@@ -731,12 +731,12 @@ const Index = () => {
               </Row>
             </div>
           </Container>
-        </main>
-      </section>
+        </div>
+      </div>
 
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
-      <section className={SearchIndexCss.search_main_section}>
+      <div className={SearchIndexCss.search_main_section}>
         <Container>
           <Row>
             <h3 className={SearchIndexCss.location_name}>
@@ -1001,7 +1001,7 @@ const Index = () => {
             />
           </div>
         </Container>
-      </section>
+      </div>
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 

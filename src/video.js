@@ -11,6 +11,7 @@ const Video = ({ videos }) => {
       modules={[Navigation, Pagination, A11y]}
       spaceBetween={30}
       slidesPerView={3}
+      grabCursor={true}
       pagination={{ clickable: true }}
       onSlideChange={() => {}}
       breakpoints={{

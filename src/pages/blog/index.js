@@ -57,14 +57,14 @@ const Index = () => {
       </Head>
 
       {/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */}
-      <section>
+      <div>
         <Image
           src="https://golf-hom-latest-assets.s3.amazonaws.com/images/viewAllProps.png"
           alt="View All Property Image"
           fill
           className={BlogCss.imageChild}
         ></Image>
-      </section>
+      </div>
 
       {/* NINE CARDS CONTAINER */}
 

@@ -77,7 +77,7 @@ const FAQ = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <div>
         {/* BANNER IMAGE FAQ */}
         <div>
           <Image
@@ -87,7 +87,7 @@ const FAQ = () => {
             alt="faq golfhom banner image"
           ></Image>
         </div>
-        <section className={FAQCss.below_banner_main_section}>
+        <div className={FAQCss.below_banner_main_section}>
           <Container>
             <Row className={FAQCss.faqRow}>
               <Col md={6}>
@@ -103,7 +103,7 @@ const FAQ = () => {
               <Col md={6}>
                 {/* BOOKING FAQ QUESTIONS */}
 
-                <main>
+                <div>
                   <div>
                     <h3 className={FAQCss.heading_question}>
                       Booking Questions
@@ -244,10 +244,10 @@ const FAQ = () => {
                     )}
                   </div>
                   <hr />
-                </main>
+                </div>
 
                 {/* CANCELATION SECTION */}
-                <main className={FAQCss.heading_question_main_div}>
+                <div className={FAQCss.heading_question_main_div}>
                   <div>
                     <h3 className={FAQCss.heading_question}>
                       Cancellation Questions
@@ -344,16 +344,16 @@ const FAQ = () => {
                     )}
                   </div>
                   <hr />
-                </main>
+                </div>
               </Col>
             </Row>
           </Container>
-        </section>
+        </div>
 
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
         <BottomSection />
-      </main>
+      </div>
     </>
   );
 };

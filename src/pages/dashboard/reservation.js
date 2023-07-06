@@ -72,7 +72,7 @@ const Reservation = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <section className={ReservationCss.my_reservation_main_section}>
+        <div className={ReservationCss.my_reservation_main_section}>
           {/*   -------------------------     BANNER IMAGE   -------------------------------   */}
           <div>
             <Image
@@ -88,7 +88,7 @@ const Reservation = () => {
           <Container>
             <h3 className={ReservationCss.reservation}>Reservations</h3>
             {/* DATE SECTION */}
-            <section className={ReservationCss.backgroundLight}>
+            <div className={ReservationCss.backgroundLight}>
               <Container>
                 <div className={ReservationCss.heading}>
                   <Row className={ReservationCss.columnRow}>
@@ -152,7 +152,7 @@ const Reservation = () => {
                   </Row>
                 </div>
               </Container>
-            </section>
+            </div>
             {/* <h4 className={ReservationCss.manage}>Manage</h4> */}
 
             <Table border={1} responsive className={ReservationCss.bodyRow}>
@@ -276,7 +276,7 @@ const Reservation = () => {
               />
             </div>
           </Container>
-        </section>
+        </div>
 
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 

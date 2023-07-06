@@ -18,7 +18,7 @@ const StaticPriceBreakDown = (props) => {
     <>
       {props?.data?.property_type === "Nextpax" ? (
         //* SECTION FOR NEXTPAX PRICE BREAKDOWN
-        <section>
+        <div>
           {/* REQUIRED CHARGES */}
           {props?.data?.NextpaxPriceBreakDown?.charges?.required.map(
             (Data, Index) => {
@@ -127,10 +127,10 @@ const StaticPriceBreakDown = (props) => {
             </div>
           </div>
           <hr />
-        </section>
+        </div>
       ) : (
         //* SECTION FOR RENTAL PRICE BREAKDOWN
-        <section>
+        <div>
           {props?.data?.RentalpaxPriceBreakDown?.perday.length > 1 ? (
             <>
               {props?.data?.RentalpaxPriceBreakDown?.perday?.map(
@@ -214,7 +214,7 @@ const StaticPriceBreakDown = (props) => {
             </div>
           </div>
           <hr />
-        </section>
+        </div>
       )}
     </>
   );

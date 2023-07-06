@@ -53,7 +53,7 @@ const Register_to_host = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section>
+      <div>
         {/*----------------              TOP IMAGE SECTION         --------------------*/}
 
         <div className={RegisterToHost.targetBall}>
@@ -148,7 +148,7 @@ const Register_to_host = () => {
             </div>
           </Col>
         </div>
-      </section>
+      </div>
 
       {/* ---------------------------        THREE COLUMN CONTAINER            -------------------------- */}
 

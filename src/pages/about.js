@@ -28,7 +28,7 @@ const About = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* ABOUT US SECTION STARTED */}
-      <main className={AboutUsCss.about_us_section}>
+      <div className={AboutUsCss.about_us_section}>
         {/* BANNER IMAGE SECTION */}
         <div className={AboutUsCss.about_us_section_banner_container}>
           <Image
@@ -92,7 +92,7 @@ const About = () => {
           </Row>
         </Container>
         {/* ABOUT GOLFHOM SECTION */}
-        <section className={AboutUsCss.about_golfhom_section}>
+        <div className={AboutUsCss.about_golfhom_section}>
           <Container>
             <div className={AboutUsCss.about_golfhom_main_container}>
               <h3 className={AboutUsCss.about_golfhom_heading}>
@@ -165,11 +165,11 @@ const About = () => {
               </p>
             </div>
           </Container>
-        </section>
+        </div>
 
         {/* GOLFHOM STAFF CARD SECTION */}
         <Container>
-          <section>
+          <div>
             <div className={AboutUsCss.viewText}>
               <h3 className={AboutUsCss.staffCard_title}>
                 From the Golfhōm Staff and Guest Writers
@@ -182,13 +182,13 @@ const About = () => {
               </Link>
             </div>
             <Review reviews={review} />
-          </section>
+          </div>
         </Container>
 
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
 
         <BottomSection />
-      </main>
+      </div>
     </>
   );
 };

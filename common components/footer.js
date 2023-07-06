@@ -162,7 +162,7 @@ const Footer = () => {
           </Row>
 
           {/* Copyright Section */}
-          <section className={FooterCss.copyright_section}>
+          <div className={FooterCss.copyright_section}>
             <Row className={FooterCss.copyright_section_row}>
               <Col md={6}>
                 <p className={FooterCss.copyright_section_p}>
@@ -233,7 +233,7 @@ const Footer = () => {
                 </div>
               </Col>
             </Row>
-          </section>
+          </div>
         </Container>
       </footer>
     </>

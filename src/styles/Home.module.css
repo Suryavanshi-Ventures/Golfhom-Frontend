@@ -606,7 +606,6 @@
   display: flex;
 }
 .swiper_img {
-  width: 329px;
   height: 260px;
   object-fit: cover;
 }

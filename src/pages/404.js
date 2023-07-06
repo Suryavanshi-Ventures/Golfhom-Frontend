@@ -12,7 +12,7 @@ const ErrorPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className={ErrorPageStyle.page_404}>
+      <div className={ErrorPageStyle.page_404}>
         <div className={ErrorPageStyle.container}>
           <div className={ErrorPageStyle.row}>
             <div className={ErrorPageStyle.four_zero_four_bg}></div>
@@ -27,7 +27,7 @@ const ErrorPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

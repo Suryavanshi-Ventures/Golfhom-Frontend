@@ -124,16 +124,16 @@ const ViewAllProperty = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* TOP IMAGE OF VIEW ALL PROPERTY PAGE */}
-      <section className={ViewAllPropertyCss.headImage}>
+      <div className={ViewAllPropertyCss.headImage}>
         <Image
           src={ViewAllProps}
           alt="View All Property Image"
           fill
           className={ViewAllPropertyCss.imageChild}
         ></Image>
-      </section>
+      </div>
 
-      <section className={ViewAllPropertyCss.textContainer}>
+      <div className={ViewAllPropertyCss.textContainer}>
         <Container>
           <h3 className={ViewAllPropertyCss.heading}>
             Find Great Vacation Rentals near Florida, Arizona, Hawaii & South
@@ -155,9 +155,9 @@ const ViewAllProperty = () => {
             luxury golf vacation rental. Book with us today!
           </p>
         </Container>
-      </section>
+      </div>
 
-      <section className={ViewAllPropertyCss.view_prop_cards_Container}>
+      <div className={ViewAllPropertyCss.view_prop_cards_Container}>
         <Container>
           <Row className={ViewAllPropertyCss.columnParent}>
             {/* FLORDIA */}
@@ -646,7 +646,7 @@ const ViewAllProperty = () => {
             )}
           </Row>
         </Container>
-      </section>
+      </div>
 
       {/* <Container className={ViewAllPropertyCss.pagination_container}>
         <Pagination

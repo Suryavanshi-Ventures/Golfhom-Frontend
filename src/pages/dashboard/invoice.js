@@ -89,7 +89,7 @@ const Invoice = () => {
 
         {/* DATE SECTION */}
         <Container>
-          <section className={InvoiceCss.backgroundLight}>
+          <div className={InvoiceCss.backgroundLight}>
             <div className={InvoiceCss.heading}>
               <Row className={InvoiceCss.columnRow}>
                 <Col md={4} className={InvoiceCss.start}>
@@ -151,7 +151,7 @@ const Invoice = () => {
                 </Col>
               </Row>
             </div>
-          </section>
+          </div>
         </Container>
 
         <Container className={InvoiceCss.tableB}>

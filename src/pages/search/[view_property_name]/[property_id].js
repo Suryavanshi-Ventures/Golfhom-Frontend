@@ -447,7 +447,7 @@ const ViewProperty = () => {
       </Head>
 
       {/* VIEW PROPERTY PAGE STARTED HERE */}
-      <main className={ViewPropertyCss.view_prop_bannerimg_section}>
+      <div className={ViewPropertyCss.view_prop_bannerimg_section}>
         <Container>
           <div className={ViewPropertyCss.view_prop_bannerimg_main_container}>
             <div className={ViewPropertyCss.view_prop_bannerimg_container}>
@@ -1175,7 +1175,7 @@ const ViewProperty = () => {
               )}
 
               {IsReserveVisible ? (
-                <section>
+                <div>
                   <div className={ViewPropertyCss.bookParent}>
                     <Button
                       disabled={!Available}
@@ -1242,7 +1242,7 @@ const ViewProperty = () => {
                       </Button>
                     </Space>
                   </div>
-                </section>
+                </div>
               ) : (
                 ""
               )}
@@ -1252,7 +1252,7 @@ const ViewProperty = () => {
 
         {/* GALLERY SECTION STARTS HERE */}
         <Container className={ViewPropertyCss.carasoul_section} id="gallery">
-          <section>
+          <div>
             <div className={ViewPropertyCss.carasoul_section_inner_div}>
               <Image.PreviewGroup
                 preview={{
@@ -1278,31 +1278,31 @@ const ViewProperty = () => {
                 )}
               </Image.PreviewGroup>
             </div>
-          </section>
+          </div>
         </Container>
 
         {/* FEATURE SECTION STARTS HERE */}
-        <section className={ViewPropertyCss.feature_section}>
+        <div className={ViewPropertyCss.feature_section}>
           <Container>
             <h5 className={ViewPropertyCss.feature_section_heading}>
               Features
             </h5>
             <FeatureSection data={SpecificPropAPIData.data} />
           </Container>
-        </section>
+        </div>
 
         {/* MAP SECTION STARTS HERE */}
-        <section className={ViewPropertyCss.map_section}>
+        <div className={ViewPropertyCss.map_section}>
           <Container>
             <div className={ViewPropertyCss.map_section_main_container}>
               <Map data={[SpecificPropAPIData.data]} />
             </div>
           </Container>
-        </section>
+        </div>
 
         {/* VIDEO SECTION STARTS HERE */}
         {SpecificPropAPIData.data?.videoUrl ? (
-          <section className={ViewPropertyCss.video_section}>
+          <div className={ViewPropertyCss.video_section}>
             <Container>
               <h5 className={ViewPropertyCss.feature_section_heading}>Video</h5>
               <div className={ViewPropertyCss.video_section_container}>
@@ -1320,20 +1320,20 @@ const ViewProperty = () => {
                 ></iframe>
               </div>
             </Container>
-          </section>
+          </div>
         ) : (
           ""
         )}
 
         {/* THINGS TO KNOW SECTION  */}
-        <section className={ViewPropertyCss.things_to_know_section}>
+        <div className={ViewPropertyCss.things_to_know_section}>
           <Container>
             <ThingsToKnow data={SpecificPropAPIData.data} />
           </Container>
-        </section>
+        </div>
         {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
         <BottomSection />
-      </main>
+      </div>
     </>
   );
 };

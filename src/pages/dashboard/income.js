@@ -23,11 +23,11 @@ const Income = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main>
+        <div>
           <Container>
             <h3 className={IncomeCss.income_page_heading}>Income</h3>
 
-            <section>
+            <div>
               <Row>
                 <Col md={4} className={IncomeCss.income_page_cards_cols}>
                   <div className={IncomeCss.income_page_cards_container}>
@@ -113,9 +113,9 @@ const Income = () => {
                   </div>
                 </Col>
               </Row>
-            </section>
+            </div>
 
-            <section className={IncomeCss.income_page_payout_section}>
+            <div className={IncomeCss.income_page_payout_section}>
               <div className={IncomeCss.income_page_payout_rows}>
                 <div className={IncomeCss.income_page_payout_cols}>
                   <div
@@ -163,9 +163,9 @@ const Income = () => {
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
           </Container>
-        </main>
+        </div>
         {/*  ---------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
         <BottomSection />
       </ProtectedRoute>

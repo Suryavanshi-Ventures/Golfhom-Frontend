@@ -44,7 +44,7 @@ const ContactToHost = ({ HideContactHostPopUp }) => {
   };
   return (
     <>
-      <section className={ContactUsCss.headerReg}>
+      <div className={ContactUsCss.headerReg}>
         <Form
           layout="vertical"
           form={form}
@@ -158,7 +158,7 @@ const ContactToHost = ({ HideContactHostPopUp }) => {
             </Form.Item>
           </Col>
         </Form>
-      </section>
+      </div>
     </>
   );
 };

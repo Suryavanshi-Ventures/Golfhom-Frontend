@@ -15,14 +15,14 @@ const PaymentPopUp = (props) => {
     <>
       {/* BOOKING CONFIRM MODAL */}
       {contextHolder}
-      <section style={{ padding: "20px" }}>
+      <div style={{ padding: "20px" }}>
         <Elements
           stripe={stripePromise}
           options={{ clientSecret: props?.data?.paymentIntent?.client_secret }}
         >
           <Checkout data={props} />
         </Elements>
-      </section>
+      </div>
     </>
   );
 };

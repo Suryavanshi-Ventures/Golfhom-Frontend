@@ -6,7 +6,7 @@ const bottomGroup = () => {
     <>
       {/* BOTTOM IMAGE SECTION */}
 
-      <section className={BottomGroupCss.grouptalk}>
+      <div className={BottomGroupCss.grouptalk}>
         <div>
           <div className={BottomGroupCss.groupParent}>
             <Image
@@ -25,7 +25,7 @@ const bottomGroup = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

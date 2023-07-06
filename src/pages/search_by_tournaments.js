@@ -91,7 +91,7 @@ const SearchByTournaments = () => {
 
       {/* -----------------------            ORLANDO SECTION             ---------------------  */}
 
-      <section className={SearchByTourCss.search_main_section}>
+      <div className={SearchByTourCss.search_main_section}>
         <Container>
           <Row>
             <h5 className={SearchByTourCss.orlandoHead}>
@@ -166,7 +166,7 @@ const SearchByTournaments = () => {
             />
           </div>
         </Container>
-      </section>
+      </div>
 
       {/*  -----------------------------           BOTTOM IMAGE SECTION         ----------------------------  */}
       <BottomSection />

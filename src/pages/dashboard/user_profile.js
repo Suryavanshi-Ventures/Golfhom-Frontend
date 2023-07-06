@@ -142,7 +142,7 @@ const UserProfile = () => {
             onFinishFailed={OnSubmitFailed}
             autoComplete="off"
           >
-            <section className={UserProfieCss.user_profile_page_info_section}>
+            <div className={UserProfieCss.user_profile_page_info_section}>
               {/* PROFILE SECTION */}
               <div>
                 <h4 className={UserProfieCss.user_profile_page_section_heading}>
@@ -158,10 +158,10 @@ const UserProfile = () => {
                   ></Image>
                 </div>
               </div>
-            </section>
+            </div>
 
             {/* INFORMATION SECTION */}
-            <section className={UserProfieCss.user_profile_page_info_section}>
+            <div className={UserProfieCss.user_profile_page_info_section}>
               <h5 className={UserProfieCss.user_profile_page_section_heading}>
                 Information
               </h5>
@@ -253,10 +253,10 @@ const UserProfile = () => {
                   </div>
                 </Col>
               </Row>
-            </section>
+            </div>
 
             {/* ADDRESS SECTION */}
-            <section className={UserProfieCss.user_profile_page_info_section}>
+            <div className={UserProfieCss.user_profile_page_info_section}>
               <h5 className={UserProfieCss.user_profile_page_section_heading}>
                 Address
               </h5>
@@ -354,10 +354,10 @@ const UserProfile = () => {
                   </div>
                 </Col>
               </Row>
-            </section>
+            </div>
 
             {/* PHONE SECTION */}
-            <section className={UserProfieCss.user_profile_page_info_section}>
+            <div className={UserProfieCss.user_profile_page_info_section}>
               <h5 className={UserProfieCss.user_profile_page_section_heading}>
                 Contact
               </h5>
@@ -425,7 +425,7 @@ const UserProfile = () => {
                   </Button>
                 </div>
               </Row>
-            </section>
+            </div>
           </Form>
         </Container>
       </ProtectedRoute>

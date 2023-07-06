@@ -36,7 +36,7 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <section className={ForgotPasswordCss.forgot_pass_section}>
+      <div className={ForgotPasswordCss.forgot_pass_section}>
         <Form
           name="send_email_form"
           layout="vertical"
@@ -78,7 +78,7 @@ const ForgotPassword = () => {
             </div>
           </Form.Item>
         </Form>
-      </section>
+      </div>
     </>
   );
 };
