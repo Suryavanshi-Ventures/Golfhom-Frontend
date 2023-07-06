@@ -1,12 +1,15 @@
 import { useRouter } from "next/router";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { message } from "antd";
 import { AuthContext } from "@/context/auth_context";
+import dynamic from "next/dynamic";
+const Loader = dynamic(() => import("./loader"));
 
 const ProtectedRoute = ({ children }) => {
-  const ContextUserDetails = useContext(AuthContext);
+  const [IsSuccess, setIsSuccess] = useState(false);
 
+  const ContextUserDetails = useContext(AuthContext);
   const router = useRouter();
   useEffect(() => {
     //* check if user is authenticated
@@ -21,6 +24,7 @@ const ProtectedRoute = ({ children }) => {
     );
     User.then((response) => {
       // console.log(response, "user authenticated");
+      setIsSuccess(true);
       return <>{children}</>;
     }).catch((error) => {
       //* redirect to login page
@@ -37,6 +41,26 @@ const ProtectedRoute = ({ children }) => {
       message.error(error.response.data.message);
     });
   }, []);
+
+  if (!IsSuccess) {
+    return (
+      <>
+        <div
+          style={{
+            height: "85vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Loader />
+          <p style={{ marginTop: "45px", fontFamily: "Poppins" }}>Loading...</p>
+        </div>
+        ;
+      </>
+    );
+  }
 
   return children;
 };
