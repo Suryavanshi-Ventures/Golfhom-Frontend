@@ -48,7 +48,8 @@
   background: var(--white-font-color);
   min-height: 130px;
 }
-.search_cols_4, .search_cols_45 {
+.search_cols_4,
+.search_cols_45 {
   display: flex;
   align-items: center;
   border-right: 2px dashed var(--dash-border-color);
@@ -98,7 +99,8 @@
   width: 100%;
   height: 100%;
 }
-.inner_input_container, .inner_input_containerNight {
+.inner_input_container,
+.inner_input_containerNight {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -323,7 +325,8 @@
   background-color: var(--btn-background);
   border: none;
 }
-.ant-dropdown-menu-item, .ant-dropdown-menu-item-only-child {
+.ant-dropdown-menu-item,
+.ant-dropdown-menu-item-only-child {
   background-color: var(--light-grey-background) !important;
 }
 /* ------------------------------        Golfhōm Hottest New Arrivals         ------------------------------       */
@@ -359,7 +362,8 @@
   transition: all 0.2 linear;
 }
 .newyork {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(/images/settingArea.webp);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)),
+    url(/images/settingArea.webp);
   background-repeat: no-repeat;
   background-size: cover;
   height: 50vh;
@@ -380,7 +384,8 @@
   cursor: pointer;
 }
 .midImgTitle {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url("https://golf-hom-latest-assets.s3.amazonaws.com/images/pool.webp");
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url("https://golf-hom-latest-assets.s3.amazonaws.com/images/pool.webp");
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
@@ -402,7 +407,8 @@
   cursor: pointer;
 }
 .madridImg {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url("https://golf-hom-latest-assets.s3.amazonaws.com/images/madrid.webp");
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url("https://golf-hom-latest-assets.s3.amazonaws.com/images/madrid.webp");
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -418,7 +424,8 @@
   font-family: var(--font-poppins);
 }
 .resortImg {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url("https://golf-hom-latest-assets.s3.amazonaws.com/images/gaintwheel.webp");
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url("https://golf-hom-latest-assets.s3.amazonaws.com/images/gaintwheel.webp");
   background-repeat: no-repeat;
   background-size: cover;
   height: 34.5vh;
@@ -446,6 +453,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+.cardImgTitle:hover {
+  transition-duration: 0.3s;
+  color: var(--btn-background-secondary);
 }
 .cardBg {
   background: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.01));
@@ -711,7 +724,8 @@
   .parentOf_img_textCard {
     width: 100%;
   }
-  .search_cols_4, .search_cols_45 {
+  .search_cols_4,
+  .search_cols_45 {
     width: 100%;
     margin-bottom: 1rem;
   }
@@ -741,7 +755,8 @@
   .inner_input_containerNight {
     gap: 8px;
   }
-  .videoPlay, .search_bar_img_div {
+  .videoPlay,
+  .search_bar_img_div {
     height: 80vh !important;
   }
 }

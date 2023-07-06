@@ -101,7 +101,7 @@ const GoogleMaps = (PropertyData) => {
       lng: Number(PropertyData.data[0]?.longitude),
     };
     console.log(markers, "MARKERRRR MULTIPLE ");
-  } else if (PropertyData.length === 0) {
+  } else if (PropertyData.data.length === 0) {
     console.log("LENGTH IS 0");
     markers = [
       {
@@ -130,9 +130,6 @@ const GoogleMaps = (PropertyData) => {
           icon="/images/vector/google_map_markers.svg"
           key={index}
           position={marker}
-          title={"marker.title"}
-          onClick={console.log("sffsf")}
-          info={"marker.info"}
         />
       ))}
     </GoogleMap>
