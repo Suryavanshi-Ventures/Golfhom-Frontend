@@ -107,8 +107,8 @@ const Index = () => {
                 <th className={DashboardCss.status}>Status</th>
                 <th className={DashboardCss.date}>Date</th>
                 <th className={DashboardCss.address}>Property Name</th>
-                <th className={DashboardCss.checkin}>Check-in</th>
-                <th className={DashboardCss.checkout}>Check-out</th>
+                <th className={DashboardCss.checkin}>Check-In</th>
+                <th className={DashboardCss.checkout}>Check-Out</th>
                 <th className={DashboardCss.guest}>Guests</th>
                 <th className={DashboardCss.pet}>Pets</th>
                 <th className={DashboardCss.subtotal}>Subtotal</th>

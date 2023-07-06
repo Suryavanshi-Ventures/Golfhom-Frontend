@@ -126,7 +126,7 @@ const Home = () => {
     if (adult > 0) {
       setAdult(adult - 1);
     } else {
-      message.error("Sorry number of adults can not be less than 0");
+      message.error("Sorry, the number of adults cannot be less than 0.");
       setAdult(0);
     }
   };
@@ -139,7 +139,7 @@ const Home = () => {
     if (child > 0) {
       setChild(child - 1);
     } else {
-      message.error("Sorry number of children can not be less than 0");
+      message.error("Sorry, the number of childs cannot be less than 0.");
       setChild(0);
     }
   };
@@ -220,7 +220,7 @@ const Home = () => {
               <Col lg={3} md={4} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_input_container}>
                   <div className={HomeCss.image_destination}>
-                    <Row>
+                    <Row style={{ alignItems: "center" }}>
                       <Col xs={"auto"}>
                         <div className={HomeCss.inner_icon_container}>
                           <Image
@@ -270,7 +270,7 @@ const Home = () => {
               <Col lg={3} md={4} className={HomeCss.search_cols_4}>
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_input_container}>
-                    <Row>
+                    <Row style={{ alignItems: "center" }}>
                       <Col xs={"auto"}>
                         <div className={HomeCss.inner_icon_container}>
                           <Image
@@ -339,7 +339,7 @@ const Home = () => {
               >
                 <div className={HomeCss.inner_main_container}>
                   <div className={HomeCss.inner_input_containerNight}>
-                    <Row>
+                    <Row style={{ alignItems: "center" }}>
                       <Col xs={"auto"}>
                         <div className={HomeCss.inner_icon_container}>
                           <Image

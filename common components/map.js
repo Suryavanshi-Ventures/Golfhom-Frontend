@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { useRouter } from "next/router";
 
 const containerStyle = {
   width: "100%",
@@ -8,10 +9,12 @@ const containerStyle = {
 };
 
 let center = {};
-
 let markers = [];
 
 const GoogleMaps = (PropertyData) => {
+  const RouterRef = useRouter();
+  const { latitude, longitude } = RouterRef.query;
+  console.log(PropertyData.data, "PROP DATA");
   const [map, setMap] = useState(null);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -93,26 +96,25 @@ const GoogleMaps = (PropertyData) => {
       },
     ];
 
-    // PropertyData.data.forEach((element, index) => {
-    //   markers.push({
-    //     lat: Number(element?.latitude),
-    //     lng: Number(element?.longitude),
-    //   });
-    //   console.log(index, "INDDDD");
-    // });
-
-    // // //* IF LAT LONG GOES MORE THAN 10 THAN REMOVING OLD LAT LONG FROM ARRA
-    // if (markers.length > 10) {
-    //   markers.splice(0, 10);
-    // }
-
     center = {
       lat: Number(PropertyData.data[0]?.latitude),
       lng: Number(PropertyData.data[0]?.longitude),
     };
     console.log(markers, "MARKERRRR MULTIPLE ");
+  } else if (PropertyData.length === 0) {
+    console.log("LENGTH IS 0");
+    markers = [
+      {
+        lat: Number(latitude),
+        lng: Number(longitude),
+      },
+    ];
+
+    center = {
+      lat: Number(latitude),
+      lng: Number(longitude),
+    };
   }
-  console.log(markers, "MARKERRRRerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ");
 
   return isLoaded ? (
     <GoogleMap
