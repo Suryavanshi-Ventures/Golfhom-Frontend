@@ -1109,7 +1109,10 @@ const ViewProperty = () => {
                       <p className={ViewPropertyCss.total_price}>
                         {" "}
                         <strong>
-                          ${StartingFromPrice * NightsCounter}
+                          $
+                          {StartingFromPrice * NightsCounter >= 0.5
+                            ? Math.ceil(StartingFromPrice * NightsCounter)
+                            : Math.floor(StartingFromPrice * NightsCounter)}
                         </strong>{" "}
                       </p>
                       <p
