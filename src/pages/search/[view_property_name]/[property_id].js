@@ -382,7 +382,6 @@ const ViewProperty = () => {
             ? res.data?.data?.data?.[0]?.availability?.map((i) => i.date)
             : [];
 
-          AvailDataNextpax?.splice(0, 10);
           setAvailDateNextpax(AvailDataNextpax);
         }
       });
