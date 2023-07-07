@@ -63,11 +63,15 @@ const ViewProperty = () => {
   const [ShowOtherDetailsStatic, setShowOtherDetailsStatic] = useState(false);
   const [ShowTotalPaymentTextStatic, setShowTotalPaymentTextStatic] =
     useState(false);
-  const [AvailabilityCalender, setAvailabilityCalender] = useState([{}]);
-  const [adult, setAdult] = useState(1);
-  const [child, setChild] = useState(1);
+  const [DisableCalendar, setDisableCalendar] = useState(true);
+
+  //* GUEST SECTION
+  const [adult, setAdult] = useState(0);
+  const [child, setChild] = useState(0);
   const [infant, setInfant] = useState(0);
   const [pet, setPet] = useState(0);
+  //! GUEST SECTION END
+
   const [form] = Form.useForm();
   const [SaveDateInState, setSaveDateInState] = useState([]);
   const [PropertyType, setPropertyType] = useState("");
@@ -141,6 +145,16 @@ const ViewProperty = () => {
     }
     return () => {};
   }, [PaymentIntentObject]);
+
+  useEffect(() => {
+    if (adult || child || infant || pet !== 0) {
+      setDisableCalendar(false);
+    } else {
+      setDisableCalendar(true);
+    }
+
+    return () => {};
+  }, [adult, child, infant, pet]);
 
   const DateFormater = (date) => {
     return dayjs(date).format("YYYY-MM-DD");
@@ -273,11 +287,13 @@ const ViewProperty = () => {
                 id: Params.property_id,
                 from: DateValue[0],
                 to: DateValue[1],
-                guest: Params.guests ? Params.guests : adult + child + infant,
+                guest: Params.guests
+                  ? Params.guests
+                  : adult + child + infant + pet,
                 adult: adult,
                 children: child,
                 babies: infant,
-                pets: 0,
+                pets: pet,
               },
               { headers: { Authorization: `Bearer ${Token}` } }
             );
@@ -287,7 +303,9 @@ const ViewProperty = () => {
                 setTotalChargesNextpax(
                   CheckAvailRes.data?.data?.breakdown?.total
                 );
-                setStartingFromPrice(CheckAvailRes?.data?.data?.breakdown?.adr);
+                setStartingFromPrice(
+                  CheckAvailRes?.data?.data?.breakdown?.rentOnly
+                );
                 setAvailable(true);
                 setNotAvailable(false);
                 setShowTotalPaymentTextStatic(true);
@@ -591,6 +609,7 @@ const ViewProperty = () => {
                       }
                     >
                       <RangePicker
+                        disabled={DisableCalendar}
                         placeholder={["Check-In", "Check-Out"]}
                         className={ViewPropertyCss.inner_input_date_picker}
                         onChange={OnChangeDateInput}
@@ -631,6 +650,13 @@ const ViewProperty = () => {
                           FetchAvailableDate(date1, date2);
                         }}
                       />
+                      {DisableCalendar ? (
+                        <p className={ViewPropertyCss.please_select_guest_text}>
+                          Please select guests!
+                        </p>
+                      ) : (
+                        ""
+                      )}
                     </Form.Item>
                   </Form>
                 </div>

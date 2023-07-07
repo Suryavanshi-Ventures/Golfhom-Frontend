@@ -6,6 +6,8 @@ import dayjs from "dayjs";
 import ChargesCodeJson from "../../../json/charges code.json";
 
 const StaticPriceBreakDown = (props) => {
+  console.log(props, "PROPS FRIOM STATIC PROP");
+
   const [NightsCounter, setNightsCounter] = useState(0);
   useEffect(() => {
     const startDate = dayjs(props?.data?.arrivalDate); // Replace with your start date
@@ -35,12 +37,12 @@ const StaticPriceBreakDown = (props) => {
       {props?.data?.property_type === "Nextpax" ? (
         //* SECTION FOR NEXTPAX PRICE BREAKDOWN
         <div>
-          {/* REQUIRED CHARGES */}
-          {props?.data?.NextpaxPriceBreakDown?.charges?.required.map(
+          {props?.data?.NextpaxPriceBreakDown?.breakdown?.charges?.itemized.map(
             (Data, Index) => {
               return (
                 <>
-                  {Data.itemPrice === 0 ? (
+                  {props?.data?.NextpaxPriceBreakDown?.breakdown?.charges ===
+                  {} ? (
                     ""
                   ) : (
                     <div
@@ -72,7 +74,7 @@ const StaticPriceBreakDown = (props) => {
                         className={StaticPriceBreakDownCss.total_price_text_div}
                       >
                         <p className={StaticPriceBreakDownCss.total_price}>
-                          ${Data?.itemPrice ? Data?.itemPrice : 0}
+                          ${Data?.value ? Data?.value : 0}
                         </p>
                       </div>
                     </div>
@@ -82,12 +84,13 @@ const StaticPriceBreakDown = (props) => {
             }
           )}
 
-          {/* REQUIRED TAXESs */}
-          {props?.data?.NextpaxPriceBreakDown?.requiredTaxes.map(
+          {/* TAXES */}
+          {props?.data?.NextpaxPriceBreakDown?.breakdown?.taxes?.itemized.map(
             (Data, Index) => {
               return (
                 <>
-                  {Data?.amountFlat === 0 ? (
+                  {props?.data?.NextpaxPriceBreakDown?.breakdown?.taxes ===
+                  {} ? (
                     ""
                   ) : (
                     <div
@@ -113,7 +116,8 @@ const StaticPriceBreakDown = (props) => {
                         className={StaticPriceBreakDownCss.total_price_text_div}
                       >
                         <p className={StaticPriceBreakDownCss.total_price}>
-                          {Data?.amountFlat ? (
+                          ${Data?.value ? Data?.value : 0}
+                          {/* {Data?.amountFlat ? (
                             <>{Data?.amountFlat ? `$${Data?.amountFlat}` : 0}</>
                           ) : (
                             <>
@@ -121,7 +125,7 @@ const StaticPriceBreakDown = (props) => {
                                 ? `%${Data?.amountPercentage}`
                                 : 0}
                             </>
-                          )}
+                          )} */}
                         </p>
                       </div>
                     </div>
@@ -130,6 +134,35 @@ const StaticPriceBreakDown = (props) => {
               );
             }
           )}
+
+          {/* SECURITY DEPOSIT FEE */}
+          {props?.data?.NextpaxPriceBreakDown?.breakdown
+            ?.requiredSecurityDeposit === 0 ? (
+            ""
+          ) : (
+            <div
+              className={StaticPriceBreakDownCss.total_price_charge_main_div}
+            >
+              <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                <h5
+                  className={StaticPriceBreakDownCss.total_price_charges_text}
+                >
+                  Required Security Deposit
+                </h5>
+              </div>
+              <div className={StaticPriceBreakDownCss.total_price_text_div}>
+                <p className={StaticPriceBreakDownCss.total_price}>
+                  $
+                  {props?.data?.NextpaxPriceBreakDown?.breakdown
+                    .requiredSecurityDeposit
+                    ? props?.data?.NextpaxPriceBreakDown?.breakdown
+                        ?.requiredSecurityDeposit
+                    : 0}
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* IF THERE IS NO CHARGES */}
           {props?.data?.NextpaxPriceBreakDown?.charges?.required.length === 0 &&
           props?.data?.NextpaxPriceBreakDown?.requiredTaxes.length === 0 ? (

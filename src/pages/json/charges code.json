@@ -6674,7 +6674,7 @@
     },
     {
       "name": {
-        "en": "Guarantee / deposit"
+        "en": "Deposit"
       },
       "feeCode": "DEP"
     },
@@ -6746,7 +6746,7 @@
     },
     {
       "name": {
-        "en": "Final cleaning"
+        "en": "Cleaning Fee"
       },
       "feeCode": "FIN"
     },
@@ -6872,7 +6872,7 @@
     },
     {
       "name": {
-        "en": "Pet cleaning fee"
+        "en": "Pet Cleaning Fee"
       },
       "feeCode": "PCL"
     },
