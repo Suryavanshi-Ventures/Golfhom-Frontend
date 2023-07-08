@@ -312,6 +312,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* DATE PICKER IN VIEW PROPERTY PAGE */
+
+/* FOR LIVE */
+:where(.css-w8mnev).ant-picker-dropdown
+  .ant-picker-panel-container
+  .ant-picker-panels {
+  flex-wrap: wrap !important;
+}
+
+/* FOR DEV */
 .rmdp-range {
   background-color: var(--success-green) !important;
 }
@@ -323,6 +332,17 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @media only screen and (max-width: 768px) {
+  /* FOR LIVE */
+  :where(.css-w8mnev).ant-picker-dropdown
+    .ant-picker-panel-container
+    .ant-picker-panels {
+    width: min-content !important;
+  }
+  :where(.css-w8mnev).ant-picker-dropdown .ant-picker-range-wrapper {
+    min-width: 100% !important;
+  }
+  /* FOR DEV */
+
   :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
     .ant-picker-panel-container
     .ant-picker-panels {
