@@ -316,6 +316,26 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: var(--success-green) !important;
 }
 
+:where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+  .ant-picker-panel-container
+  .ant-picker-panels {
+  flex-wrap: wrap !important;
+}
+
+@media only screen and (max-width: 768px) {
+  :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+    .ant-picker-panel-container
+    .ant-picker-panels {
+    width: min-content !important;
+  }
+  :where(.css-dev-only-do-not-override-w8mnev).ant-picker-dropdown
+    .ant-picker-range-wrapper {
+    min-width: 100% !important;
+  }
+}
+
+/* DATE PICKER IN VIEW PROPERTY PAGE END */
+
 /* SKELETON SECTION  */
 .ant-skeleton-image,
 .ant-skeleton-active {
