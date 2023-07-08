@@ -14,7 +14,6 @@ let markers = [];
 const GoogleMaps = (PropertyData) => {
   const RouterRef = useRouter();
   const { latitude, longitude } = RouterRef.query;
-  console.log(PropertyData.data, "PROP DATA");
   const [map, setMap] = useState(null);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",

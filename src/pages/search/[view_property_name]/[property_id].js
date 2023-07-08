@@ -1,6 +1,5 @@
-import { useState, React, useEffect, useContext, Suspense } from "react";
+import { useState, React, useEffect, useRef } from "react";
 import Head from "next/head";
-
 import { Container, Col, Row, Dropdown } from "react-bootstrap";
 import ViewPropertyCss from "../../../styles/ViewProperty.module.css";
 import GirlGroupBannerImage from "../../../../public/images/group_girls_banner.png";
@@ -38,20 +37,17 @@ const PaymentPopUp = dynamic(() => import("./components/PaymentPopUp"), {
   suspense: true,
 });
 
-const StaticPriceBreakDown = dynamic(
-  () => import("./components/StaticPriceBreakDown"),
-  {
-    suspense: true,
-  }
-);
+const PriceBreakDown = dynamic(() => import("./components/PriceBreakDown"), {
+  suspense: true,
+});
 const ContactToHost = dynamic(() => import("./components/ContactToHost"), {
   suspense: true,
 });
 
 const ViewProperty = () => {
   const router = useRouter();
-  const ContextUserDetails = useContext(AuthContext);
   const Params = router.query;
+  const ElementRef = useRef();
   const [SpecificPropAPIData, SetSpecificPropAPIData] = useState({});
   const [BookingDate, SetBookingDate] = useState([]);
   const [PaymentIntentObject, setPaymentIntentObject] = useState(null);
@@ -64,6 +60,7 @@ const ViewProperty = () => {
   const [ShowTotalPaymentTextStatic, setShowTotalPaymentTextStatic] =
     useState(false);
   const [DisableCalendar, setDisableCalendar] = useState(true);
+  const [ShowGuestDropDown, setShowGuestDropDown] = useState(false);
 
   //* GUEST SECTION
   const [adult, setAdult] = useState(0);
@@ -92,7 +89,9 @@ const ViewProperty = () => {
   const [PaymentIntentObjRental, setPaymentIntentObjRental] = useState({});
   const [TotalChargesNextpax, setTotalChargesNextpax] = useState(0);
   const [TotalChargesRental, setTotalChargesRental] = useState(0);
-
+  const [SaveGuestBtnLoading, setSaveGuestBtnLoading] = useState(false);
+  // New Payment modal
+  const [newPayment, setNewPayment] = useState(false);
   useEffect(() => {
     const UrlParamId = window.location.pathname.split("/")[3];
 
@@ -152,7 +151,6 @@ const ViewProperty = () => {
     } else {
       setDisableCalendar(true);
     }
-
     return () => {};
   }, [adult, child, infant, pet]);
 
@@ -444,12 +442,73 @@ const ViewProperty = () => {
     }
   };
 
-  // New Payment modal
-  const [newPayment, setNewPayment] = useState(false);
+  const SaveTotalGuests = () => {
+    setSaveGuestBtnLoading(true);
 
-  const handlePay = () => {
-    // setNewPayment(false);
+    if ((BookingDate[0], BookingDate[1])) {
+      const CheckAvail = async () => {
+        try {
+          const Token =
+            localStorage.getItem("token") || sessionStorage.getItem("token");
+          const CheckAvailRes = await axios.post(
+            `${process.env.NEXT_PUBLIC_API_URL}/v1/nextpax/finalAvailability`,
+            {
+              id: Params.property_id,
+              from: BookingDate[0],
+              to: BookingDate[1],
+              guest: Params.guests
+                ? Params.guests
+                : adult + child + infant + pet,
+              adult: adult,
+              children: child,
+              babies: infant,
+              pets: pet,
+            },
+            { headers: { Authorization: `Bearer ${Token}` } }
+          );
+          if (CheckAvailRes.status === 201) {
+            setShowGuestDropDown(false);
+            setSaveGuestBtnLoading(false);
+
+            if (CheckAvailRes.data.data.available) {
+              setNextPaxFinalAvailPriceBreakDown(CheckAvailRes.data.data);
+              setTotalChargesNextpax(
+                CheckAvailRes.data?.data?.breakdown?.total
+              );
+              setStartingFromPrice(
+                CheckAvailRes?.data?.data?.breakdown?.rentOnly
+              );
+              setAvailable(true);
+              setNotAvailable(false);
+              setShowTotalPaymentTextStatic(true);
+              setPaymentIntentObjNextpax(CheckAvailRes.data.paymentIntent);
+            } else {
+              setAvailable(false);
+              setNotAvailable(true);
+              setShowTotalPaymentTextStatic(false);
+              setShowOtherDetailsStatic(false);
+              setShowNextpaxPropertyPaymentPortal(false);
+            }
+          }
+        } catch (error) {
+          setSaveGuestBtnLoading(false);
+
+          if (error.response?.status === 401) {
+            setSaveGuestBtnLoading(false);
+            message.error(
+              `${error.response.data.message}, Please login to book hotels!`
+            );
+          }
+          console.log(error, "ERROR CheckAvailability NEXTPAX");
+        }
+      };
+      CheckAvail();
+    } else {
+      setSaveGuestBtnLoading(false);
+      message.error("Please select Check-In and Check-Out date.");
+    }
   };
+
   const handleCancel = () => {
     setNewPayment(false);
   };
@@ -664,7 +723,10 @@ const ViewProperty = () => {
 
               <hr />
 
-              <Dropdown className={ViewPropertyCss.dropdown_parent}>
+              <Dropdown
+                onClick={() => setShowGuestDropDown(true)}
+                className={ViewPropertyCss.dropdown_parent}
+              >
                 <Dropdown.Toggle
                   className={ViewPropertyCss.guest}
                   id="dropdown-basic"
@@ -672,131 +734,147 @@ const ViewProperty = () => {
                   {adult + child + infant + pet} Guests
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className={ViewPropertyCss.adultChild}>
-                  <div className={ViewPropertyCss.increase}>
-                    <div>
-                      <Dropdown.Item href="#/action-1">
-                        {" "}
-                        <span className={ViewPropertyCss.ageName}>
-                          {adult} Adults
-                        </span>
-                      </Dropdown.Item>
+                {ShowGuestDropDown ? (
+                  <Dropdown.Menu
+                    ref={ElementRef}
+                    className={ViewPropertyCss.adultChild}
+                  >
+                    <div className={ViewPropertyCss.increase}>
+                      <div>
+                        <Dropdown.Item href="#/action-1">
+                          {" "}
+                          <span className={ViewPropertyCss.ageName}>
+                            {adult} Adults
+                          </span>
+                        </Dropdown.Item>
+                      </div>
+
+                      <div className={ViewPropertyCss.geust_incri_btns_div}>
+                        <Button className={ViewPropertyCss.increaseAdult}>
+                          <div
+                            className={ViewPropertyCss.decreasebtn}
+                            onClick={decAdult}
+                          >
+                            -
+                          </div>
+                          <div className={ViewPropertyCss.guest_count_div}>
+                            {adult}
+                          </div>
+                          <div
+                            className={ViewPropertyCss.increasebtn}
+                            onClick={incAdult}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
                     </div>
 
-                    <div className={ViewPropertyCss.geust_incri_btns_div}>
-                      <Button className={ViewPropertyCss.increaseAdult}>
-                        <div
-                          className={ViewPropertyCss.decreasebtn}
-                          onClick={decAdult}
-                        >
-                          -
-                        </div>
-                        <div className={ViewPropertyCss.guest_count_div}>
-                          {adult}
-                        </div>
-                        <div
-                          className={ViewPropertyCss.increasebtn}
-                          onClick={incAdult}
-                        >
-                          +
-                        </div>
+                    <div className={ViewPropertyCss.increase}>
+                      <div>
+                        <Dropdown.Item href="#/action-2">
+                          {" "}
+                          <span className={ViewPropertyCss.ageName}>
+                            {child} Children
+                          </span>
+                        </Dropdown.Item>
+                      </div>
+
+                      <div className={ViewPropertyCss.geust_incri_btns_div}>
+                        <Button className={ViewPropertyCss.increaseAdult}>
+                          <div
+                            className={ViewPropertyCss.decreasebtn}
+                            onClick={decChild}
+                          >
+                            -
+                          </div>
+                          <div className={ViewPropertyCss.guest_count_div}>
+                            {child}
+                          </div>
+                          <div
+                            className={ViewPropertyCss.increasebtn}
+                            onClick={incChild}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className={ViewPropertyCss.increase}>
+                      <div>
+                        <Dropdown.Item href="#/action-3">
+                          {" "}
+                          <span className={ViewPropertyCss.ageName}>
+                            {infant} Infants
+                          </span>
+                        </Dropdown.Item>
+                      </div>
+
+                      <div className={ViewPropertyCss.geust_incri_btns_div}>
+                        <Button className={ViewPropertyCss.increaseAdult}>
+                          <div
+                            className={ViewPropertyCss.decreasebtn}
+                            onClick={decInfant}
+                          >
+                            -
+                          </div>
+                          <div className={ViewPropertyCss.guest_count_div}>
+                            {infant}
+                          </div>
+                          <div
+                            className={ViewPropertyCss.increasebtn}
+                            onClick={incInfant}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className={ViewPropertyCss.increase}>
+                      <div>
+                        <Dropdown.Item href="#/action-4">
+                          {" "}
+                          <span className={ViewPropertyCss.ageName}>
+                            {pet} Pets
+                          </span>
+                        </Dropdown.Item>
+                      </div>
+
+                      <div className={ViewPropertyCss.geust_incri_btns_div}>
+                        <Button className={ViewPropertyCss.increaseAdult}>
+                          <div
+                            className={ViewPropertyCss.decreasebtn}
+                            onClick={decPet}
+                          >
+                            -
+                          </div>
+                          <div className={ViewPropertyCss.guest_count_div}>
+                            {pet}
+                          </div>
+                          <div
+                            className={ViewPropertyCss.increasebtn}
+                            onClick={incPet}
+                          >
+                            +
+                          </div>
+                        </Button>
+                      </div>
+                    </div>
+                    <div className={ViewPropertyCss.geust_save_btn_div}>
+                      <Button
+                        loading={SaveGuestBtnLoading}
+                        onClick={SaveTotalGuests}
+                        className={ViewPropertyCss.geust_save_btn}
+                      >
+                        Save
                       </Button>
                     </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.increase}>
-                    <div>
-                      <Dropdown.Item href="#/action-2">
-                        {" "}
-                        <span className={ViewPropertyCss.ageName}>
-                          {child} Children
-                        </span>
-                      </Dropdown.Item>
-                    </div>
-
-                    <div className={ViewPropertyCss.geust_incri_btns_div}>
-                      <Button className={ViewPropertyCss.increaseAdult}>
-                        <div
-                          className={ViewPropertyCss.decreasebtn}
-                          onClick={decChild}
-                        >
-                          -
-                        </div>
-                        <div className={ViewPropertyCss.guest_count_div}>
-                          {child}
-                        </div>
-                        <div
-                          className={ViewPropertyCss.increasebtn}
-                          onClick={incChild}
-                        >
-                          +
-                        </div>
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.increase}>
-                    <div>
-                      <Dropdown.Item href="#/action-3">
-                        {" "}
-                        <span className={ViewPropertyCss.ageName}>
-                          {infant} Infant
-                        </span>
-                      </Dropdown.Item>
-                    </div>
-
-                    <div className={ViewPropertyCss.geust_incri_btns_div}>
-                      <Button className={ViewPropertyCss.increaseAdult}>
-                        <div
-                          className={ViewPropertyCss.decreasebtn}
-                          onClick={decInfant}
-                        >
-                          -
-                        </div>
-                        <div className={ViewPropertyCss.guest_count_div}>
-                          {infant}
-                        </div>
-                        <div
-                          className={ViewPropertyCss.increasebtn}
-                          onClick={incInfant}
-                        >
-                          +
-                        </div>
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className={ViewPropertyCss.increase}>
-                    <div>
-                      <Dropdown.Item href="#/action-4">
-                        {" "}
-                        <span className={ViewPropertyCss.ageName}>
-                          {pet} Pet
-                        </span>
-                      </Dropdown.Item>
-                    </div>
-
-                    <div className={ViewPropertyCss.geust_incri_btns_div}>
-                      <Button className={ViewPropertyCss.increaseAdult}>
-                        <div
-                          className={ViewPropertyCss.decreasebtn}
-                          onClick={decPet}
-                        >
-                          -
-                        </div>
-                        <div className={ViewPropertyCss.guest_count_div}>
-                          {pet}
-                        </div>
-                        <div
-                          className={ViewPropertyCss.increasebtn}
-                          onClick={incPet}
-                        >
-                          +
-                        </div>
-                      </Button>
-                    </div>
-                  </div>
-                </Dropdown.Menu>
+                  </Dropdown.Menu>
+                ) : (
+                  ""
+                )}
               </Dropdown>
               <hr />
 
@@ -1160,7 +1238,7 @@ const ViewProperty = () => {
               {/* STATIC TOTAL CHARGES DIV */}
               {ShowOtherDetailsStatic ? (
                 <>
-                  <StaticPriceBreakDown
+                  <PriceBreakDown
                     data={{
                       NextpaxPriceBreakDown: NextPaxFinalAvailPriceBreakDown,
                       RentalpaxPriceBreakDown: RentalFinalAvailPriceBreakDown,
