@@ -1308,7 +1308,8 @@ const ViewProperty = () => {
                         poperty_name: SpecificPropAPIData.data?.name,
                         from: BookingDate[0],
                         to: BookingDate[1],
-                        total_guests: Params.guests || adult + child + infant,
+                        total_guests:
+                          Params.guests || adult + child + infant + pet,
                         children: child,
                         adult: adult,
                         babies: infant,

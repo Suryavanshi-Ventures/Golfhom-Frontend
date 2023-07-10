@@ -21,6 +21,7 @@ const Checkout = (props) => {
   const [FormRef] = Form.useForm();
   const [IsLoading, setIsLoading] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
+
   console.log("CHECKOUT PAGE", props);
 
   const BookingHotelDone = async (values) => {
@@ -64,7 +65,7 @@ const Checkout = (props) => {
               guest: props.data.data.total_guests,
               children: props.data.data.children,
               babies: props.data.data.babies,
-              pets: 0,
+              pets: props.data.data.pets,
               paymentIntent: paymentIntent.id,
               mainBooker: {
                 countryCode: values.payment_card_country_code.toLowerCase(),
