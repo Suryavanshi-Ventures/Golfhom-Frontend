@@ -76,6 +76,7 @@ const Checkout = (props) => {
                 stateProv: values.payment_card_state,
                 houseNumber: values.payment_card_house_number,
               },
+              channelPartnerReference: "GOL419",
             },
             { headers: { Authorization: `Bearer ${Token}` } }
           );
